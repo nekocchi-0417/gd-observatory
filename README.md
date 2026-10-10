@@ -30,7 +30,7 @@ The main finding: what AI can do and who uses it are measured again and again. W
 
 ## View it
 
-- **Online:** once GitHub Pages is switched on (see below), the site is at `https://<your-username>.github.io/gd-observatory/`.
+- **Online:** once GitHub Pages is switched on (see below), the site is at `https://nekocchi-0417.github.io/gd-observatory/`.
 - **On your computer:** open `docs/index.html` in a browser. It is one self-contained file.
 
 To switch on GitHub Pages: in the repository, go to **Settings → Pages**, set **Source** to "Deploy from a branch", pick branch `main` and folder `/docs`, and save.
