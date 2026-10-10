@@ -1,0 +1,16 @@
+{
+  "name": "gd-observatory",
+  "version": "0.4.0",
+  "private": true,
+  "description": "A draft website that maps what is measured about gradual disempowerment, link by link.",
+  "license": "MIT",
+  "scripts": {
+    "build": "sh build.sh",
+    "build:artifact": "sh build.sh artifact",
+    "verify": "node tools/verify.js",
+    "screenshots": "node tools/screenshot.js"
+  },
+  "devDependencies": {
+    "playwright": "1.47.2"
+  }
+}

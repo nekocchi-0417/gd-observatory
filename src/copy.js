@@ -1,0 +1,1326 @@
+/* v5 copy deck (comms agent, edited after the researcher review, 8 Oct 2026) */
+const COPY={
+ "home": {
+  "eyebrow": "Better Futures Project · Zhang Yue",
+  "subtitle": "Gradual disempowerment: the risk that, as AI makes people less needed, they slowly lose their say over the economy, culture and the state.",
+  "chainLabel": "What is measured today",
+  "zoneLabels": {
+   "use": "AI and its use",
+   "consequences": "Consequences",
+   "outcome": "Outcome",
+   "humanSide": "The human side"
+  },
+  "legend": {
+   "lead": "Line style:",
+   "items": {
+    "0": "No direct measure",
+    "1": "One-offs or paperwork",
+    "2": "Not tied to AI",
+    "3": "Measured, with limits",
+    "4": "Well measured"
+   },
+   "action": "Select a dotted line to see why."
+  },
+  "caveat": "Lines show how well each stop is measured, not that one causes the next.",
+  "stopCaptions": {
+   "capability": "What AI can do",
+   "adoption": "Who uses it",
+   "handover": "Tasks handed to AI",
+   "work": "Jobs for new starters",
+   "share": "Income paid to workers",
+   "skills": "Ability without AI",
+   "culture": "AI-made content and attention",
+   "institutions": "Decisions routed through AI",
+   "influence": "People's say over outcomes"
+  },
+  "numbers": "8 links · 39 indicators",
+  "doors": [
+   {
+    "id": "evidence",
+    "title": "What the data show",
+    "line": "Each link, coloured by how far its data have moved."
+   },
+   {
+    "id": "gaps",
+    "title": "What is not measured",
+    "line": "Fourteen missing measures, and which ones matter most."
+   },
+   {
+    "id": "futures",
+    "title": "Where it might lead",
+    "line": "Published forecasts, mostly about US jobs and income.",
+    "tag": "Work in progress"
+   }
+  ],
+  "tour": {
+   "button": "Play the tour",
+   "sub": "Nine stops, about a minute. Or select any stop.",
+   "back": "Back",
+   "next": "Next",
+   "pause": "Pause",
+   "resume": "Resume",
+   "exit": "Exit tour",
+   "open": "See the evidence",
+   "openEnd": "See the gap",
+   "stepLabel": "Stop {i} of 9 · {measurementWord}"
+  },
+  "headline": "What is measured, and what is missing?",
+  "coreLead": "What AI can do and who uses it are measured again and again.",
+  "coreMiss": "Whether people keep their skills, judgement and say is rarely measured, and almost never on the same people over time.",
+  "groups": [
+   {
+    "t": "Measured again and again",
+    "ids": [
+     "capability",
+     "adoption",
+     "handover"
+    ]
+   },
+   {
+    "t": "Patchy or disputed",
+    "ids": [
+     "work",
+     "share",
+     "culture"
+    ]
+   },
+   {
+    "t": "Barely measured",
+    "ids": [
+     "skills",
+     "institutions",
+     "influence"
+    ]
+   }
+  ]
+ },
+ "evidence": {
+  "title": "What the data show, link by link",
+  "deck": "One row per link. Colour shows how far the data have moved; grey means too little data to tell.",
+  "legendNote": "Grey means not measured well enough to tell, not \"no change\". Colours are the observatory's judgement.",
+  "scaleLabel": "What the data show",
+  "scale": {
+   "1": {
+    "word": "No clear change yet",
+    "gloss": "Little movement, or movement that began before AI."
+   },
+   "2": {
+    "word": "Early or mixed signs",
+    "gloss": "Some data point that way; others do not, or the cause is disputed."
+   },
+   "3": {
+    "word": "Clearly changing",
+    "gloss": "Repeated data show a clear move that way."
+   },
+   "4": {
+    "word": "Changing fast",
+    "gloss": "Repeated, direct data show rapid change the way the theory predicts."
+   },
+   "?": {
+    "word": "Can't tell",
+    "gloss": "Not measured well enough to say. Not the same as no change."
+   }
+  },
+  "judgementTip": "The observatory's judgement of how far the data have moved. Not a measure of cause or harm.",
+  "rows": {
+   "capability": {
+    "signal": 4,
+    "line": "The software tasks AI can finish alone keep getting longer, fast."
+   },
+   "adoption": {
+    "signal": 4,
+    "line": "Use at work keeps climbing; daily use is still a minority."
+   },
+   "handover": {
+    "signal": 2,
+    "line": "Hand-over rose then eased in one company's logs; another's fell."
+   },
+   "work": {
+    "signal": 2,
+    "line": "Fewer US jobs for 22–25s in AI-exposed fields; the cause is disputed."
+   },
+   "share": {
+    "signal": 2,
+    "line": "At a record low, but most of the fall came before AI."
+   },
+   "skills": {
+    "signal": "?",
+    "line": "Mostly one-off studies; no general panel ties unaided re-tests to AI use."
+   },
+   "culture": {
+    "signal": 2,
+    "line": "AI-made content fills supply; reading of it is unmeasured, listening is low."
+   },
+   "institutions": {
+    "signal": "?",
+    "line": "Disclosed AI uses are counted; no government found counts decisions made with AI."
+   },
+   "influence": {
+    "signal": "?",
+    "line": "No direct measure; the nearest is a poll on control over AI."
+   }
+  },
+  "footer": {
+   "record": "The measurement record: dated readings since 2021 →",
+   "counter": "What would count against the theory →",
+   "toGap": "Why the human end is grey →"
+  },
+  "counter": {
+   "intro": "The theory can fail. Each of these would count against it.",
+   "items": [
+    {
+     "label": "Young workers catch up",
+     "text": "Jobs for 22 to 25 year olds in exposed fields rejoin their peers' path."
+    },
+    {
+     "label": "Workers' share recovers",
+     "text": "Its four-quarter average climbs back above the 2025 level."
+    },
+    {
+     "label": "Skills hold up",
+     "text": "Repeated tests find unaided ability stable among heavy AI users, as one Japanese clinic has."
+    },
+    {
+     "label": "Officials overrule the machine",
+     "text": "Published override rates show officials changing a substantial share of AI advice."
+    },
+    {
+     "label": "Attention stays with people",
+     "text": "AI-made work stays a small share of what people read and hear."
+    }
+   ]
+  }
+ },
+ "record": {
+  "title": "The measurement record",
+  "intro": "Each mark is one dated reading shown on this site since 2021. Blue marks measure the link itself; grey marks measure something nearby.",
+  "instruction": "Select a lane to open its chart.",
+  "footer": "Marks show how often a series is published, not how strong it is. What would close these gaps →",
+  "drawer": {
+   "titlePattern": {
+    "0": "{stop}: why dotted?",
+    "1": "{stop}: why dotted?",
+    "2": "{stop}: why a hollow line?",
+    "3": "{stop}: why a solid line?",
+    "4": "{stop}: why a thick line?"
+   },
+   "levelSentence": {
+    "0": "Nothing measures this directly.",
+    "1": "Only one-off studies or counts of paperwork; nothing follows the same thing over time.",
+    "2": "Measured repeatedly, but the change cannot be tied to AI.",
+    "3": "Measured repeatedly and directly, but by the firms involved, or with the cause disputed.",
+    "4": "Measured again and again, directly, by bodies independent of the AI firms."
+   },
+   "stopSentence": {
+    "capability": "Re-measured for each major model by an independent evaluator; software tasks only.",
+    "adoption": "Surveyed every quarter by several independent bodies; self-reported.",
+    "handover": "Repeated, but from the AI companies' own logs; no new headline figure since November 2025.",
+    "work": "Payroll data every month; whether AI is the cause is disputed.",
+    "share": "Measured every quarter since 1947, but the change cannot be tied to AI.",
+    "skills": "Short one-off trials and two clinic audits that disagree; no general panel links re-tests to AI use.",
+    "culture": "Repeated, but mostly by platforms and vendors with a stake in the answer.",
+    "institutions": "AI uses disclosed by governments are counted; no government we found counts decisions made with AI.",
+    "influence": "Nothing measures it directly; one poll question on control over AI comes nearest."
+   },
+   "checks": [
+    {
+     "label": "Repeated",
+     "tip": "Measured more than once, the same way."
+    },
+    {
+     "label": "Direct",
+     "tip": "Measures the thing the link is named for."
+    },
+    {
+     "label": "Independent",
+     "tip": "Not measured by the firms whose products are involved."
+    },
+    {
+     "label": "Tied to AI",
+     "tip": "The change can be linked to AI rather than other causes."
+    }
+   ],
+   "link": "See the full record →",
+   "close": "Close",
+   "phoneButton": "Why?",
+   "ariaPattern": "{stop}: {measurementWord}. Show why."
+  }
+ },
+ "linkUI": {
+  "breadcrumb": "Evidence › {link}",
+  "pillSignal": "What the data show",
+  "pillMeasure": "How well measured",
+  "instruction": "Select an indicator to see its chart. Trends describe each series, not its cause.",
+  "markerLegend": "Filled dot: moving the way the theory predicts. Hollow: the other way. Half: unclear.",
+  "cards": {
+   "sceptic": "What a sceptic would say",
+   "unmeasured": "What nobody measures",
+   "watch": "What to watch"
+  },
+  "unmeasuredTip": "Not found in published sources searched up to October 2026.",
+  "coverage": "How often this link is measured",
+  "readingIt": "Reading it",
+  "dataTable": "Data table",
+  "sources": "Sources",
+  "prev": "Previous link",
+  "next": "Next link",
+  "endOfChain": "End of the chain: the gap →"
+ },
+ "links": {
+  "capability": {
+   "h1": "The software tasks AI can finish on its own double in length about every four months.",
+   "sentence": "On METR's software tasks, the length AI finishes half the time rose from 4 minutes (2023) to about 12 hours (2026).",
+   "inds": {
+    "metr": {
+     "label": "Task length AI can finish",
+     "shows": "Longest software task AI can finish: doubling about every four months."
+    },
+    "gdpval": {
+     "label": "Office work at expert level",
+     "shows": "Share of OpenAI's office tasks where AI was rated as good as experts or better; levelling off."
+    },
+    "price": {
+     "label": "Price of fixed capability",
+     "shows": "Price per token of fixed performance; about 13 times cheaper each year."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "Software only",
+     "text": "METR's tasks are coding, machine learning and security; on tasks operating a computer screen, lengths are 40 to 100 times shorter."
+    },
+    {
+     "label": "50% is a low bar",
+     "text": "At 80% success, the longest task is 1 to 3 hours, not 12 or more."
+    },
+    {
+     "label": "Benchmarks flatter",
+     "text": "In February 2026 OpenAI dropped SWE-bench Verified, a coding test, finding 59% of audited problems flawed and answers memorised."
+    },
+    {
+     "label": "A field trial disagrees",
+     "text": "In METR's 2025 trial, experienced developers took 19% longer with AI tools."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "Tasks institutions run on",
+     "text": "No task-length measure found for casework, negotiation or management, the work institutions run on."
+    },
+    {
+     "label": "Reliability on messy work",
+     "text": "How reliable AI is on real work, where instructions are incomplete and no test has been written."
+    },
+    {
+     "label": "Cost per finished task",
+     "text": "What a completed task costs, as opposed to the price per token of text."
+    }
+   ],
+   "watch": [
+    {
+     "label": "Reliable tasks reach a workday",
+     "text": "Task length at 80% success passing a working day. Forecasters expected about 3.5 hours by end-2026; April's reading was 3.1."
+    },
+    {
+     "label": "A second evaluator",
+     "text": "Another evaluator reproducing the trend on tasks outside software."
+    },
+    {
+     "label": "A plateau",
+     "text": "If task lengths stop doubling, every link downstream slows."
+    }
+   ]
+  },
+  "adoption": {
+   "h1": "Half of US workers use AI at work at least occasionally; daily use is climbing.",
+   "sentence": "Gallup puts any use at 52% and daily use at 15% in mid-2026, up from 21% and 4% in 2023.",
+   "inds": {
+    "gallup": {
+     "label": "US workers using AI",
+     "shows": "Share using AI at work, any and daily; both up since 2023."
+    },
+    "rps": {
+     "label": "Workers using generative AI",
+     "shows": "Second survey: use rose from a third of workers to 45%."
+    },
+    "firms": {
+     "label": "Firms using AI",
+     "shows": "Firm use rising in US and EU; the US question changed mid-series."
+    },
+    "students": {
+     "label": "Students using AI",
+     "shows": "UK undergraduates' use for assessed work is now near universal."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "Wide but shallow",
+     "text": "Generative AI took 5.7% of US work hours in August 2025; under 3% of job tasks have adoption above 50%."
+    },
+    {
+     "label": "No pay effect yet",
+     "text": "In Danish records, workers who adopted chatbots saw no change in earnings or hours; the study rules out effects above 2%."
+    },
+    {
+     "label": "Growth may be slowing",
+     "text": "On OpenAI's figures, weekly users took 8 months to double to 800 million, then 4.5 months to add 100 million."
+    },
+    {
+     "label": "Definitions swing the number",
+     "text": "Estimates run from 18% of firms to firms covering 78% of employment."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "Hours done with AI",
+     "text": "No repeated series found for the share of work hours done with AI, by occupation."
+    },
+    {
+     "label": "Could they do without?",
+     "text": "Whether workers who use AI could still do the same task without it."
+    },
+    {
+     "label": "Use outside US and Europe",
+     "text": "Consistent adoption data outside the United States and Europe."
+    }
+   ],
+   "watch": [
+    {
+     "label": "Daily use passing 25%",
+     "text": "Gallup's daily-use figure passing one in four workers; it was 15% in mid-2026."
+    },
+    {
+     "label": "Work hours done with AI",
+     "text": "Economists' median: 10% of work hours by 2030 and 40% by 2050, from 3.35% in 2024 on their measure."
+    },
+    {
+     "label": "Firms beating their forecasts",
+     "text": "US firm adoption outpacing firms' own expectation of 20 to 23% within six months."
+    }
+   ]
+  },
+  "handover": {
+   "h1": "On Claude, people hand the task over in just under half of conversations.",
+   "sentence": "The share rose from 41% to 49% in 2025, then eased to 45%; on ChatGPT, requests for finished work fell.",
+   "inds": {
+    "aei": {
+     "label": "Chats handing the task over",
+     "shows": "Claude chats where users delegate the task: rose, then eased."
+    },
+    "agents": {
+     "label": "Coding agents left unattended",
+     "shows": "AI coding agents run longer between human checks, in Anthropic's own data."
+    },
+    "code": {
+     "label": "AI-written code at Google",
+     "shows": "Google's stated share of AI-written code, rising; no published method."
+    },
+    "chatgpt": {
+     "label": "ChatGPT requests for finished work",
+     "shows": "Share asking for a finished output fell as personal use grew."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "Not a one-way trend",
+     "text": "Automation eased from 49% to 45% on Claude.ai, and ChatGPT requests for finished output fell from about half to 35%."
+    },
+    {
+     "label": "People still steer",
+     "text": "In Claude Code, users make about 70% of planning decisions, and experienced users interrupt the agent more than new ones."
+    },
+    {
+     "label": "One vendor",
+     "text": "Claude users lean towards coding and do not represent AI users generally."
+    },
+    {
+     "label": "Hand-over can be sensible",
+     "text": "Delegating a task that AI does well is not, in itself, a loss of agency."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "The review rate",
+     "text": "Whether anyone checks AI output before it is used. One company reports a partial figure."
+    },
+    {
+     "label": "One definition, all providers",
+     "text": "Hand-over measured across AI providers on one shared definition."
+    },
+    {
+     "label": "Beyond coding and office work",
+     "text": "Hand-over in fields other than coding and office work."
+    }
+   ],
+   "watch": [
+    {
+     "label": "Automation above 50%",
+     "text": "Claude.ai automation above 50% in two reports running."
+    },
+    {
+     "label": "Fewer humans in the loop",
+     "text": "The share of agent actions with a human in the loop falling below 73%."
+    },
+    {
+     "label": "A second provider",
+     "text": "Another AI company publishing the same automation and augmentation split."
+    }
+   ]
+  },
+  "work": {
+   "h1": "Young US workers in AI-exposed jobs are falling behind; prime-age employment has held up.",
+   "sentence": "In US payroll data, jobs for 22 to 25 year olds in the most exposed occupations are down 13% since late 2022; the cause is disputed.",
+   "inds": {
+    "canaries": {
+     "label": "Jobs for ages 22–25",
+     "shows": "In the most AI-exposed jobs, down since 2022 while older peers grew."
+    },
+    "cohort": {
+     "label": "Jobs for ages 26–30",
+     "shows": "The next age group in the same jobs has started to slip."
+    },
+    "macro": {
+     "label": "Employment, ages 25–54",
+     "shows": "Share of adults aged 25–54 in work: as high as before ChatGPT."
+    },
+    "cuts": {
+     "label": "Job cuts blamed on AI",
+     "shows": "Announced cuts citing AI peaked in May 2026, then fell back."
+    },
+    "postings": {
+     "label": "Software job adverts",
+     "shows": "Most of the fall in adverts came before ChatGPT."
+    },
+    "grads": {
+     "label": "Graduates' first jobs",
+     "shows": "Graduates of the most AI-exposed majors land first jobs less often, on lower pay."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "The timing fits other causes",
+     "text": "Software adverts peaked in February 2022, after a hiring boom and just before interest rates rose; a tax change also raised costs."
+    },
+    {
+     "label": "Adjustments shrink it",
+     "text": "Adjusting for interest-rate exposure, education and remote work more than halves Stanford's estimate, from −0.179 to −0.080."
+    },
+    {
+     "label": "Other countries see less",
+     "text": "Finnish and Norwegian records reportedly show no effect on young workers; Danish chatbot adopters saw no change in pay or hours."
+    },
+    {
+     "label": "Exposed workers not more unemployed",
+     "text": "Unemployment rose less for the most exposed than the least exposed, though a 2026 update, known second-hand, nearly closes the gap."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "Gone, or moved?",
+     "text": "Whether these jobs have disappeared, or moved to other firms or countries."
+    },
+    {
+     "label": "Junior hiring in adopting firms",
+     "text": "No regular series on junior hiring inside firms that adopt AI; one 2026 paper is known second-hand."
+    },
+    {
+     "label": "Do they catch up?",
+     "text": "Whether people who miss a first job in an exposed field catch up later."
+    }
+   ],
+   "watch": [
+    {
+     "label": "The 26 to 30 group",
+     "text": "The next age group, now 4% below its November 2022 level in the most exposed jobs."
+    },
+    {
+     "label": "Recent-graduate unemployment",
+     "text": "Now 5.6%; Metaculus forecasters expect 10% by 2030."
+    },
+    {
+     "label": "The gap after rates settle",
+     "text": "The gap still widening now interest rates have stopped rising, which would weaken the main rival explanation."
+    }
+   ]
+  },
+  "share": {
+   "h1": "Workers' share of US business income hit a record low; most of the fall predates AI.",
+   "sentence": "It was 52.8% in mid-2026, after five quarterly falls, but the yearly average was flat from 2023 to 2025.",
+   "inds": {
+    "ls": {
+     "label": "Workers' share of income",
+     "shows": "Record low after five quarterly falls; most of the decline predates AI."
+    },
+    "mag7": {
+     "label": "Big tech's stock-market weight",
+     "shows": "Seven firms' share of S&P 500 value more than tripled since 2014."
+    },
+    "compute": {
+     "label": "Who owns AI computing power",
+     "shows": "Companies' share of known AI computing capacity doubled to 80% since 2019."
+    },
+    "union": {
+     "label": "Union membership",
+     "shows": "Flat near one in ten since 2022, after decades of decline."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "It started around 2000",
+     "text": "Most of the fall came in 2001 to 2010; Stanford reads the post-2022 shift as the old trend continuing."
+    },
+    {
+     "label": "Too many explanations",
+     "text": "Proposed causes together \"account for the phenomenon multiple times over\" (Grossman and Oberfield)."
+    },
+    {
+     "label": "AI skills pay more",
+     "text": "Job adverts asking for AI skills carry a 62% wage premium (PwC), and the most exposed workers earn more already."
+    },
+    {
+     "label": "World figure barely moved",
+     "text": "The ILO puts workers' world share at 52.4% in 2024, against 53% in 2014, within its own revision range."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "AI capital's share",
+     "text": "AI capital's share of national income: no published estimate was found."
+    },
+    {
+     "label": "Bargaining power itself",
+     "text": "No regular series found on quits, strikes or job-switchers' pay rises in AI-exposed occupations."
+    },
+    {
+     "label": "Firm returns against wages",
+     "text": "Returns to firms that adopt AI, set against wages in the same firms."
+    }
+   ],
+   "watch": [
+    {
+     "label": "Economists' forecast",
+     "text": "Median forecast: workers' share down 1.2 points by 2030 and 5.5 by 2050, or 10.5 with rapid AI progress."
+    },
+    {
+     "label": "Stanford's tracker moving",
+     "text": "Stanford's Transformation Tracker moving off its current verdict of \"no decisive evidence\"."
+    },
+    {
+     "label": "Falling share, low unemployment",
+     "text": "The share falling further while unemployment stays low."
+    }
+   ]
+  },
+  "skills": {
+   "h1": "AI use is surveyed every quarter. Its effect on people's skills without AI is barely tracked.",
+   "sentence": "Short trials found losses; a three-year clinic audit found none.",
+   "inds": {
+    "lopsided": {
+     "label": "Use surveyed, skill untested",
+     "shows": "AI use is surveyed often; ability without AI mostly has one-off studies."
+    },
+    "bastani": {
+     "label": "School maths after ChatGPT practice",
+     "shows": "Pupils who practised with plain ChatGPT scored lower in exams without it."
+    },
+    "metrrct": {
+     "label": "Developers' speed with AI",
+     "shows": "Developers were slower with AI but believed they were faster."
+    },
+    "budzyn": {
+     "label": "Doctors' detection without AI",
+     "shows": "Polish doctors found fewer growths unaided after months with AI; workload also rose."
+    },
+    "whos": {
+     "label": "Chats that may distort views",
+     "shows": "Rare chats with severe potential to distort a user's beliefs; one snapshot."
+    },
+    "literacy": {
+     "label": "Adult literacy and numeracy",
+     "shows": "US test scores fell before AI arrived; cannot be tied to it."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "Small and short",
+     "text": "Most studies: 16 to about 1,000 people, followed for minutes to a few months."
+    },
+    {
+     "label": "Workload changed too",
+     "text": "In the Polish clinic study, the number of procedures nearly doubled when AI arrived."
+    },
+    {
+     "label": "A longer study found no loss",
+     "text": "A three-year audit at one Japanese clinic found detection without AI held up."
+    },
+    {
+     "label": "Design can fix it",
+     "text": "A tutor-style chatbot removed the learning loss, and some ways of using AI in Anthropic's study scored 65% or more."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "The same people, re-tested",
+     "text": "Skills without AI, re-tested on the same workers at regular intervals, alongside their AI use. Two clinics and one firm come closest."
+    },
+    {
+     "label": "Recovery time",
+     "text": "How long a skill takes to come back after a week or a month without the tool."
+    },
+    {
+     "label": "Skills never learned",
+     "text": "Whether new entrants learn the skill at all, if AI does it from day one."
+    },
+    {
+     "label": "Ways back still open",
+     "text": "Whether training routes and non-AI ways of working still exist, so people could switch back."
+    }
+   ],
+   "watch": [
+    {
+     "label": "A study repeated",
+     "text": "Any of the short trials re-run on the same people."
+    },
+    {
+     "label": "The \"without it\" question",
+     "text": "Surveys adding the question \"could you still do this without AI?\"."
+    },
+    {
+     "label": "Certification changes",
+     "text": "Professional bodies changing certification because trainees no longer see enough cases."
+    },
+    {
+     "label": "Germany's panel adds AI",
+     "text": "Germany's education panel (NEPS) already asks adults it re-tests how often they use AI; trust items follow in 2028."
+    }
+   ]
+  },
+  "culture": {
+   "h1": "About half of new web articles, and of Deezer uploads, are classed as AI-made; on Deezer, listening has barely followed.",
+   "sentence": "AI tracks get 1 to 3% of Deezer streams; the article share, measured by detectors, has been flat for five quarters.",
+   "inds": {
+    "deezer": {
+     "label": "AI music on Deezer",
+     "shows": "Over half of uploads are AI-made; streams of them stay small."
+    },
+    "articles": {
+     "label": "AI-written web articles",
+     "shows": "About half of new articles classed as AI-written, flat since late 2024."
+    },
+    "search": {
+     "label": "Clicks beside AI summaries",
+     "shows": "US Google users click links about half as often when an AI summary appears."
+    },
+    "chatbots": {
+     "label": "Chatbots as a news source",
+     "shows": "Chatbot use is huge, but few name AI their main news source."
+    },
+    "companions": {
+     "label": "Teens and AI companions",
+     "shows": "Teen companion use is 72% or 9%, depending on the definition."
+    },
+    "trust": {
+     "label": "Trust in news",
+     "shows": "Trust in news dipped in 2026; the long decline predates AI."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "Supply is not attention",
+     "text": "AI tracks are over half of Deezer uploads but 1 to 3% of streams, up to 85% of them fraudulent, Deezer says."
+    },
+    {
+     "label": "It has plateaued",
+     "text": "AI articles have sat near 50% for five quarters, and AI-assisted formal writing levelled off by late 2023."
+    },
+    {
+     "label": "Conversation still looks human",
+     "text": "Pangram classes 98% of Reddit comments as human-written (mid-2026)."
+    },
+    {
+     "label": "Trust was falling anyway",
+     "text": "The decline in trust in the media is decades old."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "AI's share of attention",
+     "text": "What fraction of time spent reading, watching and listening goes to AI-made material; one music service reports a stream share."
+    },
+    {
+     "label": "Sameness in what is made",
+     "text": "A repeated measure of diversity in published text, music or images; we found lab studies only."
+    },
+    {
+     "label": "What AI ranking shows people",
+     "text": "How much of what people see is chosen by AI ranking, and whether it favours AI-made content."
+    }
+   ],
+   "watch": [
+    {
+     "label": "AI streams past 5%",
+     "text": "Deezer's AI share of streams passing 5%."
+    },
+    {
+     "label": "AI as main news source",
+     "text": "More than 1% naming AI as their main source of news."
+    },
+    {
+     "label": "AI companionship",
+     "text": "Daily AI companionship use: experts forecast 15% of US adults by 2030 and 30% by 2040."
+    }
+   ]
+  },
+  "institutions": {
+   "h1": "Governments disclose thousands of AI uses. None we found counts its decisions made with AI.",
+   "sentence": "US agencies listed 3,611 AI uses for 2025, but a use is paperwork: one chatbot counts the same as one benefits model.",
+   "inds": {
+    "inventory": {
+     "label": "US federal AI uses disclosed",
+     "shows": "Disclosed uses rose fivefold as reporting rules widened."
+    },
+    "courts": {
+     "label": "Courts catching AI errors",
+     "shows": "Rulings on AI-invented citations rose to 120–180 a month, then levelled; partly vigilance."
+    },
+    "atrs": {
+     "label": "UK algorithm records",
+     "shows": "Official records rose from 6 to 152 once disclosure became mandatory."
+    },
+    "tax": {
+     "label": "Taxes on people's incomes",
+     "shows": "Income and payroll taxes still make up about 84% of federal receipts."
+    },
+    "firsts": {
+     "label": "Firsts for AI in government",
+     "shows": "Ten reported milestones since 2023; several are stated goals, not decisions."
+    },
+    "control": {
+     "label": "Feeling in control of AI",
+     "shows": "Most US adults say they have not too much or no control over AI; two readings."
+    }
+   },
+   "sceptic": [
+    {
+     "label": "Registers follow rules",
+     "text": "Counts rise when reporting becomes mandatory, whether or not use grows."
+    },
+    {
+     "label": "Symbolic delegation",
+     "text": "Albania's AI \"minister\" does not make final decisions; officials do."
+    },
+    {
+     "label": "Hand-over is old",
+     "text": "States have always relied on tools and experts; handing over a task is not losing control."
+    },
+    {
+     "label": "The state still needs people",
+     "text": "About 84% of US federal revenue comes from income and payroll taxes, and that has not moved."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "Decisions made with AI",
+     "text": "How many decisions are fully automated, AI-recommended with sign-off, or made by a person alone; no government series found."
+    },
+    {
+     "label": "The override rate",
+     "text": "How often the responsible official changes the AI's recommendation; none found routinely published."
+    },
+    {
+     "label": "Foreign model dependence",
+     "text": "Reliance on foreign AI providers, above all for small states that buy rather than build."
+    },
+    {
+     "label": "Appeals against AI decisions",
+     "text": "Appeals against AI-assisted decisions, and how many succeed."
+    }
+   ],
+   "watch": [
+    {
+     "label": "Published override rates",
+     "text": "Any government publishing override rates for a high-impact system."
+    },
+    {
+     "label": "A decision assigned to AI",
+     "text": "A statutory decision formally assigned to an AI system."
+    },
+    {
+     "label": "Next tax shares",
+     "text": "The FY2026 tax shares, due from the Congressional Budget Office in late 2026."
+    }
+   ]
+  },
+  "influence": {
+   "h1": "Are people losing their say? Nothing measures it directly.",
+   "sentence": "The nearest is one Pew question: 57% of US adults say they have not too much or no control over whether AI is used in their lives.",
+   "inds": {},
+   "indsNote": "Shows the Pew card (id: control) from Institutions; it is the only indicator recorded against this stop.",
+   "emptyState": "No direct measure exists yet. The nearest proxy is below.",
+   "newContent": true,
+   "sceptic": [
+    {
+     "label": "Reported control is steady",
+     "text": "Pew's control question, asked twice: 59% (2024), then 57% (2025) said not too much or none; within survey noise."
+    },
+    {
+     "label": "The state still needs people",
+     "text": "About 84% of US federal revenue still comes from taxes on people's income and pay."
+    }
+   ],
+   "unmeasured": [
+    {
+     "label": "Who can decide",
+     "text": "The smallest group able to settle an outcome, and its mix of people and AI systems; RAND (2026) proposes one, not yet applied."
+    },
+    {
+     "label": "A tested survey scale",
+     "text": "A tested survey of whether AI changes people's say, asked of the same people each year. Election surveys ask about say, but not about AI."
+    },
+    {
+     "label": "Preferences that still count",
+     "text": "Whether people's preferences still change what governments, firms and media do."
+    }
+   ],
+   "watch": [
+    {
+     "label": "A repeated say survey",
+     "text": "Any survey asking the same people, each year, whether AI has changed their say."
+    },
+    {
+     "label": "The control poll moving",
+     "text": "Pew's control question moving clearly in either direction over several readings."
+    },
+    {
+     "label": "Tax shares shifting",
+     "text": "Income and payroll taxes falling as a share of US federal revenue."
+    }
+   ]
+  }
+ },
+ "gap": {
+  "nav": "The gap",
+  "h1": "What is not measured yet",
+  "sentence": "The chain ends at whether people keep their say, and nothing measures that directly. These fourteen missing measures would sharpen the picture.",
+  "matrix": {
+   "title": "Which links are close to the outcome but barely measured?",
+   "xAxis": {
+    "title": "How well measured today",
+    "low": "Not measured",
+    "high": "Well measured"
+   },
+   "yAxis": {
+    "title": "Closeness to the outcome",
+    "low": "4 steps away",
+    "high": "The outcome itself"
+   },
+   "quadrant": "Close to the outcome, barely measured: worth working on",
+   "caption": "Placed by two values from the map: links from Human influence, and the measurement rating (a judgement). Links are counted on this site's own chain.",
+   "flag": "Worth working on",
+   "flagAlt": "Author's focus",
+   "disclosure": "The author works on Skills and judgement and Human influence; Skills and judgement is her addition to the original chain (see Method).",
+   "howTo": "Up the side: how many links along the chain separate each stop from Human influence, the outcome. Along the bottom: how well each stop is measured today."
+  },
+  "list": {
+   "title": "Fourteen missing measures",
+   "sub": "Closest to the outcome first.",
+   "expandAll": "Expand all",
+   "collapseAll": "Collapse all",
+   "heads": {
+    "why": "Why it matters",
+    "what": "What it would be",
+    "closest": "Closest thing today"
+   },
+   "open": "Open {link} →"
+  },
+  "chips": [
+   "No measure exists",
+   "One-off only",
+   "Not tied to AI",
+   "Company data only",
+   "Definitions differ",
+   "Partial coverage"
+  ],
+  "items": [
+   {
+    "i": 0,
+    "link": "capability",
+    "old": "Task lengths outside software",
+    "chip": "Partial coverage",
+    "title": "Task lengths are tracked over time for software work only",
+    "why": "The theory needs AI able to do the casework and management institutions run on, not only code.",
+    "what": "METR-style task-length tests for casework, negotiation and management, re-run on each new model by an independent evaluator.",
+    "closest": "METR tracks software, machine learning and security; a 2025 one-off covered maths, computer use and driving. GDPval tests single office deliverables, run by OpenAI."
+   },
+   {
+    "i": 1,
+    "link": "adoption",
+    "old": "Work hours done with AI, by occupation",
+    "chip": "Partial coverage",
+    "title": "No regular count of hours worked with AI, by job",
+    "why": "Yes-or-no use hides depth; hours show how much work AI is actually part of.",
+    "what": "A quarterly official survey reporting the share of work hours done with AI, broken down by occupation.",
+    "closest": "The St. Louis Fed estimates 5.7% of US work hours in August 2025, economy-wide, from an online panel."
+   },
+   {
+    "i": 2,
+    "link": "handover",
+    "old": "The review rate",
+    "chip": "Company data only",
+    "title": "No cross-company count of how often people check AI output",
+    "why": "Checking is the line between delegating a task and losing track of it.",
+    "what": "For each task AI completes, whether a person checked the output before it was used, across providers, on one definition.",
+    "closest": "Anthropic reports a human in the loop for 73% of agent actions on its public API; one company, one period."
+   },
+   {
+    "i": 3,
+    "link": "work",
+    "old": "Junior hiring inside firms that adopt AI",
+    "chip": "Not tied to AI",
+    "title": "No regular tracking of junior hiring inside firms that adopt AI",
+    "why": "It would show whether AI, rather than interest rates, is cutting first jobs.",
+    "what": "Payroll data linking the date a firm adopted AI to its hiring by seniority, updated regularly.",
+    "closest": "Stanford and ADP track jobs by age and occupation, not by firm adoption. One 2026 paper, known second-hand, finds 8 to 10% fewer juniors in adopting firms after two years."
+   },
+   {
+    "i": 4,
+    "link": "share",
+    "old": "AI capital's share of income",
+    "chip": "No measure exists",
+    "title": "No estimate of how much income goes to AI capital",
+    "why": "It would show whether money once paid as wages is going to AI owners instead.",
+    "what": "National accounts that split capital income into AI-related and other, so changes in workers' share can be traced.",
+    "closest": "The BLS labour share, which cannot separate AI, and press figures on big-tech capital spending."
+   },
+   {
+    "i": 5,
+    "link": "skills",
+    "old": "Unaided ability, tested twice",
+    "chip": "Partial coverage",
+    "title": "No general panel re-tests unaided skills alongside AI use",
+    "why": "Only repeat tests on the same people can show skills fading as AI use grows.",
+    "what": "A panel of workers, students or clinicians, tested on set tasks without AI every year, alongside a record of their AI use.",
+    "closest": "Short one-off trials. Two clinic audits disagree: one found a loss, a three-year study found none. In one call centre, workers kept their gains during AI outages."
+   },
+   {
+    "i": 6,
+    "link": "skills",
+    "old": "Take-back time",
+    "chip": "No measure exists",
+    "title": "No measure of how fast skills recover without AI",
+    "why": "It shows whether people could take a task back: the difference between reliance and lock-in.",
+    "what": "Withdraw AI from a group for a week or a month and measure how long their performance takes to recover.",
+    "closest": "None found. In METR's 2026 study, 30 to 50% of developers avoided tasks they would have had to do unaided."
+   },
+   {
+    "i": 7,
+    "link": "culture",
+    "old": "Attention-weighted AI share",
+    "chip": "Company data only",
+    "title": "Only one platform reports attention to AI-made content",
+    "why": "AI-made content floods supply; the theory turns on how much of it people actually take in.",
+    "what": "The share of minutes read, watched or heard that is AI-made, reported by platform, every quarter.",
+    "closest": "Deezer reports AI tracks at 1 to 3% of its streams; no other platform's figure was found."
+   },
+   {
+    "i": 8,
+    "link": "culture",
+    "old": "Convergence in what gets published",
+    "chip": "No measure exists",
+    "title": "No yearly measure of whether published work grows more alike",
+    "why": "If AI makes what is published more uniform, the range of ideas people meet could narrow.",
+    "what": "A yearly index of diversity in vocabulary, style and subject across published text, music and images.",
+    "closest": "Lab experiments only; no repeated measure of published work was found."
+   },
+   {
+    "i": 9,
+    "link": "institutions",
+    "old": "Decisions made by AI",
+    "chip": "No measure exists",
+    "title": "No government we found counts its decisions made with AI",
+    "why": "Disclosures list tools; only decision counts show how much of the state's work runs through AI.",
+    "what": "For each high-impact system, decisions per year: fully automated, AI-recommended with sign-off, or made by a person alone.",
+    "closest": "Registers list AI uses (3,611 in the US federal inventory), not decisions. EU online platforms do report automation for each moderation decision."
+   },
+   {
+    "i": 10,
+    "link": "institutions",
+    "old": "The override rate",
+    "chip": "No measure exists",
+    "title": "Governments rarely publish how often officials overrule AI",
+    "why": "If officials almost never overrule AI, human sign-off is a formality, not control.",
+    "what": "The share of AI recommendations the responsible official changes, with time spent per case, published for each high-impact system.",
+    "closest": "Hospitals log alert overrides, for older tools. One lab experiment (292 people) and scattered field studies; no government we found publishes override rates."
+   },
+   {
+    "i": 11,
+    "link": "institutions",
+    "old": "Dependence on foreign model providers",
+    "chip": "No measure exists",
+    "title": "No breakdown of which countries' AI firms governments rely on",
+    "why": "States that buy rather than build AI may lose the ability to change or replace it.",
+    "what": "Share of public-sector AI spending and queries by vendor and the vendor's home country, published yearly.",
+    "closest": "Singapore reports about 80% of its public officers have used the government chatbot, with no vendor breakdown. Procurement records could give a first estimate."
+   },
+   {
+    "i": 12,
+    "link": "influence",
+    "old": "Who can decide",
+    "chip": "No measure exists",
+    "title": "No measure of who holds decision power, people or AI",
+    "why": "This is the outcome itself: whether people, not systems, still settle what happens.",
+    "what": "For real institutions, the smallest group able to settle an outcome, and the mix of people and AI systems in it.",
+    "closest": "RAND (2026) proposes measuring the smallest group able to settle an outcome; not yet applied."
+   },
+   {
+    "i": 13,
+    "link": "influence",
+    "old": "A population measure of disempowerment",
+    "chip": "Definitions differ",
+    "title": "No tested, repeated survey of whether AI changes people's say",
+    "why": "It is the nearest population-wide signal of the outcome, and cheap enough to repeat every year.",
+    "what": "A tested survey scale, paired with simple behavioural tasks, put to the same people every year.",
+    "closest": "Pew: 57% say not too much or no control over AI in their lives. Dutch and Finnish panels track attitudes; Chooi, Lee and Li (2026) propose perception surveys, not yet fielded."
+   }
+  ]
+ },
+ "futures": {
+  "nav": "Futures",
+  "navTag": "WIP",
+  "title": "Where forecasters think it leads",
+  "wipTag": "Work in progress",
+  "caveat": "Work in progress. Built on published forecasts, mostly of US jobs and income; it needs more research.",
+  "toGap": "Almost no forecast covers people's say itself. See the gap →",
+  "blocks": {
+   "fan": "Workers' share so far, against economists' forecasts: a slow squeeze, not a crash.",
+   "routes": "Five ways the chain could unfold, including a plateau, each with signposts to watch.",
+   "trust": "Past forecasts underestimated AI capability, were mixed on uptake, and shift with question wording.",
+   "more": "More forecasts: AI-progress scenarios, jobs and unemployment, and expert estimates of catastrophic risk."
+  },
+  "routeDesc": {
+   "A": "AI raises productivity; people keep skills, jobs and say.",
+   "B": "Entry-level work shrinks, so fewer people build skills.",
+   "C": "Institutions route decisions through AI faster than oversight grows.",
+   "D": "Skills, institutions and alternatives decay; taking tasks back is hard.",
+   "E": "Progress, uptake or rules stall before later links move."
+  },
+  "routesNote": "The routes are the observatory's own. \"Seen\" means consistent with a route, not proof of it.",
+  "moreCards": [
+   {
+    "title": "Three AI-progress scenarios",
+    "line": "What economists expect under slow, moderate and rapid AI progress."
+   },
+   {
+    "title": "Jobs and unemployment",
+    "line": "Survey forecasts stay in single digits, except for new graduates."
+   },
+   {
+    "title": "Catastrophic-risk estimates",
+    "line": "Expert odds of catastrophic harm by 2030, including power centralisation."
+   }
+  ]
+ },
+ "caveats": {
+  "oneOff": {
+   "label": "One-off study",
+   "tooltip": "No repeated series: a single study or snapshot. It shows one moment, not a trend."
+  },
+  "cause": {
+   "label": "Cause disputed",
+   "tooltip": "The data moved, but researchers disagree on whether AI caused it. Other explanations fit too."
+  },
+  "company": {
+   "label": "Company's own data",
+   "tooltip": "Published by the company whose product is measured. Useful, but no independent source confirms it."
+  },
+  "definition": {
+   "label": "Definitions differ",
+   "tooltip": "Wording or definitions differ between sources or changed mid-series. Compare levels with care."
+  },
+  "unverified": {
+   "label": "Unverified figure",
+   "tooltip": "Taken from press or a secondary source, or read once. Check the original before citing."
+  },
+  "forecast": {
+   "label": "Forecast, not data",
+   "tooltip": "A published prediction or model scenario. It shows what forecasters expect, not what has happened."
+  },
+  "more": "Why this matters →"
+ },
+ "draftChip": {
+  "label": "Draft",
+  "tooltip": "Compiled with AI research assistance. No figure has yet been checked by a person. Check sources before citing."
+ },
+ "method": {
+  "title": "How this was put together",
+  "contents": [
+   "Status",
+   "Scales",
+   "Ratings",
+   "Charts",
+   "Tags",
+   "Limits",
+   "Terms",
+   "Sources"
+  ],
+  "headings": {
+   "status": "Status of the figures",
+   "measured": "How well a link is measured",
+   "change": "What the data show",
+   "ratings": "How each rating is reached",
+   "charts": "How to read the charts",
+   "tags": "Tags on each chart",
+   "limits": "Known limits",
+   "stops": "What is counted at each stop",
+   "terms": "Terms used on this site",
+   "sources": "Sources"
+  },
+  "rewrites": [
+   {
+    "where": "The measurement record (Method)",
+    "old": "The strip chart on the home page shows every dated reading plotted on the evidence pages from 2021 onwards. A series is \"direct\" if it measures the quantity the link is named for, and \"nearby\" if it is a proxy, a count of paperwork or an opinion poll. Whether a change can be tied to AI is weighed in the rating, not in the colour. The split is a judgement by the observatory; the chart's data table lists every series.",
+    "new": "The measurement record puts the dated readings behind this site since 2021 on one timeline. Blue marks measure the link itself; grey marks measure something nearby, such as a proxy or a poll. The split is a judgement. See the record →"
+   },
+   {
+    "where": "What is counted at each stop",
+    "old": "The early stops are defined by things that are easy to count. The later ones are defined by what the theory needs to know. Part of the fall-off in evidence along the chain comes from that difference, so the fairer summary is this: use is counted at most stages, and consequences that can be tied to AI are counted at almost none.",
+    "new": "Early stops are defined by what is easy to count; later ones by what the theory needs. Part of the fall-off in evidence is built in. Use is counted at most stages; consequences tied to AI, at almost none."
+   },
+   {
+    "where": "Glossary: Who the sources are",
+    "old": "METR: a non-profit that evaluates AI systems. ADP: a US payroll company. BLS: the US Bureau of Labor Statistics. Epoch AI: a research institute that tracks AI trends. HEPI: the UK Higher Education Policy Institute. Graphite and Originality.ai: firms that sell search-marketing services and AI detectors. Challenger: a US outplacement firm that publishes monthly job-cut counts. LEAP: a standing panel of AI experts run by the Forecasting Research Institute. Metaculus: a public forecasting site.",
+    "new": "METR: non-profit AI evaluator. ADP: US payroll firm. BLS: US labour statistics agency. Epoch AI: AI-trends institute. HEPI: UK higher-education think tank. Graphite, Originality.ai: sell search marketing and AI detectors. Challenger: US outplacement firm counting job cuts. LEAP: AI-expert panel (Forecasting Research Institute). Metaculus: public forecasting site."
+   },
+   {
+    "where": "Status of the figures (becomes the Draft callout)",
+    "old": "This is a working draft. The research and figures were compiled by an AI assistant and have not yet been checked by a person. Every chart carries a tag saying how its figures were obtained. Check any figure against its linked source before citing it elsewhere, and treat those tagged \"Secondary source\" or \"Company's own data\" with extra care.",
+    "new": "A working draft, compiled with AI research assistance. No figure has yet been checked by a person. Each chart is tagged with how its figures were obtained. Check the source before citing, above all for \"Secondary source\" and \"Company's own data\"."
+   },
+   {
+    "where": "Method deck",
+    "old": "The observatory organises published evidence along one causal chain, taken from the argument in Gradual Disempowerment (Kulveit and co-authors, 2025): the economy, culture and the state serve people partly because those systems need people, and AI reduces that need. It collects no data of its own.",
+    "new": "Published evidence, arranged along one chain from Gradual Disempowerment (Kulveit and co-authors, 2025): systems serve people partly because they need them, and AI weakens that need. No new data are collected."
+   },
+   {
+    "where": "Known limits: Leans on AI companies",
+    "old": "Hand-over rests on Anthropic's and OpenAI's own logs, and parts of capability and skills on company studies. Most of those charts are tagged \"Company's own data\". The main hand-over chart is tagged \"Checked at source\", because its figures were read on Anthropic's own page.",
+    "new": "Hand-over rests on Anthropic's and OpenAI's own logs; parts of capability and skills rest on company studies. Most such charts carry the \"Company's own data\" tag; the main hand-over chart is \"Read at source (AI-assisted)\"."
+   },
+   {
+    "where": "How well a link is measured (intro)",
+    "old": "A judgement on the best available evidence for the link as an effect of AI, on a five-step scale. On the map, the line into each stop is drawn in the style of that stop's rating.",
+    "new": "A judgement, on five steps, of the best evidence for each link as an effect of AI. On the map, line style shows the rating."
+   },
+   {
+    "where": "Known limits: Mostly American",
+    "old": "Nearly every series is from the United States or the United Kingdom. No series here tracks China, India or any low-income country on its own, and there is no small-state series such as one for Singapore.",
+    "new": "Most series are from the US or UK. None tracks China, India, a low-income country or a small state such as Singapore on its own."
+   }
+  ],
+  "changeScale": {
+   "intro": "A judgement by the observatory, separate from how well a link is measured. It is not severity, probability or proof that AI is the cause.",
+   "levels": [
+    {
+     "key": "4",
+     "word": "Changing fast",
+     "def": "Repeated, direct data show rapid change in the direction the theory predicts."
+    },
+    {
+     "key": "3",
+     "word": "Clearly changing",
+     "def": "Repeated data show a clear move in that direction."
+    },
+    {
+     "key": "2",
+     "word": "Early or mixed signs",
+     "def": "Some data point that way; others do not, or the cause is disputed."
+    },
+    {
+     "key": "1",
+     "word": "No clear change yet",
+     "def": "Data show little movement, or movement that began before AI."
+    },
+    {
+     "key": "?",
+     "word": "Can't tell",
+     "def": "Not measured well enough to say. Never read this as \"no change\"."
+    }
+   ],
+   "separate": "The two scales are independent: a link can be well measured and show little change.",
+   "trendWords": "Indicator cards use: Rising fast, Rising, Flat, Falling, Mixed, One-off (no trend claimed).",
+   "toward": [
+    {
+     "mark": "Filled dot",
+     "def": "Moving the way the theory predicts, and only since generative AI."
+    },
+    {
+     "mark": "Hollow dot",
+     "def": "Moving the opposite way."
+    },
+    {
+     "mark": "Half dot",
+     "def": "Unclear: began before AI, driven by reporting rules, or no comparison."
+    }
+   ]
+  },
+  "footer": "Gradual Disempowerment Observatory · Better Futures Project · Zhang Yue · Draft, compiled with AI research assistance · data as of {date} · Method and sources"
+ },
+ "nav": {
+  "brand": "Gradual Disempowerment Observatory",
+  "items": [
+   {
+    "href": "#map",
+    "label": "Map"
+   },
+   {
+    "href": "#evidence",
+    "label": "Evidence"
+   },
+   {
+    "href": "#gaps",
+    "label": "The gap"
+   },
+   {
+    "href": "#futures",
+    "label": "Futures",
+    "tag": "WIP"
+   },
+   {
+    "href": "#method",
+    "label": "Method"
+   }
+  ],
+  "ariaLabel": "Sections"
+ },
+ "ui": {
+  "buttons": {
+   "open": "Open",
+   "close": "Close",
+   "expandAll": "Expand all",
+   "collapseAll": "Collapse all",
+   "seeChart": "See the chart",
+   "backToChain": "Back to the chain",
+   "seeRecord": "See the full record",
+   "seeGap": "See the gap",
+   "why": "Why?",
+   "showDetail": "Show detail",
+   "hideDetail": "Hide detail"
+  },
+  "instructions": {
+   "indicators": "Select an indicator to see its chart.",
+   "map": "Select a stop to open its evidence.",
+   "mapLines": "Select a dotted line to see why.",
+   "evidenceRows": "Select a row for the detail.",
+   "routes": "Select a route to see its signposts.",
+   "record": "Select a lane to open its chart.",
+   "gaps": "Select a measure to see what it would be."
+  },
+  "empty": {
+   "noIndicators": "No direct measure exists yet. The nearest proxy is below.",
+   "noReadings": "No dated readings.",
+   "chartFailed": "This chart did not load. The figures are in the data table.",
+   "drawerIdle": "Select a line on the map to see how well that stop is measured.",
+   "noSources": "No source listed yet."
+  }
+ }
+};
