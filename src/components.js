@@ -22,10 +22,10 @@ const WHYBTN5=['Why faint?','Why dotted?','Why hollow?','Why thinner?','Why soli
 const HUMAN5=['skills','influence'];
 const sigOf5=id=>{const s=SIG5().links[id];return s&&s.signal!=null?s.signal:'?'};
 /* Draft one-liners (no numbers, 12 words or fewer). SIGNALS.links[id].short wins when the researcher supplies it. */
-const ONE5={capability:'AI finishes ever longer tasks on its own',adoption:'About half of US workers now use AI at work',
- handover:'Hand-over rose, then eased; one company’s logs',work:'Fewer first jobs for the young; the wider market is flat',
+const ONE5={capability:'AI completes more real paid projects',adoption:'About half of US workers now use AI at work',
+ handover:'Chat hand-over flat; coding agents climbing',work:'Fewer first jobs for the young; the wider market is flat',
  share:'Record low, but most of the fall predates AI',skills:'Use is surveyed often; unaided ability is rarely re-tested',
- culture:'AI fills the supply; little of it is read or heard',institutions:'Paperwork is counted; decisions are not',influence:'No direct measure'};
+ culture:'AI fills the supply; little of it is read or heard',institutions:'Paperwork is counted; decisions rarely are',influence:'No direct measure'};
 const oneLiner5=id=>((COPY.evidence.rows||{})[id]||{}).line||ONE5[id]||'';
 /* plain card label for an indicator: the copy deck's label wins */
 const linkOfInd5=d=>LINKS.find(L=>L.inds.includes(d));
@@ -250,7 +250,7 @@ function sparkSVG5(d,trend,w=80,h=28){
   const dpath=s.pts.map((p,i)=>(i?'L':'M')+sx(p[0]).toFixed(1)+' '+sy(p[1]).toFixed(1)).join(' '),e=s.pts[s.pts.length-1];
   return box(`<path d="${dpath}" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="${sx(e[0]).toFixed(1)}" cy="${sy(e[1]).toFixed(1)}" r="3" fill="var(--s1)" stroke="var(--glyph-bg,var(--paper))" stroke-width="1.5"/>`);
 }
-const FLAGCAV5=[['one-off','oneoff'],['cause','cause'],['vendor','company'],['definition','defs'],['break','defs'],['weak-source','unverified']];
+const FLAGCAV5=[['one-off','oneoff'],['cause','cause'],['vendor','company'],['definition','defs'],['break','defs'],['weak-source','unverified'],['stale','stale'],['policy-driven','policy'],['advocacy-source','advocacy']];
 function indicatorCards(el,linkId,opts={}){
   const L=linkId==='influence'?null:linkById(linkId),inds=opts.inds||L.inds,SI=SIG5().indicators,uid='ic5-'+linkId;
   el.classList.add('ic5wrap');
@@ -378,14 +378,20 @@ const CAVICON5={
  company:`<path d="M2.2 2.2h4.6l5 5-4.6 4.6-5-5z"/><circle cx="4.9" cy="4.9" r=".95" fill="currentColor" stroke="none"/>`,
  defs:`<path d="M2 2.5v9" opacity=".45"/><path d="M4.5 5h7.5M4.5 9h4"/>`,
  unverified:`<path d="M1.5 11l3.4-3M9.4 4.2L12.5 2" opacity=".5"/><circle cx="7" cy="6" r="2.6"/>`,
- forecast:`<path d="M1.5 11.5l3.5-3 3 .6 4.5-5.6" stroke-dasharray="2 2"/>`};
+ forecast:`<path d="M1.5 11.5l3.5-3 3 .6 4.5-5.6" stroke-dasharray="2 2"/>`,
+ stale:`<circle cx="7" cy="7" r="5.2"/><path d="M7 4.2V7l2.1 1.5"/>`,
+ policy:`<path d="M2 12h10M3 10.3h8M7 1.8L2.2 4.6h9.6z"/><path d="M4.2 5.6v4.2M7 5.6v4.2M9.8 5.6v4.2"/>`,
+ advocacy:`<path d="M2.4 5.6v2.8h2.1l4.6 2.8V2.8L4.5 5.6z"/><path d="M11 5.2a2.4 2.4 0 0 1 0 3.6"/>`};
 const CAV5={oneoff:['One-off study','From a single study or snapshot, so it cannot show change over time.'],
  cause:['Cause disputed','The data move, but whether AI is the cause is disputed.'],
  company:['Company’s own data','Published by the company whose product is measured; nobody independent has checked it.'],
  defs:['Definitions differ','Sources define or ask this differently, so compare changes, not levels.'],
  unverified:['Unverified figure','Not yet confirmed at its source. Check before citing.'],
- forecast:['Forecast, not data','A published forecast or scenario, not an observed reading.']};
-(()=>{const m={oneoff:'oneOff',cause:'cause',company:'company',defs:'definition',unverified:'unverified',forecast:'forecast'};
+ forecast:['Forecast, not data','A published forecast or scenario, not an observed reading.'],
+ stale:['Not updated','The source has stopped updating this series, or has published no new reading for some time.'],
+ policy:['Policy-driven','The latest change follows a change in law or policy, not AI.'],
+ advocacy:['Advocacy source','Compiled by an advocacy group from public records. Check its method before citing.']};
+(()=>{const m={oneoff:'oneOff',cause:'cause',company:'company',defs:'definition',unverified:'unverified',forecast:'forecast',stale:'stale',policy:'policy',advocacy:'advocacy'};
   Object.keys(CAV5).forEach(k=>{const c=COPY.caveats&&COPY.caveats[m[k]];if(c)CAV5[k]=[c.label,c.tooltip]})})();
 const cavIcon5=t=>`<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${CAVICON5[t]}</svg>`;
 let CAVN5=0;

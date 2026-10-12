@@ -4,7 +4,7 @@ A draft website that maps what is measured about gradual disempowerment, link by
 
 ![The home page: the chain from AI capability to human influence, with line style showing how well each stop is measured](assets/screenshots/home.png)
 
-**Status: draft v0.4 (8 October 2026).** The research and figures were compiled with AI research assistance and have not yet been checked by a person. Every chart says how its figures were obtained and links to its source. Check the source before citing a figure. A checklist of the headline figures to verify is in [`research/checklist/handcheck.csv`](research/checklist/handcheck.csv).
+**Status: draft v0.5 (12 October 2026).** The research and figures were compiled with AI research assistance and have not yet been checked by a person. Every chart says how its figures were obtained and links to its source. Check the source before citing a figure. A checklist of the headline figures to verify is in [`research/checklist/handcheck.csv`](research/checklist/handcheck.csv).
 
 ## What it shows
 
@@ -19,7 +19,7 @@ The main finding: what AI can do and who uses it are measured again and again. W
 | **Map** (home) | What is measured, and what is missing? A guided tour walks through the nine stops. |
 | **Evidence** | What the data show for each link, on one colour scale, plus a record of every dated reading since 2021. |
 | **Link pages** | The indicators behind each link, each opening its own chart. |
-| **The gap** | Which stops are close to the outcome but barely measured, and fourteen missing measures. |
+| **The gap** | Which stops are close to the outcome but barely measured, and nineteen missing measures. |
 | **Futures** | Published forecasts, mostly about US jobs and income. Work in progress. |
 | **Method** | How the ratings are reached, how to read the charts, known limits and all sources. |
 
@@ -30,7 +30,7 @@ The main finding: what AI can do and who uses it are measured again and again. W
 
 ## View it
 
-- **Online:** once GitHub Pages is switched on (see below), the site is at `https://nekocchi-0417.github.io/gd-observatory/`.
+- **Online:** https://nekocchi-0417.github.io/gd-observatory/
 - **On your computer:** open `docs/index.html` in a browser. It is one self-contained file.
 
 To switch on GitHub Pages: in the repository, go to **Settings → Pages**, set **Source** to "Deploy from a branch", pick branch `main` and folder `/docs`, and save.
@@ -76,7 +76,7 @@ To change a figure, edit the indicator in `data1.js` or `data2.js` (its chart da
 
 ## How it was made
 
-The evidence was gathered and checked with an AI-assisted research workflow: parallel research passes per domain, spot checks against primary sources, then several rounds of fact-checking, copy-editing, design critique and red-teaming. The notes and reviews are in [`research/`](research/README.md), so every rating can be traced back to its evidence.
+The evidence was gathered and checked with an AI-assisted research workflow: parallel research passes per domain, spot checks against primary sources, then several rounds of fact-checking, copy-editing, design critique and red-teaming. The notes and reviews are in [`research/`](research/README.md), so every rating can be traced back to its evidence. Draft v0.5 adds a fourth scan of the evidence for eight stops ([`research/scan4/`](research/scan4/)) and a landscape review of AI's effects on skills and judgement ([`research/landscape/`](research/landscape/)).
 
 ## Corrections
 
@@ -91,4 +91,4 @@ Figures and quotations from third-party sources remain the property of their pub
 
 ## Cite as
 
-Zhang Yue (2026). *Gradual Disempowerment Observatory* (draft v0.4). Better Futures Project.
+Zhang Yue (2026). *Gradual Disempowerment Observatory* (draft v0.5). Better Futures Project.

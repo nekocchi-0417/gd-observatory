@@ -1,6 +1,6 @@
 # Research workflow
 
-This folder holds the notes and reviews behind the site, so every figure and rating can be traced to its evidence. The work was done with AI research assistance between 3 and 8 October 2026. No figure has yet been checked by a person; [`checklist/handcheck.csv`](checklist/handcheck.csv) lists the headline figures to verify first.
+This folder holds the notes and reviews behind the site, so every figure and rating can be traced to its evidence. The work was done with AI research assistance between 3 and 12 October 2026. No figure has yet been checked by a person; [`checklist/handcheck.csv`](checklist/handcheck.csv) lists the headline figures to verify first.
 
 ## How it was done
 
@@ -38,9 +38,25 @@ This folder holds the notes and reviews behind the site, so every figure and rat
 | `13_redteam.md` | Red-team review of the framing and claims |
 | `17_ux_spec.md` | The readability spec behind the current version: one message per page, detail one click deeper |
 
+### `landscape/`: review of AI and human agency, skills and judgement (review 3.0)
+
+A broad review of research on how AI affects people's agency, skills, expertise and decisions, at individual, group and institutional level. Compiled 10 to 12 October 2026. It feeds the Skills and judgement stop on the site.
+
+- **Counts:** 361 studies and 98 measures or frameworks; 292 studies checked against the paper's own page or abstract. Of 233 empirical studies of generative AI, 21 test people without AI, 22 follow the same people for months or longer, and 4 do both.
+- **Files:** `review-3.0.md` (the write-up; its tables are not reproduced in Markdown and can be rebuilt from the JSON files), `master.json` (every study, coded), `instruments.json` (measures you can reuse), one note per search pass (`skills.md`, `judgement.md`, `beliefs.md`, `dependence.md`, `group.md`, `institutions.md`, `evals.md`, `constructs.md`), and `SPEC.md` (the shared brief for the passes).
+- **Limits:** a broad scoping sweep, not a systematic review. Every pass hit its search limit before finishing. "None found" means none found in that search. Mostly US and UK studies in English. "Checked" means the paper's own page or abstract was read, not the full paper.
+
+### `scan4/`: landscape scan 4.0 of the other eight stops
+
+One research pass per stop (capability, adoption, hand-over, entry-level work, workers' share, culture, institutions, human influence), run on 12 October 2026 to update the site to draft v0.5.
+
+- **Counts:** 419 coded items (indicators, studies, forecasts and frameworks), 297 of them read at source during the pass. Per stop: capability 47, adoption 49, hand-over 40, entry-level work 63, workers' share 60, culture 60, institutions 55, human influence 45.
+- **Files:** `<stop>.md` (status on the site, best series, key studies, sceptic's case, gaps, proposed ratings and proposed site changes), `<stop>.jsonl` (every item, coded), `SPEC.md` (the shared brief), `SITE_BRIEF.md` (which proposals were applied), `FACTCHECK.md` (a check of the proposed figures against their sources) and `CHANGELOG.md` (what changed on the site, and what was left out).
+- **Limits:** broad, not systematic. The shared search budget ran out in every pass (after about 20 to 30 searches each), and some sources could not be read from the research environment. Items marked `verified: false` were not read at source.
+
 ### `checklist/`
 
-`handcheck.csv` lists 42 headline figures in priority order, with the source link, what to look for, and how each was obtained so far. Fill in `checked_by_author` as figures are verified.
+`handcheck.csv` lists 42 headline figures in priority order, with the source link, what to look for, and how each was obtained so far. Fill in `checked_by_author` as figures are verified. It was written for draft v0.4. In v0.5 several shown texts changed (rows 1, 3, 4, 5, 10, 16, 29, 31, 37 and 38: indicator counts, the capability headline, Gallup, workers' share, decision counts, the human-influence cards, junior hiring, work hours and the human-in-the-loop figure), so check those rows against the current site.
 
 ## Limits
 
