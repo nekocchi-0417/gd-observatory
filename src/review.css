@@ -18,6 +18,14 @@
 .source6-detail{border-top:1px solid var(--rule);font:400 15px/1.5 var(--f-sans);padding-top:12px;color:var(--ink-2)}
 .source6-detail summary{cursor:pointer;font-weight:550;color:var(--ink)}
 .source6-detail p{margin-top:12px;overflow-wrap:anywhere}.source6-detail a,.library6 a{color:var(--s1)}
+.source-minis6{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
+.source-mini6{border-top:2px solid var(--s1);padding-top:16px;min-width:0}
+.source-mini6 h3{font:650 20px/1.25 var(--f-sans);margin:12px 0 8px}
+.source-mini6 p{font:400 16px/1.5 var(--f-sans);color:var(--ink-2);margin:10px 0}
+.source-mini6-cite{margin:8px 0 12px!important}
+.source-mini6 dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.source-mini6 dt{font:400 12.5px/1.35 var(--f-sans);color:var(--ink-2)}
+.source-mini6 dd{order:-1;font:650 21px/1.2 var(--f-sans);color:var(--ink);margin:0}
 .priority6-charts{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:30px}
 .priority6-charts .ic5wrap{margin-top:22px}
 .chart-gap6{margin-top:18px}
@@ -30,7 +38,7 @@
 .review6-status select{background:var(--surface);color:var(--ink);border:1px solid var(--rule);font:inherit;padding:9px;border-radius:4px;min-height:42px}
 .review6 textarea{box-sizing:border-box;width:100%;margin:12px 0;background:var(--surface);color:var(--ink);font:400 16px/1.5 var(--f-sans);border:1px solid var(--rule);border-radius:4px;padding:10px;resize:vertical}
 .library6-sources{padding-left:22px;line-height:1.7}.library6-sources li{margin:12px 0;overflow-wrap:anywhere}
-@media(max-width:720px){.sources6{grid-template-columns:1fr;gap:40px}.review6-title{flex-direction:column;gap:8px}.source6 h3,.review6-item h3{font-size:21px}.source6-metrics dd{font-size:22px}.review6 .toc5{flex-wrap:wrap}.review6-tools>div{min-width:0;width:100%}}
+@media(max-width:720px){.sources6,.source-minis6{grid-template-columns:1fr;gap:32px}.review6-title{flex-direction:column;gap:8px}.source6 h3,.review6-item h3{font-size:21px}.source6-metrics dd{font-size:22px}.review6 .toc5{flex-wrap:wrap}.review6-tools>div{min-width:0;width:100%}}
 .priority6,.review6,.library6{--f-sans:var(--f-display);--f-serif:var(--f-text)}
 .review6-item{overflow-wrap:anywhere}
 .priority6 h1,.priority6 h2,.priority6 h3,.review6 h1,.review6 h2,.review6 h3,.library6 h1,.library6 h2{letter-spacing:0}

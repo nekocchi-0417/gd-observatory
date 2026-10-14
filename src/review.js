@@ -20,6 +20,12 @@ const sourceCard6=s=>`<article class="source6" id="source-${esc(s.id)}">
   ${s.metrics?`<dl class="source6-metrics">${s.metrics.map(([n,t])=>`<div><dt>${esc(t)}</dt><dd>${esc(n)}</dd></div>`).join('')}</dl>`:''}
   <dl class="source6-notes"><div><dt>Why chosen</dt><dd>${esc(s.why)}</dd></div><div><dt>Key limit</dt><dd>${esc(s.limit)}</dd></div></dl>
   <details class="source6-detail"><summary>Paper title and where to check</summary><p>${esc(s.title)}</p><p>${esc(s.locate)}</p>${s.doi?`<p><a href="https://doi.org/${esc(s.doi)}" target="_blank" rel="noopener">DOI: ${esc(s.doi)} ↗</a></p>`:''}${s.paper?`<p><a href="${esc(s.paper)}" target="_blank" rel="noopener">Supporting paper or data ↗</a></p>`:''}</details></article>`;
+const sourceMini6=(s,topic)=>`<article class="source-mini6">
+  <div><span class="source-kind6">${esc(s.type)}</span></div>
+  <h3>${esc(s.label)}</h3>
+  <p class="source-mini6-cite">${sourceLink6(s)}</p>
+  ${s.metrics?`<dl>${s.metrics.slice(0,2).map(([n,t])=>`<div><dt>${esc(t)}</dt><dd>${esc(n)}</dd></div>`).join('')}</dl>`:''}
+  <a class="go" href="#${esc(topic)}/${esc(s.id)}">Why this source →</a></article>`;
 function unchartedSources6(id){
   const chartIds=new Set(priorityIndicators5(id).map(d=>d.id));
   return SELECTED_EVIDENCE[id].sources.filter(s=>!(s.legacy||[]).some(x=>chartIds.has(x)));
@@ -31,12 +37,24 @@ function viewTopic(v,id){
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
     <div class="claim5">${eye5([esc(nameOf(id)),`${i+1} of ${ORDER.length}`])}<h1 class="h1-5 c">${esc(p.h1)}</h1><p class="lead5">${esc(p.summary)}</p></div>
     ${verify5()}
-    <section class="sec5"><div class="h2row5"><h2 class="h2-5 sm">Two sources to start with</h2><a class="go" href="#review/${id}">Review this page →</a></div><p class="sub5 source6-selection">${esc(p.selection)}</p>
-      <div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
-    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#review/${id}">Check chart values →</a></div><p class="sub5">These charts are restored only where they map to one of the priority sources above. Treat the plotted values as source extractions to verify before citing.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
+    <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Top indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
+      <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
+    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#review/${id}">Check chart values →</a></div><p class="sub5">Charts linked to the top indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a><a class="go" href="#library/${id}">More sources: awaiting review →</a></p></section>
     ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['review','Source review','Next'])}</div>`;
   if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
+  crumbScroll5(v);
+}
+
+function viewEvidenceDetails(v,id){
+  id=ORDER.includes(id)?id:'capability';
+  const p=SELECTED_EVIDENCE[id];
+  v.innerHTML=`<div class="view5 wrap priority6 detail6">${crumbs5(id)}
+    ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
+    ${verify5()}
+    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#review/${id}">Review checklist →</a><a class="go" href="#library/${id}">More sources awaiting review →</a></p>
+    <section class="sec5"><h2 class="h2-5 sm">Priority sources</h2><div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
+    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What this pair still misses</h2><p class="lead5 sm">${esc(p.gap)}</p></section></div>`;
   crumbScroll5(v);
 }
 

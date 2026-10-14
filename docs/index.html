@@ -1214,6 +1214,14 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .source6-detail{border-top:1px solid var(--rule);font:400 15px/1.5 var(--f-sans);padding-top:12px;color:var(--ink-2)}
 .source6-detail summary{cursor:pointer;font-weight:550;color:var(--ink)}
 .source6-detail p{margin-top:12px;overflow-wrap:anywhere}.source6-detail a,.library6 a{color:var(--s1)}
+.source-minis6{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:22px}
+.source-mini6{border-top:2px solid var(--s1);padding-top:16px;min-width:0}
+.source-mini6 h3{font:650 20px/1.25 var(--f-sans);margin:12px 0 8px}
+.source-mini6 p{font:400 16px/1.5 var(--f-sans);color:var(--ink-2);margin:10px 0}
+.source-mini6-cite{margin:8px 0 12px!important}
+.source-mini6 dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0}
+.source-mini6 dt{font:400 12.5px/1.35 var(--f-sans);color:var(--ink-2)}
+.source-mini6 dd{order:-1;font:650 21px/1.2 var(--f-sans);color:var(--ink);margin:0}
 .priority6-charts{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:30px}
 .priority6-charts .ic5wrap{margin-top:22px}
 .chart-gap6{margin-top:18px}
@@ -1226,7 +1234,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .review6-status select{background:var(--surface);color:var(--ink);border:1px solid var(--rule);font:inherit;padding:9px;border-radius:4px;min-height:42px}
 .review6 textarea{box-sizing:border-box;width:100%;margin:12px 0;background:var(--surface);color:var(--ink);font:400 16px/1.5 var(--f-sans);border:1px solid var(--rule);border-radius:4px;padding:10px;resize:vertical}
 .library6-sources{padding-left:22px;line-height:1.7}.library6-sources li{margin:12px 0;overflow-wrap:anywhere}
-@media(max-width:720px){.sources6{grid-template-columns:1fr;gap:40px}.review6-title{flex-direction:column;gap:8px}.source6 h3,.review6-item h3{font-size:21px}.source6-metrics dd{font-size:22px}.review6 .toc5{flex-wrap:wrap}.review6-tools>div{min-width:0;width:100%}}
+@media(max-width:720px){.sources6,.source-minis6{grid-template-columns:1fr;gap:32px}.review6-title{flex-direction:column;gap:8px}.source6 h3,.review6-item h3{font-size:21px}.source6-metrics dd{font-size:22px}.review6 .toc5{flex-wrap:wrap}.review6-tools>div{min-width:0;width:100%}}
 .priority6,.review6,.library6{--f-sans:var(--f-display);--f-serif:var(--f-text)}
 .review6-item{overflow-wrap:anywhere}
 .priority6 h1,.priority6 h2,.priority6 h3,.review6 h1,.review6 h2,.review6 h3,.library6 h1,.library6 h2{letter-spacing:0}
@@ -4558,13 +4566,14 @@ function render(id){
   clearInterval(tourTimer);tourTimer=null;
   const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0;
   const source=ORDER.includes(base)?SELECTED_EVIDENCE[base].sources.find(s=>s.id===ind||(s.legacy||[]).includes(ind)):null;
-  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else viewTopic(v,base)}
+  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
+  else if(base==='details')viewEvidenceDetails(v,ind);
   else if(base==='library')viewLibrary(v,ind);
   else if(base==='review')viewReview(v);
   else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
-  const top=(linkById(base)||['influence','record','review','library'].includes(base))?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
+  const top=(linkById(base)||['influence','record','review','library','details'].includes(base))?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
   document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Observatory';
   $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   window.scrollTo(0,0);
@@ -5241,6 +5250,12 @@ const sourceCard6=s=>`<article class="source6" id="source-${esc(s.id)}">
   ${s.metrics?`<dl class="source6-metrics">${s.metrics.map(([n,t])=>`<div><dt>${esc(t)}</dt><dd>${esc(n)}</dd></div>`).join('')}</dl>`:''}
   <dl class="source6-notes"><div><dt>Why chosen</dt><dd>${esc(s.why)}</dd></div><div><dt>Key limit</dt><dd>${esc(s.limit)}</dd></div></dl>
   <details class="source6-detail"><summary>Paper title and where to check</summary><p>${esc(s.title)}</p><p>${esc(s.locate)}</p>${s.doi?`<p><a href="https://doi.org/${esc(s.doi)}" target="_blank" rel="noopener">DOI: ${esc(s.doi)} ↗</a></p>`:''}${s.paper?`<p><a href="${esc(s.paper)}" target="_blank" rel="noopener">Supporting paper or data ↗</a></p>`:''}</details></article>`;
+const sourceMini6=(s,topic)=>`<article class="source-mini6">
+  <div><span class="source-kind6">${esc(s.type)}</span></div>
+  <h3>${esc(s.label)}</h3>
+  <p class="source-mini6-cite">${sourceLink6(s)}</p>
+  ${s.metrics?`<dl>${s.metrics.slice(0,2).map(([n,t])=>`<div><dt>${esc(t)}</dt><dd>${esc(n)}</dd></div>`).join('')}</dl>`:''}
+  <a class="go" href="#${esc(topic)}/${esc(s.id)}">Why this source →</a></article>`;
 function unchartedSources6(id){
   const chartIds=new Set(priorityIndicators5(id).map(d=>d.id));
   return SELECTED_EVIDENCE[id].sources.filter(s=>!(s.legacy||[]).some(x=>chartIds.has(x)));
@@ -5252,12 +5267,24 @@ function viewTopic(v,id){
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
     <div class="claim5">${eye5([esc(nameOf(id)),`${i+1} of ${ORDER.length}`])}<h1 class="h1-5 c">${esc(p.h1)}</h1><p class="lead5">${esc(p.summary)}</p></div>
     ${verify5()}
-    <section class="sec5"><div class="h2row5"><h2 class="h2-5 sm">Two sources to start with</h2><a class="go" href="#review/${id}">Review this page →</a></div><p class="sub5 source6-selection">${esc(p.selection)}</p>
-      <div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
-    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#review/${id}">Check chart values →</a></div><p class="sub5">These charts are restored only where they map to one of the priority sources above. Treat the plotted values as source extractions to verify before citing.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
+    <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Top indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
+      <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
+    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#review/${id}">Check chart values →</a></div><p class="sub5">Charts linked to the top indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a><a class="go" href="#library/${id}">More sources: awaiting review →</a></p></section>
     ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['review','Source review','Next'])}</div>`;
   if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
+  crumbScroll5(v);
+}
+
+function viewEvidenceDetails(v,id){
+  id=ORDER.includes(id)?id:'capability';
+  const p=SELECTED_EVIDENCE[id];
+  v.innerHTML=`<div class="view5 wrap priority6 detail6">${crumbs5(id)}
+    ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
+    ${verify5()}
+    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#review/${id}">Review checklist →</a><a class="go" href="#library/${id}">More sources awaiting review →</a></p>
+    <section class="sec5"><h2 class="h2-5 sm">Priority sources</h2><div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
+    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What this pair still misses</h2><p class="lead5 sm">${esc(p.gap)}</p></section></div>`;
   crumbScroll5(v);
 }
 

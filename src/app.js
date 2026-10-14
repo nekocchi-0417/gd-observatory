@@ -50,13 +50,14 @@ function render(id){
   clearInterval(tourTimer);tourTimer=null;
   const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0;
   const source=ORDER.includes(base)?SELECTED_EVIDENCE[base].sources.find(s=>s.id===ind||(s.legacy||[]).includes(ind)):null;
-  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else viewTopic(v,base)}
+  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
+  else if(base==='details')viewEvidenceDetails(v,ind);
   else if(base==='library')viewLibrary(v,ind);
   else if(base==='review')viewReview(v);
   else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
-  const top=(linkById(base)||['influence','record','review','library'].includes(base))?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
+  const top=(linkById(base)||['influence','record','review','library','details'].includes(base))?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
   document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Observatory';
   $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   window.scrollTo(0,0);

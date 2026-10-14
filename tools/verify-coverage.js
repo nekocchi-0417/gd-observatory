@@ -51,7 +51,7 @@ function contrast(a,b){
         await page.locator('.map5 [data-t="next"]').click();
         assert.equal(await page.locator('.st5[aria-pressed="true"]').getAttribute('data-id'),'capability');
         await page.locator('.map5 [data-t="open"]').click();
-        assert.equal(await page.locator('.source6').count(),2);
+        assert.equal(await page.locator('.source-mini6').count(),2);
       }else{
         assert.equal(await page.locator('.ml5.open').getAttribute('data-id'),'skills');
         for(const id of MAJOR)assert.ok(await page.locator(`.ml5[data-id="${id}"] .ml5-prompt`).isVisible());
@@ -74,7 +74,7 @@ function contrast(a,b){
       assert.ok(await page.evaluate(()=>document.querySelector('#m-coverage h2').getBoundingClientRect().top>=document.querySelector('.bar').getBoundingClientRect().bottom),'Coverage heading must clear the navigation');
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`Method overflow: ${width}`);
       await page.locator('.coverage-reasons5 a[href="#skills"]').click();
-      assert.equal(await page.locator('.source6').count(),2);
+      assert.equal(await page.locator('.source-mini6').count(),2);
       if(width===1440||width===390){await page.goto(PAGE+'#evidence');await settle(page);await page.screenshot({path:path.join(OUT,`coverage-evidence-${width}-${colorScheme}.png`),fullPage:true});}
       await context.close();console.log(`Passed ${width}px ${colorScheme}`);
     }

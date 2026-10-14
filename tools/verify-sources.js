@@ -12,12 +12,14 @@ const PAGE='file://'+path.resolve(__dirname,'../docs/index.html');
    const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
    for(const id of Object.keys(topics)){
     await page.goto(PAGE+'#'+id);
-    assert.equal(await page.locator('.source6').count(),2);
-    assert.equal(await page.locator('.source6-cite a:visible').count(),2);
+    assert.equal(await page.locator('.source-mini6').count(),2);
+    assert.equal(await page.locator('.source-mini6-cite a:visible').count(),2);
     assert.equal(await page.locator('h1').innerText(),topics[id].h1);
     assert.match(await page.locator('.verify5').innerText(),/Awaiting human review/);
     const size=await page.evaluate(()=>({w:innerWidth,scroll:document.documentElement.scrollWidth}));
     assert.ok(size.scroll<=size.w,`${id}: overflow at ${width}`);
+    await page.locator(`a[href="#details/${id}"]`).click();
+    assert.equal(await page.locator('.source6').count(),2);
     await page.locator('.source6-detail summary').first().click();
     assert.ok(await page.locator('.source6-detail[open]').count());
    }

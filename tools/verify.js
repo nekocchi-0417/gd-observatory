@@ -28,14 +28,15 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
    await p.click('.map5 .card5 [data-t="next"]');await p.waitForTimeout(150);console.log('next wraps to',await p.$eval('.map5 .card5 .card5-name',e=>e.textContent));
    await p.click('.map5 .card5 [data-t="open"]');await p.waitForTimeout(250);console.log('open evidence',await p.evaluate(()=>location.hash));
    await p.goto(PAGE+'#skills/literacy');await p.waitForTimeout(300);console.log('old deep link now parked',await p.$eval('.library6 h1',e=>e.textContent));
-   await p.goto(PAGE+'#capability');await p.waitForTimeout(300);console.log('source rationale',await p.$eval('.source6-notes dd',e=>e.textContent.slice(0,60)));
+   await p.goto(PAGE+'#capability');await p.waitForTimeout(300);console.log('compact sources',await p.locator('.source-mini6').count());
+   await p.goto(PAGE+'#details/capability');await p.waitForTimeout(300);console.log('source rationale',await p.$eval('.source6-notes dd',e=>e.textContent.slice(0,60)));
    await p.click('.cav5.draft5');await p.waitForTimeout(250);console.log('draft tip open',await p.$eval('.cav5w.open .cav5tip',e=>e.textContent.slice(0,60)).catch(()=>'NOT OPEN'));
    await p.goto(PAGE+'#gaps');await p.waitForTimeout(300);await p.click('#gg-matrix summary');await p.waitForTimeout(400);await p.click('.gm5-dot[data-id="institutions"]');await p.waitForTimeout(600);
    console.log('matrix pick opens item',await p.$$eval('.gap5-i[data-link="institutions"] .acc5-b[aria-expanded="true"]',x=>x.length),'matrix width',await p.$eval('#gm svg',e=>Math.round(e.getBoundingClientRect().width)));
    await p.click('#expAll');console.log('expand all',await p.$$eval('.acc5-b[aria-expanded="true"]',x=>x.length),await p.$eval('details.more5',d=>d.open));
    await p.goto(PAGE+'#review');await p.waitForTimeout(300);console.log('review items',await p.locator('[data-review]').count());
    await p.selectOption('[data-review="bastani"]','checked');await p.selectOption('[data-review="vaccaro"]','parked');await p.reload();console.log('saved review',await p.locator('#review-count').innerText(),await p.locator('#review-parked').innerText());
-   await p.goto(PAGE+'#institutions');await p.waitForTimeout(300);console.log('priority sources',await p.locator('.source6').count());
+   await p.goto(PAGE+'#institutions');await p.waitForTimeout(300);console.log('priority sources',await p.locator('.source-mini6').count());
    await p.goto(PAGE+'#institutions/lobby');await p.waitForTimeout(300);console.log('old indicator link is parked',await p.locator('.library6 h1').innerText());
    await p.goto(PAGE+'#futures');await p.waitForTimeout(300);await p.click('[data-route="E"]');console.log('route E',await p.$eval('#routebody h3',e=>e.textContent));
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.summary5-link[href="#gaps"]');await p.waitForTimeout(400);console.log('summary opens research gaps',await p.evaluate(()=>location.hash));
