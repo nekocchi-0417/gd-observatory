@@ -276,8 +276,9 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .coverage-header5{padding-block:28px 18px}
 .coverage-header5 .h2-5{font-size:26px;letter-spacing:0}
 .coverage-takeaway5{font-size:16px;color:var(--ink-2);margin-top:6px}
-.coverage-key5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 28px;margin-top:22px}
-.coverage-key5-item{display:flex;gap:10px;align-items:center;min-width:0}
+.coverage-key5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px;padding:8px;border:1px solid var(--rule);border-radius:8px;background:var(--surface-2)}
+.coverage-key5-item{display:flex;gap:10px;align-items:center;min-width:0;padding:12px 14px;border:1px solid var(--rule);border-radius:7px;background:var(--surface)}
+.coverage-key5-item[data-coverage]{border-color:color-mix(in srgb,var(--coverage-color) 42%,var(--rule));background:color-mix(in srgb,var(--coverage-color) 10%,var(--surface))}
 .coverage-key5-item>span{display:flex;flex-direction:column;gap:1px}
 .coverage-key5-item b{font-size:15px;color:var(--coverage-color)}
 .coverage-key5-item>span>span{font-size:13px;color:var(--ink-2)}
