@@ -192,7 +192,7 @@ details.more5>.accg5:first-of-type{margin-top:8px}
 :root:not([data-theme="dark"]){--ink-3:#5b6976}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ink-3:#8795a3}}
 .sgd5:not(.q){box-shadow:0 0 0 1px color-mix(in srgb,var(--ink) 30%,transparent)}
-.er5{grid-template-columns:minmax(0,1.1fr) 196px minmax(0,2fr) 18px}
+.er5{grid-template-columns:minmax(0,1.1fr) 196px minmax(0,2.2fr) 18px}
 @media (max-width:760px){.er5{grid-template-columns:minmax(0,1fr) auto 14px}}
 .core5-b{font-size:clamp(26px,3vw,38px)}
 .door5{min-height:0;padding-top:26px}
@@ -316,11 +316,9 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .ml5-line .coverage-glyph5{position:absolute;top:18px;left:1px;background:var(--surface)}
 .ml5-card{padding-bottom:18px}
 .ml5-card .card5-research{margin-top:6px}
-.er5-head,.er5{grid-template-columns:minmax(0,1.1fr) 190px 112px minmax(0,2fr) 18px;gap:4px 24px}
+.er5-head,.er5{grid-template-columns:minmax(0,1.1fr) 190px minmax(0,2.2fr) 18px;gap:4px 24px}
 .er5-head{display:grid;padding:22px 8px 10px 26px;color:var(--ink-2);font-size:12px;font-weight:600}
 .er5-coverage{display:flex;align-items:center;min-width:0}
-.er5-chart{display:flex;align-items:center;min-width:0}
-.er5-chart .sp5{width:96px;height:34px}
 .er5-one{min-width:0}
 .coverage-rubric5 .coverage-glyph5{margin-top:3px}
 .coverage-rubric5>li{align-items:flex-start}
@@ -337,12 +335,11 @@ details.ic5-more summary::-webkit-details-marker{display:none}
   .coverage-key5-item>span>span{font-size:12.5px}
   .er5-head{display:none}
   .er5-list{margin-top:22px}
-  .er5{grid-template-columns:minmax(0,1fr) 100px 14px;gap:8px 12px;padding-left:18px}
+  .er5{grid-template-columns:minmax(0,1fr) 14px;gap:8px 12px;padding-left:18px}
   .er5 .er5-nm{grid-column:1;grid-row:1}
   .er5 .er5-coverage{grid-column:1;grid-row:2}
-  .er5 .er5-chart{grid-column:2;grid-row:1/4;align-self:center;justify-content:flex-end}
   .er5 .er5-one{grid-column:1;grid-row:3}
-  .er5 .chev5{grid-column:3;grid-row:1/4}
+  .er5 .chev5{grid-column:2;grid-row:1/4}
   .coverage-reasons5>div{grid-template-columns:1fr;gap:8px}
   #m-coverage{scroll-margin-top:94px}
 }

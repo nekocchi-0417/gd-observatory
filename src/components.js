@@ -165,13 +165,11 @@ function priorityIndicators5(id){
 }
 function evidenceRows(el){
   const rows=ORDER.map(id=>{const c=coverageOf5(id);
-    const d=priorityIndicators5(id)[0],t=d&&(SIG5().indicators[d.id]||{}),spark=d?sparkSVG5(d,t.trend||'Not rated',96,34):'';
     return `<a class="er5" data-coverage="${c.band}" href="#${id}" style="--band:var(--coverage-${c.band})" aria-label="${esc(nameOf(id))}. ${esc(coverageBand5(id).label)}. ${esc(oneLiner5(id))}">
       <span class="er5-nm">${esc(nameOf(id))}</span>
       <span class="er5-coverage">${coverageBadge5(id)}</span>
-      <span class="er5-chart" aria-hidden="true">${spark}</span>
       <span class="er5-one">${esc(oneLiner5(id))}</span>${chev5}</a>`}).join('');
-  el.innerHTML=coverageLegend5()+coverageNote5()+`<div class="er5-head" aria-hidden="true"><span>Step</span><span>Measurement coverage</span><span>Chart</span><span>What the studies show</span></div><div class="er5-list">${rows}</div>`;return el;
+  el.innerHTML=coverageLegend5()+coverageNote5()+`<div class="er5-head" aria-hidden="true"><span>Step</span><span>Measurement coverage</span><span>What the studies show</span></div><div class="er5-list">${rows}</div>`;return el;
 }
 
 /* ======================================================================================
