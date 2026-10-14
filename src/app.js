@@ -53,7 +53,7 @@ function render(id){
   if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
   else if(base==='details')viewEvidenceDetails(v,ind);
   else if(base==='library')viewLibrary(v,ind);
-  else if(base==='review')viewReview(v);
+  else if(base==='review')viewSourceMethod(v);
   else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
@@ -63,7 +63,7 @@ function render(id){
   window.scrollTo(0,0);
   if(source){const t=document.getElementById('source-'+source.id);if(t)openAt5(t)}
   /* #gaps/<step> and #why/<section> open the page at that part */
-  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-',review:'review-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
+  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
 }
 document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}

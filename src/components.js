@@ -223,10 +223,14 @@ function indicatorCards(el,linkId,opts={}){
   const draw=i=>{const d=inds[i],t=SI[d.id]||{},fl=(t.flags||[]);
     const cav=(FLAGCAV5.find(([f,c])=>fl.includes(f)&&!(c==='company'&&d.tag==='company'))||[])[1];
     const ic=indCopy5(d);
+    const srcIntro=d.src.length>1?'Sources combined':'Source';
+    const srcWhy=d.src.length>1?'This dashboard combines readings or context from multiple sources listed here. Compare levels only when the definitions match; point notes and the data table show source-specific caveats.':'This dashboard uses the source listed here. Check the original before citing the plotted value.';
     panel.setAttribute('aria-labelledby',cards[i].id);
     panel.innerHTML=`<div class="ic5-ph"><h3>${esc(d.title)}</h3><div class="ic5-chips">${t.toward&&t.trend!=='One-off'?`<span class="ic5-dir">${TW[t.toward]}</span>`:''}<span class="chip">${esc(TAGS[d.tag])}</span>${cav?caveatChip(cav):''}</div></div>
-      ${d.sub?`<p class="ic5-sub">${esc(d.sub)}</p>`:''}<div class="ic5-body"></div>
-      <details class="ic5-more"><summary>${esc(COPY.linkUI.readingIt)} and sources</summary><p class="ic5-read">${esc(d.read)}</p>
+      ${d.sub?`<p class="ic5-sub">${esc(d.sub)}</p>`:''}
+      <div class="ic5-sourcebar"><b>${esc(srcIntro)}</b><span>${esc(srcWhy)}</span><p>${d.src.map(s=>`<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>`).join(' · ')}</p></div>
+      <div class="ic5-body"></div>
+      <details class="ic5-more"><summary>${esc(COPY.linkUI.readingIt)}</summary><p class="ic5-read">${esc(d.read)}</p>
       <p class="ic5-src">${d.src.map(s=>`<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>`).join(' · ')}</p></details>`;
     d.render($('.ic5-body',panel))};
   const select=(i,toggle,user)=>{if(toggle&&cols()===1&&i===cur){cur=-1;cards.forEach(b=>b.classList.remove('on'));roles();place();return}

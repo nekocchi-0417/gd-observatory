@@ -5,7 +5,7 @@
 const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draft5" aria-describedby="drtip">${esc(COPY.draftChip.label)}</button><span class="cav5tip" role="tooltip" id="drtip">${esc(COPY.draftChip.tooltip)} <a href="#method">Method</a></span></span>`;
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
 const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
-const verify5=()=>`<div class="verify5"><b>Awaiting human review</b><span>Priority claims checked against primary sources with AI assistance. This is not independent verification.</span><a class="go" href="#review">Review checklist →</a></div>`;
+const verify5=()=>`<div class="verify5"><b>Awaiting human review</b><span>Priority claims checked against primary sources with AI assistance. This is not independent verification.</span></div>`;
 /* the confidence block: the two ratings, each with its one-line reason */
 const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.linkUI.brief,why=id==='influence'?END.headline:linkById(id).levelWhy;
   return `<section class="conf5" aria-label="${esc(B.confidence)}">${lab5([B.confidence])}<dl class="conf5-g">
@@ -60,7 +60,7 @@ function viewIndex(v){
    ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
-   <section class="sec5"><h2 class="h2-5 sm">A smaller set to verify</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. Additional sources and earlier chart extractions are held back from the summaries until reviewed.</p><p class="review-links"><a class="go" href="#review">18-source review checklist →</a><a class="go" href="#library">Sources awaiting review →</a><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
+   <section class="sec5"><h2 class="h2-5 sm">A smaller set to verify</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. Additional sources and earlier chart extractions are held back from the summaries until reviewed.</p><p class="review-links"><a class="go" href="#library">Sources awaiting review →</a><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
   evidenceRows($('#erows',v));
 }
 
@@ -113,7 +113,7 @@ function viewGaps(v){
     return k==='later'?`<details class="more5 gap5-g" id="gg-${k}"><summary>${esc(PR[k].t)} · ${xs.length} measures, further from the outcome</summary>${body}</details>`:`<div class="accg5 gap5-g" id="gg-${k}">${body}</div>`};
   v.innerHTML=`<div class="view5 wrap">${eye5([esc(G.eyebrow)])}
    <h1 class="h1-5">${esc(G.h1)}</h1><p class="lead5">${esc(G.sentence)}</p>
-   <div class="verify5"><b>Proposed research agenda</b><span>These are research suggestions, not established indicators. Supporting examples and feasibility need a separate review.</span><a class="go" href="#review">Priority source checklist →</a></div>
+   <div class="verify5"><b>Proposed research agenda</b><span>These are research suggestions, not established indicators. Supporting examples and feasibility need a separate review.</span></div>
    <section class="sec5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.list.title)}</h2><p class="sub5">${esc(G.list.sub)} ${esc(COPY.ui.instructions.gaps)}</p></div><button type="button" class="btn ghost" id="expAll">${esc(G.list.expandAll)}</button></div>
     <div class="acc5" id="gacc">${['now','method','later'].map(group).join('')}</div></section>
    <section class="sec5"><details class="det5" id="gg-matrix"><summary>${esc(G.ranking.title)}</summary><p class="sub5">${esc(G.ranking.sub)}</p>

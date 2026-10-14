@@ -4,7 +4,7 @@
 const { chromium } = require('playwright');
 const path=require('path');
 const PAGE='file://'+path.resolve(__dirname,'..','docs','index.html');
-const ROUTES=['map','evidence','capability','adoption','handover','work','share','skills','culture','institutions','influence','record','gaps','futures','futures/more','method','contribute','contribute/funding','why','method/more','gaps/influence','work/cohort','skills/literacy','institutions/control','review','review/skills','library','library/skills','skills/bastani','unknown'];
+const ROUTES=['map','evidence','capability','adoption','handover','work','share','skills','culture','institutions','influence','record','gaps','futures','futures/more','method','contribute','contribute/funding','why','method/more','gaps/influence','work/cohort','skills/literacy','institutions/control','library','library/skills','skills/bastani','unknown'];
 (async()=>{const b=await chromium.launch(process.env.PW_EXE?{executablePath:process.env.PW_EXE}:{});const errs=[];const words={};
  for(const w of [1280,400,340]){for(const scheme of (w===1280?['light','dark']:['light'])){
   const ctx=await b.newContext({viewport:{width:w,height:900},colorScheme:scheme});const p=await ctx.newPage();
@@ -34,8 +34,6 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
    await p.goto(PAGE+'#gaps');await p.waitForTimeout(300);await p.click('#gg-matrix summary');await p.waitForTimeout(400);await p.click('.gm5-dot[data-id="institutions"]');await p.waitForTimeout(600);
    console.log('matrix pick opens item',await p.$$eval('.gap5-i[data-link="institutions"] .acc5-b[aria-expanded="true"]',x=>x.length),'matrix width',await p.$eval('#gm svg',e=>Math.round(e.getBoundingClientRect().width)));
    await p.click('#expAll');console.log('expand all',await p.$$eval('.acc5-b[aria-expanded="true"]',x=>x.length),await p.$eval('details.more5',d=>d.open));
-   await p.goto(PAGE+'#review');await p.waitForTimeout(300);console.log('review items',await p.locator('[data-review]').count());
-   await p.selectOption('[data-review="bastani"]','checked');await p.selectOption('[data-review="vaccaro"]','parked');await p.reload();console.log('saved review',await p.locator('#review-count').innerText(),await p.locator('#review-parked').innerText());
    await p.goto(PAGE+'#institutions');await p.waitForTimeout(300);console.log('priority sources',await p.locator('.source-mini6').count());
    await p.goto(PAGE+'#institutions/lobby');await p.waitForTimeout(300);console.log('old indicator link is parked',await p.locator('.library6 h1').innerText());
    await p.goto(PAGE+'#futures');await p.waitForTimeout(300);await p.click('[data-route="E"]');console.log('route E',await p.$eval('#routebody h3',e=>e.textContent));

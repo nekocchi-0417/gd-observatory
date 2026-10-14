@@ -624,6 +624,10 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 .ic5-read{font-family:var(--f-text);font-size:15.5px;line-height:1.5;color:var(--ink-2);max-width:74ch;margin-top:14px;padding-top:12px;border-top:1px solid var(--grid)}
 .ic5-src{font-size:12.5px;color:var(--ink-3);margin-top:8px;line-height:1.45}
 .ic5-src a{color:inherit;text-decoration-color:var(--rule)}
+.ic5-sourcebar{margin:12px 0 14px;padding:10px 0;border-block:1px solid var(--grid);font:400 12.5px/1.45 var(--f-display);color:var(--ink-2)}
+.ic5-sourcebar b{display:block;color:var(--ink);font-weight:700;margin-bottom:2px}
+.ic5-sourcebar p{margin:7px 0 0;overflow-wrap:anywhere}
+.ic5-sourcebar a{color:var(--s1);font-weight:600;text-underline-offset:3px}
 @media (max-width:900px){.ic5-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){
   .ic5-grid{grid-template-columns:1fr;gap:8px}
@@ -664,6 +668,8 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 .gm5-pri{font-size:13.5px;font-weight:650;fill:var(--ink)}
 .gm5-ax{font-size:12.5px;fill:var(--ink-2)}
 .gm5-plot .gm5-at{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;fill:var(--ink-3)}
+.axis-note{display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0 6px;font:500 12px/1.4 var(--f-display);color:var(--ink-2)}
+.axis-note b{color:var(--ink);font-weight:700}
 .gm5-lb{font-size:13.5px;font-weight:650;fill:var(--ink)}
 .gm5-lb.sm{font-size:10.5px;font-weight:600}
 .gm5-flag{font-size:11.5px;font-weight:650;fill:var(--hs)}
@@ -1200,7 +1206,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .source6{min-width:0;border-top:3px solid var(--s1);padding:22px 0 0}
 .source6-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:16px}
 .source-kind6{font:600 12px var(--f-sans);color:var(--ink);background:var(--surface);border:1px solid var(--rule);padding:4px 7px;border-radius:3px}
-.source6 h3,.review6-item h3{font:650 23px/1.25 var(--f-sans);margin:0 0 12px;overflow-wrap:anywhere}
+.source6 h3{font:650 23px/1.25 var(--f-sans);margin:0 0 12px;overflow-wrap:anywhere}
 .source6-cite{margin:0 0 18px;line-height:1.5}
 .source-link6{color:var(--s1);font:650 16px/1.5 var(--f-sans);text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
 .source-link6:hover{color:var(--ink)}
@@ -1226,19 +1232,10 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .priority6-charts .ic5wrap{margin-top:22px}
 .chart-gap6{margin-top:18px}
 .priority6-gap{border-top:1px solid var(--ink-3);padding-top:30px}.priority6-gap .lead5{max-width:900px;margin-top:16px}
-.review6-plan{max-width:900px;font:400 18px/1.6 var(--f-sans);color:var(--ink-2);margin:28px 0}.review6-plan b{color:var(--ink)}
-.review6-tools{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;border-block:1px solid var(--rule);padding:20px 0}
-.review6-tools>div{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-width:240px;max-width:100%}.review6-tools progress{width:100%;max-width:320px;min-width:0;height:8px;accent-color:var(--s1)}
-#review-storage{margin-top:14px}.review6-item{border-top:1px solid var(--rule);padding:24px 0}.review6-item ul{padding-left:22px;line-height:1.6;color:var(--ink-2)}
-.review6-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px}.review6-status{display:flex;gap:8px;align-items:center;flex-shrink:0;font-size:14px}
-.review6-status select{background:var(--surface);color:var(--ink);border:1px solid var(--rule);font:inherit;padding:9px;border-radius:4px;min-height:42px}
-.review6 textarea{box-sizing:border-box;width:100%;margin:12px 0;background:var(--surface);color:var(--ink);font:400 16px/1.5 var(--f-sans);border:1px solid var(--rule);border-radius:4px;padding:10px;resize:vertical}
 .library6-sources{padding-left:22px;line-height:1.7}.library6-sources li{margin:12px 0;overflow-wrap:anywhere}
-@media(max-width:720px){.sources6,.source-minis6{grid-template-columns:1fr;gap:32px}.review6-title{flex-direction:column;gap:8px}.source6 h3,.review6-item h3{font-size:21px}.source6-metrics dd{font-size:22px}.review6 .toc5{flex-wrap:wrap}.review6-tools>div{min-width:0;width:100%}}
-.priority6,.review6,.library6{--f-sans:var(--f-display);--f-serif:var(--f-text)}
-.review6-item{overflow-wrap:anywhere}
-.priority6 h1,.priority6 h2,.priority6 h3,.review6 h1,.review6 h2,.review6 h3,.library6 h1,.library6 h2{letter-spacing:0}
-.review6 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:720px){.sources6,.source-minis6{grid-template-columns:1fr;gap:32px}.source6 h3{font-size:21px}.source6-metrics dd{font-size:22px}}
+.priority6,.library6{--f-sans:var(--f-display);--f-serif:var(--f-text)}
+.priority6 h1,.priority6 h2,.priority6 h3,.library6 h1,.library6 h2{letter-spacing:0}
 </style>
 </head>
 <body>
@@ -1249,7 +1246,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
-<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#review">Review checklist</a> · <a href="#library">Awaiting review</a> · <a href="#method">Method and sources</a></span></div></footer>
+<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#library">Awaiting review</a> · <a href="#method">Method and sources</a></span></div></footer>
 <script>
 /* ---------- small chart kit: line, bars, columns, stack rows, dumbbell, spark ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1281,6 +1278,9 @@ const Charts=(()=>{
   function legendHTML(items){
     if(items.length<2) return '';
     return `<div class="lg">${items.map(s=>`<span><i class="${s.kind||''}${s.dash?' dash':''}" style="${s.kind==='box'||s.kind==='dot'?'background':'border-color'}:${s.color}"></i>${esc(s.name)}</span>`).join('')}</div>`;
+  }
+  function axisHTML(x,y){
+    return `<div class="axis-note"><span><b>X-axis</b> ${esc(x||'date or year')}</span><span><b>Y-axis</b> ${esc(y||'value')}</span></div>`;
   }
 
   /* ----- line chart ----- */
@@ -1336,7 +1336,7 @@ const Charts=(()=>{
     const xs=[...new Set(cfg.series.filter(s=>s.tip!==false).flatMap(s=>s.pts.map(p=>+p[0].toFixed(4))))].sort((a,b)=>a-b);
     const named=cfg.series.filter(s=>s.name&&s.tip!==false);
     const tbl=tableHTML([cfg.x.label||'Date',...named.map(s=>s.name)],xs.map(x=>[xtf(x),...named.map(s=>{const p=s.pts.find(p=>Math.abs(p[0]-x)<1e-4);return p?ytf(p[1])+(p[2]?' ('+p[2]+')':''):null})]));
-    el.innerHTML=`${lg}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(cfg.aria||'Line chart')}">${g}${m}<line class="xh" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink)" stroke-width="1" style="display:none"/><rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent" class="hit"/></svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    el.innerHTML=`${lg}${axisHTML(cfg.x.label||'date or year',cfg.y.label||cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(cfg.aria||'Line chart')}">${g}${m}<line class="xh" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink)" stroke-width="1" style="display:none"/><rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent" class="hit"/></svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
     const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),xh=el.querySelector('.xh');
     let idx=-1;
     const show=i=>{
@@ -1375,7 +1375,7 @@ const Charts=(()=>{
     const H=y+P.b;let g='';
     (cfg.ticks||[]).forEach(v=>{g+=`<line x1="${sx(v)}" x2="${sx(v)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><text x="${sx(v)}" y="${H-P.b+15}" text-anchor="middle">${esc(fmt(v))}</text>`});
     const tbl=tableHTML([cfg.catLabel||'',cfg.valLabel||'Value',...(data.some(r=>r.note)?['Note']:[])],data.map(r=>[r.label,r.vlabel||fmt(r.value),...(data.some(q=>q.note)?[r.note||'']:[])]));
-    el.innerHTML=`<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    el.innerHTML=`${axisHTML(cfg.catLabel||'category',cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
     const tip=el.querySelector('.tip'),svg=el.querySelector('svg');
     el.querySelectorAll('.row').forEach(n=>{const r=rows[+n.dataset.i];n.addEventListener('pointermove',e=>{const b=svg.getBoundingClientRect();tip.innerHTML='';const d=document.createElement('div');d.className='r';const bb=document.createElement('b');bb.textContent=r.vlabel||fmt(r.value);const sp=document.createElement('span');sp.textContent=r.label;d.append(bb,sp);tip.appendChild(d);if(r.note){const nt=document.createElement('div');nt.className='nt';nt.textContent=r.note;tip.appendChild(nt)}tipAt(el,tip,e.clientX-b.left,e.clientY-b.top,W)});n.addEventListener('pointerleave',()=>tip.style.display='none')});
   }
@@ -1400,7 +1400,7 @@ const Charts=(()=>{
     const xs=[...new Set(sets.flatMap(s=>s.pts.map(p=>+p[0].toFixed(4))))].sort((a,b)=>a-b);
     const lg=legendHTML(sets.filter(s=>s.name).map(s=>({name:s.name,color:s.color,kind:'box'})));
     const tbl=tableHTML([cfg.x.label||'Date',...sets.map(s=>s.name||cfg.valLabel||'Value')],xs.map(x=>[xtf(x),...sets.map(s=>{const p=s.pts.find(p=>Math.abs(p[0]-x)<1e-4);return p&&p[1]!=null?ytf(p[1])+(p[2]?' ('+p[2]+')':''):(p?'not available':null)})]));
-    el.innerHTML=`${sets.length>1?lg:''}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Column chart')}">${g}${m}<rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent"/></svg><div class="tip"></div></div>${tbl}`;
+    el.innerHTML=`${sets.length>1?lg:''}${axisHTML(cfg.x.label||'date or year',cfg.y.label||cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Column chart')}">${g}${m}<rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent"/></svg><div class="tip"></div></div>${tbl}`;
     const svg=el.querySelector('svg'),tip=el.querySelector('.tip');
     const move=e=>{const r=svg.getBoundingClientRect(),mx=e.clientX-r.left;let best=null,bd=1e9;xs.forEach(x=>{const d=Math.abs(sx(x)-mx);if(d<bd){bd=d;best=x}});if(best==null){tip.style.display='none';return}
       tip.innerHTML='';const d=document.createElement('div');d.className='d';d.textContent=xtf(best);tip.appendChild(d);let top=H;
@@ -1421,7 +1421,7 @@ const Charts=(()=>{
       y+=21+bh+12});
     const H=y+P.b;
     const tbl=tableHTML(['Group',...cfg.rows[0].parts.map(p=>p.name)],cfg.rows.map(r=>[r.label,...r.parts.map(p=>p.label||p.v+'%')]));
-    el.innerHTML=legendHTML(cfg.rows[0].parts.map(p=>({name:p.name,color:p.color,kind:'box'})))+`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Stacked bars')}" style="margin-top:8px">${m}</svg>${tbl}`;
+    el.innerHTML=legendHTML(cfg.rows[0].parts.map(p=>({name:p.name,color:p.color,kind:'box'})))+axisHTML('group','share of total')+`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Stacked bars')}" style="margin-top:8px">${m}</svg>${tbl}`;
   }
 
   /* ----- dumbbell (before → after on one scale) ----- */
@@ -1437,7 +1437,7 @@ const Charts=(()=>{
       m+=`<circle cx="${sx(r.a)}" cy="${cy}" r="6" fill="${cfg.colors[0]}" stroke="var(--surface)" stroke-width="2"/>`;
       m+=`<text x="${W-70}" y="${cy+4}" text-anchor="end" class="end">${esc(fmt(r.a))}</text><text x="${W-2}" y="${cy+4}" text-anchor="end" class="end" style="font-weight:500;fill:var(--ink-2)">${r.b!=null?esc(fmt(r.b)):'n/a'}</text>`});
     const tbl=tableHTML(['',cfg.names[0],cfg.names[1]],cfg.rows.map(r=>[r.label,fmt(r.a)+(r.lo!=null?` [${fmt(r.lo)}–${fmt(r.hi)}]`:''),r.b!=null?fmt(r.b):'not available']));
-    el.innerHTML=`<div class="lg"><span><i class="dot" style="background:${cfg.colors[0]}"></i>${esc(cfg.names[0])}</span><span><i class="dot" style="background:transparent;box-shadow:inset 0 0 0 2px ${cfg.colors[1]}"></i>${esc(cfg.names[1])}</span></div><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Dumbbell chart')}" style="margin-top:8px">${g}${m}</svg>${tbl}`;
+    el.innerHTML=`<div class="lg"><span><i class="dot" style="background:${cfg.colors[0]}"></i>${esc(cfg.names[0])}</span><span><i class="dot" style="background:transparent;box-shadow:inset 0 0 0 2px ${cfg.colors[1]}"></i>${esc(cfg.names[1])}</span></div>${axisHTML('category',cfg.valLabel||'value')}<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Dumbbell chart')}" style="margin-top:8px">${g}${m}</svg>${tbl}`;
   }
 
   /* ----- sparkline thumbnail ----- */
@@ -1495,7 +1495,7 @@ const Charts=(()=>{
     const defs=`<defs><pattern id="rechatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-opacity=".28" stroke-width="1.1"/></pattern></defs>`;
     const tbl=tableHTML(['Link','Series','Kind','Readings shown','First','Last'],lanes.map(o=>[o.r.name,o.l.full||o.l.name,o.l.kind==='d'?'direct':'nearby',o.l.xs.length,fmtDate(o.l.xs[0]),fmtDate(o.l.xs[o.l.xs.length-1])]));
     const sw=(c,w,h,r)=>`<i class="box" style="background:${c};width:${w}px;height:${h}px;border-radius:${r}px"></i>`;
-    el.innerHTML=`<div class="lg"><span>${sw('var(--s1)',3,11,0)}${esc(cfg.names[0])}</span><span>${sw('var(--ctx)',3,11,0)}${esc(cfg.names[1])}</span><span>${sw('var(--s1)',16,3.5,2)}${sw('var(--ctx)',16,3.5,2)}${esc(cfg.names[2])}</span><span><i class="box hat" style="width:22px;height:9px;border-radius:0"></i>${esc(cfg.names[3])}</span></div><div style="position:relative;margin-top:10px"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'')}">${defs}${ax}${g}<rect class="lanehl" x="${P.l}" width="${W-P.l-(narrow?P.r:8)}" height="${lh}" y="0" fill="var(--surface-2)" visibility="hidden"/>${m}${hit}</svg><div class="tip"></div></div>${tbl}`;
+    el.innerHTML=`<div class="lg"><span>${sw('var(--s1)',3,11,0)}${esc(cfg.names[0])}</span><span>${sw('var(--ctx)',3,11,0)}${esc(cfg.names[1])}</span><span>${sw('var(--s1)',16,3.5,2)}${sw('var(--ctx)',16,3.5,2)}${esc(cfg.names[2])}</span><span><i class="box hat" style="width:22px;height:9px;border-radius:0"></i>${esc(cfg.names[3])}</span></div>${axisHTML('date of reading','step and source series')}<div style="position:relative;margin-top:10px"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'')}">${defs}${ax}${g}<rect class="lanehl" x="${P.l}" width="${W-P.l-(narrow?P.r:8)}" height="${lh}" y="0" fill="var(--surface-2)" visibility="hidden"/>${m}${hit}</svg><div class="tip"></div></div>${tbl}`;
     const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),hl=el.querySelector('.lanehl');
     el.querySelectorAll('.lane').forEach(n=>{const o=lanes[+n.dataset.i];n.style.cursor='pointer';
       n.addEventListener('pointermove',e=>{const b=svg.getBoundingClientRect();hl.setAttribute('y',o.y);hl.setAttribute('visibility','visible');tip.innerHTML='';
@@ -4569,7 +4569,7 @@ function render(id){
   if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
   else if(base==='details')viewEvidenceDetails(v,ind);
   else if(base==='library')viewLibrary(v,ind);
-  else if(base==='review')viewReview(v);
+  else if(base==='review')viewSourceMethod(v);
   else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
@@ -4579,7 +4579,7 @@ function render(id){
   window.scrollTo(0,0);
   if(source){const t=document.getElementById('source-'+source.id);if(t)openAt5(t)}
   /* #gaps/<step> and #why/<section> open the page at that part */
-  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-',review:'review-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
+  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
 }
 document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
@@ -4884,10 +4884,14 @@ function indicatorCards(el,linkId,opts={}){
   const draw=i=>{const d=inds[i],t=SI[d.id]||{},fl=(t.flags||[]);
     const cav=(FLAGCAV5.find(([f,c])=>fl.includes(f)&&!(c==='company'&&d.tag==='company'))||[])[1];
     const ic=indCopy5(d);
+    const srcIntro=d.src.length>1?'Sources combined':'Source';
+    const srcWhy=d.src.length>1?'This dashboard combines readings or context from multiple sources listed here. Compare levels only when the definitions match; point notes and the data table show source-specific caveats.':'This dashboard uses the source listed here. Check the original before citing the plotted value.';
     panel.setAttribute('aria-labelledby',cards[i].id);
     panel.innerHTML=`<div class="ic5-ph"><h3>${esc(d.title)}</h3><div class="ic5-chips">${t.toward&&t.trend!=='One-off'?`<span class="ic5-dir">${TW[t.toward]}</span>`:''}<span class="chip">${esc(TAGS[d.tag])}</span>${cav?caveatChip(cav):''}</div></div>
-      ${d.sub?`<p class="ic5-sub">${esc(d.sub)}</p>`:''}<div class="ic5-body"></div>
-      <details class="ic5-more"><summary>${esc(COPY.linkUI.readingIt)} and sources</summary><p class="ic5-read">${esc(d.read)}</p>
+      ${d.sub?`<p class="ic5-sub">${esc(d.sub)}</p>`:''}
+      <div class="ic5-sourcebar"><b>${esc(srcIntro)}</b><span>${esc(srcWhy)}</span><p>${d.src.map(s=>`<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>`).join(' · ')}</p></div>
+      <div class="ic5-body"></div>
+      <details class="ic5-more"><summary>${esc(COPY.linkUI.readingIt)}</summary><p class="ic5-read">${esc(d.read)}</p>
       <p class="ic5-src">${d.src.map(s=>`<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>`).join(' · ')}</p></details>`;
     d.render($('.ic5-body',panel))};
   const select=(i,toggle,user)=>{if(toggle&&cols()===1&&i===cur){cur=-1;cards.forEach(b=>b.classList.remove('on'));roles();place();return}
@@ -5030,7 +5034,7 @@ function futuresCard5(el,o){
 const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draft5" aria-describedby="drtip">${esc(COPY.draftChip.label)}</button><span class="cav5tip" role="tooltip" id="drtip">${esc(COPY.draftChip.tooltip)} <a href="#method">Method</a></span></span>`;
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
 const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
-const verify5=()=>`<div class="verify5"><b>Awaiting human review</b><span>Priority claims checked against primary sources with AI assistance. This is not independent verification.</span><a class="go" href="#review">Review checklist →</a></div>`;
+const verify5=()=>`<div class="verify5"><b>Awaiting human review</b><span>Priority claims checked against primary sources with AI assistance. This is not independent verification.</span></div>`;
 /* the confidence block: the two ratings, each with its one-line reason */
 const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.linkUI.brief,why=id==='influence'?END.headline:linkById(id).levelWhy;
   return `<section class="conf5" aria-label="${esc(B.confidence)}">${lab5([B.confidence])}<dl class="conf5-g">
@@ -5085,7 +5089,7 @@ function viewIndex(v){
    ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
-   <section class="sec5"><h2 class="h2-5 sm">A smaller set to verify</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. Additional sources and earlier chart extractions are held back from the summaries until reviewed.</p><p class="review-links"><a class="go" href="#review">18-source review checklist →</a><a class="go" href="#library">Sources awaiting review →</a><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
+   <section class="sec5"><h2 class="h2-5 sm">A smaller set to verify</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. Additional sources and earlier chart extractions are held back from the summaries until reviewed.</p><p class="review-links"><a class="go" href="#library">Sources awaiting review →</a><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
   evidenceRows($('#erows',v));
 }
 
@@ -5138,7 +5142,7 @@ function viewGaps(v){
     return k==='later'?`<details class="more5 gap5-g" id="gg-${k}"><summary>${esc(PR[k].t)} · ${xs.length} measures, further from the outcome</summary>${body}</details>`:`<div class="accg5 gap5-g" id="gg-${k}">${body}</div>`};
   v.innerHTML=`<div class="view5 wrap">${eye5([esc(G.eyebrow)])}
    <h1 class="h1-5">${esc(G.h1)}</h1><p class="lead5">${esc(G.sentence)}</p>
-   <div class="verify5"><b>Proposed research agenda</b><span>These are research suggestions, not established indicators. Supporting examples and feasibility need a separate review.</span><a class="go" href="#review">Priority source checklist →</a></div>
+   <div class="verify5"><b>Proposed research agenda</b><span>These are research suggestions, not established indicators. Supporting examples and feasibility need a separate review.</span></div>
    <section class="sec5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.list.title)}</h2><p class="sub5">${esc(G.list.sub)} ${esc(COPY.ui.instructions.gaps)}</p></div><button type="button" class="btn ghost" id="expAll">${esc(G.list.expandAll)}</button></div>
     <div class="acc5" id="gacc">${['now','method','later'].map(group).join('')}</div></section>
    <section class="sec5"><details class="det5" id="gg-matrix"><summary>${esc(G.ranking.title)}</summary><p class="sub5">${esc(G.ranking.sub)}</p>
@@ -5269,9 +5273,9 @@ function viewTopic(v,id){
     ${verify5()}
     <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Top indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
       <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
-    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#review/${id}">Check chart values →</a></div><p class="sub5">Charts linked to the top indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
+    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#details/${id}">Source details →</a></div><p class="sub5">Charts linked to the top indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a><a class="go" href="#library/${id}">More sources: awaiting review →</a></p></section>
-    ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['review','Source review','Next'])}</div>`;
+    ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['evidence','All steps','Next'])}</div>`;
   if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
   crumbScroll5(v);
 }
@@ -5282,7 +5286,7 @@ function viewEvidenceDetails(v,id){
   v.innerHTML=`<div class="view5 wrap priority6 detail6">${crumbs5(id)}
     ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
     ${verify5()}
-    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#review/${id}">Review checklist →</a><a class="go" href="#library/${id}">More sources awaiting review →</a></p>
+    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#library/${id}">More sources awaiting review →</a></p>
     <section class="sec5"><h2 class="h2-5 sm">Priority sources</h2><div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What this pair still misses</h2><p class="lead5 sm">${esc(p.gap)}</p></section></div>`;
   crumbScroll5(v);
@@ -5292,7 +5296,7 @@ function viewLibrary(v,topic){
   const ids=ORDER.includes(topic)?[topic]:ORDER;
   v.innerHTML=`<div class="view5 wrap library6">${eye5(['Source library'])}<h1 class="h1-5">Awaiting review</h1><p class="lead5">Additional sources, not additional conclusions.</p>
     <div class="verify5"><b>To be verified</b><span>These earlier source collections have not passed the current claim-level review. Their charts and extracted figures are held back from the main pages. Inclusion is not an endorsement.</span></div>
-    <p class="review-links"><a class="go" href="#evidence">Priority evidence →</a><a class="go" href="#review">Review checklist →</a></p>
+    <p class="review-links"><a class="go" href="#evidence">Priority evidence →</a></p>
     ${ids.map(id=>{const inds=LINKS.flatMap(l=>l.inds.filter(d=>id==='influence'?d.recRow==='influence':l.id===id&&!d.recRow));return `<section class="sec5"><h2 class="h2-5 sm"><a href="#${id}">${esc(nameOf(id))}</a></h2><p class="note5">Check the original publication, study design and relevance before promoting a source.</p>${inds.map(d=>`<details class="det5"><summary>${esc(indLabel5(d))}</summary><ul class="library6-sources">${d.src.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a></li>`).join('')}</ul></details>`).join('')}</section>`}).join('')}
     <section class="sec5"><h2 class="h2-5 sm">Proposed measures are not findings</h2><p class="sub5">The landscape scan also proposes tests of skill recovery, appropriate reliance, calibration and decision power. These belong in the research agenda until their definitions and validation are checked.</p><p><a class="go" href="#gaps">See the research agenda →</a></p></section></div>`;
 }
@@ -5305,34 +5309,13 @@ function viewSourceMethod(v){
       <li><b>Traceable to the original.</b><span>Link to the paper, official dataset or original report. Prefer transparent methods, independent research and repeated observations.</span></li>
       <li><b>Strong enough for the claim.</b><span>Use experiments for narrow causal questions and official statistics for trends. A company disclosure can be useful without being independent; a preprint can be relevant without being established.</span></li>
       <li><b>Include counterevidence.</b><span>Keep null results and benefits alongside worrying findings. Two sources per page limit the first review; they are not an exhaustive ranking of the literature.</span></li></ul></section>
-    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Older charts and additional sources are parked separately; forecasts are provisional.</p><p class="review-links"><a class="go" href="#review">1-2 hour review checklist →</a><a class="go" href="#library">Awaiting review →</a></p></section>
+    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Older charts and additional sources are parked separately; forecasts are provisional.</p><p class="review-links"><a class="go" href="#library">Awaiting review →</a></p></section>
     <section class="sec5" id="m-scales"><h2 class="h2-5 sm">How to read the pathways</h2><p class="sub5">The connections come from the gradual disempowerment argument. They show proposed pathways, not demonstrated causes. The skills branch adds questions about learning and judgement.</p></section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">Colour describes how well each step is measured as a whole. It does not score the level of risk or whether findings support the theory. A rigorous study of one task can sit within a step that still has major gaps.</p>
       <ul class="scale5 coverage-rubric5 s1">${[['major','Closest sources leave a central outcome or repeated measure missing. Existing studies may still be useful and rigorous.'],['partial','Measures cover narrow settings, tasks or indirect signals. Coverage of the broader step is incomplete.'],['stronger','Repeated, direct measures of the named quantity exist. Population coverage and attribution to AI can still be limited.']].map(([b,d])=>`<li>${coverageGlyph5(b,20)}<div><b>${esc(COPY.coverage.bands[b].label)}</b><span>${esc(d)}</span></div></li>`).join('')}</ul>
       <p class="note5">Provisional editorial ratings based on the selected evidence and its limits. This is not a systematic count of research or an independently validated score. Two priority sources alone cannot establish that a whole field is understudied.</p>
       <dl class="coverage-reasons5">${ORDER.map(id=>`<div><dt><a href="#${id}">${esc(nameOf(id))}</a>${coverageBadge5(id)}</dt><dd>${esc(coverageOf5(id).why)}</dd></div>`).join('')}</dl></section>
     <section class="sec5" id="m-more"><h2 class="h2-5 sm">Limits and sources</h2><p class="sub5">Coverage is uneven across countries and topics. No single indicator establishes gradual disempowerment. A dated finding is not necessarily the latest available value, and later versions may revise it.</p><details class="det5"><summary>Definitions at each step</summary><dl class="gloss">${ORDER.map(id=>`<div><dt>${esc(nameOf(id))}</dt><dd>${esc(DEFS[id][0])}<br><b>Still needed:</b> ${esc(SELECTED_EVIDENCE[id].gap)}</dd></div>`).join('')}</dl></details><details class="det5"><summary>All 18 priority sources</summary><div class="srcs">${ORDER.map(id=>`<div class="sg"><h4>${esc(nameOf(id))}</h4><ol>${SELECTED_EVIDENCE[id].sources.map(s=>`<li>${sourceLink6(s)}<br>${esc(s.title)}</li>`).join('')}</ol></div>`).join('')}</div></details><p class="review-links"><a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Original framework ↗</a><a class="go" href="pdf-source-crosswalk.html" target="_blank" rel="noopener">PDF reference crosswalk ↗</a></p></section></div>`;
-}
-
-const REVIEW_KEY6='gd-source-review-2026-10-v1';
-const reviewItems6=()=>ORDER.flatMap(topic=>SELECTED_EVIDENCE[topic].sources.map(source=>({topic,source})));
-function readReview6(){try{const x=JSON.parse(localStorage.getItem(REVIEW_KEY6)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch(e){return {}}}
-function viewReview(v){
-  const state=readReview6();
-  v.innerHTML=`<div class="view5 wrap review6">${eye5(['Source review'])}<h1 class="h1-5">An evidence check in 1-2 hours</h1>
-    <p class="lead5">18 sources, two per topic. This is a publication check, not a full literature review.</p>
-    <div class="review6-plan"><p><b>10 minutes</b> for the map and page headlines. <b>90 minutes</b> for sources, about five minutes each. <b>20 minutes</b> for corrections and decisions.</p><p>For every source: match the claim to the original, check the population and comparison, and keep the main limitation. If a check needs more time, park it.</p></div>
-    <div class="review6-tools"><div><label for="review-progress"><b id="review-count"></b></label><progress id="review-progress" max="18" value="0"></progress><span class="note5" id="review-parked"></span></div><button class="btn ghost" type="button" id="review-export">Export review notes</button></div>
-    <p class="note5" id="review-storage" role="status">Progress stays in this browser. Checking an item does not mark the public website as verified; export your decisions for the next update.</p>
-    <nav class="toc5" aria-label="Review by topic">${ORDER.map(id=>`<a href="#review/${id}">${esc(nameOf(id))}</a>`).join('')}</nav>
-    ${ORDER.map(id=>`<section class="sec5" id="review-${id}"><div class="h2row5"><h2 class="h2-5 sm">${esc(nameOf(id))}</h2><a class="go" href="#${id}" target="_blank" rel="noopener">Open page ↗</a></div>${SELECTED_EVIDENCE[id].sources.map(s=>{const x=state[s.id]||{};return `<article class="review6-item"><div class="review6-title"><h3>${esc(s.label)}</h3><label class="review6-status">Decision <select data-review="${esc(s.id)}" aria-label="Review status: ${esc(s.label)}">${[['pending','Not checked'],['checked','Checked'],['parked','Park for later']].map(([key,label])=>`<option value="${key}"${(x.status||'pending')===key?' selected':''}>${label}</option>`).join('')}</select></label></div><p>${sourceLink6(s)}</p><p class="note5">Look at: ${esc(s.locate)}</p><ul>${s.checks.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><details class="source6-detail"><summary>Notes or correction</summary><label class="sr-only" for="note-${s.id}">Notes for ${esc(s.label)}</label><textarea id="note-${s.id}" data-note="${esc(s.id)}" rows="3">${esc(x.note||'')}</textarea></details></article>`}).join('')}</section>`).join('')}
-    <section class="sec5"><h2 class="h2-5 sm">Stop after two hours</h2><p class="sub5">Keep unresolved items marked as awaiting review, or request their removal from the priority pages. The longer source library, forecast extractions and proposed measures are outside this first pass.</p><p><a class="go" href="#library">Open the parked source library →</a></p></section></div>`;
-  const progress=()=>{const xs=reviewItems6().map(({source:s})=>state[s.id]||{}),n=xs.filter(x=>x.status==='checked').length,parked=xs.filter(x=>x.status==='parked').length;$('#review-count',v).textContent=`${n} of 18 checked`;$('#review-progress',v).value=n;$('#review-parked',v).textContent=`${parked} parked; ${18-n-parked} not checked`};
-  const save=()=>{try{localStorage.setItem(REVIEW_KEY6,JSON.stringify(state))}catch(e){$('#review-storage',v).textContent='Browser storage is unavailable. Export your notes before leaving this page.'}progress()};
-  $$('[data-review]',v).forEach(el=>el.addEventListener('change',()=>{const id=el.dataset.review;state[id]={...state[id],status:el.value};save()}));
-  $$('[data-note]',v).forEach(el=>el.addEventListener('input',()=>{const id=el.dataset.note;state[id]={...state[id],note:el.value};save()}));
-  $('#review-export',v).addEventListener('click',()=>{const text=['# Dashboard source review','', 'Local review decisions; not independent verification or a published status change.','',...reviewItems6().flatMap(({topic,source:s})=>{const x=state[s.id]||{};return [`## ${nameOf(topic)}: ${s.label}`,`Status: ${x.status||'pending'}`,`Source: ${s.url}`,`Checks: ${s.checks.join(' ')}`,`Notes: ${x.note||''}`,'']})].join('\n');const url=URL.createObjectURL(new Blob([text],{type:'text/markdown'})),a=document.createElement('a');a.href=url;a.download='dashboard-source-review.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
-  progress();
 }
 render((location.hash||'#map').slice(1));initCaveats5();
 </script>

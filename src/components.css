@@ -161,6 +161,10 @@
 .ic5-read{font-family:var(--f-text);font-size:15.5px;line-height:1.5;color:var(--ink-2);max-width:74ch;margin-top:14px;padding-top:12px;border-top:1px solid var(--grid)}
 .ic5-src{font-size:12.5px;color:var(--ink-3);margin-top:8px;line-height:1.45}
 .ic5-src a{color:inherit;text-decoration-color:var(--rule)}
+.ic5-sourcebar{margin:12px 0 14px;padding:10px 0;border-block:1px solid var(--grid);font:400 12.5px/1.45 var(--f-display);color:var(--ink-2)}
+.ic5-sourcebar b{display:block;color:var(--ink);font-weight:700;margin-bottom:2px}
+.ic5-sourcebar p{margin:7px 0 0;overflow-wrap:anywhere}
+.ic5-sourcebar a{color:var(--s1);font-weight:600;text-underline-offset:3px}
 @media (max-width:900px){.ic5-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){
   .ic5-grid{grid-template-columns:1fr;gap:8px}
@@ -201,6 +205,8 @@
 .gm5-pri{font-size:13.5px;font-weight:650;fill:var(--ink)}
 .gm5-ax{font-size:12.5px;fill:var(--ink-2)}
 .gm5-plot .gm5-at{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;fill:var(--ink-3)}
+.axis-note{display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0 6px;font:500 12px/1.4 var(--f-display);color:var(--ink-2)}
+.axis-note b{color:var(--ink);font-weight:700}
 .gm5-lb{font-size:13.5px;font-weight:650;fill:var(--ink)}
 .gm5-lb.sm{font-size:10.5px;font-weight:600}
 .gm5-flag{font-size:11.5px;font-weight:650;fill:var(--hs)}

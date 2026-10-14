@@ -29,6 +29,9 @@ const Charts=(()=>{
     if(items.length<2) return '';
     return `<div class="lg">${items.map(s=>`<span><i class="${s.kind||''}${s.dash?' dash':''}" style="${s.kind==='box'||s.kind==='dot'?'background':'border-color'}:${s.color}"></i>${esc(s.name)}</span>`).join('')}</div>`;
   }
+  function axisHTML(x,y){
+    return `<div class="axis-note"><span><b>X-axis</b> ${esc(x||'date or year')}</span><span><b>Y-axis</b> ${esc(y||'value')}</span></div>`;
+  }
 
   /* ----- line chart ----- */
   function line(el,cfg){if(CAP){cfg.series.forEach(s=>{if(s.rec!==false)CAP.push(...s.pts.map(p=>p[0]))});return}mount(el,()=>drawLine(el,cfg))}
@@ -83,7 +86,7 @@ const Charts=(()=>{
     const xs=[...new Set(cfg.series.filter(s=>s.tip!==false).flatMap(s=>s.pts.map(p=>+p[0].toFixed(4))))].sort((a,b)=>a-b);
     const named=cfg.series.filter(s=>s.name&&s.tip!==false);
     const tbl=tableHTML([cfg.x.label||'Date',...named.map(s=>s.name)],xs.map(x=>[xtf(x),...named.map(s=>{const p=s.pts.find(p=>Math.abs(p[0]-x)<1e-4);return p?ytf(p[1])+(p[2]?' ('+p[2]+')':''):null})]));
-    el.innerHTML=`${lg}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(cfg.aria||'Line chart')}">${g}${m}<line class="xh" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink)" stroke-width="1" style="display:none"/><rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent" class="hit"/></svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    el.innerHTML=`${lg}${axisHTML(cfg.x.label||'date or year',cfg.y.label||cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(cfg.aria||'Line chart')}">${g}${m}<line class="xh" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink)" stroke-width="1" style="display:none"/><rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent" class="hit"/></svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
     const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),xh=el.querySelector('.xh');
     let idx=-1;
     const show=i=>{
@@ -122,7 +125,7 @@ const Charts=(()=>{
     const H=y+P.b;let g='';
     (cfg.ticks||[]).forEach(v=>{g+=`<line x1="${sx(v)}" x2="${sx(v)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><text x="${sx(v)}" y="${H-P.b+15}" text-anchor="middle">${esc(fmt(v))}</text>`});
     const tbl=tableHTML([cfg.catLabel||'',cfg.valLabel||'Value',...(data.some(r=>r.note)?['Note']:[])],data.map(r=>[r.label,r.vlabel||fmt(r.value),...(data.some(q=>q.note)?[r.note||'']:[])]));
-    el.innerHTML=`<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    el.innerHTML=`${axisHTML(cfg.catLabel||'category',cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
     const tip=el.querySelector('.tip'),svg=el.querySelector('svg');
     el.querySelectorAll('.row').forEach(n=>{const r=rows[+n.dataset.i];n.addEventListener('pointermove',e=>{const b=svg.getBoundingClientRect();tip.innerHTML='';const d=document.createElement('div');d.className='r';const bb=document.createElement('b');bb.textContent=r.vlabel||fmt(r.value);const sp=document.createElement('span');sp.textContent=r.label;d.append(bb,sp);tip.appendChild(d);if(r.note){const nt=document.createElement('div');nt.className='nt';nt.textContent=r.note;tip.appendChild(nt)}tipAt(el,tip,e.clientX-b.left,e.clientY-b.top,W)});n.addEventListener('pointerleave',()=>tip.style.display='none')});
   }
@@ -147,7 +150,7 @@ const Charts=(()=>{
     const xs=[...new Set(sets.flatMap(s=>s.pts.map(p=>+p[0].toFixed(4))))].sort((a,b)=>a-b);
     const lg=legendHTML(sets.filter(s=>s.name).map(s=>({name:s.name,color:s.color,kind:'box'})));
     const tbl=tableHTML([cfg.x.label||'Date',...sets.map(s=>s.name||cfg.valLabel||'Value')],xs.map(x=>[xtf(x),...sets.map(s=>{const p=s.pts.find(p=>Math.abs(p[0]-x)<1e-4);return p&&p[1]!=null?ytf(p[1])+(p[2]?' ('+p[2]+')':''):(p?'not available':null)})]));
-    el.innerHTML=`${sets.length>1?lg:''}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Column chart')}">${g}${m}<rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent"/></svg><div class="tip"></div></div>${tbl}`;
+    el.innerHTML=`${sets.length>1?lg:''}${axisHTML(cfg.x.label||'date or year',cfg.y.label||cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Column chart')}">${g}${m}<rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent"/></svg><div class="tip"></div></div>${tbl}`;
     const svg=el.querySelector('svg'),tip=el.querySelector('.tip');
     const move=e=>{const r=svg.getBoundingClientRect(),mx=e.clientX-r.left;let best=null,bd=1e9;xs.forEach(x=>{const d=Math.abs(sx(x)-mx);if(d<bd){bd=d;best=x}});if(best==null){tip.style.display='none';return}
       tip.innerHTML='';const d=document.createElement('div');d.className='d';d.textContent=xtf(best);tip.appendChild(d);let top=H;
@@ -168,7 +171,7 @@ const Charts=(()=>{
       y+=21+bh+12});
     const H=y+P.b;
     const tbl=tableHTML(['Group',...cfg.rows[0].parts.map(p=>p.name)],cfg.rows.map(r=>[r.label,...r.parts.map(p=>p.label||p.v+'%')]));
-    el.innerHTML=legendHTML(cfg.rows[0].parts.map(p=>({name:p.name,color:p.color,kind:'box'})))+`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Stacked bars')}" style="margin-top:8px">${m}</svg>${tbl}`;
+    el.innerHTML=legendHTML(cfg.rows[0].parts.map(p=>({name:p.name,color:p.color,kind:'box'})))+axisHTML('group','share of total')+`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Stacked bars')}" style="margin-top:8px">${m}</svg>${tbl}`;
   }
 
   /* ----- dumbbell (before → after on one scale) ----- */
@@ -184,7 +187,7 @@ const Charts=(()=>{
       m+=`<circle cx="${sx(r.a)}" cy="${cy}" r="6" fill="${cfg.colors[0]}" stroke="var(--surface)" stroke-width="2"/>`;
       m+=`<text x="${W-70}" y="${cy+4}" text-anchor="end" class="end">${esc(fmt(r.a))}</text><text x="${W-2}" y="${cy+4}" text-anchor="end" class="end" style="font-weight:500;fill:var(--ink-2)">${r.b!=null?esc(fmt(r.b)):'n/a'}</text>`});
     const tbl=tableHTML(['',cfg.names[0],cfg.names[1]],cfg.rows.map(r=>[r.label,fmt(r.a)+(r.lo!=null?` [${fmt(r.lo)}–${fmt(r.hi)}]`:''),r.b!=null?fmt(r.b):'not available']));
-    el.innerHTML=`<div class="lg"><span><i class="dot" style="background:${cfg.colors[0]}"></i>${esc(cfg.names[0])}</span><span><i class="dot" style="background:transparent;box-shadow:inset 0 0 0 2px ${cfg.colors[1]}"></i>${esc(cfg.names[1])}</span></div><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Dumbbell chart')}" style="margin-top:8px">${g}${m}</svg>${tbl}`;
+    el.innerHTML=`<div class="lg"><span><i class="dot" style="background:${cfg.colors[0]}"></i>${esc(cfg.names[0])}</span><span><i class="dot" style="background:transparent;box-shadow:inset 0 0 0 2px ${cfg.colors[1]}"></i>${esc(cfg.names[1])}</span></div>${axisHTML('category',cfg.valLabel||'value')}<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Dumbbell chart')}" style="margin-top:8px">${g}${m}</svg>${tbl}`;
   }
 
   /* ----- sparkline thumbnail ----- */
@@ -242,7 +245,7 @@ const Charts=(()=>{
     const defs=`<defs><pattern id="rechatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-opacity=".28" stroke-width="1.1"/></pattern></defs>`;
     const tbl=tableHTML(['Link','Series','Kind','Readings shown','First','Last'],lanes.map(o=>[o.r.name,o.l.full||o.l.name,o.l.kind==='d'?'direct':'nearby',o.l.xs.length,fmtDate(o.l.xs[0]),fmtDate(o.l.xs[o.l.xs.length-1])]));
     const sw=(c,w,h,r)=>`<i class="box" style="background:${c};width:${w}px;height:${h}px;border-radius:${r}px"></i>`;
-    el.innerHTML=`<div class="lg"><span>${sw('var(--s1)',3,11,0)}${esc(cfg.names[0])}</span><span>${sw('var(--ctx)',3,11,0)}${esc(cfg.names[1])}</span><span>${sw('var(--s1)',16,3.5,2)}${sw('var(--ctx)',16,3.5,2)}${esc(cfg.names[2])}</span><span><i class="box hat" style="width:22px;height:9px;border-radius:0"></i>${esc(cfg.names[3])}</span></div><div style="position:relative;margin-top:10px"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'')}">${defs}${ax}${g}<rect class="lanehl" x="${P.l}" width="${W-P.l-(narrow?P.r:8)}" height="${lh}" y="0" fill="var(--surface-2)" visibility="hidden"/>${m}${hit}</svg><div class="tip"></div></div>${tbl}`;
+    el.innerHTML=`<div class="lg"><span>${sw('var(--s1)',3,11,0)}${esc(cfg.names[0])}</span><span>${sw('var(--ctx)',3,11,0)}${esc(cfg.names[1])}</span><span>${sw('var(--s1)',16,3.5,2)}${sw('var(--ctx)',16,3.5,2)}${esc(cfg.names[2])}</span><span><i class="box hat" style="width:22px;height:9px;border-radius:0"></i>${esc(cfg.names[3])}</span></div>${axisHTML('date of reading','step and source series')}<div style="position:relative;margin-top:10px"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'')}">${defs}${ax}${g}<rect class="lanehl" x="${P.l}" width="${W-P.l-(narrow?P.r:8)}" height="${lh}" y="0" fill="var(--surface-2)" visibility="hidden"/>${m}${hit}</svg><div class="tip"></div></div>${tbl}`;
     const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),hl=el.querySelector('.lanehl');
     el.querySelectorAll('.lane').forEach(n=>{const o=lanes[+n.dataset.i];n.style.cursor='pointer';
       n.addEventListener('pointermove',e=>{const b=svg.getBoundingClientRect();hl.setAttribute('y',o.y);hl.setAttribute('visibility','visible');tip.innerHTML='';
