@@ -5,8 +5,12 @@
 set -e
 cd "$(dirname "$0")"
 
-css() { cat src/style.css src/components.css src/pages.css; }
-js()  { cat src/charts.js src/data1.js src/data2.js src/data3.js src/signals.js src/copy.js src/app.js src/components.js src/views.js
+css() { cat src/style.css src/components.css src/pages.css src/review.css; }
+js()  { cat src/charts.js src/data1.js src/data2.js src/data3.js src/signals.js src/copy.js
+        printf '\nconst SELECTED_EVIDENCE = '
+        cat src/priority.json
+        printf ';\n'
+        cat src/app.js src/components.js src/views.js src/review.js
         echo "render((location.hash||'#map').slice(1));initCaveats5();"; }
 
 if [ "$1" = "artifact" ]; then

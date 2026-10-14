@@ -1,0 +1,650 @@
+{
+  "capability": {
+    "h1": "AI can complete more work, but reliability still matters",
+    "summary": "Benchmarks show improving performance on defined tasks. They do not establish how many whole jobs can be reliably automated.",
+    "selection": "Use a benchmark of professional work products alongside an independent technical-task benchmark that makes the success threshold explicit.",
+    "gap": "Repeated, independent tests of reliable performance across whole workflows, including work beyond software.",
+    "signal": 3,
+    "sources": [
+      {
+        "id": "rli",
+        "title": "Remote Labor Index: projects meeting the reference standard",
+        "url": "https://labs.scale.com/leaderboard/rli",
+        "locate": "Performance Comparison, first row and legend; Core Metrics; original paper sections 3.2-3.4.",
+        "label": "Professional project completion",
+        "citation": "CAIS & Scale AI (2025-2026)",
+        "type": "Industry-linked benchmark",
+        "date": "Leaderboard read 13 October 2026; row evaluation date unclear",
+        "finding": "The leading listed agent scores 21.25% on the Remote Labor Index, which compares AI outputs with reference deliverables from freelance projects.",
+        "why": "An interpretable completion measure on professional work, with inspectable project examples.",
+        "limit": "Selected benchmark projects, not actual jobs or client acceptance. Scale AI is a commercial research partner. Do not infer a dated trend from model release dates.",
+        "metrics": [
+          [
+            "21.25%",
+            "Leading displayed automation score"
+          ],
+          [
+            "Benchmark",
+            "Not a share of jobs replaced"
+          ]
+        ],
+        "checks": [
+          "Confirm 21.25% is the automation score, not Elo, and record the retrieval date.",
+          "Check grading, project denominator and evaluation setup before approving a historical curve."
+        ],
+        "legacy": [
+          "rli"
+        ]
+      },
+      {
+        "id": "metr",
+        "title": "METR task-completion horizons at two success rates",
+        "url": "https://metr.org/time-horizons/",
+        "locate": "Definition, Methodological Details and Updates; linked YAML results.claude_opus_4_6_inspect.metrics.p50_horizon_length and p80_horizon_length.",
+        "label": "Reliability on longer tasks",
+        "citation": "METR, Task-Completion Time Horizons",
+        "type": "Independent nonprofit benchmark",
+        "date": "Frozen TH1.1 results; read 13 October 2026",
+        "finding": "For the tested Opus 4.6 agent, the estimated task horizon is about 12 hours at 50% success, but about 70 minutes at 80% success.",
+        "why": "Makes reliability explicit in human-equivalent task time, with downloadable results and uncertainty estimates.",
+        "limit": "Technical tasks only, not agent runtime. Wide 95% intervals: 5.3-60.6 hours at 50%; 27-170 minutes at 80%. The tracker is no longer actively updated.",
+        "metrics": [
+          [
+            "~12 hours",
+            "Human-equivalent task time at 50% success"
+          ],
+          [
+            "~70 minutes",
+            "At 80% success; same tested agent"
+          ]
+        ],
+        "checks": [
+          "Check the definition and stopped-update notice: task difficulty is not unattended runtime.",
+          "In the linked YAML, compare the Opus 4.6 p50/p80 horizons, units and confidence intervals."
+        ],
+        "legacy": [
+          "metr"
+        ],
+        "paper": "https://metr.org/assets/benchmark_results_1_1.yaml"
+      }
+    ]
+  },
+  "adoption": {
+    "h1": "AI use is spreading, but use is not the same as dependence",
+    "summary": "Repeated surveys track AI use by employees and businesses. They tell us who uses AI, not how much work or decision-making has been handed over.",
+    "selection": "Pair a US employee survey with official EU business statistics. Keep their populations, definitions and denominators separate.",
+    "gap": "Track the share of work actually delegated, how outputs are checked, and whether people can still do the work without AI.",
+    "signal": 3,
+    "sources": [
+      {
+        "id": "gallup",
+        "title": "Gallup employee AI-use frequency",
+        "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+        "locate": "Use of AI data table, rows 5/1/26 and 8/1/26; Survey Methods directly above the table.",
+        "label": "Workplace AI use",
+        "citation": "Gallup, AI indicator (2026)",
+        "type": "Repeated US employee survey",
+        "date": "August 2026 table",
+        "finding": "53% of surveyed US employees reported using AI at work at least a few times a year; 16% used it daily.",
+        "why": "Repeated independent survey coverage, with frequency categories that separate occasional use from routine use.",
+        "limit": "Self-reported frequency, not hours automated or dependence. The source table is newer than parts of its surrounding prose.",
+        "metrics": [
+          [
+            "53%",
+            "At least a few times a year"
+          ],
+          [
+            "16%",
+            "Daily use"
+          ]
+        ],
+        "checks": [
+          "Read the August table row and verify the two frequency labels.",
+          "Confirm US employee eligibility; do not call this a share of all adults, work hours or automated tasks."
+        ],
+        "legacy": [
+          "gallup"
+        ]
+      },
+      {
+        "id": "euai",
+        "title": "Eurostat enterprise AI use",
+        "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2",
+        "locate": "Opening paragraph and Methodological notes in the dated news release; Data sources and Netherlands break note in Statistics Explained.",
+        "label": "AI use by EU businesses",
+        "citation": "Eurostat (2025)",
+        "type": "Official enterprise statistics",
+        "date": "2025 survey; release 11 December 2025",
+        "finding": "20.0% of covered EU enterprises used AI in 2025, up from 13.5% in 2024.",
+        "why": "Adds official, recurring measurement outside the US with a defined business population.",
+        "limit": "Businesses with 10 or more people employed in covered sectors; excludes microfirms. Broad AI, not just generative AI. A Netherlands series break needs care.",
+        "metrics": [
+          [
+            "13.5%",
+            "Covered enterprises, 2024"
+          ],
+          [
+            "20.0%",
+            "Covered enterprises, 2025"
+          ]
+        ],
+        "checks": [
+          "Verify both annual values and the 10-person cutoff in the release.",
+          "Check sectors, AI definition and the Netherlands break before interpreting the change."
+        ],
+        "legacy": [
+          "firms"
+        ]
+      }
+    ]
+  },
+  "handover": {
+    "h1": "Using AI is not the same as handing over control",
+    "summary": "Conversation logs show task requests; a regulator survey distinguishes partial automation from full autonomy. Neither gives a general measure of decisions handed over to AI.",
+    "selection": "Combine observed request patterns with explicit decision-autonomy categories. These are closer to delegation than counts of people trying an AI tool.",
+    "gap": "An independent measure across providers of which decisions AI makes, which people review, and which people can reverse.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "aei",
+        "title": "Anthropic Economic Index: directive task requests",
+        "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+        "locate": "Chapter 1, Augmentation is again dominant on Claude.ai; Chapter 3 footnote 2 for November sampling; September report Chapter 1 footnote 4 for classifier sensitivity.",
+        "label": "Requests to complete a task",
+        "citation": "Anthropic Economic Index (January 2026)",
+        "type": "Company logs and classifier",
+        "date": "Claude.ai sample, November 2025",
+        "finding": "Anthropic classified 32% of sampled Claude.ai conversations as directive requests, where the user asks AI to complete a task.",
+        "why": "Behavioural traces distinguish task requests from collaborative assistance.",
+        "limit": "Request style does not show whether the output is checked or used. One provider, changing classifiers and sampling. A dated snapshot, not the newest release.",
+        "metrics": [
+          [
+            "32%",
+            "Conversations classified as directive"
+          ],
+          [
+            "Not observed",
+            "What users did with the output"
+          ]
+        ],
+        "checks": [
+          "Check the directive definition and 32% figure; do not substitute the broader automation category.",
+          "Review classifier and later sampling changes before turning snapshots into a trend."
+        ],
+        "legacy": [
+          "aei"
+        ]
+      },
+      {
+        "id": "finance_autonomy",
+        "title": "Bank of England/FCA: autonomy of AI use cases",
+        "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+        "locate": "Section 1.2 Methodology; executive-summary Automated decision-making bullets; section 2.5 and Chart 7.",
+        "label": "Autonomy in financial services",
+        "citation": "Bank of England & FCA (2024)",
+        "type": "Regulator survey",
+        "date": "118 responding firms; November 2024 report",
+        "finding": "The report says 55% of reported AI use cases involved some automated decision-making; 2% were fully autonomous.",
+        "why": "Directly distinguishes partial automation from full autonomy, in a survey independent of AI providers.",
+        "limit": "Firm self-report in one sector, not decision volumes. The chart subtitle and narrative use different denominator wording; retain a provisional label until reconciled.",
+        "metrics": [
+          [
+            "55%",
+            "Some automated decision-making"
+          ],
+          [
+            "2%",
+            "Fully autonomous; overlapping categories"
+          ]
+        ],
+        "checks": [
+          "Read section 2.5 and methodology; confirm the 118 respondents and definitions.",
+          "Resolve Chart 7's firms/use-cases wording before citing. Do not add the overlapping percentages."
+        ],
+        "legacy": []
+      }
+    ]
+  },
+  "work": {
+    "h1": "Young-worker employment is a warning sign, not yet a settled AI effect",
+    "summary": "US payroll data show a gap in exposed occupations. Danish adoption-linked evidence finds no extra decline through 2024. The settings, dates and comparisons differ.",
+    "selection": "Pair a directly relevant US warning signal with an administrative-data study that measures workplace adoption and offers counterevidence.",
+    "gap": "Link firms' AI adoption to junior hiring and training, with comparisons that separate AI from other changes in the labour market.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "canaries",
+        "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+        "url": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+        "locate": "August 12, 2026 PDF: introduction, PDF page 3; sample, section 1.1; limitations, section 4 and August author note.",
+        "label": "Young workers in exposed occupations",
+        "citation": "Brynjolfsson, Chandar & Chen / Stanford (2026)",
+        "type": "Observational working paper",
+        "date": "August 2026 revision; data through June 2026",
+        "finding": "In the ADP payroll sample, employment of 22-25-year-olds in more exposed jobs was 19% below the level implied by keeping pace with less-exposed peers.",
+        "why": "A repeatable age-by-exposure comparison, with detailed discussion of alternative explanations.",
+        "limit": "Descriptive, not jobs proven lost to AI. Exposure is not adoption; sample selection, education and pre-trends affect interpretation.",
+        "metrics": [
+          [
+            "19%",
+            "Relative kept-pace shortfall"
+          ],
+          [
+            "Not causal",
+            "Does not identify jobs lost to AI"
+          ]
+        ],
+        "checks": [
+          "Read page 3: age group, June 2026 endpoint and top-two vs bottom-three exposure quintiles.",
+          "Distinguish the 19% shortfall from the level decline; read the authors' causal caveats."
+        ],
+        "legacy": [
+          "canaries"
+        ],
+        "paper": "https://digitaleconomy.stanford.edu/news/canariesaug26/"
+      },
+      {
+        "id": "dk-chatbot-effects",
+        "title": "Still Waters, Rapid Currents: Early Labor Market Transformation under Generative AI",
+        "url": "https://www.andershumlum.com/s/chatbots_260313.pdf",
+        "locate": "March 13, 2026 author PDF: sections 1.1-1.3; section 3.4, PDF page 31; Figure 8 caption, PDF page 47.",
+        "label": "Adoption-linked counterevidence",
+        "citation": "Humlum & Vestergaard (2026)",
+        "type": "Observational working paper",
+        "date": "March 2026 revision; Danish data through 2024",
+        "finding": "Workplaces encouraging chatbot use showed no extra decline in their share of workers aged 22-25 through 2024.",
+        "why": "Links adoption information to administrative outcomes, rather than treating occupational exposure as actual use.",
+        "limit": "Encouragement was not randomized. Different country and period from the US study; this does not rule out later displacement.",
+        "metrics": [
+          [
+            "No extra decline",
+            "Young-worker share in this comparison"
+          ],
+          [
+            "Through 2024",
+            "Not a test of later US effects"
+          ]
+        ],
+        "checks": [
+          "Read section 3.4 / Figure 8: ages, employment-share outcome, comparison and endpoint.",
+          "Check the linked survey/register design; do not call encouragement randomized."
+        ],
+        "legacy": []
+      }
+    ]
+  },
+  "share": {
+    "h1": "Workers' income share is measurable; AI's contribution is not",
+    "summary": "Official statistics track how income is divided between labour and other recipients. Long-run changes predate generative AI, and these series do not explain their causes.",
+    "selection": "Use established official US and global series, rather than stock prices as a substitute for workers' income share.",
+    "gap": "Measure changes in labour income alongside actual AI adoption, at firm and sector level, with comparable definitions over time.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "ls",
+        "title": "Labor share at its lowest level, 52.8 percent, in second quarter 2026",
+        "url": "https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm",
+        "locate": "BLS Economics Daily, September 15, 2026: opening paragraph and Chart Data table; FRED PRS85006173 unit label.",
+        "label": "US labour share",
+        "citation": "US Bureau of Labor Statistics (2026)",
+        "type": "Official quarterly statistics",
+        "date": "Q2 2026; September 2026 release",
+        "finding": "Labour compensation was 52.8% of US nonfarm-business output in Q2 2026, the lowest in this BLS series, which begins in 1947.",
+        "why": "An established direct measure of the income split, with a long baseline before generative AI.",
+        "limit": "One sector aggregate, not typical pay or AI's effect. The rest of output is not all profit. FRED also publishes an index, which is not a percentage share.",
+        "metrics": [
+          [
+            "52.8%",
+            "Nonfarm-business output paid as labour compensation"
+          ],
+          [
+            "Since 1947",
+            "Scope of the historical comparison"
+          ]
+        ],
+        "checks": [
+          "Confirm the 52.8% level, quarter, sector and series start in BLS Chart Data.",
+          "Check numerator/denominator and distinguish percent of output from the FRED index."
+        ],
+        "legacy": [
+          "ls"
+        ]
+      },
+      {
+        "id": "ilo-labour-share",
+        "title": "World Employment and Social Outlook: May 2025 Update",
+        "url": "https://www.ilo.org/sites/default/files/2025-05/WESOUpdate_May2025.pdf",
+        "locate": "World Employment and Social Outlook: May 2025 Update, printed pages 7-8 and footnote 13; separate March 19, 2026 ILOSTAT update, labor-share section.",
+        "label": "Global labour income share",
+        "citation": "International Labour Organization (2025)",
+        "type": "Official modelled estimates",
+        "date": "May 2025 report; 2014-2024 comparison",
+        "finding": "The ILO estimated labour's global GDP share at 53.0% in 2014 and 52.4% in 2024. A later update reports partial recovery.",
+        "why": "Adds international coverage and estimated self-employed labour income, counterbalancing a US-only story.",
+        "limit": "The 2024 value includes projections. Do not splice report vintages or directly compare this GDP-wide level with the BLS sector measure. No AI attribution.",
+        "metrics": [
+          [
+            "53.0%",
+            "Global GDP, 2014"
+          ],
+          [
+            "52.4%",
+            "2024 estimate, May 2025 vintage"
+          ]
+        ],
+        "checks": [
+          "Read printed pages 7-8 and footnote 13: dates, projections and self-employment.",
+          "Keep the later recovery note separate; do not infer that all countries or workers experienced the same change."
+        ],
+        "legacy": [
+          "ls"
+        ],
+        "paper": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/"
+      }
+    ]
+  },
+  "skills": {
+    "h1": "AI can improve performance without improving learning",
+    "summary": "Short experiments show both benefits and risks. We still lack broad, repeated tests of what people can do after the AI is removed.",
+    "selection": "A classroom trial tests learning without AI; a meta-analysis tests when human judgement adds to AI performance. Neither measures long-term skill loss across society.",
+    "gap": "Follow the same people over time, testing unaided ability as well as AI-assisted performance.",
+    "signal": "?",
+    "sources": [
+      {
+        "id": "bastani",
+        "label": "Learning without AI",
+        "citation": "Bastani et al. (2025), PNAS",
+        "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/",
+        "doi": "10.1073/pnas.2422633122",
+        "type": "Peer-reviewed randomized trial",
+        "date": "Published June 2025; experiment in 2023",
+        "finding": "Students given an unrestricted GPT tool scored 17% lower on a later unaided exam than the no-AI group. A tutor designed to support learning did not show that penalty.",
+        "why": "Random assignment and an AI-free exam distinguish help with a task from learning that lasts beyond it.",
+        "limit": "One school setting and short follow-up; not evidence of permanent or population-wide deskilling. The 17% is relative, not percentage points.",
+        "locate": "Abstract; Table 1, exam columns; Discussion",
+        "checks": [
+          "Confirm the 17% relative difference and the no-AI comparison group.",
+          "Keep the tutor result and short follow-up alongside the harm finding."
+        ],
+        "pdfPages": [
+          15,
+          29
+        ],
+        "legacy": [
+          "bastani"
+        ],
+        "metrics": [
+          [
+            "17% lower",
+            "Unaided exam score: unrestricted GPT vs no AI"
+          ],
+          [
+            "No clear penalty",
+            "Tutor designed to support learning"
+          ]
+        ]
+      },
+      {
+        "id": "vaccaro",
+        "label": "Human-AI judgement",
+        "citation": "Vaccaro, Almaatouq & Malone (2024), Nature Human Behaviour",
+        "title": "When combinations of humans and AI are useful: A systematic review and meta-analysis",
+        "url": "https://arxiv.org/html/2405.06087v2",
+        "doi": "10.1038/s41562-024-02024-1",
+        "type": "Peer-reviewed meta-analysis",
+        "date": "106 experiments published in 2020-2023",
+        "finding": "Human-AI teams outperformed humans alone on average, but underperformed the better of humans or AI alone. Results varied substantially by task.",
+        "why": "Synthesizes many experiments and separates two easily confused comparison groups.",
+        "limit": "Task performance, not change in a person's skills over time. Much of the evidence predates current generative AI.",
+        "locate": "Results 2.1; Figure 1; Discussion limitations",
+        "checks": [
+          "Confirm 106 experiments and the two different baselines.",
+          "Check that the page does not describe poorer teamwork as long-term deskilling."
+        ],
+        "pdfPages": [
+          15,
+          52
+        ],
+        "legacy": [
+          "wrongadvice"
+        ],
+        "metrics": [
+          [
+            "+0.64",
+            "Standardized effect vs humans alone"
+          ],
+          [
+            "-0.23",
+            "Standardized effect vs the better of human or AI alone"
+          ]
+        ]
+      }
+    ]
+  },
+  "culture": {
+    "h1": "More AI content does not necessarily mean more human attention",
+    "summary": "Platform data show growing supply. Experiments suggest AI can also make creative work more similar. Neither establishes a society-wide loss of human cultural influence.",
+    "selection": "Pair a recurring platform measure of supply and listening with an independent experiment on creative diversity. No single source covers culture as a whole.",
+    "gap": "Measure what people actually read, watch and hear, and whether human creators retain income and influence.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "deezer",
+        "label": "AI music: uploads and listening",
+        "citation": "Deezer newsroom (13 October 2026)",
+        "title": "Deezer will let you fully exclude AI-generated music from your streaming experience",
+        "url": "https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/",
+        "type": "Company platform data",
+        "date": "Figures stated as of August 2026",
+        "finding": "Deezer reports fully AI-generated tracks exceed 50% of uploads on peak days, but account for 1-3% of streams.",
+        "why": "Separates how much AI content is supplied from how much is played, using a recurring platform disclosure.",
+        "limit": "One platform and its own detector. Streams include suspected fraud; recommendation policy also affects listening. Peak-day uploads are not an average.",
+        "locate": "Notes to editors; FAQ date note",
+        "checks": [
+          "Keep 'on peak days', the August 2026 data date, and the 1-3% stream denominator.",
+          "Confirm the fraud and recommendation-policy caveats; do not generalize to all music."
+        ],
+        "pdfPages": [
+          89,
+          90
+        ],
+        "legacy": [
+          "deezer"
+        ],
+        "metrics": [
+          [
+            ">50%",
+            "Daily uploads on peak days"
+          ],
+          [
+            "1-3%",
+            "All streams; includes suspected fraud"
+          ]
+        ]
+      },
+      {
+        "id": "doshi",
+        "label": "Creative diversity",
+        "citation": "Doshi & Hauser (2024), Science Advances",
+        "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/",
+        "doi": "10.1126/sciadv.adn5290",
+        "type": "Peer-reviewed randomized experiment",
+        "date": "Published July 2024",
+        "finding": "AI-assisted stories received higher creativity ratings, but were more similar to one another than stories written without AI.",
+        "why": "An independent, preregistered experiment directly tests a possible cultural mechanism, rather than counting AI content alone.",
+        "limit": "293 writers producing short stories in one experiment. It does not establish declining diversity across culture or over time.",
+        "locate": "Results; Figures 2 and 4; Materials and Methods",
+        "checks": [
+          "Confirm the 293 writers and distinction between reader ratings and text similarity.",
+          "Keep the creativity benefit as well as the reduced-diversity finding."
+        ],
+        "pdfPages": [
+          12,
+          20,
+          58
+        ],
+        "legacy": [],
+        "metrics": [
+          [
+            "Higher ratings",
+            "Individual story creativity"
+          ],
+          [
+            "More similarity",
+            "Between AI-assisted stories"
+          ]
+        ]
+      }
+    ]
+  },
+  "institutions": {
+    "h1": "Government AI use is visible; decision power is much less so",
+    "summary": "Inventories count reported uses. A police operational report shows some actions after AI alerts. Neither provides a government-wide measure of control or accountability.",
+    "selection": "Pair an official disclosure inventory with one concrete operational case. Both are inspectable, but neither is an independent audit of all safeguards.",
+    "gap": "Publish decision volumes, human reviews, overrides and appeal outcomes for specific high-impact systems.",
+    "signal": "?",
+    "sources": [
+      {
+        "id": "inventory",
+        "title": "2025 Federal Agency AI Use Case Inventory",
+        "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+        "locate": "2025 inventory README, Summary and agency-table TOTALS; dictionary development_stage, is_high_impact and hi_appeal_process.",
+        "label": "US federal AI inventory",
+        "citation": "US Office of Management and Budget (2025 inventory)",
+        "type": "Official agency disclosures",
+        "date": "README snapshot dated 13 April 2026",
+        "finding": "The inventory lists 3,611 individual AI use cases; 1,818 were deployed or in pilot. The total includes other development stages.",
+        "why": "A reproducible official baseline with public metadata and stage definitions.",
+        "limit": "Reported uses, not decisions or audited safeguards. Reporting rules change; missing answers do not necessarily mean missing protections.",
+        "metrics": [
+          [
+            "3,611",
+            "Individual reported use cases, all stages"
+          ],
+          [
+            "1,818",
+            "Deployed or in pilot"
+          ]
+        ],
+        "checks": [
+          "Check README Summary/TOTALS, snapshot date and treatment of commercial software.",
+          "Check stage and safeguard-field definitions; do not count blank fields as failed safeguards."
+        ],
+        "legacy": [
+          "inventory"
+        ]
+      },
+      {
+        "id": "metlfr",
+        "title": "Live Facial Recognition Annual Report September 2025",
+        "url": "https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf",
+        "locate": "Annual Report September 2025: PDF page 5, Summary of Results; PDF pages 15-16, False alerts data.",
+        "label": "AI alerts and human action",
+        "citation": "Metropolitan Police Service (2025)",
+        "type": "Operational self-report",
+        "date": "11 September 2024 to 10 September 2025",
+        "finding": "London police reported 2,077 facial-recognition alerts, including 10 false alerts. Officers review alerts before deciding whether to approach someone.",
+        "why": "A concrete case of reported outcomes after AI use, including human checks rather than adoption alone.",
+        "limit": "One force reporting on its own system. Not a complete override rate, false-negative measure or independent assessment of bias. Arrests are not convictions.",
+        "metrics": [
+          [
+            "2,077",
+            "Reported alerts"
+          ],
+          [
+            "10",
+            "Reported false alerts"
+          ]
+        ],
+        "checks": [
+          "Read PDF page 5 for the period and totals; keep alerts separate from arrests.",
+          "Read false-alert details on pages 15-16; do not infer a full override or false-negative rate."
+        ],
+        "legacy": [
+          "metlfr"
+        ]
+      }
+    ]
+  },
+  "influence": {
+    "h1": "Human influence is still the hardest outcome to measure",
+    "summary": "A survey of felt control and an exploratory study of AI conversations offer partial signals. Neither measures how much power people retain over the economy, culture or government.",
+    "selection": "Use a representative public survey for felt control and a clearly labelled exploratory study for behaviour in conversations. These are proxies, not a validated overall measure.",
+    "gap": "Connect people's reported control to real choices: the ability to refuse, appeal, reverse a decision or act without AI.",
+    "signal": "?",
+    "sources": [
+      {
+        "id": "pew-control",
+        "label": "Felt control over AI",
+        "citation": "Pew Research Center (2025)",
+        "title": "AI in Americans' lives: Awareness, experiences and attitudes",
+        "url": "https://www.pewresearch.org/science/2025/09/17/ai-in-americans-lives-awareness-experiences-and-attitudes/",
+        "type": "Representative US survey",
+        "date": "5,023 adults; June 9-15, 2025",
+        "finding": "57% of US adults said they had little or no control over whether AI was used in their lives; 61% wanted more control.",
+        "why": "A probability-based survey with published questions and methodology, closely related to people's experience of agency.",
+        "limit": "Perceived control, not observed decision power. One country; this snapshot does not establish a decline caused by AI.",
+        "locate": "Section on control over AI; linked topline and methodology",
+        "checks": [
+          "Match 57% and 61% to their separate questions and June 2025 fieldwork.",
+          "Keep 'felt control' distinct from actual power or proven harm."
+        ],
+        "pdfPages": [
+          39,
+          62,
+          95
+        ],
+        "legacy": [
+          "control"
+        ],
+        "metrics": [
+          [
+            "57%",
+            "Little or no control"
+          ],
+          [
+            "61%",
+            "Want more control"
+          ]
+        ]
+      },
+      {
+        "id": "disempowerment",
+        "label": "Disempowerment potential in conversations",
+        "citation": "Sharma et al. / Anthropic (2026)",
+        "title": "Who's in Charge? Disempowerment Patterns in Real-World LLM Usage",
+        "url": "https://www.anthropic.com/research/disempowerment-patterns",
+        "paper": "https://arxiv.org/abs/2601.19062",
+        "type": "Exploratory company study / preprint",
+        "date": "1.5 million Claude conversations; December 2025 sample",
+        "finding": "Automated analysis flagged a small minority of conversations as having severe disempowerment potential, across beliefs, values or actions.",
+        "why": "Directly operationalizes a form of disempowerment instead of treating AI use alone as evidence of lost agency.",
+        "limit": "Company classifiers on one service; potential risk is not confirmed harm or lasting loss of influence. Independent replication is needed.",
+        "locate": "Measuring disempowerment; Prevalence and patterns; paper methods",
+        "checks": [
+          "Check the classifier validation and the distinction between potential and actual harm.",
+          "Confirm that conversation rates are not presented as rates of affected people."
+        ],
+        "pdfPages": [
+          26,
+          55
+        ],
+        "legacy": [
+          "whos"
+        ],
+        "metrics": [
+          [
+            "Exploratory",
+            "Potential risk, not confirmed harm"
+          ],
+          [
+            "One platform",
+            "Claude conversations"
+          ]
+        ]
+      }
+    ]
+  }
+}

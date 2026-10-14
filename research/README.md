@@ -1,6 +1,15 @@
 # Research workflow
 
-This folder holds the notes and reviews behind the site, so every figure and rating can be traced to its evidence. The work was done with AI research assistance between 3 and 12 October 2026. No figure has yet been checked by a person; [`checklist/handcheck.csv`](checklist/handcheck.csv) lists the headline figures to verify first.
+This folder holds the notes and reviews behind the site. No figure has yet been checked by a person. The current first-pass checklist is the website's [18-source review](https://nekocchi-0417.github.io/gd-observatory/#review), generated from [`src/priority.json`](../src/priority.json). Earlier notes and chart extractions are not automatically approved by the new selection.
+
+## Source review, 13 October 2026
+
+The supplied 95-page landscape scan was cross-referenced against the pre-edit website citations and repository research. A smaller selection of two primary-source records per topic now drives the page headlines, source panels and manual checklist. Each records design, dates, rationale, finding, limit and two checks. AI-assisted primary-source reading is not independent replication or human verification.
+
+- [PDF reference crosswalk](../docs/pdf-source-crosswalk.html): identifier/URL matching, editorial decisions and matching limitations. Links are not unique-study counts.
+- [Priority sources](../src/priority.json): the current published selection, not an exhaustive ranking of the literature.
+- [Awaiting-review library](https://nekocchi-0417.github.io/gd-observatory/#library): earlier source collections; their chart extractions are no longer shown as priority evidence.
+- The 42-item `handcheck.csv` below is historical, not the current review workload. Forecasts and proposed measurement instruments are outside the 1-2 hour pass.
 
 ## How it was done
 

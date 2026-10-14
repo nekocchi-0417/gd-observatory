@@ -7,7 +7,7 @@ const NIND=LINKS.reduce((a,l)=>a+l.inds.length,0);
 const lv=id=>id==='influence'?0:linkById(id).level;
 const ORDER=[...LINKS.map(l=>l.id),'influence'];
 const nameOf=id=>id==='influence'?END.name:linkById(id).name;
-const DRAFT='Draft v0.6',ASOF='13 October 2026';
+const DRAFT='Draft v0.7',ASOF='13 October 2026';
 
 /* ----- the chain map ----- */
 const GEO={W:1200,H:700,EDGE:1030,J:[492,350],S:{capability:[95,350],adoption:[255,350],handover:[415,350],work:[770,140],share:[950,140],skills:[950,280],culture:[950,420],institutions:[950,560],influence:[1128,350]}};
@@ -49,15 +49,20 @@ function go(id,push=true){
 function render(id){
   clearInterval(tourTimer);tourTimer=null;
   const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0;
-  if(linkById(base)){if(ind&&linkById(base).inds.some(d=>d.id===ind))picked[base]=ind;viewLink(v,base)}
+  const source=ORDER.includes(base)?SELECTED_EVIDENCE[base].sources.find(s=>s.id===ind||(s.legacy||[]).includes(ind)):null;
+  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else viewTopic(v,base)}
+  else if(base==='library')viewLibrary(v,ind);
+  else if(base==='review')viewReview(v);
+  else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
-  const top=(linkById(base)||base==='influence'||base==='record')?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
+  const top=(linkById(base)||['influence','record','review','library'].includes(base))?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
   document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Observatory';
   $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   window.scrollTo(0,0);
+  if(source){const t=document.getElementById('source-'+source.id);if(t)openAt5(t)}
   /* #gaps/<step> and #why/<section> open the page at that part */
-  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
+  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-',review:'review-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
 }
 document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
@@ -137,5 +142,3 @@ function drawRoute(v){
     <p class="note" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)">${esc(r.anchor)}</p></div>
    <div><div class="lab">What you would expect to see</div><ul class="sp">${r.signs.map(s=>`<li><span class="st ${s[0]}"><i></i>${SPLAB[s[0]]}</span><div><div class="w">${esc(s[1])}</div><div class="y">${esc(s[2])}</div></div></li>`).join('')}</ul></div>`;
 }
-
-

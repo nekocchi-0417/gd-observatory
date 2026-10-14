@@ -4,7 +4,7 @@
 const { chromium } = require('playwright');
 const path=require('path');
 const PAGE='file://'+path.resolve(__dirname,'..','docs','index.html');
-const ROUTES=['map','evidence','capability','adoption','handover','work','share','skills','culture','institutions','influence','record','gaps','futures','futures/more','method','contribute','contribute/funding','why','method/more','gaps/influence','work/cohort','skills/literacy','institutions/control'];
+const ROUTES=['map','evidence','capability','adoption','handover','work','share','skills','culture','institutions','influence','record','gaps','futures','futures/more','method','contribute','contribute/funding','why','method/more','gaps/influence','work/cohort','skills/literacy','institutions/control','review','review/skills','library','library/skills','skills/bastani','unknown'];
 (async()=>{const b=await chromium.launch(process.env.PW_EXE?{executablePath:process.env.PW_EXE}:{});const errs=[];const words={};
  for(const w of [1280,400,340]){for(const scheme of (w===1280?['light','dark']:['light'])){
   const ctx=await b.newContext({viewport:{width:w,height:900},colorScheme:scheme});const p=await ctx.newPage();
@@ -27,15 +27,16 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
      console.log('card',id,await p.$eval('.map5 .card5 .card5-name',e=>e.textContent).catch(()=>'NONE'),'| hash',await p.evaluate(()=>location.hash))}
    await p.click('.map5 .card5 [data-t="next"]');await p.waitForTimeout(150);console.log('next wraps to',await p.$eval('.map5 .card5 .card5-name',e=>e.textContent));
    await p.click('.map5 .card5 [data-t="open"]');await p.waitForTimeout(250);console.log('open evidence',await p.evaluate(()=>location.hash));
-   await p.goto(PAGE+'#skills/literacy');await p.waitForTimeout(300);console.log('deep link card',await p.$eval('.ic5.on .ic5-lab',e=>e.textContent));
-   await p.goto(PAGE+'#capability');await p.waitForTimeout(300);console.log('confidence basis',await p.$eval('.conf5 dd.w',e=>e.textContent.slice(0,60)).catch(()=>'MISSING'));
+   await p.goto(PAGE+'#skills/literacy');await p.waitForTimeout(300);console.log('old deep link now parked',await p.$eval('.library6 h1',e=>e.textContent));
+   await p.goto(PAGE+'#capability');await p.waitForTimeout(300);console.log('source rationale',await p.$eval('.source6-notes dd',e=>e.textContent.slice(0,60)));
    await p.click('.cav5.draft5');await p.waitForTimeout(250);console.log('draft tip open',await p.$eval('.cav5w.open .cav5tip',e=>e.textContent.slice(0,60)).catch(()=>'NOT OPEN'));
    await p.goto(PAGE+'#gaps');await p.waitForTimeout(300);await p.click('#gg-matrix summary');await p.waitForTimeout(400);await p.click('.gm5-dot[data-id="institutions"]');await p.waitForTimeout(600);
    console.log('matrix pick opens item',await p.$$eval('.gap5-i[data-link="institutions"] .acc5-b[aria-expanded="true"]',x=>x.length),'matrix width',await p.$eval('#gm svg',e=>Math.round(e.getBoundingClientRect().width)));
    await p.click('#expAll');console.log('expand all',await p.$$eval('.acc5-b[aria-expanded="true"]',x=>x.length),await p.$eval('details.more5',d=>d.open));
-   await p.goto(PAGE+'#evidence');await p.waitForTimeout(300);await p.click('#record summary');await p.waitForTimeout(500);console.log('record chart width',await p.$eval('#rec svg',e=>Math.round(e.getBoundingClientRect().width)).catch(()=>'NONE'));
-   await p.goto(PAGE+'#institutions');await p.waitForTimeout(300);console.log('folded cards visible',await p.$$eval('.ic5:not([hidden])',x=>x.length),'of',await p.$$eval('.ic5',x=>x.length));
-   await p.goto(PAGE+'#institutions/lobby');await p.waitForTimeout(300);console.log('deep link unfolds',await p.$$eval('.ic5:not([hidden])',x=>x.length),await p.$eval('.ic5.on .ic5-lab',e=>e.textContent));
+   await p.goto(PAGE+'#review');await p.waitForTimeout(300);console.log('review items',await p.locator('[data-review]').count());
+   await p.selectOption('[data-review="bastani"]','checked');await p.selectOption('[data-review="vaccaro"]','parked');await p.reload();console.log('saved review',await p.locator('#review-count').innerText(),await p.locator('#review-parked').innerText());
+   await p.goto(PAGE+'#institutions');await p.waitForTimeout(300);console.log('priority sources',await p.locator('.source6').count());
+   await p.goto(PAGE+'#institutions/lobby');await p.waitForTimeout(300);console.log('old indicator link is parked',await p.locator('.library6 h1').innerText());
    await p.goto(PAGE+'#futures');await p.waitForTimeout(300);await p.click('[data-route="E"]');console.log('route E',await p.$eval('#routebody h3',e=>e.textContent));
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.summary5-link[href="#gaps"]');await p.waitForTimeout(400);console.log('summary opens research gaps',await p.evaluate(()=>location.hash));
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.cta5-links a[href="#contribute/add"]');await p.waitForTimeout(400);console.log('cta scrolls',await p.evaluate(()=>location.hash+' y='+Math.round(scrollY)),await p.$eval('.nav a[aria-current]',e=>e.textContent));
@@ -47,4 +48,4 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
    await p.click('.ml5[data-id="skills"] .ml5-btn');await p.waitForTimeout(200);console.log('phone card',await p.$eval('.ml5.open .card5-what',e=>e.textContent.slice(0,40)).catch(()=>'NONE'));
    console.log('header height',await p.$eval('.bar',e=>Math.round(e.getBoundingClientRect().height)));}
   await ctx.close();}}
- console.log('words/height',JSON.stringify(words));console.log('errors',errs);await b.close();})();
+ console.log('words/height',JSON.stringify(words));console.log('errors',errs);await b.close();if(errs.length)process.exitCode=1;})();

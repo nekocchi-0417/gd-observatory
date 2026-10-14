@@ -1122,6 +1122,40 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .foot5 .inl5{margin-top:0;font-size:14px}
 #record{scroll-margin-top:72px}
 .scale5 li .pri5{display:inline-flex;font-size:13px;color:var(--ink)}.scale5 li .pri5-now{color:var(--paper)}.scale5 li .pri5-later{color:var(--ink-2)}
+.review-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:22px}
+.source6-selection{max-width:850px;margin-top:14px}
+.sources6{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;margin-top:30px}
+.source6{min-width:0;border-top:3px solid var(--s1);padding:22px 0 0}
+.source6-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:16px}
+.source-kind6{font:600 12px var(--f-sans);color:var(--ink);background:var(--surface);border:1px solid var(--rule);padding:4px 7px;border-radius:3px}
+.source6 h3,.review6-item h3{font:650 23px/1.25 var(--f-sans);margin:0 0 12px;overflow-wrap:anywhere}
+.source6-cite{margin:0 0 18px;line-height:1.5}
+.source-link6{color:var(--s1);font:650 16px/1.5 var(--f-sans);text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.source-link6:hover{color:var(--ink)}
+.source6-finding{font:400 21px/1.5 var(--f-serif);color:var(--ink);margin:18px 0}
+.source6-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:24px 0;border-block:1px solid var(--rule);padding:20px 0}
+.source6-metrics div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.source6-metrics dt{font:400 14px/1.4 var(--f-sans);color:var(--ink-2)}
+.source6-metrics dd{order:-1;font:650 24px/1.2 var(--f-sans);color:var(--ink);margin:0;overflow-wrap:anywhere}
+.source6-notes{font:400 16px/1.5 var(--f-sans);margin:22px 0}
+.source6-notes div{margin:0 0 16px}.source6-notes dt{font-weight:650;color:var(--ink);margin-bottom:4px}.source6-notes dd{margin:0;color:var(--ink-2)}
+.source6-detail{border-top:1px solid var(--rule);font:400 15px/1.5 var(--f-sans);padding-top:12px;color:var(--ink-2)}
+.source6-detail summary{cursor:pointer;font-weight:550;color:var(--ink)}
+.source6-detail p{margin-top:12px;overflow-wrap:anywhere}.source6-detail a,.library6 a{color:var(--s1)}
+.priority6-gap{border-top:1px solid var(--ink-3);padding-top:30px}.priority6-gap .lead5{max-width:900px;margin-top:16px}
+.review6-plan{max-width:900px;font:400 18px/1.6 var(--f-sans);color:var(--ink-2);margin:28px 0}.review6-plan b{color:var(--ink)}
+.review6-tools{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;border-block:1px solid var(--rule);padding:20px 0}
+.review6-tools>div{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;min-width:240px;max-width:100%}.review6-tools progress{width:100%;max-width:320px;min-width:0;height:8px;accent-color:var(--s1)}
+#review-storage{margin-top:14px}.review6-item{border-top:1px solid var(--rule);padding:24px 0}.review6-item ul{padding-left:22px;line-height:1.6;color:var(--ink-2)}
+.review6-title{display:flex;justify-content:space-between;align-items:baseline;gap:16px}.review6-status{display:flex;gap:8px;align-items:center;flex-shrink:0;font-size:14px}
+.review6-status select{background:var(--surface);color:var(--ink);border:1px solid var(--rule);font:inherit;padding:9px;border-radius:4px;min-height:42px}
+.review6 textarea{box-sizing:border-box;width:100%;margin:12px 0;background:var(--surface);color:var(--ink);font:400 16px/1.5 var(--f-sans);border:1px solid var(--rule);border-radius:4px;padding:10px;resize:vertical}
+.library6-sources{padding-left:22px;line-height:1.7}.library6-sources li{margin:12px 0;overflow-wrap:anywhere}
+@media(max-width:720px){.sources6{grid-template-columns:1fr;gap:40px}.review6-title{flex-direction:column;gap:8px}.source6 h3,.review6-item h3{font-size:21px}.source6-metrics dd{font-size:22px}.review6 .toc5{flex-wrap:wrap}.review6-tools>div{min-width:0;width:100%}}
+.priority6,.review6,.library6{--f-sans:var(--f-display);--f-serif:var(--f-text)}
+.review6-item{overflow-wrap:anywhere}
+.priority6 h1,.priority6 h2,.priority6 h3,.review6 h1,.review6 h2,.review6 h3,.library6 h1,.library6 h2{letter-spacing:0}
+.review6 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
@@ -1132,7 +1166,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
-<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.6 · 13 October 2026 · a draft evidence map: AI tools helped find and summarise sources; headline figures are being checked against primary sources before v1.0; corrections welcome · <a href="#method">method and sources</a></span></div></footer>
+<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#review">Review checklist</a> · <a href="#library">Awaiting review</a> · <a href="#method">Method and sources</a></span></div></footer>
 <script>
 /* ---------- small chart kit: line, bars, columns, stack rows, dumbbell, spark ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -3725,6 +3759,658 @@ const COPY={
   }
  }
 };
+
+const SELECTED_EVIDENCE = {
+  "capability": {
+    "h1": "AI can complete more work, but reliability still matters",
+    "summary": "Benchmarks show improving performance on defined tasks. They do not establish how many whole jobs can be reliably automated.",
+    "selection": "Use a benchmark of professional work products alongside an independent technical-task benchmark that makes the success threshold explicit.",
+    "gap": "Repeated, independent tests of reliable performance across whole workflows, including work beyond software.",
+    "signal": 3,
+    "sources": [
+      {
+        "id": "rli",
+        "title": "Remote Labor Index: projects meeting the reference standard",
+        "url": "https://labs.scale.com/leaderboard/rli",
+        "locate": "Performance Comparison, first row and legend; Core Metrics; original paper sections 3.2-3.4.",
+        "label": "Professional project completion",
+        "citation": "CAIS & Scale AI (2025-2026)",
+        "type": "Industry-linked benchmark",
+        "date": "Leaderboard read 13 October 2026; row evaluation date unclear",
+        "finding": "The leading listed agent scores 21.25% on the Remote Labor Index, which compares AI outputs with reference deliverables from freelance projects.",
+        "why": "An interpretable completion measure on professional work, with inspectable project examples.",
+        "limit": "Selected benchmark projects, not actual jobs or client acceptance. Scale AI is a commercial research partner. Do not infer a dated trend from model release dates.",
+        "metrics": [
+          [
+            "21.25%",
+            "Leading displayed automation score"
+          ],
+          [
+            "Benchmark",
+            "Not a share of jobs replaced"
+          ]
+        ],
+        "checks": [
+          "Confirm 21.25% is the automation score, not Elo, and record the retrieval date.",
+          "Check grading, project denominator and evaluation setup before approving a historical curve."
+        ],
+        "legacy": [
+          "rli"
+        ]
+      },
+      {
+        "id": "metr",
+        "title": "METR task-completion horizons at two success rates",
+        "url": "https://metr.org/time-horizons/",
+        "locate": "Definition, Methodological Details and Updates; linked YAML results.claude_opus_4_6_inspect.metrics.p50_horizon_length and p80_horizon_length.",
+        "label": "Reliability on longer tasks",
+        "citation": "METR, Task-Completion Time Horizons",
+        "type": "Independent nonprofit benchmark",
+        "date": "Frozen TH1.1 results; read 13 October 2026",
+        "finding": "For the tested Opus 4.6 agent, the estimated task horizon is about 12 hours at 50% success, but about 70 minutes at 80% success.",
+        "why": "Makes reliability explicit in human-equivalent task time, with downloadable results and uncertainty estimates.",
+        "limit": "Technical tasks only, not agent runtime. Wide 95% intervals: 5.3-60.6 hours at 50%; 27-170 minutes at 80%. The tracker is no longer actively updated.",
+        "metrics": [
+          [
+            "~12 hours",
+            "Human-equivalent task time at 50% success"
+          ],
+          [
+            "~70 minutes",
+            "At 80% success; same tested agent"
+          ]
+        ],
+        "checks": [
+          "Check the definition and stopped-update notice: task difficulty is not unattended runtime.",
+          "In the linked YAML, compare the Opus 4.6 p50/p80 horizons, units and confidence intervals."
+        ],
+        "legacy": [
+          "metr"
+        ],
+        "paper": "https://metr.org/assets/benchmark_results_1_1.yaml"
+      }
+    ]
+  },
+  "adoption": {
+    "h1": "AI use is spreading, but use is not the same as dependence",
+    "summary": "Repeated surveys track AI use by employees and businesses. They tell us who uses AI, not how much work or decision-making has been handed over.",
+    "selection": "Pair a US employee survey with official EU business statistics. Keep their populations, definitions and denominators separate.",
+    "gap": "Track the share of work actually delegated, how outputs are checked, and whether people can still do the work without AI.",
+    "signal": 3,
+    "sources": [
+      {
+        "id": "gallup",
+        "title": "Gallup employee AI-use frequency",
+        "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+        "locate": "Use of AI data table, rows 5/1/26 and 8/1/26; Survey Methods directly above the table.",
+        "label": "Workplace AI use",
+        "citation": "Gallup, AI indicator (2026)",
+        "type": "Repeated US employee survey",
+        "date": "August 2026 table",
+        "finding": "53% of surveyed US employees reported using AI at work at least a few times a year; 16% used it daily.",
+        "why": "Repeated independent survey coverage, with frequency categories that separate occasional use from routine use.",
+        "limit": "Self-reported frequency, not hours automated or dependence. The source table is newer than parts of its surrounding prose.",
+        "metrics": [
+          [
+            "53%",
+            "At least a few times a year"
+          ],
+          [
+            "16%",
+            "Daily use"
+          ]
+        ],
+        "checks": [
+          "Read the August table row and verify the two frequency labels.",
+          "Confirm US employee eligibility; do not call this a share of all adults, work hours or automated tasks."
+        ],
+        "legacy": [
+          "gallup"
+        ]
+      },
+      {
+        "id": "euai",
+        "title": "Eurostat enterprise AI use",
+        "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2",
+        "locate": "Opening paragraph and Methodological notes in the dated news release; Data sources and Netherlands break note in Statistics Explained.",
+        "label": "AI use by EU businesses",
+        "citation": "Eurostat (2025)",
+        "type": "Official enterprise statistics",
+        "date": "2025 survey; release 11 December 2025",
+        "finding": "20.0% of covered EU enterprises used AI in 2025, up from 13.5% in 2024.",
+        "why": "Adds official, recurring measurement outside the US with a defined business population.",
+        "limit": "Businesses with 10 or more people employed in covered sectors; excludes microfirms. Broad AI, not just generative AI. A Netherlands series break needs care.",
+        "metrics": [
+          [
+            "13.5%",
+            "Covered enterprises, 2024"
+          ],
+          [
+            "20.0%",
+            "Covered enterprises, 2025"
+          ]
+        ],
+        "checks": [
+          "Verify both annual values and the 10-person cutoff in the release.",
+          "Check sectors, AI definition and the Netherlands break before interpreting the change."
+        ],
+        "legacy": [
+          "firms"
+        ]
+      }
+    ]
+  },
+  "handover": {
+    "h1": "Using AI is not the same as handing over control",
+    "summary": "Conversation logs show task requests; a regulator survey distinguishes partial automation from full autonomy. Neither gives a general measure of decisions handed over to AI.",
+    "selection": "Combine observed request patterns with explicit decision-autonomy categories. These are closer to delegation than counts of people trying an AI tool.",
+    "gap": "An independent measure across providers of which decisions AI makes, which people review, and which people can reverse.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "aei",
+        "title": "Anthropic Economic Index: directive task requests",
+        "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+        "locate": "Chapter 1, Augmentation is again dominant on Claude.ai; Chapter 3 footnote 2 for November sampling; September report Chapter 1 footnote 4 for classifier sensitivity.",
+        "label": "Requests to complete a task",
+        "citation": "Anthropic Economic Index (January 2026)",
+        "type": "Company logs and classifier",
+        "date": "Claude.ai sample, November 2025",
+        "finding": "Anthropic classified 32% of sampled Claude.ai conversations as directive requests, where the user asks AI to complete a task.",
+        "why": "Behavioural traces distinguish task requests from collaborative assistance.",
+        "limit": "Request style does not show whether the output is checked or used. One provider, changing classifiers and sampling. A dated snapshot, not the newest release.",
+        "metrics": [
+          [
+            "32%",
+            "Conversations classified as directive"
+          ],
+          [
+            "Not observed",
+            "What users did with the output"
+          ]
+        ],
+        "checks": [
+          "Check the directive definition and 32% figure; do not substitute the broader automation category.",
+          "Review classifier and later sampling changes before turning snapshots into a trend."
+        ],
+        "legacy": [
+          "aei"
+        ]
+      },
+      {
+        "id": "finance_autonomy",
+        "title": "Bank of England/FCA: autonomy of AI use cases",
+        "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+        "locate": "Section 1.2 Methodology; executive-summary Automated decision-making bullets; section 2.5 and Chart 7.",
+        "label": "Autonomy in financial services",
+        "citation": "Bank of England & FCA (2024)",
+        "type": "Regulator survey",
+        "date": "118 responding firms; November 2024 report",
+        "finding": "The report says 55% of reported AI use cases involved some automated decision-making; 2% were fully autonomous.",
+        "why": "Directly distinguishes partial automation from full autonomy, in a survey independent of AI providers.",
+        "limit": "Firm self-report in one sector, not decision volumes. The chart subtitle and narrative use different denominator wording; retain a provisional label until reconciled.",
+        "metrics": [
+          [
+            "55%",
+            "Some automated decision-making"
+          ],
+          [
+            "2%",
+            "Fully autonomous; overlapping categories"
+          ]
+        ],
+        "checks": [
+          "Read section 2.5 and methodology; confirm the 118 respondents and definitions.",
+          "Resolve Chart 7's firms/use-cases wording before citing. Do not add the overlapping percentages."
+        ],
+        "legacy": []
+      }
+    ]
+  },
+  "work": {
+    "h1": "Young-worker employment is a warning sign, not yet a settled AI effect",
+    "summary": "US payroll data show a gap in exposed occupations. Danish adoption-linked evidence finds no extra decline through 2024. The settings, dates and comparisons differ.",
+    "selection": "Pair a directly relevant US warning signal with an administrative-data study that measures workplace adoption and offers counterevidence.",
+    "gap": "Link firms' AI adoption to junior hiring and training, with comparisons that separate AI from other changes in the labour market.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "canaries",
+        "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
+        "url": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+        "locate": "August 12, 2026 PDF: introduction, PDF page 3; sample, section 1.1; limitations, section 4 and August author note.",
+        "label": "Young workers in exposed occupations",
+        "citation": "Brynjolfsson, Chandar & Chen / Stanford (2026)",
+        "type": "Observational working paper",
+        "date": "August 2026 revision; data through June 2026",
+        "finding": "In the ADP payroll sample, employment of 22-25-year-olds in more exposed jobs was 19% below the level implied by keeping pace with less-exposed peers.",
+        "why": "A repeatable age-by-exposure comparison, with detailed discussion of alternative explanations.",
+        "limit": "Descriptive, not jobs proven lost to AI. Exposure is not adoption; sample selection, education and pre-trends affect interpretation.",
+        "metrics": [
+          [
+            "19%",
+            "Relative kept-pace shortfall"
+          ],
+          [
+            "Not causal",
+            "Does not identify jobs lost to AI"
+          ]
+        ],
+        "checks": [
+          "Read page 3: age group, June 2026 endpoint and top-two vs bottom-three exposure quintiles.",
+          "Distinguish the 19% shortfall from the level decline; read the authors' causal caveats."
+        ],
+        "legacy": [
+          "canaries"
+        ],
+        "paper": "https://digitaleconomy.stanford.edu/news/canariesaug26/"
+      },
+      {
+        "id": "dk-chatbot-effects",
+        "title": "Still Waters, Rapid Currents: Early Labor Market Transformation under Generative AI",
+        "url": "https://www.andershumlum.com/s/chatbots_260313.pdf",
+        "locate": "March 13, 2026 author PDF: sections 1.1-1.3; section 3.4, PDF page 31; Figure 8 caption, PDF page 47.",
+        "label": "Adoption-linked counterevidence",
+        "citation": "Humlum & Vestergaard (2026)",
+        "type": "Observational working paper",
+        "date": "March 2026 revision; Danish data through 2024",
+        "finding": "Workplaces encouraging chatbot use showed no extra decline in their share of workers aged 22-25 through 2024.",
+        "why": "Links adoption information to administrative outcomes, rather than treating occupational exposure as actual use.",
+        "limit": "Encouragement was not randomized. Different country and period from the US study; this does not rule out later displacement.",
+        "metrics": [
+          [
+            "No extra decline",
+            "Young-worker share in this comparison"
+          ],
+          [
+            "Through 2024",
+            "Not a test of later US effects"
+          ]
+        ],
+        "checks": [
+          "Read section 3.4 / Figure 8: ages, employment-share outcome, comparison and endpoint.",
+          "Check the linked survey/register design; do not call encouragement randomized."
+        ],
+        "legacy": []
+      }
+    ]
+  },
+  "share": {
+    "h1": "Workers' income share is measurable; AI's contribution is not",
+    "summary": "Official statistics track how income is divided between labour and other recipients. Long-run changes predate generative AI, and these series do not explain their causes.",
+    "selection": "Use established official US and global series, rather than stock prices as a substitute for workers' income share.",
+    "gap": "Measure changes in labour income alongside actual AI adoption, at firm and sector level, with comparable definitions over time.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "ls",
+        "title": "Labor share at its lowest level, 52.8 percent, in second quarter 2026",
+        "url": "https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm",
+        "locate": "BLS Economics Daily, September 15, 2026: opening paragraph and Chart Data table; FRED PRS85006173 unit label.",
+        "label": "US labour share",
+        "citation": "US Bureau of Labor Statistics (2026)",
+        "type": "Official quarterly statistics",
+        "date": "Q2 2026; September 2026 release",
+        "finding": "Labour compensation was 52.8% of US nonfarm-business output in Q2 2026, the lowest in this BLS series, which begins in 1947.",
+        "why": "An established direct measure of the income split, with a long baseline before generative AI.",
+        "limit": "One sector aggregate, not typical pay or AI's effect. The rest of output is not all profit. FRED also publishes an index, which is not a percentage share.",
+        "metrics": [
+          [
+            "52.8%",
+            "Nonfarm-business output paid as labour compensation"
+          ],
+          [
+            "Since 1947",
+            "Scope of the historical comparison"
+          ]
+        ],
+        "checks": [
+          "Confirm the 52.8% level, quarter, sector and series start in BLS Chart Data.",
+          "Check numerator/denominator and distinguish percent of output from the FRED index."
+        ],
+        "legacy": [
+          "ls"
+        ]
+      },
+      {
+        "id": "ilo-labour-share",
+        "title": "World Employment and Social Outlook: May 2025 Update",
+        "url": "https://www.ilo.org/sites/default/files/2025-05/WESOUpdate_May2025.pdf",
+        "locate": "World Employment and Social Outlook: May 2025 Update, printed pages 7-8 and footnote 13; separate March 19, 2026 ILOSTAT update, labor-share section.",
+        "label": "Global labour income share",
+        "citation": "International Labour Organization (2025)",
+        "type": "Official modelled estimates",
+        "date": "May 2025 report; 2014-2024 comparison",
+        "finding": "The ILO estimated labour's global GDP share at 53.0% in 2014 and 52.4% in 2024. A later update reports partial recovery.",
+        "why": "Adds international coverage and estimated self-employed labour income, counterbalancing a US-only story.",
+        "limit": "The 2024 value includes projections. Do not splice report vintages or directly compare this GDP-wide level with the BLS sector measure. No AI attribution.",
+        "metrics": [
+          [
+            "53.0%",
+            "Global GDP, 2014"
+          ],
+          [
+            "52.4%",
+            "2024 estimate, May 2025 vintage"
+          ]
+        ],
+        "checks": [
+          "Read printed pages 7-8 and footnote 13: dates, projections and self-employment.",
+          "Keep the later recovery note separate; do not infer that all countries or workers experienced the same change."
+        ],
+        "legacy": [
+          "ls"
+        ],
+        "paper": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/"
+      }
+    ]
+  },
+  "skills": {
+    "h1": "AI can improve performance without improving learning",
+    "summary": "Short experiments show both benefits and risks. We still lack broad, repeated tests of what people can do after the AI is removed.",
+    "selection": "A classroom trial tests learning without AI; a meta-analysis tests when human judgement adds to AI performance. Neither measures long-term skill loss across society.",
+    "gap": "Follow the same people over time, testing unaided ability as well as AI-assisted performance.",
+    "signal": "?",
+    "sources": [
+      {
+        "id": "bastani",
+        "label": "Learning without AI",
+        "citation": "Bastani et al. (2025), PNAS",
+        "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/",
+        "doi": "10.1073/pnas.2422633122",
+        "type": "Peer-reviewed randomized trial",
+        "date": "Published June 2025; experiment in 2023",
+        "finding": "Students given an unrestricted GPT tool scored 17% lower on a later unaided exam than the no-AI group. A tutor designed to support learning did not show that penalty.",
+        "why": "Random assignment and an AI-free exam distinguish help with a task from learning that lasts beyond it.",
+        "limit": "One school setting and short follow-up; not evidence of permanent or population-wide deskilling. The 17% is relative, not percentage points.",
+        "locate": "Abstract; Table 1, exam columns; Discussion",
+        "checks": [
+          "Confirm the 17% relative difference and the no-AI comparison group.",
+          "Keep the tutor result and short follow-up alongside the harm finding."
+        ],
+        "pdfPages": [
+          15,
+          29
+        ],
+        "legacy": [
+          "bastani"
+        ],
+        "metrics": [
+          [
+            "17% lower",
+            "Unaided exam score: unrestricted GPT vs no AI"
+          ],
+          [
+            "No clear penalty",
+            "Tutor designed to support learning"
+          ]
+        ]
+      },
+      {
+        "id": "vaccaro",
+        "label": "Human-AI judgement",
+        "citation": "Vaccaro, Almaatouq & Malone (2024), Nature Human Behaviour",
+        "title": "When combinations of humans and AI are useful: A systematic review and meta-analysis",
+        "url": "https://arxiv.org/html/2405.06087v2",
+        "doi": "10.1038/s41562-024-02024-1",
+        "type": "Peer-reviewed meta-analysis",
+        "date": "106 experiments published in 2020-2023",
+        "finding": "Human-AI teams outperformed humans alone on average, but underperformed the better of humans or AI alone. Results varied substantially by task.",
+        "why": "Synthesizes many experiments and separates two easily confused comparison groups.",
+        "limit": "Task performance, not change in a person's skills over time. Much of the evidence predates current generative AI.",
+        "locate": "Results 2.1; Figure 1; Discussion limitations",
+        "checks": [
+          "Confirm 106 experiments and the two different baselines.",
+          "Check that the page does not describe poorer teamwork as long-term deskilling."
+        ],
+        "pdfPages": [
+          15,
+          52
+        ],
+        "legacy": [
+          "wrongadvice"
+        ],
+        "metrics": [
+          [
+            "+0.64",
+            "Standardized effect vs humans alone"
+          ],
+          [
+            "-0.23",
+            "Standardized effect vs the better of human or AI alone"
+          ]
+        ]
+      }
+    ]
+  },
+  "culture": {
+    "h1": "More AI content does not necessarily mean more human attention",
+    "summary": "Platform data show growing supply. Experiments suggest AI can also make creative work more similar. Neither establishes a society-wide loss of human cultural influence.",
+    "selection": "Pair a recurring platform measure of supply and listening with an independent experiment on creative diversity. No single source covers culture as a whole.",
+    "gap": "Measure what people actually read, watch and hear, and whether human creators retain income and influence.",
+    "signal": 2,
+    "sources": [
+      {
+        "id": "deezer",
+        "label": "AI music: uploads and listening",
+        "citation": "Deezer newsroom (13 October 2026)",
+        "title": "Deezer will let you fully exclude AI-generated music from your streaming experience",
+        "url": "https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/",
+        "type": "Company platform data",
+        "date": "Figures stated as of August 2026",
+        "finding": "Deezer reports fully AI-generated tracks exceed 50% of uploads on peak days, but account for 1-3% of streams.",
+        "why": "Separates how much AI content is supplied from how much is played, using a recurring platform disclosure.",
+        "limit": "One platform and its own detector. Streams include suspected fraud; recommendation policy also affects listening. Peak-day uploads are not an average.",
+        "locate": "Notes to editors; FAQ date note",
+        "checks": [
+          "Keep 'on peak days', the August 2026 data date, and the 1-3% stream denominator.",
+          "Confirm the fraud and recommendation-policy caveats; do not generalize to all music."
+        ],
+        "pdfPages": [
+          89,
+          90
+        ],
+        "legacy": [
+          "deezer"
+        ],
+        "metrics": [
+          [
+            ">50%",
+            "Daily uploads on peak days"
+          ],
+          [
+            "1-3%",
+            "All streams; includes suspected fraud"
+          ]
+        ]
+      },
+      {
+        "id": "doshi",
+        "label": "Creative diversity",
+        "citation": "Doshi & Hauser (2024), Science Advances",
+        "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/",
+        "doi": "10.1126/sciadv.adn5290",
+        "type": "Peer-reviewed randomized experiment",
+        "date": "Published July 2024",
+        "finding": "AI-assisted stories received higher creativity ratings, but were more similar to one another than stories written without AI.",
+        "why": "An independent, preregistered experiment directly tests a possible cultural mechanism, rather than counting AI content alone.",
+        "limit": "293 writers producing short stories in one experiment. It does not establish declining diversity across culture or over time.",
+        "locate": "Results; Figures 2 and 4; Materials and Methods",
+        "checks": [
+          "Confirm the 293 writers and distinction between reader ratings and text similarity.",
+          "Keep the creativity benefit as well as the reduced-diversity finding."
+        ],
+        "pdfPages": [
+          12,
+          20,
+          58
+        ],
+        "legacy": [],
+        "metrics": [
+          [
+            "Higher ratings",
+            "Individual story creativity"
+          ],
+          [
+            "More similarity",
+            "Between AI-assisted stories"
+          ]
+        ]
+      }
+    ]
+  },
+  "institutions": {
+    "h1": "Government AI use is visible; decision power is much less so",
+    "summary": "Inventories count reported uses. A police operational report shows some actions after AI alerts. Neither provides a government-wide measure of control or accountability.",
+    "selection": "Pair an official disclosure inventory with one concrete operational case. Both are inspectable, but neither is an independent audit of all safeguards.",
+    "gap": "Publish decision volumes, human reviews, overrides and appeal outcomes for specific high-impact systems.",
+    "signal": "?",
+    "sources": [
+      {
+        "id": "inventory",
+        "title": "2025 Federal Agency AI Use Case Inventory",
+        "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+        "locate": "2025 inventory README, Summary and agency-table TOTALS; dictionary development_stage, is_high_impact and hi_appeal_process.",
+        "label": "US federal AI inventory",
+        "citation": "US Office of Management and Budget (2025 inventory)",
+        "type": "Official agency disclosures",
+        "date": "README snapshot dated 13 April 2026",
+        "finding": "The inventory lists 3,611 individual AI use cases; 1,818 were deployed or in pilot. The total includes other development stages.",
+        "why": "A reproducible official baseline with public metadata and stage definitions.",
+        "limit": "Reported uses, not decisions or audited safeguards. Reporting rules change; missing answers do not necessarily mean missing protections.",
+        "metrics": [
+          [
+            "3,611",
+            "Individual reported use cases, all stages"
+          ],
+          [
+            "1,818",
+            "Deployed or in pilot"
+          ]
+        ],
+        "checks": [
+          "Check README Summary/TOTALS, snapshot date and treatment of commercial software.",
+          "Check stage and safeguard-field definitions; do not count blank fields as failed safeguards."
+        ],
+        "legacy": [
+          "inventory"
+        ]
+      },
+      {
+        "id": "metlfr",
+        "title": "Live Facial Recognition Annual Report September 2025",
+        "url": "https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf",
+        "locate": "Annual Report September 2025: PDF page 5, Summary of Results; PDF pages 15-16, False alerts data.",
+        "label": "AI alerts and human action",
+        "citation": "Metropolitan Police Service (2025)",
+        "type": "Operational self-report",
+        "date": "11 September 2024 to 10 September 2025",
+        "finding": "London police reported 2,077 facial-recognition alerts, including 10 false alerts. Officers review alerts before deciding whether to approach someone.",
+        "why": "A concrete case of reported outcomes after AI use, including human checks rather than adoption alone.",
+        "limit": "One force reporting on its own system. Not a complete override rate, false-negative measure or independent assessment of bias. Arrests are not convictions.",
+        "metrics": [
+          [
+            "2,077",
+            "Reported alerts"
+          ],
+          [
+            "10",
+            "Reported false alerts"
+          ]
+        ],
+        "checks": [
+          "Read PDF page 5 for the period and totals; keep alerts separate from arrests.",
+          "Read false-alert details on pages 15-16; do not infer a full override or false-negative rate."
+        ],
+        "legacy": [
+          "metlfr"
+        ]
+      }
+    ]
+  },
+  "influence": {
+    "h1": "Human influence is still the hardest outcome to measure",
+    "summary": "A survey of felt control and an exploratory study of AI conversations offer partial signals. Neither measures how much power people retain over the economy, culture or government.",
+    "selection": "Use a representative public survey for felt control and a clearly labelled exploratory study for behaviour in conversations. These are proxies, not a validated overall measure.",
+    "gap": "Connect people's reported control to real choices: the ability to refuse, appeal, reverse a decision or act without AI.",
+    "signal": "?",
+    "sources": [
+      {
+        "id": "pew-control",
+        "label": "Felt control over AI",
+        "citation": "Pew Research Center (2025)",
+        "title": "AI in Americans' lives: Awareness, experiences and attitudes",
+        "url": "https://www.pewresearch.org/science/2025/09/17/ai-in-americans-lives-awareness-experiences-and-attitudes/",
+        "type": "Representative US survey",
+        "date": "5,023 adults; June 9-15, 2025",
+        "finding": "57% of US adults said they had little or no control over whether AI was used in their lives; 61% wanted more control.",
+        "why": "A probability-based survey with published questions and methodology, closely related to people's experience of agency.",
+        "limit": "Perceived control, not observed decision power. One country; this snapshot does not establish a decline caused by AI.",
+        "locate": "Section on control over AI; linked topline and methodology",
+        "checks": [
+          "Match 57% and 61% to their separate questions and June 2025 fieldwork.",
+          "Keep 'felt control' distinct from actual power or proven harm."
+        ],
+        "pdfPages": [
+          39,
+          62,
+          95
+        ],
+        "legacy": [
+          "control"
+        ],
+        "metrics": [
+          [
+            "57%",
+            "Little or no control"
+          ],
+          [
+            "61%",
+            "Want more control"
+          ]
+        ]
+      },
+      {
+        "id": "disempowerment",
+        "label": "Disempowerment potential in conversations",
+        "citation": "Sharma et al. / Anthropic (2026)",
+        "title": "Who's in Charge? Disempowerment Patterns in Real-World LLM Usage",
+        "url": "https://www.anthropic.com/research/disempowerment-patterns",
+        "paper": "https://arxiv.org/abs/2601.19062",
+        "type": "Exploratory company study / preprint",
+        "date": "1.5 million Claude conversations; December 2025 sample",
+        "finding": "Automated analysis flagged a small minority of conversations as having severe disempowerment potential, across beliefs, values or actions.",
+        "why": "Directly operationalizes a form of disempowerment instead of treating AI use alone as evidence of lost agency.",
+        "limit": "Company classifiers on one service; potential risk is not confirmed harm or lasting loss of influence. Independent replication is needed.",
+        "locate": "Measuring disempowerment; Prevalence and patterns; paper methods",
+        "checks": [
+          "Check the classifier validation and the distinction between potential and actual harm.",
+          "Confirm that conversation rates are not presented as rates of affected people."
+        ],
+        "pdfPages": [
+          26,
+          55
+        ],
+        "legacy": [
+          "whos"
+        ],
+        "metrics": [
+          [
+            "Exploratory",
+            "Potential risk, not confirmed harm"
+          ],
+          [
+            "One platform",
+            "Claude conversations"
+          ]
+        ]
+      }
+    ]
+  }
+}
+;
 /* ---------- app: helpers, router, measurement record, shared charts ---------- */
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const sig=l=>`<span class="sig" data-l="${l}" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
@@ -3734,7 +4420,7 @@ const NIND=LINKS.reduce((a,l)=>a+l.inds.length,0);
 const lv=id=>id==='influence'?0:linkById(id).level;
 const ORDER=[...LINKS.map(l=>l.id),'influence'];
 const nameOf=id=>id==='influence'?END.name:linkById(id).name;
-const DRAFT='Draft v0.6',ASOF='13 October 2026';
+const DRAFT='Draft v0.7',ASOF='13 October 2026';
 
 /* ----- the chain map ----- */
 const GEO={W:1200,H:700,EDGE:1030,J:[492,350],S:{capability:[95,350],adoption:[255,350],handover:[415,350],work:[770,140],share:[950,140],skills:[950,280],culture:[950,420],institutions:[950,560],influence:[1128,350]}};
@@ -3776,15 +4462,20 @@ function go(id,push=true){
 function render(id){
   clearInterval(tourTimer);tourTimer=null;
   const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0;
-  if(linkById(base)){if(ind&&linkById(base).inds.some(d=>d.id===ind))picked[base]=ind;viewLink(v,base)}
+  const source=ORDER.includes(base)?SELECTED_EVIDENCE[base].sources.find(s=>s.id===ind||(s.legacy||[]).includes(ind)):null;
+  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else viewTopic(v,base)}
+  else if(base==='library')viewLibrary(v,ind);
+  else if(base==='review')viewReview(v);
+  else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
-  const top=(linkById(base)||base==='influence'||base==='record')?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
+  const top=(linkById(base)||['influence','record','review','library'].includes(base))?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
   document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Observatory';
   $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   window.scrollTo(0,0);
+  if(source){const t=document.getElementById('source-'+source.id);if(t)openAt5(t)}
   /* #gaps/<step> and #why/<section> open the page at that part */
-  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
+  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-',review:'review-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
 }
 document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
@@ -3864,8 +4555,6 @@ function drawRoute(v){
     <p class="note" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)">${esc(r.anchor)}</p></div>
    <div><div class="lab">What you would expect to see</div><ul class="sp">${r.signs.map(s=>`<li><span class="st ${s[0]}"><i></i>${SPLAB[s[0]]}</span><div><div class="w">${esc(s[1])}</div><div class="y">${esc(s[2])}</div></div></li>`).join('')}</ul></div>`;
 }
-
-
 /* ======================================================================================
    components.js: interactive pieces shared by the pages.
    Loaded after app.js. Uses globals from charts.js (esc, ym, fmtDate, C, Charts),
@@ -4216,7 +4905,7 @@ function futuresCard5(el,o){
 const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draft5" aria-describedby="drtip">${esc(COPY.draftChip.label)}</button><span class="cav5tip" role="tooltip" id="drtip">${esc(COPY.draftChip.tooltip)} <a href="#method">Method</a></span></span>`;
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
 const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
-const verify5=()=>`<div class="verify5"><b>Draft source status</b><span>Check sources before citing. Headline figures are being verified for v1.0.</span><a class="go" href="https://github.com/nekocchi-0417/gd-observatory/blob/main/research/checklist/handcheck.csv" target="_blank" rel="noopener">Verification checklist ↗</a></div>`;
+const verify5=()=>`<div class="verify5"><b>Awaiting human review</b><span>Priority claims checked against primary sources with AI assistance. This is not independent verification.</span><a class="go" href="#review">Review checklist →</a></div>`;
 /* the confidence block: the two ratings, each with its one-line reason */
 const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.linkUI.brief,why=id==='influence'?END.headline:linkById(id).levelWhy;
   return `<section class="conf5" aria-label="${esc(B.confidence)}">${lab5([B.confidence])}<dl class="conf5-g">
@@ -4271,11 +4960,8 @@ function viewIndex(v){
    ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
-   <section class="sec5"><details class="det5" id="record"><summary>${esc(E.coverage.title)}</summary><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
-    <div class="chart s1" id="rec"></div><p class="note5">Marks show how often a series is published, not how strong it is. The split into blue and grey is the observatory's judgement.</p></details></section></div>`;
+   <section class="sec5"><h2 class="h2-5 sm">A smaller set to verify</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. Additional sources and earlier chart extractions are held back from the summaries until reviewed.</p><p class="review-links"><a class="go" href="#review">18-source review checklist →</a><a class="go" href="#library">Sources awaiting review →</a><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
   evidenceRows($('#erows',v));
-  const rec=$('#record',v);let drawn=false;
-  rec.addEventListener('toggle',()=>{if(rec.open&&!drawn){drawn=true;drawRecord($('#rec',v))}else if(rec.open)window.dispatchEvent(new Event('resize'))});
 }
 
 /* ----- one link ----- */
@@ -4327,6 +5013,7 @@ function viewGaps(v){
     return k==='later'?`<details class="more5 gap5-g" id="gg-${k}"><summary>${esc(PR[k].t)} · ${xs.length} measures, further from the outcome</summary>${body}</details>`:`<div class="accg5 gap5-g" id="gg-${k}">${body}</div>`};
   v.innerHTML=`<div class="view5 wrap">${eye5([esc(G.eyebrow)])}
    <h1 class="h1-5">${esc(G.h1)}</h1><p class="lead5">${esc(G.sentence)}</p>
+   <div class="verify5"><b>Proposed research agenda</b><span>These are research suggestions, not established indicators. Supporting examples and feasibility need a separate review.</span><a class="go" href="#review">Priority source checklist →</a></div>
    <section class="sec5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.list.title)}</h2><p class="sub5">${esc(G.list.sub)} ${esc(COPY.ui.instructions.gaps)}</p></div><button type="button" class="btn ghost" id="expAll">${esc(G.list.expandAll)}</button></div>
     <div class="acc5" id="gacc">${['now','method','later'].map(group).join('')}</div></section>
    <section class="sec5"><details class="det5" id="gg-matrix"><summary>${esc(G.ranking.title)}</summary><p class="sub5">${esc(G.ranking.sub)}</p>
@@ -4415,6 +5102,83 @@ function viewMethod(v){
     <details class="det5"><summary>${esc(M.headings.terms)}</summary><dl class="gloss">${GLOSSARY.map(g=>`<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join('')}</dl></details>
     <details class="det5"><summary>${esc(M.headings.sources)}</summary><div class="srcs">${groups.map(([n,ss])=>`<div class="sg"><h4>${esc(n)}</h4><ol>${ss.map(s=>`<li><a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a></li>`).join('')}</ol></div>`).join('')}</div></details></section></div>`;
   $$('.toc5 a',v).forEach(a=>a.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const t=document.getElementById(a.dataset.to);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
+}
+/* Priority sources drive the summaries and review checklist from the same records. */
+Object.entries(SELECTED_EVIDENCE).forEach(([id,p])=>{
+  COPY.home.card.what[id]=p.summary;
+  COPY.evidence.rows[id].line=p.summary;
+  COPY.links[id].h1=p.h1;
+  COPY.links[id].sentence=p.summary;
+  SIGNALS.links[id]={signal:p.signal,basis:p.selection};
+});
+COPY.home.snapshot.items[0].text='Benchmarks track AI capability; repeated surveys track how many people use it.';
+COPY.home.snapshot.items[1].text='Some studies find changes in jobs and creative work. Government records show adoption, but not who retains decision power.';
+COPY.home.snapshot.items[2].text='We need repeated tests of unaided ability and direct measures of whether people retain meaningful choices.';
+linkById('capability').level=3;
+linkById('capability').levelWhy='Direct benchmark results, but limited task coverage; one industry-linked benchmark and one discontinued tracker.';
+COPY.futures.caveat='To be verified. Forecast extractions, historical chart points and scenario assumptions have not been checked in this source review. Do not cite them as established findings.';
+const sourceLink6=(s,label)=>`<a class="source-link6" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(label||s.citation)} <span aria-hidden="true">↗</span></a>`;
+const sourceCard6=s=>`<article class="source6" id="source-${esc(s.id)}">
+  <div class="source6-head"><span class="source-kind6">${esc(s.type)}</span><span class="note5">${esc(s.date)}</span></div>
+  <h3>${esc(s.label)}</h3><p class="source6-cite">${sourceLink6(s)}</p>
+  <p class="source6-finding">${esc(s.finding)}</p>
+  ${s.metrics?`<dl class="source6-metrics">${s.metrics.map(([n,t])=>`<div><dt>${esc(t)}</dt><dd>${esc(n)}</dd></div>`).join('')}</dl>`:''}
+  <dl class="source6-notes"><div><dt>Why chosen</dt><dd>${esc(s.why)}</dd></div><div><dt>Key limit</dt><dd>${esc(s.limit)}</dd></div></dl>
+  <details class="source6-detail"><summary>Paper title and where to check</summary><p>${esc(s.title)}</p><p>${esc(s.locate)}</p>${s.doi?`<p><a href="https://doi.org/${esc(s.doi)}" target="_blank" rel="noopener">DOI: ${esc(s.doi)} ↗</a></p>`:''}${s.paper?`<p><a href="${esc(s.paper)}" target="_blank" rel="noopener">Supporting paper or data ↗</a></p>`:''}</details></article>`;
+
+function viewTopic(v,id){
+  const p=SELECTED_EVIDENCE[id],i=ORDER.indexOf(id),prev=ORDER[i-1],next=ORDER[i+1];
+  v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
+    <div class="claim5">${eye5([esc(nameOf(id)),`${i+1} of ${ORDER.length}`])}<h1 class="h1-5 c">${esc(p.h1)}</h1><p class="lead5">${esc(p.summary)}</p></div>
+    ${verify5()}
+    <section class="sec5"><div class="h2row5"><h2 class="h2-5 sm">Two sources to start with</h2><a class="go" href="#review/${id}">Review this page →</a></div><p class="sub5 source6-selection">${esc(p.selection)}</p>
+      <div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
+    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a><a class="go" href="#library/${id}">More sources: awaiting review →</a></p></section>
+    ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['review','Source review','Next'])}</div>`;
+  crumbScroll5(v);
+}
+
+function viewLibrary(v,topic){
+  const ids=ORDER.includes(topic)?[topic]:ORDER;
+  v.innerHTML=`<div class="view5 wrap library6">${eye5(['Source library'])}<h1 class="h1-5">Awaiting review</h1><p class="lead5">Additional sources, not additional conclusions.</p>
+    <div class="verify5"><b>To be verified</b><span>These earlier source collections have not passed the current claim-level review. Their charts and extracted figures are held back from the main pages. Inclusion is not an endorsement.</span></div>
+    <p class="review-links"><a class="go" href="#evidence">Priority evidence →</a><a class="go" href="#review">Review checklist →</a></p>
+    ${ids.map(id=>{const inds=LINKS.flatMap(l=>l.inds.filter(d=>id==='influence'?d.recRow==='influence':l.id===id&&!d.recRow));return `<section class="sec5"><h2 class="h2-5 sm"><a href="#${id}">${esc(nameOf(id))}</a></h2><p class="note5">Check the original publication, study design and relevance before promoting a source.</p>${inds.map(d=>`<details class="det5"><summary>${esc(indLabel5(d))}</summary><ul class="library6-sources">${d.src.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a></li>`).join('')}</ul></details>`).join('')}</section>`}).join('')}
+    <section class="sec5"><h2 class="h2-5 sm">Proposed measures are not findings</h2><p class="sub5">The landscape scan also proposes tests of skill recovery, appropriate reliance, calibration and decision power. These belong in the research agenda until their definitions and validation are checked.</p><p><a class="go" href="#gaps">See the research agenda →</a></p></section></div>`;
+}
+
+function viewSourceMethod(v){
+  v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A selected evidence map, not a systematic review or a test of the whole theory.</p>
+    ${verify5()}
+    <section class="sec5" id="m-selection"><h2 class="h2-5 sm">How sources are chosen</h2><ul class="scale5 lim5">
+      <li><b>Relevant to the step.</b><span>Prefer a measure of the outcome itself. If only a proxy exists, say what it misses.</span></li>
+      <li><b>Traceable to the original.</b><span>Link to the paper, official dataset or original report. Prefer transparent methods, independent research and repeated observations.</span></li>
+      <li><b>Strong enough for the claim.</b><span>Use experiments for narrow causal questions and official statistics for trends. A company disclosure can be useful without being independent; a preprint can be relevant without being established.</span></li>
+      <li><b>Include counterevidence.</b><span>Keep null results and benefits alongside worrying findings. Two sources per page limit the first review; they are not an exhaustive ranking of the literature.</span></li></ul></section>
+    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Older charts and additional sources are parked separately; forecasts are provisional.</p><p class="review-links"><a class="go" href="#review">1-2 hour review checklist →</a><a class="go" href="#library">Awaiting review →</a></p></section>
+    <section class="sec5" id="m-scales"><h2 class="h2-5 sm">How to read the map</h2><p class="sub5">The pathways come from the gradual disempowerment argument. Arrows show proposed links, not demonstrated causes. The skills branch adds questions about learning and judgement.</p><div class="two5 s1"><div><h3>Line style: measurement coverage</h3><ul class="scale5">${LEVELWORD.map((label,i)=>`<li>${lineGlyph5(i,44,12)}<div><b>${esc(label)}</b><span>${esc(LEVELDEF[i])}</span></div></li>`).join('')}</ul></div><div><h3>Colour: our reading of change</h3><p class="sub5">On the evidence overview, colour summarizes the selected findings. It does not score study quality or prove harm.</p><ul class="scale5">${[4,3,2,1,'?'].map(s=>`<li>${sigDot5(s)}<div><b>${esc(SIGWORD5[s])}</b><span>${esc(COPY.evidence.scale[s].gloss)}</span></div></li>`).join('')}</ul></div></div><p class="note5">These categories are provisional editorial judgements, not validated measures or independently reproduced ratings.</p></section>
+    <section class="sec5" id="m-more"><h2 class="h2-5 sm">Limits and sources</h2><p class="sub5">Coverage is uneven across countries and topics. No single indicator establishes gradual disempowerment. A dated finding is not necessarily the latest available value, and later versions may revise it.</p><details class="det5"><summary>Definitions at each step</summary><dl class="gloss">${ORDER.map(id=>`<div><dt>${esc(nameOf(id))}</dt><dd>${esc(DEFS[id][0])}<br><b>Still needed:</b> ${esc(SELECTED_EVIDENCE[id].gap)}</dd></div>`).join('')}</dl></details><details class="det5"><summary>All 18 priority sources</summary><div class="srcs">${ORDER.map(id=>`<div class="sg"><h4>${esc(nameOf(id))}</h4><ol>${SELECTED_EVIDENCE[id].sources.map(s=>`<li>${sourceLink6(s)}<br>${esc(s.title)}</li>`).join('')}</ol></div>`).join('')}</div></details><p class="review-links"><a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Original framework ↗</a><a class="go" href="pdf-source-crosswalk.html" target="_blank" rel="noopener">PDF reference crosswalk ↗</a></p></section></div>`;
+}
+
+const REVIEW_KEY6='gd-source-review-2026-10-v1';
+const reviewItems6=()=>ORDER.flatMap(topic=>SELECTED_EVIDENCE[topic].sources.map(source=>({topic,source})));
+function readReview6(){try{const x=JSON.parse(localStorage.getItem(REVIEW_KEY6)||'{}');return x&&typeof x==='object'&&!Array.isArray(x)?x:{}}catch(e){return {}}}
+function viewReview(v){
+  const state=readReview6();
+  v.innerHTML=`<div class="view5 wrap review6">${eye5(['Source review'])}<h1 class="h1-5">An evidence check in 1-2 hours</h1>
+    <p class="lead5">18 sources, two per topic. This is a publication check, not a full literature review.</p>
+    <div class="review6-plan"><p><b>10 minutes</b> for the map and page headlines. <b>90 minutes</b> for sources, about five minutes each. <b>20 minutes</b> for corrections and decisions.</p><p>For every source: match the claim to the original, check the population and comparison, and keep the main limitation. If a check needs more time, park it.</p></div>
+    <div class="review6-tools"><div><label for="review-progress"><b id="review-count"></b></label><progress id="review-progress" max="18" value="0"></progress><span class="note5" id="review-parked"></span></div><button class="btn ghost" type="button" id="review-export">Export review notes</button></div>
+    <p class="note5" id="review-storage" role="status">Progress stays in this browser. Checking an item does not mark the public website as verified; export your decisions for the next update.</p>
+    <nav class="toc5" aria-label="Review by topic">${ORDER.map(id=>`<a href="#review/${id}">${esc(nameOf(id))}</a>`).join('')}</nav>
+    ${ORDER.map(id=>`<section class="sec5" id="review-${id}"><div class="h2row5"><h2 class="h2-5 sm">${esc(nameOf(id))}</h2><a class="go" href="#${id}" target="_blank" rel="noopener">Open page ↗</a></div>${SELECTED_EVIDENCE[id].sources.map(s=>{const x=state[s.id]||{};return `<article class="review6-item"><div class="review6-title"><h3>${esc(s.label)}</h3><label class="review6-status">Decision <select data-review="${esc(s.id)}" aria-label="Review status: ${esc(s.label)}">${[['pending','Not checked'],['checked','Checked'],['parked','Park for later']].map(([key,label])=>`<option value="${key}"${(x.status||'pending')===key?' selected':''}>${label}</option>`).join('')}</select></label></div><p>${sourceLink6(s)}</p><p class="note5">Look at: ${esc(s.locate)}</p><ul>${s.checks.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><details class="source6-detail"><summary>Notes or correction</summary><label class="sr-only" for="note-${s.id}">Notes for ${esc(s.label)}</label><textarea id="note-${s.id}" data-note="${esc(s.id)}" rows="3">${esc(x.note||'')}</textarea></details></article>`}).join('')}</section>`).join('')}
+    <section class="sec5"><h2 class="h2-5 sm">Stop after two hours</h2><p class="sub5">Keep unresolved items marked as awaiting review, or request their removal from the priority pages. The longer source library, forecast extractions and proposed measures are outside this first pass.</p><p><a class="go" href="#library">Open the parked source library →</a></p></section></div>`;
+  const progress=()=>{const xs=reviewItems6().map(({source:s})=>state[s.id]||{}),n=xs.filter(x=>x.status==='checked').length,parked=xs.filter(x=>x.status==='parked').length;$('#review-count',v).textContent=`${n} of 18 checked`;$('#review-progress',v).value=n;$('#review-parked',v).textContent=`${parked} parked; ${18-n-parked} not checked`};
+  const save=()=>{try{localStorage.setItem(REVIEW_KEY6,JSON.stringify(state))}catch(e){$('#review-storage',v).textContent='Browser storage is unavailable. Export your notes before leaving this page.'}progress()};
+  $$('[data-review]',v).forEach(el=>el.addEventListener('change',()=>{const id=el.dataset.review;state[id]={...state[id],status:el.value};save()}));
+  $$('[data-note]',v).forEach(el=>el.addEventListener('input',()=>{const id=el.dataset.note;state[id]={...state[id],note:el.value};save()}));
+  $('#review-export',v).addEventListener('click',()=>{const text=['# Dashboard source review','', 'Local review decisions; not independent verification or a published status change.','',...reviewItems6().flatMap(({topic,source:s})=>{const x=state[s.id]||{};return [`## ${nameOf(topic)}: ${s.label}`,`Status: ${x.status||'pending'}`,`Source: ${s.url}`,`Checks: ${s.checks.join(' ')}`,`Notes: ${x.note||''}`,'']})].join('\n');const url=URL.createObjectURL(new Blob([text],{type:'text/markdown'})),a=document.createElement('a');a.href=url;a.download='dashboard-source-review.md';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+  progress();
 }
 render((location.hash||'#map').slice(1));initCaveats5();
 </script>
