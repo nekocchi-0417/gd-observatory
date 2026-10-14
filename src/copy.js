@@ -1249,9 +1249,83 @@ const COPY={
  "futures": {
   "nav": "Futures",
   "navTag": "WIP",
-  "title": "Forecasts, draft appendix",
+  "title": "Futures, work in progress",
   "wipTag": "Work in progress",
-  "caveat": "Work in progress. Built on published forecasts, mostly of US jobs and income; it needs more research.",
+  "caveat": "Work in progress. This page is a project map, not a literature review. It tracks adjacent work and possible scenario directions before choosing what to build.",
+  "landscape": {
+   "title": "Relevant work to avoid duplicating",
+   "sub": "Labour impacts, economic shock and formal agency-loss models are already active areas. The Observatory should probably connect these projects into a broader gradual-disempowerment evidence tracker rather than compete with them.",
+   "items": [
+    {
+     "tag": "Crowded",
+     "title": "Economic impacts of frontier AI",
+     "org": "SPAR / Rishi Bommasani",
+     "line": "AI diffusion through work, household substitution for labour, new tasks and links between benchmarks and economic indicators.",
+     "url": "https://www.sparai.org/projects/f26/rec2PlDq9OODdId2k/"
+    },
+    {
+     "tag": "Close overlap",
+     "title": "From AI exposure to economic shock",
+     "org": "SPAR / AI Safety Asia",
+     "line": "Early-warning indicators, transition scenarios and policy triggers for AI-driven labour disruption in Southeast Asia.",
+     "url": "https://www.sparai.org/projects/f26/rec6h6JTLiswjlgL9/"
+    },
+    {
+     "tag": "Close overlap",
+     "title": "Human autonomy in the age of machines",
+     "org": "SPAR / Joshua Krook",
+     "line": "Policy and legal work on protecting human autonomy, thought and decision-making under gradual disempowerment.",
+     "url": "https://www.sparai.org/projects/f26/recgG94Smce7E8J7G/"
+    },
+    {
+     "tag": "Formal model",
+     "title": "Loss of human agency: agent-based model",
+     "org": "SPAR",
+     "line": "A formal and computational model of agency loss, tipping surfaces and early-warning indicators.",
+     "url": "https://www.sparai.org/projects/f26/reck9hzkSGAMop7vj/"
+    },
+    {
+     "tag": "Scenario work",
+     "title": "AI Futures Project at MATS",
+     "org": "MATS / AI Futures Project",
+     "line": "Scenario forecasting, economic modelling, takeoff modelling and policy-relevant AI futures work.",
+     "url": "https://www.matsprogram.org/stream/aifp?cebe326e_page=3"
+    },
+    {
+     "tag": "Forecasting",
+     "title": "Metaculus stream at MATS",
+     "org": "MATS / Deger Turan",
+     "line": "Forecasting, world-modelling, AI diffusion, labour unions, technological uncertainty and gradual disempowerment.",
+     "url": "https://www.matsprogram.org/stream/turan"
+    }
+   ]
+  },
+  "directions": {
+   "title": "Promising directions for this Observatory",
+   "sub": "These look less duplicative than another labour-displacement model. They fit a public dashboard: scenario claims, indicators, and missing measures.",
+   "items": [
+    {
+     "tag": "Coming soon",
+     "title": "Quiet Handoff scenario tracker",
+     "line": "A 2027-2032 scenario with trackable claims across delegation, skills, culture, institutions and human influence."
+    },
+    {
+     "tag": "Coming soon",
+     "title": "Government decision accountability",
+     "line": "Track whether public-sector AI disclosure moves from inventories to decision counts, review rates, overrides and appeals."
+    },
+    {
+     "tag": "Coming soon",
+     "title": "Skills without AI",
+     "line": "A heatmap of what is known about unaided skill, calibration, judgement and recovery after AI is removed."
+    },
+    {
+     "tag": "Coming soon",
+     "title": "Culture and attention",
+     "line": "Move beyond AI content supply and ask what share of attention, trust and creator income remains human-led."
+    }
+   ]
+  },
   "toGap": "Almost no forecast covers people's say itself. See the gap →",
   "blocks": {
    "fan": "Workers' share so far, against economists' forecasts: a slow squeeze, not a crash.",

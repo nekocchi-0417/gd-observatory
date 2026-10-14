@@ -129,6 +129,18 @@ details.ic5-more .ic5-read{margin-top:6px;padding-top:0;border-top:0}
 .fut5p .fig5{margin-top:0}
 .fut5p .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .fut5p .route{opacity:.95}
+.future-grid5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.future-grid5-ideas{grid-template-columns:repeat(4,minmax(0,1fr))}
+.future-card5{position:relative;display:flex;min-height:156px;flex-direction:column;gap:8px;padding:18px 18px 16px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:inherit;text-decoration:none}
+.future-card5:hover b{text-decoration:underline;text-underline-offset:3px}
+.future-card5 b{font-size:17px;line-height:1.2;color:var(--ink)}
+.future-card5 em{font-style:normal;font-size:12.5px;font-weight:600;color:var(--ink-3)}
+.future-card5 span:last-child{font-family:var(--f-text);font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.future-tag5{align-self:flex-start;margin-bottom:2px;padding:3px 8px;border:1px solid var(--rule);border-radius:999px;font-size:11.5px;font-weight:700;color:var(--ink-2);background:var(--paper)}
+.future-card5.coming{border-style:dashed;background:transparent}
+.future-card5.coming .future-tag5{border-color:var(--ink-3)}
+@media (max-width:980px){.future-grid5,.future-grid5-ideas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.future-grid5,.future-grid5-ideas{grid-template-columns:1fr}.future-card5{min-height:0}}
 
 /* ---------- method ---------- */
 .toc5{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}

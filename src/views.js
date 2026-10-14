@@ -128,9 +128,15 @@ function viewGaps(v){
 /* ----- futures (work in progress) ----- */
 function viewFutures(v){
   const F=COPY.futures;
+  const proj=c=>`<a class="future-card5" href="${esc(c.url)}" target="_blank" rel="noopener"><span class="future-tag5">${esc(c.tag)}</span><b>${esc(c.title)}</b><em>${esc(c.org)}</em><span>${esc(c.line)}</span></a>`;
+  const direction=c=>`<div class="future-card5 coming"><span class="future-tag5">${esc(c.tag)}</span><b>${esc(c.title)}</b><span>${esc(c.line)}</span></div>`;
   v.innerHTML=`<div class="view5 wrap fut5p">${eye5(['Futures'])}
    <h1 class="h1-5">${esc(F.title)}</h1>
    <div class="wipban5"><span>${esc(F.caveat)}</span></div>
+   <section class="sec5 future-land5"><h2 class="h2-5">${esc(F.landscape.title)}</h2><p class="sub5">${esc(F.landscape.sub)}</p>
+    <div class="future-grid5 s1">${F.landscape.items.map(proj).join('')}</div></section>
+   <section class="sec5 future-land5"><h2 class="h2-5">${esc(F.directions.title)}</h2><p class="sub5">${esc(F.directions.sub)}</p>
+    <div class="future-grid5 future-grid5-ideas s1">${F.directions.items.map(direction).join('')}</div></section>
    <section class="sec5"><div id="fanc"></div></section>
    <section class="sec5"><h2 class="h2-5">Five routes the chain could take</h2><p class="sub5">${esc(F.blocks.routes)} ${esc(COPY.ui.instructions.routes)}</p>
     <div class="routes s1" role="group" aria-label="Route">${ROUTES.map(r=>`<button class="route" data-route="${r.id}" aria-pressed="${r.id===routeSel}"><span class="rn">ROUTE ${r.id}</span><span class="rt">${esc(r.name)}</span><span class="rd">${esc(F.routeDesc[r.id]||r.desc)}</span></button>`).join('')}</div>

@@ -836,6 +836,18 @@ details.ic5-more .ic5-read{margin-top:6px;padding-top:0;border-top:0}
 .fut5p .fig5{margin-top:0}
 .fut5p .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .fut5p .route{opacity:.95}
+.future-grid5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.future-grid5-ideas{grid-template-columns:repeat(4,minmax(0,1fr))}
+.future-card5{position:relative;display:flex;min-height:156px;flex-direction:column;gap:8px;padding:18px 18px 16px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:inherit;text-decoration:none}
+.future-card5:hover b{text-decoration:underline;text-underline-offset:3px}
+.future-card5 b{font-size:17px;line-height:1.2;color:var(--ink)}
+.future-card5 em{font-style:normal;font-size:12.5px;font-weight:600;color:var(--ink-3)}
+.future-card5 span:last-child{font-family:var(--f-text);font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.future-tag5{align-self:flex-start;margin-bottom:2px;padding:3px 8px;border:1px solid var(--rule);border-radius:999px;font-size:11.5px;font-weight:700;color:var(--ink-2);background:var(--paper)}
+.future-card5.coming{border-style:dashed;background:transparent}
+.future-card5.coming .future-tag5{border-color:var(--ink-3)}
+@media (max-width:980px){.future-grid5,.future-grid5-ideas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.future-grid5,.future-grid5-ideas{grid-template-columns:1fr}.future-card5{min-height:0}}
 
 /* ---------- method ---------- */
 .toc5{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
@@ -1243,7 +1255,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   <a class="mark" href="#map" aria-label="Gradual Disempowerment Observatory, home">
     <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2"/><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6"/></svg>
     <span>Gradual Disempowerment Observatory</span></a>
-  <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
+  <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#futures" title="Scenario directions and adjacent projects">Futures <span class="wip5">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
 <footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#library">Awaiting review</a> · <a href="#method">Method and sources</a></span></div></footer>
@@ -3603,9 +3615,83 @@ const COPY={
  "futures": {
   "nav": "Futures",
   "navTag": "WIP",
-  "title": "Forecasts, draft appendix",
+  "title": "Futures, work in progress",
   "wipTag": "Work in progress",
-  "caveat": "Work in progress. Built on published forecasts, mostly of US jobs and income; it needs more research.",
+  "caveat": "Work in progress. This page is a project map, not a literature review. It tracks adjacent work and possible scenario directions before choosing what to build.",
+  "landscape": {
+   "title": "Relevant work to avoid duplicating",
+   "sub": "Labour impacts, economic shock and formal agency-loss models are already active areas. The Observatory should probably connect these projects into a broader gradual-disempowerment evidence tracker rather than compete with them.",
+   "items": [
+    {
+     "tag": "Crowded",
+     "title": "Economic impacts of frontier AI",
+     "org": "SPAR / Rishi Bommasani",
+     "line": "AI diffusion through work, household substitution for labour, new tasks and links between benchmarks and economic indicators.",
+     "url": "https://www.sparai.org/projects/f26/rec2PlDq9OODdId2k/"
+    },
+    {
+     "tag": "Close overlap",
+     "title": "From AI exposure to economic shock",
+     "org": "SPAR / AI Safety Asia",
+     "line": "Early-warning indicators, transition scenarios and policy triggers for AI-driven labour disruption in Southeast Asia.",
+     "url": "https://www.sparai.org/projects/f26/rec6h6JTLiswjlgL9/"
+    },
+    {
+     "tag": "Close overlap",
+     "title": "Human autonomy in the age of machines",
+     "org": "SPAR / Joshua Krook",
+     "line": "Policy and legal work on protecting human autonomy, thought and decision-making under gradual disempowerment.",
+     "url": "https://www.sparai.org/projects/f26/recgG94Smce7E8J7G/"
+    },
+    {
+     "tag": "Formal model",
+     "title": "Loss of human agency: agent-based model",
+     "org": "SPAR",
+     "line": "A formal and computational model of agency loss, tipping surfaces and early-warning indicators.",
+     "url": "https://www.sparai.org/projects/f26/reck9hzkSGAMop7vj/"
+    },
+    {
+     "tag": "Scenario work",
+     "title": "AI Futures Project at MATS",
+     "org": "MATS / AI Futures Project",
+     "line": "Scenario forecasting, economic modelling, takeoff modelling and policy-relevant AI futures work.",
+     "url": "https://www.matsprogram.org/stream/aifp?cebe326e_page=3"
+    },
+    {
+     "tag": "Forecasting",
+     "title": "Metaculus stream at MATS",
+     "org": "MATS / Deger Turan",
+     "line": "Forecasting, world-modelling, AI diffusion, labour unions, technological uncertainty and gradual disempowerment.",
+     "url": "https://www.matsprogram.org/stream/turan"
+    }
+   ]
+  },
+  "directions": {
+   "title": "Promising directions for this Observatory",
+   "sub": "These look less duplicative than another labour-displacement model. They fit a public dashboard: scenario claims, indicators, and missing measures.",
+   "items": [
+    {
+     "tag": "Coming soon",
+     "title": "Quiet Handoff scenario tracker",
+     "line": "A 2027-2032 scenario with trackable claims across delegation, skills, culture, institutions and human influence."
+    },
+    {
+     "tag": "Coming soon",
+     "title": "Government decision accountability",
+     "line": "Track whether public-sector AI disclosure moves from inventories to decision counts, review rates, overrides and appeals."
+    },
+    {
+     "tag": "Coming soon",
+     "title": "Skills without AI",
+     "line": "A heatmap of what is known about unaided skill, calibration, judgement and recovery after AI is removed."
+    },
+    {
+     "tag": "Coming soon",
+     "title": "Culture and attention",
+     "line": "Move beyond AI content supply and ask what share of attention, trust and creator income remains human-led."
+    }
+   ]
+  },
   "toGap": "Almost no forecast covers people's say itself. See the gap →",
   "blocks": {
    "fan": "Workers' share so far, against economists' forecasts: a slow squeeze, not a crash.",
@@ -5131,9 +5217,15 @@ function viewGaps(v){
 /* ----- futures (work in progress) ----- */
 function viewFutures(v){
   const F=COPY.futures;
+  const proj=c=>`<a class="future-card5" href="${esc(c.url)}" target="_blank" rel="noopener"><span class="future-tag5">${esc(c.tag)}</span><b>${esc(c.title)}</b><em>${esc(c.org)}</em><span>${esc(c.line)}</span></a>`;
+  const direction=c=>`<div class="future-card5 coming"><span class="future-tag5">${esc(c.tag)}</span><b>${esc(c.title)}</b><span>${esc(c.line)}</span></div>`;
   v.innerHTML=`<div class="view5 wrap fut5p">${eye5(['Futures'])}
    <h1 class="h1-5">${esc(F.title)}</h1>
    <div class="wipban5"><span>${esc(F.caveat)}</span></div>
+   <section class="sec5 future-land5"><h2 class="h2-5">${esc(F.landscape.title)}</h2><p class="sub5">${esc(F.landscape.sub)}</p>
+    <div class="future-grid5 s1">${F.landscape.items.map(proj).join('')}</div></section>
+   <section class="sec5 future-land5"><h2 class="h2-5">${esc(F.directions.title)}</h2><p class="sub5">${esc(F.directions.sub)}</p>
+    <div class="future-grid5 future-grid5-ideas s1">${F.directions.items.map(direction).join('')}</div></section>
    <section class="sec5"><div id="fanc"></div></section>
    <section class="sec5"><h2 class="h2-5">Five routes the chain could take</h2><p class="sub5">${esc(F.blocks.routes)} ${esc(COPY.ui.instructions.routes)}</p>
     <div class="routes s1" role="group" aria-label="Route">${ROUTES.map(r=>`<button class="route" data-route="${r.id}" aria-pressed="${r.id===routeSel}"><span class="rn">ROUTE ${r.id}</span><span class="rt">${esc(r.name)}</span><span class="rd">${esc(F.routeDesc[r.id]||r.desc)}</span></button>`).join('')}</div>
