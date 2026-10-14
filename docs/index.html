@@ -1017,9 +1017,11 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .ml5-line .coverage-glyph5{position:absolute;top:18px;left:1px;background:var(--surface)}
 .ml5-card{padding-bottom:18px}
 .ml5-card .card5-research{margin-top:6px}
-.er5-head,.er5{grid-template-columns:minmax(0,1.1fr) 190px minmax(0,2fr) 18px;gap:4px 24px}
+.er5-head,.er5{grid-template-columns:minmax(0,1.1fr) 190px 112px minmax(0,2fr) 18px;gap:4px 24px}
 .er5-head{display:grid;padding:22px 8px 10px 26px;color:var(--ink-2);font-size:12px;font-weight:600}
 .er5-coverage{display:flex;align-items:center;min-width:0}
+.er5-chart{display:flex;align-items:center;min-width:0}
+.er5-chart .sp5{width:96px;height:34px}
 .er5-one{min-width:0}
 .coverage-rubric5 .coverage-glyph5{margin-top:3px}
 .coverage-rubric5>li{align-items:flex-start}
@@ -1036,11 +1038,12 @@ details.ic5-more summary::-webkit-details-marker{display:none}
   .coverage-key5-item>span>span{font-size:12.5px}
   .er5-head{display:none}
   .er5-list{margin-top:22px}
-  .er5{grid-template-columns:minmax(0,1fr) 14px;gap:8px 12px;padding-left:18px}
+  .er5{grid-template-columns:minmax(0,1fr) 100px 14px;gap:8px 12px;padding-left:18px}
   .er5 .er5-nm{grid-column:1;grid-row:1}
   .er5 .er5-coverage{grid-column:1;grid-row:2}
+  .er5 .er5-chart{grid-column:2;grid-row:1/4;align-self:center;justify-content:flex-end}
   .er5 .er5-one{grid-column:1;grid-row:3}
-  .er5 .chev5{grid-column:2;grid-row:1/4}
+  .er5 .chev5{grid-column:3;grid-row:1/4}
   .coverage-reasons5>div{grid-template-columns:1fr;gap:8px}
   #m-coverage{scroll-margin-top:94px}
 }
@@ -1211,6 +1214,9 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .source6-detail{border-top:1px solid var(--rule);font:400 15px/1.5 var(--f-sans);padding-top:12px;color:var(--ink-2)}
 .source6-detail summary{cursor:pointer;font-weight:550;color:var(--ink)}
 .source6-detail p{margin-top:12px;overflow-wrap:anywhere}.source6-detail a,.library6 a{color:var(--s1)}
+.priority6-charts{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-block:30px}
+.priority6-charts .ic5wrap{margin-top:22px}
+.chart-gap6{margin-top:18px}
 .priority6-gap{border-top:1px solid var(--ink-3);padding-top:30px}.priority6-gap .lead5{max-width:900px;margin-top:16px}
 .review6-plan{max-width:900px;font:400 18px/1.6 var(--f-sans);color:var(--ink-2);margin:28px 0}.review6-plan b{color:var(--ink)}
 .review6-tools{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;border-block:1px solid var(--rule);padding:20px 0}
@@ -4793,13 +4799,24 @@ function mountMap5(el,opts={}){
 /* ======================================================================================
    2. EVIDENCE OVERVIEW ROWS
    ====================================================================================== */
+function priorityIndicatorIds5(id){
+  const p=SELECTED_EVIDENCE&&SELECTED_EVIDENCE[id];if(!p)return [];
+  return [...new Set(p.sources.flatMap(s=>s.legacy||[]))];
+}
+function priorityIndicators5(id){
+  const ids=priorityIndicatorIds5(id);
+  const pool=id==='influence'?LINKS.flatMap(l=>l.inds.filter(d=>d.recRow==='influence')):((linkById(id)||{}).inds||[]);
+  return ids.map(x=>pool.find(d=>d.id===x)).filter(Boolean);
+}
 function evidenceRows(el){
   const rows=ORDER.map(id=>{const c=coverageOf5(id);
+    const d=priorityIndicators5(id)[0],t=d&&(SIG5().indicators[d.id]||{}),spark=d?sparkSVG5(d,t.trend||'Not rated',96,34):'';
     return `<a class="er5" data-coverage="${c.band}" href="#${id}" style="--band:var(--coverage-${c.band})" aria-label="${esc(nameOf(id))}. ${esc(coverageBand5(id).label)}. ${esc(oneLiner5(id))}">
       <span class="er5-nm">${esc(nameOf(id))}</span>
       <span class="er5-coverage">${coverageBadge5(id)}</span>
+      <span class="er5-chart" aria-hidden="true">${spark}</span>
       <span class="er5-one">${esc(oneLiner5(id))}</span>${chev5}</a>`}).join('');
-  el.innerHTML=coverageLegend5()+coverageNote5()+`<div class="er5-head" aria-hidden="true"><span>Step</span><span>Measurement coverage</span><span>What the studies show</span></div><div class="er5-list">${rows}</div>`;return el;
+  el.innerHTML=coverageLegend5()+coverageNote5()+`<div class="er5-head" aria-hidden="true"><span>Step</span><span>Measurement coverage</span><span>Chart</span><span>What the studies show</span></div><div class="er5-list">${rows}</div>`;return el;
 }
 
 /* ======================================================================================
@@ -5224,16 +5241,23 @@ const sourceCard6=s=>`<article class="source6" id="source-${esc(s.id)}">
   ${s.metrics?`<dl class="source6-metrics">${s.metrics.map(([n,t])=>`<div><dt>${esc(t)}</dt><dd>${esc(n)}</dd></div>`).join('')}</dl>`:''}
   <dl class="source6-notes"><div><dt>Why chosen</dt><dd>${esc(s.why)}</dd></div><div><dt>Key limit</dt><dd>${esc(s.limit)}</dd></div></dl>
   <details class="source6-detail"><summary>Paper title and where to check</summary><p>${esc(s.title)}</p><p>${esc(s.locate)}</p>${s.doi?`<p><a href="https://doi.org/${esc(s.doi)}" target="_blank" rel="noopener">DOI: ${esc(s.doi)} ↗</a></p>`:''}${s.paper?`<p><a href="${esc(s.paper)}" target="_blank" rel="noopener">Supporting paper or data ↗</a></p>`:''}</details></article>`;
+function unchartedSources6(id){
+  const chartIds=new Set(priorityIndicators5(id).map(d=>d.id));
+  return SELECTED_EVIDENCE[id].sources.filter(s=>!(s.legacy||[]).some(x=>chartIds.has(x)));
+}
 
 function viewTopic(v,id){
   const p=SELECTED_EVIDENCE[id],i=ORDER.indexOf(id),prev=ORDER[i-1],next=ORDER[i+1];
+  const charts=priorityIndicators5(id),uncharted=unchartedSources6(id);
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
     <div class="claim5">${eye5([esc(nameOf(id)),`${i+1} of ${ORDER.length}`])}<h1 class="h1-5 c">${esc(p.h1)}</h1><p class="lead5">${esc(p.summary)}</p></div>
     ${verify5()}
     <section class="sec5"><div class="h2row5"><h2 class="h2-5 sm">Two sources to start with</h2><a class="go" href="#review/${id}">Review this page →</a></div><p class="sub5 source6-selection">${esc(p.selection)}</p>
       <div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
+    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#review/${id}">Check chart values →</a></div><p class="sub5">These charts are restored only where they map to one of the priority sources above. Treat the plotted values as source extractions to verify before citing.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a><a class="go" href="#library/${id}">More sources: awaiting review →</a></p></section>
     ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['review','Source review','Next'])}</div>`;
+  if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
   crumbScroll5(v);
 }
 

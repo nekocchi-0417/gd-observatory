@@ -17,7 +17,7 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
      const bad=(o.txt.match(/[^.\n]*\b(never|nobody|no one)\b[^.\n]*/gi)||[]);if(bad.length)console.log('ABSOLUTES',h,bad.map(x=>x.trim().slice(0,110)));}
    if(/^(capability|adoption|handover|work|share|skills|culture|institutions)$/.test(h)){
      const all=await p.$('.ic5-all');if(all)await all.click();
-     const cards=await p.$$('.ic5');for(const c of cards){await c.click();await p.waitForTimeout(80)}
+     const cards=await p.$$('.ic5:visible');for(const c of cards){await c.click();await p.waitForTimeout(80)}
      const rows=await p.$$('.br5 summary');for(const r of rows){await r.click()}
      const o2=await p.evaluate(()=>document.documentElement.scrollWidth);if(o2>w)console.log('OVERFLOW after open',w,h,o2);}
   }
