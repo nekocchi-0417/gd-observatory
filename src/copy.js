@@ -19,7 +19,7 @@ const COPY={
    "all": "Explore the research gaps"
   },
   "cta": {
-   "h2": "Help make the dashboard real",
+   "h2": "Help improve the dashboard",
    "buttons": [
     {"t": "Add an indicator or study", "to": "contribute/add"},
     {"t": "Find or offer funding", "to": "contribute/funding"},

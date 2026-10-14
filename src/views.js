@@ -29,7 +29,7 @@ function viewMap(v){
    <div id="homeMap"></div>
    <section class="wrap summary5" aria-labelledby="snapshot-title"><div class="snapshot5"><div><h2 class="h2-5" id="snapshot-title">${esc(S.h2)}</h2><p class="sub5 big">${esc(S.sub)}</p><a class="go summary5-link" href="#gaps">${esc(S.all)} →</a></div>
     <ol class="snapshot5-l">${S.items.map(x=>`<li><span>${esc(x.k)}</span><b>${esc(x.t)}</b><p>${esc(x.text)}</p></li>`).join('')}</ol></div></section>
-   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2><p class="sub5">Add a better indicator, fund a missing measure, or challenge a rating before this becomes a v1.0 public resource.</p>
+   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2><p class="sub5">Add a better indicator, fund a neglected area, or challenge the interpretation of the studies.</p>
     <p class="cta5-links">${C.buttons.map(b=>`<a class="go" href="#${esc(b.to)}">${esc(b.t)} →</a>`).join('')}<a class="go" href="#contribute">${esc(C.why)} →</a></p></section>
   </div>`;
   mountMap5($('#homeMap',v),{onStop:id=>go(id)});
