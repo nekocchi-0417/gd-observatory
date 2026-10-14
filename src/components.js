@@ -70,6 +70,7 @@ const SEGS5=(()=>{const {J,S,TY,CX}=GEO5,jx=J[0];
    {to:'institutions',p:[J,[jx,S.institutions[1]-40],[jx+40,S.institutions[1]],S.institutions]},
    ...['share','skills','culture','institutions'].map(f=>({to:'influence',from:f,p:[S[f],[1000,S[f][1]],[CX,TY]]})),
    {to:'influence',from:'_',p:[[CX,TY],[S.influence[0]-23,TY]]}]})();
+const activeSeg5=(id,s)=>s.to===id||id==='influence'&&s.to==='influence';
 
 /* Legacy measurement glyphs remain on the detailed research agenda. */
 const vis3=l=>l>=3?3:l===2?2:1;
@@ -109,7 +110,7 @@ function stepCard5(i){
   const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1,c=coverageOf5(id);
   const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
   const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
-  return `<div class="card5-meta"><span class="card5-n">${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
+  return `<div class="card5-meta"><span class="card5-n">Tour step ${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
     <div class="card5-research"><b>Research needed</b><p class="card5-what">${esc(c.need)}</p></div>
     <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>
@@ -119,12 +120,13 @@ function stepCard5(i){
 function mountMap5(el,opts={}){
   const onStop=opts.onStop||(id=>{try{location.hash=id}catch(e){}});
   el.classList.add('mapcard5');
-  el.innerHTML=`<div class="coverage-header5 wrap"><h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>${coverageLegend5()}${coverageNote5()}</div><div class="map5">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
+  el.innerHTML=`<div class="coverage-header5 wrap"><h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>${coverageLegend5()}${coverageNote5()}</div><div class="map5 spotlight-on">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
   const map=$('.map5',el),card=$('.card5',map),list=$('.mlist5',el);
   let sel=0,phoneOpen=true;
   const rm=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   const select=(i,o={})=>{sel=(i+ORDER.length)%ORDER.length;const id=ORDER[sel];
     $$('.st5',map).forEach(g=>{const on=g.dataset.id===id;g.classList.toggle('here',on);g.setAttribute('aria-pressed',String(on))});
+    $$('.seg5',map).forEach((p,i)=>p.classList.toggle('active',activeSeg5(id,SEGS5[i])));
     card.innerHTML=stepCard5(sel);
     $$('.ml5[data-id]',list).forEach(r=>{const on=phoneOpen&&r.dataset.id===id;r.classList.toggle('open',on);$('.ml5-btn',r).setAttribute('aria-expanded',String(on));$('.ml5-card',r).innerHTML=on?stepCard5(sel):''});
     if(o.scroll){const r=$(`.ml5[data-id="${id}"]`,list);if(r&&r.offsetParent)try{r.scrollIntoView({block:'start',behavior:rm()?'auto':'smooth'})}catch(e){}}};

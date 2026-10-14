@@ -254,7 +254,11 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .card5-ctl .chev5{flex:0 0 14px;width:14px;height:14px}
 .card5-ctl .btn.pri{background:var(--ink);color:var(--surface);border-color:var(--ink)}
 .card5-ctl .btn.pri:hover{background:var(--accent);border-color:var(--accent)}
-.map5 .st5.here .ring5{stroke-width:6}
+.map5.spotlight-on .seg5,.map5.spotlight-on .jn5{opacity:.22;transition:opacity .16s,stroke-width .16s}
+.map5.spotlight-on .seg5.active{opacity:1;stroke-width:4.2}
+.map5.spotlight-on .st5{opacity:.32;transition:opacity .16s}
+.map5.spotlight-on .st5.here{opacity:1}
+.map5 .st5.here .ring5{stroke-width:5.5;filter:drop-shadow(0 0 4px var(--coverage-color))}
 .map5 .st5.here .core5{opacity:1}
 .map5 .st5.here .nm5{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
 /* phone list rows */
@@ -264,7 +268,7 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .ml5-card:empty{display:none}
 .ml5-card{grid-column:2/-1;padding:0 0 14px}
 .ml5-card .card5-name{display:none}
-@media (prefers-reduced-motion:reduce){.ml5-btn .chev5{transition:none}}
+@media (prefers-reduced-motion:reduce){.ml5-btn .chev5,.map5.spotlight-on .seg5,.map5.spotlight-on .jn5,.map5.spotlight-on .st5{transition:none}}
 .ml5-line{grid-row:1/span 2}
 .map5 .card5 svg{display:inline-block;width:auto;height:auto;max-height:none}
 @media (max-width:1180px){.card5{position:static;width:auto;max-width:560px;margin:4px 20px 6px;box-shadow:none}}
@@ -289,8 +293,7 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .map5 .coverage-label5{font-size:11.5px;font-weight:600;fill:var(--coverage-color);letter-spacing:0}
 .map5 .research-prompt5{font-size:11px;font-weight:500;fill:var(--ink);letter-spacing:0}
 .map5 .st5:focus-visible .ring5{outline:2px solid var(--ink);outline-offset:4px}
-.map5 .st5.here .ring5{stroke-width:4.5}
-.map5 .st5.here[data-coverage="major"] .ring5{stroke-width:3}
+.map5 .st5.here[data-coverage="major"] .ring5{stroke-width:4.2}
 .card5{min-height:194px;border-color:var(--rule);box-shadow:none}
 .card5-meta{display:flex;justify-content:space-between;gap:8px;align-items:center}
 .card5-meta .card5-n{letter-spacing:0;flex:0 0 auto}
