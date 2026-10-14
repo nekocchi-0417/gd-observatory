@@ -7,12 +7,6 @@ const COPY={
    "h1": "AI disempowerment: what is measured, what is missing",
    "sub": "A draft map of nine steps from AI capability to human influence. It separates early signs from the measurement gaps."
   },
-  "paths": {
-   "items": [
-    {"who": "Researchers", "line": "Inspect the evidence and suggest better indicators or studies.", "to": "evidence"},
-    {"who": "Funders", "line": "Find under-measured gaps that could become fundable projects.", "to": "gaps"}
-   ]
-  },
   "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
   "snapshot": {
    "h2": "The picture so far",
@@ -46,7 +40,7 @@ const COPY={
   "card": {
    "open": "See the evidence", "openEnd": "See the gap", "next": "Next", "again": "Start again",
    "what": {
-    "capability": "Researchers hand AI paid remote-work projects. The best systems complete about 1 in 5 to a professional standard, up from 1 in 40 in October 2025.",
+    "capability": "Research teams give AI systems paid remote-work projects. The best systems complete about 1 in 5 to a professional standard, up from 1 in 40 in October 2025.",
     "adoption": "A colleague drafts a report with AI. In August 2026, 53% of US workers used AI at work; 16% used it daily.",
     "handover": "A developer hands AI a whole task. Developers using AI agents rose from 31% to 59% in a year; in Claude chats, hand-overs are flat.",
     "work": "A 23-year-old looks for a first job. In the most AI-exposed occupations, US employment of 22–25-year-olds is about 19% below trend; the cause is disputed.",
