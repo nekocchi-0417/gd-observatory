@@ -106,43 +106,48 @@ function mapList5(){
 }
 
 /* the step card: what the step is, how well it is measured, and the way to its evidence */
-function stepCard5(i){
+function stepCard5(i,opts={}){
   const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1,c=coverageOf5(id);
   const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
   const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
-  return `<div class="card5-meta"><span class="card5-n">Tour step ${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
+  const nav=opts.nav!==false;
+  return `<div class="card5-meta"><span class="card5-n">Map step ${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
     <div class="card5-research"><b>Research needed</b><p class="card5-what">${esc(c.need)}</p></div>
     <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>
-      <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}" title="Back to ${esc(nameOf(ORDER[i-1]))}">${chev5}</button>`:''}<button type="button" class="btn ghost" data-t="next" aria-label="${esc(nextFull)}" title="${esc(nextFull)}"><span>${esc(nextLabel)}</span>${chev5}</button></span></div>`;
+      ${nav?`<span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}" title="Back to ${esc(nameOf(ORDER[i-1]))}">${chev5}</button>`:''}<button type="button" class="btn ghost" data-t="next" aria-label="${esc(nextFull)}" title="${esc(nextFull)}"><span>${esc(nextLabel)}</span>${chev5}</button></span>`:''}</div>`;
 }
 
 function mountMap5(el,opts={}){
   const onStop=opts.onStop||(id=>{try{location.hash=id}catch(e){}});
   el.classList.add('mapcard5');
-  el.innerHTML=`<div class="coverage-header5 wrap"><h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>${coverageLegend5()}${coverageNote5()}</div><div class="map5 spotlight-on">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
+  el.innerHTML=`<div class="coverage-header5 wrap"><h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>${coverageLegend5()}${coverageNote5()}</div><div class="map5 spotlight-on hover-preview">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
   const map=$('.map5',el),card=$('.card5',map),list=$('.mlist5',el);
   let sel=0,phoneOpen=true;
   const rm=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   const select=(i,o={})=>{sel=(i+ORDER.length)%ORDER.length;const id=ORDER[sel];
+    map.classList.toggle('has-card',o.card!==false);
     $$('.st5',map).forEach(g=>{const on=g.dataset.id===id;g.classList.toggle('here',on);g.setAttribute('aria-pressed',String(on))});
     $$('.seg5',map).forEach((p,i)=>p.classList.toggle('active',activeSeg5(id,SEGS5[i])));
-    card.innerHTML=stepCard5(sel);
+    card.innerHTML=stepCard5(sel,{nav:false});
     $$('.ml5[data-id]',list).forEach(r=>{const on=phoneOpen&&r.dataset.id===id;r.classList.toggle('open',on);$('.ml5-btn',r).setAttribute('aria-expanded',String(on));$('.ml5-card',r).innerHTML=on?stepCard5(sel):''});
     if(o.scroll){const r=$(`.ml5[data-id="${id}"]`,list);if(r&&r.offsetParent)try{r.scrollIntoView({block:'start',behavior:rm()?'auto':'smooth'})}catch(e){}}};
+  const preview=id=>select(ORDER.indexOf(id));
   el.addEventListener('click',e=>{
     const t=e.target.closest('[data-t]');
     if(t){e.preventDefault();const a=t.dataset.t,phone=!!t.closest('.mlist5');
       if(a==='open'){onStop(ORDER[sel]);return}
       phoneOpen=true;select(a==='prev'?sel-1:sel+1,{scroll:phone});return}
-    const s=e.target.closest('.st5');if(s){select(ORDER.indexOf(s.dataset.id));return}
+    const s=e.target.closest('.st5');if(s){onStop(s.dataset.id);return}
     const b=e.target.closest('.ml5-btn');if(b){const i=ORDER.indexOf(b.closest('.ml5').dataset.id);
       if(i===sel&&phoneOpen){phoneOpen=false;select(i)}else{phoneOpen=true;select(i)}}});
+  map.addEventListener('pointerover',e=>{const s=e.target.closest&&e.target.closest('.st5');if(s&&map.contains(s))preview(s.dataset.id)});
+  map.addEventListener('focusin',e=>{const s=e.target.closest&&e.target.closest('.st5');if(s)preview(s.dataset.id)});
   el.addEventListener('keydown',e=>{const t=e.target;
-    if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();select(ORDER.indexOf(t.dataset.id))}
+    if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();onStop(t.dataset.id)}
     else if((e.key==='ArrowRight'||e.key==='ArrowLeft')&&t.closest&&t.closest('.map5')){e.preventDefault();select(sel+(e.key==='ArrowRight'?1:-1));
       const g=$(`.st5[data-id="${ORDER[sel]}"]`,map);if(g&&t.matches('.st5'))g.focus()}});
-  select(ORDER.indexOf('skills'));
+  select(ORDER.indexOf('skills'),{card:false});
   return el;
 }
 

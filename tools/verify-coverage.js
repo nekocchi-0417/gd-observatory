@@ -48,8 +48,9 @@ function contrast(a,b){
         await page.locator('.st5[data-id="skills"]').focus();await page.keyboard.press('ArrowRight');
         assert.equal(await page.locator('.st5[aria-pressed="true"]').getAttribute('data-id'),'culture');
         await page.locator('.st5[data-id="influence"]').focus();await page.keyboard.press('Enter');
-        await page.locator('.map5 [data-t="next"]').click();
-        assert.equal(await page.locator('.st5[aria-pressed="true"]').getAttribute('data-id'),'capability');
+        assert.equal(await page.locator('.priority6 h1').innerText(),topics.influence.h1);
+        await page.goto(PAGE+'#map');await settle(page);
+        await page.locator('.st5[data-id="capability"]').hover();
         await page.locator('.map5 [data-t="open"]').click();
         assert.equal(await page.locator('.source-mini6').count(),2);
       }else{

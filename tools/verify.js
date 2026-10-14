@@ -23,10 +23,9 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
   }
   if(w===1280&&scheme==='light'){
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);
-   for(const id of ['capability','share','skills','institutions','influence']){await p.click(`.st5[data-id="${id}"]`);await p.waitForTimeout(150);
+   for(const id of ['capability','share','skills','institutions','influence']){await p.hover(`.st5[data-id="${id}"]`);await p.waitForTimeout(150);
      console.log('card',id,await p.$eval('.map5 .card5 .card5-name',e=>e.textContent).catch(()=>'NONE'),'| hash',await p.evaluate(()=>location.hash))}
-   await p.click('.map5 .card5 [data-t="next"]');await p.waitForTimeout(150);console.log('next wraps to',await p.$eval('.map5 .card5 .card5-name',e=>e.textContent));
-   await p.click('.map5 .card5 [data-t="open"]');await p.waitForTimeout(250);console.log('open evidence',await p.evaluate(()=>location.hash));
+   await p.hover('.st5[data-id="capability"]');await p.waitForTimeout(150);await p.click('.map5 .card5 [data-t="open"]');await p.waitForTimeout(250);console.log('open evidence',await p.evaluate(()=>location.hash));
    await p.goto(PAGE+'#skills/literacy');await p.waitForTimeout(300);console.log('old deep link now parked',await p.$eval('.library6 h1',e=>e.textContent));
    await p.goto(PAGE+'#capability');await p.waitForTimeout(300);console.log('compact sources',await p.locator('.source-mini6').count());
    await p.goto(PAGE+'#details/capability');await p.waitForTimeout(300);console.log('source rationale',await p.$eval('.source6-notes dd',e=>e.textContent.slice(0,60)));
