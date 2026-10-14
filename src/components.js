@@ -111,7 +111,7 @@ function stepCard5(i,opts={}){
   const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
   const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
   const nav=opts.nav!==false;
-  return `<div class="card5-meta"><span class="card5-n">Map step ${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
+  return `<div class="card5-meta"><span class="card5-n">Pathway step ${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
     <div class="card5-research"><b>Research needed</b><p class="card5-what">${esc(c.need)}</p></div>
     <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="A draft observatory that maps what is measured about gradual disempowerment, link by link, and where the human side goes unmeasured.">
-<title>Gradual Disempowerment Observatory</title>
+<meta name="description" content="A dashboard of research on gradual disempowerment: selected indicators, emerging findings and measurement gaps.">
+<title>Gradual Disempowerment Dashboard</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap">
 <style>
 :root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
@@ -1297,13 +1297,13 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 </head>
 <body>
 <header class="bar"><div class="wrap">
-  <a class="mark" href="#map" aria-label="Gradual Disempowerment Observatory, home">
+  <a class="mark" href="#home" aria-label="Gradual Disempowerment Dashboard, home">
     <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2"/><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6"/></svg>
-    <span>Gradual Disempowerment Observatory</span></a>
-  <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#futures" title="Scenario directions and adjacent projects">Futures <span class="wip5">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
+    <span>Gradual Disempowerment Dashboard</span></a>
+  <nav class="nav" aria-label="Sections"><a href="#home" title="Dashboard overview">Home</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#futures" title="Scenario directions and adjacent projects">Futures <span class="wip5">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
-<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#library">Awaiting review</a> · <a href="#method">Method and sources</a></span></div></footer>
+<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#library">Awaiting review</a> · <a href="#method">Method and sources</a></span></div></footer>
 <script>
 /* ---------- small chart kit: line, bars, columns, stack rows, dumbbell, spark ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1567,7 +1567,7 @@ const Charts=(()=>{
   return {line,bars,cols,stack,dumbbell,spark,record,capture,redraw};
 })();
 /* ---------- content: links 1–4 ---------- */
-const TAGS={direct:'Read at source (AI-assisted)',primary:"Publisher's page",company:"Company's own data",secondary:'Secondary source',derived:'Observatory calculation'};
+const TAGS={direct:'Read at source (AI-assisted)',primary:"Publisher's page",company:"Company's own data",secondary:'Secondary source',derived:'Dashboard calculation'};
 const mk=(el,cls)=>{const d=document.createElement('div');d.className=cls||'chart';el.appendChild(d);return d};
 const pairs=(el,items)=>{const d=mk(el,'pairs');d.dataset.n=items.length;d.innerHTML=items.map(p=>`<div class="pair"><div class="v">${p.from?`<span class="from">${esc(p.from)}</span>`:''}<span class="to">${p.from?'<span class="arr">→</span>':''}${esc(p.v)}</span></div><div class="l">${esc(p.l)}</div>${p.w?`<div class="w">${esc(p.w)}</div>`:''}</div>`).join('');return d};
 const yrs=(a,b,s=1)=>{const r=[];for(let y=a;y<=b;y+=s)r.push(y);return r};
@@ -1699,7 +1699,7 @@ const LINKS=[
    render(el){Charts.line(mk(el),{aria:'Share of US work hours assisted by generative AI: 4.1% in Q4 2024, 4.7% in Q1 2025, 4.9% in Q2 2025, 5.7% in Q3 2025, 5.6% in Q4 2025, 6.0% in Q1 2026 and 6.3% in Q2 2026',
      x:{min:2024.7,max:2026.6,ticks:[2024.875,2025.375,2025.875,2026.375],fmt:v=>fmtQ(v),tip:fmtQ,ticksNarrow:[2025.375,2026.375],label:'Quarter'},y:{min:0,max:8,ticks:[0,2,4,6,8],fmt:pct,tip:v=>v.toFixed(2)+'%'},
      series:[{name:'Share of work hours assisted by generative AI',color:C.s1,w:2.5,area:true,endLabel:'6.3%',pts:[[2024.875,4.1],[2025.125,4.68],[2025.375,4.9],[2025.625,5.72],[2025.875,5.56],[2026.125,6.01],[2026.375,6.27]]}]})},
-   read:'From the St. Louis Fed\'s Real-Time Population Survey, an online panel. Answers are self-reported in ranges, so each figure uses midpoints, and moves of a few tenths are noise. Divided by the share of workers who use AI, the figure was about 14% in both mid-2025 and mid-2026 (observatory arithmetic): hours rose because more people use AI, not because each user uses it more. The series is also published by occupation group, but those figures swing by a couple of points from quarter to quarter.',
+   read:'From the St. Louis Fed\'s Real-Time Population Survey, an online panel. Answers are self-reported in ranges, so each figure uses midpoints, and moves of a few tenths are noise. Divided by the share of workers who use AI, the figure was about 14% in both mid-2025 and mid-2026 (dashboard arithmetic): hours rose because more people use AI, not because each user uses it more. The series is also published by occupation group, but those figures swing by a couple of points from quarter to quarter.',
    src:[['FRED, Generative AI share of work hours (RPSGENAIASSISTWRKHRSALL)','https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL'],['St. Louis Fed, What work does generative AI do? (Sep 2026)','https://www.stlouisfed.org/on-the-economy/2026/sep/what-work-does-generative-ai-do']]},
   {id:'firms',tab:['US firms using AI','19.8%','Census · May 2026'],tag:'primary',rec:'d',recName:'Census and Eurostat: firms',
    title:'The share of US firms using AI jumped from about 10% to 17% when the survey question changed',
@@ -1805,7 +1805,7 @@ const LINKS=[
  status:'Young workers 19% behind peers',
  mech:'fewer first jobs',
  claim:'Young workers in AI-exposed jobs are falling behind. Employment in the wider job market has not fallen.',
- deck:'AI-exposed occupations are those where AI can do the largest share of tasks. In ADP payroll data, employment of 22 to 25 year olds in the most exposed occupations is down 13% since ChatGPT launched in November 2022. For the same age group in the least exposed occupations it is up 8%, and for 35 to 40 year olds in the exposed occupations it is up 9%. The gap keeps widening, and employment of 26 to 30 year olds in the same occupations has slipped 4% (the observatory\'s reading of the dashboard data). Whether AI is the cause is disputed, and employment among 25 to 54 year olds is as high as before.',
+ deck:'AI-exposed occupations are those where AI can do the largest share of tasks. In ADP payroll data, employment of 22 to 25 year olds in the most exposed occupations is down 13% since ChatGPT launched in November 2022. For the same age group in the least exposed occupations it is up 8%, and for 35 to 40 year olds in the exposed occupations it is up 9%. The gap keeps widening, and employment of 26 to 30 year olds in the same occupations has slipped 4% (the dashboard\'s reading of the dashboard data). Whether AI is the cause is disputed, and employment among 25 to 54 year olds is as high as before.',
  tour:'Fewer first jobs in exposed fields. Jobs for 22 to 25 year olds in the most AI-exposed occupations are down 13% since late 2022. The cause is disputed.',
  inds:[
   {id:'canaries',tab:['Jobs, ages 22–25, most AI-exposed occupations','−13%','since Nov 2022 · ADP'],tag:'direct',rec:'d',recName:'ADP: jobs, ages 22–25',
@@ -1827,7 +1827,7 @@ const LINKS=[
      vlines:[{x:ym(2022,11.97),label:'ChatGPT launch',anchor:'end'}],
      legend:false,series:[{name:'Ages 35–40',color:C.s3,markers:'end',endLabel:'Ages 35–40: 108.6',endMuted:true,pts:canS(CAN.m5)},{name:'Ages 22–25',color:C.s3,markers:'end',endLabel:'Ages 22–25: 87.2',endMuted:true,pts:canS(CAN.y5)},
       {name:'Ages 26–30',color:C.s1,markers:'end',w:2.5,endLabel:'Ages 26–30: 96.2',pts:canS(CAN.e5)}]})},
-   read:'The 26 to 30 group in the most exposed occupations peaked at 101.8 (November 2023 and again November 2024) and stood at 96.2 in August 2026. This is the observatory\'s reading of Stanford\'s published dashboard data. Stanford\'s dashboard notes "modest declines for the next-youngest groups" in software and customer service; it publishes no gap figure for this age group.',
+   read:'The 26 to 30 group in the most exposed occupations peaked at 101.8 (November 2023 and again November 2024) and stood at 96.2 in August 2026. This is the dashboard\'s reading of Stanford\'s published dashboard data. Stanford\'s dashboard notes "modest declines for the next-youngest groups" in software and customer service; it publishes no gap figure for this age group.',
    src:[['Stanford Digital Economy Lab, Canaries Dashboard: by age and exposure fifth (quintile)','https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/']]},
   {id:'euyouth',tab:['EU information and communication jobs, ages 15–24','−15%','2023 to 2025 · Eurostat'],tag:'primary',rec:'p',recName:'EU tech and media jobs by age',
    title:'In the EU, tech and media jobs for under-25s fell 15% from 2023 to 2025, while older workers\' rose',
@@ -1838,7 +1838,7 @@ const LINKS=[
      series:[{name:'Ages 15–24, all sectors',color:C.s3,markers:'all',endLabel:'15–24, all sectors: 102.6',endLabelNarrow:'All: 102.6',endMuted:true,pts:[[2021.5,93.1],[2022.5,100],[2023.5,102.6],[2024.5,102.9],[2025.5,102.6]]},
       {name:'Ages 25–64, information and communication',color:C.s2,markers:'all',endLabel:'25–64: 109.0',pts:[[2021.5,95.8],[2022.5,100],[2023.5,104.1],[2024.5,107.7],[2025.5,109.0]]},
       {name:'Ages 15–24, information and communication',color:C.s1,w:2.5,markers:'all',endLabel:'15–24: 90.5',pts:[[2021.5,89.8,'includes a series break in Q1 2021'],[2022.5,100],[2023.5,106.5],[2024.5,98.9],[2025.5,90.5]]}]})},
-   read:'The observatory\'s averages of Eurostat\'s quarterly Labour Force Survey counts for the 27 EU countries (EU27). The young-worker line rose to 2023 and then fell back to its 2021 level, a boom then a bust, so the fall may not be about AI. This is a sector, not the most AI-exposed occupations, so it is a rough stand-in for the US "canaries" measure. Figures are not seasonally adjusted, the first quarter of 2021 has a series break, and there are no EU27 figures for 2026 yet. The European Central Bank reads a similar fall as not yet attributable to AI.',
+   read:'The dashboard\'s averages of Eurostat\'s quarterly Labour Force Survey counts for the 27 EU countries (EU27). The young-worker line rose to 2023 and then fell back to its 2021 level, a boom then a bust, so the fall may not be about AI. This is a sector, not the most AI-exposed occupations, so it is a rough stand-in for the US "canaries" measure. Figures are not seasonally adjusted, the first quarter of 2021 has a series break, and there are no EU27 figures for 2026 yet. The European Central Bank reads a similar fall as not yet attributable to AI.',
    src:[['Eurostat, Employed persons by economic activity, quarterly (lfsq_egan2), updated 11 Sep 2026','https://ec.europa.eu/eurostat/databrowser/view/lfsq_egan2/default/table']]},
   {id:'macro',tab:['Employment rate, ages 25–54','80.7%','BLS · Sep 2026'],tag:'primary',rec:'p',recName:'BLS: employment, 25–54',
    title:'Since ChatGPT launched, the employment rate for 25 to 54 year olds has not fallen',
@@ -1877,7 +1877,7 @@ const LINKS=[
      {v:'−13%',l:'starting earnings for the same group; half from lower pay, half from a shift into lower-wage sectors',w:'US CENSUS WORKING PAPER · SEP 2026'},
      {v:'5.6%',l:'unemployment among recent graduates aged 22 to 27; 42% work in jobs that do not need a degree',w:'NEW YORK FED · Q2 2026'},
      {v:'−14%',l:'job-finding rate of 22 to 25 year olds into the most exposed occupations ("just barely" significant)',w:'ANTHROPIC · MAR 2026'}])},
-   read:'The Census paper is not yet peer reviewed. It finds the divergence beginning in late 2022, when few firms had deployed AI, which is itself a reason for caution. Graduate unemployment has exceeded the all-worker rate since about 2019, before ChatGPT. EPI finds young graduates\' employment rate steady since 2024; the rise in their unemployment is mostly more people looking for work. In BLS data, the gap between the unemployment rates of young (20 to 24) and older graduates widened to 4.4 points in 2025 (January to September average) and narrowed to 3.7 in 2026, partly because older graduates\' unemployment rose (observatory averages).',
+   read:'The Census paper is not yet peer reviewed. It finds the divergence beginning in late 2022, when few firms had deployed AI, which is itself a reason for caution. Graduate unemployment has exceeded the all-worker rate since about 2019, before ChatGPT. EPI finds young graduates\' employment rate steady since 2024; the rise in their unemployment is mostly more people looking for work. In BLS data, the gap between the unemployment rates of young (20 to 24) and older graduates widened to 4.4 points in 2025 (January to September average) and narrowed to 3.7 in 2026, partly because older graduates\' unemployment rose (dashboard averages).',
    src:[['Orr, Tucker & Warren, Graduating into Disruption (Census CES-WP-26-56)','https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-56.html'],['New York Fed, The labor market for recent college graduates','https://www.newyorkfed.org/research/college-labor-market'],['Anthropic, Labor market impacts of AI (Mar 2026)','https://www.anthropic.com/research/labor-market-impacts'],['BLS via FRED, unemployment rate of bachelor\'s degree holders aged 20 to 24 (CGBD2024) and 25 and over (CGBD25O)','https://fred.stlouisfed.org/series/CGBD2024'],['Fast & Gould, EPI, Class of 2026 (2026)','https://www.epi.org/blog/class-of-2026-young-college-graduates-face-a-weaker-labor-market-but-a-more-mixed-picture-than-the-headlines-suggest/']]}],
  sceptic:['<b>The timing fits other causes.</b> Software postings peaked in early 2022 just before interest rates rose, after a pandemic hiring boom and alongside a tax change that made software staff costlier.',
   '<b>Adjustments shrink it.</b> After adjusting for interest-rate exposure, education and remote work, Stanford\'s estimate falls by more than half (from −0.179 to −0.080).',
@@ -1973,7 +1973,7 @@ LINKS.push(
  status:'4 of 233 studies re-test people over time',
  mech:'skills go unpractised',
  claim:'Use is surveyed every quarter. Whether people can still do the work unaided has never been tracked over time.',
- deck:'Of 233 empirical studies of generative AI found by the observatory\'s landscape review, 21 test people without AI and 22 follow the same people for months or longer; only 4 do both, all narrow. Careful experiments suggest that how AI is used decides whether people learn, that people follow wrong AI advice, and that they misjudge how much it helps them. Each is a single snapshot. No panel re-tests the same people without AI, so there is no trend to show. The clinical study compares one period before AI with one after, and the long-running literacy and numeracy tests (PIAAC, NAEP) cannot be tied to AI.',
+ deck:'Of 233 empirical studies of generative AI found by the dashboard\'s landscape review, 21 test people without AI and 22 follow the same people for months or longer; only 4 do both, all narrow. Careful experiments suggest that how AI is used decides whether people learn, that people follow wrong AI advice, and that they misjudge how much it helps them. Each is a single snapshot. No panel re-tests the same people without AI, so there is no trend to show. The clinical study compares one period before AI with one after, and the long-running literacy and numeracy tests (PIAAC, NAEP) cannot be tied to AI.',
  tour:'The worry is that skills go unpractised. Short trials point to lost learning; a three-year clinic audit found none. No general panel tracks it over time.',
  inds:[
   {id:'lopsided',tab:['Studies that re-test people without AI over months','4 of 233','landscape review · Oct 2026'],tag:'derived',rec:'d',recName:'Consultants; engineers',obs:[ym(2023,9),ym(2025,9),ym(2026,1)],wide:true,
@@ -1990,8 +1990,8 @@ LINKS.push(
       <li><span class="d">JAN 2026 · 52 ENGINEERS · RANDOMISED</span>Scored 50% on a quiz, without AI, after learning with it, against 67% for those who learned without.</li></ul>
       `;s.appendChild(b);
      pairs(el,[{v:'21 of 233',l:'empirical studies of generative AI test people without AI',w:'OBSERVATORY LANDSCAPE REVIEW · OCT 2026'},{v:'22 of 233',l:'follow the same people for months or longer',w:'OBSERVATORY LANDSCAPE REVIEW · OCT 2026'},{v:'4',l:'do both; all narrow, and the longest runs about 4 months',w:'OBSERVATORY LANDSCAPE REVIEW · OCT 2026'}])},
-   read:'The counts come from the observatory\'s own landscape review (October 2026), a broad sweep rather than a systematic review; its searches hit a limit, so "found" means found in that search. They include a 4-month writing study, two rounds of a developer trial and call-centre agents during AI outages; none re-tests a general population. Most studies are a different group, studied once over minutes to a few months. Two clinic audits tracked doctors over time and disagree: one found a fall, a three-year audit found none. In one call centre, workers kept their gains during AI outages. The survey lines cover different populations, so compare their slopes, not their levels. Trials of performance with AI (consultants, developers) have their own cards.',
-   src:[['Gallup (2026)','https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx'],['HEPI Student Generative AI Survey 2026','https://www.hepi.ac.uk/reports/student-generative-ai-survey-2026/'],['Dell\'Acqua et al., Navigating the Jagged Technological Frontier (2023)','https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321'],['Okumura et al., Endoscopy (2025): no deskilling over three years','https://thieme-connect.com/products/all/doi/10.1055/a-2661-2624'],['Brynjolfsson, Li & Raymond, Generative AI at Work (QJE 2025)','https://arxiv.org/abs/2304.11771'],['Shen & Tamkin, How AI Impacts Skill Formation (Anthropic, Jan 2026)','https://www.anthropic.com/research/AI-assistance-coding-skills'],['Gradual Disempowerment Observatory, landscape review 3.0 (Oct 2026)','https://github.com/nekocchi-0417/gd-observatory/blob/main/research/landscape/review-3.0.md']]},
+   read:'The counts come from the dashboard\'s own landscape review (October 2026), a broad sweep rather than a systematic review; its searches hit a limit, so "found" means found in that search. They include a 4-month writing study, two rounds of a developer trial and call-centre agents during AI outages; none re-tests a general population. Most studies are a different group, studied once over minutes to a few months. Two clinic audits tracked doctors over time and disagree: one found a fall, a three-year audit found none. In one call centre, workers kept their gains during AI outages. The survey lines cover different populations, so compare their slopes, not their levels. Trials of performance with AI (consultants, developers) have their own cards.',
+   src:[['Gallup (2026)','https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx'],['HEPI Student Generative AI Survey 2026','https://www.hepi.ac.uk/reports/student-generative-ai-survey-2026/'],['Dell\'Acqua et al., Navigating the Jagged Technological Frontier (2023)','https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321'],['Okumura et al., Endoscopy (2025): no deskilling over three years','https://thieme-connect.com/products/all/doi/10.1055/a-2661-2624'],['Brynjolfsson, Li & Raymond, Generative AI at Work (QJE 2025)','https://arxiv.org/abs/2304.11771'],['Shen & Tamkin, How AI Impacts Skill Formation (Anthropic, Jan 2026)','https://www.anthropic.com/research/AI-assistance-coding-skills'],['Gradual Disempowerment Dashboard, landscape review 3.0 (Oct 2026)','https://github.com/nekocchi-0417/gd-observatory/blob/main/research/landscape/review-3.0.md']]},
   {id:'bastani',tab:['Exam score after practising with ChatGPT','−17%','PNAS 2025 · ~1,000 pupils'],tag:'primary',rec:'d',recName:'Learning-with-AI trials',obs:[ym(2023,10),2025.1,ym(2026,1)],
    title:'How AI is used decides whether people learn',
    sub:'Score relative to students who practised without AI, in a randomised trial of high-school maths; then two further studies of learning with AI, tested without it.',
@@ -2020,7 +2020,7 @@ LINKS.push(
      {from:'94.9%',v:'under 34.5%',l:'right condition found: the AI model alone, against members of the public using it',w:'BEAN ET AL. · NATURE MEDICINE · 2026'},
      {v:'g = −0.23',l:'human and AI working together did worse than the better of the two alone, across 106 experiments (g is a standard effect size; this is a small loss)',w:'VACCARO ET AL. · NATURE HUMAN BEHAVIOUR · 2024'}])},
    read:'Each study measures one moment; none follows the same people over time. The Qazi study is a preprint, not yet peer reviewed, and the mammography figure was not re-read at source for this draft. The pattern is not one-way: in other studies radiologists gave AI advice too little weight, and pairs did better when the person was better than the AI. Cues about how reliable the AI is can reduce over-reliance.',
-   src:[['Dratsch et al., Automation bias in mammography (Radiology, 2023)','https://doi.org/10.1148/radiol.222176'],['Qazi et al., wrong ChatGPT-4o suggestions and physicians\' reasoning (medRxiv, 2025)','https://doi.org/10.1101/2025.08.23.25334280'],['Bean et al., LLMs as medical assistants for the public (Nature Medicine, 2026)','https://doi.org/10.1038/s41591-025-04074-y'],['Vaccaro, Almaatouq & Malone, When combinations of humans and AI are useful (Nature Human Behaviour, 2024)','https://doi.org/10.1038/s41562-024-02024-1'],['Gradual Disempowerment Observatory, landscape review 3.0 (Oct 2026)','https://github.com/nekocchi-0417/gd-observatory/blob/main/research/landscape/review-3.0.md']]},
+   src:[['Dratsch et al., Automation bias in mammography (Radiology, 2023)','https://doi.org/10.1148/radiol.222176'],['Qazi et al., wrong ChatGPT-4o suggestions and physicians\' reasoning (medRxiv, 2025)','https://doi.org/10.1101/2025.08.23.25334280'],['Bean et al., LLMs as medical assistants for the public (Nature Medicine, 2026)','https://doi.org/10.1038/s41591-025-04074-y'],['Vaccaro, Almaatouq & Malone, When combinations of humans and AI are useful (Nature Human Behaviour, 2024)','https://doi.org/10.1038/s41562-024-02024-1'],['Gradual Disempowerment Dashboard, landscape review 3.0 (Oct 2026)','https://github.com/nekocchi-0417/gd-observatory/blob/main/research/landscape/review-3.0.md']]},
   {id:'budzyn',tab:['Adenoma detection without AI, after using it','28.4% → 22.4%','Lancet G&H · 2025'],tag:'primary',rec:'d',recName:'Colonoscopy study',obs:[2022.0],
    title:'In a Polish clinical study, doctors detected fewer growths unaided after months of working with AI',
    sub:'Share of colonoscopies in which a precancerous growth (adenoma) was found, at four Polish centres, before and after routine AI assistance began.',
@@ -2157,7 +2157,7 @@ LINKS.push(
      x:{min:2022.5,max:2025.5,ticks:[2023,2024,2025],tip:x=>String(Math.round(x))+' inventory',label:'Inventory year'},y:{max:4000,ticks:[0,1000,2000,3000,4000],fmt:v=>v.toLocaleString('en-GB'),tip:v=>v.toLocaleString('en-GB')},
      sets:[{name:'All reported use cases',color:C.s1,pts:[[2023,710,'via press',null,'710'],[2024,2133,'final count; 1,757 at first release',null,'2,133'],[2025,3611,'as of 13 Apr 2026',null,'3,611']]},
       {name:'Rights- or safety-impacting (2024) / high-impact (2025)',color:C.s2,pts:[[2024,351,'rights- and/or safety-impacting',null,'351'],[2025,445,'"high-impact", a redefined category',null,'445']]}]})},
-   read:'A use case is a unit of paperwork: one chatbot and one benefits-eligibility model each count once. Reporting rules widened in 2024 and the high-impact category was redefined in 2025, so the years are not like-for-like. Defence and intelligence are excluded. OMB\'s summary counts 1,818 of the 2025 total as deployed or piloted. Of 227 deployed high-impact uses, 16 report an established appeal route and 44 completed testing; the rest mostly say "in progress" or leave it blank (filed in December 2025, before the April 2026 deadline). The 2025 form dropped the 2024 question on whether AI decides without direct human involvement (observatory tabulation of OMB\'s files).',
+   read:'A use case is a unit of paperwork: one chatbot and one benefits-eligibility model each count once. Reporting rules widened in 2024 and the high-impact category was redefined in 2025, so the years are not like-for-like. Defence and intelligence are excluded. OMB\'s summary counts 1,818 of the 2025 total as deployed or piloted. Of 227 deployed high-impact uses, 16 report an established appeal route and 44 completed testing; the rest mostly say "in progress" or leave it blank (filed in December 2025, before the April 2026 deadline). The 2025 form dropped the 2024 question on whether AI decides without direct human involvement (dashboard tabulation of OMB\'s files).',
    src:[['OMB, 2025 Federal Agency AI Use Case Inventory (as of 13 Apr 2026)','https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory'],['OMB, 2024 Federal AI Use Case Inventory','https://github.com/ombegov/2024-Federal-AI-Use-Case-Inventory'],['FedScoop, 18 Dec 2024','https://fedscoop.com/federal-government-discloses-more-than-1700-ai-use-cases/']]},
   {id:'oecdgov',tab:['OECD governments using AI internally','86%','2025 · was 70% in 2023'],tag:'primary',rec:'p',recName:'OECD: governments using AI',obs:[2023.5,2025.5],
    title:'Most OECD governments now use AI for internal work; about a third use it in policymaking',
@@ -2205,7 +2205,7 @@ LINKS.push(
    render(el){Charts.cols(mk(el),{aria:'Individual income plus payroll taxes were 85.3%, 84.1% and 84.1% of US federal receipts in fiscal years 2023 to 2025, and 86.2% in fiscal year 2026 on preliminary figures',step:1,maxbw:44,
      x:{min:2022.4,max:2026.6,ticks:[2023,2024,2025,2026],fmt:v=>'FY'+v,tip:x=>'FY'+Math.round(x),label:'Fiscal year'},y:{max:100,ticks:[0,25,50,75,100],fmt:pct,tip:v=>v+'%'},
      valLabel:'Share of receipts',pts:[[2023,85.3,null,null,'85.3%'],[2024,84.1,null,null,'84.1%'],[2025,84.1,null,null,'84.1%'],[2026,86.2,'preliminary (CBO, Oct 2026)','h','86.2%']]})},
-   read:"This puts a number on the original paper's central argument. While most revenue comes from people's incomes and payrolls, the state has a financial reason to care about them. The share barely moved from FY2023 to FY2025, then rose to 86.2% in FY2026 on CBO's preliminary figures (grey). Most of the FY2026 rise came from lower corporate tax and tariff refunds, not AI: corporate receipts fell 16% after the 2025 budget law, and about $130bn of tariffs were refunded after a Supreme Court ruling in February 2026. The rest came from income and payroll receipts growing faster than the total. Shares are the observatory's arithmetic on CBO totals. Individual income tax includes capital gains, so this overstates dependence on wages.",
+   read:"This puts a number on the original paper's central argument. While most revenue comes from people's incomes and payrolls, the state has a financial reason to care about them. The share barely moved from FY2023 to FY2025, then rose to 86.2% in FY2026 on CBO's preliminary figures (grey). Most of the FY2026 rise came from lower corporate tax and tariff refunds, not AI: corporate receipts fell 16% after the 2025 budget law, and about $130bn of tariffs were refunded after a Supreme Court ruling in February 2026. The rest came from income and payroll receipts growing faster than the total. Shares are the dashboard's arithmetic on CBO totals. Individual income tax includes capital gains, so this overstates dependence on wages.",
    src:[['CBO, Monthly Budget Review: Summary for Fiscal Year 2025','https://www.cbo.gov/system/files/2025-11/61307-MBR-FY25-final.pdf'],['CBO, Monthly Budget Review: September 2026 (FY2026, preliminary)','https://www.cbo.gov/system/files/2026-10/61985-MBR.pdf']]},
   {id:'firsts',tab:['Reported milestones in government','12 events','2023–2026'],tag:'secondary',rec:'p',recName:'Reported milestones',wide:true,obs:[ym(2023,11),ym(2024,4),ym(2025,1),ym(2025,4),ym(2025,5),ym(2025,7),ym(2025,9),ym(2025,11),ym(2025,12),ym(2026,4),ym(2026,5),ym(2026,9)],
    title:'Twelve reported milestones for AI in government, justice and the military since 2023',
@@ -2242,7 +2242,7 @@ LINKS.push(
    render(el){Charts.cols(mk(el),{aria:'Share of US federal lobbyists whose filings mention AI: 11.4% in 2020, 10.4% in 2021, 10.5% in 2022, 17.1% in 2023, 23.8% in 2024 and 26.1% in 2025',step:1,maxbw:44,
      x:{min:2019.4,max:2025.6,ticks:yrs(2020,2025),tip:x=>String(Math.round(x)),label:'Year'},y:{max:30,ticks:[0,10,20,30],fmt:pct,tip:v=>v+'%'},
      valLabel:'Share of federal lobbyists',pts:[[2020,11.4,null,null,'11.4%'],[2021,10.4,null,null,'10.4%'],[2022,10.5,null,null,'10.5%'],[2023,17.1,null,null,'17.1%'],[2024,23.8,null,null,'23.8%'],[2025,26.1,null,null,'26.1%']]})},
-   read:'Compiled by Public Citizen, a US consumer-advocacy group, from federal lobbying disclosures: 1,311 of 11,530 lobbyists in 2020, and 3,570 of 13,699 in 2025 (the observatory\'s percentages; Public Citizen rounds them to 11% and 26%). A filing counts if it mentions AI, so the count includes autonomous vehicles, data centres, facial recognition and civil-society clients. It measures effort to sway policy, not whether that effort succeeds.',
+   read:'Compiled by Public Citizen, a US consumer-advocacy group, from federal lobbying disclosures: 1,311 of 11,530 lobbyists in 2020, and 3,570 of 13,699 in 2025 (the dashboard\'s percentages; Public Citizen rounds them to 11% and 26%). A filing counts if it mentions AI, so the count includes autonomous vehicles, data centres, facial recognition and civil-society clients. It measures effort to sway policy, not whether that effort succeeds.',
    src:[['Public Citizen, Generative Influence: AI lobbying 2020–2025 (Feb 2026)','https://citizen.org/article/generative-influence']]}],
  sceptic:['<b>Registers follow rules.</b> Counts rise when reporting becomes mandatory, whether or not use grows.',
   "<b>Symbolic delegation.</b> Albania's AI \"minister\" does not make final decisions; officials do.",
@@ -2370,7 +2370,7 @@ const GAPS=[
  ['influence','Who can decide','The smallest group able to settle an outcome, and its mix of people and AI systems, applied to real institutions.','None found.'],
  ['influence','A population measure of disempowerment','A validated survey scale paired with behavioural tasks, repeated every year.','Pew: 57% feel little or no control over AI in their lives. UK: 50% say their views are not represented in decisions about AI (Ada Lovelace Institute and Alan Turing Institute, 2025). Questionnaires that score dependence exist, but have no agreed cut-offs.']];
 
-/* priority of each missing measure (index into GAPS), a first pass by the observatory:
+/* priority of each missing measure (index into GAPS), a first pass by the dashboard:
    now = a method exists and the step is close to the outcome; it needs money and a team.
    method = the construct or instrument still has to be designed and tested.
    later = further from the outcome, or data may appear on its own. */
@@ -2416,7 +2416,7 @@ const COPY={
   "paper": {"label": "Read the original paper", "url": "https://gradual-disempowerment.ai/"},
   "purpose": {
    "h1": "Tracking whether AI is weakening human influence",
-   "sub": "A public evidence map for gradual disempowerment"
+   "sub": "A public dashboard for gradual disempowerment"
   },
   "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
   "snapshot": {
@@ -2450,7 +2450,7 @@ const COPY={
     "skills": "Some short trials find weaker learning when people rely on AI answers; a three-year clinic audit found no loss of skill.",
     "culture": "Over half of Deezer uploads and about half of new web articles are AI-made, but AI tracks get 1–3% of streams.",
     "institutions": "Governments disclose thousands of AI uses (US federal: 3,611 in 2025), but almost none count AI-assisted decisions.",
-    "influence": "The map has no direct measure of whether people are losing influence over the economy, culture and government."
+    "influence": "The dashboard has no direct measure of whether people are losing influence over the economy, culture and government."
    }
   },
   "headline": "We cannot steer what we do not measure."
@@ -2479,7 +2479,7 @@ const COPY={
  },
  "why": {
   "nav": "Contribute",
-  "h1": "Help improve the map",
+  "h1": "Help improve the dashboard",
   "lead": "We're developing this prototype into a regularly updated dashboard on AI and human influence.",
   "audiences": [
    {"name": "Researchers", "text": "Share studies, suggest better indicators, or flag errors."},
@@ -2488,12 +2488,12 @@ const COPY={
   "plan": {
    "h2": "The plan",
    "steps": [
-    {"t": "Map", "text": "Show what is measured and what is missing.", "to": "map"},
+    {"t": "Review", "text": "Show what is measured and what is missing.", "to": "home"},
     {"t": "Measure", "text": "Turn the biggest gaps into studies.", "to": "gaps"},
     {"t": "Improve", "text": "Use better data to find where action could help most."},
     {"t": "Forecast", "text": "Later, use the indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
    ],
-   "aim": "The aim: a shared dashboard and library that people can update, audit and fund."
+   "aim": "The aim: a shared dashboard that people can update, audit and fund."
   },
   "contribute": {
    "h2": "Add an indicator or study",
@@ -2551,7 +2551,7 @@ const COPY={
     "gloss": "Not measured well enough to say. Not the same as no change."
    }
   },
-  "judgementTip": "The observatory's judgement of how far the data have moved. Not a measure of cause or harm.",
+  "judgementTip": "The dashboard's judgement of how far the data have moved. Not a measure of cause or harm.",
   "rows": {
    "capability": {
     "signal": 4,
@@ -3412,7 +3412,7 @@ const COPY={
   "nav": "Gaps",
   "eyebrow": "Research gaps",
   "h1": "What to measure next",
-  "sentence": "A draft agenda for improving the evidence map. The columns use the same coverage ratings as the causal diagram.",
+  "sentence": "A draft agenda for improving the dashboard. The columns use the same coverage ratings as the causal diagram.",
   "priority": {
    "now": {"t": "Ready to fund", "d": "A method exists; it needs money and a team."},
    "method": {"t": "Needs method design", "d": "The construct or instrument still has to be designed and tested."},
@@ -3662,10 +3662,10 @@ const COPY={
   "navTag": "WIP",
   "title": "Futures, work in progress",
   "wipTag": "Work in progress",
-  "caveat": "Work in progress. This page is a project map, not a literature review. It tracks adjacent work and possible scenario directions before choosing what to build.",
+  "caveat": "Work in progress. This page is an overview of related projects, not a literature review. It tracks adjacent work and possible scenario directions before choosing what to build.",
   "landscape": {
    "title": "Relevant work to avoid duplicating",
-   "sub": "Labour impacts, economic shock and formal agency-loss models are already active areas. The Observatory should probably connect these projects into a broader gradual-disempowerment evidence tracker rather than compete with them.",
+   "sub": "Labour impacts, economic shock and formal agency-loss models are already active areas. This dashboard can connect these projects through shared indicators and measurement gaps.",
    "items": [
     {
      "tag": "Crowded",
@@ -3712,7 +3712,7 @@ const COPY={
    ]
   },
   "directions": {
-   "title": "Promising directions for this Observatory",
+   "title": "Promising directions for this dashboard",
    "sub": "These look less duplicative than another labour-displacement model. They fit a public dashboard: scenario claims, indicators, and missing measures.",
    "items": [
     {
@@ -3751,7 +3751,7 @@ const COPY={
    "D": "Skills, institutions and alternatives decay; taking tasks back is hard.",
    "E": "Progress, uptake or rules stall before later links move."
   },
-  "routesNote": "The routes are the observatory's own. \"Seen\" means consistent with a route, not proof of it.",
+  "routesNote": "The routes are the dashboard's own. \"Seen\" means consistent with a route, not proof of it.",
   "moreCards": [
    {
     "title": "Three AI-progress scenarios",
@@ -3808,7 +3808,7 @@ const COPY={
  },
  "draftChip": {
   "label": "Draft",
-  "tooltip": "Draft evidence map. Headline figures are being checked before v1.0; check a source before citing."
+  "tooltip": "Draft dashboard. Headline figures are being checked before v1.0; check a source before citing."
  },
  "method": {
   "title": "Method, ratings and source status",
@@ -3826,7 +3826,7 @@ const COPY={
    "status": "Status of the figures",
    "families": "The site uses four labels: what the data show, how well a step is measured, what a missing measure needs next, and whether a page is still draft or work in progress. Source tags and caveats appear inside charts.",
    "priority": "What a missing measure needs next",
-   "priorityIntro": "Used on the Gaps page. A first pass by the observatory.",
+   "priorityIntro": "Used on the Gaps page. An initial editorial assessment.",
    "criteria": "How indicators are chosen",
    "criteriaText": "An indicator is listed when it comes from an established source and measures the step directly. Nearby measures are used only where nothing better exists, and are marked as such.",
    "challenge": "Challenge a rating",
@@ -3844,7 +3844,7 @@ const COPY={
   "rewrites": [
    {
     "where": "The measurement record (Method)",
-    "old": "The strip chart on the home page shows every dated reading plotted on the evidence pages from 2021 onwards. A series is \"direct\" if it measures the quantity the link is named for, and \"nearby\" if it is a proxy, a count of paperwork or an opinion poll. Whether a change can be tied to AI is weighed in the rating, not in the colour. The split is a judgement by the observatory; the chart's data table lists every series.",
+    "old": "The strip chart on the home page shows every dated reading plotted on the evidence pages from 2021 onwards. A series is \"direct\" if it measures the quantity the link is named for, and \"nearby\" if it is a proxy, a count of paperwork or an opinion poll. Whether a change can be tied to AI is weighed in the rating, not in the colour. The split is an editorial judgement; the chart's data table lists every series.",
     "new": "The measurement record puts the dated readings behind this site since 2021 on one timeline. Blue marks measure the link itself; grey marks measure something nearby, such as a proxy or a poll. The split is a judgement. See the record →"
    },
    {
@@ -3860,11 +3860,11 @@ const COPY={
    {
     "where": "Status of the figures (becomes the Draft callout)",
     "old": "This is a working draft. The research and figures were compiled by an AI assistant and have not yet been checked by a person. Every chart carries a tag saying how its figures were obtained. Check any figure against its linked source before citing it elsewhere, and treat those tagged \"Secondary source\" or \"Company's own data\" with extra care.",
-    "new": "A draft evidence map. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; corrections from authors and domain experts are welcome. Each chart is tagged with how its figures were obtained. Check the source before citing, above all for \"Secondary source\" and \"Company's own data\"."
+    "new": "A draft dashboard. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; corrections from authors and domain experts are welcome. Each chart is tagged with how its figures were obtained. Check the source before citing, above all for \"Secondary source\" and \"Company's own data\"."
    },
    {
     "where": "Method deck",
-    "old": "The observatory organises published evidence along one causal chain, taken from the argument in Gradual Disempowerment (Kulveit and co-authors, 2025): the economy, culture and the state serve people partly because those systems need people, and AI reduces that need. It collects no data of its own.",
+    "old": "The dashboard organises published evidence along one causal chain, taken from the argument in Gradual Disempowerment (Kulveit and co-authors, 2025): the economy, culture and the state serve people partly because those systems need people, and AI reduces that need. It collects no data of its own.",
     "new": "Published evidence, arranged along one chain from Gradual Disempowerment (Kulveit and co-authors, 2025): systems serve people partly because they need them, and AI weakens that need. No new data are collected."
    },
    {
@@ -3884,7 +3884,7 @@ const COPY={
    }
   ],
   "changeScale": {
-   "intro": "A judgement by the observatory, separate from how well a link is measured. It is not severity, probability or proof that AI is the cause.",
+   "intro": "An editorial judgement, separate from how well a link is measured. It is not severity, probability or proof that AI is the cause.",
    "levels": [
     {
      "key": "4",
@@ -3929,14 +3929,14 @@ const COPY={
     }
    ]
   },
-  "footer": "Gradual Disempowerment Observatory · Better Futures Project · Zhang Yue · Draft, compiled with AI research assistance · data as of {date} · Method and sources"
+  "footer": "Gradual Disempowerment Dashboard · Better Futures Project · Zhang Yue · Draft, compiled with AI research assistance · data as of {date} · Method and sources"
  },
  "nav": {
-  "brand": "Gradual Disempowerment Observatory",
+  "brand": "Gradual Disempowerment Dashboard",
   "items": [
    {
-    "href": "#map",
-    "label": "Map"
+    "href": "#home",
+    "label": "Home"
    },
    {
     "href": "#evidence",
@@ -4692,7 +4692,7 @@ function go(id,push=true){
 }
 function render(id){
   clearInterval(tourTimer);tourTimer=null;
-  const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0;
+  const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0==='home'?'map':base0;
   const source=ORDER.includes(base)?SELECTED_EVIDENCE[base].sources.find(s=>s.id===ind||(s.legacy||[]).includes(ind)):null;
   if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
   else if(base==='details')viewEvidenceDetails(v,ind);
@@ -4702,8 +4702,8 @@ function render(id){
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
   const top=(linkById(base)||['influence','record','review','library','details'].includes(base))?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
-  document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Observatory';
-  $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Dashboard';
+  $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+(top==='map'?'home':top)?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   window.scrollTo(0,0);
   if(source){const t=document.getElementById('source-'+source.id);if(t)openAt5(t)}
   /* #gaps/<step> and #why/<section> open the page at that part */
@@ -4901,7 +4901,7 @@ function stepCard5(i,opts={}){
   const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
   const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
   const nav=opts.nav!==false;
-  return `<div class="card5-meta"><span class="card5-n">Map step ${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
+  return `<div class="card5-meta"><span class="card5-n">Pathway step ${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
     <div class="card5-research"><b>Research needed</b><p class="card5-what">${esc(c.need)}</p></div>
     <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>
@@ -5330,11 +5330,11 @@ function viewMethod(v){
     <p class="sub5 crit5"><b>${esc(M.headings.criteria)}.</b> ${esc(M.headings.criteriaText)}</p>
     <div class="tsc s1"><table class="rt rub"><thead><tr><th>Link</th><th>Repeated?</th><th>Direct?</th><th>Independent of the firms involved?</th><th>Tied to AI?</th><th>Rating</th></tr></thead><tbody>${LINKS.map(l=>`<tr><td><a href="#${l.id}" style="color:inherit;font-weight:650">${esc(l.name)}</a></td>${RUBRIC[l.id].map((c,i)=>`<td data-h="${['Repeated?','Direct?','Independent?','Tied to AI?'][i]}" class="${c==='yes'?'y':'n'}">${esc(c)}</td>`).join('')}<td data-h="Rating" style="white-space:nowrap">${lineGlyph5(l.level,40,12)}</td></tr>`).join('')}<tr><td style="font-weight:650">${esc(END.name)}</td><td class="n" colspan="4">nothing measures it directly</td><td>${lineGlyph5(0,40,12)}</td></tr></tbody></table></div></section>
    <section class="sec5" id="m-charts"><div class="two5"><div><h2 class="h2-5 sm">${esc(M.headings.charts)}</h2>
-     <ul class="scale5">${liD('<i class="sw" style="background:var(--s1)"></i>Blue and grey are observed.','Darkest for the series the chart is about. A hollow marker is a weaker point: a secondary source, a changed definition or an unverified figure.')}${liD('<i class="sw" style="background:var(--p2)"></i>Orange is forecast.','Forecasts and model scenarios are orange and dashed. Orange is never used for measured data.')}${liD('<i class="sw hat"></i>Hatching means unmeasured.','On the map and in the record, hatched areas have no direct reading.')}${liD('<i class="sw" style="background:var(--sg3)"></i>Teal is a judgement.','Teal shows what the data show, an observatory judgement. It appears only on the Evidence pages.')}</ul></div>
-    <div><h2 class="h2-5 sm">${esc(M.headings.tags)}</h2><ul class="scale5">${Object.entries({direct:'Read at the publisher\'s own page or data file by the AI assistant that compiled this draft.',primary:'From the publisher\'s page or paper, read through an automated summary.',company:'Published by the company whose product is measured.',secondary:'From press coverage or another third party quoting the source.',derived:'Arithmetic by the observatory on published figures.'}).map(([k,t])=>`<li><div><span class="chip">${esc(TAGS[k])}</span><span>${esc(t)}</span></div></li>`).join('')}</ul>
+     <ul class="scale5">${liD('<i class="sw" style="background:var(--s1)"></i>Blue and grey are observed.','Darkest for the series the chart is about. A hollow marker is a weaker point: a secondary source, a changed definition or an unverified figure.')}${liD('<i class="sw" style="background:var(--p2)"></i>Orange is forecast.','Forecasts and model scenarios are orange and dashed. Orange is never used for measured data.')}${liD('<i class="sw hat"></i>Hatching means unmeasured.','On the map and in the record, hatched areas have no direct reading.')}${liD('<i class="sw" style="background:var(--sg3)"></i>Teal is a judgement.','Teal shows what the data show, an editorial judgement. It appears only on the Evidence pages.')}</ul></div>
+    <div><h2 class="h2-5 sm">${esc(M.headings.tags)}</h2><ul class="scale5">${Object.entries({direct:'Read at the publisher\'s own page or data file by the AI assistant that compiled this draft.',primary:'From the publisher\'s page or paper, read through an automated summary.',company:'Published by the company whose product is measured.',secondary:'From press coverage or another third party quoting the source.',derived:'Calculations for this dashboard using published figures.'}).map(([k,t])=>`<li><div><span class="chip">${esc(TAGS[k])}</span><span>${esc(t)}</span></div></li>`).join('')}</ul>
      <p class="sub5" style="margin-top:18px">Caveat chips:</p><p class="chips5">${['oneoff','cause','company','defs','unverified','stale','policy','advocacy','forecast'].map(t=>caveatChip(t)).join('')}</p></div></div></section>
    <section class="sec5" id="m-limits"><h2 class="h2-5 sm">${esc(M.headings.limits)}</h2>
-    <ul class="scale5 lim5">${li('Mostly American.',esc(rw('Known limits: Mostly American')))}${li('The map shows stops, not causes.','No indicator measures whether one link causes the next. The arrows, and the choice of links, come from the theory. The paper also expects the branches to reinforce each other; the map does not draw those links.')}${li('Skills and judgement is an addition.','It comes from the deskilling literature and the "erosion" layer in Chooi, Lee and Li (2026), not from the three systems in Kulveit and co-authors.')}${li('Leans on AI companies.',esc(rw('Known limits: Leans on AI companies')))}${li('Ratings and signposts are judgements.','The measurement ratings, the "what the data show" colours and the futures signposts are the observatory\'s reading, not a model\'s output.')}${li('Being checked.','AI tools helped find and summarise the sources. Headline figures are being checked against primary sources before v1.0. "Read at source (AI-assisted)" means the AI assistant read the publisher\'s page itself.')}</ul></section>
+    <ul class="scale5 lim5">${li('Mostly American.',esc(rw('Known limits: Mostly American')))}${li('The map shows stops, not causes.','No indicator measures whether one link causes the next. The arrows, and the choice of links, come from the theory. The paper also expects the branches to reinforce each other; the map does not draw those links.')}${li('Skills and judgement is an addition.','It comes from the deskilling literature and the "erosion" layer in Chooi, Lee and Li (2026), not from the three systems in Kulveit and co-authors.')}${li('Leans on AI companies.',esc(rw('Known limits: Leans on AI companies')))}${li('Ratings and signposts are judgements.','The measurement ratings, the "what the data show" colours and the futures signposts are the dashboard\'s reading, not a model\'s output.')}${li('Being checked.','AI tools helped find and summarise the sources. Headline figures are being checked against primary sources before v1.0. "Read at source (AI-assisted)" means the AI assistant read the publisher\'s page itself.')}</ul></section>
    <section class="sec5" id="m-more"><details class="det5"><summary>${esc(M.headings.stops)}</summary><p class="sub5">${esc(rw('What is counted at each stop'))}</p>
      <div class="tsc"><table class="rt defs"><thead><tr><th>Stop</th><th>What is counted</th><th>What the argument needs</th></tr></thead><tbody>${ORDER.map(id=>`<tr><td style="font-weight:650;white-space:nowrap"><a href="#${id}" style="color:inherit">${esc(nameOf(id))}</a></td><td data-h="What is counted">${esc(DEFS[id][0])}</td><td data-h="What the argument needs">${esc(DEFS[id][1])}</td></tr>`).join('')}</tbody></table></div></details>
     <details class="det5"><summary>${esc(M.headings.terms)}</summary><dl class="gloss">${GLOSSARY.map(g=>`<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join('')}</dl></details>
@@ -5414,7 +5414,7 @@ function viewLibrary(v,topic){
 }
 
 function viewSourceMethod(v){
-  v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A selected evidence map, not a systematic review or a test of the whole theory.</p>
+  v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A dashboard of selected evidence, not a systematic review or a test of the whole theory.</p>
     ${verify5()}
     <section class="sec5" id="m-selection"><h2 class="h2-5 sm">How sources are chosen</h2><ul class="scale5 lim5">
       <li><b>Relevance.</b><span>Does the indicator measure the question at this step? Identify proxies and explain what they miss.</span></li>
@@ -5519,7 +5519,7 @@ function viewCapabilityPilot(v){
   });
   crumbScroll5(v);
 }
-render((location.hash||'#map').slice(1));initCaveats5();
+render((location.hash||'#home').slice(1));initCaveats5();
 </script>
 </body>
 </html>

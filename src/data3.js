@@ -115,7 +115,7 @@ const GAPS=[
  ['influence','Who can decide','The smallest group able to settle an outcome, and its mix of people and AI systems, applied to real institutions.','None found.'],
  ['influence','A population measure of disempowerment','A validated survey scale paired with behavioural tasks, repeated every year.','Pew: 57% feel little or no control over AI in their lives. UK: 50% say their views are not represented in decisions about AI (Ada Lovelace Institute and Alan Turing Institute, 2025). Questionnaires that score dependence exist, but have no agreed cut-offs.']];
 
-/* priority of each missing measure (index into GAPS), a first pass by the observatory:
+/* priority of each missing measure (index into GAPS), a first pass by the dashboard:
    now = a method exists and the step is close to the outcome; it needs money and a team.
    method = the construct or instrument still has to be designed and tested.
    later = further from the outcome, or data may appear on its own. */

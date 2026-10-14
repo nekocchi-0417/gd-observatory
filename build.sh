@@ -11,7 +11,7 @@ js()  { cat src/charts.js src/data1.js src/data2.js src/data3.js src/signals.js 
         cat src/priority.json
         printf ';\n'
         cat src/app.js src/components.js src/views.js src/review.js src/capability.js
-        echo "render((location.hash||'#map').slice(1));initCaveats5();"; }
+        echo "render((location.hash||'#home').slice(1));initCaveats5();"; }
 
 if [ "$1" = "artifact" ]; then
   mkdir -p dist; OUT=dist/artifact.html
@@ -24,7 +24,7 @@ else
     echo '<head>'
     echo '<meta charset="utf-8">'
     echo '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
-    echo '<meta name="description" content="A draft observatory that maps what is measured about gradual disempowerment, link by link, and where the human side goes unmeasured.">'
+    echo '<meta name="description" content="A dashboard of research on gradual disempowerment: selected indicators, emerging findings and measurement gaps.">'
     cat src/shell_head.html
     echo "<style>"
     echo ':root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}'

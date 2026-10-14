@@ -71,7 +71,7 @@ function viewLibrary(v,topic){
 }
 
 function viewSourceMethod(v){
-  v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A selected evidence map, not a systematic review or a test of the whole theory.</p>
+  v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A dashboard of selected evidence, not a systematic review or a test of the whole theory.</p>
     ${verify5()}
     <section class="sec5" id="m-selection"><h2 class="h2-5 sm">How sources are chosen</h2><ul class="scale5 lim5">
       <li><b>Relevance.</b><span>Does the indicator measure the question at this step? Identify proxies and explain what they miss.</span></li>

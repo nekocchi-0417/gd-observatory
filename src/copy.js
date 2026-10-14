@@ -5,7 +5,7 @@ const COPY={
   "paper": {"label": "Read the original paper", "url": "https://gradual-disempowerment.ai/"},
   "purpose": {
    "h1": "Tracking whether AI is weakening human influence",
-   "sub": "A public evidence map for gradual disempowerment"
+   "sub": "A public dashboard for gradual disempowerment"
   },
   "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
   "snapshot": {
@@ -39,7 +39,7 @@ const COPY={
     "skills": "Some short trials find weaker learning when people rely on AI answers; a three-year clinic audit found no loss of skill.",
     "culture": "Over half of Deezer uploads and about half of new web articles are AI-made, but AI tracks get 1–3% of streams.",
     "institutions": "Governments disclose thousands of AI uses (US federal: 3,611 in 2025), but almost none count AI-assisted decisions.",
-    "influence": "The map has no direct measure of whether people are losing influence over the economy, culture and government."
+    "influence": "The dashboard has no direct measure of whether people are losing influence over the economy, culture and government."
    }
   },
   "headline": "We cannot steer what we do not measure."
@@ -68,7 +68,7 @@ const COPY={
  },
  "why": {
   "nav": "Contribute",
-  "h1": "Help improve the map",
+  "h1": "Help improve the dashboard",
   "lead": "We're developing this prototype into a regularly updated dashboard on AI and human influence.",
   "audiences": [
    {"name": "Researchers", "text": "Share studies, suggest better indicators, or flag errors."},
@@ -77,12 +77,12 @@ const COPY={
   "plan": {
    "h2": "The plan",
    "steps": [
-    {"t": "Map", "text": "Show what is measured and what is missing.", "to": "map"},
+    {"t": "Review", "text": "Show what is measured and what is missing.", "to": "home"},
     {"t": "Measure", "text": "Turn the biggest gaps into studies.", "to": "gaps"},
     {"t": "Improve", "text": "Use better data to find where action could help most."},
     {"t": "Forecast", "text": "Later, use the indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
    ],
-   "aim": "The aim: a shared dashboard and library that people can update, audit and fund."
+   "aim": "The aim: a shared dashboard that people can update, audit and fund."
   },
   "contribute": {
    "h2": "Add an indicator or study",
@@ -140,7 +140,7 @@ const COPY={
     "gloss": "Not measured well enough to say. Not the same as no change."
    }
   },
-  "judgementTip": "The observatory's judgement of how far the data have moved. Not a measure of cause or harm.",
+  "judgementTip": "The dashboard's judgement of how far the data have moved. Not a measure of cause or harm.",
   "rows": {
    "capability": {
     "signal": 4,
@@ -1001,7 +1001,7 @@ const COPY={
   "nav": "Gaps",
   "eyebrow": "Research gaps",
   "h1": "What to measure next",
-  "sentence": "A draft agenda for improving the evidence map. The columns use the same coverage ratings as the causal diagram.",
+  "sentence": "A draft agenda for improving the dashboard. The columns use the same coverage ratings as the causal diagram.",
   "priority": {
    "now": {"t": "Ready to fund", "d": "A method exists; it needs money and a team."},
    "method": {"t": "Needs method design", "d": "The construct or instrument still has to be designed and tested."},
@@ -1251,10 +1251,10 @@ const COPY={
   "navTag": "WIP",
   "title": "Futures, work in progress",
   "wipTag": "Work in progress",
-  "caveat": "Work in progress. This page is a project map, not a literature review. It tracks adjacent work and possible scenario directions before choosing what to build.",
+  "caveat": "Work in progress. This page is an overview of related projects, not a literature review. It tracks adjacent work and possible scenario directions before choosing what to build.",
   "landscape": {
    "title": "Relevant work to avoid duplicating",
-   "sub": "Labour impacts, economic shock and formal agency-loss models are already active areas. The Observatory should probably connect these projects into a broader gradual-disempowerment evidence tracker rather than compete with them.",
+   "sub": "Labour impacts, economic shock and formal agency-loss models are already active areas. This dashboard can connect these projects through shared indicators and measurement gaps.",
    "items": [
     {
      "tag": "Crowded",
@@ -1301,7 +1301,7 @@ const COPY={
    ]
   },
   "directions": {
-   "title": "Promising directions for this Observatory",
+   "title": "Promising directions for this dashboard",
    "sub": "These look less duplicative than another labour-displacement model. They fit a public dashboard: scenario claims, indicators, and missing measures.",
    "items": [
     {
@@ -1340,7 +1340,7 @@ const COPY={
    "D": "Skills, institutions and alternatives decay; taking tasks back is hard.",
    "E": "Progress, uptake or rules stall before later links move."
   },
-  "routesNote": "The routes are the observatory's own. \"Seen\" means consistent with a route, not proof of it.",
+  "routesNote": "The routes are the dashboard's own. \"Seen\" means consistent with a route, not proof of it.",
   "moreCards": [
    {
     "title": "Three AI-progress scenarios",
@@ -1397,7 +1397,7 @@ const COPY={
  },
  "draftChip": {
   "label": "Draft",
-  "tooltip": "Draft evidence map. Headline figures are being checked before v1.0; check a source before citing."
+  "tooltip": "Draft dashboard. Headline figures are being checked before v1.0; check a source before citing."
  },
  "method": {
   "title": "Method, ratings and source status",
@@ -1415,7 +1415,7 @@ const COPY={
    "status": "Status of the figures",
    "families": "The site uses four labels: what the data show, how well a step is measured, what a missing measure needs next, and whether a page is still draft or work in progress. Source tags and caveats appear inside charts.",
    "priority": "What a missing measure needs next",
-   "priorityIntro": "Used on the Gaps page. A first pass by the observatory.",
+   "priorityIntro": "Used on the Gaps page. An initial editorial assessment.",
    "criteria": "How indicators are chosen",
    "criteriaText": "An indicator is listed when it comes from an established source and measures the step directly. Nearby measures are used only where nothing better exists, and are marked as such.",
    "challenge": "Challenge a rating",
@@ -1433,7 +1433,7 @@ const COPY={
   "rewrites": [
    {
     "where": "The measurement record (Method)",
-    "old": "The strip chart on the home page shows every dated reading plotted on the evidence pages from 2021 onwards. A series is \"direct\" if it measures the quantity the link is named for, and \"nearby\" if it is a proxy, a count of paperwork or an opinion poll. Whether a change can be tied to AI is weighed in the rating, not in the colour. The split is a judgement by the observatory; the chart's data table lists every series.",
+    "old": "The strip chart on the home page shows every dated reading plotted on the evidence pages from 2021 onwards. A series is \"direct\" if it measures the quantity the link is named for, and \"nearby\" if it is a proxy, a count of paperwork or an opinion poll. Whether a change can be tied to AI is weighed in the rating, not in the colour. The split is an editorial judgement; the chart's data table lists every series.",
     "new": "The measurement record puts the dated readings behind this site since 2021 on one timeline. Blue marks measure the link itself; grey marks measure something nearby, such as a proxy or a poll. The split is a judgement. See the record →"
    },
    {
@@ -1449,11 +1449,11 @@ const COPY={
    {
     "where": "Status of the figures (becomes the Draft callout)",
     "old": "This is a working draft. The research and figures were compiled by an AI assistant and have not yet been checked by a person. Every chart carries a tag saying how its figures were obtained. Check any figure against its linked source before citing it elsewhere, and treat those tagged \"Secondary source\" or \"Company's own data\" with extra care.",
-    "new": "A draft evidence map. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; corrections from authors and domain experts are welcome. Each chart is tagged with how its figures were obtained. Check the source before citing, above all for \"Secondary source\" and \"Company's own data\"."
+    "new": "A draft dashboard. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; corrections from authors and domain experts are welcome. Each chart is tagged with how its figures were obtained. Check the source before citing, above all for \"Secondary source\" and \"Company's own data\"."
    },
    {
     "where": "Method deck",
-    "old": "The observatory organises published evidence along one causal chain, taken from the argument in Gradual Disempowerment (Kulveit and co-authors, 2025): the economy, culture and the state serve people partly because those systems need people, and AI reduces that need. It collects no data of its own.",
+    "old": "The dashboard organises published evidence along one causal chain, taken from the argument in Gradual Disempowerment (Kulveit and co-authors, 2025): the economy, culture and the state serve people partly because those systems need people, and AI reduces that need. It collects no data of its own.",
     "new": "Published evidence, arranged along one chain from Gradual Disempowerment (Kulveit and co-authors, 2025): systems serve people partly because they need them, and AI weakens that need. No new data are collected."
    },
    {
@@ -1473,7 +1473,7 @@ const COPY={
    }
   ],
   "changeScale": {
-   "intro": "A judgement by the observatory, separate from how well a link is measured. It is not severity, probability or proof that AI is the cause.",
+   "intro": "An editorial judgement, separate from how well a link is measured. It is not severity, probability or proof that AI is the cause.",
    "levels": [
     {
      "key": "4",
@@ -1518,14 +1518,14 @@ const COPY={
     }
    ]
   },
-  "footer": "Gradual Disempowerment Observatory · Better Futures Project · Zhang Yue · Draft, compiled with AI research assistance · data as of {date} · Method and sources"
+  "footer": "Gradual Disempowerment Dashboard · Better Futures Project · Zhang Yue · Draft, compiled with AI research assistance · data as of {date} · Method and sources"
  },
  "nav": {
-  "brand": "Gradual Disempowerment Observatory",
+  "brand": "Gradual Disempowerment Dashboard",
   "items": [
    {
-    "href": "#map",
-    "label": "Map"
+    "href": "#home",
+    "label": "Home"
    },
    {
     "href": "#evidence",
