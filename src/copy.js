@@ -2,7 +2,7 @@
 const COPY={
  "home": {
   "eyebrow": "Better Futures Project · Zhang Yue",
-  "paper": {"label": "Read more", "url": "https://gradual-disempowerment.ai/"},
+  "paper": {"label": "Read the original paper", "url": "https://gradual-disempowerment.ai/"},
   "purpose": {
    "h1": "Tracking whether AI is weakening human influence",
    "sub": "A public evidence map for gradual disempowerment: the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation."
