@@ -16,7 +16,7 @@ The main finding: what AI can do and who uses it are measured again and again. W
 
 | Page | What it answers |
 |---|---|
-| **Map** (home) | How could disempowerment unfold? Nine steps, each with a card; then the three biggest gaps and how to help. |
+| **Map** (home) | How could disempowerment unfold? Nine steps, each with a card; then a summary of what is measured often, early signs, and what is hard to see. |
 | **Evidence** | What do we already observe? One row per link; a record of every dated reading since 2021 sits behind a drawer. |
 | **Link pages** | The indicators behind each link, each opening its own chart. |
 | **Gaps** | The measurement agenda: nineteen missing measures, grouped by what each needs next (fund now, develop methodology, monitor later). |

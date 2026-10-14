@@ -4,28 +4,19 @@ const COPY={
   "eyebrow": "Better Futures Project · Zhang Yue",
   "paper": {"label": "Read more", "url": "https://gradual-disempowerment.ai/"},
   "purpose": {
-   "h1": "AI disempowerment: what is measured, what is missing",
-   "sub": "A draft map of nine steps from AI capability to human influence. It separates early signs from the measurement gaps."
+   "h1": "Tracking whether AI is weakening human influence",
+   "sub": "A public evidence map for gradual disempowerment: the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation."
   },
   "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
   "snapshot": {
    "h2": "The picture so far",
-   "sub": "The early steps are measured often. The human end of the chain is still mostly proxies, one-off studies and paperwork.",
+   "sub": "AI capability and use are tracked regularly. We know much less about changes in people's skills and influence.",
    "items": [
     {"k": "Measured often", "t": "Capability and use", "text": "AI is completing more real work, and roughly half of US workers report using AI at work."},
     {"k": "Early signs", "t": "Jobs, culture, institutions", "text": "Young workers in exposed jobs are falling behind; AI-made content is growing; governments list tools, not decisions."},
     {"k": "Hard to see", "t": "Skills and influence", "text": "We still lack repeat tests of unaided ability and a direct measure of whether people keep their say."}
-   ]
-  },
-  "gaps3": {
-   "h2": "Start with three missing measures",
-   "sub": "These are close to the outcome and hard to verify from today's sources.",
-   "items": [
-    {"id": "influence", "t": "Human influence is not directly measured", "text": "A repeated survey and behavioural measure of whether AI changes people's influence over firms, media and government."},
-    {"id": "skills", "t": "Unaided skills are rarely re-tested", "text": "Panel studies that re-test the same people without AI while tracking their AI use."},
-    {"id": "institutions", "t": "AI-assisted public decisions are rarely counted", "text": "Counts of AI-assisted decisions, review time and override rates for high-impact government systems."}
    ],
-   "all": "The full agenda: {n} missing measures"
+   "all": "Explore the research gaps"
   },
   "cta": {
    "h2": "Help make the dashboard real",

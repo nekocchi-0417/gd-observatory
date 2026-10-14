@@ -20,16 +20,15 @@ const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest
 
 /* ----- home ----- */
 function viewMap(v){
-  const H=COPY.home,P=H.purpose,S=H.snapshot,G=H.gaps3,C=H.cta;
+  const H=COPY.home,P=H.purpose,S=H.snapshot,C=H.cta;
   v.innerHTML=`<div class="home5">
    <section class="wrap hero5"><div class="hero5-g top5"><div>${eye5([esc(H.eyebrow)])}
     <h1 class="h1-5 xl purpose5-h">${esc(P.h1)}</h1></div>
     <p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p></div></section>
-   <section class="wrap sec2h5"><div class="snapshot5"><div><h2 class="h1-5">${esc(S.h2)}</h2><p class="sub5 big">${esc(S.sub)}</p></div>
-    <ol class="snapshot5-l">${S.items.map(x=>`<li><span>${esc(x.k)}</span><b>${esc(x.t)}</b><p>${esc(x.text)}</p></li>`).join('')}</ol></div></section>
+   <section class="wrap sec2h5"><div class="hero5-g mid5"><h2 class="h1-5">${esc(H.headline)}</h2><ul class="lead5 sm qs5">${H.mapNote.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></div></section>
    <div id="homeMap"></div>
-   <section class="wrap gaps5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.h2)}</h2><p class="sub5">${esc(G.sub)}</p></div><a class="go" href="#gaps">${esc(G.all.replace('{n}',GAPS.length))} →</a></div>
-    <ol class="gaps5-l">${G.items.map((g,i)=>`<li><span class="gaps5-n">${i+1}</span><div><a class="gaps5-t" href="#gaps/${g.id}">${esc(g.t)}</a><p>${esc(g.text)}</p>${g.note?`<p class="gaps5-note">${esc(g.note)}</p>`:''}</div></li>`).join('')}</ol></section>
+   <section class="wrap summary5" aria-labelledby="snapshot-title"><div class="snapshot5"><div><h2 class="h2-5" id="snapshot-title">${esc(S.h2)}</h2><p class="sub5 big">${esc(S.sub)}</p><a class="go summary5-link" href="#gaps">${esc(S.all)} →</a></div>
+    <ol class="snapshot5-l">${S.items.map(x=>`<li><span>${esc(x.k)}</span><b>${esc(x.t)}</b><p>${esc(x.text)}</p></li>`).join('')}</ol></div></section>
    <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2><p class="sub5">Add a better indicator, fund a missing measure, or challenge a rating before this becomes a v1.0 public resource.</p>
     <p class="cta5-links">${C.buttons.map(b=>`<a class="go" href="#${esc(b.to)}">${esc(b.t)} →</a>`).join('')}<a class="go" href="#contribute">${esc(C.why)} →</a></p></section>
   </div>`;
