@@ -32,14 +32,16 @@ function unchartedSources6(id){
 }
 
 function viewTopic(v,id){
+  if(id==='capability'){viewCapabilityPilot(v);return}
   const p=SELECTED_EVIDENCE[id],i=ORDER.indexOf(id),prev=ORDER[i-1],next=ORDER[i+1];
   const charts=priorityIndicators5(id),uncharted=unchartedSources6(id);
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
     <div class="claim5">${eye5([esc(nameOf(id)),`${i+1} of ${ORDER.length}`])}<h1 class="h1-5 c">${esc(p.h1)}</h1><p class="lead5">${esc(p.summary)}</p></div>
     ${verify5()}
-    <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Top indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
+    <p class="review-links"><a class="go" href="#method/selection">How indicators are selected →</a></p>
+    <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Selected indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
       <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
-    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#details/${id}">Source details →</a></div><p class="sub5">Charts linked to the top indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
+    ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#details/${id}">Source details →</a></div><p class="sub5">Charts linked to the selected indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a><a class="go" href="#library/${id}">More sources: awaiting review →</a></p></section>
     ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['evidence','All steps','Next'])}</div>`;
   if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
@@ -52,7 +54,7 @@ function viewEvidenceDetails(v,id){
   v.innerHTML=`<div class="view5 wrap priority6 detail6">${crumbs5(id)}
     ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
     ${verify5()}
-    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#library/${id}">More sources awaiting review →</a></p>
+    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#method/selection">How indicators are selected →</a><a class="go" href="#library/${id}">Working evidence library →</a></p>
     <section class="sec5"><h2 class="h2-5 sm">Priority sources</h2><div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What this pair still misses</h2><p class="lead5 sm">${esc(p.gap)}</p></section></div>`;
   crumbScroll5(v);
@@ -60,10 +62,11 @@ function viewEvidenceDetails(v,id){
 
 function viewLibrary(v,topic){
   const ids=ORDER.includes(topic)?[topic]:ORDER;
-  v.innerHTML=`<div class="view5 wrap library6">${eye5(['Source library'])}<h1 class="h1-5">Awaiting review</h1><p class="lead5">Additional sources, not additional conclusions.</p>
-    <div class="verify5"><b>To be verified</b><span>These earlier source collections have not passed the current claim-level review. Their charts and extracted figures are held back from the main pages. Inclusion is not an endorsement.</span></div>
+  v.innerHTML=`<div class="view5 wrap library6">${eye5(['Source library'])}<h1 class="h1-5">Working evidence library</h1><p class="lead5">Further reading, with review status shown for each entry.</p>
+    <div class="verify5"><b>Awaiting human review</b><span>Compiled with AI assistance. These entries have not been checked by a person against the original source. Inclusion is not an endorsement.</span></div>
     <p class="review-links"><a class="go" href="#evidence">Priority evidence →</a></p>
-    ${ids.map(id=>{const inds=LINKS.flatMap(l=>l.inds.filter(d=>id==='influence'?d.recRow==='influence':l.id===id&&!d.recRow));return `<section class="sec5"><h2 class="h2-5 sm"><a href="#${id}">${esc(nameOf(id))}</a></h2><p class="note5">Check the original publication, study design and relevance before promoting a source.</p>${inds.map(d=>`<details class="det5"><summary>${esc(indLabel5(d))}</summary><ul class="library6-sources">${d.src.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a></li>`).join('')}</ul></details>`).join('')}</section>`}).join('')}
+    ${ids.includes('capability')?`<section class="sec5"><h2 class="h2-5 sm">AI capability: related evidence</h2>${capabilityRelated7()}</section>`:''}
+    ${ids.map(id=>{const inds=LINKS.flatMap(l=>l.inds.filter(d=>id==='influence'?d.recRow==='influence':l.id===id&&!d.recRow));return `<section class="sec5"><h2 class="h2-5 sm"><a href="#${id}">${esc(nameOf(id))}</a></h2><p class="note5">Check the original publication, study design and relevance before promoting a source.</p>${inds.map(d=>`<details class="det5"><summary>${esc(indLabel5(d))}</summary><ul class="library6-sources">${d.src.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a><br><span class="review-status7">Awaiting human review</span></li>`).join('')}</ul></details>`).join('')}</section>`}).join('')}
     <section class="sec5"><h2 class="h2-5 sm">Proposed measures are not findings</h2><p class="sub5">The landscape scan also proposes tests of skill recovery, appropriate reliance, calibration and decision power. These belong in the research agenda until their definitions and validation are checked.</p><p><a class="go" href="#gaps">See the research agenda →</a></p></section></div>`;
 }
 
@@ -71,10 +74,12 @@ function viewSourceMethod(v){
   v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A selected evidence map, not a systematic review or a test of the whole theory.</p>
     ${verify5()}
     <section class="sec5" id="m-selection"><h2 class="h2-5 sm">How sources are chosen</h2><ul class="scale5 lim5">
-      <li><b>Relevant to the step.</b><span>Prefer a measure of the outcome itself. If only a proxy exists, say what it misses.</span></li>
-      <li><b>Traceable to the original.</b><span>Link to the paper, official dataset or original report. Prefer transparent methods, independent research and repeated observations.</span></li>
-      <li><b>Strong enough for the claim.</b><span>Use experiments for narrow causal questions and official statistics for trends. A company disclosure can be useful without being independent; a preprint can be relevant without being established.</span></li>
-      <li><b>Include counterevidence.</b><span>Keep null results and benefits alongside worrying findings. Two sources per page limit the first review; they are not an exhaustive ranking of the literature.</span></li></ul></section>
+      <li><b>Relevance.</b><span>Does the indicator measure the question at this step? Identify proxies and explain what they miss.</span></li>
+      <li><b>Credibility and traceability.</b><span>Can we inspect the original methods and results? Consider study design, uncertainty, independence and repeated measurement. State commercial involvement and publication status.</span></li>
+      <li><b>Clear coverage.</b><span>Which countries, people, occupations or tasks were studied? Keep those boundaries visible. A rigorous study can still have narrow coverage.</span></li>
+      <li><b>Added value.</b><span>Does this source answer a different part of the question or test whether another finding transfers? Include null results, benefits and conflicting findings.</span></li></ul>
+      <p class="sub5">These are editorial criteria, not a numerical score or an exhaustive ranking. We explain why each featured indicator was chosen and what it leaves unanswered. Selection does not depend on whether a finding supports disempowerment.</p></section>
+    <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">The AI capability pilot redraws published results to make two questions easier to compare. Each chart names the data publisher, links to the original and provides the plotted values. Its notes explain selection, rounding and calculations. It is a chart by this project, not a figure produced or endorsed by the publisher.</p><p class="sub5">Evidence quality and breadth of coverage are separate judgements. Proposed signals to watch are research priorities, not validated warning thresholds. Other topic charts still await this format and human review.</p></section>
     <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Older charts and additional sources are parked separately; forecasts are provisional.</p><p class="review-links"><a class="go" href="#library">Awaiting review →</a></p></section>
     <section class="sec5" id="m-scales"><h2 class="h2-5 sm">How to read the pathways</h2><p class="sub5">The connections come from the gradual disempowerment argument. They show proposed pathways, not demonstrated causes. The skills branch adds questions about learning and judgement.</p></section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">Colour describes how well each step is measured as a whole. It does not score the level of risk or whether findings support the theory. A rigorous study of one task can sit within a step that still has major gaps.</p>

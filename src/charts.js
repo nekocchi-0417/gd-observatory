@@ -125,7 +125,7 @@ const Charts=(()=>{
     const H=y+P.b;let g='';
     (cfg.ticks||[]).forEach(v=>{g+=`<line x1="${sx(v)}" x2="${sx(v)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><text x="${sx(v)}" y="${H-P.b+15}" text-anchor="middle">${esc(fmt(v))}</text>`});
     const tbl=tableHTML([cfg.catLabel||'',cfg.valLabel||'Value',...(data.some(r=>r.note)?['Note']:[])],data.map(r=>[r.label,r.vlabel||fmt(r.value),...(data.some(q=>q.note)?[r.note||'']:[])]));
-    el.innerHTML=`${axisHTML(cfg.catLabel||'category',cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    el.innerHTML=`${axisHTML(cfg.valLabel||'value',cfg.catLabel||'category')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
     const tip=el.querySelector('.tip'),svg=el.querySelector('svg');
     el.querySelectorAll('.row').forEach(n=>{const r=rows[+n.dataset.i];n.addEventListener('pointermove',e=>{const b=svg.getBoundingClientRect();tip.innerHTML='';const d=document.createElement('div');d.className='r';const bb=document.createElement('b');bb.textContent=r.vlabel||fmt(r.value);const sp=document.createElement('span');sp.textContent=r.label;d.append(bb,sp);tip.appendChild(d);if(r.note){const nt=document.createElement('div');nt.className='nt';nt.textContent=r.note;tip.appendChild(nt)}tipAt(el,tip,e.clientX-b.left,e.clientY-b.top,W)});n.addEventListener('pointerleave',()=>tip.style.display='none')});
   }

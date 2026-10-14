@@ -1,7 +1,7 @@
 {
   "capability": {
-    "h1": "AI can complete more work, but reliability still matters",
-    "summary": "Benchmarks show improving performance on defined tasks. They do not establish how many whole jobs can be reliably automated.",
+    "h1": "How much useful work can AI complete reliably?",
+    "summary": "Two benchmarks test finished freelance projects and longer technical tasks. Both measure defined tasks; how well the results transfer to everyday jobs remains uncertain.",
     "selection": "Use a benchmark of professional work products alongside an independent technical-task benchmark that makes the success threshold explicit.",
     "gap": "Repeated, independent tests of reliable performance across whole workflows, including work beyond software.",
     "signal": 3,

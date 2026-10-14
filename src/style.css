@@ -279,6 +279,8 @@ main{min-height:70vh;outline:0}
 
 /* ---------- charts ---------- */
 .chart{position:relative;margin-top:14px;min-width:0}
+.axis-note{display:flex;flex-wrap:wrap;gap:6px 24px;margin-bottom:12px;font:13px/1.5 var(--f-display);color:var(--ink-2)}
+.axis-note b{color:var(--ink);margin-right:5px}
 .chart svg{display:block;overflow:visible;touch-action:pan-y}
 .chart text{font-family:var(--f-mono);font-size:11px;fill:var(--ink-3)}
 .chart text.ann,.chart text.end,.chart text.halo{paint-order:stroke;stroke:var(--halo,var(--paper));stroke-width:3.5px;stroke-linejoin:round}
