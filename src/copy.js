@@ -1016,7 +1016,7 @@ const COPY={
    "ind": ["Suggest an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml&title="],
    "review": ["Review this gap", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml&title="]
   },
-  "ranking": {"title": "How the ranking was made", "sub": "Each step is ranked by two things: how close it is to Human influence, and how well it is measured today. The priority labels are a first pass; corrections welcome."},
+  "ranking": {"title": "Where the biggest gaps are", "sub": "Start in the upper-left: close to Human influence, but weakly measured. The first-pass priority cluster is Human influence, Skills and judgement, and AI in government."},
   "matrix": {
    "title": "Which links are close to the outcome but barely measured?",
    "xAxis": {
