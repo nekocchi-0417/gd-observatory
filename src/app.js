@@ -7,7 +7,7 @@ const NIND=LINKS.reduce((a,l)=>a+l.inds.length,0);
 const lv=id=>id==='influence'?0:linkById(id).level;
 const ORDER=[...LINKS.map(l=>l.id),'influence'];
 const nameOf=id=>id==='influence'?END.name:linkById(id).name;
-const DRAFT='Draft v0.5',ASOF='12 October 2026';
+const DRAFT='Draft v0.6',ASOF='13 October 2026';
 
 /* ----- the chain map ----- */
 const GEO={W:1200,H:700,EDGE:1030,J:[492,350],S:{capability:[95,350],adoption:[255,350],handover:[415,350],work:[770,140],share:[950,140],skills:[950,280],culture:[950,420],institutions:[950,560],influence:[1128,350]}};
@@ -36,6 +36,10 @@ function miniMap(on){
   ORDER.forEach((id,i)=>{const [x,y]=GEO.S[id],lit=on.includes(id);g+=`<circle cx="${x}" cy="${y}" r="26" fill="${lit?'var(--ink)':'var(--surface)'}" stroke="${lit?'var(--ink)':'var(--rule)'}" stroke-width="5"/><text x="${x}" y="${y+11}" text-anchor="middle" style="font-family:var(--f-mono);font-size:30px;font-weight:500;fill:${lit?'var(--paper)':'var(--ink-3)'}">${id==='influence'?'?':i+1}</text>`});
   return `<svg viewBox="0 90 ${GEO.W} 520" role="img" aria-label="Links this route runs through: ${on.map(nameOf).join(', ')}">${g}</svg>`;
 }
+/* open a deep-linked part of a page: any details around or inside it, its accordion row, then scroll to it */
+const openAt5=t=>{const d=t.closest('details');if(d)d.open=true;const d2=t.querySelector('details');if(d2)d2.open=true;
+  const b=t.querySelector('.acc5-b[aria-expanded="false"]');if(b){b.setAttribute('aria-expanded','true');const pnl=document.getElementById(b.getAttribute('aria-controls'));if(pnl)pnl.hidden=false}
+  const rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;requestAnimationFrame(()=>t.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'}))};
 /* ----- router ----- */
 let current='map';const picked={};let tourTimer=null;
 function go(id,push=true){
@@ -44,14 +48,16 @@ function go(id,push=true){
 }
 function render(id){
   clearInterval(tourTimer);tourTimer=null;
-  const v=$('#view');current=id;const [base,ind]=String(id).split('/');
+  const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0;
   if(linkById(base)){if(ind&&linkById(base).inds.some(d=>d.id===ind))picked[base]=ind;viewLink(v,base)}
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
-  else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod}[base]||viewMap)(v);
-  const top=(linkById(base)||base==='influence'||base==='record')?'evidence':(['map','evidence','futures','gaps','method'].includes(base)?base:'map');
-  document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'The gap',method:'Method'}[top]+' · '))+'Gradual Disempowerment Observatory';
+  else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
+  const top=(linkById(base)||base==='influence'||base==='record')?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
+  document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Observatory';
   $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   window.scrollTo(0,0);
+  /* #gaps/<step> and #why/<section> open the page at that part */
+  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
 }
 document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}

@@ -1,0 +1,26 @@
+name: Suggest a correction
+description: A figure, rating, wording or reading of the paper that you think is wrong.
+title: "[Correction] "
+labels: ["correction"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where on the site (page, step or indicator)
+      placeholder: "e.g. Institutions page, 'Decisions made by AI' gap"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong, and what it should say
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source for the correction (link, if any)
+  - type: input
+    id: who
+    attributes:
+      label: Your name and affiliation (optional, for credit)

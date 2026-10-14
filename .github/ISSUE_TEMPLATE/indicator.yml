@@ -1,0 +1,61 @@
+name: Propose an indicator
+description: Suggest a data series or measure the Observatory should track.
+title: "[Indicator] "
+labels: ["indicator"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you. Short answers are fine; a link to the source matters most.
+  - type: dropdown
+    id: stop
+    attributes:
+      label: Which step does it measure?
+      options:
+        - Capability
+        - Adoption
+        - Hand-over
+        - Entry-level work
+        - Workers' share
+        - Skills and judgement
+        - Culture and information
+        - Institutions
+        - Human influence
+        - Not sure / several
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Indicator name
+      placeholder: e.g. Share of US work hours done with generative AI
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Link to the source or data
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What it measures, and why it matters for gradual disempowerment
+      description: One or two sentences.
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often is it published?
+      options: ["Once", "Yearly", "Quarterly", "Monthly", "Continuously", "Not sure"]
+  - type: checkboxes
+    id: tests
+    attributes:
+      label: Which of these does it meet?
+      options:
+        - label: Repeated over time
+        - label: Measures the step directly (not a proxy)
+        - label: Independent of the AI companies involved
+        - label: Tied to AI (separates AI's effect)
+  - type: input
+    id: who
+    attributes:
+      label: Your name and affiliation (optional, for credit)

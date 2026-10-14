@@ -4,7 +4,7 @@
    data1-3.js (LINKS, TAGS, END, linkById, GAPS, RUBRIC, DEFS), signals.js (SIGNALS),
    copy.js (COPY) and app.js ($, $$, LEVELWORD, lv, ORDER, nameOf, strokeFor).
    Each mount function renders into `el` and returns it:
-     mountMap5(el,{onStop})    -> chain map, legend, phone list, "why this line?" drawer, guided tour
+     mountMap5(el,{onStop})    -> chain map, step card, legend, phone list
      evidenceRows(el)          -> Evidence overview: one row per link and Human influence
      indicatorCards(el,linkId) -> indicator cards (trend shape and word) that open each chart
      insightCards(el,linkId)   -> "What a sceptic would say" / "What nobody measures" / "What to watch"
@@ -17,9 +17,7 @@
 const SIG5=()=>(typeof SIGNALS!=='undefined'&&SIGNALS)||{links:{},indicators:{},matrix:{}};
 const SIGWORD5={4:'Changing fast',3:'Clearly changing',2:'Early or mixed signs',1:'No clear change yet','?':"Can't tell"};
 const LINEWORD5=['No direct measure','One-offs','Not tied to AI','With limits','Well measured'];
-const WHY5=['why so faint?','why dotted?','why a hollow line?','why a thinner line?','why a solid line?'];
-const WHYBTN5=['Why faint?','Why dotted?','Why hollow?','Why thinner?','Why solid?'];
-const HUMAN5=['skills','influence'];
+const HUMAN5=[];
 const sigOf5=id=>{const s=SIG5().links[id];return s&&s.signal!=null?s.signal:'?'};
 /* Draft one-liners (no numbers, 12 words or fewer). SIGNALS.links[id].short wins when the researcher supplies it. */
 const ONE5={capability:'AI completes more real paid projects',adoption:'About half of US workers now use AI at work',
@@ -51,7 +49,7 @@ const chev5=`<svg class="chev5" width="14" height="14" viewBox="0 0 14 14" aria-
 /* ======================================================================================
    1. THE CHAIN MAP
    ====================================================================================== */
-const GEO5={W:1200,H:430,EDGE:1028,ZX:446,CX:1066,TY:216,J:[470,216],
+const GEO5={W:1200,H:470,EDGE:1028,ZX:446,CX:1066,TY:216,J:[470,216],
  S:{capability:[92,216],adoption:[236,216],handover:[380,216],work:[748,66],share:[934,66],skills:[934,166],culture:[934,266],institutions:[934,366],influence:[1124,216]}};
 const SEGS5=(()=>{const {J,S,TY,CX}=GEO5,jx=J[0];
   return [{to:'capability',p:[[24,TY],S.capability]},{to:'adoption',p:[S.capability,S.adoption]},{to:'handover',p:[S.adoption,S.handover]},
@@ -61,9 +59,10 @@ const SEGS5=(()=>{const {J,S,TY,CX}=GEO5,jx=J[0];
    {to:'institutions',p:[J,[jx,S.institutions[1]-40],[jx+40,S.institutions[1]],S.institutions]},
    ...['share','skills','culture','institutions'].map(f=>({to:'influence',from:f,p:[S[f],[1000,S[f][1]],[CX,TY]]})),
    {to:'influence',from:'_',p:[[CX,TY],[S.influence[0]-23,TY]]}]})();
-/* where the "i" badge sits for under-measured links (level 2 or below) */
-const badgeAt5=id=>{const {S}=GEO5;if(id==='influence')return [S.influence[0]+28,S.influence[1]+28];
-  const s=SEGS5.find(x=>x.to===id&&!x.stub&&!x.from),a=s.p[s.p.length-2],b=s.p[s.p.length-1];return [(a[0]+b[0])/2,(a[1]+b[1])/2]};
+
+/* the home map uses three line styles: solid (measured repeatedly), hollow (measured, not tied to AI), dotted (barely) */
+const vis3=l=>l>=3?3:l===2?2:1;
+const CARDWORD5=['Not measured directly','Barely measured','Partly measured','Measured, with limits','Well measured'];
 
 function mapSVG5(){
   const {W,H,EDGE,ZX,CX,TY,S}=GEO5;let g='';
@@ -71,137 +70,63 @@ function mapSVG5(){
   g+=`<g class="zone5" aria-hidden="true"><rect x="${ZX}" y="0" width="${EDGE-ZX}" height="${H}" fill="var(--ink)" opacity=".028"/><rect x="${EDGE}" y="0" width="${W-EDGE}" height="${H}" fill="url(#hatch5)"/>
    <line x1="${EDGE}" x2="${EDGE}" y1="0" y2="${H}" stroke="var(--rule)"/>
    <text class="zl5" x="24" y="28">USE</text><text class="zl5" x="${ZX+18}" y="28">CONSEQUENCES</text><text class="zl5 halo5" x="${(EDGE+W)/2}" y="28" text-anchor="middle">OUTCOME</text></g>`;
-  /* the human side: a soft highlighter under the skills line, ending around Human influence */
-  const hb=`M548 ${S.skills[1]} L1000 ${S.skills[1]} L${CX} ${TY} L${S.influence[0]} ${TY}`;
-  g+=`<g class="hs5band" aria-hidden="true"><path d="${hb}" fill="none" stroke="var(--hs-line)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/><path d="${hb}" fill="none" stroke="var(--hs-soft)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
-   <text class="hs5lab" x="536" y="${S.skills[1]-31}">HUMAN SIDE</text></g>`;
-  /* lines: style is the only encoding */
-  SEGS5.forEach(s=>{const l=s.from?0:lv(s.to);g+=`<g class="seg5" data-to="${s.to}">${strokeFor(l,segPath5(s),{w4:9,w3:5,bg:'var(--map-bg)'})}</g>`});
+  SEGS5.forEach(s=>{const l=vis3(s.from?0:lv(s.to));g+=`<g class="seg5" data-to="${s.to}">${strokeFor(l,segPath5(s),{w3:5,bg:'var(--map-bg)'})}</g>`});
   g+=`<circle class="jn5" cx="${GEO5.J[0]}" cy="${GEO5.J[1]}" r="5.5" fill="var(--ev3)"/>`;
-  /* one focusable handle per link: wide invisible hit path(s) + badge if under-measured */
-  ORDER.forEach(id=>{const l=lv(id),segs=SEGS5.filter(s=>s.to===id&&!s.stub);
-    const hits=segs.map(s=>`<path class="hit5" d="${segPath5(s)}"/>`).join('');
-    const b=l<=2?(()=>{const [x,y]=badgeAt5(id);return `<g class="badge5" transform="translate(${x} ${y})"><circle r="9.5"/><text y="4.2" text-anchor="middle">i</text></g>`})():'';
-    g+=`<g class="sh5" data-why="${id}" tabindex="0" role="button" aria-expanded="false" aria-controls="mdrawer5" aria-label="${esc(nameOf(id))}: ${LEVELWORD[l].toLowerCase()}. Show why.">${hits}${b}</g>`});
-  /* stops: names only */
-  ORDER.forEach(id=>{const [x,y]=S[id],l=lv(id),end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19;
-    g+=`<g class="st5${HUMAN5.includes(id)?' hs':''}" data-id="${id}" tabindex="0" role="link" aria-label="${esc(nm)}. ${LEVELWORD[l]}. Open its evidence.">
-      <rect class="hit" x="${x-58}" y="${ny-17}" width="116" height="${y+13-(ny-17)}" fill="transparent"/>
+  ORDER.forEach((id,i)=>{const [x,y]=S[id],l=lv(id),end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19;
+    g+=`<g class="st5" data-id="${id}" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(nm)}, ${CARDWORD5[l].toLowerCase()}. Step ${i+1} of ${ORDER.length}.">
+      <rect class="hit" x="${x-62}" y="${ny-17}" width="124" height="${y+15-(ny-17)}" fill="transparent"/>
       <text class="nm5${end?' halo5':''}" x="${x}" y="${ny}" text-anchor="middle">${esc(nm)}</text>
-      ${end?`<circle class="ring5" cx="${x}" cy="${y}" r="22" fill="var(--hs-soft)" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="3 4"/><text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`
-        :`<circle class="ring5" cx="${x}" cy="${y}" r="9" fill="${HUMAN5.includes(id)?'var(--hs-soft)':'var(--map-bg)'}" stroke="var(--ev${Math.max(1,l)})" stroke-width="4"/><circle class="core5" cx="${x}" cy="${y}" r="3.4"/>`}</g>`});
-  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="The chain from AI capability to human influence, in three zones: use, consequences, outcome. Line style shows how well each stop is measured. Skills and judgement and Human influence form the human side.">${g}</svg>`;
+      ${end?`<circle class="ring5" cx="${x}" cy="${y}" r="22" fill="var(--map-bg)" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="3 4"/><text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`
+        :`<circle class="ring5" cx="${x}" cy="${y}" r="9" fill="var(--map-bg)" stroke="var(--ev${vis3(l)})" stroke-width="4"/><circle class="core5" cx="${x}" cy="${y}" r="3.4"/>`}</g>`});
+  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="How gradual disempowerment could unfold, from AI capability to human influence. Line style shows how well each step is measured. Select a step to read about it.">${g}</svg>`;
 }
 
-/* phone: vertical list with the same line styles */
+/* phone: vertical list, one expandable row per step */
 function mapList5(){
-  const row=id=>{const l=lv(id),hs=HUMAN5.includes(id);
-    return `<li class="ml5${hs?' hs':''}" data-id="${id}" data-l="${l}"><span class="ml5-line" aria-hidden="true"></span>
-      <span class="ml5-main"><a class="ml5-name" href="#${id}">${esc(nameOf(id))}</a>${hs?'<span class="hs5tag">Human side</span>':''}</span>
-      ${l<=2?`<button class="ml5-why" data-why="${id}" aria-expanded="false" aria-controls="mdrawer5"><i class="ib5" aria-hidden="true">i</i>${WHYBTN5[l]}</button>`:'<span></span>'}</li>`};
+  const row=id=>{const l=lv(id);
+    return `<li class="ml5" data-id="${id}" data-l="${vis3(l)}"><span class="ml5-line" aria-hidden="true"></span>
+      <button type="button" class="ml5-btn" aria-expanded="false" aria-controls="mlc5-${id}"><span class="ml5-name">${esc(nameOf(id))}</span>${chev5}</button>
+      <div class="ml5-card" id="mlc5-${id}"></div></li>`};
   return `<ol class="mlist5">${['capability','adoption','handover'].map(row).join('')}<li class="ml5-fork">Then four lines, side by side</li>${['work','share','skills','culture','institutions'].map(row).join('')}<li class="ml5-fork">All four lead to the outcome</li>${row('influence')}</ol>`;
 }
 
-/* the record strip: one lane per indicator, one tick per dated reading (same rules as app.js recordData) */
-const REC5={};
-function recordLanes5(id){
-  if(REC5[id])return REC5[id];
-  const X0=2021,X1=2026.8,box=document.createElement('div');
-  const lane=d=>{const raw=d.obs||Charts.capture(()=>d.render(box));
-    const xs=[...new Set(raw.filter(x=>x>=X0&&x<=X1).map(x=>+x.toFixed(3)))].sort((a,b)=>a-b);
-    let gap=0;for(let i=1;i<xs.length;i++)gap=Math.max(gap,xs[i]-xs[i-1]);
-    return {id:d.id,name:d.recName||d.tab[0],label:indLabel5(d),kind:d.rec,xs,bar:xs.length>=10&&gap<=0.18}};
-  const inds=id==='influence'?LINKS.flatMap(L=>L.inds.filter(d=>d.recRow==='influence')):linkById(id).inds.filter(d=>d.rec&&!d.recRow);
-  return REC5[id]=inds.map(lane).filter(l=>l.xs.length);
-}
-function recordStrip5(id,W){
-  const lanes=recordLanes5(id),direct=lanes.filter(l=>l.kind==='d'),X0=2021,X1=2026.8,LW=W>=420?Math.min(220,Math.round(W*.36)):0,P={l:2+LW,r:6,t:4,b:18},lh=17,th=9;
-  const n=Math.max(lanes.length+(direct.length?0:1),1),H=P.t+n*lh+P.b,sx=x=>P.l+(x-X0)/(X1-X0)*(W-P.l-P.r);
-  let g='',y=P.t;
-  for(let yr=2021;yr<=2026;yr++)g+=`<line x1="${sx(yr)}" x2="${sx(yr)}" y1="${P.t}" y2="${H-P.b+3}" stroke="var(--grid)"/><text x="${sx(yr)+3}" y="${H-4}">${yr}</text>`;
-  if(!direct.length){g+=`<rect x="${P.l}" y="${y+3}" width="${W-P.l-P.r}" height="${lh-6}" fill="url(#rhatch5)" stroke="var(--rule)" stroke-width=".8"/><text x="${P.l+(W-P.l-P.r)/2}" y="${y+lh-5}" text-anchor="middle" class="nd5">NO DIRECT READING</text>`;y+=lh}
-  lanes.forEach(l=>{const col=l.kind==='d'?'var(--s1)':'var(--ctx)',cy=y+lh/2,
-     t=`${l.name} · ${l.xs.length===1?'1 reading, '+fmtDate(l.xs[0]):l.xs.length+' readings, '+fmtDate(l.xs[0])+' to '+fmtDate(l.xs[l.xs.length-1])}`;
-    g+=`<g><title>${esc(t)}</title>${LW?`<text class="ln5" x="0" y="${cy+3.5}">${esc(l.label.length>34?l.label.slice(0,33)+'…':l.label)}</text>`:''}<line x1="${P.l}" x2="${W-P.r}" y1="${cy}" y2="${cy}" stroke="var(--grid)"/>`+
-      (l.bar?`<rect x="${sx(l.xs[0]).toFixed(1)}" y="${cy-1.75}" width="${(sx(l.xs[l.xs.length-1])-sx(l.xs[0])).toFixed(1)}" height="3.5" rx="1.75" fill="${col}"/>`
-        :l.xs.map(x=>`<rect x="${(sx(x)-1.3).toFixed(1)}" y="${cy-th/2}" width="2.6" height="${th}" rx=".6" fill="${col}"/>`).join(''))+
-      `<rect x="0" y="${y}" width="${W}" height="${lh}" fill="transparent"/></g>`;y+=lh});
-  return `<svg class="rs5" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(id))}: ${lanes.length} indicators, ${lanes.reduce((a,l)=>a+l.xs.length,0)} dated readings since 2021.">
-    <defs><pattern id="rhatch5" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink)" stroke-opacity=".28"/></pattern></defs>${g}</svg>`;
-}
-function rubric5(id){
-  const r=RUBRIC[id]||['no','no','no','no'];
-  return `<ul class="rb5">${['Repeated','Direct','Independent','Tied to AI'].map((lab,i)=>{const v=String(r[i]),st=v==='yes'?2:/^no/.test(v)?0:1,
-     q=v.includes(':')?v.split(':').slice(1).join(':').trim():(st===1?v:'');
-    return `<li>${cov5(st,14)}<span class="rb5-l">${lab}<span class="sr5"> ${COVWORD5[st].toLowerCase()}</span>${q?`<small>${esc(q)}</small>`:''}</span></li>`}).join('')}</ul>`;
-}
-function drawerHTML5(id,W){
-  const l=lv(id),L=id==='influence'?null:linkById(id);
-  const why=(COPY.record.drawer.stopSentence||{})[id]||(L?L.levelWhy:'');
-  return `<div class="md5-in"><div class="md5-pad"><div class="md5-head"><h3 tabindex="-1"><span>${esc(nameOf(id))}:</span> ${WHY5[l]} <small class="md5-lv">${esc(LEVELWORD[l])}</small></h3><button class="md5-x" type="button" aria-label="Close">${'<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'}</button></div>
-    <div class="md5-grid"><div class="md5-strip"><div class="md5-cap">Each mark is one dated reading since 2021. Blue: the thing itself. Grey: something nearby.</div>${recordStrip5(id,W)}</div>${rubric5(id)}</div>
-    <p class="md5-note">${esc(why.replace(/\.$/,''))}. <a class="go" href="#record">See the full record →</a></p></div></div>`;
+/* the step card: what the step is, how well it is measured, and the way to its evidence */
+function stepCard5(i){
+  const C=COPY.home.card,id=ORDER[i],l=lv(id),nx=ORDER[i+1],last=i===ORDER.length-1;
+  return `<div class="card5-n">${i+1} of ${ORDER.length}</div>
+    <div class="card5-name">${esc(nameOf(id))}</div>
+    <p class="card5-what">${esc(C.what[id])}</p>
+    <div class="card5-ctl"><button type="button" class="btn pri" data-t="open">${esc(id==='influence'?C.openEnd:C.open)} →</button>
+      <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}">←</button>`:''}<button type="button" class="btn ghost" data-t="next">${last?esc(C.again):`${esc(C.next)}: ${esc(nameOf(nx))} →`}</button></span></div>`;
 }
 
 function mountMap5(el,opts={}){
   const onStop=opts.onStop||(id=>{try{location.hash=id}catch(e){}});
+  const K=COPY.home.legend3;
   el.classList.add('mapcard5');
-  el.innerHTML=`<div class="map5">${mapSVG5()}</div>${mapList5()}
-   <div class="mkey5"><span class="mk5-t">How well measured</span>${[4,3,2,1,0].map(l=>`<span class="mk5-i">${lineGlyph5(l,34,10)}${LINEWORD5[l]}</span>`).join('')}
-    <span class="mk5-hint"><i class="ib5" aria-hidden="true">i</i>Select a line to see why</span></div>
-   <p class="mcav5">Lines show how well each stop is measured, not that one causes the next.</p>
-   <div class="md5" id="mdrawer5" role="region" aria-live="polite" aria-label="Why this line style"></div>`;
-  const map=$('.map5',el),drawer=$('#mdrawer5',el),home=drawer.parentNode,nextHome=drawer.nextSibling;let openId=null,opener=null;
-  const mark=id=>{map.classList.toggle('has-sel',!!id);$$('.seg5,.sh5,.st5',map).forEach(g=>g.classList.toggle('sel',!!id&&(g.dataset.to||g.dataset.why||g.dataset.id)===id));
-    $$('[data-why]',el).forEach(b=>b.setAttribute('aria-expanded',String(b.dataset.why===id)))};
-  drawer.inert=true;
-  const close=()=>{drawer.classList.remove('open');drawer.inert=true;openId=null;mark(null);if(drawer.parentNode!==home)home.insertBefore(drawer,nextHome);if(opener)try{opener.focus()}catch(e){}};
-  const open=(id,src)=>{
-    if(map.dataset.tour){const x=$('.tour5 [data-t="exit"]',map);if(x)x.click()}
-    if(openId===id){close();return}
-    opener=src;openId=id;const phone=src&&src.closest('.mlist5');
-    if(phone){src.closest('li').appendChild(drawer)}else if(drawer.parentNode!==home)home.insertBefore(drawer,nextHome);
-    const w=Math.max(220,Math.floor((drawer.parentNode.clientWidth||600)*(phone?1:.6))-(phone?28:40));
-    drawer.innerHTML=drawerHTML5(id,w);drawer.inert=false;mark(id);requestAnimationFrame(()=>drawer.classList.add('open'));
-    const rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;setTimeout(()=>{try{drawer.scrollIntoView({block:'nearest',behavior:rm?'auto':'smooth'})}catch(e){}},220);
-    $('.md5-x',drawer).addEventListener('click',close);if(src&&src.matches&&src.matches('.sh5,.ml5-why'))setTimeout(()=>{try{$('.md5-head h3',drawer).focus({preventScroll:true})}catch(e){}},230)};
-  el.addEventListener('click',e=>{const w=e.target.closest('[data-why]');if(w){e.preventDefault();open(w.dataset.why,w);return}
-    const s=e.target.closest('.st5');if(s){onStop(s.dataset.id)}});
+  el.innerHTML=`<div class="map5">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}
+   <div class="mkey5"><span class="mk5-t">${esc(K.lead)}</span>${[3,2,1].map(k=>`<span class="mk5-i">${lineGlyph5(k,34,10)}${esc(K.items[k])}</span>`).join('')}</div>`;
+  const map=$('.map5',el),card=$('.card5',map),list=$('.mlist5',el);
+  let sel=0,phoneOpen=true;
+  const rm=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const select=(i,o={})=>{sel=(i+ORDER.length)%ORDER.length;const id=ORDER[sel];
+    $$('.st5',map).forEach(g=>{const on=g.dataset.id===id;g.classList.toggle('here',on);g.setAttribute('aria-pressed',String(on))});
+    card.innerHTML=stepCard5(sel);
+    $$('.ml5[data-id]',list).forEach(r=>{const on=phoneOpen&&r.dataset.id===id;r.classList.toggle('open',on);$('.ml5-btn',r).setAttribute('aria-expanded',String(on));$('.ml5-card',r).innerHTML=on?stepCard5(sel):''});
+    if(o.scroll){const r=$(`.ml5[data-id="${id}"]`,list);if(r&&r.offsetParent)try{r.scrollIntoView({block:'start',behavior:rm()?'auto':'smooth'})}catch(e){}}};
+  el.addEventListener('click',e=>{
+    const t=e.target.closest('[data-t]');
+    if(t){e.preventDefault();const a=t.dataset.t,phone=!!t.closest('.mlist5');
+      if(a==='open'){onStop(ORDER[sel]);return}
+      phoneOpen=true;select(a==='prev'?sel-1:sel+1,{scroll:phone});return}
+    const s=e.target.closest('.st5');if(s){select(ORDER.indexOf(s.dataset.id));return}
+    const b=e.target.closest('.ml5-btn');if(b){const i=ORDER.indexOf(b.closest('.ml5').dataset.id);
+      if(i===sel&&phoneOpen){phoneOpen=false;select(i)}else{phoneOpen=true;select(i)}}});
   el.addEventListener('keydown',e=>{const t=e.target;
-    if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.sh5')){e.preventDefault();open(t.dataset.why,t)}
-    else if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();onStop(t.dataset.id)}
-    else if(e.key==='Escape'&&openId){close()}});
-  /* hover: preview the line under the pointer */
-  $$('.sh5',map).forEach(h=>{h.addEventListener('pointerenter',()=>{if(!openId&&!map.dataset.tour){map.classList.add('has-sel');$$(`.seg5[data-to="${h.dataset.why}"]`,map).forEach(s=>s.classList.add('sel'))}});
-    h.addEventListener('pointerleave',()=>{if(!openId&&!map.dataset.tour)mark(null)})});
-  /* the tour: nine stops, one at a time, lighting the path that leads there */
-  const T=COPY.home.tour,box=document.createElement('div');box.className='tour5';map.appendChild(box);
-  const idle=`<div class="tour5-start"><button type="button" class="btn play" data-t="start"><svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg>${esc(T.button)}</button><span>${esc(T.sub)}</span></div>`;
-  box.innerHTML=idle;
-  const trunk=['capability','adoption','handover'];
-  const pathTo=id=>{if(id==='influence')return ORDER.slice();const t=trunk.indexOf(id);if(t>=0)return trunk.slice(0,t+1);return [...trunk,...(id==='share'?['work','share']:[id])]};
-  let ti=0,playing=false;
-  const light=id=>{const on=pathTo(id);map.classList.add('has-sel');
-    $$('.seg5',map).forEach(g=>{const to=g.dataset.to;g.classList.toggle('sel',to==='influence'?id==='influence':on.includes(to))});
-    $$('.st5',map).forEach(g=>g.classList.toggle('sel',on.includes(g.dataset.id)));
-    $$('.st5',map).forEach(g=>g.classList.toggle('here',g.dataset.id===id))};
-  const stopT=()=>{clearInterval(tourTimer);tourTimer=null;playing=false};
-  const show=()=>{const id=ORDER[ti],L=id==='influence'?END:linkById(id);light(id);
-    box.classList.add('on');
-    box.innerHTML=`<div class="tourtop"><span class="lab">${esc(T.stepLabel.replace('{i}',ti+1).replace('{measurementWord}',LEVELWORD[lv(id)]))}</span><span class="dots" aria-hidden="true">${ORDER.map((_,k)=>`<i class="${k===ti?'on':k<ti?'done':''}"></i>`).join('')}</span></div>
-      <div class="tourname">${esc(L.name)}</div><p>${esc(L.tour)}</p>
-      <div class="ctl"><button type="button" class="btn ghost" data-t="prev" ${ti===0?'disabled':''}>${esc(T.back)}</button><button type="button" class="btn ghost" data-t="play">${playing?esc(T.pause):esc(T.resume)}</button><button type="button" class="btn ghost" data-t="next" ${ti===ORDER.length-1?'disabled':''}>${esc(T.next)}</button><button type="button" class="btn" data-t="open">${esc(id==='influence'?'Open the end of the chain':T.open)}</button><button type="button" class="btn ghost x" data-t="exit" aria-label="${esc(T.exit)}">${esc(T.exit.replace(' tour',''))}</button></div>`};
-  const run=()=>{clearInterval(tourTimer);playing=true;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){playing=false;return}
-    tourTimer=setInterval(()=>{if(ti<ORDER.length-1){ti++;show()}else{stopT();show()}},5200)};
-  const end=()=>{stopT();delete map.dataset.tour;mark(null);$$('.st5.here',map).forEach(g=>g.classList.remove('here'));box.classList.remove('on');box.innerHTML=idle};
-  box.addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;e.stopPropagation();const t=b.dataset.t;
-    if(t==='start'){if(openId)close();map.dataset.tour='1';ti=0;run();show();const f=$('[data-t="next"]',box);if(f)f.focus({preventScroll:true})}
-    else if(t==='prev'){stopT();ti=Math.max(0,ti-1);show()}
-    else if(t==='next'){stopT();ti=Math.min(ORDER.length-1,ti+1);show()}
-    else if(t==='play'){if(playing)stopT();else run();show()}
-    else if(t==='exit'){end();const s=$('[data-t="start"]',box);if(s)s.focus({preventScroll:true})}
-    else if(t==='open'){const id=ORDER[ti];end();onStop(id)}});
-  box.addEventListener('keydown',e=>{if(e.key==='Escape'&&map.dataset.tour){end()}});
+    if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();select(ORDER.indexOf(t.dataset.id))}
+    else if((e.key==='ArrowRight'||e.key==='ArrowLeft')&&t.closest&&t.closest('.map5')){e.preventDefault();select(sel+(e.key==='ArrowRight'?1:-1));
+      const g=$(`.st5[data-id="${ORDER[sel]}"]`,map);if(g&&t.matches('.st5'))g.focus()}});
+  select(0);
   return el;
 }
 
@@ -254,17 +179,19 @@ const FLAGCAV5=[['one-off','oneoff'],['cause','cause'],['vendor','company'],['de
 function indicatorCards(el,linkId,opts={}){
   const L=linkId==='influence'?null:linkById(linkId),inds=opts.inds||L.inds,SI=SIG5().indicators,uid='ic5-'+linkId;
   el.classList.add('ic5wrap');
-  const TW={toward:'toward the concern',away:'away from the concern',unclear:'direction unclear'};
-  el.innerHTML=`${opts.single?'':`<div class="ic5-head"><p class="ic5-ins">${esc(COPY.linkUI.instruction)}</p></div>`}
-   <div class="ic5-grid${inds.length<3?' few':''}" role="tablist" aria-label="Indicators: ${esc(nameOf(linkId))}">${inds.map((d,i)=>{const t=SI[d.id]||{},tr=t.trend||'Not rated';
-     return `<button class="ic5" type="button" role="tab" id="${uid}-${d.id}" data-i="${i}" aria-selected="false" aria-controls="${uid}-panel" tabindex="${i?-1:0}">
+  const TW={toward:'Moving toward the concern',away:'Moving away from the concern',unclear:'Direction unclear'};
+  const TOP=3,canFold=!opts.single&&inds.length>TOP+1;
+  el.innerHTML=`<div class="ic5-grid${inds.length<3?' few':''}" role="tablist" aria-label="Indicators: ${esc(nameOf(linkId))}">${inds.map((d,i)=>{const t=SI[d.id]||{},tr=t.trend||'Not rated';
+     return `<button class="ic5" type="button" role="tab" id="${uid}-${d.id}" data-i="${i}" aria-selected="false" aria-controls="${uid}-panel" tabindex="${i?-1:0}"${canFold&&i>=TOP?' hidden':''}>
       <span class="ic5-top">${sparkSVG5(d,tr)}</span>
-      <span class="ic5-lab">${esc(indLabel5(d))}</span><span class="ic5-tr">${esc(tr)}${t.toward&&tr!=='One-off'?` · ${TW[t.toward]}`:''}</span>${chev5}</button>`}).join('')}</div>`;
-  const grid=$('.ic5-grid',el),cards=$$('.ic5',grid),panel=document.createElement('div');
+      <span class="ic5-lab">${esc(indLabel5(d))}</span><span class="ic5-tr">${esc(tr)}</span>${chev5}</button>`}).join('')}</div>${canFold?`<button type="button" class="btn ghost ic5-all" aria-expanded="false">Show all ${inds.length} indicators</button>`:''}`;
+  const grid=$('.ic5-grid',el),cards=$$('.ic5',grid),panel=document.createElement('div'),allBtn=$('.ic5-all',el);
   panel.className='ic5-panel';panel.id=uid+'-panel';panel.setAttribute('role','tabpanel');panel.tabIndex=-1;
-  let cur=-1;
+  let cur=-1,folded=canFold;
+  const vis=()=>cards.filter(b=>!b.hidden);
+  const unfold=()=>{if(!folded)return;folded=false;cards.forEach(b=>b.hidden=false);if(allBtn){allBtn.hidden=true;allBtn.setAttribute('aria-expanded','true')}};
   const cols=()=>getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length||1;
-  const place=()=>{if(cur<0){panel.remove();return}if(opts.single){grid.after(panel);return}const c=cols(),end=Math.min(cards.length-1,Math.floor(cur/c)*c+c-1);cards[end].after(panel);
+  const place=()=>{if(cur<0){panel.remove();return}if(opts.single){grid.after(panel);return}const v=vis(),k=v.indexOf(cards[cur]),c=cols(),end=Math.min(v.length-1,Math.floor(k/c)*c+c-1);v[end].after(panel);
     const b=cards[cur].getBoundingClientRect(),g=grid.getBoundingClientRect();panel.style.setProperty('--nx',(b.left-g.left+b.width/2)+'px')};
   const roles=()=>{const phone=cols()===1;grid.setAttribute('role',phone?'list':'tablist');
     cards.forEach((b,i)=>{if(phone){b.removeAttribute('role');b.removeAttribute('aria-selected');b.setAttribute('aria-expanded',String(i===cur));b.tabIndex=0}
@@ -274,17 +201,18 @@ function indicatorCards(el,linkId,opts={}){
     const cav=(FLAGCAV5.find(([f,c])=>fl.includes(f)&&!(c==='company'&&d.tag==='company'))||[])[1];
     const ic=indCopy5(d);
     panel.setAttribute('aria-labelledby',cards[i].id);
-    panel.innerHTML=`<div class="ic5-ph"><h3>${esc(d.title)}</h3><div class="ic5-chips"><span class="chip">${esc(TAGS[d.tag])}</span>${cav?caveatChip(cav):''}</div></div>
+    panel.innerHTML=`<div class="ic5-ph"><h3>${esc(d.title)}</h3><div class="ic5-chips">${t.toward&&t.trend!=='One-off'?`<span class="ic5-dir">${TW[t.toward]}</span>`:''}<span class="chip">${esc(TAGS[d.tag])}</span>${cav?caveatChip(cav):''}</div></div>
       ${d.sub?`<p class="ic5-sub">${esc(d.sub)}</p>`:''}<div class="ic5-body"></div>
       <details class="ic5-more"><summary>${esc(COPY.linkUI.readingIt)} and sources</summary><p class="ic5-read">${esc(d.read)}</p>
       <p class="ic5-src">${d.src.map(s=>`<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>`).join(' · ')}</p></details>`;
     d.render($('.ic5-body',panel))};
   const select=(i,toggle,user)=>{if(toggle&&cols()===1&&i===cur){cur=-1;cards.forEach(b=>b.classList.remove('on'));roles();place();return}
-    cur=i;cards.forEach((b,k)=>b.classList.toggle('on',k===i));roles();place();draw(i);if(user&&opts.onSelect)opts.onSelect(inds[i])};
+    if(cards[i].hidden)unfold();cur=i;cards.forEach((b,k)=>b.classList.toggle('on',k===i));roles();place();draw(i);if(user&&opts.onSelect)opts.onSelect(inds[i])};
   cards.forEach((b,i)=>b.addEventListener('click',()=>select(i,true,true)));
-  grid.addEventListener('keydown',e=>{if(cols()===1)return;const i=cards.indexOf(document.activeElement);if(i<0)return;
-    let j=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%cards.length;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i-1+cards.length)%cards.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=cards.length-1;
-    if(j!=null){e.preventDefault();cards.forEach((b,k)=>b.tabIndex=k===j?0:-1);cards[j].focus()}});
+  if(allBtn)allBtn.addEventListener('click',()=>{unfold();roles();place()});
+  grid.addEventListener('keydown',e=>{if(cols()===1)return;const v=vis(),i=v.indexOf(document.activeElement);if(i<0)return;
+    let j=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%v.length;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i-1+v.length)%v.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=v.length-1;
+    if(j!=null){e.preventDefault();v.forEach((b,k)=>b.tabIndex=k===j?0:-1);v[j].focus()}});
   let rt;const onR=()=>{if(!el.isConnected){window.removeEventListener('resize',onR);return}clearTimeout(rt);rt=setTimeout(()=>{roles();place()},150)};window.addEventListener('resize',onR);
   const s0=opts.sel?Math.max(0,inds.findIndex(d=>d.id===opts.sel)):0;
   select(s0);if(opts.single){grid.hidden=true;el.classList.add('single')}return el;
@@ -299,15 +227,12 @@ const INSICON5={
  watch:`<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 10s3-5.2 8.2-5.2 8.2 5.2 8.2 5.2-3 5.2-8.2 5.2S1.8 10 1.8 10z"/><circle cx="10" cy="10" r="2.4"/></svg>`};
 function insightCards(el,linkId){
   const CL=COPY.links[linkId];if(!CL){el.innerHTML='';return el}
-  const uid='in5-'+linkId,T=COPY.linkUI.cards;
-  const kinds=[['sceptic',T.sceptic,CL.sceptic||[]],['unmeasured',T.unmeasured,CL.unmeasured||[]],['watch',T.watch,CL.watch||[]]];
-  el.classList.add('in5wrap');
-  const hedge=k=>k==='unmeasured'&&COPY.linkUI.unmeasuredTip?`<span class="cav5w"><button type="button" class="cav5 why5" aria-describedby="${uid}-tip">?</button><span class="cav5tip" role="tooltip" id="${uid}-tip">${esc(COPY.linkUI.unmeasuredTip)}</span></span>`:'';
-  el.innerHTML=kinds.map(([k,t,items])=>`<section class="in5 in5-${k}" aria-labelledby="${uid}-${k}"><header>${INSICON5[k]}<h3 id="${uid}-${k}">${esc(t)}</h3>${hedge(k)}</header>
-    <ul>${items.map((it,i)=>`<li><button type="button" class="in5-row" aria-expanded="false" aria-controls="${uid}-${k}-${i}"><span>${esc(it.label)}</span><i aria-hidden="true"></i></button><div class="in5-s" id="${uid}-${k}-${i}" role="region" hidden><p>${esc(it.text)}</p></div></li>`).join('')}</ul>
-    </section>`).join('');
-  el.addEventListener('click',e=>{const b=e.target.closest('.in5-row');if(!b)return;const open=b.getAttribute('aria-expanded')!=='true';
-    b.setAttribute('aria-expanded',String(open));document.getElementById(b.getAttribute('aria-controls')).hidden=!open});
+  const T=COPY.linkUI.cards,B=COPY.linkUI.brief,tip=COPY.linkUI.unmeasuredTip;
+  const kinds=[['sceptic',B.caveats,T.sceptic,CL.sceptic||[]],['unmeasured',B.blind,T.unmeasured,CL.unmeasured||[]],['watch',B.signals,T.watch,CL.watch||[]]];
+  el.classList.add('br5wrap');
+  el.innerHTML=kinds.filter(k=>k[3].length).map(([k,lab,t,items])=>`<details class="br5 br5-${k}"><summary><span class="lab5"><span>${esc(lab)}</span></span><span class="br5-t">${INSICON5[k]}${esc(t)}</span><span class="br5-n">${items.length}</span><i aria-hidden="true"></i></summary>
+    <ul class="br5-l">${items.map(it=>`<li><b>${esc(it.label)}</b><p>${esc(it.text)}</p></li>`).join('')}</ul>
+    ${k==='unmeasured'?`<p class="br5-f">${tip?esc(tip)+' ':''}<a class="go" href="${esc(B.proposeUrl)}" target="_blank" rel="noopener">${esc(B.propose)} ↗</a></p>`:''}</details>`).join('');
   return el;
 }
 

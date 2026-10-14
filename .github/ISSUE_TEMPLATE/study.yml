@@ -1,0 +1,30 @@
+name: Share a study
+description: Point us to a paper, report or dataset we have missed.
+title: "[Study] "
+labels: ["study"]
+body:
+  - type: input
+    id: cite
+    attributes:
+      label: Citation (authors, year, title)
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Link (DOI, arXiv or publisher page)
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: Main finding, in one sentence
+  - type: dropdown
+    id: design
+    attributes:
+      label: Design
+      options: ["Experiment / RCT", "Natural experiment", "Panel (same people over time)", "Survey (one-off)", "Usage logs", "Benchmark / eval", "Review or meta-analysis", "Other"]
+  - type: input
+    id: who
+    attributes:
+      label: Your name and affiliation (optional, for credit)

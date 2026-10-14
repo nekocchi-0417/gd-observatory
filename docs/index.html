@@ -67,7 +67,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .nav a:hover{color:var(--ink);background:var(--surface-2)}
 .nav a[aria-current="page"]{color:var(--ink)}
 .nav a[aria-current="page"]::after{content:"";position:absolute;left:10px;right:10px;bottom:-7px;height:2px;background:var(--ink)}
-@media (max-width:640px){.mark span{font-size:13px}.nav a{padding:5px 7px;font-size:13px}.nav a[aria-current="page"]::after{bottom:0;left:7px;right:7px}}
+@media (max-width:640px){.mark span{font-size:13px}.nav a{padding:5px 7px;font-size:13px}.nav .wip5{display:none}.nav a[aria-current="page"]::after{bottom:0;left:7px;right:7px}}
 
 /* ---------- shared view chrome ---------- */
 main{min-height:70vh;outline:0}
@@ -459,6 +459,8 @@ table.trk td:last-child{font-family:var(--f-text);font-size:16px;line-height:1.4
 footer.ft{border-top:1px solid var(--rule);padding-block:22px 40px;font-size:13px;color:var(--ink-2)}
 footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+@media (max-width:420px){.nav{gap:0}.nav a{padding:5px 5px;font-size:12.5px}}
 /* ======================================================================================
    components.css: styles for components.js. Loaded after style.css.
    Tokens: "what the data show" ramp (--sg*), human-side accent (--hs*), spacing and type scale.
@@ -468,7 +470,7 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
      Light steps OKLCH L .40/.515/.625/.735 (ordinal check passes; lightest 2.04:1 on --paper). */
   --sg4:#00544d; --sg3:#00786e; --sg2:#329a8f; --sg1:#6dbab0; --sg0:#8f9ca8;
   /* human side (Skills and judgement, Human influence): an annotation colour, never a data colour */
-  --hs:#654a96; --hs-soft:#eee8f6; --hs-line:#d6cbea;
+  --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft);
   /* spacing and type (17_ux_spec §4) */
   --gap-section:clamp(72px,9vw,128px); --gap-section-sm:clamp(56px,7vw,96px); --gap-hero:clamp(48px,6vw,80px);
   --gap-head:28px; --gap-stack:16px; --gap-tight:8px; --pad-card:clamp(20px,2.4vw,32px); --gutter:clamp(16px,4vw,40px);
@@ -478,10 +480,10 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   /* reversed: more change = lighter = more contrast on the dark surface. Lightest-contrast step 3.0:1 on --paper. */
   --sg4:#7ee7d9; --sg3:#47c3b5; --sg2:#329a8f; --sg1:#2e6c65; --sg0:#66747f;
-  --hs:#bba6e4; --hs-soft:#2a2240; --hs-line:#43375f; } }
+  --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft); } }
 :root[data-theme="dark"]{
   --sg4:#7ee7d9; --sg3:#47c3b5; --sg2:#329a8f; --sg1:#2e6c65; --sg0:#66747f;
-  --hs:#bba6e4; --hs-soft:#2a2240; --hs-line:#43375f; }
+  --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft); }
 
 .sr5{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .hs5tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-display);font-size:11.5px;font-weight:600;color:var(--hs);letter-spacing:.01em;white-space:nowrap}
@@ -534,12 +536,17 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 .rs5 .nd5{font-size:9.5px;letter-spacing:.1em;fill:var(--ink-2)}
 .rb5{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;padding-top:20px}
 .rb5 li{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:600;line-height:1.25}
-.rb5 svg{flex:0 0 auto;margin-top:1px}
+.rb5-m{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;font-size:12px;font-weight:700;line-height:1;margin-top:-1px}
+.rb5-2 .rb5-m{background:var(--accent);color:var(--surface)}
+.rb5-1 .rb5-m{background:var(--accent-soft);color:var(--accent)}
+.rb5-0 .rb5-m{border:1.5px solid var(--ink-3);color:var(--ink-3)}
+.rb5-0 .rb5-l{color:var(--ink-2)}
+.md5-head h3:focus{outline:none}
 .rb5 small{display:block;font-weight:400;color:var(--ink-3);font-size:12.5px;margin-top:2px}
 .md5-note{margin-top:14px;font-family:var(--f-text);font-size:15.5px;line-height:1.45;color:var(--ink-2)}
 /* phone list */
 .mlist5{display:none;list-style:none;margin:0;padding:6px 0 4px}
-.ml5{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:0 14px;align-items:center;padding:0 16px;min-height:54px}
+.ml5{display:grid;grid-template-columns:20px minmax(0,1fr);gap:0 14px;align-items:start;padding:0 16px;min-height:52px}
 .ml5-line{align-self:stretch;position:relative}
 .ml5-line::before{content:"";position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%)}
 .ml5[data-l="4"] .ml5-line::before{width:7px;background:var(--ev4)}
@@ -548,7 +555,7 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 .ml5[data-l="1"] .ml5-line::before{width:6px;background:radial-gradient(circle,var(--ev1) 2.4px,transparent 2.8px) center 2px/6px 10px repeat-y}
 .ml5[data-l="0"] .ml5-line::before{width:4px;background:radial-gradient(circle,var(--ev0) 1.2px,transparent 1.5px) center 0/4px 7px repeat-y}
 .ml5-main{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;padding:13px 0}
-.ml5-name{font-weight:650;font-size:15.5px;color:var(--ink);text-decoration:none}
+.ml5-name{font-weight:650;font-size:15.5px;color:var(--ink)}
 .ml5-why{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--ink-2);padding:0 2px 0 8px;min-height:44px;white-space:nowrap}
 .ml5-why .ib5{width:16px;height:16px;font-size:11px}
 .ml5-why:hover{color:var(--ink);text-decoration:underline}
@@ -692,6 +699,12 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 .fig5-n{font-size:12.5px;color:var(--ink-3);margin-top:8px}
 @media (prefers-reduced-motion:reduce){.md5,.er5,.er5::before,.ic5,.in5-row i::before,.in5-row i::after{transition:none!important}}
 
+
+/* indicator grid: three cards by default, the rest behind one button */
+.ic5[hidden]{display:none}
+.ic5-all{margin-top:12px}
+.ic5-all[hidden]{display:none}
+.ic5-dir{font-size:12.5px;color:var(--ink-2);margin-right:4px}
 /* ======================================================================================
    pages.css: page layout. Spacing and type tokens live in components.css (:root).
    Three levels per view: heading, card/row title, body. Space separates sections, not rules.
@@ -726,6 +739,7 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 .hero5{padding-top:clamp(28px,3.6vw,48px);padding-bottom:clamp(32px,3.8vw,52px)}
 .hero5-g{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 56px;align-items:end}
 .hero5-g .lead5{margin-top:0;padding-bottom:6px}
+.paper5{display:inline-block;margin-top:10px}
 .chainlab5{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
 .chainlab5-h{font-size:13px;color:var(--ink-3)}
 .core5{padding-top:var(--gap-section);padding-bottom:var(--gap-section-sm)}
@@ -754,7 +768,7 @@ mark.hs5m{color:inherit;background:linear-gradient(transparent 58%,var(--hs-line
 /* ---------- evidence, record ---------- */
 .foot5{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:28px}
 .foot5 .go,.note5 .go{white-space:normal}
-details.ctr5{margin-top:36px;border-top:1px solid var(--rule);padding-top:4px;max-width:880px}
+details.ctr5{margin-top:10px;border-top:1px solid var(--rule);padding-top:4px}
 details.ctr5 summary,details.det5 summary{cursor:pointer;padding:16px 0;font-size:16px;font-weight:650;color:var(--ink);list-style:none;display:flex;align-items:center;gap:10px}
 details.ctr5 summary::-webkit-details-marker,details.det5 summary::-webkit-details-marker{display:none}
 details.ctr5 summary::before,details.det5 summary::before{content:"+";display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid var(--rule);border-radius:50%;font-size:14px;font-weight:500;color:var(--ink-2);flex:0 0 auto}
@@ -770,7 +784,7 @@ details.ctr5 li span{font-family:var(--f-text);font-size:15.5px;color:var(--ink-
 .crumb5{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--ink-3);margin-bottom:28px}
 .crumb5 a{color:var(--ink-2);text-decoration:none;font-weight:550}
 .crumb5 a:hover{text-decoration:underline;color:var(--ink)}
-.claim5{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 56px;align-items:end}
+.claim5{max-width:980px}
 .pills5{margin:0;display:grid;gap:14px;min-width:230px;padding:16px 0 4px 22px;border-left:1px solid var(--rule)}
 .pills5 dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .pills5 dd{margin:5px 0 0;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:620;--glyph-bg:var(--paper)}
@@ -911,16 +925,6 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 }
 
 /* ---------- v5.2: tour on the map, link tabs, matrix key ---------- */
-.tour5{position:absolute;left:1.6%;bottom:4%;width:min(37%,460px);z-index:2}
-.tour5-start{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--ink-2);line-height:1.35}
-.tour5-start .btn{background:var(--surface)}
-.tour5.on{background:var(--surface);border:1.5px solid var(--ink);border-radius:8px;padding:12px 14px;box-shadow:0 6px 20px rgba(8,20,32,.10)}
-.tour5 .tourtop{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.tour5 .tourname{font-weight:700;font-size:17px;margin-top:2px}
-.tour5 p{font-family:var(--f-text);font-size:14.5px;line-height:1.4;color:var(--ink-2);margin-top:2px}
-.tour5 .ctl{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.tour5 .ctl .btn{padding:5px 11px;font-size:12.5px}
-.tour5 .ctl .x{margin-left:auto}
 .map5 .st5.here .ring5{stroke-width:6}
 .map5 .st5.here .core5{opacity:1}
 .map5 .st5.here .nm5{text-decoration:underline;text-underline-offset:3px}
@@ -931,6 +935,198 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .hops5-n{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--ink-3);font-family:var(--f-mono);font-size:12px;color:var(--ink);flex:0 0 auto}
 .hops5 li:last-child .hops5-n{border-style:dashed}
 @media (max-width:640px){.hops5{flex-direction:column;gap:6px}.hops5 li{padding-right:0}.hops5 li:not(:last-child)::after{content:none}}
+
+/* home: three-sentence intro above the map */
+.intro5 ol{list-style:none;margin:0;padding:0 0 18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 28px}
+.intro5 li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.intro5-n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:inline-grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:600;color:var(--ink);margin-top:1px}
+@media (max-width:900px){.intro5 ol{grid-template-columns:1fr;gap:10px}}
+/* home: the step card */
+.card5{position:absolute;left:2%;bottom:4%;width:min(36%,430px);z-index:2;background:var(--surface);border:1.5px solid var(--ink);border-radius:10px;padding:14px 16px 14px;box-shadow:0 8px 24px rgba(8,20,32,.10)}
+.card5-n,.ml5-card .card5-n{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.card5-name{font-weight:750;font-size:18px;margin-top:2px;color:var(--ink)}
+.card5-what{font-family:var(--f-text);font-size:14.5px;line-height:1.42;color:var(--ink-2);margin-top:4px}
+.card5-ms{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.4;color:var(--ink-2);margin-top:8px}
+.card5-ms .lg5{flex:0 0 auto;margin-top:4px}
+.card5-ms b{color:var(--ink);font-weight:650}
+.card5-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:12px}
+.card5-nav{display:flex;gap:6px}
+.card5-ctl .btn{padding:6px 12px;font-size:13px}
+.card5-ctl .btn.pri{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.card5-ctl .btn.pri:hover{background:var(--accent);border-color:var(--accent)}
+.map5 .st5.here .ring5{stroke-width:6}
+.map5 .st5.here .core5{opacity:1}
+.map5 .st5.here .nm5{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+/* phone list rows */
+.ml5-btn{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:52px;padding:0;background:none;border:0;font:inherit;text-align:left;color:var(--ink);cursor:pointer}
+.ml5-btn .chev5{transition:transform .15s;color:var(--ink-3)}
+.ml5.open .ml5-btn .chev5{transform:rotate(90deg)}
+.ml5-card:empty{display:none}
+.ml5-card{grid-column:2/-1;padding:0 0 14px}
+.ml5-card .card5-name{display:none}
+@media (prefers-reduced-motion:reduce){.ml5-btn .chev5{transition:none}}
+.ml5-line{grid-row:1/span 2}
+.map5 .card5 svg{display:inline-block;width:auto;height:auto;max-height:none}
+@media (max-width:1180px){.card5{position:static;width:auto;max-width:560px;margin:4px 20px 6px;box-shadow:none}}
+
+/* home: story hero and the map's section header */
+.story5-h{max-width:18em}
+.story5{max-width:74ch;margin-top:18px}
+.story5 .go{white-space:nowrap}
+.sec2h5{padding-top:clamp(8px,1.5vw,16px);padding-bottom:18px;border-top:1px solid var(--rule)}
+.sec2h5 .hero5-g{padding-top:clamp(24px,3vw,40px)}
+.sec2h5 .h1-5{font-size:clamp(28px,3.2vw,42px)}
+.story5.pt{margin-top:10px;color:var(--ink)}
+
+/* ---------- home v0.6: bridge, the three biggest gaps, call to action ---------- */
+.bridge5{margin-top:22px;color:var(--ink);font-weight:500;max-width:60ch}
+.gaps5{padding-top:var(--gap-section-sm);padding-bottom:var(--gap-section-sm)}
+.gaps5 .h2row5 .go{white-space:nowrap;padding-bottom:4px}
+.gaps5-l{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 36px}
+.gaps5-l li{display:flex;gap:14px;align-items:flex-start;padding-top:18px;border-top:1px solid var(--ink)}
+.gaps5-n{flex:0 0 auto;font-family:var(--f-mono);font-size:13px;font-weight:600;color:var(--ink-3);margin-top:5px}
+.gaps5-t{display:inline-block;font-size:20px;font-weight:740;line-height:1.2;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.gaps5-t:hover{text-decoration:underline;text-underline-offset:3px}
+.gaps5-l p{font-family:var(--f-text);font-size:16px;line-height:1.45;color:var(--ink-2);margin-top:8px}
+.gaps5-l p.gaps5-note{font-size:13px;line-height:1.45;color:var(--ink-3);margin-top:10px}
+.cta5{padding-top:var(--gap-section-sm);padding-bottom:var(--gap-section);border-top:1px solid var(--rule)}
+.cta5 .paths5-g{margin-top:22px}
+.cta5-links{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:22px}
+.cta5-links .go{white-space:nowrap}
+.qs5{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.qs5 li{padding-left:18px;position:relative}
+.qs5 li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--ink-3)}
+.btns5{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center;margin-top:18px}
+.btns5 .btn{padding:10px 18px;font-size:14.5px;white-space:normal;text-align:center}
+.btns5 .btn.pri5{background:var(--ink);color:var(--paper)}
+.btns5 .btn.pri5:hover{background:var(--ink-2)}
+.btns5 .go{margin-left:6px;white-space:nowrap}
+.sec2h5 .hero5-g{padding-top:clamp(20px,2.6vw,34px)}
+
+/* ---------- why this project ---------- */
+#w-plan,#w-add,#w-funding,#w-authors,#w-community,.accg5{scroll-margin-top:72px}
+.plan5{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px}
+.plan5 li{display:flex;gap:12px;align-items:flex-start;padding-top:14px;border-top:1px solid var(--ink)}
+.plan5-n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:inline-grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:600;color:var(--ink);margin-top:1px}
+.plan5 b{display:block;font-size:17px;font-weight:720;line-height:1.2}
+.plan5 b a{color:inherit;text-decoration:none}
+.plan5 b a:hover{text-decoration:underline;text-underline-offset:3px}
+.plan5 li>div>span{display:block;font-family:var(--f-text);font-size:15px;line-height:1.45;color:var(--ink-2);margin-top:6px}
+.plan5 li>div>span a{color:var(--ink);text-underline-offset:2px}
+.aim5{font-size:clamp(18px,1.9vw,22px);font-weight:600;line-height:1.35;color:var(--ink);max-width:40em;margin-top:28px}
+.act5{max-width:880px}
+.act5 .h2-5 .wip5{vertical-align:middle;margin-left:8px}
+.grants5{list-style:none;margin:18px 0 0;padding:0}
+.grants5 li{display:grid;gap:4px;padding:14px 0;border-top:1px solid var(--grid)}
+.grants5 li:last-child{border-bottom:1px solid var(--grid)}
+.grants5-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
+.grants5-h a{font-size:15.5px;font-weight:650;color:var(--ink);text-decoration:none}
+.grants5-h a:hover{text-decoration:underline;text-underline-offset:3px}
+.acc5-c.due5{border-color:var(--ink);color:var(--ink);font-weight:600}
+.grants5 li>span{font-family:var(--f-text);font-size:15px;line-height:1.45;color:var(--ink-2)}
+.cnt5{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 28px;max-width:720px}
+.cnt5 li{display:flex;flex-direction:column;gap:4px;padding-top:12px;border-top:1px solid var(--ink)}
+.cnt5 b{font-family:var(--f-mono);font-size:clamp(28px,3vw,36px);font-weight:500;letter-spacing:-.02em;line-height:1}
+.cnt5 span{font-size:13.5px;line-height:1.4;color:var(--ink-2)}
+@media (max-width:900px){
+  .gaps5-l,.plan5{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .cnt5{grid-template-columns:1fr 1fr}
+  .btns5 .btn{flex:1 1 auto}
+}
+
+/* ---------- home v0.6b: purpose first, audience paths, the vignette as an aside ---------- */
+.purpose5-h{max-width:16em}
+.purpose5{max-width:60ch}
+.purpose5.def5{margin-top:12px;color:var(--ink)}
+.paths5{margin-top:30px}
+.paths5-l{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.paths5-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.path5{position:relative;display:flex;flex-direction:column;gap:5px;padding:14px 36px 14px 16px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);color:var(--ink);text-decoration:none;transition:border-color .15s}
+.path5 b{font-size:15px;font-weight:720;line-height:1.2}
+.path5>span{font-family:var(--f-text);font-size:14px;line-height:1.4;color:var(--ink-2)}
+.path5 .chev5{position:absolute;right:14px;top:16px;color:var(--ink-3);transition:transform .15s}
+.path5:hover{border-color:var(--ink)}
+.path5:hover .chev5{transform:translateX(3px);color:var(--ink)}
+@media (max-width:1000px){.paths5-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.paths5-g.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
+@media (max-width:560px){.paths5-g,.paths5-g.two{grid-template-columns:1fr}}
+.purpose5 .why5-l{color:var(--ink);font-weight:600}
+.sec2h5 .h1-5.q5{font-size:clamp(24px,2.6vw,34px);max-width:22em;line-height:1.15}
+.sec2h5{border-top:0}
+
+/* ---------- link pages as briefings: bottom line · confidence · evidence · caveats · blind spots · signals ---------- */
+.lab5{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.lab5>i{font-style:normal}
+.conf5{margin-top:30px;padding-top:16px;border-top:1px solid var(--ink);max-width:980px}
+.conf5-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 48px;margin:12px 0 0;--glyph-bg:var(--paper)}
+.conf5-g dt{font-size:13px;font-weight:600;color:var(--ink-2)}
+.conf5-g dd{margin:0}
+.conf5-g dd.r{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:650;color:var(--ink);margin-top:6px}
+.conf5-g dd.w{font-family:var(--f-text);font-size:14.5px;line-height:1.45;color:var(--ink-2);margin-top:6px;max-width:52ch}
+.ev5 .sub5{margin-top:6px}
+.ev5 #cards{margin-top:14px}
+.br5wrap{display:grid;gap:10px}
+.br5{border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+.br5 summary{display:flex;align-items:center;gap:14px 18px;padding:14px 18px;cursor:pointer;list-style:none}
+.br5 summary::-webkit-details-marker{display:none}
+.br5 summary .lab5{flex:0 0 96px}
+.br5-t{display:flex;align-items:center;gap:9px;font-size:16px;font-weight:700;color:var(--ink);line-height:1.2}
+.br5-t svg{flex:0 0 auto;color:var(--ink-2)}
+.br5-n{font-family:var(--f-mono);font-size:12px;color:var(--ink-3);border:1px solid var(--rule);border-radius:999px;padding:1px 8px;line-height:1.5}
+.br5 summary i{position:relative;width:12px;height:12px;margin-left:auto;flex:0 0 auto}
+.br5 summary i::before,.br5 summary i::after{content:"";position:absolute;left:0;top:5.2px;width:12px;height:1.6px;border-radius:1px;background:var(--ink-2);transition:transform .15s}
+.br5 summary i::after{transform:rotate(90deg)}
+.br5[open] summary i::after{transform:rotate(0)}
+.br5 summary:hover .br5-t{text-decoration:underline;text-decoration-color:var(--ink-3);text-underline-offset:3px}
+.br5-l{list-style:none;margin:0 18px;padding:16px 0 18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 36px;border-top:1px solid var(--grid)}
+.br5-l li b{display:block;font-size:15px;font-weight:650;line-height:1.3;color:var(--ink)}
+.br5-l li p{font-family:var(--f-text);font-size:15.5px;line-height:1.45;color:var(--ink-2);margin-top:4px}
+.br5-f{font-size:13px;line-height:1.5;color:var(--ink-3);margin:0 18px;padding:0 0 16px}
+.br5-f .go{white-space:normal}
+@media (max-width:860px){
+  .conf5-g,.br5-l{grid-template-columns:1fr}
+  .br5 summary{flex-wrap:wrap;gap:8px 14px}
+  .br5 summary .lab5{flex:0 0 100%}
+  .br5 summary i{margin-left:auto}
+}
+
+/* ---------- gaps as a measurement agenda ---------- */
+.gap5-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.pri5{display:inline-flex;align-items:center;height:26px;padding:0 11px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.01em;border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+.pri5-now{background:var(--ink);color:var(--paper)}
+.pri5-later{border-color:var(--ink-3);color:var(--ink-2)}
+.gap5-n{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.gap5-d{font-size:14px;color:var(--ink-2);flex-basis:100%}
+@media (min-width:760px){.gap5-d{flex-basis:auto;margin-left:4px}}
+.gap5-step{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink-2);white-space:nowrap;--glyph-bg:var(--paper)}
+.gap5-cta{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:16px}
+.gap5-cta .go{white-space:nowrap}
+.acc5-p dd .acc5-c{display:inline-block;margin-right:6px;vertical-align:1px}
+details.more5.gap5-g>summary{font-weight:650;color:var(--ink-2)}
+details.more5.gap5-g .gap5-h{margin-top:4px}
+#gg-matrix{margin-top:0}
+#gg-matrix .hops5{margin-top:16px}
+
+/* cover: two balanced columns, the statement row centred against its bullets */
+.hero5{padding-bottom:clamp(20px,2.6vw,36px)}
+.hero5-g.top5{align-items:end;gap:24px 64px}
+.hero5-g.top5 .purpose5{max-width:none;padding-bottom:10px}
+.hero5-g.top5 .purpose5-h{max-width:none}
+.hero5-g.mid5{align-items:center}
+.hero5-g.mid5 .qs5{padding-bottom:0}
+.sec2h5 .hero5-g.mid5{padding-top:clamp(28px,3.4vw,48px);padding-bottom:10px}
+@media (max-width:900px){.hero5-g.top5 .purpose5{padding-bottom:0}}
+
+.fam5{max-width:80ch;margin-bottom:22px}
+.pri5-sec{margin-top:32px}
+.pri5-l li{grid-template-columns:180px minmax(0,1fr);align-items:center}
+.pri5-l .pri5{flex:0 0 auto;min-width:170px;justify-content:center}
+.crit5{margin-top:14px;max-width:80ch}
+.foot5 .inl5{margin-top:0;font-size:14px}
+#record{scroll-margin-top:72px}
+.scale5 li .pri5{display:inline-flex;font-size:13px;color:var(--ink)}.scale5 li .pri5-now{color:var(--paper)}.scale5 li .pri5-later{color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -938,10 +1134,10 @@ details.ic5-more summary::-webkit-details-marker{display:none}
   <a class="mark" href="#map" aria-label="Gradual Disempowerment Observatory, home">
     <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2"/><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6"/></svg>
     <span>Gradual Disempowerment Observatory</span></a>
-  <nav class="nav" aria-label="Sections"><a href="#map">Map</a><a href="#evidence">Evidence</a><a href="#gaps">The gap</a><a href="#futures">Futures<span class="wip5" aria-label="work in progress">WIP</span></a><a href="#method">Method</a></nav>
+  <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Gaps</a><a href="#futures" title="What might happen next?">Futures<span class="wip5" aria-label="work in progress">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
-<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.5 · 12 October 2026 · compiled with AI research assistance; figures not yet checked by a person · <a href="#method">method and sources</a></span></div></footer>
+<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.6 · 13 October 2026 · a draft evidence map: AI tools helped find and summarise sources; headline figures are being checked against primary sources before v1.0; corrections welcome · <a href="#method">method and sources</a></span></div></footer>
 <script>
 /* ---------- small chart kit: line, bars, columns, stack rows, dumbbell, spark ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2005,6 +2201,12 @@ const GAPS=[
  ['influence','Who can decide','The smallest group able to settle an outcome, and its mix of people and AI systems, applied to real institutions.','None found.'],
  ['influence','A population measure of disempowerment','A validated survey scale paired with behavioural tasks, repeated every year.','Pew: 57% feel little or no control over AI in their lives. UK: 50% say their views are not represented in decisions about AI (Ada Lovelace Institute and Alan Turing Institute, 2025). Questionnaires that score dependence exist, but have no agreed cut-offs.']];
 
+/* priority of each missing measure (index into GAPS), a first pass by the observatory:
+   now = a method exists and the step is close to the outcome; it needs money and a team.
+   method = the construct or instrument still has to be designed and tested.
+   later = further from the outcome, or data may appear on its own. */
+const GAPPRI={0:'later',14:'later',15:'later',16:'later',1:'later',2:'method',3:'later',4:'method',
+ 5:'now',6:'now',17:'now',18:'method',7:'later',8:'method',9:'now',10:'now',11:'now',12:'method',13:'method'};
 /* how each rating is reached: repeated, direct, independent of AI developers, tied to AI */
 const RUBRIC={capability:['yes','yes','yes','yes'],adoption:['yes','yes','yes','yes'],handover:['yes','yes',"no: companies' own logs",'yes'],
  work:['yes','yes','yes','disputed'],share:['yes','yes','yes','no'],skills:['no: one-offs','yes','mixed','yes'],
@@ -2048,102 +2250,109 @@ const SIGNALS={"links":{"capability":{"signal":4,"basis":"Remote Labor Index: th
 const COPY={
  "home": {
   "eyebrow": "Better Futures Project · Zhang Yue",
-  "subtitle": "Gradual disempowerment: the risk that, as AI makes people less needed, they slowly lose their say over the economy, culture and the state.",
-  "chainLabel": "What is measured today",
-  "zoneLabels": {
-   "use": "AI and its use",
-   "consequences": "Consequences",
-   "outcome": "Outcome",
-   "humanSide": "The human side"
+  "paper": {"label": "Read more", "url": "https://gradual-disempowerment.ai/"},
+  "purpose": {
+   "h1": "Tracking whether AI is weakening human influence",
+   "sub": "A public evidence map for gradual disempowerment: the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation."
   },
-  "legend": {
-   "lead": "Line style:",
-   "items": {
-    "0": "No direct measure",
-    "1": "One-offs or paperwork",
-    "2": "Not tied to AI",
-    "3": "Measured, with limits",
-    "4": "Well measured"
-   },
-   "action": "Select a dotted line to see why."
+  "paths": {
+   "items": [
+    {"who": "Researchers", "line": "Inspect the evidence and suggest better indicators or studies.", "to": "evidence"},
+    {"who": "Funders", "line": "Find under-measured gaps that could become fundable projects.", "to": "gaps"}
+   ]
   },
-  "caveat": "Lines show how well each stop is measured, not that one causes the next.",
-  "stopCaptions": {
-   "capability": "What AI can do",
-   "adoption": "Who uses it",
-   "handover": "Tasks handed to AI",
-   "work": "Jobs for new starters",
-   "share": "Income paid to workers",
-   "skills": "Ability without AI",
-   "culture": "AI-made content and attention",
-   "institutions": "Decisions routed through AI",
-   "influence": "People's say over outcomes"
+  "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
+  "gaps3": {
+   "h2": "The three biggest gaps",
+   "sub": "Ranked by how little is measured and how near each step is to the outcome.",
+   "items": [
+    {"id": "influence", "t": "People's say", "text": "Nothing regularly tracks whether people's preferences still shape what governments, firms and media do.", "note": "The gradual disempowerment paper itself proposes this measure: \"the effectiveness of traditional democratic mechanisms in influencing outcomes\" (Kulveit et al., 2025, §6.2.1)."},
+    {"id": "skills", "t": "Skills without AI", "text": "Of 233 studies of how generative AI affects people, only 4 re-test the same people without AI over months."},
+    {"id": "institutions", "t": "AI in public decisions", "text": "Governments list AI tools; almost none count AI-assisted decisions or how often officials override AI."}
+   ],
+   "all": "The full agenda: {n} missing measures"
   },
-  "numbers": "8 links · 50 indicators",
-  "doors": [
-   {
-    "id": "evidence",
-    "title": "What the data show",
-    "line": "Each link, coloured by how far its data have moved."
-   },
-   {
-    "id": "gaps",
-    "title": "What is not measured",
-    "line": "Nineteen missing measures, and which ones matter most."
-   },
-   {
-    "id": "futures",
-    "title": "Where it might lead",
-    "line": "Published forecasts, mostly about US jobs and income.",
-    "tag": "Work in progress"
+  "cta": {
+   "h2": "Help close the gaps",
+   "buttons": [
+    {"t": "Add an indicator or study", "to": "contribute/add"},
+    {"t": "Find or offer funding", "to": "contribute/funding"},
+    {"t": "Join the community", "to": "contribute/community"}
+   ],
+   "why": "Why this project"
+  },
+  "legend3": {"lead": "How well measured", "items": {"3": "Well measured", "2": "Partly measured", "1": "Barely measured"}},
+  "card": {
+   "open": "See the evidence", "openEnd": "See the gap", "next": "Next", "again": "Start again",
+   "what": {
+    "capability": "Researchers hand AI paid remote-work projects. The best systems complete about 1 in 5 to a professional standard, up from 1 in 40 in October 2025.",
+    "adoption": "A colleague drafts a report with AI. In August 2026, 53% of US workers used AI at work; 16% used it daily.",
+    "handover": "A developer hands AI a whole task. Developers using AI agents rose from 31% to 59% in a year; in Claude chats, hand-overs are flat.",
+    "work": "A 23-year-old looks for a first job. In the most AI-exposed occupations, US employment of 22–25-year-olds is about 19% below trend; the cause is disputed.",
+    "share": "A worker opens her payslip. Workers' share of US business income is a record-low 52.8% (Q2 2026), but it was falling before AI.",
+    "skills": "A learner gets answers from AI. Short trials find people learn less that way; a three-year clinic audit found no loss of skill.",
+    "culture": "A listener presses play. Over half of Deezer uploads and about half of new web articles are AI-made, but AI tracks get 1–3% of streams.",
+    "institutions": "An official signs off an AI-drafted decision. Governments disclose thousands of AI uses (US federal: 3,611 in 2025), but almost none count AI-assisted decisions.",
+    "influence": "You vote, shop and speak up. Nothing directly measures whether people still have a say over the economy, culture and the state."
    }
-  ],
-  "tour": {
-   "button": "Play the tour",
-   "sub": "Nine stops, about a minute. Or select any stop.",
-   "back": "Back",
-   "next": "Next",
-   "pause": "Pause",
-   "resume": "Resume",
-   "exit": "Exit tour",
-   "open": "See the evidence",
-   "openEnd": "See the gap",
-   "stepLabel": "Stop {i} of 9 · {measurementWord}"
   },
-  "headline": "What is measured, and what is missing?",
-  "coreLead": "What AI can do and who uses it are measured again and again.",
-  "coreMiss": "Whether people keep their skills, judgement and say is rarely measured, and almost never on the same people over time.",
-  "groups": [
-   {
-    "t": "Measured again and again",
-    "ids": [
-     "capability",
-     "adoption",
-     "handover"
-    ]
-   },
-   {
-    "t": "Patchy or disputed",
-    "ids": [
-     "work",
-     "share",
-     "culture"
-    ]
-   },
-   {
-    "t": "Barely measured",
-    "ids": [
-     "skills",
-     "institutions",
-     "influence"
-    ]
-   }
-  ]
+  "headline": "We cannot steer what we do not measure."
+
+ },
+ "why": {
+  "nav": "Contribute",
+  "h1": "Why measure gradual disempowerment?",
+  "lead": "Gradual disempowerment could build through many small, sensible changes, each easy to miss. What AI can do is measured closely; whether people keep their skills and their say is barely measured, if at all. We cannot foresee or steer what we do not measure.",
+  "plan": {
+   "h2": "The plan",
+   "steps": [
+    {"t": "Map", "text": "Show what is measured, and what is missing.", "to": "map"},
+    {"t": "Measure", "text": "Help researchers study what is least measured.", "to": "gaps"},
+    {"t": "Pinpoint", "text": "Use better data to find where interventions could help most."},
+    {"t": "Foresee", "text": "Later, use the map's indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
+   ],
+   "aim": "The aim: a live, shared dashboard and library of gradual-disempowerment research."
+  },
+  "contribute": {
+   "h2": "Add an indicator or study",
+   "text": "Suggest a dataset, study or better measure the map is missing. Every proposal is reviewed and credited.",
+   "buttons": [
+    ["Propose an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"],
+    ["Share a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml"]
+   ],
+   "note": "Each button opens a short form on GitHub."
+  },
+  "funding": {
+   "h2": "Find or offer funding",
+   "text": "Researchers: open grants that fit this work. Funders: the gaps most in need of research.",
+   "gapsLink": "The gaps most in need of research",
+   "grants": [
+    {"name": "Foresight Institute, AI for Science and Safety Nodes", "status": "Closes 31 October 2026", "fit": "The \"Human empowerment\" area asks for evidence on when human oversight adds value.", "url": "https://foresight.org/grants/ai-science-safety-nodes-rfp/"},
+    {"name": "GTR AI Safety Fund", "status": "Rolling", "fit": "Names \"the gradual effects of AI on human development and social behaviour\".", "url": "https://www.gtr-foundation.org/gtr-ai-safety-fund"},
+    {"name": "EA Funds, Transformative AI Fund", "status": "Rolling", "fit": "Typical grants of $10k to $150k for individuals and small teams.", "url": "https://funds.effectivealtruism.org/funds/transformative-ai"},
+    {"name": "Coefficient Giving, capacity-building funding", "status": "Rolling", "fit": "Funds websites, data infrastructure and public discussion, not research itself.", "url": "https://coefficientgiving.org/funds/navigating-transformative-ai/funding-for-work-that-builds-capacity-to-address-risks-from-transformative-ai/"}
+   ],
+   "note": "No funding call is dedicated to gradual disempowerment. Checked at source on 13 October 2026."
+  },
+  "authors": {
+   "h2": "For the authors of the paper",
+   "text": "The map arranges published evidence along the argument in Gradual Disempowerment (Kulveit and co-authors, 2025). Check which steps it uses, what each one counts, and how each is rated; then tell us what it gets wrong.",
+   "buttons": [
+    ["What is counted at each step", "#method/more"],
+    ["Suggest a correction", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml"]
+   ]
+  },
+  "community": {
+   "h2": "Join the community",
+   "text": "Meet others measuring gradual disempowerment.",
+   "soon": "Coming soon",
+   "until": "Until then, say hello or ask a question on GitHub.",
+   "link": ["Open an issue", "https://github.com/nekocchi-0417/gd-observatory/issues/new/choose"]
+  }
  },
  "evidence": {
   "title": "What the data show, link by link",
   "deck": "One row per link. Colour shows how far the data have moved; grey means too little data to tell.",
-  "legendNote": "Grey means not measured well enough to tell, not \"no change\". Colours are the observatory's judgement.",
   "scaleLabel": "What the data show",
   "scale": {
    "1": {
@@ -2206,6 +2415,7 @@ const COPY={
     "line": "No direct measure; the nearest is a poll on control over AI."
    }
   },
+  "coverage": {"title": "Measurement coverage: how often each indicator is measured", "cta": "Know a better indicator for any link?", "ctaLink": "Propose it"},
   "footer": {
    "record": "The measurement record: dated readings since 2021 →",
    "counter": "What would count against the theory →",
@@ -2297,6 +2507,7 @@ const COPY={
   "pillSignal": "What the data show",
   "pillMeasure": "How well measured",
   "instruction": "Select an indicator to see its chart. Trends describe each series, not its cause.",
+  "brief": {"bottom": "Bottom line", "confidence": "Confidence", "evidence": "Evidence", "indicators": "{n} indicators", "caveats": "Caveats", "blind": "Blind spots", "signals": "Signals", "propose": "Know a measure we missed? Propose an indicator", "proposeUrl": "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"},
   "markerLegend": "Filled dot: moving the way the theory predicts. Hollow: the other way. Half: unclear.",
   "cards": {
    "sceptic": "What a sceptic would say",
@@ -3049,9 +3260,22 @@ const COPY={
   }
  },
  "gap": {
-  "nav": "The gap",
-  "h1": "What is not measured yet",
-  "sentence": "The chain ends at whether people keep their say, and nothing measures that directly. These nineteen missing measures would sharpen the picture.",
+  "nav": "Gaps",
+  "eyebrow": "Research gaps",
+  "h1": "The measurement agenda",
+  "sentence": "Nineteen measures that do not exist yet, each one a project a researcher could run or a funder could back. Ranked by how close the step is to the outcome and how little is measured today.",
+  "priority": {
+   "now": {"t": "Fund now", "d": "A method exists; it needs money and a team."},
+   "method": {"t": "Develop methodology", "d": "The construct or instrument still has to be designed and tested."},
+   "later": {"t": "Monitor later", "d": "Further from the outcome, or data may appear on its own."}
+  },
+  "cta": {
+   "fund": ["Fund or run this measure", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=offer.yml&title="],
+   "study": ["Propose a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml&title="],
+   "ind": ["Suggest an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml&title="],
+   "review": ["Review this gap", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml&title="]
+  },
+  "ranking": {"title": "How the ranking was made", "sub": "Each step is placed by two values from the map: how many links separate it from Human influence, and how well it is measured today. The priority labels are the observatory's first pass; corrections welcome."},
   "matrix": {
    "title": "Which links are close to the outcome but barely measured?",
    "xAxis": {
@@ -3073,7 +3297,7 @@ const COPY={
   },
   "list": {
    "title": "Nineteen missing measures",
-   "sub": "Closest to the outcome first.",
+   "sub": "Grouped by what each needs next.",
    "expandAll": "Expand all",
    "collapseAll": "Collapse all",
    "heads": {
@@ -3361,7 +3585,7 @@ const COPY={
  },
  "draftChip": {
   "label": "Draft",
-  "tooltip": "Compiled with AI research assistance. No figure has yet been checked by a person. Check sources before citing."
+  "tooltip": "Draft evidence map. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; check a source before citing."
  },
  "method": {
   "title": "How this was put together",
@@ -3377,6 +3601,13 @@ const COPY={
   ],
   "headings": {
    "status": "Status of the figures",
+   "families": "Four kinds of label are used on this site: what the data show (a trend), how well a link is measured (the quality of the evidence), what a missing measure needs next (its priority), and status (draft, work in progress). Source tags and caveat chips appear only inside an indicator's chart.",
+   "priority": "What a missing measure needs next",
+   "priorityIntro": "Used on the Gaps page. A first pass by the observatory.",
+   "criteria": "How indicators are chosen",
+   "criteriaText": "An indicator is listed when it comes from an established source (a statistics agency, an independent tracker such as METR or Epoch, a repeated survey, or a peer-reviewed study) and measures what the step is about rather than something nearby. Nearby measures are kept only where nothing better exists, and are marked as such.",
+   "challenge": "Challenge a rating",
+   "challengeUrl": "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml&title=%5BCorrection%5D%20Rating%3A%20",
    "measured": "How well a link is measured",
    "change": "What the data show",
    "ratings": "How each rating is reached",
@@ -3406,7 +3637,7 @@ const COPY={
    {
     "where": "Status of the figures (becomes the Draft callout)",
     "old": "This is a working draft. The research and figures were compiled by an AI assistant and have not yet been checked by a person. Every chart carries a tag saying how its figures were obtained. Check any figure against its linked source before citing it elsewhere, and treat those tagged \"Secondary source\" or \"Company's own data\" with extra care.",
-    "new": "A working draft, compiled with AI research assistance. No figure has yet been checked by a person. Each chart is tagged with how its figures were obtained. Check the source before citing, above all for \"Secondary source\" and \"Company's own data\"."
+    "new": "A draft evidence map. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; corrections from authors and domain experts are welcome. Each chart is tagged with how its figures were obtained. Check the source before citing, above all for \"Secondary source\" and \"Company's own data\"."
    },
    {
     "where": "Method deck",
@@ -3545,7 +3776,7 @@ const NIND=LINKS.reduce((a,l)=>a+l.inds.length,0);
 const lv=id=>id==='influence'?0:linkById(id).level;
 const ORDER=[...LINKS.map(l=>l.id),'influence'];
 const nameOf=id=>id==='influence'?END.name:linkById(id).name;
-const DRAFT='Draft v0.5',ASOF='12 October 2026';
+const DRAFT='Draft v0.6',ASOF='13 October 2026';
 
 /* ----- the chain map ----- */
 const GEO={W:1200,H:700,EDGE:1030,J:[492,350],S:{capability:[95,350],adoption:[255,350],handover:[415,350],work:[770,140],share:[950,140],skills:[950,280],culture:[950,420],institutions:[950,560],influence:[1128,350]}};
@@ -3574,6 +3805,10 @@ function miniMap(on){
   ORDER.forEach((id,i)=>{const [x,y]=GEO.S[id],lit=on.includes(id);g+=`<circle cx="${x}" cy="${y}" r="26" fill="${lit?'var(--ink)':'var(--surface)'}" stroke="${lit?'var(--ink)':'var(--rule)'}" stroke-width="5"/><text x="${x}" y="${y+11}" text-anchor="middle" style="font-family:var(--f-mono);font-size:30px;font-weight:500;fill:${lit?'var(--paper)':'var(--ink-3)'}">${id==='influence'?'?':i+1}</text>`});
   return `<svg viewBox="0 90 ${GEO.W} 520" role="img" aria-label="Links this route runs through: ${on.map(nameOf).join(', ')}">${g}</svg>`;
 }
+/* open a deep-linked part of a page: any details around or inside it, its accordion row, then scroll to it */
+const openAt5=t=>{const d=t.closest('details');if(d)d.open=true;const d2=t.querySelector('details');if(d2)d2.open=true;
+  const b=t.querySelector('.acc5-b[aria-expanded="false"]');if(b){b.setAttribute('aria-expanded','true');const pnl=document.getElementById(b.getAttribute('aria-controls'));if(pnl)pnl.hidden=false}
+  const rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;requestAnimationFrame(()=>t.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'}))};
 /* ----- router ----- */
 let current='map';const picked={};let tourTimer=null;
 function go(id,push=true){
@@ -3582,14 +3817,16 @@ function go(id,push=true){
 }
 function render(id){
   clearInterval(tourTimer);tourTimer=null;
-  const v=$('#view');current=id;const [base,ind]=String(id).split('/');
+  const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0;
   if(linkById(base)){if(ind&&linkById(base).inds.some(d=>d.id===ind))picked[base]=ind;viewLink(v,base)}
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
-  else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod}[base]||viewMap)(v);
-  const top=(linkById(base)||base==='influence'||base==='record')?'evidence':(['map','evidence','futures','gaps','method'].includes(base)?base:'map');
-  document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'The gap',method:'Method'}[top]+' · '))+'Gradual Disempowerment Observatory';
+  else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
+  const top=(linkById(base)||base==='influence'||base==='record')?'evidence':(['map','evidence','futures','gaps','method','contribute'].includes(base)?base:'map');
+  document.title=(top==='map'?'':({evidence:'Evidence',futures:'Futures',gaps:'Gaps',method:'Method',contribute:'Contribute'}[top]+' · '))+'Gradual Disempowerment Observatory';
   $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+top?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   window.scrollTo(0,0);
+  /* #gaps/<step> and #why/<section> open the page at that part */
+  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
 }
 document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
@@ -3677,7 +3914,7 @@ function drawRoute(v){
    data1-3.js (LINKS, TAGS, END, linkById, GAPS, RUBRIC, DEFS), signals.js (SIGNALS),
    copy.js (COPY) and app.js ($, $$, LEVELWORD, lv, ORDER, nameOf, strokeFor).
    Each mount function renders into `el` and returns it:
-     mountMap5(el,{onStop})    -> chain map, legend, phone list, "why this line?" drawer, guided tour
+     mountMap5(el,{onStop})    -> chain map, step card, legend, phone list
      evidenceRows(el)          -> Evidence overview: one row per link and Human influence
      indicatorCards(el,linkId) -> indicator cards (trend shape and word) that open each chart
      insightCards(el,linkId)   -> "What a sceptic would say" / "What nobody measures" / "What to watch"
@@ -3690,9 +3927,7 @@ function drawRoute(v){
 const SIG5=()=>(typeof SIGNALS!=='undefined'&&SIGNALS)||{links:{},indicators:{},matrix:{}};
 const SIGWORD5={4:'Changing fast',3:'Clearly changing',2:'Early or mixed signs',1:'No clear change yet','?':"Can't tell"};
 const LINEWORD5=['No direct measure','One-offs','Not tied to AI','With limits','Well measured'];
-const WHY5=['why so faint?','why dotted?','why a hollow line?','why a thinner line?','why a solid line?'];
-const WHYBTN5=['Why faint?','Why dotted?','Why hollow?','Why thinner?','Why solid?'];
-const HUMAN5=['skills','influence'];
+const HUMAN5=[];
 const sigOf5=id=>{const s=SIG5().links[id];return s&&s.signal!=null?s.signal:'?'};
 /* Draft one-liners (no numbers, 12 words or fewer). SIGNALS.links[id].short wins when the researcher supplies it. */
 const ONE5={capability:'AI completes more real paid projects',adoption:'About half of US workers now use AI at work',
@@ -3724,7 +3959,7 @@ const chev5=`<svg class="chev5" width="14" height="14" viewBox="0 0 14 14" aria-
 /* ======================================================================================
    1. THE CHAIN MAP
    ====================================================================================== */
-const GEO5={W:1200,H:430,EDGE:1028,ZX:446,CX:1066,TY:216,J:[470,216],
+const GEO5={W:1200,H:470,EDGE:1028,ZX:446,CX:1066,TY:216,J:[470,216],
  S:{capability:[92,216],adoption:[236,216],handover:[380,216],work:[748,66],share:[934,66],skills:[934,166],culture:[934,266],institutions:[934,366],influence:[1124,216]}};
 const SEGS5=(()=>{const {J,S,TY,CX}=GEO5,jx=J[0];
   return [{to:'capability',p:[[24,TY],S.capability]},{to:'adoption',p:[S.capability,S.adoption]},{to:'handover',p:[S.adoption,S.handover]},
@@ -3734,9 +3969,10 @@ const SEGS5=(()=>{const {J,S,TY,CX}=GEO5,jx=J[0];
    {to:'institutions',p:[J,[jx,S.institutions[1]-40],[jx+40,S.institutions[1]],S.institutions]},
    ...['share','skills','culture','institutions'].map(f=>({to:'influence',from:f,p:[S[f],[1000,S[f][1]],[CX,TY]]})),
    {to:'influence',from:'_',p:[[CX,TY],[S.influence[0]-23,TY]]}]})();
-/* where the "i" badge sits for under-measured links (level 2 or below) */
-const badgeAt5=id=>{const {S}=GEO5;if(id==='influence')return [S.influence[0]+28,S.influence[1]+28];
-  const s=SEGS5.find(x=>x.to===id&&!x.stub&&!x.from),a=s.p[s.p.length-2],b=s.p[s.p.length-1];return [(a[0]+b[0])/2,(a[1]+b[1])/2]};
+
+/* the home map uses three line styles: solid (measured repeatedly), hollow (measured, not tied to AI), dotted (barely) */
+const vis3=l=>l>=3?3:l===2?2:1;
+const CARDWORD5=['Not measured directly','Barely measured','Partly measured','Measured, with limits','Well measured'];
 
 function mapSVG5(){
   const {W,H,EDGE,ZX,CX,TY,S}=GEO5;let g='';
@@ -3744,137 +3980,63 @@ function mapSVG5(){
   g+=`<g class="zone5" aria-hidden="true"><rect x="${ZX}" y="0" width="${EDGE-ZX}" height="${H}" fill="var(--ink)" opacity=".028"/><rect x="${EDGE}" y="0" width="${W-EDGE}" height="${H}" fill="url(#hatch5)"/>
    <line x1="${EDGE}" x2="${EDGE}" y1="0" y2="${H}" stroke="var(--rule)"/>
    <text class="zl5" x="24" y="28">USE</text><text class="zl5" x="${ZX+18}" y="28">CONSEQUENCES</text><text class="zl5 halo5" x="${(EDGE+W)/2}" y="28" text-anchor="middle">OUTCOME</text></g>`;
-  /* the human side: a soft highlighter under the skills line, ending around Human influence */
-  const hb=`M548 ${S.skills[1]} L1000 ${S.skills[1]} L${CX} ${TY} L${S.influence[0]} ${TY}`;
-  g+=`<g class="hs5band" aria-hidden="true"><path d="${hb}" fill="none" stroke="var(--hs-line)" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/><path d="${hb}" fill="none" stroke="var(--hs-soft)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round"/>
-   <text class="hs5lab" x="536" y="${S.skills[1]-31}">HUMAN SIDE</text></g>`;
-  /* lines: style is the only encoding */
-  SEGS5.forEach(s=>{const l=s.from?0:lv(s.to);g+=`<g class="seg5" data-to="${s.to}">${strokeFor(l,segPath5(s),{w4:9,w3:5,bg:'var(--map-bg)'})}</g>`});
+  SEGS5.forEach(s=>{const l=vis3(s.from?0:lv(s.to));g+=`<g class="seg5" data-to="${s.to}">${strokeFor(l,segPath5(s),{w3:5,bg:'var(--map-bg)'})}</g>`});
   g+=`<circle class="jn5" cx="${GEO5.J[0]}" cy="${GEO5.J[1]}" r="5.5" fill="var(--ev3)"/>`;
-  /* one focusable handle per link: wide invisible hit path(s) + badge if under-measured */
-  ORDER.forEach(id=>{const l=lv(id),segs=SEGS5.filter(s=>s.to===id&&!s.stub);
-    const hits=segs.map(s=>`<path class="hit5" d="${segPath5(s)}"/>`).join('');
-    const b=l<=2?(()=>{const [x,y]=badgeAt5(id);return `<g class="badge5" transform="translate(${x} ${y})"><circle r="9.5"/><text y="4.2" text-anchor="middle">i</text></g>`})():'';
-    g+=`<g class="sh5" data-why="${id}" tabindex="0" role="button" aria-expanded="false" aria-controls="mdrawer5" aria-label="${esc(nameOf(id))}: ${LEVELWORD[l].toLowerCase()}. Show why.">${hits}${b}</g>`});
-  /* stops: names only */
-  ORDER.forEach(id=>{const [x,y]=S[id],l=lv(id),end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19;
-    g+=`<g class="st5${HUMAN5.includes(id)?' hs':''}" data-id="${id}" tabindex="0" role="link" aria-label="${esc(nm)}. ${LEVELWORD[l]}. Open its evidence.">
-      <rect class="hit" x="${x-58}" y="${ny-17}" width="116" height="${y+13-(ny-17)}" fill="transparent"/>
+  ORDER.forEach((id,i)=>{const [x,y]=S[id],l=lv(id),end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19;
+    g+=`<g class="st5" data-id="${id}" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(nm)}, ${CARDWORD5[l].toLowerCase()}. Step ${i+1} of ${ORDER.length}.">
+      <rect class="hit" x="${x-62}" y="${ny-17}" width="124" height="${y+15-(ny-17)}" fill="transparent"/>
       <text class="nm5${end?' halo5':''}" x="${x}" y="${ny}" text-anchor="middle">${esc(nm)}</text>
-      ${end?`<circle class="ring5" cx="${x}" cy="${y}" r="22" fill="var(--hs-soft)" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="3 4"/><text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`
-        :`<circle class="ring5" cx="${x}" cy="${y}" r="9" fill="${HUMAN5.includes(id)?'var(--hs-soft)':'var(--map-bg)'}" stroke="var(--ev${Math.max(1,l)})" stroke-width="4"/><circle class="core5" cx="${x}" cy="${y}" r="3.4"/>`}</g>`});
-  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="The chain from AI capability to human influence, in three zones: use, consequences, outcome. Line style shows how well each stop is measured. Skills and judgement and Human influence form the human side.">${g}</svg>`;
+      ${end?`<circle class="ring5" cx="${x}" cy="${y}" r="22" fill="var(--map-bg)" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="3 4"/><text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`
+        :`<circle class="ring5" cx="${x}" cy="${y}" r="9" fill="var(--map-bg)" stroke="var(--ev${vis3(l)})" stroke-width="4"/><circle class="core5" cx="${x}" cy="${y}" r="3.4"/>`}</g>`});
+  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="How gradual disempowerment could unfold, from AI capability to human influence. Line style shows how well each step is measured. Select a step to read about it.">${g}</svg>`;
 }
 
-/* phone: vertical list with the same line styles */
+/* phone: vertical list, one expandable row per step */
 function mapList5(){
-  const row=id=>{const l=lv(id),hs=HUMAN5.includes(id);
-    return `<li class="ml5${hs?' hs':''}" data-id="${id}" data-l="${l}"><span class="ml5-line" aria-hidden="true"></span>
-      <span class="ml5-main"><a class="ml5-name" href="#${id}">${esc(nameOf(id))}</a>${hs?'<span class="hs5tag">Human side</span>':''}</span>
-      ${l<=2?`<button class="ml5-why" data-why="${id}" aria-expanded="false" aria-controls="mdrawer5"><i class="ib5" aria-hidden="true">i</i>${WHYBTN5[l]}</button>`:'<span></span>'}</li>`};
+  const row=id=>{const l=lv(id);
+    return `<li class="ml5" data-id="${id}" data-l="${vis3(l)}"><span class="ml5-line" aria-hidden="true"></span>
+      <button type="button" class="ml5-btn" aria-expanded="false" aria-controls="mlc5-${id}"><span class="ml5-name">${esc(nameOf(id))}</span>${chev5}</button>
+      <div class="ml5-card" id="mlc5-${id}"></div></li>`};
   return `<ol class="mlist5">${['capability','adoption','handover'].map(row).join('')}<li class="ml5-fork">Then four lines, side by side</li>${['work','share','skills','culture','institutions'].map(row).join('')}<li class="ml5-fork">All four lead to the outcome</li>${row('influence')}</ol>`;
 }
 
-/* the record strip: one lane per indicator, one tick per dated reading (same rules as app.js recordData) */
-const REC5={};
-function recordLanes5(id){
-  if(REC5[id])return REC5[id];
-  const X0=2021,X1=2026.8,box=document.createElement('div');
-  const lane=d=>{const raw=d.obs||Charts.capture(()=>d.render(box));
-    const xs=[...new Set(raw.filter(x=>x>=X0&&x<=X1).map(x=>+x.toFixed(3)))].sort((a,b)=>a-b);
-    let gap=0;for(let i=1;i<xs.length;i++)gap=Math.max(gap,xs[i]-xs[i-1]);
-    return {id:d.id,name:d.recName||d.tab[0],label:indLabel5(d),kind:d.rec,xs,bar:xs.length>=10&&gap<=0.18}};
-  const inds=id==='influence'?LINKS.flatMap(L=>L.inds.filter(d=>d.recRow==='influence')):linkById(id).inds.filter(d=>d.rec&&!d.recRow);
-  return REC5[id]=inds.map(lane).filter(l=>l.xs.length);
-}
-function recordStrip5(id,W){
-  const lanes=recordLanes5(id),direct=lanes.filter(l=>l.kind==='d'),X0=2021,X1=2026.8,LW=W>=420?Math.min(220,Math.round(W*.36)):0,P={l:2+LW,r:6,t:4,b:18},lh=17,th=9;
-  const n=Math.max(lanes.length+(direct.length?0:1),1),H=P.t+n*lh+P.b,sx=x=>P.l+(x-X0)/(X1-X0)*(W-P.l-P.r);
-  let g='',y=P.t;
-  for(let yr=2021;yr<=2026;yr++)g+=`<line x1="${sx(yr)}" x2="${sx(yr)}" y1="${P.t}" y2="${H-P.b+3}" stroke="var(--grid)"/><text x="${sx(yr)+3}" y="${H-4}">${yr}</text>`;
-  if(!direct.length){g+=`<rect x="${P.l}" y="${y+3}" width="${W-P.l-P.r}" height="${lh-6}" fill="url(#rhatch5)" stroke="var(--rule)" stroke-width=".8"/><text x="${P.l+(W-P.l-P.r)/2}" y="${y+lh-5}" text-anchor="middle" class="nd5">NO DIRECT READING</text>`;y+=lh}
-  lanes.forEach(l=>{const col=l.kind==='d'?'var(--s1)':'var(--ctx)',cy=y+lh/2,
-     t=`${l.name} · ${l.xs.length===1?'1 reading, '+fmtDate(l.xs[0]):l.xs.length+' readings, '+fmtDate(l.xs[0])+' to '+fmtDate(l.xs[l.xs.length-1])}`;
-    g+=`<g><title>${esc(t)}</title>${LW?`<text class="ln5" x="0" y="${cy+3.5}">${esc(l.label.length>34?l.label.slice(0,33)+'…':l.label)}</text>`:''}<line x1="${P.l}" x2="${W-P.r}" y1="${cy}" y2="${cy}" stroke="var(--grid)"/>`+
-      (l.bar?`<rect x="${sx(l.xs[0]).toFixed(1)}" y="${cy-1.75}" width="${(sx(l.xs[l.xs.length-1])-sx(l.xs[0])).toFixed(1)}" height="3.5" rx="1.75" fill="${col}"/>`
-        :l.xs.map(x=>`<rect x="${(sx(x)-1.3).toFixed(1)}" y="${cy-th/2}" width="2.6" height="${th}" rx=".6" fill="${col}"/>`).join(''))+
-      `<rect x="0" y="${y}" width="${W}" height="${lh}" fill="transparent"/></g>`;y+=lh});
-  return `<svg class="rs5" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(nameOf(id))}: ${lanes.length} indicators, ${lanes.reduce((a,l)=>a+l.xs.length,0)} dated readings since 2021.">
-    <defs><pattern id="rhatch5" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--ink)" stroke-opacity=".28"/></pattern></defs>${g}</svg>`;
-}
-function rubric5(id){
-  const r=RUBRIC[id]||['no','no','no','no'];
-  return `<ul class="rb5">${['Repeated','Direct','Independent','Tied to AI'].map((lab,i)=>{const v=String(r[i]),st=v==='yes'?2:/^no/.test(v)?0:1,
-     q=v.includes(':')?v.split(':').slice(1).join(':').trim():(st===1?v:'');
-    return `<li>${cov5(st,14)}<span class="rb5-l">${lab}<span class="sr5"> ${COVWORD5[st].toLowerCase()}</span>${q?`<small>${esc(q)}</small>`:''}</span></li>`}).join('')}</ul>`;
-}
-function drawerHTML5(id,W){
-  const l=lv(id),L=id==='influence'?null:linkById(id);
-  const why=(COPY.record.drawer.stopSentence||{})[id]||(L?L.levelWhy:'');
-  return `<div class="md5-in"><div class="md5-pad"><div class="md5-head"><h3 tabindex="-1"><span>${esc(nameOf(id))}:</span> ${WHY5[l]} <small class="md5-lv">${esc(LEVELWORD[l])}</small></h3><button class="md5-x" type="button" aria-label="Close">${'<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'}</button></div>
-    <div class="md5-grid"><div class="md5-strip"><div class="md5-cap">Each mark is one dated reading since 2021. Blue: the thing itself. Grey: something nearby.</div>${recordStrip5(id,W)}</div>${rubric5(id)}</div>
-    <p class="md5-note">${esc(why.replace(/\.$/,''))}. <a class="go" href="#record">See the full record →</a></p></div></div>`;
+/* the step card: what the step is, how well it is measured, and the way to its evidence */
+function stepCard5(i){
+  const C=COPY.home.card,id=ORDER[i],l=lv(id),nx=ORDER[i+1],last=i===ORDER.length-1;
+  return `<div class="card5-n">${i+1} of ${ORDER.length}</div>
+    <div class="card5-name">${esc(nameOf(id))}</div>
+    <p class="card5-what">${esc(C.what[id])}</p>
+    <div class="card5-ctl"><button type="button" class="btn pri" data-t="open">${esc(id==='influence'?C.openEnd:C.open)} →</button>
+      <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}">←</button>`:''}<button type="button" class="btn ghost" data-t="next">${last?esc(C.again):`${esc(C.next)}: ${esc(nameOf(nx))} →`}</button></span></div>`;
 }
 
 function mountMap5(el,opts={}){
   const onStop=opts.onStop||(id=>{try{location.hash=id}catch(e){}});
+  const K=COPY.home.legend3;
   el.classList.add('mapcard5');
-  el.innerHTML=`<div class="map5">${mapSVG5()}</div>${mapList5()}
-   <div class="mkey5"><span class="mk5-t">How well measured</span>${[4,3,2,1,0].map(l=>`<span class="mk5-i">${lineGlyph5(l,34,10)}${LINEWORD5[l]}</span>`).join('')}
-    <span class="mk5-hint"><i class="ib5" aria-hidden="true">i</i>Select a line to see why</span></div>
-   <p class="mcav5">Lines show how well each stop is measured, not that one causes the next.</p>
-   <div class="md5" id="mdrawer5" role="region" aria-live="polite" aria-label="Why this line style"></div>`;
-  const map=$('.map5',el),drawer=$('#mdrawer5',el),home=drawer.parentNode,nextHome=drawer.nextSibling;let openId=null,opener=null;
-  const mark=id=>{map.classList.toggle('has-sel',!!id);$$('.seg5,.sh5,.st5',map).forEach(g=>g.classList.toggle('sel',!!id&&(g.dataset.to||g.dataset.why||g.dataset.id)===id));
-    $$('[data-why]',el).forEach(b=>b.setAttribute('aria-expanded',String(b.dataset.why===id)))};
-  drawer.inert=true;
-  const close=()=>{drawer.classList.remove('open');drawer.inert=true;openId=null;mark(null);if(drawer.parentNode!==home)home.insertBefore(drawer,nextHome);if(opener)try{opener.focus()}catch(e){}};
-  const open=(id,src)=>{
-    if(map.dataset.tour){const x=$('.tour5 [data-t="exit"]',map);if(x)x.click()}
-    if(openId===id){close();return}
-    opener=src;openId=id;const phone=src&&src.closest('.mlist5');
-    if(phone){src.closest('li').appendChild(drawer)}else if(drawer.parentNode!==home)home.insertBefore(drawer,nextHome);
-    const w=Math.max(220,Math.floor((drawer.parentNode.clientWidth||600)*(phone?1:.6))-(phone?28:40));
-    drawer.innerHTML=drawerHTML5(id,w);drawer.inert=false;mark(id);requestAnimationFrame(()=>drawer.classList.add('open'));
-    const rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;setTimeout(()=>{try{drawer.scrollIntoView({block:'nearest',behavior:rm?'auto':'smooth'})}catch(e){}},220);
-    $('.md5-x',drawer).addEventListener('click',close);if(src&&src.matches&&src.matches('.sh5,.ml5-why'))setTimeout(()=>{try{$('.md5-head h3',drawer).focus({preventScroll:true})}catch(e){}},230)};
-  el.addEventListener('click',e=>{const w=e.target.closest('[data-why]');if(w){e.preventDefault();open(w.dataset.why,w);return}
-    const s=e.target.closest('.st5');if(s){onStop(s.dataset.id)}});
+  el.innerHTML=`<div class="map5">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}
+   <div class="mkey5"><span class="mk5-t">${esc(K.lead)}</span>${[3,2,1].map(k=>`<span class="mk5-i">${lineGlyph5(k,34,10)}${esc(K.items[k])}</span>`).join('')}</div>`;
+  const map=$('.map5',el),card=$('.card5',map),list=$('.mlist5',el);
+  let sel=0,phoneOpen=true;
+  const rm=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const select=(i,o={})=>{sel=(i+ORDER.length)%ORDER.length;const id=ORDER[sel];
+    $$('.st5',map).forEach(g=>{const on=g.dataset.id===id;g.classList.toggle('here',on);g.setAttribute('aria-pressed',String(on))});
+    card.innerHTML=stepCard5(sel);
+    $$('.ml5[data-id]',list).forEach(r=>{const on=phoneOpen&&r.dataset.id===id;r.classList.toggle('open',on);$('.ml5-btn',r).setAttribute('aria-expanded',String(on));$('.ml5-card',r).innerHTML=on?stepCard5(sel):''});
+    if(o.scroll){const r=$(`.ml5[data-id="${id}"]`,list);if(r&&r.offsetParent)try{r.scrollIntoView({block:'start',behavior:rm()?'auto':'smooth'})}catch(e){}}};
+  el.addEventListener('click',e=>{
+    const t=e.target.closest('[data-t]');
+    if(t){e.preventDefault();const a=t.dataset.t,phone=!!t.closest('.mlist5');
+      if(a==='open'){onStop(ORDER[sel]);return}
+      phoneOpen=true;select(a==='prev'?sel-1:sel+1,{scroll:phone});return}
+    const s=e.target.closest('.st5');if(s){select(ORDER.indexOf(s.dataset.id));return}
+    const b=e.target.closest('.ml5-btn');if(b){const i=ORDER.indexOf(b.closest('.ml5').dataset.id);
+      if(i===sel&&phoneOpen){phoneOpen=false;select(i)}else{phoneOpen=true;select(i)}}});
   el.addEventListener('keydown',e=>{const t=e.target;
-    if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.sh5')){e.preventDefault();open(t.dataset.why,t)}
-    else if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();onStop(t.dataset.id)}
-    else if(e.key==='Escape'&&openId){close()}});
-  /* hover: preview the line under the pointer */
-  $$('.sh5',map).forEach(h=>{h.addEventListener('pointerenter',()=>{if(!openId&&!map.dataset.tour){map.classList.add('has-sel');$$(`.seg5[data-to="${h.dataset.why}"]`,map).forEach(s=>s.classList.add('sel'))}});
-    h.addEventListener('pointerleave',()=>{if(!openId&&!map.dataset.tour)mark(null)})});
-  /* the tour: nine stops, one at a time, lighting the path that leads there */
-  const T=COPY.home.tour,box=document.createElement('div');box.className='tour5';map.appendChild(box);
-  const idle=`<div class="tour5-start"><button type="button" class="btn play" data-t="start"><svg width="10" height="12" viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg>${esc(T.button)}</button><span>${esc(T.sub)}</span></div>`;
-  box.innerHTML=idle;
-  const trunk=['capability','adoption','handover'];
-  const pathTo=id=>{if(id==='influence')return ORDER.slice();const t=trunk.indexOf(id);if(t>=0)return trunk.slice(0,t+1);return [...trunk,...(id==='share'?['work','share']:[id])]};
-  let ti=0,playing=false;
-  const light=id=>{const on=pathTo(id);map.classList.add('has-sel');
-    $$('.seg5',map).forEach(g=>{const to=g.dataset.to;g.classList.toggle('sel',to==='influence'?id==='influence':on.includes(to))});
-    $$('.st5',map).forEach(g=>g.classList.toggle('sel',on.includes(g.dataset.id)));
-    $$('.st5',map).forEach(g=>g.classList.toggle('here',g.dataset.id===id))};
-  const stopT=()=>{clearInterval(tourTimer);tourTimer=null;playing=false};
-  const show=()=>{const id=ORDER[ti],L=id==='influence'?END:linkById(id);light(id);
-    box.classList.add('on');
-    box.innerHTML=`<div class="tourtop"><span class="lab">${esc(T.stepLabel.replace('{i}',ti+1).replace('{measurementWord}',LEVELWORD[lv(id)]))}</span><span class="dots" aria-hidden="true">${ORDER.map((_,k)=>`<i class="${k===ti?'on':k<ti?'done':''}"></i>`).join('')}</span></div>
-      <div class="tourname">${esc(L.name)}</div><p>${esc(L.tour)}</p>
-      <div class="ctl"><button type="button" class="btn ghost" data-t="prev" ${ti===0?'disabled':''}>${esc(T.back)}</button><button type="button" class="btn ghost" data-t="play">${playing?esc(T.pause):esc(T.resume)}</button><button type="button" class="btn ghost" data-t="next" ${ti===ORDER.length-1?'disabled':''}>${esc(T.next)}</button><button type="button" class="btn" data-t="open">${esc(id==='influence'?'Open the end of the chain':T.open)}</button><button type="button" class="btn ghost x" data-t="exit" aria-label="${esc(T.exit)}">${esc(T.exit.replace(' tour',''))}</button></div>`};
-  const run=()=>{clearInterval(tourTimer);playing=true;if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){playing=false;return}
-    tourTimer=setInterval(()=>{if(ti<ORDER.length-1){ti++;show()}else{stopT();show()}},5200)};
-  const end=()=>{stopT();delete map.dataset.tour;mark(null);$$('.st5.here',map).forEach(g=>g.classList.remove('here'));box.classList.remove('on');box.innerHTML=idle};
-  box.addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;e.stopPropagation();const t=b.dataset.t;
-    if(t==='start'){if(openId)close();map.dataset.tour='1';ti=0;run();show();const f=$('[data-t="next"]',box);if(f)f.focus({preventScroll:true})}
-    else if(t==='prev'){stopT();ti=Math.max(0,ti-1);show()}
-    else if(t==='next'){stopT();ti=Math.min(ORDER.length-1,ti+1);show()}
-    else if(t==='play'){if(playing)stopT();else run();show()}
-    else if(t==='exit'){end();const s=$('[data-t="start"]',box);if(s)s.focus({preventScroll:true})}
-    else if(t==='open'){const id=ORDER[ti];end();onStop(id)}});
-  box.addEventListener('keydown',e=>{if(e.key==='Escape'&&map.dataset.tour){end()}});
+    if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();select(ORDER.indexOf(t.dataset.id))}
+    else if((e.key==='ArrowRight'||e.key==='ArrowLeft')&&t.closest&&t.closest('.map5')){e.preventDefault();select(sel+(e.key==='ArrowRight'?1:-1));
+      const g=$(`.st5[data-id="${ORDER[sel]}"]`,map);if(g&&t.matches('.st5'))g.focus()}});
+  select(0);
   return el;
 }
 
@@ -3927,17 +4089,19 @@ const FLAGCAV5=[['one-off','oneoff'],['cause','cause'],['vendor','company'],['de
 function indicatorCards(el,linkId,opts={}){
   const L=linkId==='influence'?null:linkById(linkId),inds=opts.inds||L.inds,SI=SIG5().indicators,uid='ic5-'+linkId;
   el.classList.add('ic5wrap');
-  const TW={toward:'toward the concern',away:'away from the concern',unclear:'direction unclear'};
-  el.innerHTML=`${opts.single?'':`<div class="ic5-head"><p class="ic5-ins">${esc(COPY.linkUI.instruction)}</p></div>`}
-   <div class="ic5-grid${inds.length<3?' few':''}" role="tablist" aria-label="Indicators: ${esc(nameOf(linkId))}">${inds.map((d,i)=>{const t=SI[d.id]||{},tr=t.trend||'Not rated';
-     return `<button class="ic5" type="button" role="tab" id="${uid}-${d.id}" data-i="${i}" aria-selected="false" aria-controls="${uid}-panel" tabindex="${i?-1:0}">
+  const TW={toward:'Moving toward the concern',away:'Moving away from the concern',unclear:'Direction unclear'};
+  const TOP=3,canFold=!opts.single&&inds.length>TOP+1;
+  el.innerHTML=`<div class="ic5-grid${inds.length<3?' few':''}" role="tablist" aria-label="Indicators: ${esc(nameOf(linkId))}">${inds.map((d,i)=>{const t=SI[d.id]||{},tr=t.trend||'Not rated';
+     return `<button class="ic5" type="button" role="tab" id="${uid}-${d.id}" data-i="${i}" aria-selected="false" aria-controls="${uid}-panel" tabindex="${i?-1:0}"${canFold&&i>=TOP?' hidden':''}>
       <span class="ic5-top">${sparkSVG5(d,tr)}</span>
-      <span class="ic5-lab">${esc(indLabel5(d))}</span><span class="ic5-tr">${esc(tr)}${t.toward&&tr!=='One-off'?` · ${TW[t.toward]}`:''}</span>${chev5}</button>`}).join('')}</div>`;
-  const grid=$('.ic5-grid',el),cards=$$('.ic5',grid),panel=document.createElement('div');
+      <span class="ic5-lab">${esc(indLabel5(d))}</span><span class="ic5-tr">${esc(tr)}</span>${chev5}</button>`}).join('')}</div>${canFold?`<button type="button" class="btn ghost ic5-all" aria-expanded="false">Show all ${inds.length} indicators</button>`:''}`;
+  const grid=$('.ic5-grid',el),cards=$$('.ic5',grid),panel=document.createElement('div'),allBtn=$('.ic5-all',el);
   panel.className='ic5-panel';panel.id=uid+'-panel';panel.setAttribute('role','tabpanel');panel.tabIndex=-1;
-  let cur=-1;
+  let cur=-1,folded=canFold;
+  const vis=()=>cards.filter(b=>!b.hidden);
+  const unfold=()=>{if(!folded)return;folded=false;cards.forEach(b=>b.hidden=false);if(allBtn){allBtn.hidden=true;allBtn.setAttribute('aria-expanded','true')}};
   const cols=()=>getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length||1;
-  const place=()=>{if(cur<0){panel.remove();return}if(opts.single){grid.after(panel);return}const c=cols(),end=Math.min(cards.length-1,Math.floor(cur/c)*c+c-1);cards[end].after(panel);
+  const place=()=>{if(cur<0){panel.remove();return}if(opts.single){grid.after(panel);return}const v=vis(),k=v.indexOf(cards[cur]),c=cols(),end=Math.min(v.length-1,Math.floor(k/c)*c+c-1);v[end].after(panel);
     const b=cards[cur].getBoundingClientRect(),g=grid.getBoundingClientRect();panel.style.setProperty('--nx',(b.left-g.left+b.width/2)+'px')};
   const roles=()=>{const phone=cols()===1;grid.setAttribute('role',phone?'list':'tablist');
     cards.forEach((b,i)=>{if(phone){b.removeAttribute('role');b.removeAttribute('aria-selected');b.setAttribute('aria-expanded',String(i===cur));b.tabIndex=0}
@@ -3947,17 +4111,18 @@ function indicatorCards(el,linkId,opts={}){
     const cav=(FLAGCAV5.find(([f,c])=>fl.includes(f)&&!(c==='company'&&d.tag==='company'))||[])[1];
     const ic=indCopy5(d);
     panel.setAttribute('aria-labelledby',cards[i].id);
-    panel.innerHTML=`<div class="ic5-ph"><h3>${esc(d.title)}</h3><div class="ic5-chips"><span class="chip">${esc(TAGS[d.tag])}</span>${cav?caveatChip(cav):''}</div></div>
+    panel.innerHTML=`<div class="ic5-ph"><h3>${esc(d.title)}</h3><div class="ic5-chips">${t.toward&&t.trend!=='One-off'?`<span class="ic5-dir">${TW[t.toward]}</span>`:''}<span class="chip">${esc(TAGS[d.tag])}</span>${cav?caveatChip(cav):''}</div></div>
       ${d.sub?`<p class="ic5-sub">${esc(d.sub)}</p>`:''}<div class="ic5-body"></div>
       <details class="ic5-more"><summary>${esc(COPY.linkUI.readingIt)} and sources</summary><p class="ic5-read">${esc(d.read)}</p>
       <p class="ic5-src">${d.src.map(s=>`<a href="${esc(s[1])}" target="_blank" rel="noopener">${esc(s[0])}</a>`).join(' · ')}</p></details>`;
     d.render($('.ic5-body',panel))};
   const select=(i,toggle,user)=>{if(toggle&&cols()===1&&i===cur){cur=-1;cards.forEach(b=>b.classList.remove('on'));roles();place();return}
-    cur=i;cards.forEach((b,k)=>b.classList.toggle('on',k===i));roles();place();draw(i);if(user&&opts.onSelect)opts.onSelect(inds[i])};
+    if(cards[i].hidden)unfold();cur=i;cards.forEach((b,k)=>b.classList.toggle('on',k===i));roles();place();draw(i);if(user&&opts.onSelect)opts.onSelect(inds[i])};
   cards.forEach((b,i)=>b.addEventListener('click',()=>select(i,true,true)));
-  grid.addEventListener('keydown',e=>{if(cols()===1)return;const i=cards.indexOf(document.activeElement);if(i<0)return;
-    let j=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%cards.length;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i-1+cards.length)%cards.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=cards.length-1;
-    if(j!=null){e.preventDefault();cards.forEach((b,k)=>b.tabIndex=k===j?0:-1);cards[j].focus()}});
+  if(allBtn)allBtn.addEventListener('click',()=>{unfold();roles();place()});
+  grid.addEventListener('keydown',e=>{if(cols()===1)return;const v=vis(),i=v.indexOf(document.activeElement);if(i<0)return;
+    let j=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')j=(i+1)%v.length;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')j=(i-1+v.length)%v.length;else if(e.key==='Home')j=0;else if(e.key==='End')j=v.length-1;
+    if(j!=null){e.preventDefault();v.forEach((b,k)=>b.tabIndex=k===j?0:-1);v[j].focus()}});
   let rt;const onR=()=>{if(!el.isConnected){window.removeEventListener('resize',onR);return}clearTimeout(rt);rt=setTimeout(()=>{roles();place()},150)};window.addEventListener('resize',onR);
   const s0=opts.sel?Math.max(0,inds.findIndex(d=>d.id===opts.sel)):0;
   select(s0);if(opts.single){grid.hidden=true;el.classList.add('single')}return el;
@@ -3972,15 +4137,12 @@ const INSICON5={
  watch:`<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1.8 10s3-5.2 8.2-5.2 8.2 5.2 8.2 5.2-3 5.2-8.2 5.2S1.8 10 1.8 10z"/><circle cx="10" cy="10" r="2.4"/></svg>`};
 function insightCards(el,linkId){
   const CL=COPY.links[linkId];if(!CL){el.innerHTML='';return el}
-  const uid='in5-'+linkId,T=COPY.linkUI.cards;
-  const kinds=[['sceptic',T.sceptic,CL.sceptic||[]],['unmeasured',T.unmeasured,CL.unmeasured||[]],['watch',T.watch,CL.watch||[]]];
-  el.classList.add('in5wrap');
-  const hedge=k=>k==='unmeasured'&&COPY.linkUI.unmeasuredTip?`<span class="cav5w"><button type="button" class="cav5 why5" aria-describedby="${uid}-tip">?</button><span class="cav5tip" role="tooltip" id="${uid}-tip">${esc(COPY.linkUI.unmeasuredTip)}</span></span>`:'';
-  el.innerHTML=kinds.map(([k,t,items])=>`<section class="in5 in5-${k}" aria-labelledby="${uid}-${k}"><header>${INSICON5[k]}<h3 id="${uid}-${k}">${esc(t)}</h3>${hedge(k)}</header>
-    <ul>${items.map((it,i)=>`<li><button type="button" class="in5-row" aria-expanded="false" aria-controls="${uid}-${k}-${i}"><span>${esc(it.label)}</span><i aria-hidden="true"></i></button><div class="in5-s" id="${uid}-${k}-${i}" role="region" hidden><p>${esc(it.text)}</p></div></li>`).join('')}</ul>
-    </section>`).join('');
-  el.addEventListener('click',e=>{const b=e.target.closest('.in5-row');if(!b)return;const open=b.getAttribute('aria-expanded')!=='true';
-    b.setAttribute('aria-expanded',String(open));document.getElementById(b.getAttribute('aria-controls')).hidden=!open});
+  const T=COPY.linkUI.cards,B=COPY.linkUI.brief,tip=COPY.linkUI.unmeasuredTip;
+  const kinds=[['sceptic',B.caveats,T.sceptic,CL.sceptic||[]],['unmeasured',B.blind,T.unmeasured,CL.unmeasured||[]],['watch',B.signals,T.watch,CL.watch||[]]];
+  el.classList.add('br5wrap');
+  el.innerHTML=kinds.filter(k=>k[3].length).map(([k,lab,t,items])=>`<details class="br5 br5-${k}"><summary><span class="lab5"><span>${esc(lab)}</span></span><span class="br5-t">${INSICON5[k]}${esc(t)}</span><span class="br5-n">${items.length}</span><i aria-hidden="true"></i></summary>
+    <ul class="br5-l">${items.map(it=>`<li><b>${esc(it.label)}</b><p>${esc(it.text)}</p></li>`).join('')}</ul>
+    ${k==='unmeasured'?`<p class="br5-f">${tip?esc(tip)+' ':''}<a class="go" href="${esc(B.proposeUrl)}" target="_blank" rel="noopener">${esc(B.propose)} ↗</a></p>`:''}</details>`).join('');
   return el;
 }
 
@@ -4094,9 +4256,12 @@ function futuresCard5(el,o){
 const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draft5" aria-describedby="drtip">${esc(COPY.draftChip.label)}</button><span class="cav5tip" role="tooltip" id="drtip">${esc(COPY.draftChip.tooltip)} <a href="#method">Method</a></span></span>`;
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
 const stripArrow5=t=>String(t).replace(/\s*→\s*$/,'');
-const pills5=id=>{const s=sigOf5(id),l=lv(id),b=(SIGNALS.links[id]||{}).basis;
-  return `<dl class="pills5"><div><dt>${esc(COPY.linkUI.pillSignal)}</dt><dd>${sigDot5(s)}<span>${SIGWORD5[s]}</span>${b?`<span class="cav5w"><button type="button" class="cav5 why5" aria-describedby="whytip">Why?</button><span class="cav5tip" role="tooltip" id="whytip">${esc(b)} <a href="#method">How this is judged</a></span></span>`:''}</dd></div>
-    <div><dt>${esc(COPY.linkUI.pillMeasure)}</dt><dd>${lineGlyph5(l,40,12)}<span>${LEVELWORD[l]}</span></dd></div></dl>`};
+const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
+/* the confidence block: the two ratings, each with its one-line reason */
+const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.linkUI.brief,why=id==='influence'?END.headline:linkById(id).levelWhy;
+  return `<section class="conf5" aria-label="${esc(B.confidence)}">${lab5([B.confidence])}<dl class="conf5-g">
+    <div><dt>${esc(COPY.linkUI.pillSignal)}</dt><dd class="r">${sigDot5(s)}<b>${SIGWORD5[s]}</b></dd>${S.basis?`<dd class="w">${esc(S.basis)}</dd>`:''}</div>
+    <div><dt>${esc(COPY.linkUI.pillMeasure)}</dt><dd class="r">${lineGlyph5(l,40,12)}<b>${LEVELWORD[l]}</b></dd>${why?`<dd class="w">${esc(why)}</dd>`:''}</div></dl></section>`};
 /* the chain as horizontal tabs along the top of each evidence page; the bar under each name repeats its line style */
 const crumbs5=id=>`<nav class="crumbs" aria-label="Links in the chain">${LINKS.map(l=>`<a href="#${l.id}" data-l="${l.level}" ${l.id===id?'aria-current="page"':''}><span class="ln"></span>${l.n} ${esc(l.name)}</a>`).join('')}<a href="#influence" data-l="0" ${id==='influence'?'aria-current="page"':''}><span class="ln"></span>${esc(END.name)}</a></nav>`;
 const crumbScroll5=v=>{const c=$('.crumbs [aria-current]',v);if(c)try{c.parentNode.scrollLeft=c.offsetLeft-40}catch(e){}};
@@ -4105,23 +4270,40 @@ const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest
 
 /* ----- home ----- */
 function viewMap(v){
-  const H=COPY.home;
-  const miss=esc(H.coreMiss).replace('skills, judgement and say','<mark class="hs5m">skills, judgement and say</mark>');
-  const doors=H.doors;
+  const H=COPY.home,P=H.purpose,G=H.gaps3,C=H.cta;
   v.innerHTML=`<div class="home5">
-   <section class="wrap hero5">${eye5([esc(H.eyebrow)])}
-    <div class="hero5-g"><h1 class="h1-5 xl">${esc(H.headline).replace(', ',',<br class="br5"> ')}</h1><p class="lead5">${esc(H.subtitle)}</p></div></section>
-   <div class="wrap chainlab5"><span class="lab">${esc(H.chainLabel)}</span><span class="chainlab5-h">${esc(COPY.ui.instructions.map)}</span></div>
+   <section class="wrap hero5"><div class="hero5-g top5"><div>${eye5([esc(H.eyebrow)])}
+    <h1 class="h1-5 xl purpose5-h">${esc(P.h1)}</h1></div>
+    <p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p></div></section>
+   <section class="wrap sec2h5"><div class="hero5-g mid5"><h2 class="h1-5">${esc(H.headline)}</h2><ul class="lead5 sm qs5">${H.mapNote.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></div></section>
    <div id="homeMap"></div>
-   <section class="wrap core5">
-    <p class="core5-a">${esc(H.coreLead)}</p>
-    <p class="core5-b">${miss}</p>
-    <p class="nums5">${esc(H.numbers)} <a class="go" href="#record">See the measurement record →</a></p>
-   </section>
-   <section class="wrap doors5">${doors.map(d=>`<a class="door5${d.primary?' pri':''}${d.id==='futures'?' wip':''}" href="#${d.id}">
-     ${d.tag?(d.id==='futures'?wipTag5():`<span class="tag5">${esc(d.tag)}</span>`):''}<b>${esc(d.title)}</b><span>${esc(d.line)}</span>${chev5}</a>`).join('')}</section>
+   <section class="wrap gaps5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.h2)}</h2><p class="sub5">${esc(G.sub)}</p></div><a class="go" href="#gaps">${esc(G.all.replace('{n}',GAPS.length))} →</a></div>
+    <ol class="gaps5-l">${G.items.map((g,i)=>`<li><span class="gaps5-n">${i+1}</span><div><a class="gaps5-t" href="#gaps/${g.id}">${esc(g.t)}</a><p>${esc(g.text)}</p>${g.note?`<p class="gaps5-note">${esc(g.note)}</p>`:''}</div></li>`).join('')}</ol></section>
+   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2>
+    <div class="paths5-g two">${H.paths.items.map(p=>`<a class="path5" href="#${esc(p.to)}"><b>${esc(p.who)}</b><span>${esc(p.line)}</span>${chev5}</a>`).join('')}</div>
+    <p class="cta5-links">${C.buttons.map(b=>`<a class="go" href="#${esc(b.to)}">${esc(b.t)} →</a>`).join('')}<a class="go" href="#contribute">${esc(C.why)} →</a></p></section>
   </div>`;
   mountMap5($('#homeMap',v),{onStop:id=>go(id)});
+}
+
+/* ----- why this project ----- */
+function viewWhy(v){
+  const W=COPY.why,ext=(t,u)=>`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`;
+  v.innerHTML=`<div class="view5 wrap why5">${eye5([esc(W.nav)])}
+   <h1 class="h1-5">${esc(W.h1)}</h1><p class="lead5">${esc(W.lead)}</p>
+   <section class="sec5" id="w-plan"><h2 class="h2-5 sm">${esc(W.plan.h2)}</h2>
+    <ol class="plan5">${W.plan.steps.map((s,i)=>`<li><span class="plan5-n">${i+1}</span><div><b>${s.to?`<a href="#${s.to}">${esc(s.t)}</a>`:esc(s.t)}</b><span>${esc(s.text)}${s.links?' '+s.links.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join(' and ')+'.':''}</span></div></li>`).join('')}</ol>
+    <p class="aim5">${esc(W.plan.aim)}</p></section>
+   <section class="sec5 act5" id="w-add"><h2 class="h2-5 sm">${esc(W.contribute.h2)}</h2><p class="sub5">${esc(W.contribute.text)}</p>
+    <div class="btns5">${W.contribute.buttons.map(b=>ext(b[0],b[1])).join('')}</div><p class="note5">${esc(W.contribute.note)}</p></section>
+   <section class="sec5 act5" id="w-funding"><h2 class="h2-5 sm">${esc(W.funding.h2)}</h2><p class="sub5">${esc(W.funding.text)}</p>
+    <ul class="grants5">${W.funding.grants.map(g=>`<li><div class="grants5-h"><a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)} ↗</a><span class="acc5-c${/^Closes/.test(g.status)?' due5':''}">${esc(g.status)}</span></div><span>${esc(g.fit)}</span></li>`).join('')}</ul>
+    <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></section>
+   <section class="sec5 act5" id="w-authors"><h2 class="h2-5 sm">${esc(W.authors.h2)}</h2><p class="sub5">${esc(W.authors.text)}</p>
+    <div class="btns5">${W.authors.buttons.map(b=>b[1].startsWith('#')?`<a class="btn" href="${esc(b[1])}">${esc(b[0])} →</a>`:ext(b[0],b[1])).join('')}</div></section>
+   <section class="sec5 act5" id="w-community"><h2 class="h2-5 sm">${esc(W.community.h2)} <span class="wip5">${esc(W.community.soon)}</span></h2><p class="sub5">${esc(W.community.text)} ${esc(W.community.until)}</p>
+    <div class="btns5">${ext(W.community.link[0],W.community.link[1])}</div></section>
+  </div>`;
 }
 
 /* ----- evidence overview ----- */
@@ -4130,22 +4312,24 @@ function viewIndex(v){
   v.innerHTML=`<div class="view5 wrap">${eye5(['Evidence'])}
    <h1 class="h1-5">${esc(E.title)}</h1><p class="lead5">${esc(E.deck)}</p>
    <div class="sec5 s1" id="erows"></div>
-   <p class="note5">${esc(E.legendNote)}</p>
-   <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a></div>
-   <section class="sec5" id="record"><h2 class="h2-5">How often each indicator is measured</h2><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
-    <div class="chart s1" id="rec"></div><p class="note5">Marks show how often a series is published, not how strong it is. The split into blue and grey is the observatory's judgement.</p></section>
+   <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
+   <section class="sec5"><details class="det5" id="record"><summary>${esc(E.coverage.title)}</summary><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
+    <div class="chart s1" id="rec"></div><p class="note5">Marks show how often a series is published, not how strong it is. The split into blue and grey is the observatory's judgement.</p></details></section>
    <details class="ctr5"><summary>${esc(stripArrow5(E.footer.counter))}</summary><p>${esc(E.counter.intro)}</p>
     <ol>${E.counter.items.map(c=>`<li><b>${esc(c.label)}</b><span>${esc(c.text)}</span></li>`).join('')}</ol></details></div>`;
-  evidenceRows($('#erows',v));drawRecord($('#rec',v));
+  evidenceRows($('#erows',v));
+  const rec=$('#record',v);let drawn=false;
+  rec.addEventListener('toggle',()=>{if(rec.open&&!drawn){drawn=true;drawRecord($('#rec',v))}else if(rec.open)window.dispatchEvent(new Event('resize'))});
 }
 
 /* ----- one link ----- */
 function viewLink(v,id){
-  const L=linkById(id),CL=COPY.links[id],i=LINKS.indexOf(L),prev=LINKS[i-1],next=LINKS[i+1];
-  v.innerHTML=`<div class="view5 wrap">
+  const L=linkById(id),CL=COPY.links[id],B=COPY.linkUI.brief,i=LINKS.indexOf(L),prev=LINKS[i-1],next=LINKS[i+1];
+  v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5(id)}
-   <div class="claim5"><div>${eye5([`Link ${L.n} of ${LINKS.length}`,esc(L.name)],HUMAN5.includes(id)?'<span class="hs5tag">Human side</span>':'')}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>${pills5(id)}</div>
-   <section class="sec5 s1" id="cards"></section>
+   <div class="claim5">${eye5([esc(B.bottom),`Link ${L.n} of ${LINKS.length}`,esc(L.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${conf5(id)}
+   <section class="sec5 ev5">${lab5([B.evidence,B.indicators.replace('{n}',L.inds.length)])}<p class="sub5">${esc(COPY.linkUI.instruction)}</p><div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
    ${pn5(prev?[prev.id,prev.name]:['evidence','All links','Back to'],next?[next.id,next.name]:['influence',END.name,'End of the chain'])}</div>`;
   indicatorCards($('#cards',v),id,{sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
@@ -4154,38 +4338,44 @@ function viewLink(v,id){
 
 /* ----- the end of the chain ----- */
 function viewInfluence(v){
-  const CL=COPY.links.influence,inds=LINKS.flatMap(L=>L.inds.filter(d=>d.recRow==='influence')),last=LINKS[LINKS.length-1];
-  v.innerHTML=`<div class="view5 wrap">
+  const CL=COPY.links.influence,B=COPY.linkUI.brief,inds=LINKS.flatMap(L=>L.inds.filter(d=>d.recRow==='influence')),last=LINKS[LINKS.length-1];
+  v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5('influence')}
-   <div class="claim5"><div>${eye5(['End of the chain',esc(END.name)],'<span class="hs5tag">Human side</span>')}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>${pills5('influence')}</div>
-   <section class="sec5 s1"><div id="cards"></div></section>
+   <div class="claim5">${eye5([esc(B.bottom),'End of the chain',esc(END.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${conf5('influence')}
+   <section class="sec5 ev5">${lab5([B.evidence,inds.length===1?'Nearest measure':B.indicators.replace('{n}',inds.length)])}<div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
-   ${pn5([last.id,last.name],['gaps','The gap','What is missing'])}</div>`;
+   ${pn5([last.id,last.name],['gaps','The measurement agenda','What is missing'])}</div>`;
   indicatorCards($('#cards',v),'influence',{inds,single:inds.length===1});
   insightCards($('#ins',v),'influence');crumbScroll5(v);
 }
 
 /* ----- the measurement record lives on the Evidence page ----- */
-function viewRecord(v){viewIndex(v);setTimeout(()=>{const r=$('#record',v);if(r)r.scrollIntoView({block:'start'})},60)}
+function viewRecord(v){viewIndex(v);const r=$('#record',v);if(r){r.open=true;setTimeout(()=>r.scrollIntoView({block:'start'}),60)}}
 
 /* ----- the gap ----- */
 function viewGaps(v){
-  const G=COPY.gap,st=steps5();
-  const groups=ORDER.slice().sort((a,b)=>st[a]-st[b]||lv(a)-lv(b)).filter(id=>G.items.some(x=>x.link===id));
-  const near=groups.filter(id=>st[id]<=1&&lv(id)<=1),far=groups.filter(id=>!near.includes(id)),nFar=G.items.filter(x=>far.includes(x.link)).length;
-  const grp=id=>`<div class="accg5" id="gg-${id}"><div class="accg5-h">${lineGlyph5(lv(id),34,10)}<a href="#${id}">${esc(nameOf(id))}</a></div>
-     ${G.items.filter(x=>x.link===id).map(x=>`<div class="acc5-i"><button type="button" class="acc5-b" aria-expanded="false" aria-controls="gp${x.i}"><span class="acc5-t">${esc(x.title)}</span><span class="acc5-m"><span class="acc5-c">${esc(x.chip)}</span></span><i aria-hidden="true"></i></button>
-      <div class="acc5-p" id="gp${x.i}" hidden><dl><div><dt>${esc(G.list.heads.why)}</dt><dd>${esc(x.why)}</dd></div><div><dt>${esc(G.list.heads.what)}</dt><dd>${esc(x.what)}</dd></div><div><dt>${esc(G.list.heads.closest)}</dt><dd>${esc(x.closest)}</dd></div></dl></div></div>`).join('')}</div>`;
-  v.innerHTML=`<div class="view5 wrap">${eye5(['The gap'])}
+  const G=COPY.gap,st=steps5(),PR=G.priority,CT=G.cta;
+  const items=G.items.slice().sort((a,b)=>st[a.link]-st[b.link]||lv(a.link)-lv(b.link));
+  const seen={};
+  const ctas=x=>{const k=GAPPRI[x.i]||'later',list=k==='now'?[CT.fund,CT.study]:k==='method'?[CT.study,CT.review]:[CT.ind];
+    return list.map(c=>`<a class="go" href="${esc(c[1]+encodeURIComponent((x.old||x.title).slice(0,80)))}" target="_blank" rel="noopener">${esc(c[0])} ↗</a>`).join('')};
+  const row=x=>{const first=!seen[x.link];seen[x.link]=1;
+    return `<div class="acc5-i gap5-i" id="gi-${x.i}" data-link="${x.link}"${first?` data-sub="gaps/${x.link}"`:''}><button type="button" class="acc5-b" aria-expanded="false" aria-controls="gp${x.i}"><span class="acc5-t">${esc(x.title)}</span><span class="acc5-m"><span class="gap5-step">${lineGlyph5(lv(x.link),26,10)}${esc(nameOf(x.link))}</span></span><i aria-hidden="true"></i></button>
+      <div class="acc5-p" id="gp${x.i}" hidden><dl><div><dt>${esc(G.list.heads.why)}</dt><dd>${esc(x.why)}</dd></div><div><dt>${esc(G.list.heads.what)}</dt><dd>${esc(x.what)}</dd></div><div><dt>${esc(G.list.heads.closest)}</dt><dd><span class="acc5-c">${esc(x.chip)}</span> ${esc(x.closest)}</dd></div></dl>
+       <p class="gap5-cta">${ctas(x)}<a class="go" href="#${x.link}">${esc(G.list.open.replace('{link}',nameOf(x.link)))}</a></p></div></div>`};
+  const group=k=>{const xs=items.filter(x=>(GAPPRI[x.i]||'later')===k);if(!xs.length)return '';
+    const body=`<div class="accg5-h gap5-h"><span class="pri5 pri5-${k}">${esc(PR[k].t)}</span><span class="gap5-n">${xs.length}</span><span class="gap5-d">${esc(PR[k].d)}</span></div>${xs.map(row).join('')}`;
+    return k==='later'?`<details class="more5 gap5-g" id="gg-${k}"><summary>${esc(PR[k].t)} · ${xs.length} measures, further from the outcome</summary>${body}</details>`:`<div class="accg5 gap5-g" id="gg-${k}">${body}</div>`};
+  v.innerHTML=`<div class="view5 wrap">${eye5([esc(G.eyebrow)])}
    <h1 class="h1-5">${esc(G.h1)}</h1><p class="lead5">${esc(G.sentence)}</p>
-   <section class="sec5"><h2 class="h2-5">${esc(G.matrix.title)}</h2><p class="sub5">${esc(G.matrix.howTo)}</p>
-    <ol class="hops5" aria-label="Links from Human influence along the chain">${[[4,['capability']],[3,['adoption']],[2,['handover','work']],[1,['share','skills','culture','institutions']],[0,['influence']]].map(([k,ids])=>`<li><span class="hops5-n">${k}</span><span>${ids.map(x=>esc(nameOf(x))).join(', ')}</span></li>`).join('')}</ol>
-    <div id="gm" class="s1"></div></section>
    <section class="sec5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.list.title)}</h2><p class="sub5">${esc(G.list.sub)} ${esc(COPY.ui.instructions.gaps)}</p></div><button type="button" class="btn ghost" id="expAll">${esc(G.list.expandAll)}</button></div>
-    <div class="acc5" id="gacc">${near.map(grp).join('')}<details class="more5"><summary>${nFar} more, further from the outcome</summary>${far.map(grp).join('')}</details></div></section></div>`;
-  gapMatrix($('#gm',v),{onPick:id=>{const g=document.getElementById('gg-'+id);if(!g)return;const d=g.closest('details');if(d)d.open=true;
-    $$('.acc5-b',g).forEach(x=>{x.setAttribute('aria-expanded','true');document.getElementById(x.getAttribute('aria-controls')).hidden=false});
-    const rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;g.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'})}});
+    <div class="acc5" id="gacc">${['now','method','later'].map(group).join('')}</div></section>
+   <section class="sec5"><details class="det5" id="gg-matrix"><summary>${esc(G.ranking.title)}</summary><p class="sub5">${esc(G.ranking.sub)}</p>
+    <ol class="hops5" aria-label="Links from Human influence along the chain">${[[4,['capability']],[3,['adoption']],[2,['handover','work']],[1,['share','skills','culture','institutions']],[0,['influence']]].map(([k,ids])=>`<li><span class="hops5-n">${k}</span><span>${ids.map(x=>esc(nameOf(x))).join(', ')}</span></li>`).join('')}</ol>
+    <div id="gm" class="s1"></div></details></section></div>`;
+  gapMatrix($('#gm',v),{onPick:id=>{const t=$(`.gap5-i[data-link="${id}"]`,v);if(t)openAt5(t)}});
+  $('#gg-matrix',v).addEventListener('toggle',()=>window.dispatchEvent(new Event('resize')));
   const acc=$('#gacc',v);wireAcc5(acc);
   $('#expAll',v).addEventListener('click',e=>{const b=e.currentTarget,open=b.dataset.open!=='1';b.dataset.open=open?'1':'';b.textContent=open?G.list.collapseAll:G.list.expandAll;
     if(open){const d=$('details.more5',acc);if(d)d.open=true}
@@ -4246,19 +4436,22 @@ function viewMethod(v){
    <h1 class="h1-5">${esc(M.title)}</h1><p class="lead5">${esc(rw('Method deck'))}</p>
    <nav class="toc5" aria-label="On this page">${secs.map(s=>`<a href="#method" data-to="m-${s[0]}">${s[1]}</a>`).join('')}</nav>
    <section class="sec5" id="m-status"><div class="callout5"><b>${esc(M.headings.status)}</b><p>${esc(rw('Status of the figures'))}</p></div></section>
-   <section class="sec5" id="m-scales"><div class="two5">
+   <section class="sec5" id="m-scales"><p class="sub5 fam5">${esc(M.headings.families)}</p><div class="two5">
     <div><h2 class="h2-5 sm">${esc(M.headings.measured)}</h2><p class="sub5">${esc(rw('How well a link is measured'))}</p>
      <ul class="scale5">${[[4,'Repeated, direct measurement by bodies independent of the AI developers, of something that is about AI by construction.'],[3,'Repeated and direct, but measured by the company whose product is involved, or with the cause in dispute.'],[2,'Measured repeatedly and directly, but the change cannot be tied to AI.'],[1,'Single studies, or counts of disclosures that mostly follow reporting rules.'],[0,'Nothing measures it directly.']].map(s=>`<li>${lineGlyph5(s[0],44,12)}<div><b>${LEVELWORD[s[0]]}</b><span>${s[1]}</span></div></li>`).join('')}</ul></div>
     <div><h2 class="h2-5 sm">${esc(M.headings.change)}</h2><p class="sub5">${esc(M.changeScale.intro)}</p>
-     <ul class="scale5">${M.changeScale.levels.map(s=>`<li><span class="scale5-d">${sigDot5(s.key==='?'?'?':+s.key)}</span><div><b>${esc(s.word)}</b><span>${esc(s.def)}</span></div></li>`).join('')}</ul></div></div></section>
-   <section class="sec5" id="m-ratings"><h2 class="h2-5 sm">${esc(M.headings.ratings)}</h2><p class="sub5">Four questions about the best evidence for each link. One person's judgement; no second, independent rating yet.</p>
+     <ul class="scale5">${M.changeScale.levels.map(s=>`<li><span class="scale5-d">${sigDot5(s.key==='?'?'?':+s.key)}</span><div><b>${esc(s.word)}</b><span>${esc(s.def)}</span></div></li>`).join('')}</ul></div></div>
+    <div class="pri5-sec"><h2 class="h2-5 sm">${esc(M.headings.priority)}</h2><p class="sub5">${esc(M.headings.priorityIntro)}</p>
+     <ul class="scale5 pri5-l">${['now','method','later'].map(k=>`<li><span class="pri5 pri5-${k}">${esc(COPY.gap.priority[k].t)}</span><div><span>${esc(COPY.gap.priority[k].d)}</span></div></li>`).join('')}</ul></div></section>
+   <section class="sec5" id="m-ratings"><h2 class="h2-5 sm">${esc(M.headings.ratings)}</h2><p class="sub5">Four questions about the best evidence for each link. One person's judgement; no second, independent rating yet. <a class="go" href="${esc(M.headings.challengeUrl)}" target="_blank" rel="noopener">${esc(M.headings.challenge)} ↗</a></p>
+    <p class="sub5 crit5"><b>${esc(M.headings.criteria)}.</b> ${esc(M.headings.criteriaText)}</p>
     <div class="tsc s1"><table class="rt rub"><thead><tr><th>Link</th><th>Repeated?</th><th>Direct?</th><th>Independent of the firms involved?</th><th>Tied to AI?</th><th>Rating</th></tr></thead><tbody>${LINKS.map(l=>`<tr><td><a href="#${l.id}" style="color:inherit;font-weight:650">${esc(l.name)}</a></td>${RUBRIC[l.id].map((c,i)=>`<td data-h="${['Repeated?','Direct?','Independent?','Tied to AI?'][i]}" class="${c==='yes'?'y':'n'}">${esc(c)}</td>`).join('')}<td data-h="Rating" style="white-space:nowrap">${lineGlyph5(l.level,40,12)}</td></tr>`).join('')}<tr><td style="font-weight:650">${esc(END.name)}</td><td class="n" colspan="4">nothing measures it directly</td><td>${lineGlyph5(0,40,12)}</td></tr></tbody></table></div></section>
    <section class="sec5" id="m-charts"><div class="two5"><div><h2 class="h2-5 sm">${esc(M.headings.charts)}</h2>
      <ul class="scale5">${liD('<i class="sw" style="background:var(--s1)"></i>Blue and grey are observed.','Darkest for the series the chart is about. A hollow marker is a weaker point: a secondary source, a changed definition or an unverified figure.')}${liD('<i class="sw" style="background:var(--p2)"></i>Orange is forecast.','Forecasts and model scenarios are orange and dashed. Orange is never used for measured data.')}${liD('<i class="sw hat"></i>Hatching means unmeasured.','On the map and in the record, hatched areas have no direct reading.')}${liD('<i class="sw" style="background:var(--sg3)"></i>Teal is a judgement.','Teal shows what the data show, an observatory judgement. It appears only on the Evidence pages.')}</ul></div>
     <div><h2 class="h2-5 sm">${esc(M.headings.tags)}</h2><ul class="scale5">${Object.entries({direct:'Read at the publisher\'s own page or data file by the AI assistant that compiled this draft.',primary:'From the publisher\'s page or paper, read through an automated summary.',company:'Published by the company whose product is measured.',secondary:'From press coverage or another third party quoting the source.',derived:'Arithmetic by the observatory on published figures.'}).map(([k,t])=>`<li><div><span class="chip">${esc(TAGS[k])}</span><span>${esc(t)}</span></div></li>`).join('')}</ul>
      <p class="sub5" style="margin-top:18px">Caveat chips:</p><p class="chips5">${['oneoff','cause','company','defs','unverified','stale','policy','advocacy','forecast'].map(t=>caveatChip(t)).join('')}</p></div></div></section>
    <section class="sec5" id="m-limits"><h2 class="h2-5 sm">${esc(M.headings.limits)}</h2>
-    <ul class="scale5 lim5">${li('Mostly American.',esc(rw('Known limits: Mostly American')))}${li('The map shows stops, not causes.','No indicator measures whether one link causes the next. The arrows, and the choice of links, come from the theory. The paper also expects the branches to reinforce each other; the map does not draw those links.')}${li('Skills and judgement is an addition.','It comes from the deskilling literature and the "erosion" layer in Chooi, Lee and Li (2026), not from the three systems in Kulveit and co-authors.')}${li('Leans on AI companies.',esc(rw('Known limits: Leans on AI companies')))}${li('Ratings and signposts are judgements.','The measurement ratings, the "what the data show" colours and the futures signposts are the observatory\'s reading, not a model\'s output.')}${li('Not yet checked by a person.','The research and figures were compiled with AI research assistance. "Read at source (AI-assisted)" means the AI assistant read the publisher\'s page itself.')}</ul></section>
+    <ul class="scale5 lim5">${li('Mostly American.',esc(rw('Known limits: Mostly American')))}${li('The map shows stops, not causes.','No indicator measures whether one link causes the next. The arrows, and the choice of links, come from the theory. The paper also expects the branches to reinforce each other; the map does not draw those links.')}${li('Skills and judgement is an addition.','It comes from the deskilling literature and the "erosion" layer in Chooi, Lee and Li (2026), not from the three systems in Kulveit and co-authors.')}${li('Leans on AI companies.',esc(rw('Known limits: Leans on AI companies')))}${li('Ratings and signposts are judgements.','The measurement ratings, the "what the data show" colours and the futures signposts are the observatory\'s reading, not a model\'s output.')}${li('Being checked.','AI tools helped find and summarise the sources. Headline figures are being checked against primary sources before v1.0. "Read at source (AI-assisted)" means the AI assistant read the publisher\'s page itself.')}</ul></section>
    <section class="sec5" id="m-more"><details class="det5"><summary>${esc(M.headings.stops)}</summary><p class="sub5">${esc(rw('What is counted at each stop'))}</p>
      <div class="tsc"><table class="rt defs"><thead><tr><th>Stop</th><th>What is counted</th><th>What the argument needs</th></tr></thead><tbody>${ORDER.map(id=>`<tr><td style="font-weight:650;white-space:nowrap"><a href="#${id}" style="color:inherit">${esc(nameOf(id))}</a></td><td data-h="What is counted">${esc(DEFS[id][0])}</td><td data-h="What the argument needs">${esc(DEFS[id][1])}</td></tr>`).join('')}</tbody></table></div></details>
     <details class="det5"><summary>${esc(M.headings.terms)}</summary><dl class="gloss">${GLOSSARY.map(g=>`<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join('')}</dl></details>

@@ -115,6 +115,12 @@ const GAPS=[
  ['influence','Who can decide','The smallest group able to settle an outcome, and its mix of people and AI systems, applied to real institutions.','None found.'],
  ['influence','A population measure of disempowerment','A validated survey scale paired with behavioural tasks, repeated every year.','Pew: 57% feel little or no control over AI in their lives. UK: 50% say their views are not represented in decisions about AI (Ada Lovelace Institute and Alan Turing Institute, 2025). Questionnaires that score dependence exist, but have no agreed cut-offs.']];
 
+/* priority of each missing measure (index into GAPS), a first pass by the observatory:
+   now = a method exists and the step is close to the outcome; it needs money and a team.
+   method = the construct or instrument still has to be designed and tested.
+   later = further from the outcome, or data may appear on its own. */
+const GAPPRI={0:'later',14:'later',15:'later',16:'later',1:'later',2:'method',3:'later',4:'method',
+ 5:'now',6:'now',17:'now',18:'method',7:'later',8:'method',9:'now',10:'now',11:'now',12:'method',13:'method'};
 /* how each rating is reached: repeated, direct, independent of AI developers, tied to AI */
 const RUBRIC={capability:['yes','yes','yes','yes'],adoption:['yes','yes','yes','yes'],handover:['yes','yes',"no: companies' own logs",'yes'],
  work:['yes','yes','yes','disputed'],share:['yes','yes','yes','no'],skills:['no: one-offs','yes','mixed','yes'],

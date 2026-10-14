@@ -1,0 +1,24 @@
+name: Fund or run a measure
+description: You could fund, run or collaborate on one of the missing measures.
+title: "[Offer] "
+labels: ["offer"]
+body:
+  - type: dropdown
+    id: role
+    attributes:
+      label: I could
+      options: ["Fund it", "Run it", "Collaborate on it", "Provide data or access"]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What you have in mind (a few lines is enough)
+    validations:
+      required: true
+  - type: input
+    id: who
+    attributes:
+      label: Name, affiliation and how to reach you
+    validations:
+      required: true

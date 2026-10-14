@@ -5,9 +5,12 @@
 const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draft5" aria-describedby="drtip">${esc(COPY.draftChip.label)}</button><span class="cav5tip" role="tooltip" id="drtip">${esc(COPY.draftChip.tooltip)} <a href="#method">Method</a></span></span>`;
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
 const stripArrow5=t=>String(t).replace(/\s*→\s*$/,'');
-const pills5=id=>{const s=sigOf5(id),l=lv(id),b=(SIGNALS.links[id]||{}).basis;
-  return `<dl class="pills5"><div><dt>${esc(COPY.linkUI.pillSignal)}</dt><dd>${sigDot5(s)}<span>${SIGWORD5[s]}</span>${b?`<span class="cav5w"><button type="button" class="cav5 why5" aria-describedby="whytip">Why?</button><span class="cav5tip" role="tooltip" id="whytip">${esc(b)} <a href="#method">How this is judged</a></span></span>`:''}</dd></div>
-    <div><dt>${esc(COPY.linkUI.pillMeasure)}</dt><dd>${lineGlyph5(l,40,12)}<span>${LEVELWORD[l]}</span></dd></div></dl>`};
+const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
+/* the confidence block: the two ratings, each with its one-line reason */
+const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.linkUI.brief,why=id==='influence'?END.headline:linkById(id).levelWhy;
+  return `<section class="conf5" aria-label="${esc(B.confidence)}">${lab5([B.confidence])}<dl class="conf5-g">
+    <div><dt>${esc(COPY.linkUI.pillSignal)}</dt><dd class="r">${sigDot5(s)}<b>${SIGWORD5[s]}</b></dd>${S.basis?`<dd class="w">${esc(S.basis)}</dd>`:''}</div>
+    <div><dt>${esc(COPY.linkUI.pillMeasure)}</dt><dd class="r">${lineGlyph5(l,40,12)}<b>${LEVELWORD[l]}</b></dd>${why?`<dd class="w">${esc(why)}</dd>`:''}</div></dl></section>`};
 /* the chain as horizontal tabs along the top of each evidence page; the bar under each name repeats its line style */
 const crumbs5=id=>`<nav class="crumbs" aria-label="Links in the chain">${LINKS.map(l=>`<a href="#${l.id}" data-l="${l.level}" ${l.id===id?'aria-current="page"':''}><span class="ln"></span>${l.n} ${esc(l.name)}</a>`).join('')}<a href="#influence" data-l="0" ${id==='influence'?'aria-current="page"':''}><span class="ln"></span>${esc(END.name)}</a></nav>`;
 const crumbScroll5=v=>{const c=$('.crumbs [aria-current]',v);if(c)try{c.parentNode.scrollLeft=c.offsetLeft-40}catch(e){}};
@@ -16,23 +19,40 @@ const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest
 
 /* ----- home ----- */
 function viewMap(v){
-  const H=COPY.home;
-  const miss=esc(H.coreMiss).replace('skills, judgement and say','<mark class="hs5m">skills, judgement and say</mark>');
-  const doors=H.doors;
+  const H=COPY.home,P=H.purpose,G=H.gaps3,C=H.cta;
   v.innerHTML=`<div class="home5">
-   <section class="wrap hero5">${eye5([esc(H.eyebrow)])}
-    <div class="hero5-g"><h1 class="h1-5 xl">${esc(H.headline).replace(', ',',<br class="br5"> ')}</h1><p class="lead5">${esc(H.subtitle)}</p></div></section>
-   <div class="wrap chainlab5"><span class="lab">${esc(H.chainLabel)}</span><span class="chainlab5-h">${esc(COPY.ui.instructions.map)}</span></div>
+   <section class="wrap hero5"><div class="hero5-g top5"><div>${eye5([esc(H.eyebrow)])}
+    <h1 class="h1-5 xl purpose5-h">${esc(P.h1)}</h1></div>
+    <p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p></div></section>
+   <section class="wrap sec2h5"><div class="hero5-g mid5"><h2 class="h1-5">${esc(H.headline)}</h2><ul class="lead5 sm qs5">${H.mapNote.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></div></section>
    <div id="homeMap"></div>
-   <section class="wrap core5">
-    <p class="core5-a">${esc(H.coreLead)}</p>
-    <p class="core5-b">${miss}</p>
-    <p class="nums5">${esc(H.numbers)} <a class="go" href="#record">See the measurement record →</a></p>
-   </section>
-   <section class="wrap doors5">${doors.map(d=>`<a class="door5${d.primary?' pri':''}${d.id==='futures'?' wip':''}" href="#${d.id}">
-     ${d.tag?(d.id==='futures'?wipTag5():`<span class="tag5">${esc(d.tag)}</span>`):''}<b>${esc(d.title)}</b><span>${esc(d.line)}</span>${chev5}</a>`).join('')}</section>
+   <section class="wrap gaps5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.h2)}</h2><p class="sub5">${esc(G.sub)}</p></div><a class="go" href="#gaps">${esc(G.all.replace('{n}',GAPS.length))} →</a></div>
+    <ol class="gaps5-l">${G.items.map((g,i)=>`<li><span class="gaps5-n">${i+1}</span><div><a class="gaps5-t" href="#gaps/${g.id}">${esc(g.t)}</a><p>${esc(g.text)}</p>${g.note?`<p class="gaps5-note">${esc(g.note)}</p>`:''}</div></li>`).join('')}</ol></section>
+   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2>
+    <div class="paths5-g two">${H.paths.items.map(p=>`<a class="path5" href="#${esc(p.to)}"><b>${esc(p.who)}</b><span>${esc(p.line)}</span>${chev5}</a>`).join('')}</div>
+    <p class="cta5-links">${C.buttons.map(b=>`<a class="go" href="#${esc(b.to)}">${esc(b.t)} →</a>`).join('')}<a class="go" href="#contribute">${esc(C.why)} →</a></p></section>
   </div>`;
   mountMap5($('#homeMap',v),{onStop:id=>go(id)});
+}
+
+/* ----- why this project ----- */
+function viewWhy(v){
+  const W=COPY.why,ext=(t,u)=>`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`;
+  v.innerHTML=`<div class="view5 wrap why5">${eye5([esc(W.nav)])}
+   <h1 class="h1-5">${esc(W.h1)}</h1><p class="lead5">${esc(W.lead)}</p>
+   <section class="sec5" id="w-plan"><h2 class="h2-5 sm">${esc(W.plan.h2)}</h2>
+    <ol class="plan5">${W.plan.steps.map((s,i)=>`<li><span class="plan5-n">${i+1}</span><div><b>${s.to?`<a href="#${s.to}">${esc(s.t)}</a>`:esc(s.t)}</b><span>${esc(s.text)}${s.links?' '+s.links.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join(' and ')+'.':''}</span></div></li>`).join('')}</ol>
+    <p class="aim5">${esc(W.plan.aim)}</p></section>
+   <section class="sec5 act5" id="w-add"><h2 class="h2-5 sm">${esc(W.contribute.h2)}</h2><p class="sub5">${esc(W.contribute.text)}</p>
+    <div class="btns5">${W.contribute.buttons.map(b=>ext(b[0],b[1])).join('')}</div><p class="note5">${esc(W.contribute.note)}</p></section>
+   <section class="sec5 act5" id="w-funding"><h2 class="h2-5 sm">${esc(W.funding.h2)}</h2><p class="sub5">${esc(W.funding.text)}</p>
+    <ul class="grants5">${W.funding.grants.map(g=>`<li><div class="grants5-h"><a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)} ↗</a><span class="acc5-c${/^Closes/.test(g.status)?' due5':''}">${esc(g.status)}</span></div><span>${esc(g.fit)}</span></li>`).join('')}</ul>
+    <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></section>
+   <section class="sec5 act5" id="w-authors"><h2 class="h2-5 sm">${esc(W.authors.h2)}</h2><p class="sub5">${esc(W.authors.text)}</p>
+    <div class="btns5">${W.authors.buttons.map(b=>b[1].startsWith('#')?`<a class="btn" href="${esc(b[1])}">${esc(b[0])} →</a>`:ext(b[0],b[1])).join('')}</div></section>
+   <section class="sec5 act5" id="w-community"><h2 class="h2-5 sm">${esc(W.community.h2)} <span class="wip5">${esc(W.community.soon)}</span></h2><p class="sub5">${esc(W.community.text)} ${esc(W.community.until)}</p>
+    <div class="btns5">${ext(W.community.link[0],W.community.link[1])}</div></section>
+  </div>`;
 }
 
 /* ----- evidence overview ----- */
@@ -41,22 +61,24 @@ function viewIndex(v){
   v.innerHTML=`<div class="view5 wrap">${eye5(['Evidence'])}
    <h1 class="h1-5">${esc(E.title)}</h1><p class="lead5">${esc(E.deck)}</p>
    <div class="sec5 s1" id="erows"></div>
-   <p class="note5">${esc(E.legendNote)}</p>
-   <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a></div>
-   <section class="sec5" id="record"><h2 class="h2-5">How often each indicator is measured</h2><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
-    <div class="chart s1" id="rec"></div><p class="note5">Marks show how often a series is published, not how strong it is. The split into blue and grey is the observatory's judgement.</p></section>
+   <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
+   <section class="sec5"><details class="det5" id="record"><summary>${esc(E.coverage.title)}</summary><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
+    <div class="chart s1" id="rec"></div><p class="note5">Marks show how often a series is published, not how strong it is. The split into blue and grey is the observatory's judgement.</p></details></section>
    <details class="ctr5"><summary>${esc(stripArrow5(E.footer.counter))}</summary><p>${esc(E.counter.intro)}</p>
     <ol>${E.counter.items.map(c=>`<li><b>${esc(c.label)}</b><span>${esc(c.text)}</span></li>`).join('')}</ol></details></div>`;
-  evidenceRows($('#erows',v));drawRecord($('#rec',v));
+  evidenceRows($('#erows',v));
+  const rec=$('#record',v);let drawn=false;
+  rec.addEventListener('toggle',()=>{if(rec.open&&!drawn){drawn=true;drawRecord($('#rec',v))}else if(rec.open)window.dispatchEvent(new Event('resize'))});
 }
 
 /* ----- one link ----- */
 function viewLink(v,id){
-  const L=linkById(id),CL=COPY.links[id],i=LINKS.indexOf(L),prev=LINKS[i-1],next=LINKS[i+1];
-  v.innerHTML=`<div class="view5 wrap">
+  const L=linkById(id),CL=COPY.links[id],B=COPY.linkUI.brief,i=LINKS.indexOf(L),prev=LINKS[i-1],next=LINKS[i+1];
+  v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5(id)}
-   <div class="claim5"><div>${eye5([`Link ${L.n} of ${LINKS.length}`,esc(L.name)],HUMAN5.includes(id)?'<span class="hs5tag">Human side</span>':'')}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>${pills5(id)}</div>
-   <section class="sec5 s1" id="cards"></section>
+   <div class="claim5">${eye5([esc(B.bottom),`Link ${L.n} of ${LINKS.length}`,esc(L.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${conf5(id)}
+   <section class="sec5 ev5">${lab5([B.evidence,B.indicators.replace('{n}',L.inds.length)])}<p class="sub5">${esc(COPY.linkUI.instruction)}</p><div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
    ${pn5(prev?[prev.id,prev.name]:['evidence','All links','Back to'],next?[next.id,next.name]:['influence',END.name,'End of the chain'])}</div>`;
   indicatorCards($('#cards',v),id,{sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
@@ -65,38 +87,44 @@ function viewLink(v,id){
 
 /* ----- the end of the chain ----- */
 function viewInfluence(v){
-  const CL=COPY.links.influence,inds=LINKS.flatMap(L=>L.inds.filter(d=>d.recRow==='influence')),last=LINKS[LINKS.length-1];
-  v.innerHTML=`<div class="view5 wrap">
+  const CL=COPY.links.influence,B=COPY.linkUI.brief,inds=LINKS.flatMap(L=>L.inds.filter(d=>d.recRow==='influence')),last=LINKS[LINKS.length-1];
+  v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5('influence')}
-   <div class="claim5"><div>${eye5(['End of the chain',esc(END.name)],'<span class="hs5tag">Human side</span>')}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>${pills5('influence')}</div>
-   <section class="sec5 s1"><div id="cards"></div></section>
+   <div class="claim5">${eye5([esc(B.bottom),'End of the chain',esc(END.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${conf5('influence')}
+   <section class="sec5 ev5">${lab5([B.evidence,inds.length===1?'Nearest measure':B.indicators.replace('{n}',inds.length)])}<div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
-   ${pn5([last.id,last.name],['gaps','The gap','What is missing'])}</div>`;
+   ${pn5([last.id,last.name],['gaps','The measurement agenda','What is missing'])}</div>`;
   indicatorCards($('#cards',v),'influence',{inds,single:inds.length===1});
   insightCards($('#ins',v),'influence');crumbScroll5(v);
 }
 
 /* ----- the measurement record lives on the Evidence page ----- */
-function viewRecord(v){viewIndex(v);setTimeout(()=>{const r=$('#record',v);if(r)r.scrollIntoView({block:'start'})},60)}
+function viewRecord(v){viewIndex(v);const r=$('#record',v);if(r){r.open=true;setTimeout(()=>r.scrollIntoView({block:'start'}),60)}}
 
 /* ----- the gap ----- */
 function viewGaps(v){
-  const G=COPY.gap,st=steps5();
-  const groups=ORDER.slice().sort((a,b)=>st[a]-st[b]||lv(a)-lv(b)).filter(id=>G.items.some(x=>x.link===id));
-  const near=groups.filter(id=>st[id]<=1&&lv(id)<=1),far=groups.filter(id=>!near.includes(id)),nFar=G.items.filter(x=>far.includes(x.link)).length;
-  const grp=id=>`<div class="accg5" id="gg-${id}"><div class="accg5-h">${lineGlyph5(lv(id),34,10)}<a href="#${id}">${esc(nameOf(id))}</a></div>
-     ${G.items.filter(x=>x.link===id).map(x=>`<div class="acc5-i"><button type="button" class="acc5-b" aria-expanded="false" aria-controls="gp${x.i}"><span class="acc5-t">${esc(x.title)}</span><span class="acc5-m"><span class="acc5-c">${esc(x.chip)}</span></span><i aria-hidden="true"></i></button>
-      <div class="acc5-p" id="gp${x.i}" hidden><dl><div><dt>${esc(G.list.heads.why)}</dt><dd>${esc(x.why)}</dd></div><div><dt>${esc(G.list.heads.what)}</dt><dd>${esc(x.what)}</dd></div><div><dt>${esc(G.list.heads.closest)}</dt><dd>${esc(x.closest)}</dd></div></dl></div></div>`).join('')}</div>`;
-  v.innerHTML=`<div class="view5 wrap">${eye5(['The gap'])}
+  const G=COPY.gap,st=steps5(),PR=G.priority,CT=G.cta;
+  const items=G.items.slice().sort((a,b)=>st[a.link]-st[b.link]||lv(a.link)-lv(b.link));
+  const seen={};
+  const ctas=x=>{const k=GAPPRI[x.i]||'later',list=k==='now'?[CT.fund,CT.study]:k==='method'?[CT.study,CT.review]:[CT.ind];
+    return list.map(c=>`<a class="go" href="${esc(c[1]+encodeURIComponent((x.old||x.title).slice(0,80)))}" target="_blank" rel="noopener">${esc(c[0])} ↗</a>`).join('')};
+  const row=x=>{const first=!seen[x.link];seen[x.link]=1;
+    return `<div class="acc5-i gap5-i" id="gi-${x.i}" data-link="${x.link}"${first?` data-sub="gaps/${x.link}"`:''}><button type="button" class="acc5-b" aria-expanded="false" aria-controls="gp${x.i}"><span class="acc5-t">${esc(x.title)}</span><span class="acc5-m"><span class="gap5-step">${lineGlyph5(lv(x.link),26,10)}${esc(nameOf(x.link))}</span></span><i aria-hidden="true"></i></button>
+      <div class="acc5-p" id="gp${x.i}" hidden><dl><div><dt>${esc(G.list.heads.why)}</dt><dd>${esc(x.why)}</dd></div><div><dt>${esc(G.list.heads.what)}</dt><dd>${esc(x.what)}</dd></div><div><dt>${esc(G.list.heads.closest)}</dt><dd><span class="acc5-c">${esc(x.chip)}</span> ${esc(x.closest)}</dd></div></dl>
+       <p class="gap5-cta">${ctas(x)}<a class="go" href="#${x.link}">${esc(G.list.open.replace('{link}',nameOf(x.link)))}</a></p></div></div>`};
+  const group=k=>{const xs=items.filter(x=>(GAPPRI[x.i]||'later')===k);if(!xs.length)return '';
+    const body=`<div class="accg5-h gap5-h"><span class="pri5 pri5-${k}">${esc(PR[k].t)}</span><span class="gap5-n">${xs.length}</span><span class="gap5-d">${esc(PR[k].d)}</span></div>${xs.map(row).join('')}`;
+    return k==='later'?`<details class="more5 gap5-g" id="gg-${k}"><summary>${esc(PR[k].t)} · ${xs.length} measures, further from the outcome</summary>${body}</details>`:`<div class="accg5 gap5-g" id="gg-${k}">${body}</div>`};
+  v.innerHTML=`<div class="view5 wrap">${eye5([esc(G.eyebrow)])}
    <h1 class="h1-5">${esc(G.h1)}</h1><p class="lead5">${esc(G.sentence)}</p>
-   <section class="sec5"><h2 class="h2-5">${esc(G.matrix.title)}</h2><p class="sub5">${esc(G.matrix.howTo)}</p>
-    <ol class="hops5" aria-label="Links from Human influence along the chain">${[[4,['capability']],[3,['adoption']],[2,['handover','work']],[1,['share','skills','culture','institutions']],[0,['influence']]].map(([k,ids])=>`<li><span class="hops5-n">${k}</span><span>${ids.map(x=>esc(nameOf(x))).join(', ')}</span></li>`).join('')}</ol>
-    <div id="gm" class="s1"></div></section>
    <section class="sec5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.list.title)}</h2><p class="sub5">${esc(G.list.sub)} ${esc(COPY.ui.instructions.gaps)}</p></div><button type="button" class="btn ghost" id="expAll">${esc(G.list.expandAll)}</button></div>
-    <div class="acc5" id="gacc">${near.map(grp).join('')}<details class="more5"><summary>${nFar} more, further from the outcome</summary>${far.map(grp).join('')}</details></div></section></div>`;
-  gapMatrix($('#gm',v),{onPick:id=>{const g=document.getElementById('gg-'+id);if(!g)return;const d=g.closest('details');if(d)d.open=true;
-    $$('.acc5-b',g).forEach(x=>{x.setAttribute('aria-expanded','true');document.getElementById(x.getAttribute('aria-controls')).hidden=false});
-    const rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;g.scrollIntoView({behavior:rm?'auto':'smooth',block:'start'})}});
+    <div class="acc5" id="gacc">${['now','method','later'].map(group).join('')}</div></section>
+   <section class="sec5"><details class="det5" id="gg-matrix"><summary>${esc(G.ranking.title)}</summary><p class="sub5">${esc(G.ranking.sub)}</p>
+    <ol class="hops5" aria-label="Links from Human influence along the chain">${[[4,['capability']],[3,['adoption']],[2,['handover','work']],[1,['share','skills','culture','institutions']],[0,['influence']]].map(([k,ids])=>`<li><span class="hops5-n">${k}</span><span>${ids.map(x=>esc(nameOf(x))).join(', ')}</span></li>`).join('')}</ol>
+    <div id="gm" class="s1"></div></details></section></div>`;
+  gapMatrix($('#gm',v),{onPick:id=>{const t=$(`.gap5-i[data-link="${id}"]`,v);if(t)openAt5(t)}});
+  $('#gg-matrix',v).addEventListener('toggle',()=>window.dispatchEvent(new Event('resize')));
   const acc=$('#gacc',v);wireAcc5(acc);
   $('#expAll',v).addEventListener('click',e=>{const b=e.currentTarget,open=b.dataset.open!=='1';b.dataset.open=open?'1':'';b.textContent=open?G.list.collapseAll:G.list.expandAll;
     if(open){const d=$('details.more5',acc);if(d)d.open=true}
@@ -157,19 +185,22 @@ function viewMethod(v){
    <h1 class="h1-5">${esc(M.title)}</h1><p class="lead5">${esc(rw('Method deck'))}</p>
    <nav class="toc5" aria-label="On this page">${secs.map(s=>`<a href="#method" data-to="m-${s[0]}">${s[1]}</a>`).join('')}</nav>
    <section class="sec5" id="m-status"><div class="callout5"><b>${esc(M.headings.status)}</b><p>${esc(rw('Status of the figures'))}</p></div></section>
-   <section class="sec5" id="m-scales"><div class="two5">
+   <section class="sec5" id="m-scales"><p class="sub5 fam5">${esc(M.headings.families)}</p><div class="two5">
     <div><h2 class="h2-5 sm">${esc(M.headings.measured)}</h2><p class="sub5">${esc(rw('How well a link is measured'))}</p>
      <ul class="scale5">${[[4,'Repeated, direct measurement by bodies independent of the AI developers, of something that is about AI by construction.'],[3,'Repeated and direct, but measured by the company whose product is involved, or with the cause in dispute.'],[2,'Measured repeatedly and directly, but the change cannot be tied to AI.'],[1,'Single studies, or counts of disclosures that mostly follow reporting rules.'],[0,'Nothing measures it directly.']].map(s=>`<li>${lineGlyph5(s[0],44,12)}<div><b>${LEVELWORD[s[0]]}</b><span>${s[1]}</span></div></li>`).join('')}</ul></div>
     <div><h2 class="h2-5 sm">${esc(M.headings.change)}</h2><p class="sub5">${esc(M.changeScale.intro)}</p>
-     <ul class="scale5">${M.changeScale.levels.map(s=>`<li><span class="scale5-d">${sigDot5(s.key==='?'?'?':+s.key)}</span><div><b>${esc(s.word)}</b><span>${esc(s.def)}</span></div></li>`).join('')}</ul></div></div></section>
-   <section class="sec5" id="m-ratings"><h2 class="h2-5 sm">${esc(M.headings.ratings)}</h2><p class="sub5">Four questions about the best evidence for each link. One person's judgement; no second, independent rating yet.</p>
+     <ul class="scale5">${M.changeScale.levels.map(s=>`<li><span class="scale5-d">${sigDot5(s.key==='?'?'?':+s.key)}</span><div><b>${esc(s.word)}</b><span>${esc(s.def)}</span></div></li>`).join('')}</ul></div></div>
+    <div class="pri5-sec"><h2 class="h2-5 sm">${esc(M.headings.priority)}</h2><p class="sub5">${esc(M.headings.priorityIntro)}</p>
+     <ul class="scale5 pri5-l">${['now','method','later'].map(k=>`<li><span class="pri5 pri5-${k}">${esc(COPY.gap.priority[k].t)}</span><div><span>${esc(COPY.gap.priority[k].d)}</span></div></li>`).join('')}</ul></div></section>
+   <section class="sec5" id="m-ratings"><h2 class="h2-5 sm">${esc(M.headings.ratings)}</h2><p class="sub5">Four questions about the best evidence for each link. One person's judgement; no second, independent rating yet. <a class="go" href="${esc(M.headings.challengeUrl)}" target="_blank" rel="noopener">${esc(M.headings.challenge)} ↗</a></p>
+    <p class="sub5 crit5"><b>${esc(M.headings.criteria)}.</b> ${esc(M.headings.criteriaText)}</p>
     <div class="tsc s1"><table class="rt rub"><thead><tr><th>Link</th><th>Repeated?</th><th>Direct?</th><th>Independent of the firms involved?</th><th>Tied to AI?</th><th>Rating</th></tr></thead><tbody>${LINKS.map(l=>`<tr><td><a href="#${l.id}" style="color:inherit;font-weight:650">${esc(l.name)}</a></td>${RUBRIC[l.id].map((c,i)=>`<td data-h="${['Repeated?','Direct?','Independent?','Tied to AI?'][i]}" class="${c==='yes'?'y':'n'}">${esc(c)}</td>`).join('')}<td data-h="Rating" style="white-space:nowrap">${lineGlyph5(l.level,40,12)}</td></tr>`).join('')}<tr><td style="font-weight:650">${esc(END.name)}</td><td class="n" colspan="4">nothing measures it directly</td><td>${lineGlyph5(0,40,12)}</td></tr></tbody></table></div></section>
    <section class="sec5" id="m-charts"><div class="two5"><div><h2 class="h2-5 sm">${esc(M.headings.charts)}</h2>
      <ul class="scale5">${liD('<i class="sw" style="background:var(--s1)"></i>Blue and grey are observed.','Darkest for the series the chart is about. A hollow marker is a weaker point: a secondary source, a changed definition or an unverified figure.')}${liD('<i class="sw" style="background:var(--p2)"></i>Orange is forecast.','Forecasts and model scenarios are orange and dashed. Orange is never used for measured data.')}${liD('<i class="sw hat"></i>Hatching means unmeasured.','On the map and in the record, hatched areas have no direct reading.')}${liD('<i class="sw" style="background:var(--sg3)"></i>Teal is a judgement.','Teal shows what the data show, an observatory judgement. It appears only on the Evidence pages.')}</ul></div>
     <div><h2 class="h2-5 sm">${esc(M.headings.tags)}</h2><ul class="scale5">${Object.entries({direct:'Read at the publisher\'s own page or data file by the AI assistant that compiled this draft.',primary:'From the publisher\'s page or paper, read through an automated summary.',company:'Published by the company whose product is measured.',secondary:'From press coverage or another third party quoting the source.',derived:'Arithmetic by the observatory on published figures.'}).map(([k,t])=>`<li><div><span class="chip">${esc(TAGS[k])}</span><span>${esc(t)}</span></div></li>`).join('')}</ul>
      <p class="sub5" style="margin-top:18px">Caveat chips:</p><p class="chips5">${['oneoff','cause','company','defs','unverified','stale','policy','advocacy','forecast'].map(t=>caveatChip(t)).join('')}</p></div></div></section>
    <section class="sec5" id="m-limits"><h2 class="h2-5 sm">${esc(M.headings.limits)}</h2>
-    <ul class="scale5 lim5">${li('Mostly American.',esc(rw('Known limits: Mostly American')))}${li('The map shows stops, not causes.','No indicator measures whether one link causes the next. The arrows, and the choice of links, come from the theory. The paper also expects the branches to reinforce each other; the map does not draw those links.')}${li('Skills and judgement is an addition.','It comes from the deskilling literature and the "erosion" layer in Chooi, Lee and Li (2026), not from the three systems in Kulveit and co-authors.')}${li('Leans on AI companies.',esc(rw('Known limits: Leans on AI companies')))}${li('Ratings and signposts are judgements.','The measurement ratings, the "what the data show" colours and the futures signposts are the observatory\'s reading, not a model\'s output.')}${li('Not yet checked by a person.','The research and figures were compiled with AI research assistance. "Read at source (AI-assisted)" means the AI assistant read the publisher\'s page itself.')}</ul></section>
+    <ul class="scale5 lim5">${li('Mostly American.',esc(rw('Known limits: Mostly American')))}${li('The map shows stops, not causes.','No indicator measures whether one link causes the next. The arrows, and the choice of links, come from the theory. The paper also expects the branches to reinforce each other; the map does not draw those links.')}${li('Skills and judgement is an addition.','It comes from the deskilling literature and the "erosion" layer in Chooi, Lee and Li (2026), not from the three systems in Kulveit and co-authors.')}${li('Leans on AI companies.',esc(rw('Known limits: Leans on AI companies')))}${li('Ratings and signposts are judgements.','The measurement ratings, the "what the data show" colours and the futures signposts are the observatory\'s reading, not a model\'s output.')}${li('Being checked.','AI tools helped find and summarise the sources. Headline figures are being checked against primary sources before v1.0. "Read at source (AI-assisted)" means the AI assistant read the publisher\'s page itself.')}</ul></section>
    <section class="sec5" id="m-more"><details class="det5"><summary>${esc(M.headings.stops)}</summary><p class="sub5">${esc(rw('What is counted at each stop'))}</p>
      <div class="tsc"><table class="rt defs"><thead><tr><th>Stop</th><th>What is counted</th><th>What the argument needs</th></tr></thead><tbody>${ORDER.map(id=>`<tr><td style="font-weight:650;white-space:nowrap"><a href="#${id}" style="color:inherit">${esc(nameOf(id))}</a></td><td data-h="What is counted">${esc(DEFS[id][0])}</td><td data-h="What the argument needs">${esc(DEFS[id][1])}</td></tr>`).join('')}</tbody></table></div></details>
     <details class="det5"><summary>${esc(M.headings.terms)}</summary><dl class="gloss">${GLOSSARY.map(g=>`<div><dt>${esc(g[0])}</dt><dd>${esc(g[1])}</dd></div>`).join('')}</dl></details>

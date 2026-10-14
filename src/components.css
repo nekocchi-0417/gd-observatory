@@ -7,7 +7,7 @@
      Light steps OKLCH L .40/.515/.625/.735 (ordinal check passes; lightest 2.04:1 on --paper). */
   --sg4:#00544d; --sg3:#00786e; --sg2:#329a8f; --sg1:#6dbab0; --sg0:#8f9ca8;
   /* human side (Skills and judgement, Human influence): an annotation colour, never a data colour */
-  --hs:#654a96; --hs-soft:#eee8f6; --hs-line:#d6cbea;
+  --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft);
   /* spacing and type (17_ux_spec §4) */
   --gap-section:clamp(72px,9vw,128px); --gap-section-sm:clamp(56px,7vw,96px); --gap-hero:clamp(48px,6vw,80px);
   --gap-head:28px; --gap-stack:16px; --gap-tight:8px; --pad-card:clamp(20px,2.4vw,32px); --gutter:clamp(16px,4vw,40px);
@@ -17,10 +17,10 @@
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   /* reversed: more change = lighter = more contrast on the dark surface. Lightest-contrast step 3.0:1 on --paper. */
   --sg4:#7ee7d9; --sg3:#47c3b5; --sg2:#329a8f; --sg1:#2e6c65; --sg0:#66747f;
-  --hs:#bba6e4; --hs-soft:#2a2240; --hs-line:#43375f; } }
+  --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft); } }
 :root[data-theme="dark"]{
   --sg4:#7ee7d9; --sg3:#47c3b5; --sg2:#329a8f; --sg1:#2e6c65; --sg0:#66747f;
-  --hs:#bba6e4; --hs-soft:#2a2240; --hs-line:#43375f; }
+  --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft); }
 
 .sr5{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .hs5tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-display);font-size:11.5px;font-weight:600;color:var(--hs);letter-spacing:.01em;white-space:nowrap}
@@ -73,12 +73,17 @@
 .rs5 .nd5{font-size:9.5px;letter-spacing:.1em;fill:var(--ink-2)}
 .rb5{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;padding-top:20px}
 .rb5 li{display:flex;gap:8px;align-items:flex-start;font-size:14px;font-weight:600;line-height:1.25}
-.rb5 svg{flex:0 0 auto;margin-top:1px}
+.rb5-m{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;font-size:12px;font-weight:700;line-height:1;margin-top:-1px}
+.rb5-2 .rb5-m{background:var(--accent);color:var(--surface)}
+.rb5-1 .rb5-m{background:var(--accent-soft);color:var(--accent)}
+.rb5-0 .rb5-m{border:1.5px solid var(--ink-3);color:var(--ink-3)}
+.rb5-0 .rb5-l{color:var(--ink-2)}
+.md5-head h3:focus{outline:none}
 .rb5 small{display:block;font-weight:400;color:var(--ink-3);font-size:12.5px;margin-top:2px}
 .md5-note{margin-top:14px;font-family:var(--f-text);font-size:15.5px;line-height:1.45;color:var(--ink-2)}
 /* phone list */
 .mlist5{display:none;list-style:none;margin:0;padding:6px 0 4px}
-.ml5{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:0 14px;align-items:center;padding:0 16px;min-height:54px}
+.ml5{display:grid;grid-template-columns:20px minmax(0,1fr);gap:0 14px;align-items:start;padding:0 16px;min-height:52px}
 .ml5-line{align-self:stretch;position:relative}
 .ml5-line::before{content:"";position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%)}
 .ml5[data-l="4"] .ml5-line::before{width:7px;background:var(--ev4)}
@@ -87,7 +92,7 @@
 .ml5[data-l="1"] .ml5-line::before{width:6px;background:radial-gradient(circle,var(--ev1) 2.4px,transparent 2.8px) center 2px/6px 10px repeat-y}
 .ml5[data-l="0"] .ml5-line::before{width:4px;background:radial-gradient(circle,var(--ev0) 1.2px,transparent 1.5px) center 0/4px 7px repeat-y}
 .ml5-main{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;padding:13px 0}
-.ml5-name{font-weight:650;font-size:15.5px;color:var(--ink);text-decoration:none}
+.ml5-name{font-weight:650;font-size:15.5px;color:var(--ink)}
 .ml5-why{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--ink-2);padding:0 2px 0 8px;min-height:44px;white-space:nowrap}
 .ml5-why .ib5{width:16px;height:16px;font-size:11px}
 .ml5-why:hover{color:var(--ink);text-decoration:underline}
@@ -231,3 +236,9 @@
 .fig5-n{font-size:12.5px;color:var(--ink-3);margin-top:8px}
 @media (prefers-reduced-motion:reduce){.md5,.er5,.er5::before,.ic5,.in5-row i::before,.in5-row i::after{transition:none!important}}
 
+
+/* indicator grid: three cards by default, the rest behind one button */
+.ic5[hidden]{display:none}
+.ic5-all{margin-top:12px}
+.ic5-all[hidden]{display:none}
+.ic5-dir{font-size:12.5px;color:var(--ink-2);margin-right:4px}

@@ -57,7 +57,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .nav a:hover{color:var(--ink);background:var(--surface-2)}
 .nav a[aria-current="page"]{color:var(--ink)}
 .nav a[aria-current="page"]::after{content:"";position:absolute;left:10px;right:10px;bottom:-7px;height:2px;background:var(--ink)}
-@media (max-width:640px){.mark span{font-size:13px}.nav a{padding:5px 7px;font-size:13px}.nav a[aria-current="page"]::after{bottom:0;left:7px;right:7px}}
+@media (max-width:640px){.mark span{font-size:13px}.nav a{padding:5px 7px;font-size:13px}.nav .wip5{display:none}.nav a[aria-current="page"]::after{bottom:0;left:7px;right:7px}}
 
 /* ---------- shared view chrome ---------- */
 main{min-height:70vh;outline:0}
@@ -449,3 +449,5 @@ table.trk td:last-child{font-family:var(--f-text);font-size:16px;line-height:1.4
 footer.ft{border-top:1px solid var(--rule);padding-block:22px 40px;font-size:13px;color:var(--ink-2)}
 footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+@media (max-width:420px){.nav{gap:0}.nav a{padding:5px 5px;font-size:12.5px}}
