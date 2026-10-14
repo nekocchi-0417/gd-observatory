@@ -135,12 +135,6 @@ const DEFS={capability:['How long a software task leading AI systems can finish,
  culture:['How much of what is published is classed as AI-made','How much of what people read, watch and hear is AI-made, and whether it changes what they believe'],
  institutions:['How many AI uses governments disclose, and how many errors courts catch','How many decisions AI makes, and how often an official overrules it'],
  influence:['Nothing directly. One poll asks whether people feel in control of AI',"Whether people's preferences still change what governments, firms and media do"]};
-const COUNTER=[
- ['The gap for young workers closes','Jobs for 22 to 25 year olds in AI-exposed occupations return to the path of their less-exposed peers.'],
- ["Workers' share recovers",'Its four-quarter average climbs back above the 2025 level.'],
- ['Skills hold up','A repeated test finds unaided ability stable among heavy users of AI.'],
- ['Officials overrule the machine','Published override rates show officials changing a substantial share of AI recommendations.'],
- ['Attention stays with people','AI-made work stays a small share of what people listen to and read, even as it fills the supply.']];
 const GLOSSARY=[
  ['Leading or frontier AI system','The most capable AI models available at a given time.'],
  ['Task length at 50% success','The length of task, counted as the time a skilled person would need, that an AI system completes successfully half the time. It measures difficulty, not how long the AI runs.'],

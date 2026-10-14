@@ -165,33 +165,7 @@ const COPY={
   "coverage": {"title": "Measurement coverage: how often each indicator is measured", "cta": "Know a better indicator for any link?", "ctaLink": "Propose it"},
   "footer": {
    "record": "The measurement record: dated readings since 2021 →",
-   "counter": "What would count against the theory →",
    "toGap": "Why the human end is uncertain →"
-  },
-  "counter": {
-   "intro": "The theory can fail. Each of these would count against it.",
-   "items": [
-    {
-     "label": "Young workers catch up",
-     "text": "Jobs for 22 to 25 year olds in exposed fields rejoin their peers' path."
-    },
-    {
-     "label": "Workers' share recovers",
-     "text": "Its four-quarter average climbs back above the 2025 level."
-    },
-    {
-     "label": "Skills hold up",
-     "text": "Repeated tests find unaided ability stable among heavy AI users, as one Japanese clinic has."
-    },
-    {
-     "label": "Officials overrule the machine",
-     "text": "Published override rates show officials changing a substantial share of AI advice."
-    },
-    {
-     "label": "Attention stays with people",
-     "text": "AI-made work stays a small share of what people read and hear."
-    }
-   ]
   }
  },
  "record": {

@@ -777,17 +777,10 @@ mark.hs5m{color:inherit;background:linear-gradient(transparent 58%,var(--hs-line
 /* ---------- evidence, record ---------- */
 .foot5{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:28px}
 .foot5 .go,.note5 .go{white-space:normal}
-details.ctr5{margin-top:10px;border-top:1px solid var(--rule);padding-top:4px}
-details.ctr5 summary,details.det5 summary{cursor:pointer;padding:16px 0;font-size:16px;font-weight:650;color:var(--ink);list-style:none;display:flex;align-items:center;gap:10px}
-details.ctr5 summary::-webkit-details-marker,details.det5 summary::-webkit-details-marker{display:none}
-details.ctr5 summary::before,details.det5 summary::before{content:"+";display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid var(--rule);border-radius:50%;font-size:14px;font-weight:500;color:var(--ink-2);flex:0 0 auto}
-details[open].ctr5 summary::before,details[open].det5 summary::before{content:"−"}
-details.ctr5>p{font-size:14.5px;color:var(--ink-2);margin-bottom:10px}
-details.ctr5 ol{margin:0;padding:0;list-style:none;counter-reset:c}
-details.ctr5 li{display:grid;grid-template-columns:28px minmax(0,220px) minmax(0,1fr);gap:4px 16px;padding:12px 0;border-top:1px solid var(--grid);counter-increment:c}
-details.ctr5 li::before{content:counter(c);font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
-details.ctr5 li b{font-size:15px}
-details.ctr5 li span{font-family:var(--f-text);font-size:15.5px;color:var(--ink-2);line-height:1.45}
+details.det5 summary{cursor:pointer;padding:16px 0;font-size:16px;font-weight:650;color:var(--ink);list-style:none;display:flex;align-items:center;gap:10px}
+details.det5 summary::-webkit-details-marker{display:none}
+details.det5 summary::before{content:"+";display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid var(--rule);border-radius:50%;font-size:14px;font-weight:500;color:var(--ink-2);flex:0 0 auto}
+details[open].det5 summary::before{content:"−"}
 
 /* ---------- link pages ---------- */
 .crumb5{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--ink-3);margin-bottom:28px}
@@ -891,8 +884,6 @@ details.det5[open]{padding-bottom:24px}
   .acc5-b{grid-template-columns:minmax(0,1fr) 14px}
   .acc5-m{grid-column:1;grid-row:2;justify-content:flex-start}
   .acc5-b i{grid-column:2;grid-row:1/3}
-  details.ctr5 li{grid-template-columns:22px minmax(0,1fr)}
-  details.ctr5 li span{grid-column:2}
   .pills5{grid-template-columns:1fr}
   .pn5 a b{font-size:16px}
 }
@@ -923,10 +914,10 @@ details.more5>.accg5:first-of-type{margin-top:8px}
 .in5 header .cav5w{margin-left:auto}
 .cav5.why5{min-width:20px;justify-content:center}
 /* one disclosure pattern: label left, + on the right */
-details.ctr5 summary::before,details.det5 summary::before,details.more5>summary::before{content:none}
-details.ctr5 summary,details.det5 summary,details.more5>summary{justify-content:space-between}
-details.ctr5 summary::after,details.det5 summary::after,details.more5>summary::after,details.ic5-more summary::after{content:"+";font-size:18px;font-weight:400;color:var(--ink-2);margin-left:16px}
-details[open].ctr5 summary::after,details[open].det5 summary::after,details[open].more5>summary::after,details[open].ic5-more summary::after{content:"−"}
+details.det5 summary::before,details.more5>summary::before{content:none}
+details.det5 summary,details.more5>summary{justify-content:space-between}
+details.det5 summary::after,details.more5>summary::after,details.ic5-more summary::after{content:"+";font-size:18px;font-weight:400;color:var(--ink-2);margin-left:16px}
+details[open].det5 summary::after,details[open].more5>summary::after,details[open].ic5-more summary::after{content:"−"}
 details.ic5-more summary{list-style:none;display:flex;justify-content:space-between;width:auto}
 details.ic5-more summary::-webkit-details-marker{display:none}
 /* phone header: brand row, then one scrolling row of sections */
@@ -2225,12 +2216,6 @@ const DEFS={capability:['How long a software task leading AI systems can finish,
  culture:['How much of what is published is classed as AI-made','How much of what people read, watch and hear is AI-made, and whether it changes what they believe'],
  institutions:['How many AI uses governments disclose, and how many errors courts catch','How many decisions AI makes, and how often an official overrules it'],
  influence:['Nothing directly. One poll asks whether people feel in control of AI',"Whether people's preferences still change what governments, firms and media do"]};
-const COUNTER=[
- ['The gap for young workers closes','Jobs for 22 to 25 year olds in AI-exposed occupations return to the path of their less-exposed peers.'],
- ["Workers' share recovers",'Its four-quarter average climbs back above the 2025 level.'],
- ['Skills hold up','A repeated test finds unaided ability stable among heavy users of AI.'],
- ['Officials overrule the machine','Published override rates show officials changing a substantial share of AI recommendations.'],
- ['Attention stays with people','AI-made work stays a small share of what people listen to and read, even as it fills the supply.']];
 const GLOSSARY=[
  ['Leading or frontier AI system','The most capable AI models available at a given time.'],
  ['Task length at 50% success','The length of task, counted as the time a skilled person would need, that an AI system completes successfully half the time. It measures difficulty, not how long the AI runs.'],
@@ -2417,33 +2402,7 @@ const COPY={
   "coverage": {"title": "Measurement coverage: how often each indicator is measured", "cta": "Know a better indicator for any link?", "ctaLink": "Propose it"},
   "footer": {
    "record": "The measurement record: dated readings since 2021 →",
-   "counter": "What would count against the theory →",
    "toGap": "Why the human end is uncertain →"
-  },
-  "counter": {
-   "intro": "The theory can fail. Each of these would count against it.",
-   "items": [
-    {
-     "label": "Young workers catch up",
-     "text": "Jobs for 22 to 25 year olds in exposed fields rejoin their peers' path."
-    },
-    {
-     "label": "Workers' share recovers",
-     "text": "Its four-quarter average climbs back above the 2025 level."
-    },
-    {
-     "label": "Skills hold up",
-     "text": "Repeated tests find unaided ability stable among heavy AI users, as one Japanese clinic has."
-    },
-    {
-     "label": "Officials overrule the machine",
-     "text": "Published override rates show officials changing a substantial share of AI advice."
-    },
-    {
-     "label": "Attention stays with people",
-     "text": "AI-made work stays a small share of what people read and hear."
-    }
-   ]
   }
  },
  "record": {
@@ -4256,7 +4215,6 @@ function futuresCard5(el,o){
    ====================================================================================== */
 const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draft5" aria-describedby="drtip">${esc(COPY.draftChip.label)}</button><span class="cav5tip" role="tooltip" id="drtip">${esc(COPY.draftChip.tooltip)} <a href="#method">Method</a></span></span>`;
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
-const stripArrow5=t=>String(t).replace(/\s*→\s*$/,'');
 const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
 const verify5=()=>`<div class="verify5"><b>Draft source status</b><span>Check sources before citing. Headline figures are being verified for v1.0.</span><a class="go" href="https://github.com/nekocchi-0417/gd-observatory/blob/main/research/checklist/handcheck.csv" target="_blank" rel="noopener">Verification checklist ↗</a></div>`;
 /* the confidence block: the two ratings, each with its one-line reason */
@@ -4314,9 +4272,7 @@ function viewIndex(v){
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
    <section class="sec5"><details class="det5" id="record"><summary>${esc(E.coverage.title)}</summary><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
-    <div class="chart s1" id="rec"></div><p class="note5">Marks show how often a series is published, not how strong it is. The split into blue and grey is the observatory's judgement.</p></details></section>
-   <details class="ctr5"><summary>${esc(stripArrow5(E.footer.counter))}</summary><p>${esc(E.counter.intro)}</p>
-    <ol>${E.counter.items.map(c=>`<li><b>${esc(c.label)}</b><span>${esc(c.text)}</span></li>`).join('')}</ol></details></div>`;
+    <div class="chart s1" id="rec"></div><p class="note5">Marks show how often a series is published, not how strong it is. The split into blue and grey is the observatory's judgement.</p></details></section></div>`;
   evidenceRows($('#erows',v));
   const rec=$('#record',v);let drawn=false;
   rec.addEventListener('toggle',()=>{if(rec.open&&!drawn){drawn=true;drawRecord($('#rec',v))}else if(rec.open)window.dispatchEvent(new Event('resize'))});

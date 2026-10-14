@@ -37,6 +37,7 @@ This folder holds the notes and reviews behind the site, so every figure and rat
 | `09_design_critique.md`, `11_design_critique_v3.md`, `15_design_critique_v4.md` | Design reviews from screenshots |
 | `13_redteam.md` | Red-team review of the framing and claims |
 | `17_ux_spec.md` | The readability spec behind the current version: one message per page, detail one click deeper |
+| [`18_counterevidence_pending_review.md`](reviews/18_counterevidence_pending_review.md) | Withdrawn counter-evidence proposals and their origin; marked **To be verified** |
 
 ### `landscape/`: review of AI and human agency, skills and judgement (review 3.0)
 
