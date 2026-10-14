@@ -59,7 +59,7 @@ function viewIndex(v){
    ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
-   <section class="sec5"><h2 class="h2-5 sm">A smaller set to verify</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. Additional sources and earlier chart extractions are held back from the summaries until reviewed.</p><p class="review-links"><a class="go" href="#library">Sources awaiting review →</a><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
+   <section class="sec5"><h2 class="h2-5 sm">A focused selection</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. See Methods for the selection criteria.</p><p class="review-links"><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
   evidenceRows($('#erows',v));
 }
 

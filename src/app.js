@@ -50,10 +50,14 @@ function render(id){
   clearInterval(tourTimer);tourTimer=null;
   const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0==='home'?'map':base0;
   const source=ORDER.includes(base)?SELECTED_EVIDENCE[base].sources.find(s=>s.id===ind||(s.legacy||[]).includes(ind)):null;
-  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
+  // Retired review pages and unselected indicator links lead back to public evidence.
+  if(['library','review'].includes(base)||(ORDER.includes(base)&&ind&&!source)){
+    const target=ORDER.includes(base)?base:ORDER.includes(ind)?ind:'evidence';
+    try{history.replaceState(null,'','#'+target)}catch(e){}
+    render(target);return;
+  }
+  if(linkById(base)||base==='influence'){if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
   else if(base==='details')viewEvidenceDetails(v,ind);
-  else if(base==='library')viewLibrary(v,ind);
-  else if(base==='review')viewSourceMethod(v);
   else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);

@@ -42,12 +42,13 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
    assert.match(await page.locator('.verify5').innerText(),/Awaiting human review/);
    assert.equal(await page.locator('a[href^="#review"]').count(),0);
    await page.goto(PAGE+'#library/skills');
-   assert.equal(await page.locator('.chart').count(),0);
+   assert.equal(await page.locator('.library6').count(),0);
+   assert.equal(await page.locator('h1').innerText(),topics.skills.h1);
    assert.match(await page.locator('.verify5').innerText(),/Awaiting human review/);
-   await page.goto(PAGE+'#skills/literacy');assert.equal(await page.locator('.library6 h1').innerText(),'Working evidence library');
+   await page.goto(PAGE+'#skills/literacy');assert.equal(await page.locator('h1').innerText(),topics.skills.h1);
    await page.goto(PAGE+'#skills/bastani');assert.equal(await page.locator('#source-bastani').count(),1);
    await page.goto(PAGE+'#review/skills');await page.waitForTimeout(500);assert.equal(await page.locator('[data-review]').count(),0);
-   await page.goto(PAGE+'#method');assert.equal(await page.locator('[href="pdf-source-crosswalk.html"]').count(),1);
+   await page.goto(PAGE+'#method');assert.equal(await page.locator('[href="pdf-source-crosswalk.html"]').count(),0);
    await page.goto(PAGE+'#capability');await page.locator('a[href="#method/selection"]').click();
    assert.match(await page.locator('#m-selection').innerText(),/Added value/);
    await context.close();console.log(`Passed ${width}px ${colorScheme}`);

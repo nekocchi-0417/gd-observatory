@@ -1303,7 +1303,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   <nav class="nav" aria-label="Sections"><a href="#home" title="Dashboard overview">Home</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#futures" title="Scenario directions and adjacent projects">Futures <span class="wip5">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
-<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#library">Awaiting review</a> · <a href="#method">Method and sources</a></span></div></footer>
+<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#method">Method and sources</a></span></div></footer>
 <script>
 /* ---------- small chart kit: line, bars, columns, stack rows, dumbbell, spark ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -2459,7 +2459,7 @@ const COPY={
  "coverage": {
   "title": "Where better measurement is needed",
   "takeaway": "The biggest gaps are in skills, government decisions and human influence.",
-  "note": "Provisional ratings. Colour shows measurement coverage, not risk.",
+  "note": "Provisional, AI-assisted ratings of measurement coverage, not risk. Relevant research may be missing.",
   "bands": {
    "major": {"label": "Major gaps", "short": "Major gaps", "description": "Few direct measures"},
    "partial": {"label": "Partial coverage", "short": "Partial coverage", "description": "Narrow or indirect measures"},
@@ -4694,10 +4694,14 @@ function render(id){
   clearInterval(tourTimer);tourTimer=null;
   const v=$('#view');current=id;const [base0,ind]=String(id).split('/'),base=base0==='why'?'contribute':base0==='home'?'map':base0;
   const source=ORDER.includes(base)?SELECTED_EVIDENCE[base].sources.find(s=>s.id===ind||(s.legacy||[]).includes(ind)):null;
-  if(linkById(base)||base==='influence'){if(ind&&!source)viewLibrary(v,base);else if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
+  // Retired review pages and unselected indicator links lead back to public evidence.
+  if(['library','review'].includes(base)||(ORDER.includes(base)&&ind&&!source)){
+    const target=ORDER.includes(base)?base:ORDER.includes(ind)?ind:'evidence';
+    try{history.replaceState(null,'','#'+target)}catch(e){}
+    render(target);return;
+  }
+  if(linkById(base)||base==='influence'){if(ind&&source)viewEvidenceDetails(v,base);else viewTopic(v,base)}
   else if(base==='details')viewEvidenceDetails(v,ind);
-  else if(base==='library')viewLibrary(v,ind);
-  else if(base==='review')viewSourceMethod(v);
   else if(base==='method')viewSourceMethod(v);
   else if(base==='futures'&&ind==='more')viewFuturesMore(v);
   else({map:viewMap,evidence:viewIndex,influence:viewInfluence,record:viewRecord,futures:viewFutures,gaps:viewGaps,method:viewMethod,contribute:viewWhy}[base]||viewMap)(v);
@@ -5193,7 +5197,7 @@ function viewIndex(v){
    ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
-   <section class="sec5"><h2 class="h2-5 sm">A smaller set to verify</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. Additional sources and earlier chart extractions are held back from the summaries until reviewed.</p><p class="review-links"><a class="go" href="#library">Sources awaiting review →</a><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
+   <section class="sec5"><h2 class="h2-5 sm">A focused selection</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. See Methods for the selection criteria.</p><p class="review-links"><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
   evidenceRows($('#erows',v));
 }
 
@@ -5385,7 +5389,7 @@ function viewTopic(v,id){
     <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Selected indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
       <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
     ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#details/${id}">Source details →</a></div><p class="sub5">Charts linked to the selected indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
-    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a><a class="go" href="#library/${id}">More sources: awaiting review →</a></p></section>
+    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a></p></section>
     ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['evidence','All steps','Next'])}</div>`;
   if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
   crumbScroll5(v);
@@ -5397,20 +5401,10 @@ function viewEvidenceDetails(v,id){
   v.innerHTML=`<div class="view5 wrap priority6 detail6">${crumbs5(id)}
     ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
     ${verify5()}
-    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#method/selection">How indicators are selected →</a><a class="go" href="#library/${id}">Working evidence library →</a></p>
+    <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#method/selection">How indicators are selected →</a></p>
     <section class="sec5"><h2 class="h2-5 sm">Priority sources</h2><div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What this pair still misses</h2><p class="lead5 sm">${esc(p.gap)}</p></section></div>`;
   crumbScroll5(v);
-}
-
-function viewLibrary(v,topic){
-  const ids=ORDER.includes(topic)?[topic]:ORDER;
-  v.innerHTML=`<div class="view5 wrap library6">${eye5(['Source library'])}<h1 class="h1-5">Working evidence library</h1><p class="lead5">Further reading, with review status shown for each entry.</p>
-    <div class="verify5"><b>Awaiting human review</b><span>Compiled with AI assistance. These entries have not been checked by a person against the original source. Inclusion is not an endorsement.</span></div>
-    <p class="review-links"><a class="go" href="#evidence">Priority evidence →</a></p>
-    ${ids.includes('capability')?`<section class="sec5"><h2 class="h2-5 sm">AI capability: related evidence</h2>${capabilityRelated7()}</section>`:''}
-    ${ids.map(id=>{const inds=LINKS.flatMap(l=>l.inds.filter(d=>id==='influence'?d.recRow==='influence':l.id===id&&!d.recRow));return `<section class="sec5"><h2 class="h2-5 sm"><a href="#${id}">${esc(nameOf(id))}</a></h2><p class="note5">Check the original publication, study design and relevance before promoting a source.</p>${inds.map(d=>`<details class="det5"><summary>${esc(indLabel5(d))}</summary><ul class="library6-sources">${d.src.map(([t,u])=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a><br><span class="review-status7">Awaiting human review</span></li>`).join('')}</ul></details>`).join('')}</section>`}).join('')}
-    <section class="sec5"><h2 class="h2-5 sm">Proposed measures are not findings</h2><p class="sub5">The landscape scan also proposes tests of skill recovery, appropriate reliance, calibration and decision power. These belong in the research agenda until their definitions and validation are checked.</p><p><a class="go" href="#gaps">See the research agenda →</a></p></section></div>`;
 }
 
 function viewSourceMethod(v){
@@ -5423,13 +5417,14 @@ function viewSourceMethod(v){
       <li><b>Added value.</b><span>Does this source answer a different part of the question or test whether another finding transfers? Include null results, benefits and conflicting findings.</span></li></ul>
       <p class="sub5">These are editorial criteria, not a numerical score or an exhaustive ranking. We explain why each featured indicator was chosen and what it leaves unanswered. Selection does not depend on whether a finding supports disempowerment.</p></section>
     <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">The AI capability pilot redraws published results to make two questions easier to compare. Each chart names the data publisher, links to the original and provides the plotted values. Its notes explain selection, rounding and calculations. It is a chart by this project, not a figure produced or endorsed by the publisher.</p><p class="sub5">Evidence quality and breadth of coverage are separate judgements. Proposed signals to watch are research priorities, not validated warning thresholds. Other topic charts still await this format and human review.</p></section>
-    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Older charts and additional sources are parked separately; forecasts are provisional.</p><p class="review-links"><a class="go" href="#library">Awaiting review →</a></p></section>
-    <section class="sec5" id="m-scales"><h2 class="h2-5 sm">How to read the pathways</h2><p class="sub5">The connections come from the gradual disempowerment argument. They show proposed pathways, not demonstrated causes. The skills branch adds questions about learning and judgement.</p></section>
-    <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">Colour describes how well each step is measured as a whole. It does not score the level of risk or whether findings support the theory. A rigorous study of one task can sit within a step that still has major gaps.</p>
+    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Forecasts are provisional.</p></section>
+    <section class="sec5" id="m-scales"><h2 class="h2-5 sm">Where the pathways come from</h2><p class="sub5">The pathways are adapted from the <a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Gradual Disempowerment paper ↗</a>.</p></section>
+    <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">The colours are a provisional, AI-assisted assessment of measurement coverage based on the selected sources. They are not a rigorous review of the full research field or a measure of risk.</p>
+      <p class="sub5">We consider three questions: does the evidence measure the outcome directly, is measurement repeated over time, and how many relevant settings does it cover? The bands below summarise that judgement; they are not calculated scores.</p>
       <ul class="scale5 coverage-rubric5 s1">${[['major','Closest sources leave a central outcome or repeated measure missing. Existing studies may still be useful and rigorous.'],['partial','Measures cover narrow settings, tasks or indirect signals. Coverage of the broader step is incomplete.'],['stronger','Repeated, direct measures of the named quantity exist. Population coverage and attribution to AI can still be limited.']].map(([b,d])=>`<li>${coverageGlyph5(b,20)}<div><b>${esc(COPY.coverage.bands[b].label)}</b><span>${esc(d)}</span></div></li>`).join('')}</ul>
-      <p class="note5">Provisional editorial ratings based on the selected evidence and its limits. This is not a systematic count of research or an independently validated score. Two priority sources alone cannot establish that a whole field is understudied.</p>
+      <p class="note5">These ratings have not been independently validated and may miss relevant research. A numerical score would require a defined search, consistent study-level coding and an independent check. We have not completed those steps, so the colours should be treated as a starting point for discussion.</p>
       <dl class="coverage-reasons5">${ORDER.map(id=>`<div><dt><a href="#${id}">${esc(nameOf(id))}</a>${coverageBadge5(id)}</dt><dd>${esc(coverageOf5(id).why)}</dd></div>`).join('')}</dl></section>
-    <section class="sec5" id="m-more"><h2 class="h2-5 sm">Limits and sources</h2><p class="sub5">Coverage is uneven across countries and topics. No single indicator establishes gradual disempowerment. A dated finding is not necessarily the latest available value, and later versions may revise it.</p><details class="det5"><summary>Definitions at each step</summary><dl class="gloss">${ORDER.map(id=>`<div><dt>${esc(nameOf(id))}</dt><dd>${esc(DEFS[id][0])}<br><b>Still needed:</b> ${esc(SELECTED_EVIDENCE[id].gap)}</dd></div>`).join('')}</dl></details><details class="det5"><summary>All 18 priority sources</summary><div class="srcs">${ORDER.map(id=>`<div class="sg"><h4>${esc(nameOf(id))}</h4><ol>${SELECTED_EVIDENCE[id].sources.map(s=>`<li>${sourceLink6(s)}<br>${esc(s.title)}</li>`).join('')}</ol></div>`).join('')}</div></details><p class="review-links"><a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Original framework ↗</a><a class="go" href="pdf-source-crosswalk.html" target="_blank" rel="noopener">PDF reference crosswalk ↗</a></p></section></div>`;
+    <section class="sec5" id="m-more"><h2 class="h2-5 sm">Limits and sources</h2><p class="sub5">Coverage is uneven across countries and topics. No single indicator establishes gradual disempowerment. A dated finding is not necessarily the latest available value, and later versions may revise it.</p><details class="det5"><summary>Definitions at each step</summary><dl class="gloss">${ORDER.map(id=>`<div><dt>${esc(nameOf(id))}</dt><dd>${esc(DEFS[id][0])}<br><b>Still needed:</b> ${esc(SELECTED_EVIDENCE[id].gap)}</dd></div>`).join('')}</dl></details><details class="det5"><summary>All 18 priority sources</summary><div class="srcs">${ORDER.map(id=>`<div class="sg"><h4>${esc(nameOf(id))}</h4><ol>${SELECTED_EVIDENCE[id].sources.map(s=>`<li>${sourceLink6(s)}<br>${esc(s.title)}</li>`).join('')}</ol></div>`).join('')}</div></details><p class="review-links"><a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Original framework ↗</a></p></section></div>`;
 }
 /* A small, dated extraction drives both pilot charts and their downloadable tables. */
 const CAPABILITY7={
@@ -5500,7 +5495,7 @@ function viewCapabilityPilot(v){
       <dl class="watch-rows7"><div><dt>Reliable across whole workflows</dt><dd>Repeat tests across occupations, including messy tasks and error recovery. Sustained success would make substitution more plausible.</dd></div><div><dt>Less human supervision needed</dt><dd>Track review time, interventions and failures caught by people. Falling supervision needs could enable more delegation.</dd></div><div><dt>Lower cost per successful workflow</dt><dd>Include tools, retries, human review and rework. Lower total costs would strengthen incentives to automate.</dd></div></dl>
       <p class="connection7">To assess disempowerment, we also need evidence that people lose meaningful control as AI takes on more work. <a class="go" href="#handover">Explore AI delegation →</a></p>
     </section>
-    <section class="sec5 related-section7"><h2 class="h2-5 sm">Related evidence</h2><p class="sub5">Broader benchmarks and field studies help test how far these findings travel. Summaries are AI-assisted and await human review.</p>${capabilityRelated7()}<p class="review-links"><a class="go" href="#library/capability">Working evidence library →</a></p></section>
+    <section class="sec5 related-section7"><h2 class="h2-5 sm">Related evidence</h2><p class="sub5">Broader benchmarks and field studies help test how far these findings travel. Summaries are AI-assisted and await human review.</p>${capabilityRelated7()}</section>
     <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What research would help most?</h2><p class="lead5 sm">Repeated, independent tests of complete workflows across occupations, measuring reliability, human supervision and total cost.</p><p class="review-links"><a class="go" href="#gaps/capability">Explore research gaps →</a><a class="go" href="#contribute/add">Suggest evidence or a correction →</a></p></section>
     ${pn5(['evidence','All steps','Back to'],['adoption',nameOf('adoption')])}</div>`;
   Charts.bars($('#rli-chart7',v),{

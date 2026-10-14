@@ -48,7 +48,7 @@ const COPY={
  "coverage": {
   "title": "Where better measurement is needed",
   "takeaway": "The biggest gaps are in skills, government decisions and human influence.",
-  "note": "Provisional ratings. Colour shows measurement coverage, not risk.",
+  "note": "Provisional, AI-assisted ratings of measurement coverage, not risk. Relevant research may be missing.",
   "bands": {
    "major": {"label": "Major gaps", "short": "Major gaps", "description": "Few direct measures"},
    "partial": {"label": "Partial coverage", "short": "Partial coverage", "description": "Narrow or indirect measures"},
