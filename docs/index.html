@@ -469,6 +469,7 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
   /* "What the data show": one teal hue, dark = more change. Grey is NOT a step: it means "can't tell".
      Light steps OKLCH L .40/.515/.625/.735 (ordinal check passes; lightest 2.04:1 on --paper). */
   --sg4:#00544d; --sg3:#00786e; --sg2:#329a8f; --sg1:#6dbab0; --sg0:#8f9ca8;
+  --coverage-major:#b12b38; --coverage-partial:#9b570b; --coverage-stronger:#14704d; --map-path:#8593a0;
   /* human side (Skills and judgement, Human influence): an annotation colour, never a data colour */
   --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft);
   /* spacing and type (17_ux_spec §4) */
@@ -480,9 +481,11 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   /* reversed: more change = lighter = more contrast on the dark surface. Lightest-contrast step 3.0:1 on --paper. */
   --sg4:#7ee7d9; --sg3:#47c3b5; --sg2:#329a8f; --sg1:#2e6c65; --sg0:#66747f;
+  --coverage-major:#ff8e98; --coverage-partial:#efbb64; --coverage-stronger:#72d5a5; --map-path:#7f8e9b;
   --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft); } }
 :root[data-theme="dark"]{
   --sg4:#7ee7d9; --sg3:#47c3b5; --sg2:#329a8f; --sg1:#2e6c65; --sg0:#66747f;
+  --coverage-major:#ff8e98; --coverage-partial:#efbb64; --coverage-stronger:#72d5a5; --map-path:#7f8e9b;
   --hs:var(--accent); --hs-soft:var(--accent-soft); --hs-line:var(--accent-soft); }
 
 .sr5{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -975,6 +978,72 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .ml5-line{grid-row:1/span 2}
 .map5 .card5 svg{display:inline-block;width:auto;height:auto;max-height:none}
 @media (max-width:1180px){.card5{position:static;width:auto;max-width:560px;margin:4px 20px 6px;box-shadow:none}}
+
+/* Measurement coverage is shared by the map, overview and rubric. */
+[data-coverage="major"]{--coverage-color:var(--coverage-major)}
+[data-coverage="partial"]{--coverage-color:var(--coverage-partial)}
+[data-coverage="stronger"]{--coverage-color:var(--coverage-stronger)}
+.coverage-header5{padding-block:28px 18px}
+.coverage-header5 .h2-5{font-size:26px;letter-spacing:0}
+.coverage-takeaway5{font-size:16px;color:var(--ink-2);margin-top:6px}
+.coverage-key5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 28px;margin-top:22px}
+.coverage-key5-item{display:flex;gap:10px;align-items:center;min-width:0}
+.coverage-key5-item>span{display:flex;flex-direction:column;gap:1px}
+.coverage-key5-item b{font-size:15px;color:var(--coverage-color)}
+.coverage-key5-item>span>span{font-size:13px;color:var(--ink-2)}
+.coverage-glyph5{display:inline-block;flex:0 0 auto;vertical-align:middle}
+.coverage-note5{font-size:12.5px;color:var(--ink-2);line-height:1.5;margin-top:16px}
+.coverage-note5 a{margin-left:8px;white-space:nowrap}
+.coverage-badge5{display:inline-flex;align-items:center;gap:7px;color:var(--coverage-color);font-size:13px;font-weight:600;line-height:1.3}
+.map5 .coverage-label5{font-size:11.5px;font-weight:600;fill:var(--coverage-color);letter-spacing:0}
+.map5 .research-prompt5{font-size:11px;font-weight:500;fill:var(--ink);letter-spacing:0}
+.map5 .st5:focus-visible .ring5{outline:2px solid var(--ink);outline-offset:4px}
+.map5 .st5.here .ring5{stroke-width:4.5}
+.map5 .st5.here[data-coverage="major"] .ring5{stroke-width:3}
+.card5{min-height:194px;border-color:var(--rule);box-shadow:none}
+.card5-meta{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.card5-meta .card5-n{letter-spacing:0;flex:0 0 auto}
+.card5-meta .coverage-badge5{font-size:12px}
+.card5-name{margin-top:8px}
+.card5-research{margin-top:10px}
+.card5-research>b{font-size:12px;font-weight:600;color:var(--ink-2)}
+.card5-research .card5-what{font-family:var(--f-display);font-size:14px;line-height:1.45;margin-top:2px;color:var(--ink)}
+.ml5-labels{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ml5-coverage{font-size:12.5px;font-weight:600;color:var(--coverage-color)}
+.ml5-prompt{font-size:13px;color:var(--ink-2)}
+.ml5-btn{min-height:72px;padding-block:12px;gap:12px}
+.ml5-btn .chev5{flex:0 0 14px}
+.ml5-line::before{width:2px;background:var(--map-path)}
+.ml5-line .coverage-glyph5{position:absolute;top:18px;left:1px;background:var(--surface)}
+.ml5-card{padding-bottom:18px}
+.ml5-card .card5-research{margin-top:6px}
+.er5-head,.er5{grid-template-columns:minmax(0,1.1fr) 190px minmax(0,2fr) 18px;gap:4px 24px}
+.er5-head{display:grid;padding:22px 8px 10px 26px;color:var(--ink-2);font-size:12px;font-weight:600}
+.er5-coverage{display:flex;align-items:center;min-width:0}
+.er5-one{min-width:0}
+.coverage-rubric5 .coverage-glyph5{margin-top:3px}
+.coverage-rubric5>li{align-items:flex-start}
+.coverage-reasons5{margin-top:28px;display:grid;gap:0}
+.coverage-reasons5>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:12px 28px;padding:16px 0;border-top:1px solid var(--rule)}
+.coverage-reasons5 dt{display:flex;flex-direction:column;align-items:flex-start;gap:6px;font-weight:650}
+.coverage-reasons5 dd{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+#m-coverage{scroll-margin-top:80px}
+@media (max-width:760px){
+  .coverage-header5{padding-block:24px 16px}
+  .coverage-key5{grid-template-columns:1fr;gap:12px;margin-top:18px}
+  .coverage-key5-item>span{display:block}
+  .coverage-key5-item b{display:block;font-size:14px}
+  .coverage-key5-item>span>span{font-size:12.5px}
+  .er5-head{display:none}
+  .er5-list{margin-top:22px}
+  .er5{grid-template-columns:minmax(0,1fr) 14px;gap:8px 12px;padding-left:18px}
+  .er5 .er5-nm{grid-column:1;grid-row:1}
+  .er5 .er5-coverage{grid-column:1;grid-row:2}
+  .er5 .er5-one{grid-column:1;grid-row:3}
+  .er5 .chev5{grid-column:2;grid-row:1/4}
+  .coverage-reasons5>div{grid-template-columns:1fr;gap:8px}
+  #m-coverage{scroll-margin-top:94px}
+}
 
 /* home: story hero and the map's section header */
 .story5-h{max-width:18em}
@@ -2298,7 +2367,6 @@ const COPY={
    ],
    "why": "Why this project"
   },
-  "legend3": {"lead": "How well measured", "items": {"3": "Well measured", "2": "Partly measured", "1": "Barely measured"}},
   "card": {
    "open": "See the evidence", "openEnd": "See the gap", "next": "Next", "again": "Start again",
    "nextLabels": {"handover": "Delegation", "work": "Jobs", "share": "Income share", "skills": "Skills", "culture": "Culture", "institutions": "Government", "influence": "Influence"},
@@ -2316,6 +2384,27 @@ const COPY={
   },
   "headline": "We cannot steer what we do not measure."
 
+ },
+ "coverage": {
+  "title": "Where better measurement is needed",
+  "takeaway": "The biggest gaps are in skills, government decisions and human influence.",
+  "note": "Provisional ratings. Colour shows measurement coverage, not risk.",
+  "bands": {
+   "major": {"label": "Major gaps", "short": "Major gaps", "description": "Few direct measures"},
+   "partial": {"label": "Partial coverage", "short": "Partial coverage", "description": "Narrow or indirect measures"},
+   "stronger": {"label": "Stronger coverage", "short": "Stronger coverage", "description": "Repeated, direct measures"}
+  },
+  "steps": {
+   "capability": {"band": "partial", "prompt": "Whole-workflow reliability", "need": "Test reliable AI performance across whole workflows, including work beyond software.", "why": "Benchmarks measure defined tasks. They offer limited coverage of complete jobs and workflows."},
+   "adoption": {"band": "stronger", "prompt": "Depth of use and dependence", "need": "Track how much work is delegated and how people check or replace AI outputs.", "why": "Repeated employee surveys and official business statistics directly measure AI use. They do not measure dependence or decisions delegated."},
+   "handover": {"band": "partial", "prompt": "Decisions delegated and reviewed", "need": "Measure which decisions AI makes, which people review, and which people can reverse.", "why": "Provider logs and sector surveys cover some forms of delegation. They do not establish how much decision power people retain."},
+   "work": {"band": "partial", "prompt": "AI-linked hiring and training", "need": "Link firms' AI use to junior hiring and training, separating AI from other labour-market changes.", "why": "Payroll and administrative studies cover particular countries and periods. AI exposure and workplace adoption give different comparisons."},
+   "share": {"band": "stronger", "prompt": "AI's effect on labour income", "need": "Link labour income to actual AI use at firm and sector level.", "why": "Established official series repeatedly measure workers' share of income. Additional research is needed to identify AI's contribution."},
+   "skills": {"band": "major", "prompt": "Skills without AI over time", "need": "Follow the same people over time and test what they can do without AI.", "why": "Short experiments test learning and task performance. Broad, repeated tests of unaided skills are still missing from the selected evidence."},
+   "culture": {"band": "partial", "prompt": "Audience attention and creator income", "need": "Track what people read, watch and hear, alongside human creators' income and influence.", "why": "Platform reports and creative-task experiments cover parts of supply, listening and diversity. They do not measure culture-wide human influence."},
+   "institutions": {"band": "major", "prompt": "Decision and override rates", "need": "Publish decision volumes, human reviews, overrides and appeal outcomes for high-impact AI systems.", "why": "Inventories count reported uses; operational reports cover isolated systems. Direct, comparable measures of decision control remain limited."},
+   "influence": {"band": "major", "prompt": "Real choice and appeal", "need": "Measure whether people can refuse, appeal or reverse decisions, and act without AI.", "why": "Felt-control surveys and exploratory conversation studies offer proxies. They do not directly track people's power over the economy, culture or government."}
+  }
  },
  "why": {
   "nav": "Contribute",
@@ -2370,7 +2459,7 @@ const COPY={
  },
   "evidence": {
   "title": "Evidence by step",
-  "deck": "Key studies and indicators across the pathways to gradual disempowerment, highlighting early signs of change and gaps in measurement.",
+  "deck": "Key studies and indicators for each step, with the measurement gaps highlighted.",
   "scaleLabel": "What the data show",
   "scale": {
    "1": {
@@ -4603,6 +4692,17 @@ const towardIcon5=t=>{const lab={toward:'Points toward the concern',away:'Points
   return `<svg class="tw5" width="12" height="12" viewBox="0 0 12 12" role="img" aria-label="${lab}"><title>${lab}</title>${body}</svg>`};
 const chev5=`<svg class="chev5" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
+/* Coverage has its own rubric: study findings and measurement coverage are different judgements. */
+const coverageOf5=id=>COPY.coverage.steps[id];
+const coverageBand5=id=>COPY.coverage.bands[coverageOf5(id).band];
+const coverageGlyph5=(band,size=16)=>{
+  const c=size/2,r=c-2,color=`var(--coverage-${band})`;
+  return `<svg class="coverage-glyph5" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${c}" cy="${c}" r="${r}" fill="${band==='stronger'?color:'none'}" stroke="${color}" stroke-width="2"${band==='major'?' stroke-dasharray="2.5 2.5"':''}/>${band==='partial'?`<path d="M${c} ${c-r} A${r} ${r} 0 0 0 ${c} ${c+r} Z" fill="${color}"/>`:''}</svg>`;
+};
+const coverageBadge5=id=>`<span class="coverage-badge5" data-coverage="${coverageOf5(id).band}">${coverageGlyph5(coverageOf5(id).band)}${esc(coverageBand5(id).label)}</span>`;
+const coverageLegend5=()=>`<div class="coverage-key5" aria-label="Measurement coverage">${['major','partial','stronger'].map(b=>`<span class="coverage-key5-item" data-coverage="${b}">${coverageGlyph5(b,20)}<span><b>${esc(COPY.coverage.bands[b].label)}</b><span>${esc(COPY.coverage.bands[b].description)}</span></span></span>`).join('')}</div>`;
+const coverageNote5=()=>`<p class="coverage-note5">${esc(COPY.coverage.note)} <a href="#method/coverage">How assessed</a></p>`;
+
 /* ======================================================================================
    1. THE CHAIN MAP
    ====================================================================================== */
@@ -4617,7 +4717,7 @@ const SEGS5=(()=>{const {J,S,TY,CX}=GEO5,jx=J[0];
    ...['share','skills','culture','institutions'].map(f=>({to:'influence',from:f,p:[S[f],[1000,S[f][1]],[CX,TY]]})),
    {to:'influence',from:'_',p:[[CX,TY],[S.influence[0]-23,TY]]}]})();
 
-/* the home map uses three line styles: solid (measured repeatedly), hollow (measured, not tied to AI), dotted (barely) */
+/* Legacy measurement glyphs remain on the detailed research agenda. */
 const vis3=l=>l>=3?3:l===2?2:1;
 const CARDWORD5=['Not measured directly','Barely measured','Partly measured','Measured, with limits','Well measured'];
 
@@ -4627,44 +4727,45 @@ function mapSVG5(){
   g+=`<g class="zone5" aria-hidden="true"><rect x="${ZX}" y="0" width="${EDGE-ZX}" height="${H}" fill="var(--ink)" opacity=".028"/><rect x="${EDGE}" y="0" width="${W-EDGE}" height="${H}" fill="url(#hatch5)"/>
    <line x1="${EDGE}" x2="${EDGE}" y1="0" y2="${H}" stroke="var(--rule)"/>
    <text class="zl5" x="24" y="28">USE</text><text class="zl5" x="${ZX+18}" y="28">CONSEQUENCES</text><text class="zl5 halo5" x="${(EDGE+W)/2}" y="28" text-anchor="middle">OUTCOME</text></g>`;
-  SEGS5.forEach(s=>{const l=vis3(s.from?0:lv(s.to));g+=`<g class="seg5" data-to="${s.to}">${strokeFor(l,segPath5(s),{w3:5,bg:'var(--map-bg)'})}</g>`});
-  g+=`<circle class="jn5" cx="${GEO5.J[0]}" cy="${GEO5.J[1]}" r="5.5" fill="var(--ev3)"/>`;
-  ORDER.forEach((id,i)=>{const [x,y]=S[id],l=lv(id),end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19;
-    g+=`<g class="st5" data-id="${id}" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(nm)}, ${CARDWORD5[l].toLowerCase()}. Step ${i+1} of ${ORDER.length}.">
-      <rect class="hit" x="${x-62}" y="${ny-17}" width="124" height="${y+15-(ny-17)}" fill="transparent"/>
+  SEGS5.forEach(s=>{g+=`<path class="seg5" data-to="${s.to}" d="${segPath5(s)}" fill="none" stroke="var(--map-path)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"${s.from?' stroke-dasharray="5 7"':''}/>`});
+  g+=`<circle class="jn5" cx="${GEO5.J[0]}" cy="${GEO5.J[1]}" r="4.5" fill="var(--map-path)"/>`;
+  ORDER.forEach((id,i)=>{const [x,y]=S[id],end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19,c=coverageOf5(id),band=coverageBand5(id),color=`var(--coverage-${c.band})`,r=end?22:c.band==='major'?11:9,cy=y+(end?40:27);
+    g+=`<g class="st5" data-id="${id}" data-coverage="${c.band}" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(nm)}. ${esc(band.label)}. Research needed: ${esc(c.need)} Step ${i+1} of ${ORDER.length}.">
+      <rect class="hit" x="${x-82}" y="${ny-17}" width="164" height="${cy+27-(ny-17)}" fill="transparent"/>
       <text class="nm5${end?' halo5':''}" x="${x}" y="${ny}" text-anchor="middle">${esc(nm)}</text>
-      ${end?`<circle class="ring5" cx="${x}" cy="${y}" r="22" fill="var(--map-bg)" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="3 4"/><text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`
-        :`<circle class="ring5" cx="${x}" cy="${y}" r="9" fill="var(--map-bg)" stroke="var(--ev${vis3(l)})" stroke-width="4"/><circle class="core5" cx="${x}" cy="${y}" r="3.4"/>`}</g>`});
-  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="How gradual disempowerment could unfold, from AI capability to human influence. Line style shows how well each step is measured. Select a step to read about it.">${g}</svg>`;
+      <circle class="ring5" cx="${x}" cy="${y}" r="${r}" fill="${c.band==='stronger'?color:'var(--map-bg)'}" stroke="${color}" stroke-width="3"${c.band==='major'?' stroke-dasharray="3 3"':''}/>
+      ${c.band==='partial'?`<path d="M${x} ${y-r} A${r} ${r} 0 0 0 ${x} ${y+r} Z" fill="${color}"/>`:''}
+      ${end?`<text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`:''}
+      <text class="coverage-label5 halo5" x="${x}" y="${cy}" text-anchor="middle">${esc(band.short)}</text>
+      ${c.band==='major'?`<text class="research-prompt5 halo5" x="${x}" y="${cy+20}" text-anchor="middle">${esc(c.prompt)}</text>`:''}</g>`});
+  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Proposed pathways to gradual disempowerment. Red nodes have major measurement gaps, amber nodes have partial coverage, and green nodes have stronger coverage. Skills, government decisions and human influence have major gaps. Connections show proposed pathways. Select a step for its research need.">${g}</svg>`;
 }
 
 /* phone: vertical list, one expandable row per step */
 function mapList5(){
-  const row=id=>{const l=lv(id);
-    return `<li class="ml5" data-id="${id}" data-l="${vis3(l)}"><span class="ml5-line" aria-hidden="true"></span>
-      <button type="button" class="ml5-btn" aria-expanded="false" aria-controls="mlc5-${id}"><span class="ml5-name">${esc(nameOf(id))}</span>${chev5}</button>
+  const row=id=>{const c=coverageOf5(id);
+    return `<li class="ml5" data-id="${id}" data-coverage="${c.band}"><span class="ml5-line" aria-hidden="true">${coverageGlyph5(c.band,18)}</span>
+      <button type="button" class="ml5-btn" aria-expanded="false" aria-controls="mlc5-${id}"><span class="ml5-labels"><span class="ml5-name">${esc(nameOf(id))}</span><span class="ml5-coverage">${esc(coverageBand5(id).label)}</span>${c.band==='major'?`<span class="ml5-prompt">${esc(c.prompt)}</span>`:''}</span>${chev5}</button>
       <div class="ml5-card" id="mlc5-${id}"></div></li>`};
   return `<ol class="mlist5">${['capability','adoption','handover'].map(row).join('')}<li class="ml5-fork">Then four lines, side by side</li>${['work','share','skills','culture','institutions'].map(row).join('')}<li class="ml5-fork">All four lead to the outcome</li>${row('influence')}</ol>`;
 }
 
 /* the step card: what the step is, how well it is measured, and the way to its evidence */
 function stepCard5(i){
-  const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1;
+  const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1,c=coverageOf5(id);
   const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
   const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
-  return `<div class="card5-n">${i+1} of ${ORDER.length}</div>
+  return `<div class="card5-meta"><span class="card5-n">${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
-    <p class="card5-what">${esc(C.what[id])}</p>
+    <div class="card5-research"><b>Research needed</b><p class="card5-what">${esc(c.need)}</p></div>
     <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>
       <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}" title="Back to ${esc(nameOf(ORDER[i-1]))}">${chev5}</button>`:''}<button type="button" class="btn ghost" data-t="next" aria-label="${esc(nextFull)}" title="${esc(nextFull)}"><span>${esc(nextLabel)}</span>${chev5}</button></span></div>`;
 }
 
 function mountMap5(el,opts={}){
   const onStop=opts.onStop||(id=>{try{location.hash=id}catch(e){}});
-  const K=COPY.home.legend3;
   el.classList.add('mapcard5');
-  el.innerHTML=`<div class="map5">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}
-   <div class="mkey5"><span class="mk5-t">${esc(K.lead)}</span>${[3,2,1].map(k=>`<span class="mk5-i">${lineGlyph5(k,34,10)}${esc(K.items[k])}</span>`).join('')}</div>`;
+  el.innerHTML=`<div class="coverage-header5 wrap"><h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>${coverageLegend5()}${coverageNote5()}</div><div class="map5">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
   const map=$('.map5',el),card=$('.card5',map),list=$('.mlist5',el);
   let sel=0,phoneOpen=true;
   const rm=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -4685,7 +4786,7 @@ function mountMap5(el,opts={}){
     if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();select(ORDER.indexOf(t.dataset.id))}
     else if((e.key==='ArrowRight'||e.key==='ArrowLeft')&&t.closest&&t.closest('.map5')){e.preventDefault();select(sel+(e.key==='ArrowRight'?1:-1));
       const g=$(`.st5[data-id="${ORDER[sel]}"]`,map);if(g&&t.matches('.st5'))g.focus()}});
-  select(0);
+  select(ORDER.indexOf('skills'));
   return el;
 }
 
@@ -4693,14 +4794,12 @@ function mountMap5(el,opts={}){
    2. EVIDENCE OVERVIEW ROWS
    ====================================================================================== */
 function evidenceRows(el){
-  const legend=`<div class="elg5" role="list" aria-label="What the data show"><span class="elg5-t">What the data show</span>${[4,3,2,1,'?'].map(s=>`<span class="elg5-i" role="listitem">${sigDot5(s)}${SIGWORD5[s]}</span>`).join('')}</div>`;
-  const EORDER=['capability','adoption','handover','work','share','culture','institutions','skills','influence'];
-  const rows=EORDER.map(id=>{const L=id==='influence'?END:linkById(id),s=sigOf5(id),l=lv(id),hs=HUMAN5.includes(id);
-    return `<a class="er5${hs?' hs':''}${s==='?'?' q':''}" href="#${id}" style="--band:${s==='?'?'var(--sg0)':`var(--sg${s})`}" aria-label="${esc(L.name)}. What the data show: ${SIGWORD5[s]}. ${LEVELWORD[l]}. ${esc(oneLiner5(id))}">
-      <span class="er5-nm">${esc(L.name)}${hs?'<span class="hs5tag">Human side</span>':''}</span>
-      <span class="er5-sg">${sigDot5(s)}<span>${SIGWORD5[s]}</span></span>
+  const rows=ORDER.map(id=>{const c=coverageOf5(id);
+    return `<a class="er5" data-coverage="${c.band}" href="#${id}" style="--band:var(--coverage-${c.band})" aria-label="${esc(nameOf(id))}. ${esc(coverageBand5(id).label)}. ${esc(oneLiner5(id))}">
+      <span class="er5-nm">${esc(nameOf(id))}</span>
+      <span class="er5-coverage">${coverageBadge5(id)}</span>
       <span class="er5-one">${esc(oneLiner5(id))}</span>${chev5}</a>`}).join('');
-  el.innerHTML=legend+`<div class="er5-list">${rows}</div>`;return el;
+  el.innerHTML=coverageLegend5()+coverageNote5()+`<div class="er5-head" aria-hidden="true"><span>Step</span><span>Measurement coverage</span><span>What the studies show</span></div><div class="er5-list">${rows}</div>`;return el;
 }
 
 /* ======================================================================================
@@ -5156,7 +5255,11 @@ function viewSourceMethod(v){
       <li><b>Strong enough for the claim.</b><span>Use experiments for narrow causal questions and official statistics for trends. A company disclosure can be useful without being independent; a preprint can be relevant without being established.</span></li>
       <li><b>Include counterevidence.</b><span>Keep null results and benefits alongside worrying findings. Two sources per page limit the first review; they are not an exhaustive ranking of the literature.</span></li></ul></section>
     <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Older charts and additional sources are parked separately; forecasts are provisional.</p><p class="review-links"><a class="go" href="#review">1-2 hour review checklist →</a><a class="go" href="#library">Awaiting review →</a></p></section>
-    <section class="sec5" id="m-scales"><h2 class="h2-5 sm">How to read the map</h2><p class="sub5">The pathways come from the gradual disempowerment argument. Arrows show proposed links, not demonstrated causes. The skills branch adds questions about learning and judgement.</p><div class="two5 s1"><div><h3>Line style: measurement coverage</h3><ul class="scale5">${LEVELWORD.map((label,i)=>`<li>${lineGlyph5(i,44,12)}<div><b>${esc(label)}</b><span>${esc(LEVELDEF[i])}</span></div></li>`).join('')}</ul></div><div><h3>Colour: our reading of change</h3><p class="sub5">On the evidence overview, colour summarizes the selected findings. It does not score study quality or prove harm.</p><ul class="scale5">${[4,3,2,1,'?'].map(s=>`<li>${sigDot5(s)}<div><b>${esc(SIGWORD5[s])}</b><span>${esc(COPY.evidence.scale[s].gloss)}</span></div></li>`).join('')}</ul></div></div><p class="note5">These categories are provisional editorial judgements, not validated measures or independently reproduced ratings.</p></section>
+    <section class="sec5" id="m-scales"><h2 class="h2-5 sm">How to read the pathways</h2><p class="sub5">The connections come from the gradual disempowerment argument. They show proposed pathways, not demonstrated causes. The skills branch adds questions about learning and judgement.</p></section>
+    <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">Colour describes how well each step is measured as a whole. It does not score the level of risk or whether findings support the theory. A rigorous study of one task can sit within a step that still has major gaps.</p>
+      <ul class="scale5 coverage-rubric5 s1">${[['major','Closest sources leave a central outcome or repeated measure missing. Existing studies may still be useful and rigorous.'],['partial','Measures cover narrow settings, tasks or indirect signals. Coverage of the broader step is incomplete.'],['stronger','Repeated, direct measures of the named quantity exist. Population coverage and attribution to AI can still be limited.']].map(([b,d])=>`<li>${coverageGlyph5(b,20)}<div><b>${esc(COPY.coverage.bands[b].label)}</b><span>${esc(d)}</span></div></li>`).join('')}</ul>
+      <p class="note5">Provisional editorial ratings based on the selected evidence and its limits. This is not a systematic count of research or an independently validated score. Two priority sources alone cannot establish that a whole field is understudied.</p>
+      <dl class="coverage-reasons5">${ORDER.map(id=>`<div><dt><a href="#${id}">${esc(nameOf(id))}</a>${coverageBadge5(id)}</dt><dd>${esc(coverageOf5(id).why)}</dd></div>`).join('')}</dl></section>
     <section class="sec5" id="m-more"><h2 class="h2-5 sm">Limits and sources</h2><p class="sub5">Coverage is uneven across countries and topics. No single indicator establishes gradual disempowerment. A dated finding is not necessarily the latest available value, and later versions may revise it.</p><details class="det5"><summary>Definitions at each step</summary><dl class="gloss">${ORDER.map(id=>`<div><dt>${esc(nameOf(id))}</dt><dd>${esc(DEFS[id][0])}<br><b>Still needed:</b> ${esc(SELECTED_EVIDENCE[id].gap)}</dd></div>`).join('')}</dl></details><details class="det5"><summary>All 18 priority sources</summary><div class="srcs">${ORDER.map(id=>`<div class="sg"><h4>${esc(nameOf(id))}</h4><ol>${SELECTED_EVIDENCE[id].sources.map(s=>`<li>${sourceLink6(s)}<br>${esc(s.title)}</li>`).join('')}</ol></div>`).join('')}</div></details><p class="review-links"><a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Original framework ↗</a><a class="go" href="pdf-source-crosswalk.html" target="_blank" rel="noopener">PDF reference crosswalk ↗</a></p></section></div>`;
 }
 

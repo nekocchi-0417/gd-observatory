@@ -27,7 +27,6 @@ const COPY={
    ],
    "why": "Why this project"
   },
-  "legend3": {"lead": "How well measured", "items": {"3": "Well measured", "2": "Partly measured", "1": "Barely measured"}},
   "card": {
    "open": "See the evidence", "openEnd": "See the gap", "next": "Next", "again": "Start again",
    "nextLabels": {"handover": "Delegation", "work": "Jobs", "share": "Income share", "skills": "Skills", "culture": "Culture", "institutions": "Government", "influence": "Influence"},
@@ -45,6 +44,27 @@ const COPY={
   },
   "headline": "We cannot steer what we do not measure."
 
+ },
+ "coverage": {
+  "title": "Where better measurement is needed",
+  "takeaway": "The biggest gaps are in skills, government decisions and human influence.",
+  "note": "Provisional ratings. Colour shows measurement coverage, not risk.",
+  "bands": {
+   "major": {"label": "Major gaps", "short": "Major gaps", "description": "Few direct measures"},
+   "partial": {"label": "Partial coverage", "short": "Partial coverage", "description": "Narrow or indirect measures"},
+   "stronger": {"label": "Stronger coverage", "short": "Stronger coverage", "description": "Repeated, direct measures"}
+  },
+  "steps": {
+   "capability": {"band": "partial", "prompt": "Whole-workflow reliability", "need": "Test reliable AI performance across whole workflows, including work beyond software.", "why": "Benchmarks measure defined tasks. They offer limited coverage of complete jobs and workflows."},
+   "adoption": {"band": "stronger", "prompt": "Depth of use and dependence", "need": "Track how much work is delegated and how people check or replace AI outputs.", "why": "Repeated employee surveys and official business statistics directly measure AI use. They do not measure dependence or decisions delegated."},
+   "handover": {"band": "partial", "prompt": "Decisions delegated and reviewed", "need": "Measure which decisions AI makes, which people review, and which people can reverse.", "why": "Provider logs and sector surveys cover some forms of delegation. They do not establish how much decision power people retain."},
+   "work": {"band": "partial", "prompt": "AI-linked hiring and training", "need": "Link firms' AI use to junior hiring and training, separating AI from other labour-market changes.", "why": "Payroll and administrative studies cover particular countries and periods. AI exposure and workplace adoption give different comparisons."},
+   "share": {"band": "stronger", "prompt": "AI's effect on labour income", "need": "Link labour income to actual AI use at firm and sector level.", "why": "Established official series repeatedly measure workers' share of income. Additional research is needed to identify AI's contribution."},
+   "skills": {"band": "major", "prompt": "Skills without AI over time", "need": "Follow the same people over time and test what they can do without AI.", "why": "Short experiments test learning and task performance. Broad, repeated tests of unaided skills are still missing from the selected evidence."},
+   "culture": {"band": "partial", "prompt": "Audience attention and creator income", "need": "Track what people read, watch and hear, alongside human creators' income and influence.", "why": "Platform reports and creative-task experiments cover parts of supply, listening and diversity. They do not measure culture-wide human influence."},
+   "institutions": {"band": "major", "prompt": "Decision and override rates", "need": "Publish decision volumes, human reviews, overrides and appeal outcomes for high-impact AI systems.", "why": "Inventories count reported uses; operational reports cover isolated systems. Direct, comparable measures of decision control remain limited."},
+   "influence": {"band": "major", "prompt": "Real choice and appeal", "need": "Measure whether people can refuse, appeal or reverse decisions, and act without AI.", "why": "Felt-control surveys and exploratory conversation studies offer proxies. They do not directly track people's power over the economy, culture or government."}
+  }
  },
  "why": {
   "nav": "Contribute",
@@ -99,7 +119,7 @@ const COPY={
  },
   "evidence": {
   "title": "Evidence by step",
-  "deck": "Key studies and indicators across the pathways to gradual disempowerment, highlighting early signs of change and gaps in measurement.",
+  "deck": "Key studies and indicators for each step, with the measurement gaps highlighted.",
   "scaleLabel": "What the data show",
   "scale": {
    "1": {

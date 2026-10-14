@@ -269,6 +269,72 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .map5 .card5 svg{display:inline-block;width:auto;height:auto;max-height:none}
 @media (max-width:1180px){.card5{position:static;width:auto;max-width:560px;margin:4px 20px 6px;box-shadow:none}}
 
+/* Measurement coverage is shared by the map, overview and rubric. */
+[data-coverage="major"]{--coverage-color:var(--coverage-major)}
+[data-coverage="partial"]{--coverage-color:var(--coverage-partial)}
+[data-coverage="stronger"]{--coverage-color:var(--coverage-stronger)}
+.coverage-header5{padding-block:28px 18px}
+.coverage-header5 .h2-5{font-size:26px;letter-spacing:0}
+.coverage-takeaway5{font-size:16px;color:var(--ink-2);margin-top:6px}
+.coverage-key5{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 28px;margin-top:22px}
+.coverage-key5-item{display:flex;gap:10px;align-items:center;min-width:0}
+.coverage-key5-item>span{display:flex;flex-direction:column;gap:1px}
+.coverage-key5-item b{font-size:15px;color:var(--coverage-color)}
+.coverage-key5-item>span>span{font-size:13px;color:var(--ink-2)}
+.coverage-glyph5{display:inline-block;flex:0 0 auto;vertical-align:middle}
+.coverage-note5{font-size:12.5px;color:var(--ink-2);line-height:1.5;margin-top:16px}
+.coverage-note5 a{margin-left:8px;white-space:nowrap}
+.coverage-badge5{display:inline-flex;align-items:center;gap:7px;color:var(--coverage-color);font-size:13px;font-weight:600;line-height:1.3}
+.map5 .coverage-label5{font-size:11.5px;font-weight:600;fill:var(--coverage-color);letter-spacing:0}
+.map5 .research-prompt5{font-size:11px;font-weight:500;fill:var(--ink);letter-spacing:0}
+.map5 .st5:focus-visible .ring5{outline:2px solid var(--ink);outline-offset:4px}
+.map5 .st5.here .ring5{stroke-width:4.5}
+.map5 .st5.here[data-coverage="major"] .ring5{stroke-width:3}
+.card5{min-height:194px;border-color:var(--rule);box-shadow:none}
+.card5-meta{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.card5-meta .card5-n{letter-spacing:0;flex:0 0 auto}
+.card5-meta .coverage-badge5{font-size:12px}
+.card5-name{margin-top:8px}
+.card5-research{margin-top:10px}
+.card5-research>b{font-size:12px;font-weight:600;color:var(--ink-2)}
+.card5-research .card5-what{font-family:var(--f-display);font-size:14px;line-height:1.45;margin-top:2px;color:var(--ink)}
+.ml5-labels{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ml5-coverage{font-size:12.5px;font-weight:600;color:var(--coverage-color)}
+.ml5-prompt{font-size:13px;color:var(--ink-2)}
+.ml5-btn{min-height:72px;padding-block:12px;gap:12px}
+.ml5-btn .chev5{flex:0 0 14px}
+.ml5-line::before{width:2px;background:var(--map-path)}
+.ml5-line .coverage-glyph5{position:absolute;top:18px;left:1px;background:var(--surface)}
+.ml5-card{padding-bottom:18px}
+.ml5-card .card5-research{margin-top:6px}
+.er5-head,.er5{grid-template-columns:minmax(0,1.1fr) 190px minmax(0,2fr) 18px;gap:4px 24px}
+.er5-head{display:grid;padding:22px 8px 10px 26px;color:var(--ink-2);font-size:12px;font-weight:600}
+.er5-coverage{display:flex;align-items:center;min-width:0}
+.er5-one{min-width:0}
+.coverage-rubric5 .coverage-glyph5{margin-top:3px}
+.coverage-rubric5>li{align-items:flex-start}
+.coverage-reasons5{margin-top:28px;display:grid;gap:0}
+.coverage-reasons5>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:12px 28px;padding:16px 0;border-top:1px solid var(--rule)}
+.coverage-reasons5 dt{display:flex;flex-direction:column;align-items:flex-start;gap:6px;font-weight:650}
+.coverage-reasons5 dd{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+#m-coverage{scroll-margin-top:80px}
+@media (max-width:760px){
+  .coverage-header5{padding-block:24px 16px}
+  .coverage-key5{grid-template-columns:1fr;gap:12px;margin-top:18px}
+  .coverage-key5-item>span{display:block}
+  .coverage-key5-item b{display:block;font-size:14px}
+  .coverage-key5-item>span>span{font-size:12.5px}
+  .er5-head{display:none}
+  .er5-list{margin-top:22px}
+  .er5{grid-template-columns:minmax(0,1fr) 14px;gap:8px 12px;padding-left:18px}
+  .er5 .er5-nm{grid-column:1;grid-row:1}
+  .er5 .er5-coverage{grid-column:1;grid-row:2}
+  .er5 .er5-one{grid-column:1;grid-row:3}
+  .er5 .chev5{grid-column:2;grid-row:1/4}
+  .coverage-reasons5>div{grid-template-columns:1fr;gap:8px}
+  #m-coverage{scroll-margin-top:94px}
+}
+
 /* home: story hero and the map's section header */
 .story5-h{max-width:18em}
 .story5{max-width:74ch;margin-top:18px}

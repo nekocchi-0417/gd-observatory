@@ -46,6 +46,17 @@ const towardIcon5=t=>{const lab={toward:'Points toward the concern',away:'Points
   return `<svg class="tw5" width="12" height="12" viewBox="0 0 12 12" role="img" aria-label="${lab}"><title>${lab}</title>${body}</svg>`};
 const chev5=`<svg class="chev5" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
+/* Coverage has its own rubric: study findings and measurement coverage are different judgements. */
+const coverageOf5=id=>COPY.coverage.steps[id];
+const coverageBand5=id=>COPY.coverage.bands[coverageOf5(id).band];
+const coverageGlyph5=(band,size=16)=>{
+  const c=size/2,r=c-2,color=`var(--coverage-${band})`;
+  return `<svg class="coverage-glyph5" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${c}" cy="${c}" r="${r}" fill="${band==='stronger'?color:'none'}" stroke="${color}" stroke-width="2"${band==='major'?' stroke-dasharray="2.5 2.5"':''}/>${band==='partial'?`<path d="M${c} ${c-r} A${r} ${r} 0 0 0 ${c} ${c+r} Z" fill="${color}"/>`:''}</svg>`;
+};
+const coverageBadge5=id=>`<span class="coverage-badge5" data-coverage="${coverageOf5(id).band}">${coverageGlyph5(coverageOf5(id).band)}${esc(coverageBand5(id).label)}</span>`;
+const coverageLegend5=()=>`<div class="coverage-key5" aria-label="Measurement coverage">${['major','partial','stronger'].map(b=>`<span class="coverage-key5-item" data-coverage="${b}">${coverageGlyph5(b,20)}<span><b>${esc(COPY.coverage.bands[b].label)}</b><span>${esc(COPY.coverage.bands[b].description)}</span></span></span>`).join('')}</div>`;
+const coverageNote5=()=>`<p class="coverage-note5">${esc(COPY.coverage.note)} <a href="#method/coverage">How assessed</a></p>`;
+
 /* ======================================================================================
    1. THE CHAIN MAP
    ====================================================================================== */
@@ -60,7 +71,7 @@ const SEGS5=(()=>{const {J,S,TY,CX}=GEO5,jx=J[0];
    ...['share','skills','culture','institutions'].map(f=>({to:'influence',from:f,p:[S[f],[1000,S[f][1]],[CX,TY]]})),
    {to:'influence',from:'_',p:[[CX,TY],[S.influence[0]-23,TY]]}]})();
 
-/* the home map uses three line styles: solid (measured repeatedly), hollow (measured, not tied to AI), dotted (barely) */
+/* Legacy measurement glyphs remain on the detailed research agenda. */
 const vis3=l=>l>=3?3:l===2?2:1;
 const CARDWORD5=['Not measured directly','Barely measured','Partly measured','Measured, with limits','Well measured'];
 
@@ -70,44 +81,45 @@ function mapSVG5(){
   g+=`<g class="zone5" aria-hidden="true"><rect x="${ZX}" y="0" width="${EDGE-ZX}" height="${H}" fill="var(--ink)" opacity=".028"/><rect x="${EDGE}" y="0" width="${W-EDGE}" height="${H}" fill="url(#hatch5)"/>
    <line x1="${EDGE}" x2="${EDGE}" y1="0" y2="${H}" stroke="var(--rule)"/>
    <text class="zl5" x="24" y="28">USE</text><text class="zl5" x="${ZX+18}" y="28">CONSEQUENCES</text><text class="zl5 halo5" x="${(EDGE+W)/2}" y="28" text-anchor="middle">OUTCOME</text></g>`;
-  SEGS5.forEach(s=>{const l=vis3(s.from?0:lv(s.to));g+=`<g class="seg5" data-to="${s.to}">${strokeFor(l,segPath5(s),{w3:5,bg:'var(--map-bg)'})}</g>`});
-  g+=`<circle class="jn5" cx="${GEO5.J[0]}" cy="${GEO5.J[1]}" r="5.5" fill="var(--ev3)"/>`;
-  ORDER.forEach((id,i)=>{const [x,y]=S[id],l=lv(id),end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19;
-    g+=`<g class="st5" data-id="${id}" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(nm)}, ${CARDWORD5[l].toLowerCase()}. Step ${i+1} of ${ORDER.length}.">
-      <rect class="hit" x="${x-62}" y="${ny-17}" width="124" height="${y+15-(ny-17)}" fill="transparent"/>
+  SEGS5.forEach(s=>{g+=`<path class="seg5" data-to="${s.to}" d="${segPath5(s)}" fill="none" stroke="var(--map-path)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"${s.from?' stroke-dasharray="5 7"':''}/>`});
+  g+=`<circle class="jn5" cx="${GEO5.J[0]}" cy="${GEO5.J[1]}" r="4.5" fill="var(--map-path)"/>`;
+  ORDER.forEach((id,i)=>{const [x,y]=S[id],end=id==='influence',nm=nameOf(id),ny=end?y-33:y-19,c=coverageOf5(id),band=coverageBand5(id),color=`var(--coverage-${c.band})`,r=end?22:c.band==='major'?11:9,cy=y+(end?40:27);
+    g+=`<g class="st5" data-id="${id}" data-coverage="${c.band}" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(nm)}. ${esc(band.label)}. Research needed: ${esc(c.need)} Step ${i+1} of ${ORDER.length}.">
+      <rect class="hit" x="${x-82}" y="${ny-17}" width="164" height="${cy+27-(ny-17)}" fill="transparent"/>
       <text class="nm5${end?' halo5':''}" x="${x}" y="${ny}" text-anchor="middle">${esc(nm)}</text>
-      ${end?`<circle class="ring5" cx="${x}" cy="${y}" r="22" fill="var(--map-bg)" stroke="var(--ink-2)" stroke-width="1.8" stroke-dasharray="3 4"/><text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`
-        :`<circle class="ring5" cx="${x}" cy="${y}" r="9" fill="var(--map-bg)" stroke="var(--ev${vis3(l)})" stroke-width="4"/><circle class="core5" cx="${x}" cy="${y}" r="3.4"/>`}</g>`});
-  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="How gradual disempowerment could unfold, from AI capability to human influence. Line style shows how well each step is measured. Select a step to read about it.">${g}</svg>`;
+      <circle class="ring5" cx="${x}" cy="${y}" r="${r}" fill="${c.band==='stronger'?color:'var(--map-bg)'}" stroke="${color}" stroke-width="3"${c.band==='major'?' stroke-dasharray="3 3"':''}/>
+      ${c.band==='partial'?`<path d="M${x} ${y-r} A${r} ${r} 0 0 0 ${x} ${y+r} Z" fill="${color}"/>`:''}
+      ${end?`<text class="q5" x="${x}" y="${y+7.5}" text-anchor="middle">?</text>`:''}
+      <text class="coverage-label5 halo5" x="${x}" y="${cy}" text-anchor="middle">${esc(band.short)}</text>
+      ${c.band==='major'?`<text class="research-prompt5 halo5" x="${x}" y="${cy+20}" text-anchor="middle">${esc(c.prompt)}</text>`:''}</g>`});
+  return `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Proposed pathways to gradual disempowerment. Red nodes have major measurement gaps, amber nodes have partial coverage, and green nodes have stronger coverage. Skills, government decisions and human influence have major gaps. Connections show proposed pathways. Select a step for its research need.">${g}</svg>`;
 }
 
 /* phone: vertical list, one expandable row per step */
 function mapList5(){
-  const row=id=>{const l=lv(id);
-    return `<li class="ml5" data-id="${id}" data-l="${vis3(l)}"><span class="ml5-line" aria-hidden="true"></span>
-      <button type="button" class="ml5-btn" aria-expanded="false" aria-controls="mlc5-${id}"><span class="ml5-name">${esc(nameOf(id))}</span>${chev5}</button>
+  const row=id=>{const c=coverageOf5(id);
+    return `<li class="ml5" data-id="${id}" data-coverage="${c.band}"><span class="ml5-line" aria-hidden="true">${coverageGlyph5(c.band,18)}</span>
+      <button type="button" class="ml5-btn" aria-expanded="false" aria-controls="mlc5-${id}"><span class="ml5-labels"><span class="ml5-name">${esc(nameOf(id))}</span><span class="ml5-coverage">${esc(coverageBand5(id).label)}</span>${c.band==='major'?`<span class="ml5-prompt">${esc(c.prompt)}</span>`:''}</span>${chev5}</button>
       <div class="ml5-card" id="mlc5-${id}"></div></li>`};
   return `<ol class="mlist5">${['capability','adoption','handover'].map(row).join('')}<li class="ml5-fork">Then four lines, side by side</li>${['work','share','skills','culture','institutions'].map(row).join('')}<li class="ml5-fork">All four lead to the outcome</li>${row('influence')}</ol>`;
 }
 
 /* the step card: what the step is, how well it is measured, and the way to its evidence */
 function stepCard5(i){
-  const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1;
+  const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1,c=coverageOf5(id);
   const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
   const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
-  return `<div class="card5-n">${i+1} of ${ORDER.length}</div>
+  return `<div class="card5-meta"><span class="card5-n">${i+1} of ${ORDER.length}</span>${coverageBadge5(id)}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
-    <p class="card5-what">${esc(C.what[id])}</p>
+    <div class="card5-research"><b>Research needed</b><p class="card5-what">${esc(c.need)}</p></div>
     <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>
       <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}" title="Back to ${esc(nameOf(ORDER[i-1]))}">${chev5}</button>`:''}<button type="button" class="btn ghost" data-t="next" aria-label="${esc(nextFull)}" title="${esc(nextFull)}"><span>${esc(nextLabel)}</span>${chev5}</button></span></div>`;
 }
 
 function mountMap5(el,opts={}){
   const onStop=opts.onStop||(id=>{try{location.hash=id}catch(e){}});
-  const K=COPY.home.legend3;
   el.classList.add('mapcard5');
-  el.innerHTML=`<div class="map5">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}
-   <div class="mkey5"><span class="mk5-t">${esc(K.lead)}</span>${[3,2,1].map(k=>`<span class="mk5-i">${lineGlyph5(k,34,10)}${esc(K.items[k])}</span>`).join('')}</div>`;
+  el.innerHTML=`<div class="coverage-header5 wrap"><h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>${coverageLegend5()}${coverageNote5()}</div><div class="map5">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
   const map=$('.map5',el),card=$('.card5',map),list=$('.mlist5',el);
   let sel=0,phoneOpen=true;
   const rm=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -128,7 +140,7 @@ function mountMap5(el,opts={}){
     if((e.key==='Enter'||e.key===' ')&&t.matches&&t.matches('.st5')){e.preventDefault();select(ORDER.indexOf(t.dataset.id))}
     else if((e.key==='ArrowRight'||e.key==='ArrowLeft')&&t.closest&&t.closest('.map5')){e.preventDefault();select(sel+(e.key==='ArrowRight'?1:-1));
       const g=$(`.st5[data-id="${ORDER[sel]}"]`,map);if(g&&t.matches('.st5'))g.focus()}});
-  select(0);
+  select(ORDER.indexOf('skills'));
   return el;
 }
 
@@ -136,14 +148,12 @@ function mountMap5(el,opts={}){
    2. EVIDENCE OVERVIEW ROWS
    ====================================================================================== */
 function evidenceRows(el){
-  const legend=`<div class="elg5" role="list" aria-label="What the data show"><span class="elg5-t">What the data show</span>${[4,3,2,1,'?'].map(s=>`<span class="elg5-i" role="listitem">${sigDot5(s)}${SIGWORD5[s]}</span>`).join('')}</div>`;
-  const EORDER=['capability','adoption','handover','work','share','culture','institutions','skills','influence'];
-  const rows=EORDER.map(id=>{const L=id==='influence'?END:linkById(id),s=sigOf5(id),l=lv(id),hs=HUMAN5.includes(id);
-    return `<a class="er5${hs?' hs':''}${s==='?'?' q':''}" href="#${id}" style="--band:${s==='?'?'var(--sg0)':`var(--sg${s})`}" aria-label="${esc(L.name)}. What the data show: ${SIGWORD5[s]}. ${LEVELWORD[l]}. ${esc(oneLiner5(id))}">
-      <span class="er5-nm">${esc(L.name)}${hs?'<span class="hs5tag">Human side</span>':''}</span>
-      <span class="er5-sg">${sigDot5(s)}<span>${SIGWORD5[s]}</span></span>
+  const rows=ORDER.map(id=>{const c=coverageOf5(id);
+    return `<a class="er5" data-coverage="${c.band}" href="#${id}" style="--band:var(--coverage-${c.band})" aria-label="${esc(nameOf(id))}. ${esc(coverageBand5(id).label)}. ${esc(oneLiner5(id))}">
+      <span class="er5-nm">${esc(nameOf(id))}</span>
+      <span class="er5-coverage">${coverageBadge5(id)}</span>
       <span class="er5-one">${esc(oneLiner5(id))}</span>${chev5}</a>`}).join('');
-  el.innerHTML=legend+`<div class="er5-list">${rows}</div>`;return el;
+  el.innerHTML=coverageLegend5()+coverageNote5()+`<div class="er5-head" aria-hidden="true"><span>Step</span><span>Measurement coverage</span><span>What the studies show</span></div><div class="er5-list">${rows}</div>`;return el;
 }
 
 /* ======================================================================================
