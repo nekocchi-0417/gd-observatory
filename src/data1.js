@@ -29,7 +29,7 @@ const gS=k=>GALLUP.x.map((x,i)=>[x,GALLUP[k][i]]);
 
 const LINKS=[
 /* ============ 1 ============ */
-{id:'capability',n:1,name:'Capability',line:'trunk',level:4,
+{id:'capability',n:1,name:'AI capability',line:'trunk',level:4,
  levelWhy:'Independent trackers measure almost every major model; METR\'s task-length series has added no model since May 2026',
  dir:'Rising fast',asof:'Oct 2026',
  headline:'1 in 5 real paid projects',
@@ -99,7 +99,7 @@ const LINKS=[
  watch:['AI\'s automation rate on the Remote Labor Index passing 50% of projects; it was 21.25% in September 2026.','Partly met: the UK AI Security Institute finds cyber task length doubling every 8 months or faster, and the Remote Labor Index covers work outside software.','A plateau. If capability scores stop rising, every link downstream slows.']},
 
 /* ============ 2 ============ */
-{id:'adoption',n:2,name:'Adoption',line:'trunk',level:4,
+{id:'adoption',n:2,name:'AI adoption',line:'trunk',level:4,
  levelWhy:'Surveyed every quarter by several independent bodies',
  dir:'Rising',asof:'Q3 2026',
  headline:'53% of US workers use AI',
@@ -163,7 +163,7 @@ const LINKS=[
  watch:['Daily use at work passing 25%; it was 16% in August 2026.','Share of work hours done with AI: economists\' median forecast is 10% by 2030 and 40% by 2050, from 3.35% in 2024 on the measure they were given (the St. Louis Fed survey reads 6.3% for Q2 2026).','US firm adoption rising faster than firms themselves expect (20 to 23% within six months).']},
 
 /* ============ 3 ============ */
-{id:'handover',n:3,name:'Hand-over',line:'trunk',level:3,
+{id:'handover',n:3,name:'Delegation to AI',line:'trunk',level:3,
  levelWhy:"Repeated, but from the companies' own logs",
  dir:'Coding rising; chat flat within method noise',asof:'Nov 2025',
  headline:'45% of chats hand the task over',
@@ -230,7 +230,7 @@ const LINKS=[
  watch:['Automation above 50% on Claude.ai for two reports running.','The human-in-the-loop share of agent actions falling below 73%.','A second provider publishing the same split.']},
 
 /* ============ 4 ============ */
-{id:'work',n:4,name:'Entry-level work',line:'economy',level:3,
+{id:'work',n:4,name:'Entry-level jobs',line:'economy',level:3,
  levelWhy:'Measured monthly; the cause is disputed',
  dir:'Worse for the young; flat overall',asof:'Aug 2026',
  headline:'22–25s in exposed jobs: −13%',

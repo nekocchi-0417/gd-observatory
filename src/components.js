@@ -92,12 +92,14 @@ function mapList5(){
 
 /* the step card: what the step is, how well it is measured, and the way to its evidence */
 function stepCard5(i){
-  const C=COPY.home.card,id=ORDER[i],l=lv(id),nx=ORDER[i+1],last=i===ORDER.length-1;
+  const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1;
+  const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
+  const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
   return `<div class="card5-n">${i+1} of ${ORDER.length}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
     <p class="card5-what">${esc(C.what[id])}</p>
-    <div class="card5-ctl"><button type="button" class="btn pri" data-t="open">${esc(id==='influence'?C.openEnd:C.open)} →</button>
-      <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}">←</button>`:''}<button type="button" class="btn ghost" data-t="next">${last?esc(C.again):`${esc(C.next)}: ${esc(nameOf(nx))} →`}</button></span></div>`;
+    <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>
+      <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}" title="Back to ${esc(nameOf(ORDER[i-1]))}">${chev5}</button>`:''}<button type="button" class="btn ghost" data-t="next" aria-label="${esc(nextFull)}" title="${esc(nextFull)}"><span>${esc(nextLabel)}</span>${chev5}</button></span></div>`;
 }
 
 function mountMap5(el,opts={}){

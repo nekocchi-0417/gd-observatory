@@ -955,16 +955,19 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .intro5-n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:inline-grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:600;color:var(--ink);margin-top:1px}
 @media (max-width:900px){.intro5 ol{grid-template-columns:1fr;gap:10px}}
 /* home: the step card */
-.card5{position:absolute;left:2%;bottom:4%;width:min(36%,430px);z-index:2;background:var(--surface);border:1.5px solid var(--ink);border-radius:10px;padding:14px 16px 14px;box-shadow:0 8px 24px rgba(8,20,32,.10)}
+.card5{position:absolute;left:2%;bottom:4%;width:min(36%,430px);min-height:210px;display:flex;flex-direction:column;z-index:2;background:var(--surface);border:1.5px solid var(--ink);border-radius:8px;padding:14px 16px 14px;box-shadow:0 8px 24px rgba(8,20,32,.10)}
 .card5-n,.ml5-card .card5-n{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
 .card5-name{font-weight:750;font-size:18px;margin-top:2px;color:var(--ink)}
 .card5-what{font-family:var(--f-text);font-size:14.5px;line-height:1.42;color:var(--ink-2);margin-top:4px}
 .card5-ms{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.4;color:var(--ink-2);margin-top:8px}
 .card5-ms .lg5{flex:0 0 auto;margin-top:4px}
 .card5-ms b{color:var(--ink);font-weight:650}
-.card5-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:12px}
-.card5-nav{display:flex;gap:6px}
-.card5-ctl .btn{padding:6px 12px;font-size:13px}
+.card5-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding-top:12px;margin-top:auto}
+.card5-nav{display:flex;gap:6px;align-items:center}
+.card5-ctl .btn{display:inline-flex;gap:6px;align-items:center;justify-content:center;min-height:32px;padding:6px 10px;font-size:13px;white-space:nowrap}
+.card5-ctl .btn[data-t="prev"]{width:32px;padding:6px}
+.card5-ctl [data-t="prev"] .chev5{transform:rotate(180deg)}
+.card5-ctl .chev5{flex:0 0 14px;width:14px;height:14px}
 .card5-ctl .btn.pri{background:var(--ink);color:var(--surface);border-color:var(--ink)}
 .card5-ctl .btn.pri:hover{background:var(--accent);border-color:var(--accent)}
 .map5 .st5.here .ring5{stroke-width:6}
@@ -1429,7 +1432,7 @@ const gS=k=>GALLUP.x.map((x,i)=>[x,GALLUP[k][i]]);
 
 const LINKS=[
 /* ============ 1 ============ */
-{id:'capability',n:1,name:'Capability',line:'trunk',level:4,
+{id:'capability',n:1,name:'AI capability',line:'trunk',level:4,
  levelWhy:'Independent trackers measure almost every major model; METR\'s task-length series has added no model since May 2026',
  dir:'Rising fast',asof:'Oct 2026',
  headline:'1 in 5 real paid projects',
@@ -1499,7 +1502,7 @@ const LINKS=[
  watch:['AI\'s automation rate on the Remote Labor Index passing 50% of projects; it was 21.25% in September 2026.','Partly met: the UK AI Security Institute finds cyber task length doubling every 8 months or faster, and the Remote Labor Index covers work outside software.','A plateau. If capability scores stop rising, every link downstream slows.']},
 
 /* ============ 2 ============ */
-{id:'adoption',n:2,name:'Adoption',line:'trunk',level:4,
+{id:'adoption',n:2,name:'AI adoption',line:'trunk',level:4,
  levelWhy:'Surveyed every quarter by several independent bodies',
  dir:'Rising',asof:'Q3 2026',
  headline:'53% of US workers use AI',
@@ -1563,7 +1566,7 @@ const LINKS=[
  watch:['Daily use at work passing 25%; it was 16% in August 2026.','Share of work hours done with AI: economists\' median forecast is 10% by 2030 and 40% by 2050, from 3.35% in 2024 on the measure they were given (the St. Louis Fed survey reads 6.3% for Q2 2026).','US firm adoption rising faster than firms themselves expect (20 to 23% within six months).']},
 
 /* ============ 3 ============ */
-{id:'handover',n:3,name:'Hand-over',line:'trunk',level:3,
+{id:'handover',n:3,name:'Delegation to AI',line:'trunk',level:3,
  levelWhy:"Repeated, but from the companies' own logs",
  dir:'Coding rising; chat flat within method noise',asof:'Nov 2025',
  headline:'45% of chats hand the task over',
@@ -1630,7 +1633,7 @@ const LINKS=[
  watch:['Automation above 50% on Claude.ai for two reports running.','The human-in-the-loop share of agent actions falling below 73%.','A second provider publishing the same split.']},
 
 /* ============ 4 ============ */
-{id:'work',n:4,name:'Entry-level work',line:'economy',level:3,
+{id:'work',n:4,name:'Entry-level jobs',line:'economy',level:3,
  levelWhy:'Measured monthly; the cause is disputed',
  dir:'Worse for the young; flat overall',asof:'Aug 2026',
  headline:'22–25s in exposed jobs: −13%',
@@ -1726,7 +1729,7 @@ const COURT=[[2023,4,1],[2023,5,2],[2023,6,3],[2023,7,1],[2023,8,0],[2023,9,2],[
 
 LINKS.push(
 /* ============ 5 ============ */
-{id:'share',n:5,name:"Workers' share",line:'economy',level:2,
+{id:'share',n:5,name:"Workers' share of income",line:'economy',level:2,
  levelWhy:'Measured quarterly; not attributable to AI',
  dir:'Falling: record low',asof:'Q2 2026',
  headline:'52.8% of income: a record low',
@@ -1971,7 +1974,7 @@ LINKS.push(
  watch:["Deezer's AI stream share passing 5%.",'AI named as the main source of news by more than 1%.','Daily use of AI for companionship: experts forecast 15% of US adults by 2030 and 30% by 2040.']},
 
 /* ============ 8 ============ */
-{id:'institutions',n:8,name:'Institutions',line:'state',level:1,
+{id:'institutions',n:8,name:'AI in government',line:'state',level:1,
  levelWhy:'Disclosures are counted; decisions rarely are',
  dir:'Disclosed use rising; hand-over of decisions unknown',asof:'Oct 2026',
  headline:'3,611 disclosed uses; decisions rarely counted',
@@ -2232,8 +2235,8 @@ const GLOSSARY=[
  ['Leading or frontier AI system','The most capable AI models available at a given time.'],
  ['Task length at 50% success','The length of task, counted as the time a skilled person would need, that an AI system completes successfully half the time. It measures difficulty, not how long the AI runs.'],
  ['AI-exposed occupation','A job in which AI could do a large share of the tasks.'],
- ['Hand-over, automation, augmentation','Anthropic sorts conversations into automation, where the user hands the task over, and augmentation, where the user works through the task with the AI. "Hand-over" on this site means the first.'],
- ["Workers' share (labour share)",'The part of business income paid out as wages and benefits, as opposed to profit, rent and interest.'],
+ ['Delegation to AI (hand-over)','Giving AI a task to complete, rather than working through each step with it. Anthropic calls these two patterns automation and augmentation.'],
+ ["Workers' share of income (labour share)",'The part of business income paid out as wages and benefits, as opposed to profit, rent and interest.'],
  ['Labour-force participation','The share of adults who are working or looking for work. People who stop looking are not counted as unemployed.'],
  ['Index, for example "Nov 2022 = 100"','A series rescaled so that a chosen date equals 100. A reading of 87 is 13% below that date.'],
  ['Log scale','An axis on which each step multiplies the last (1, 4, 15, 60 minutes). Steady doubling shows as a straight line.'],
@@ -2279,16 +2282,17 @@ const COPY={
   "legend3": {"lead": "How well measured", "items": {"3": "Well measured", "2": "Partly measured", "1": "Barely measured"}},
   "card": {
    "open": "See the evidence", "openEnd": "See the gap", "next": "Next", "again": "Start again",
+   "nextLabels": {"handover": "Delegation", "work": "Jobs", "share": "Income share", "skills": "Skills", "culture": "Culture", "institutions": "Government", "influence": "Influence"},
    "what": {
-    "capability": "Research teams give AI systems paid remote-work projects. The best systems complete about 1 in 5 to a professional standard, up from 1 in 40 in October 2025.",
-    "adoption": "A colleague drafts a report with AI. In August 2026, 53% of US workers used AI at work; 16% used it daily.",
-    "handover": "A developer hands AI a whole task. Developers using AI agents rose from 31% to 59% in a year; in Claude chats, hand-overs are flat.",
-    "work": "A 23-year-old looks for a first job. In the most AI-exposed occupations, US employment of 22–25-year-olds is about 19% below trend; the cause is disputed.",
-    "share": "A worker opens her payslip. Workers' share of US business income is a record-low 52.8% (Q2 2026), but it was falling before AI.",
-    "skills": "A learner gets answers from AI. Short trials find people learn less that way; a three-year clinic audit found no loss of skill.",
-    "culture": "A listener presses play. Over half of Deezer uploads and about half of new web articles are AI-made, but AI tracks get 1–3% of streams.",
-    "institutions": "An official signs off an AI-drafted decision. Governments disclose thousands of AI uses (US federal: 3,611 in 2025), but almost none count AI-assisted decisions.",
-    "influence": "You vote, shop and speak up. Nothing directly measures whether people still have a say over the economy, culture and the state."
+    "capability": "The best AI systems complete about 1 in 5 paid remote-work projects to a professional standard in a benchmark, up from 1 in 40 in October 2025.",
+    "adoption": "In August 2026, 53% of US workers used AI at work; 16% used it daily.",
+    "handover": "AI-agent use among developers rose from 31% to 59% in a year. The share of Claude chats that hand over a whole task is flat.",
+    "work": "In jobs most exposed to AI, US employment of 22–25-year-olds is about 19% below trend; AI's role remains disputed.",
+    "share": "Workers' share of US business income is a record-low 52.8% (Q2 2026), but it was falling before AI.",
+    "skills": "Some short trials find weaker learning when people rely on AI answers; a three-year clinic audit found no loss of skill.",
+    "culture": "Over half of Deezer uploads and about half of new web articles are AI-made, but AI tracks get 1–3% of streams.",
+    "institutions": "Governments disclose thousands of AI uses (US federal: 3,611 in 2025), but almost none count AI-assisted decisions.",
+    "influence": "The map has no direct measure of whether people are losing influence over the economy, culture and government."
    }
   },
   "headline": "We cannot steer what we do not measure."
@@ -3997,12 +4001,14 @@ function mapList5(){
 
 /* the step card: what the step is, how well it is measured, and the way to its evidence */
 function stepCard5(i){
-  const C=COPY.home.card,id=ORDER[i],l=lv(id),nx=ORDER[i+1],last=i===ORDER.length-1;
+  const C=COPY.home.card,id=ORDER[i],nx=ORDER[i+1],last=i===ORDER.length-1;
+  const nextLabel=last?C.again:`${C.next}: ${C.nextLabels[nx]||nameOf(nx)}`;
+  const nextFull=last?C.again:`${C.next}: ${nameOf(nx)}`;
   return `<div class="card5-n">${i+1} of ${ORDER.length}</div>
     <div class="card5-name">${esc(nameOf(id))}</div>
     <p class="card5-what">${esc(C.what[id])}</p>
-    <div class="card5-ctl"><button type="button" class="btn pri" data-t="open">${esc(id==='influence'?C.openEnd:C.open)} →</button>
-      <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}">←</button>`:''}<button type="button" class="btn ghost" data-t="next">${last?esc(C.again):`${esc(C.next)}: ${esc(nameOf(nx))} →`}</button></span></div>`;
+    <div class="card5-ctl"><button type="button" class="btn pri" data-t="open"><span>${esc(id==='influence'?C.openEnd:C.open)}</span>${chev5}</button>
+      <span class="card5-nav">${i>0?`<button type="button" class="btn ghost" data-t="prev" aria-label="Back to ${esc(nameOf(ORDER[i-1]))}" title="Back to ${esc(nameOf(ORDER[i-1]))}">${chev5}</button>`:''}<button type="button" class="btn ghost" data-t="next" aria-label="${esc(nextFull)}" title="${esc(nextFull)}"><span>${esc(nextLabel)}</span>${chev5}</button></span></div>`;
 }
 
 function mountMap5(el,opts={}){

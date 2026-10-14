@@ -248,16 +248,19 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .intro5-n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:inline-grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:600;color:var(--ink);margin-top:1px}
 @media (max-width:900px){.intro5 ol{grid-template-columns:1fr;gap:10px}}
 /* home: the step card */
-.card5{position:absolute;left:2%;bottom:4%;width:min(36%,430px);z-index:2;background:var(--surface);border:1.5px solid var(--ink);border-radius:10px;padding:14px 16px 14px;box-shadow:0 8px 24px rgba(8,20,32,.10)}
+.card5{position:absolute;left:2%;bottom:4%;width:min(36%,430px);min-height:210px;display:flex;flex-direction:column;z-index:2;background:var(--surface);border:1.5px solid var(--ink);border-radius:8px;padding:14px 16px 14px;box-shadow:0 8px 24px rgba(8,20,32,.10)}
 .card5-n,.ml5-card .card5-n{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
 .card5-name{font-weight:750;font-size:18px;margin-top:2px;color:var(--ink)}
 .card5-what{font-family:var(--f-text);font-size:14.5px;line-height:1.42;color:var(--ink-2);margin-top:4px}
 .card5-ms{display:flex;gap:9px;align-items:flex-start;font-size:13px;line-height:1.4;color:var(--ink-2);margin-top:8px}
 .card5-ms .lg5{flex:0 0 auto;margin-top:4px}
 .card5-ms b{color:var(--ink);font-weight:650}
-.card5-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-top:12px}
-.card5-nav{display:flex;gap:6px}
-.card5-ctl .btn{padding:6px 12px;font-size:13px}
+.card5-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding-top:12px;margin-top:auto}
+.card5-nav{display:flex;gap:6px;align-items:center}
+.card5-ctl .btn{display:inline-flex;gap:6px;align-items:center;justify-content:center;min-height:32px;padding:6px 10px;font-size:13px;white-space:nowrap}
+.card5-ctl .btn[data-t="prev"]{width:32px;padding:6px}
+.card5-ctl [data-t="prev"] .chev5{transform:rotate(180deg)}
+.card5-ctl .chev5{flex:0 0 14px;width:14px;height:14px}
 .card5-ctl .btn.pri{background:var(--ink);color:var(--surface);border-color:var(--ink)}
 .card5-ctl .btn.pri:hover{background:var(--accent);border-color:var(--accent)}
 .map5 .st5.here .ring5{stroke-width:6}

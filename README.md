@@ -10,7 +10,7 @@ A public evidence map for gradual disempowerment: tracking whether AI is weakeni
 
 Gradual disempowerment is the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation ([Kulveit and co-authors, 2025](https://gradual-disempowerment.ai/)).
 
-The site breaks that argument into a chain of nine stops: capability, adoption, hand-over, then four branches (entry-level work and workers' share, skills and judgement, culture and information, institutions), ending at human influence. Each stop's page is a short briefing: the bottom line, how confident to be, the evidence, caveats, blind spots and signals to watch.
+The site breaks that argument into a chain of nine stops: AI capability, AI adoption, delegation to AI, then four branches (entry-level jobs and workers' share of income, skills and judgement, culture and information, AI in government), ending at human influence. Each stop's page is a short briefing: the bottom line, how confident to be, the evidence, caveats, blind spots and signals to watch.
 
 The main finding: what AI can do and who uses it are measured again and again. Whether people keep their skills, judgement and say is rarely measured, and almost never on the same people over time.
 

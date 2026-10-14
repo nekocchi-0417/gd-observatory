@@ -30,16 +30,17 @@ const COPY={
   "legend3": {"lead": "How well measured", "items": {"3": "Well measured", "2": "Partly measured", "1": "Barely measured"}},
   "card": {
    "open": "See the evidence", "openEnd": "See the gap", "next": "Next", "again": "Start again",
+   "nextLabels": {"handover": "Delegation", "work": "Jobs", "share": "Income share", "skills": "Skills", "culture": "Culture", "institutions": "Government", "influence": "Influence"},
    "what": {
-    "capability": "Research teams give AI systems paid remote-work projects. The best systems complete about 1 in 5 to a professional standard, up from 1 in 40 in October 2025.",
-    "adoption": "A colleague drafts a report with AI. In August 2026, 53% of US workers used AI at work; 16% used it daily.",
-    "handover": "A developer hands AI a whole task. Developers using AI agents rose from 31% to 59% in a year; in Claude chats, hand-overs are flat.",
-    "work": "A 23-year-old looks for a first job. In the most AI-exposed occupations, US employment of 22–25-year-olds is about 19% below trend; the cause is disputed.",
-    "share": "A worker opens her payslip. Workers' share of US business income is a record-low 52.8% (Q2 2026), but it was falling before AI.",
-    "skills": "A learner gets answers from AI. Short trials find people learn less that way; a three-year clinic audit found no loss of skill.",
-    "culture": "A listener presses play. Over half of Deezer uploads and about half of new web articles are AI-made, but AI tracks get 1–3% of streams.",
-    "institutions": "An official signs off an AI-drafted decision. Governments disclose thousands of AI uses (US federal: 3,611 in 2025), but almost none count AI-assisted decisions.",
-    "influence": "You vote, shop and speak up. Nothing directly measures whether people still have a say over the economy, culture and the state."
+    "capability": "The best AI systems complete about 1 in 5 paid remote-work projects to a professional standard in a benchmark, up from 1 in 40 in October 2025.",
+    "adoption": "In August 2026, 53% of US workers used AI at work; 16% used it daily.",
+    "handover": "AI-agent use among developers rose from 31% to 59% in a year. The share of Claude chats that hand over a whole task is flat.",
+    "work": "In jobs most exposed to AI, US employment of 22–25-year-olds is about 19% below trend; AI's role remains disputed.",
+    "share": "Workers' share of US business income is a record-low 52.8% (Q2 2026), but it was falling before AI.",
+    "skills": "Some short trials find weaker learning when people rely on AI answers; a three-year clinic audit found no loss of skill.",
+    "culture": "Over half of Deezer uploads and about half of new web articles are AI-made, but AI tracks get 1–3% of streams.",
+    "institutions": "Governments disclose thousands of AI uses (US federal: 3,611 in 2025), but almost none count AI-assisted decisions.",
+    "influence": "The map has no direct measure of whether people are losing influence over the economy, culture and government."
    }
   },
   "headline": "We cannot steer what we do not measure."

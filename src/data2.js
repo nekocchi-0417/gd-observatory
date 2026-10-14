@@ -6,7 +6,7 @@ const COURT=[[2023,4,1],[2023,5,2],[2023,6,3],[2023,7,1],[2023,8,0],[2023,9,2],[
 
 LINKS.push(
 /* ============ 5 ============ */
-{id:'share',n:5,name:"Workers' share",line:'economy',level:2,
+{id:'share',n:5,name:"Workers' share of income",line:'economy',level:2,
  levelWhy:'Measured quarterly; not attributable to AI',
  dir:'Falling: record low',asof:'Q2 2026',
  headline:'52.8% of income: a record low',
@@ -251,7 +251,7 @@ LINKS.push(
  watch:["Deezer's AI stream share passing 5%.",'AI named as the main source of news by more than 1%.','Daily use of AI for companionship: experts forecast 15% of US adults by 2030 and 30% by 2040.']},
 
 /* ============ 8 ============ */
-{id:'institutions',n:8,name:'Institutions',line:'state',level:1,
+{id:'institutions',n:8,name:'AI in government',line:'state',level:1,
  levelWhy:'Disclosures are counted; decisions rarely are',
  dir:'Disclosed use rising; hand-over of decisions unknown',asof:'Oct 2026',
  headline:'3,611 disclosed uses; decisions rarely counted',
