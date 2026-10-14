@@ -6,6 +6,7 @@ const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draf
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
 const stripArrow5=t=>String(t).replace(/\s*→\s*$/,'');
 const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
+const verify5=()=>`<div class="verify5"><b>Draft source status</b><span>Check sources before citing. Headline figures are being verified for v1.0.</span><a class="go" href="https://github.com/nekocchi-0417/gd-observatory/blob/main/research/checklist/handcheck.csv" target="_blank" rel="noopener">Verification checklist ↗</a></div>`;
 /* the confidence block: the two ratings, each with its one-line reason */
 const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.linkUI.brief,why=id==='influence'?END.headline:linkById(id).levelWhy;
   return `<section class="conf5" aria-label="${esc(B.confidence)}">${lab5([B.confidence])}<dl class="conf5-g">
@@ -19,17 +20,18 @@ const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest
 
 /* ----- home ----- */
 function viewMap(v){
-  const H=COPY.home,P=H.purpose,G=H.gaps3,C=H.cta;
+  const H=COPY.home,P=H.purpose,S=H.snapshot,G=H.gaps3,C=H.cta;
   v.innerHTML=`<div class="home5">
    <section class="wrap hero5"><div class="hero5-g top5"><div>${eye5([esc(H.eyebrow)])}
     <h1 class="h1-5 xl purpose5-h">${esc(P.h1)}</h1></div>
-    <p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p></div></section>
-   <section class="wrap sec2h5"><div class="hero5-g mid5"><h2 class="h1-5">${esc(H.headline)}</h2><ul class="lead5 sm qs5">${H.mapNote.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></div></section>
+    <div><p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p>
+    <div class="hero5-actions">${H.paths.items.map(p=>`<a class="path5 compact" href="#${esc(p.to)}"><b>${esc(p.who)}</b><span>${esc(p.line)}</span>${chev5}</a>`).join('')}</div></div></div></section>
+   <section class="wrap sec2h5"><div class="snapshot5"><div><h2 class="h1-5">${esc(S.h2)}</h2><p class="sub5 big">${esc(S.sub)}</p></div>
+    <ol class="snapshot5-l">${S.items.map(x=>`<li><span>${esc(x.k)}</span><b>${esc(x.t)}</b><p>${esc(x.text)}</p></li>`).join('')}</ol></div></section>
    <div id="homeMap"></div>
    <section class="wrap gaps5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.h2)}</h2><p class="sub5">${esc(G.sub)}</p></div><a class="go" href="#gaps">${esc(G.all.replace('{n}',GAPS.length))} →</a></div>
     <ol class="gaps5-l">${G.items.map((g,i)=>`<li><span class="gaps5-n">${i+1}</span><div><a class="gaps5-t" href="#gaps/${g.id}">${esc(g.t)}</a><p>${esc(g.text)}</p>${g.note?`<p class="gaps5-note">${esc(g.note)}</p>`:''}</div></li>`).join('')}</ol></section>
-   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2>
-    <div class="paths5-g two">${H.paths.items.map(p=>`<a class="path5" href="#${esc(p.to)}"><b>${esc(p.who)}</b><span>${esc(p.line)}</span>${chev5}</a>`).join('')}</div>
+   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2><p class="sub5">Add a better indicator, fund a missing measure, or challenge a rating before this becomes a v1.0 public resource.</p>
     <p class="cta5-links">${C.buttons.map(b=>`<a class="go" href="#${esc(b.to)}">${esc(b.t)} →</a>`).join('')}<a class="go" href="#contribute">${esc(C.why)} →</a></p></section>
   </div>`;
   mountMap5($('#homeMap',v),{onStop:id=>go(id)});
@@ -50,8 +52,6 @@ function viewWhy(v){
     <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></section>
    <section class="sec5 act5" id="w-authors"><h2 class="h2-5 sm">${esc(W.authors.h2)}</h2><p class="sub5">${esc(W.authors.text)}</p>
     <div class="btns5">${W.authors.buttons.map(b=>b[1].startsWith('#')?`<a class="btn" href="${esc(b[1])}">${esc(b[0])} →</a>`:ext(b[0],b[1])).join('')}</div></section>
-   <section class="sec5 act5" id="w-community"><h2 class="h2-5 sm">${esc(W.community.h2)} <span class="wip5">${esc(W.community.soon)}</span></h2><p class="sub5">${esc(W.community.text)} ${esc(W.community.until)}</p>
-    <div class="btns5">${ext(W.community.link[0],W.community.link[1])}</div></section>
   </div>`;
 }
 
@@ -60,6 +60,7 @@ function viewIndex(v){
   const E=COPY.evidence;
   v.innerHTML=`<div class="view5 wrap">${eye5(['Evidence'])}
    <h1 class="h1-5">${esc(E.title)}</h1><p class="lead5">${esc(E.deck)}</p>
+   ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
    <section class="sec5"><details class="det5" id="record"><summary>${esc(E.coverage.title)}</summary><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
@@ -77,6 +78,7 @@ function viewLink(v,id){
   v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5(id)}
    <div class="claim5">${eye5([esc(B.bottom),`Link ${L.n} of ${LINKS.length}`,esc(L.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${verify5()}
    ${conf5(id)}
    <section class="sec5 ev5">${lab5([B.evidence,B.indicators.replace('{n}',L.inds.length)])}<p class="sub5">${esc(COPY.linkUI.instruction)}</p><div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
@@ -91,6 +93,7 @@ function viewInfluence(v){
   v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5('influence')}
    <div class="claim5">${eye5([esc(B.bottom),'End of the chain',esc(END.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${verify5()}
    ${conf5('influence')}
    <section class="sec5 ev5">${lab5([B.evidence,inds.length===1?'Nearest measure':B.indicators.replace('{n}',inds.length)])}<div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
@@ -184,7 +187,7 @@ function viewMethod(v){
   v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}
    <h1 class="h1-5">${esc(M.title)}</h1><p class="lead5">${esc(rw('Method deck'))}</p>
    <nav class="toc5" aria-label="On this page">${secs.map(s=>`<a href="#method" data-to="m-${s[0]}">${s[1]}</a>`).join('')}</nav>
-   <section class="sec5" id="m-status"><div class="callout5"><b>${esc(M.headings.status)}</b><p>${esc(rw('Status of the figures'))}</p></div></section>
+   <section class="sec5" id="m-status"><div class="callout5"><b>${esc(M.headings.status)}</b><p>${esc(rw('Status of the figures'))}</p><p class="check5"><a class="go" href="https://github.com/nekocchi-0417/gd-observatory/blob/main/research/checklist/handcheck.csv" target="_blank" rel="noopener">Open the v1.0 verification checklist ↗</a></p></div></section>
    <section class="sec5" id="m-scales"><p class="sub5 fam5">${esc(M.headings.families)}</p><div class="two5">
     <div><h2 class="h2-5 sm">${esc(M.headings.measured)}</h2><p class="sub5">${esc(rw('How well a link is measured'))}</p>
      <ul class="scale5">${[[4,'Repeated, direct measurement by bodies independent of the AI developers, of something that is about AI by construction.'],[3,'Repeated and direct, but measured by the company whose product is involved, or with the cause in dispute.'],[2,'Measured repeatedly and directly, but the change cannot be tied to AI.'],[1,'Single studies, or counts of disclosures that mostly follow reporting rules.'],[0,'Nothing measures it directly.']].map(s=>`<li>${lineGlyph5(s[0],44,12)}<div><b>${LEVELWORD[s[0]]}</b><span>${s[1]}</span></div></li>`).join('')}</ul></div>

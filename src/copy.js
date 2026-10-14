@@ -4,8 +4,8 @@ const COPY={
   "eyebrow": "Better Futures Project · Zhang Yue",
   "paper": {"label": "Read more", "url": "https://gradual-disempowerment.ai/"},
   "purpose": {
-   "h1": "Tracking whether AI is weakening human influence",
-   "sub": "A public evidence map for gradual disempowerment: the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation."
+   "h1": "Where AI disempowerment is measured, and where it is not",
+   "sub": "A draft evidence map of nine links between AI capability and human influence, built to show what researchers can verify and what funders could help measure."
   },
   "paths": {
    "items": [
@@ -14,22 +14,31 @@ const COPY={
    ]
   },
   "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
-  "gaps3": {
-   "h2": "The three biggest gaps",
-   "sub": "Ranked by how little is measured and how near each step is to the outcome.",
+  "snapshot": {
+   "h2": "The current picture is lopsided.",
+   "sub": "Capability and adoption are tracked closely. The human end of the chain is mostly proxies, one-off studies, and paperwork.",
    "items": [
-    {"id": "influence", "t": "People's say", "text": "Nothing regularly tracks whether people's preferences still shape what governments, firms and media do.", "note": "The gradual disempowerment paper itself proposes this measure: \"the effectiveness of traditional democratic mechanisms in influencing outcomes\" (Kulveit et al., 2025, §6.2.1)."},
-    {"id": "skills", "t": "Skills without AI", "text": "Of 233 studies of how generative AI affects people, only 4 re-test the same people without AI over months."},
-    {"id": "institutions", "t": "AI in public decisions", "text": "Governments list AI tools; almost none count AI-assisted decisions or how often officials override AI."}
+    {"k": "Moving", "t": "Capability and use", "text": "AI is completing more real work, and roughly half of US workers report using AI at work."},
+    {"k": "Early signs", "t": "Jobs, culture, institutions", "text": "Young workers in exposed jobs are falling behind; AI-made content floods supply; governments list tools but rarely decisions."},
+    {"k": "Barely measured", "t": "Skills and human influence", "text": "We still lack repeat tests of unaided ability and a direct measure of whether people keep their say."}
+   ]
+  },
+  "gaps3": {
+   "h2": "Start with three missing measures",
+   "sub": "These are close to the outcome and hard to verify from today's sources.",
+   "items": [
+    {"id": "influence", "t": "Human influence is not directly measured", "text": "A repeated survey and behavioural measure of whether AI changes people's influence over firms, media and government."},
+    {"id": "skills", "t": "Unaided skills are rarely re-tested", "text": "Panel studies that re-test the same people without AI while tracking their AI use."},
+    {"id": "institutions", "t": "AI-assisted public decisions are rarely counted", "text": "Counts of AI-assisted decisions, review time and override rates for high-impact government systems."}
    ],
    "all": "The full agenda: {n} missing measures"
   },
   "cta": {
-   "h2": "Help close the gaps",
+   "h2": "Turn this into a live dashboard",
    "buttons": [
     {"t": "Add an indicator or study", "to": "contribute/add"},
     {"t": "Find or offer funding", "to": "contribute/funding"},
-    {"t": "Join the community", "to": "contribute/community"}
+    {"t": "Suggest a correction", "to": "contribute/authors"}
    ],
    "why": "Why this project"
   },
@@ -53,8 +62,8 @@ const COPY={
  },
  "why": {
   "nav": "Contribute",
-  "h1": "Why measure gradual disempowerment?",
-  "lead": "Gradual disempowerment could build through many small, sensible changes, each easy to miss. What AI can do is measured closely; whether people keep their skills and their say is barely measured, if at all. We cannot foresee or steer what we do not measure.",
+  "h1": "Help build the measurement layer",
+  "lead": "This is a prototype for a live dashboard: evidence first, gaps in plain sight, and a path for researchers and grantmakers to add better measures before weak signals harden into lock-in.",
   "plan": {
    "h2": "The plan",
    "steps": [
@@ -63,7 +72,7 @@ const COPY={
     {"t": "Pinpoint", "text": "Use better data to find where interventions could help most."},
     {"t": "Foresee", "text": "Later, use the map's indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
    ],
-   "aim": "The aim: a live, shared dashboard and library of gradual-disempowerment research."
+   "aim": "The aim: a shared dashboard and library that people can update, audit and fund."
   },
   "contribute": {
    "h2": "Add an indicator or study",
@@ -102,9 +111,9 @@ const COPY={
    "link": ["Open an issue", "https://github.com/nekocchi-0417/gd-observatory/issues/new/choose"]
   }
  },
- "evidence": {
-  "title": "What the data show, link by link",
-  "deck": "One row per link. Colour shows how far the data have moved; grey means too little data to tell.",
+  "evidence": {
+  "title": "Evidence by link",
+  "deck": "One row per link in the chain. Colour is the observatory's judgement of movement; line style shows how well the link is measured.",
   "scaleLabel": "What the data show",
   "scale": {
    "1": {
@@ -263,7 +272,7 @@ const COPY={
   "markerLegend": "Filled dot: moving the way the theory predicts. Hollow: the other way. Half: unclear.",
   "cards": {
    "sceptic": "What a sceptic would say",
-   "unmeasured": "What nobody measures",
+   "unmeasured": "Missing measures",
    "watch": "What to watch"
   },
   "unmeasuredTip": "Not found in published sources searched up to October 2026.",
@@ -1014,12 +1023,12 @@ const COPY={
  "gap": {
   "nav": "Gaps",
   "eyebrow": "Research gaps",
-  "h1": "The measurement agenda",
-  "sentence": "Nineteen measures that do not exist yet, each one a project a researcher could run or a funder could back. Ranked by how close the step is to the outcome and how little is measured today.",
+  "h1": "Research agenda: 19 missing measures",
+  "sentence": "Six are ready to fund, six need method work, and seven should be monitored. Each gap links to the closest existing evidence and a concrete study a team could run.",
   "priority": {
-   "now": {"t": "Fund now", "d": "A method exists; it needs money and a team."},
-   "method": {"t": "Develop methodology", "d": "The construct or instrument still has to be designed and tested."},
-   "later": {"t": "Monitor later", "d": "Further from the outcome, or data may appear on its own."}
+   "now": {"t": "Ready to fund", "d": "A method exists; it needs money and a team."},
+   "method": {"t": "Needs method design", "d": "The construct or instrument still has to be designed and tested."},
+   "later": {"t": "Monitor", "d": "Further from the outcome, or data may appear on its own."}
   },
   "cta": {
    "fund": ["Fund or run this measure", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=offer.yml&title="],
@@ -1048,8 +1057,8 @@ const COPY={
    "howTo": "Up the side: how many links along the chain separate each stop from Human influence, the outcome. Along the bottom: how well each stop is measured today."
   },
   "list": {
-   "title": "Nineteen missing measures",
-   "sub": "Grouped by what each needs next.",
+   "title": "Missing measures, grouped by next step",
+   "sub": "Open a row to see the project, the closest existing proxy and a contribution path.",
    "expandAll": "Expand all",
    "collapseAll": "Collapse all",
    "heads": {
@@ -1340,7 +1349,7 @@ const COPY={
   "tooltip": "Draft evidence map. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; check a source before citing."
  },
  "method": {
-  "title": "How this was put together",
+  "title": "Method, ratings and source status",
   "contents": [
    "Status",
    "Scales",

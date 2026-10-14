@@ -739,6 +739,14 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 .hero5{padding-top:clamp(28px,3.6vw,48px);padding-bottom:clamp(32px,3.8vw,52px)}
 .hero5-g{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 56px;align-items:end}
 .hero5-g .lead5{margin-top:0;padding-bottom:6px}
+.sec2h5{padding-bottom:clamp(24px,4vw,44px)}
+.snapshot5{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:24px 56px;align-items:start}
+.snapshot5 .sub5.big{font-family:var(--f-text);font-size:clamp(17px,1.55vw,20px);line-height:1.45;max-width:42ch}
+.snapshot5-l{list-style:none;margin:4px 0 0;padding:0;border-top:1px solid var(--ink)}
+.snapshot5-l li{display:grid;grid-template-columns:96px minmax(0,150px) minmax(0,1fr);gap:8px 18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--rule)}
+.snapshot5-l span{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.snapshot5-l b{font-size:15.5px;line-height:1.25}
+.snapshot5-l p{font-family:var(--f-text);font-size:15.5px;line-height:1.42;color:var(--ink-2)}
 .paper5{display:inline-block;margin-top:10px}
 .chainlab5{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
 .chainlab5-h{font-size:13px;color:var(--ink-3)}
@@ -864,6 +872,7 @@ details.det5[open]{padding-bottom:24px}
 }
 @media (max-width:900px){
   .hero5-g,.claim5,.two5{grid-template-columns:1fr}
+  .snapshot5{grid-template-columns:1fr}
   .pills5{border-left:0;padding:16px 0 0;border-top:1px solid var(--rule);grid-template-columns:1fr 1fr;min-width:0}
   .grp5{grid-template-columns:1fr;gap:16px}
   .acc5-p dl{grid-template-columns:1fr}
@@ -872,6 +881,7 @@ details.det5[open]{padding-bottom:24px}
   .lim5 li{grid-template-columns:1fr}
 }
 @media (max-width:640px){
+  .snapshot5-l li{grid-template-columns:1fr;gap:3px;padding:13px 0}
   .chainlab5-h{display:none}
   .doors5{grid-template-columns:1fr}
   .door5{min-height:0}
@@ -1049,9 +1059,15 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .path5 .chev5{position:absolute;right:14px;top:16px;color:var(--ink-3);transition:transform .15s}
 .path5:hover{border-color:var(--ink)}
 .path5:hover .chev5{transform:translateX(3px);color:var(--ink)}
+.hero5-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px;max-width:680px}
+.path5.compact{background:transparent;padding-block:12px}
+.verify5{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-top:22px;padding:10px 14px;border:1px dashed var(--ink-3);border-radius:6px;color:var(--ink-2);font-size:13.5px;max-width:980px}
+.verify5 b{color:var(--ink);font-size:13px}
+.verify5 span{font-family:var(--f-text);font-size:14.5px}
+.callout5 .check5{margin-top:10px}
 @media (max-width:1000px){.paths5-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .paths5-g.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
-@media (max-width:560px){.paths5-g,.paths5-g.two{grid-template-columns:1fr}}
+@media (max-width:560px){.paths5-g,.paths5-g.two,.hero5-actions{grid-template-columns:1fr}}
 .purpose5 .why5-l{color:var(--ink);font-weight:600}
 .sec2h5 .h1-5.q5{font-size:clamp(24px,2.6vw,34px);max-width:22em;line-height:1.15}
 .sec2h5{border-top:0}
@@ -1134,7 +1150,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   <a class="mark" href="#map" aria-label="Gradual Disempowerment Observatory, home">
     <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2"/><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6"/></svg>
     <span>Gradual Disempowerment Observatory</span></a>
-  <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Gaps</a><a href="#futures" title="What might happen next?">Futures<span class="wip5" aria-label="work in progress">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
+  <nav class="nav" aria-label="Sections"><a href="#map" title="How could disempowerment unfold?">Map</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
 <footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Observatory</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.6 · 13 October 2026 · a draft evidence map: AI tools helped find and summarise sources; headline figures are being checked against primary sources before v1.0; corrections welcome · <a href="#method">method and sources</a></span></div></footer>
@@ -2252,8 +2268,8 @@ const COPY={
   "eyebrow": "Better Futures Project · Zhang Yue",
   "paper": {"label": "Read more", "url": "https://gradual-disempowerment.ai/"},
   "purpose": {
-   "h1": "Tracking whether AI is weakening human influence",
-   "sub": "A public evidence map for gradual disempowerment: the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation."
+   "h1": "Where AI disempowerment is measured, and where it is not",
+   "sub": "A draft evidence map of nine links between AI capability and human influence, built to show what researchers can verify and what funders could help measure."
   },
   "paths": {
    "items": [
@@ -2262,22 +2278,31 @@ const COPY={
    ]
   },
   "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
-  "gaps3": {
-   "h2": "The three biggest gaps",
-   "sub": "Ranked by how little is measured and how near each step is to the outcome.",
+  "snapshot": {
+   "h2": "The current picture is lopsided.",
+   "sub": "Capability and adoption are tracked closely. The human end of the chain is mostly proxies, one-off studies, and paperwork.",
    "items": [
-    {"id": "influence", "t": "People's say", "text": "Nothing regularly tracks whether people's preferences still shape what governments, firms and media do.", "note": "The gradual disempowerment paper itself proposes this measure: \"the effectiveness of traditional democratic mechanisms in influencing outcomes\" (Kulveit et al., 2025, §6.2.1)."},
-    {"id": "skills", "t": "Skills without AI", "text": "Of 233 studies of how generative AI affects people, only 4 re-test the same people without AI over months."},
-    {"id": "institutions", "t": "AI in public decisions", "text": "Governments list AI tools; almost none count AI-assisted decisions or how often officials override AI."}
+    {"k": "Moving", "t": "Capability and use", "text": "AI is completing more real work, and roughly half of US workers report using AI at work."},
+    {"k": "Early signs", "t": "Jobs, culture, institutions", "text": "Young workers in exposed jobs are falling behind; AI-made content floods supply; governments list tools but rarely decisions."},
+    {"k": "Barely measured", "t": "Skills and human influence", "text": "We still lack repeat tests of unaided ability and a direct measure of whether people keep their say."}
+   ]
+  },
+  "gaps3": {
+   "h2": "Start with three missing measures",
+   "sub": "These are close to the outcome and hard to verify from today's sources.",
+   "items": [
+    {"id": "influence", "t": "Human influence is not directly measured", "text": "A repeated survey and behavioural measure of whether AI changes people's influence over firms, media and government."},
+    {"id": "skills", "t": "Unaided skills are rarely re-tested", "text": "Panel studies that re-test the same people without AI while tracking their AI use."},
+    {"id": "institutions", "t": "AI-assisted public decisions are rarely counted", "text": "Counts of AI-assisted decisions, review time and override rates for high-impact government systems."}
    ],
    "all": "The full agenda: {n} missing measures"
   },
   "cta": {
-   "h2": "Help close the gaps",
+   "h2": "Turn this into a live dashboard",
    "buttons": [
     {"t": "Add an indicator or study", "to": "contribute/add"},
     {"t": "Find or offer funding", "to": "contribute/funding"},
-    {"t": "Join the community", "to": "contribute/community"}
+    {"t": "Suggest a correction", "to": "contribute/authors"}
    ],
    "why": "Why this project"
   },
@@ -2301,8 +2326,8 @@ const COPY={
  },
  "why": {
   "nav": "Contribute",
-  "h1": "Why measure gradual disempowerment?",
-  "lead": "Gradual disempowerment could build through many small, sensible changes, each easy to miss. What AI can do is measured closely; whether people keep their skills and their say is barely measured, if at all. We cannot foresee or steer what we do not measure.",
+  "h1": "Help build the measurement layer",
+  "lead": "This is a prototype for a live dashboard: evidence first, gaps in plain sight, and a path for researchers and grantmakers to add better measures before weak signals harden into lock-in.",
   "plan": {
    "h2": "The plan",
    "steps": [
@@ -2311,7 +2336,7 @@ const COPY={
     {"t": "Pinpoint", "text": "Use better data to find where interventions could help most."},
     {"t": "Foresee", "text": "Later, use the map's indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
    ],
-   "aim": "The aim: a live, shared dashboard and library of gradual-disempowerment research."
+   "aim": "The aim: a shared dashboard and library that people can update, audit and fund."
   },
   "contribute": {
    "h2": "Add an indicator or study",
@@ -2350,9 +2375,9 @@ const COPY={
    "link": ["Open an issue", "https://github.com/nekocchi-0417/gd-observatory/issues/new/choose"]
   }
  },
- "evidence": {
-  "title": "What the data show, link by link",
-  "deck": "One row per link. Colour shows how far the data have moved; grey means too little data to tell.",
+  "evidence": {
+  "title": "Evidence by link",
+  "deck": "One row per link in the chain. Colour is the observatory's judgement of movement; line style shows how well the link is measured.",
   "scaleLabel": "What the data show",
   "scale": {
    "1": {
@@ -2511,7 +2536,7 @@ const COPY={
   "markerLegend": "Filled dot: moving the way the theory predicts. Hollow: the other way. Half: unclear.",
   "cards": {
    "sceptic": "What a sceptic would say",
-   "unmeasured": "What nobody measures",
+   "unmeasured": "Missing measures",
    "watch": "What to watch"
   },
   "unmeasuredTip": "Not found in published sources searched up to October 2026.",
@@ -3262,12 +3287,12 @@ const COPY={
  "gap": {
   "nav": "Gaps",
   "eyebrow": "Research gaps",
-  "h1": "The measurement agenda",
-  "sentence": "Nineteen measures that do not exist yet, each one a project a researcher could run or a funder could back. Ranked by how close the step is to the outcome and how little is measured today.",
+  "h1": "Research agenda: 19 missing measures",
+  "sentence": "Six are ready to fund, six need method work, and seven should be monitored. Each gap links to the closest existing evidence and a concrete study a team could run.",
   "priority": {
-   "now": {"t": "Fund now", "d": "A method exists; it needs money and a team."},
-   "method": {"t": "Develop methodology", "d": "The construct or instrument still has to be designed and tested."},
-   "later": {"t": "Monitor later", "d": "Further from the outcome, or data may appear on its own."}
+   "now": {"t": "Ready to fund", "d": "A method exists; it needs money and a team."},
+   "method": {"t": "Needs method design", "d": "The construct or instrument still has to be designed and tested."},
+   "later": {"t": "Monitor", "d": "Further from the outcome, or data may appear on its own."}
   },
   "cta": {
    "fund": ["Fund or run this measure", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=offer.yml&title="],
@@ -3296,8 +3321,8 @@ const COPY={
    "howTo": "Up the side: how many links along the chain separate each stop from Human influence, the outcome. Along the bottom: how well each stop is measured today."
   },
   "list": {
-   "title": "Nineteen missing measures",
-   "sub": "Grouped by what each needs next.",
+   "title": "Missing measures, grouped by next step",
+   "sub": "Open a row to see the project, the closest existing proxy and a contribution path.",
    "expandAll": "Expand all",
    "collapseAll": "Collapse all",
    "heads": {
@@ -3588,7 +3613,7 @@ const COPY={
   "tooltip": "Draft evidence map. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; check a source before citing."
  },
  "method": {
-  "title": "How this was put together",
+  "title": "Method, ratings and source status",
   "contents": [
    "Status",
    "Scales",
@@ -4257,6 +4282,7 @@ const draftChip5=()=>`<span class="cav5w"><button type="button" class="cav5 draf
 const eye5=(parts,extra='')=>`<div class="eye5">${parts.map(p=>`<span>${p}</span>`).join('<i aria-hidden="true">·</i>')}${extra}${draftChip5()}</div>`;
 const stripArrow5=t=>String(t).replace(/\s*→\s*$/,'');
 const lab5=(parts)=>`<div class="lab5">${parts.map(p=>`<span>${esc(p)}</span>`).join('<i aria-hidden="true">·</i>')}</div>`;
+const verify5=()=>`<div class="verify5"><b>Draft source status</b><span>Check sources before citing. Headline figures are being verified for v1.0.</span><a class="go" href="https://github.com/nekocchi-0417/gd-observatory/blob/main/research/checklist/handcheck.csv" target="_blank" rel="noopener">Verification checklist ↗</a></div>`;
 /* the confidence block: the two ratings, each with its one-line reason */
 const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.linkUI.brief,why=id==='influence'?END.headline:linkById(id).levelWhy;
   return `<section class="conf5" aria-label="${esc(B.confidence)}">${lab5([B.confidence])}<dl class="conf5-g">
@@ -4270,17 +4296,18 @@ const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest
 
 /* ----- home ----- */
 function viewMap(v){
-  const H=COPY.home,P=H.purpose,G=H.gaps3,C=H.cta;
+  const H=COPY.home,P=H.purpose,S=H.snapshot,G=H.gaps3,C=H.cta;
   v.innerHTML=`<div class="home5">
    <section class="wrap hero5"><div class="hero5-g top5"><div>${eye5([esc(H.eyebrow)])}
     <h1 class="h1-5 xl purpose5-h">${esc(P.h1)}</h1></div>
-    <p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p></div></section>
-   <section class="wrap sec2h5"><div class="hero5-g mid5"><h2 class="h1-5">${esc(H.headline)}</h2><ul class="lead5 sm qs5">${H.mapNote.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></div></section>
+    <div><p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p>
+    <div class="hero5-actions">${H.paths.items.map(p=>`<a class="path5 compact" href="#${esc(p.to)}"><b>${esc(p.who)}</b><span>${esc(p.line)}</span>${chev5}</a>`).join('')}</div></div></div></section>
+   <section class="wrap sec2h5"><div class="snapshot5"><div><h2 class="h1-5">${esc(S.h2)}</h2><p class="sub5 big">${esc(S.sub)}</p></div>
+    <ol class="snapshot5-l">${S.items.map(x=>`<li><span>${esc(x.k)}</span><b>${esc(x.t)}</b><p>${esc(x.text)}</p></li>`).join('')}</ol></div></section>
    <div id="homeMap"></div>
    <section class="wrap gaps5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.h2)}</h2><p class="sub5">${esc(G.sub)}</p></div><a class="go" href="#gaps">${esc(G.all.replace('{n}',GAPS.length))} →</a></div>
     <ol class="gaps5-l">${G.items.map((g,i)=>`<li><span class="gaps5-n">${i+1}</span><div><a class="gaps5-t" href="#gaps/${g.id}">${esc(g.t)}</a><p>${esc(g.text)}</p>${g.note?`<p class="gaps5-note">${esc(g.note)}</p>`:''}</div></li>`).join('')}</ol></section>
-   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2>
-    <div class="paths5-g two">${H.paths.items.map(p=>`<a class="path5" href="#${esc(p.to)}"><b>${esc(p.who)}</b><span>${esc(p.line)}</span>${chev5}</a>`).join('')}</div>
+   <section class="wrap cta5"><h2 class="h2-5">${esc(C.h2)}</h2><p class="sub5">Add a better indicator, fund a missing measure, or challenge a rating before this becomes a v1.0 public resource.</p>
     <p class="cta5-links">${C.buttons.map(b=>`<a class="go" href="#${esc(b.to)}">${esc(b.t)} →</a>`).join('')}<a class="go" href="#contribute">${esc(C.why)} →</a></p></section>
   </div>`;
   mountMap5($('#homeMap',v),{onStop:id=>go(id)});
@@ -4301,8 +4328,6 @@ function viewWhy(v){
     <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></section>
    <section class="sec5 act5" id="w-authors"><h2 class="h2-5 sm">${esc(W.authors.h2)}</h2><p class="sub5">${esc(W.authors.text)}</p>
     <div class="btns5">${W.authors.buttons.map(b=>b[1].startsWith('#')?`<a class="btn" href="${esc(b[1])}">${esc(b[0])} →</a>`:ext(b[0],b[1])).join('')}</div></section>
-   <section class="sec5 act5" id="w-community"><h2 class="h2-5 sm">${esc(W.community.h2)} <span class="wip5">${esc(W.community.soon)}</span></h2><p class="sub5">${esc(W.community.text)} ${esc(W.community.until)}</p>
-    <div class="btns5">${ext(W.community.link[0],W.community.link[1])}</div></section>
   </div>`;
 }
 
@@ -4311,6 +4336,7 @@ function viewIndex(v){
   const E=COPY.evidence;
   v.innerHTML=`<div class="view5 wrap">${eye5(['Evidence'])}
    <h1 class="h1-5">${esc(E.title)}</h1><p class="lead5">${esc(E.deck)}</p>
+   ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
    <section class="sec5"><details class="det5" id="record"><summary>${esc(E.coverage.title)}</summary><p class="sub5">${esc(COPY.record.intro)} ${esc(COPY.record.instruction)}</p>
@@ -4328,6 +4354,7 @@ function viewLink(v,id){
   v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5(id)}
    <div class="claim5">${eye5([esc(B.bottom),`Link ${L.n} of ${LINKS.length}`,esc(L.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${verify5()}
    ${conf5(id)}
    <section class="sec5 ev5">${lab5([B.evidence,B.indicators.replace('{n}',L.inds.length)])}<p class="sub5">${esc(COPY.linkUI.instruction)}</p><div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
@@ -4342,6 +4369,7 @@ function viewInfluence(v){
   v.innerHTML=`<div class="view5 wrap brief5">
    ${crumbs5('influence')}
    <div class="claim5">${eye5([esc(B.bottom),'End of the chain',esc(END.name)])}<h1 class="h1-5 c">${esc(CL.h1)}</h1><p class="lead5">${esc(CL.sentence)}</p></div>
+   ${verify5()}
    ${conf5('influence')}
    <section class="sec5 ev5">${lab5([B.evidence,inds.length===1?'Nearest measure':B.indicators.replace('{n}',inds.length)])}<div id="cards" class="s1"></div></section>
    <section class="sec5"><div id="ins"></div></section>
@@ -4435,7 +4463,7 @@ function viewMethod(v){
   v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}
    <h1 class="h1-5">${esc(M.title)}</h1><p class="lead5">${esc(rw('Method deck'))}</p>
    <nav class="toc5" aria-label="On this page">${secs.map(s=>`<a href="#method" data-to="m-${s[0]}">${s[1]}</a>`).join('')}</nav>
-   <section class="sec5" id="m-status"><div class="callout5"><b>${esc(M.headings.status)}</b><p>${esc(rw('Status of the figures'))}</p></div></section>
+   <section class="sec5" id="m-status"><div class="callout5"><b>${esc(M.headings.status)}</b><p>${esc(rw('Status of the figures'))}</p><p class="check5"><a class="go" href="https://github.com/nekocchi-0417/gd-observatory/blob/main/research/checklist/handcheck.csv" target="_blank" rel="noopener">Open the v1.0 verification checklist ↗</a></p></div></section>
    <section class="sec5" id="m-scales"><p class="sub5 fam5">${esc(M.headings.families)}</p><div class="two5">
     <div><h2 class="h2-5 sm">${esc(M.headings.measured)}</h2><p class="sub5">${esc(rw('How well a link is measured'))}</p>
      <ul class="scale5">${[[4,'Repeated, direct measurement by bodies independent of the AI developers, of something that is about AI by construction.'],[3,'Repeated and direct, but measured by the company whose product is involved, or with the cause in dispute.'],[2,'Measured repeatedly and directly, but the change cannot be tied to AI.'],[1,'Single studies, or counts of disclosures that mostly follow reporting rules.'],[0,'Nothing measures it directly.']].map(s=>`<li>${lineGlyph5(s[0],44,12)}<div><b>${LEVELWORD[s[0]]}</b><span>${s[1]}</span></div></li>`).join('')}</ul></div>
