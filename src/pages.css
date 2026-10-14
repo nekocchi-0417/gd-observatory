@@ -32,7 +32,7 @@
 .hero5{padding-top:clamp(28px,3.6vw,48px);padding-bottom:clamp(32px,3.8vw,52px)}
 .hero5-g{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 56px;align-items:end}
 .hero5-g .lead5{margin-top:0;padding-bottom:6px}
-.sec2h5{padding-bottom:clamp(24px,4vw,44px)}
+.sec2h5{padding-top:clamp(34px,5vw,64px);padding-bottom:clamp(28px,4.5vw,56px);border-top:1px solid var(--rule)}
 .snapshot5{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:24px 56px;align-items:start}
 .snapshot5 .sub5.big{font-family:var(--f-text);font-size:clamp(17px,1.55vw,20px);line-height:1.45;max-width:42ch}
 .snapshot5-l{list-style:none;margin:4px 0 0;padding:0;border-top:1px solid var(--ink)}
@@ -174,6 +174,7 @@ details.det5[open]{padding-bottom:24px}
   .lim5 li{grid-template-columns:1fr}
 }
 @media (max-width:640px){
+  .h1-5.xl{font-size:clamp(30px,9.4vw,36px)}
   .snapshot5-l li{grid-template-columns:1fr;gap:3px;padding:13px 0}
   .chainlab5-h{display:none}
   .doors5{grid-template-columns:1fr}
@@ -352,15 +353,13 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .path5 .chev5{position:absolute;right:14px;top:16px;color:var(--ink-3);transition:transform .15s}
 .path5:hover{border-color:var(--ink)}
 .path5:hover .chev5{transform:translateX(3px);color:var(--ink)}
-.hero5-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px;max-width:680px}
-.path5.compact{background:transparent;padding-block:12px}
 .verify5{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-top:22px;padding:10px 14px;border:1px dashed var(--ink-3);border-radius:6px;color:var(--ink-2);font-size:13.5px;max-width:980px}
 .verify5 b{color:var(--ink);font-size:13px}
 .verify5 span{font-family:var(--f-text);font-size:14.5px}
 .callout5 .check5{margin-top:10px}
 @media (max-width:1000px){.paths5-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .paths5-g.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
-@media (max-width:560px){.paths5-g,.paths5-g.two,.hero5-actions{grid-template-columns:1fr}}
+@media (max-width:560px){.paths5-g,.paths5-g.two{grid-template-columns:1fr}}
 .purpose5 .why5-l{color:var(--ink);font-weight:600}
 .sec2h5 .h1-5.q5{font-size:clamp(24px,2.6vw,34px);max-width:22em;line-height:1.15}
 .sec2h5{border-top:0}

@@ -24,8 +24,7 @@ function viewMap(v){
   v.innerHTML=`<div class="home5">
    <section class="wrap hero5"><div class="hero5-g top5"><div>${eye5([esc(H.eyebrow)])}
     <h1 class="h1-5 xl purpose5-h">${esc(P.h1)}</h1></div>
-    <div><p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p>
-    <div class="hero5-actions">${H.paths.items.map(p=>`<a class="path5 compact" href="#${esc(p.to)}"><b>${esc(p.who)}</b><span>${esc(p.line)}</span>${chev5}</a>`).join('')}</div></div></div></section>
+    <p class="lead5 purpose5">${esc(P.sub)} <a class="go" href="${esc(H.paper.url)}" target="_blank" rel="noopener" aria-label="Read more: the original Gradual Disempowerment paper (opens in a new tab)">${esc(H.paper.label)} ↗</a></p></div></section>
    <section class="wrap sec2h5"><div class="snapshot5"><div><h2 class="h1-5">${esc(S.h2)}</h2><p class="sub5 big">${esc(S.sub)}</p></div>
     <ol class="snapshot5-l">${S.items.map(x=>`<li><span>${esc(x.k)}</span><b>${esc(x.t)}</b><p>${esc(x.text)}</p></li>`).join('')}</ol></div></section>
    <div id="homeMap"></div>

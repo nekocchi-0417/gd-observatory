@@ -4,8 +4,8 @@ const COPY={
   "eyebrow": "Better Futures Project · Zhang Yue",
   "paper": {"label": "Read more", "url": "https://gradual-disempowerment.ai/"},
   "purpose": {
-   "h1": "Where AI disempowerment is measured, and where it is not",
-   "sub": "A draft evidence map of nine links between AI capability and human influence, built to show what researchers can verify and what funders could help measure."
+   "h1": "AI disempowerment: what is measured, what is missing",
+   "sub": "A draft map of nine steps from AI capability to human influence. It separates early signs from the measurement gaps."
   },
   "paths": {
    "items": [
@@ -15,12 +15,12 @@ const COPY={
   },
   "mapNote": ["What is already measured?", "What is missing?", "And where would new research or funding matter most?"],
   "snapshot": {
-   "h2": "The current picture is lopsided.",
-   "sub": "Capability and adoption are tracked closely. The human end of the chain is mostly proxies, one-off studies, and paperwork.",
+   "h2": "The picture so far",
+   "sub": "The early steps are measured often. The human end of the chain is still mostly proxies, one-off studies and paperwork.",
    "items": [
-    {"k": "Moving", "t": "Capability and use", "text": "AI is completing more real work, and roughly half of US workers report using AI at work."},
-    {"k": "Early signs", "t": "Jobs, culture, institutions", "text": "Young workers in exposed jobs are falling behind; AI-made content floods supply; governments list tools but rarely decisions."},
-    {"k": "Barely measured", "t": "Skills and human influence", "text": "We still lack repeat tests of unaided ability and a direct measure of whether people keep their say."}
+    {"k": "Measured often", "t": "Capability and use", "text": "AI is completing more real work, and roughly half of US workers report using AI at work."},
+    {"k": "Early signs", "t": "Jobs, culture, institutions", "text": "Young workers in exposed jobs are falling behind; AI-made content is growing; governments list tools, not decisions."},
+    {"k": "Hard to see", "t": "Skills and influence", "text": "We still lack repeat tests of unaided ability and a direct measure of whether people keep their say."}
    ]
   },
   "gaps3": {
@@ -34,7 +34,7 @@ const COPY={
    "all": "The full agenda: {n} missing measures"
   },
   "cta": {
-   "h2": "Turn this into a live dashboard",
+   "h2": "Help make the dashboard real",
    "buttons": [
     {"t": "Add an indicator or study", "to": "contribute/add"},
     {"t": "Find or offer funding", "to": "contribute/funding"},
@@ -62,21 +62,21 @@ const COPY={
  },
  "why": {
   "nav": "Contribute",
-  "h1": "Help build the measurement layer",
-  "lead": "This is a prototype for a live dashboard: evidence first, gaps in plain sight, and a path for researchers and grantmakers to add better measures before weak signals harden into lock-in.",
+  "h1": "Help improve the map",
+  "lead": "This is a prototype for a live dashboard. Send better evidence, point out mistakes, or help fund the missing measures.",
   "plan": {
    "h2": "The plan",
    "steps": [
-    {"t": "Map", "text": "Show what is measured, and what is missing.", "to": "map"},
-    {"t": "Measure", "text": "Help researchers study what is least measured.", "to": "gaps"},
-    {"t": "Pinpoint", "text": "Use better data to find where interventions could help most."},
-    {"t": "Foresee", "text": "Later, use the map's indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
+    {"t": "Map", "text": "Show what is measured and what is missing.", "to": "map"},
+    {"t": "Measure", "text": "Turn the biggest gaps into studies.", "to": "gaps"},
+    {"t": "Improve", "text": "Use better data to find where action could help most."},
+    {"t": "Forecast", "text": "Later, use the indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
    ],
    "aim": "The aim: a shared dashboard and library that people can update, audit and fund."
   },
   "contribute": {
    "h2": "Add an indicator or study",
-   "text": "Suggest a dataset, study or better measure the map is missing. Every proposal is reviewed and credited.",
+   "text": "Suggest a dataset, study or measure that should be added. Every proposal is reviewed and credited.",
    "buttons": [
     ["Propose an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"],
     ["Share a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml"]
@@ -85,7 +85,7 @@ const COPY={
   },
   "funding": {
    "h2": "Find or offer funding",
-   "text": "Researchers: open grants that fit this work. Funders: the gaps most in need of research.",
+   "text": "For researchers: open grants that fit this work. For funders: the gaps most in need of support.",
    "gapsLink": "The gaps most in need of research",
    "grants": [
     {"name": "Foresight Institute, AI for Science and Safety Nodes", "status": "Closes 31 October 2026", "fit": "The \"Human empowerment\" area asks for evidence on when human oversight adds value.", "url": "https://foresight.org/grants/ai-science-safety-nodes-rfp/"},
@@ -97,7 +97,7 @@ const COPY={
   },
   "authors": {
    "h2": "For the authors of the paper",
-   "text": "The map arranges published evidence along the argument in Gradual Disempowerment (Kulveit and co-authors, 2025). Check which steps it uses, what each one counts, and how each is rated; then tell us what it gets wrong.",
+   "text": "The map arranges published evidence along the argument in Gradual Disempowerment (Kulveit and co-authors, 2025). Check the steps, definitions and ratings; then tell us what is wrong.",
    "buttons": [
     ["What is counted at each step", "#method/more"],
     ["Suggest a correction", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml"]
@@ -112,8 +112,8 @@ const COPY={
   }
  },
   "evidence": {
-  "title": "Evidence by link",
-  "deck": "One row per link in the chain. Colour is the observatory's judgement of movement; line style shows how well the link is measured.",
+  "title": "Evidence by step",
+  "deck": "One row per step. Colour shows whether the evidence is moving; line style shows how well that step is measured.",
   "scaleLabel": "What the data show",
   "scale": {
    "1": {
@@ -149,38 +149,38 @@ const COPY={
    },
    "handover": {
     "signal": 2,
-    "line": "Chat hand-over is flat within method noise; coding agents are climbing."
+    "line": "Chatbot hand-over is not clearly rising; coding-agent use is."
    },
    "work": {
     "signal": 2,
-    "line": "Fewer US jobs for 22–25s in AI-exposed fields; the cause is disputed."
+    "line": "Young workers in AI-exposed jobs are falling behind; the cause is disputed."
    },
    "share": {
     "signal": 2,
-    "line": "At a record low, but most of the fall came before AI."
+    "line": "Workers' share is at a record low, but most of the fall came before AI."
    },
    "skills": {
     "signal": "?",
-    "line": "Mostly one-off studies; no general panel ties unaided re-tests to AI use."
+    "line": "Mostly one-off studies; no general panel re-tests skills without AI."
    },
    "culture": {
     "signal": 2,
-    "line": "AI-made content fills supply; reading of it is unmeasured, listening is low."
+    "line": "AI-made content is growing; attention to it is barely measured."
    },
    "institutions": {
     "signal": "?",
-    "line": "Disclosed AI uses are counted; decisions made with AI rarely are."
+    "line": "AI tools are counted; AI-assisted decisions rarely are."
    },
    "influence": {
     "signal": "?",
-    "line": "No direct measure; the nearest is a poll on control over AI."
+    "line": "No direct measure; the nearest proxy is a poll on control over AI."
    }
   },
   "coverage": {"title": "Measurement coverage: how often each indicator is measured", "cta": "Know a better indicator for any link?", "ctaLink": "Propose it"},
   "footer": {
    "record": "The measurement record: dated readings since 2021 →",
    "counter": "What would count against the theory →",
-   "toGap": "Why the human end is grey →"
+   "toGap": "Why the human end is uncertain →"
   },
   "counter": {
    "intro": "The theory can fail. Each of these would count against it.",
@@ -268,10 +268,10 @@ const COPY={
   "pillSignal": "What the data show",
   "pillMeasure": "How well measured",
   "instruction": "Select an indicator to see its chart. Trends describe each series, not its cause.",
-  "brief": {"bottom": "Bottom line", "confidence": "Confidence", "evidence": "Evidence", "indicators": "{n} indicators", "caveats": "Caveats", "blind": "Blind spots", "signals": "Signals", "propose": "Know a measure we missed? Propose an indicator", "proposeUrl": "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"},
+  "brief": {"bottom": "Bottom line", "confidence": "How to read this", "evidence": "Evidence", "indicators": "{n} indicators", "caveats": "Caveats", "blind": "Missing measures", "signals": "Signals to watch", "propose": "Know a measure we missed? Propose an indicator", "proposeUrl": "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"},
   "markerLegend": "Filled dot: moving the way the theory predicts. Hollow: the other way. Half: unclear.",
   "cards": {
-   "sceptic": "What a sceptic would say",
+   "sceptic": "Reasons to be cautious",
    "unmeasured": "Missing measures",
    "watch": "What to watch"
   },
@@ -286,8 +286,8 @@ const COPY={
  },
  "links": {
   "capability": {
-   "h1": "AI now completes about 1 in 5 real paid remote-work projects to a professional standard.",
-   "sentence": "On the Remote Labor Index, the best system's share rose from 2.5% of projects in October 2025 to 21.25% in September 2026. METR's task-length series, which doubled about every four months, has added no model since May 2026.",
+   "h1": "AI can now finish some real paid remote-work projects.",
+   "sentence": "On the Remote Labor Index, the best system reached 21.25% in September 2026, up from 2.5% in October 2025. METR's separate software-task series has not added a model since May 2026.",
    "inds": {
     "rli": {
      "label": "Real paid projects AI completes",
@@ -370,8 +370,8 @@ const COPY={
    ]
   },
   "adoption": {
-   "h1": "Half of US workers use AI at work at least occasionally; daily use is climbing.",
-   "sentence": "Gallup puts any use at 53% and daily use at 16% in August 2026, up from 21% and 4% in 2023.",
+   "h1": "AI use at work is now common, but daily use is still a minority.",
+   "sentence": "Gallup puts any workplace use at 53% and daily use at 16% in August 2026, up from 21% and 4% in 2023.",
    "inds": {
     "gallup": {
      "label": "US workers using AI",
@@ -442,8 +442,8 @@ const COPY={
    ]
   },
   "handover": {
-   "h1": "On Claude, people hand the task over in just under half of conversations.",
-   "sentence": "The share went from 41% to 49% to 45% in 2025, within the noise of Anthropic's method; on ChatGPT, requests for finished work fell. In coding, agent use is climbing.",
+   "h1": "Task hand-over is mixed: coding agents are rising, chatbot hand-over is not.",
+   "sentence": "On Claude, the hand-over share moved from 41% to 49% to 45% in 2025. On ChatGPT, requests for finished work fell. In coding, agent use is climbing.",
    "inds": {
     "aei": {
      "label": "Chats handing the task over",
@@ -514,8 +514,8 @@ const COPY={
    ]
   },
   "work": {
-   "h1": "Young US workers in AI-exposed jobs are falling behind; prime-age employment has held up.",
-   "sentence": "In US payroll data, jobs for 22 to 25 year olds in the most exposed occupations are down 13% since late 2022; the cause is disputed.",
+   "h1": "The clearest labour-market signal is among young workers in AI-exposed jobs.",
+   "sentence": "In US payroll data, jobs for 22 to 25 year olds in the most exposed occupations are down 13% since late 2022. The cause is disputed.",
    "inds": {
     "canaries": {
      "label": "Jobs for ages 22–25",
@@ -598,8 +598,8 @@ const COPY={
    ]
   },
   "share": {
-   "h1": "Workers' share of US business income hit a record low; most of the fall predates AI.",
-   "sentence": "It was 52.8% in mid-2026, after five quarterly falls, though its yearly average was flat from 2023 to 2025. Pay's share of national income, a second measure, fell to 50.9% in 2025, the lowest since the 1930s.",
+   "h1": "Workers' share of income is low, but AI may not be the cause.",
+   "sentence": "US workers' share of business income was 52.8% in mid-2026, after five quarterly falls. Most of the longer fall happened before generative AI.",
    "inds": {
     "ls": {
      "label": "Workers' share of income",
@@ -674,8 +674,8 @@ const COPY={
    ]
   },
   "skills": {
-   "h1": "AI use is surveyed every quarter. Its effect on people's skills without AI is barely tracked.",
-   "sentence": "Of 233 studies of generative AI found, only 4 test the same people without AI over months or longer. Short trials found losses; a three-year clinic audit found none.",
+   "h1": "We track AI use often, but rarely test whether people keep skills without it.",
+   "sentence": "Of 233 studies of generative AI found, only 4 test the same people without AI over months or longer. Short trials found losses; one three-year clinic audit found none.",
    "inds": {
     "lopsided": {
      "label": "Use surveyed, skill untested",
@@ -778,8 +778,8 @@ const COPY={
    ]
   },
   "culture": {
-   "h1": "About half of new web articles, and of Deezer uploads, are classed as AI-made; on Deezer, listening has barely followed.",
-   "sentence": "AI tracks get 1 to 3% of Deezer streams; the article share, measured by detectors, has been flat for five quarters.",
+   "h1": "AI-made content is flooding supply, but attention has not followed.",
+   "sentence": "About half of new web articles and Deezer uploads are classed as AI-made. On Deezer, AI tracks get only 1 to 3% of streams.",
    "inds": {
     "deezer": {
      "label": "AI music on Deezer",
@@ -858,7 +858,7 @@ const COPY={
    ]
   },
   "institutions": {
-   "h1": "Governments disclose thousands of AI uses. Almost none counts the decisions made with AI.",
+   "h1": "Governments list AI tools, not the decisions made with them.",
    "sentence": "US agencies listed 3,611 AI uses for 2025, but a use is paperwork: one chatbot counts the same as one benefits model.",
    "inds": {
     "inventory": {
@@ -954,8 +954,8 @@ const COPY={
    ]
   },
   "influence": {
-   "h1": "Are people losing their say? Nothing measures it directly.",
-   "sentence": "The nearest is one Pew question: 57% of US adults say they have not too much or no control over whether AI is used in their lives. AI lobbying is rising, but that measures effort, not influence.",
+   "h1": "Human influence is the outcome, and it is not directly measured.",
+   "sentence": "The nearest proxy is one Pew question: 57% of US adults say they have little or no control over whether AI is used in their lives. AI lobbying is rising, but that measures effort, not influence.",
    "inds": {},
    "indsNote": "Shows the Pew card (id: control) and the AI lobbying card (id: lobby) from Institutions; both are recorded against this stop.",
    "emptyState": "No direct measure exists yet. The nearest proxies are below.",
@@ -1023,8 +1023,8 @@ const COPY={
  "gap": {
   "nav": "Gaps",
   "eyebrow": "Research gaps",
-  "h1": "Research agenda: 19 missing measures",
-  "sentence": "Six are ready to fund, six need method work, and seven should be monitored. Each gap links to the closest existing evidence and a concrete study a team could run.",
+  "h1": "What to measure next",
+  "sentence": "Six gaps are ready for a study, six need method work, and seven should be watched. Each row shows the closest existing evidence and what a team could build next.",
   "priority": {
    "now": {"t": "Ready to fund", "d": "A method exists; it needs money and a team."},
    "method": {"t": "Needs method design", "d": "The construct or instrument still has to be designed and tested."},
@@ -1036,7 +1036,7 @@ const COPY={
    "ind": ["Suggest an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml&title="],
    "review": ["Review this gap", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml&title="]
   },
-  "ranking": {"title": "How the ranking was made", "sub": "Each step is placed by two values from the map: how many links separate it from Human influence, and how well it is measured today. The priority labels are the observatory's first pass; corrections welcome."},
+  "ranking": {"title": "How the ranking was made", "sub": "Each step is ranked by two things: how close it is to Human influence, and how well it is measured today. The priority labels are a first pass; corrections welcome."},
   "matrix": {
    "title": "Which links are close to the outcome but barely measured?",
    "xAxis": {
@@ -1049,16 +1049,16 @@ const COPY={
     "low": "4 steps away",
     "high": "The outcome itself"
    },
-   "quadrant": "Close to the outcome, barely measured: worth working on",
-   "caption": "Placed by two values from the map: links from Human influence, and the measurement rating (a judgement). Links are counted on this site's own chain.",
+   "quadrant": "Close to the outcome, barely measured",
+   "caption": "Dots are placed by closeness to Human influence and by measurement quality. Both are judgement calls by this project.",
    "flag": "Worth working on",
    "flagAlt": "Author's focus",
    "disclosure": "The author works on Skills and judgement and Human influence; Skills and judgement is her addition to the original chain (see Method).",
-   "howTo": "Up the side: how many links along the chain separate each stop from Human influence, the outcome. Along the bottom: how well each stop is measured today."
+   "howTo": "Up the side: how close each step is to Human influence. Along the bottom: how well it is measured today."
   },
   "list": {
-   "title": "Missing measures, grouped by next step",
-   "sub": "Open a row to see the project, the closest existing proxy and a contribution path.",
+   "title": "Missing measures",
+   "sub": "Open a row to see why it matters, what to measure and the closest proxy today.",
    "expandAll": "Expand all",
    "collapseAll": "Collapse all",
    "heads": {
@@ -1272,7 +1272,7 @@ const COPY={
  "futures": {
   "nav": "Futures",
   "navTag": "WIP",
-  "title": "Where forecasters think it leads",
+  "title": "Forecasts, draft appendix",
   "wipTag": "Work in progress",
   "caveat": "Work in progress. Built on published forecasts, mostly of US jobs and income; it needs more research.",
   "toGap": "Almost no forecast covers people's say itself. See the gap →",
@@ -1346,7 +1346,7 @@ const COPY={
  },
  "draftChip": {
   "label": "Draft",
-  "tooltip": "Draft evidence map. AI tools helped find and summarise sources. Headline figures are being checked against primary sources before v1.0; check a source before citing."
+  "tooltip": "Draft evidence map. Headline figures are being checked before v1.0; check a source before citing."
  },
  "method": {
   "title": "Method, ratings and source status",
@@ -1362,11 +1362,11 @@ const COPY={
   ],
   "headings": {
    "status": "Status of the figures",
-   "families": "Four kinds of label are used on this site: what the data show (a trend), how well a link is measured (the quality of the evidence), what a missing measure needs next (its priority), and status (draft, work in progress). Source tags and caveat chips appear only inside an indicator's chart.",
+   "families": "The site uses four labels: what the data show, how well a step is measured, what a missing measure needs next, and whether a page is still draft or work in progress. Source tags and caveats appear inside charts.",
    "priority": "What a missing measure needs next",
    "priorityIntro": "Used on the Gaps page. A first pass by the observatory.",
    "criteria": "How indicators are chosen",
-   "criteriaText": "An indicator is listed when it comes from an established source (a statistics agency, an independent tracker such as METR or Epoch, a repeated survey, or a peer-reviewed study) and measures what the step is about rather than something nearby. Nearby measures are kept only where nothing better exists, and are marked as such.",
+   "criteriaText": "An indicator is listed when it comes from an established source and measures the step directly. Nearby measures are used only where nothing better exists, and are marked as such.",
    "challenge": "Challenge a rating",
    "challengeUrl": "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml&title=%5BCorrection%5D%20Rating%3A%20",
    "measured": "How well a link is measured",

@@ -39,7 +39,7 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
    await p.goto(PAGE+'#futures');await p.waitForTimeout(300);await p.click('[data-route="E"]');console.log('route E',await p.$eval('#routebody h3',e=>e.textContent));
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.gaps5-t[href="#gaps/skills"]');await p.waitForTimeout(400);console.log('gap link scrolls',await p.evaluate(()=>location.hash+' y='+Math.round(scrollY)));
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.cta5-links a[href="#contribute/add"]');await p.waitForTimeout(400);console.log('cta scrolls',await p.evaluate(()=>location.hash+' y='+Math.round(scrollY)),await p.$eval('.nav a[aria-current]',e=>e.textContent));
-   await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.path5[href="#gaps"]');await p.waitForTimeout(400);console.log('funders path',await p.evaluate(()=>location.hash));
+   await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.nav a[href="#gaps"]');await p.waitForTimeout(400);console.log('research gaps nav',await p.evaluate(()=>location.hash));
    await p.goto(PAGE+'#contribute/authors');await p.waitForTimeout(400);await p.click('#w-authors .btn[href="#method/more"]');await p.waitForTimeout(400);console.log('method/more opens details',await p.evaluate(()=>location.hash+' open='+document.querySelector('#m-more details').open+' y='+Math.round(scrollY)));
    console.log('contribute ext links',await p.$$eval('.why5 a[target=_blank]',a=>a.map(x=>x.href).filter(h=>!/^https:\/\//.test(h)).length),'non-https');
   }
