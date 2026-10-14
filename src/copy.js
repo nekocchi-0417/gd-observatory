@@ -1004,7 +1004,7 @@ const COPY={
   "nav": "Gaps",
   "eyebrow": "Research gaps",
   "h1": "What to measure next",
-  "sentence": "Six gaps are ready for a study, six need method work, and seven should be watched. Each row shows the closest existing evidence and what a team could build next.",
+  "sentence": "A draft agenda for improving the evidence map. The columns use the same coverage ratings as the causal diagram.",
   "priority": {
    "now": {"t": "Ready to fund", "d": "A method exists; it needs money and a team."},
    "method": {"t": "Needs method design", "d": "The construct or instrument still has to be designed and tested."},
@@ -1016,7 +1016,7 @@ const COPY={
    "ind": ["Suggest an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml&title="],
    "review": ["Review this gap", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml&title="]
   },
-  "ranking": {"title": "Where the biggest gaps are", "sub": "Start in the upper-left: close to Human influence, but weakly measured. The first-pass priority cluster is Human influence, Skills and judgement, and AI in government."},
+  "ranking": {"title": "Where better measurement is needed", "sub": "Start with Major gaps. These are the steps with few direct measures and concrete research questions below."},
   "matrix": {
    "title": "Which links are close to the outcome but barely measured?",
    "xAxis": {
@@ -1030,10 +1030,10 @@ const COPY={
     "high": "The outcome itself"
    },
    "quadrant": "Close to the outcome, barely measured",
-   "caption": "Dots are placed by closeness to Human influence and by measurement quality. Both are judgement calls by this project.",
+   "caption": "",
    "flag": "Worth working on",
    "flagAlt": "Author's focus",
-   "disclosure": "The author works on Skills and judgement and Human influence; Skills and judgement is her addition to the original chain (see Method).",
+   "disclosure": "",
    "howTo": "Up the side: how close each step is to Human influence. Along the bottom: how well it is measured today."
   },
   "list": {

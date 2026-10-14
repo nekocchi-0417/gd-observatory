@@ -662,32 +662,23 @@ footer.ft .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-b
 @media (max-width:860px){.in5wrap{grid-template-columns:1fr;gap:16px}}
 
 /* ---------------- 5. gap matrix ---------------- */
-.gm5-plot{min-width:0}
-.gm5-plot svg{display:block;overflow:visible}
-.gm5-plot text{font-family:var(--f-display)}
-.gm5-pri{font-size:13.5px;font-weight:650;fill:var(--ink)}
-.gm5-ax{font-size:12.5px;fill:var(--ink-2)}
-.gm5-plot .gm5-at{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;fill:var(--ink-3)}
-.axis-note{display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0 6px;font:500 12px/1.4 var(--f-display);color:var(--ink-2)}
-.axis-note b{color:var(--ink);font-weight:700}
-.gm5-lb{font-size:13.5px;font-weight:650;fill:var(--ink)}
-.gm5-lb.sm{font-size:10.5px;font-weight:600}
-.gm5-flag{font-size:11.5px;font-weight:650;fill:var(--hs)}
-.gm5-n{font-family:var(--f-mono)!important;font-size:11px;fill:var(--ink);font-weight:500}
-.gm5-dot{cursor:pointer;outline:0}
-.gm5-dot .gm5-c{transition:fill .15s}
-.gm5-dot:hover .gm5-c,.gm5-dot:focus-visible .gm5-c,.gm5-dot.on .gm5-c{fill:var(--surface-2)}
-.gm5-dot:focus-visible .gm5-lb,.gm5-dot.on .gm5-lb,.gm5-dot:hover .gm5-lb{text-decoration:underline}
-.gm5-dot:focus-visible .gm5-c{stroke-width:4}
-.gm5-key{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:12.5px;color:var(--ink-2);margin-top:4px}
+.gm5-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border-top:1px solid var(--ink);padding-top:14px}
+.gm5-col{border:1px solid var(--rule);border-radius:8px;background:var(--surface);min-width:0}
+.gm5-colh{display:flex;gap:10px;align-items:flex-start;padding:14px 14px 12px;border-bottom:1px solid var(--rule)}
+.gm5-colh h3{margin:0;font-size:16px;line-height:1.2;color:var(--coverage-color)}
+.gm5-colh p{margin:3px 0 0;font-size:13px;line-height:1.35;color:var(--ink-2)}
+.gm5-stack{display:grid;gap:0}
+.gm5-dot{display:grid;gap:7px;width:100%;padding:13px 14px;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--grid);color:inherit;cursor:pointer}
+.gm5-dot:last-child{border-bottom:0}
+.gm5-dot:hover,.gm5-dot:focus-visible{background:var(--paper);outline:0}
+.gm5-dot:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+.gm5-rowtop{display:flex;gap:10px;justify-content:space-between;align-items:center}
+.gm5-rowtop b{font-size:15px;line-height:1.2;color:var(--ink)}
+.gm5-rowtop span{display:inline-grid;place-items:center;min-width:24px;height:24px;border-radius:50%;border:1.5px solid var(--coverage-color);font-family:var(--f-mono);font-size:12px;color:var(--ink)}
+.gm5-need{font-family:var(--f-text);font-size:14px;line-height:1.4;color:var(--ink-2)}
+.gm5-key{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:12.5px;color:var(--ink-2);margin-top:10px}
 .gm5-key span{display:inline-flex;gap:6px;align-items:center}
-.gm5-cap{font-size:12.5px;line-height:1.45;color:var(--ink-3);margin-top:6px;max-width:80ch}
-.gm5-detail{margin-top:16px;padding-top:12px;border-top:1px solid var(--rule);min-height:64px}
-.gm5-hint{font-size:13.5px;color:var(--ink-3)}
-.gm5-dh{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline}
-.gm5-dh b{font-size:16px}
-.gm5-dh span{font-size:13px;color:var(--ink-2)}
-.gm5-detail ul{margin:8px 0 10px;padding-left:18px;font-family:var(--f-text);font-size:15.5px;line-height:1.45;color:var(--ink-2)}
+@media (max-width:860px){.gm5-board{grid-template-columns:1fr}.gm5-colh{padding-inline:12px}.gm5-dot{padding-inline:12px}}
 
 /* ---------------- 6. caveat signposts, WIP ---------------- */
 .cav5w{position:relative;display:inline-flex;vertical-align:middle}
@@ -3364,7 +3355,7 @@ const COPY={
   "nav": "Gaps",
   "eyebrow": "Research gaps",
   "h1": "What to measure next",
-  "sentence": "Six gaps are ready for a study, six need method work, and seven should be watched. Each row shows the closest existing evidence and what a team could build next.",
+  "sentence": "A draft agenda for improving the evidence map. The columns use the same coverage ratings as the causal diagram.",
   "priority": {
    "now": {"t": "Ready to fund", "d": "A method exists; it needs money and a team."},
    "method": {"t": "Needs method design", "d": "The construct or instrument still has to be designed and tested."},
@@ -3376,7 +3367,7 @@ const COPY={
    "ind": ["Suggest an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml&title="],
    "review": ["Review this gap", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml&title="]
   },
-  "ranking": {"title": "Where the biggest gaps are", "sub": "Start in the upper-left: close to Human influence, but weakly measured. The first-pass priority cluster is Human influence, Skills and judgement, and AI in government."},
+  "ranking": {"title": "Where better measurement is needed", "sub": "Start with Major gaps. These are the steps with few direct measures and concrete research questions below."},
   "matrix": {
    "title": "Which links are close to the outcome but barely measured?",
    "xAxis": {
@@ -3390,10 +3381,10 @@ const COPY={
     "high": "The outcome itself"
    },
    "quadrant": "Close to the outcome, barely measured",
-   "caption": "Dots are placed by closeness to Human influence and by measurement quality. Both are judgement calls by this project.",
+   "caption": "",
    "flag": "Worth working on",
    "flagAlt": "Author's focus",
-   "disclosure": "The author works on Skills and judgement and Human influence; Skills and judgement is her addition to the original chain (see Method).",
+   "disclosure": "",
    "howTo": "Up the side: how close each step is to Human influence. Along the bottom: how well it is measured today."
   },
   "list": {
@@ -4715,7 +4706,7 @@ const chev5=`<svg class="chev5" width="14" height="14" viewBox="0 0 14 14" aria-
 
 /* Coverage has its own rubric: study findings and measurement coverage are different judgements. */
 const coverageOf5=id=>COPY.coverage.steps[id];
-const coverageBand5=id=>COPY.coverage.bands[coverageOf5(id).band];
+const coverageBand5=id=>COPY.coverage.bands[COPY.coverage.bands[id]?id:coverageOf5(id).band];
 const coverageGlyph5=(band,size=16)=>{
   const c=size/2,r=c-2,color=`var(--coverage-${band})`;
   return `<svg class="coverage-glyph5" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${c}" cy="${c}" r="${r}" fill="${band==='stronger'?color:'none'}" stroke="${color}" stroke-width="2"${band==='major'?' stroke-dasharray="2.5 2.5"':''}/>${band==='partial'?`<path d="M${c} ${c-r} A${r} ${r} 0 0 0 ${c} ${c+r} Z" fill="${color}"/>`:''}</svg>`;
@@ -4938,7 +4929,7 @@ function insightCards(el,linkId){
 /* ======================================================================================
    5. GAP MATRIX (prioritisation)
    ====================================================================================== */
-/* closeness to the outcome = links between a stop and Human influence along the chain (computed, not placed) */
+/* Used only for ordering the missing-measure list. The visible grid uses the same coverage bands as the map. */
 const EDGES5=[['capability','adoption'],['adoption','handover'],['handover','work'],['handover','skills'],['handover','culture'],['handover','institutions'],['work','share'],['share','influence'],['skills','influence'],['culture','influence'],['institutions','influence']];
 const steps5=()=>{const d={influence:0},q=['influence'];while(q.length){const v=q.shift();EDGES5.forEach(([a,b])=>{if(b===v&&d[a]==null){d[a]=d[v]+1;q.push(a)}})}return d};
 /* plain-language titles (17_ux_spec §3); GAPS title is the fallback */
@@ -4948,48 +4939,19 @@ const GAPTITLE5={'Unaided ability, tested twice':'No repeat tests of people work
  'A population measure of disempowerment':'No validated survey scale for disempowerment'};
 const SHORT5={capability:'Capability',adoption:'Adoption',handover:'Hand-over',work:'Entry work',share:'Share',skills:'Skills',culture:'Culture',institutions:'Institutions',influence:'Influence'};
 function gapMatrix(el,opts={}){
-  const st=steps5();
-  const pts=ORDER.map(id=>({id,x:lv(id),y:st[id],n:GAPS.filter(g=>g[0]===id).length}));pts.forEach(p=>p.flag=p.x<=1&&p.y<=1);
+  const bands=['major','partial','stronger'];
+  const pts=ORDER.map(id=>({id,band:coverageOf5(id).band,n:GAPS.filter(g=>g[0]===id).length,need:coverageOf5(id).need}));
   el.classList.add('gm5wrap');
-  el.innerHTML=`<div class="gm5-plot"></div>
-   <div class="gm5-key"><span><svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true"><circle cx="13" cy="9" r="7" fill="var(--surface)" stroke="var(--ink-3)" stroke-width="2"/><text x="13" y="12.5" text-anchor="middle" class="gm5-n">2</text></svg>Number = missing measures</span>
-    <span><svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true"><circle cx="13" cy="9" r="7.5" fill="none" stroke="var(--hs)" stroke-width="1.6"/></svg>${esc(COPY.gap.matrix.flag)}</span></div>
-   <p class="gm5-cap">${esc(COPY.gap.matrix.caption)} ${esc(COPY.gap.matrix.disclosure)}</p>
-   <div class="sr5"><table><caption>Stops by how well measured and closeness to the outcome</caption><thead><tr><th>Stop</th><th>How well measured</th><th>Links from Human influence</th><th>Missing measures</th></tr></thead><tbody>${pts.map(p=>`<tr><td>${esc(nameOf(p.id))}</td><td>${LEVELWORD[p.x]}</td><td>${p.y}</td><td>${p.n}</td></tr>`).join('')}</tbody></table></div>`;
-  const plot=$('.gm5-plot',el);let sel=null;
-  const draw=()=>{
-    const W=Math.max(300,Math.floor(plot.clientWidth||900)),narrow=W<600;
-    const P=narrow?{l:66,r:10,t:46,b:58}:{l:128,r:40,t:50,b:70},H=narrow?470:460,cw=(W-P.l-P.r)/5,ch=(H-P.t-P.b)/5;
-    const cx=x=>P.l+(x+.5)*cw,cy=y=>P.t+(y+.5)*ch,R=narrow?10:12.5;
-    let g=`<defs><pattern id="mh5" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" stroke="var(--ink)" stroke-opacity=".13" stroke-width="1.1"/></pattern></defs>`;
-    /* priority corner first, so the grid sits on it */
-    g+=`<rect x="${P.l}" y="${P.t}" width="${2*cw}" height="${2*ch}" fill="url(#mh5)"/><rect x="${P.l+.5}" y="${P.t+.5}" width="${2*cw-1}" height="${2*ch-1}" fill="none" stroke="var(--ink-2)" stroke-width="1.2" stroke-dasharray="4 3"/>`;
-    g+=`<text class="gm5-pri" x="${P.l}" y="${P.t-14}">${esc(narrow?'Close to the outcome, barely measured':COPY.gap.matrix.quadrant)}</text>`;
-    for(let i=0;i<=5;i++){g+=`<line x1="${P.l+i*cw}" x2="${P.l+i*cw}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><line x1="${P.l}" x2="${W-P.r}" y1="${P.t+i*ch}" y2="${P.t+i*ch}" stroke="var(--grid)"/>`}
-    /* axes */
-    const xl=narrow?['None','One-offs','Not tied','Limits','Well']:LINEWORD5,yl=narrow?['Outcome','1 link','2 links','3 links','4 links']:['The outcome','1 link away','2 links away','3 links away','4 links away'];
-    for(let x=0;x<5;x++){const X=cx(x),Y=H-P.b+16;g+=`<g transform="translate(${X-(narrow?14:18)} ${Y-5})">${strokeFor(x,`M0 5 L${narrow?28:36} 5`,{w4:6,w3:4,bg:'var(--surface)',k:.62})}</g><text class="gm5-ax" x="${X}" y="${Y+19}" text-anchor="middle">${xl[x]}</text>`}
-    g+=`<text class="gm5-at" x="${P.l+(W-P.l-P.r)/2}" y="${H-6}" text-anchor="middle">HOW WELL MEASURED TODAY →</text>`;
-    for(let y=0;y<5;y++)g+=`<text class="gm5-ax" x="${P.l-10}" y="${cy(y)+4}" text-anchor="end">${yl[y]}</text>`;
-    if(!narrow)g+=`<text class="gm5-at" transform="translate(16 ${P.t+(H-P.t-P.b)/2}) rotate(-90)" text-anchor="middle">LINKS FROM HUMAN INFLUENCE</text>`;
-    /* dots: stops sharing a cell stack vertically */
-    const cell={};pts.forEach(p=>{(cell[p.x+','+p.y]=cell[p.x+','+p.y]||[]).push(p)});
-    Object.values(cell).forEach(arr=>arr.forEach((p,k)=>{p.px=cx(p.x);p.py=cy(p.y)+(arr.length>1?(k?1:-1)*ch*(narrow?.3:.3):0)}));
-    pts.forEach(p=>{const l=p.x,end=p.id==='influence',on=sel===p.id;
-      const ring=end?`stroke="var(--ink-2)" stroke-dasharray="3 3"`:`stroke="var(--ev${Math.max(1,l)})"`;
-      const lab=narrow?`<text class="gm5-lb sm" x="${p.px}" y="${p.py+R+12}" text-anchor="middle">${SHORT5[p.id]}</text>`
-        :`<text class="gm5-lb" x="${p.px+R+8}" y="${p.py+4.5}">${esc(nameOf(p.id))}</text>`;
-      g+=`<g class="gm5-dot${on?' on':''}" data-id="${p.id}" tabindex="0" role="button" aria-pressed="${on}" aria-label="${esc(nameOf(p.id))}: ${LEVELWORD[l]}; ${p.y===0?'the outcome itself':p.y+(p.y===1?' link':' links')+' from Human influence'}; ${p.n} missing measures${p.flag?'; worth working on':''}.">
-        ${p.flag?`<circle cx="${p.px}" cy="${p.py}" r="${R+5.5}" fill="none" stroke="var(--hs)" stroke-width="1.6"/>`:''}
-        <circle class="gm5-c" cx="${p.px}" cy="${p.py}" r="${R}" fill="var(--surface)" ${ring} stroke-width="${end?1.8:3}"/>
-        <text class="gm5-n" x="${p.px}" y="${p.py+4}" text-anchor="middle">${p.n}</text>${lab}
-        <circle cx="${p.px}" cy="${p.py}" r="${R+12}" fill="transparent"/></g>`});
-    plot.innerHTML=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Prioritisation matrix. Across: how well each stop is measured today. Down: how close it is to Human influence. Human influence, Skills and judgement and Institutions sit in the corner that is close to the outcome and barely measured.">${g}</svg>`;
-  };
-  const show=id=>{sel=id;draw();if(opts.onPick)opts.onPick(id)};
-  plot.addEventListener('click',e=>{const d=e.target.closest('.gm5-dot');if(d)show(d.dataset.id)});
-  plot.addEventListener('keydown',e=>{const d=e.target.closest&&e.target.closest('.gm5-dot');if(d&&(e.key==='Enter'||e.key===' ')){e.preventDefault();show(d.dataset.id)}});
-  draw();let rt;const onR=()=>{if(!el.isConnected){window.removeEventListener('resize',onR);return}clearTimeout(rt);rt=setTimeout(draw,150)};window.addEventListener('resize',onR);
+  el.innerHTML=`<div class="gm5-board" role="list" aria-label="Research gaps grouped by measurement coverage">
+    ${bands.map(b=>{const band=coverageBand5(b),xs=pts.filter(p=>p.band===b);
+      return `<section class="gm5-col" data-coverage="${b}" aria-labelledby="gm5-${b}"><div class="gm5-colh"><span>${coverageGlyph5(b,20)}</span><div><h3 id="gm5-${b}">${esc(band.label)}</h3><p>${esc(band.description)}</p></div></div>
+        <div class="gm5-stack">${xs.map(p=>`<button type="button" class="gm5-dot" data-id="${p.id}" aria-label="${esc(nameOf(p.id))}. ${esc(band.label)}. ${p.n} proposed ${p.n===1?'measure':'measures'}. ${esc(p.need)}">
+          <span class="gm5-rowtop"><b>${esc(nameOf(p.id))}</b><span>${p.n}</span></span><span class="gm5-need">${esc(p.need)}</span></button>`).join('')}</div></section>`}).join('')}</div>
+   <div class="gm5-key"><span><b>Number</b> = proposed measures in the list below</span><span>Colours match the causal diagram and Evidence page.</span></div>
+   <div class="sr5"><table><caption>Stops grouped by measurement coverage</caption><thead><tr><th>Stop</th><th>Coverage</th><th>Proposed measures</th></tr></thead><tbody>${pts.map(p=>`<tr><td>${esc(nameOf(p.id))}</td><td>${esc(coverageBand5(p.band).label)}</td><td>${p.n}</td></tr>`).join('')}</tbody></table></div>`;
+  const show=id=>{if(opts.onPick)opts.onPick(id)};
+  el.addEventListener('click',e=>{const d=e.target.closest('.gm5-dot');if(d)show(d.dataset.id)});
+  el.addEventListener('keydown',e=>{const d=e.target.closest&&e.target.closest('.gm5-dot');if(d&&(e.key==='Enter'||e.key===' ')){e.preventDefault();show(d.dataset.id)}});
   return el;
 }
 
@@ -5155,14 +5117,11 @@ function viewGaps(v){
   v.innerHTML=`<div class="view5 wrap">${eye5([esc(G.eyebrow)])}
    <h1 class="h1-5">${esc(G.h1)}</h1><p class="lead5">${esc(G.sentence)}</p>
    <section class="sec5 gap-rank5" id="gg-matrix"><div class="h2row5"><div><h2 class="h2-5">${esc(G.ranking.title)}</h2><p class="sub5">${esc(G.ranking.sub)}</p></div><a class="go" href="#gacc">See proposed measures ↓</a></div>
-    <div id="gm" class="s1"></div>
-    <details class="det5 matrix-method5"><summary>How the ranking was made</summary><p class="sub5">Each step is ranked by two things: how close it is to Human influence, and how well it is measured today. The priority labels are a first pass; corrections welcome.</p>
-    <ol class="hops5" aria-label="Links from Human influence along the chain">${[[4,['capability']],[3,['adoption']],[2,['handover','work']],[1,['share','skills','culture','institutions']],[0,['influence']]].map(([k,ids])=>`<li><span class="hops5-n">${k}</span><span>${ids.map(x=>esc(nameOf(x))).join(', ')}</span></li>`).join('')}</ol></details></section>
+    <div id="gm" class="s1"></div></section>
    ${agendaNote}
    <section class="sec5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.list.title)}</h2><p class="sub5">${esc(G.list.sub)} ${esc(COPY.ui.instructions.gaps)}</p></div><button type="button" class="btn ghost" id="expAll">${esc(G.list.expandAll)}</button></div>
     <div class="acc5" id="gacc">${['now','method','later'].map(group).join('')}</div></section></div>`;
   gapMatrix($('#gm',v),{onPick:id=>{const t=$(`.gap5-i[data-link="${id}"]`,v);if(t)openAt5(t)}});
-  $('.matrix-method5',v).addEventListener('toggle',()=>window.dispatchEvent(new Event('resize')));
   const acc=$('#gacc',v);wireAcc5(acc);
   $('#expAll',v).addEventListener('click',e=>{const b=e.currentTarget,open=b.dataset.open!=='1';b.dataset.open=open?'1':'';b.textContent=open?G.list.collapseAll:G.list.expandAll;
     if(open){const d=$('details.more5',acc);if(d)d.open=true}

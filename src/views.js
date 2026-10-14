@@ -115,14 +115,11 @@ function viewGaps(v){
   v.innerHTML=`<div class="view5 wrap">${eye5([esc(G.eyebrow)])}
    <h1 class="h1-5">${esc(G.h1)}</h1><p class="lead5">${esc(G.sentence)}</p>
    <section class="sec5 gap-rank5" id="gg-matrix"><div class="h2row5"><div><h2 class="h2-5">${esc(G.ranking.title)}</h2><p class="sub5">${esc(G.ranking.sub)}</p></div><a class="go" href="#gacc">See proposed measures ↓</a></div>
-    <div id="gm" class="s1"></div>
-    <details class="det5 matrix-method5"><summary>How the ranking was made</summary><p class="sub5">Each step is ranked by two things: how close it is to Human influence, and how well it is measured today. The priority labels are a first pass; corrections welcome.</p>
-    <ol class="hops5" aria-label="Links from Human influence along the chain">${[[4,['capability']],[3,['adoption']],[2,['handover','work']],[1,['share','skills','culture','institutions']],[0,['influence']]].map(([k,ids])=>`<li><span class="hops5-n">${k}</span><span>${ids.map(x=>esc(nameOf(x))).join(', ')}</span></li>`).join('')}</ol></details></section>
+    <div id="gm" class="s1"></div></section>
    ${agendaNote}
    <section class="sec5"><div class="h2row5"><div><h2 class="h2-5">${esc(G.list.title)}</h2><p class="sub5">${esc(G.list.sub)} ${esc(COPY.ui.instructions.gaps)}</p></div><button type="button" class="btn ghost" id="expAll">${esc(G.list.expandAll)}</button></div>
     <div class="acc5" id="gacc">${['now','method','later'].map(group).join('')}</div></section></div>`;
   gapMatrix($('#gm',v),{onPick:id=>{const t=$(`.gap5-i[data-link="${id}"]`,v);if(t)openAt5(t)}});
-  $('.matrix-method5',v).addEventListener('toggle',()=>window.dispatchEvent(new Event('resize')));
   const acc=$('#gacc',v);wireAcc5(acc);
   $('#expAll',v).addEventListener('click',e=>{const b=e.currentTarget,open=b.dataset.open!=='1';b.dataset.open=open?'1':'';b.textContent=open?G.list.collapseAll:G.list.expandAll;
     if(open){const d=$('details.more5',acc);if(d)d.open=true}

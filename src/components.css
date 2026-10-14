@@ -199,32 +199,23 @@
 @media (max-width:860px){.in5wrap{grid-template-columns:1fr;gap:16px}}
 
 /* ---------------- 5. gap matrix ---------------- */
-.gm5-plot{min-width:0}
-.gm5-plot svg{display:block;overflow:visible}
-.gm5-plot text{font-family:var(--f-display)}
-.gm5-pri{font-size:13.5px;font-weight:650;fill:var(--ink)}
-.gm5-ax{font-size:12.5px;fill:var(--ink-2)}
-.gm5-plot .gm5-at{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;fill:var(--ink-3)}
-.axis-note{display:flex;flex-wrap:wrap;gap:6px 18px;margin:8px 0 6px;font:500 12px/1.4 var(--f-display);color:var(--ink-2)}
-.axis-note b{color:var(--ink);font-weight:700}
-.gm5-lb{font-size:13.5px;font-weight:650;fill:var(--ink)}
-.gm5-lb.sm{font-size:10.5px;font-weight:600}
-.gm5-flag{font-size:11.5px;font-weight:650;fill:var(--hs)}
-.gm5-n{font-family:var(--f-mono)!important;font-size:11px;fill:var(--ink);font-weight:500}
-.gm5-dot{cursor:pointer;outline:0}
-.gm5-dot .gm5-c{transition:fill .15s}
-.gm5-dot:hover .gm5-c,.gm5-dot:focus-visible .gm5-c,.gm5-dot.on .gm5-c{fill:var(--surface-2)}
-.gm5-dot:focus-visible .gm5-lb,.gm5-dot.on .gm5-lb,.gm5-dot:hover .gm5-lb{text-decoration:underline}
-.gm5-dot:focus-visible .gm5-c{stroke-width:4}
-.gm5-key{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:12.5px;color:var(--ink-2);margin-top:4px}
+.gm5-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;border-top:1px solid var(--ink);padding-top:14px}
+.gm5-col{border:1px solid var(--rule);border-radius:8px;background:var(--surface);min-width:0}
+.gm5-colh{display:flex;gap:10px;align-items:flex-start;padding:14px 14px 12px;border-bottom:1px solid var(--rule)}
+.gm5-colh h3{margin:0;font-size:16px;line-height:1.2;color:var(--coverage-color)}
+.gm5-colh p{margin:3px 0 0;font-size:13px;line-height:1.35;color:var(--ink-2)}
+.gm5-stack{display:grid;gap:0}
+.gm5-dot{display:grid;gap:7px;width:100%;padding:13px 14px;text-align:left;background:transparent;border:0;border-bottom:1px solid var(--grid);color:inherit;cursor:pointer}
+.gm5-dot:last-child{border-bottom:0}
+.gm5-dot:hover,.gm5-dot:focus-visible{background:var(--paper);outline:0}
+.gm5-dot:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+.gm5-rowtop{display:flex;gap:10px;justify-content:space-between;align-items:center}
+.gm5-rowtop b{font-size:15px;line-height:1.2;color:var(--ink)}
+.gm5-rowtop span{display:inline-grid;place-items:center;min-width:24px;height:24px;border-radius:50%;border:1.5px solid var(--coverage-color);font-family:var(--f-mono);font-size:12px;color:var(--ink)}
+.gm5-need{font-family:var(--f-text);font-size:14px;line-height:1.4;color:var(--ink-2)}
+.gm5-key{display:flex;flex-wrap:wrap;gap:6px 24px;font-size:12.5px;color:var(--ink-2);margin-top:10px}
 .gm5-key span{display:inline-flex;gap:6px;align-items:center}
-.gm5-cap{font-size:12.5px;line-height:1.45;color:var(--ink-3);margin-top:6px;max-width:80ch}
-.gm5-detail{margin-top:16px;padding-top:12px;border-top:1px solid var(--rule);min-height:64px}
-.gm5-hint{font-size:13.5px;color:var(--ink-3)}
-.gm5-dh{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline}
-.gm5-dh b{font-size:16px}
-.gm5-dh span{font-size:13px;color:var(--ink-2)}
-.gm5-detail ul{margin:8px 0 10px;padding-left:18px;font-family:var(--f-text);font-size:15.5px;line-height:1.45;color:var(--ink-2)}
+@media (max-width:860px){.gm5-board{grid-template-columns:1fr}.gm5-colh{padding-inline:12px}.gm5-dot{padding-inline:12px}}
 
 /* ---------------- 6. caveat signposts, WIP ---------------- */
 .cav5w{position:relative;display:inline-flex;vertical-align:middle}
