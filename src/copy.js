@@ -23,7 +23,7 @@ const COPY={
    "buttons": [
     {"t": "Add an indicator or study", "to": "contribute/add"},
     {"t": "Find or offer funding", "to": "contribute/funding"},
-    {"t": "Suggest a correction", "to": "contribute/authors"}
+    {"t": "Suggest a correction", "to": "contribute/add"}
    ],
    "why": "Why this project"
   },
@@ -69,7 +69,11 @@ const COPY={
  "why": {
   "nav": "Contribute",
   "h1": "Help improve the map",
-  "lead": "This is a prototype for a live dashboard. Send better evidence, point out mistakes, or help fund the missing measures.",
+  "lead": "We're developing this prototype into a regularly updated dashboard on AI and human influence.",
+  "audiences": [
+   {"name": "Researchers", "text": "Share studies, suggest better indicators, or flag errors."},
+   {"name": "Grantmakers", "text": "Support research to fill measurement gaps and help maintain the dashboard."}
+  ],
   "plan": {
    "h2": "The plan",
    "steps": [
@@ -82,10 +86,11 @@ const COPY={
   },
   "contribute": {
    "h2": "Add an indicator or study",
-   "text": "Suggest a dataset, study or measure that should be added. Every proposal is reviewed and credited.",
+   "text": "Suggest a dataset, study or measure, or flag a mistake. Contributions are reviewed before publication.",
    "buttons": [
     ["Propose an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"],
-    ["Share a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml"]
+    ["Share a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml"],
+    ["Suggest a correction", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml"]
    ],
    "note": "Each button opens a short form on GitHub."
   },
@@ -100,14 +105,6 @@ const COPY={
     {"name": "Coefficient Giving, capacity-building funding", "status": "Rolling", "fit": "Funds websites, data infrastructure and public discussion, not research itself.", "url": "https://coefficientgiving.org/funds/navigating-transformative-ai/funding-for-work-that-builds-capacity-to-address-risks-from-transformative-ai/"}
    ],
    "note": "No funding call is dedicated to gradual disempowerment. Checked at source on 13 October 2026."
-  },
-  "authors": {
-   "h2": "For the authors of the paper",
-   "text": "The map arranges published evidence along the argument in Gradual Disempowerment (Kulveit and co-authors, 2025). Check the steps, definitions and ratings; then tell us what is wrong.",
-   "buttons": [
-    ["What is counted at each step", "#method/more"],
-    ["Suggest a correction", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml"]
-   ]
   },
   "community": {
    "h2": "Join the community",

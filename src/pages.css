@@ -377,6 +377,9 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .plan5 li>div>span{display:block;font-family:var(--f-text);font-size:15px;line-height:1.45;color:var(--ink-2);margin-top:6px}
 .plan5 li>div>span a{color:var(--ink);text-underline-offset:2px}
 .aim5{font-size:clamp(18px,1.9vw,22px);font-weight:600;line-height:1.35;color:var(--ink);max-width:40em;margin-top:28px}
+.contribute-audience5{display:grid;gap:12px;margin-top:20px}
+.contribute-audience5 .sub5{margin:0}
+.contribute-audience5 b{color:var(--ink)}
 .act5{max-width:880px}
 .act5 .h2-5 .wip5{vertical-align:middle;margin-left:8px}
 .grants5{list-style:none;margin:18px 0 0;padding:0}

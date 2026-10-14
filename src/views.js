@@ -39,6 +39,7 @@ function viewWhy(v){
   const W=COPY.why,ext=(t,u)=>`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`;
   v.innerHTML=`<div class="view5 wrap why5">${eye5([esc(W.nav)])}
    <h1 class="h1-5">${esc(W.h1)}</h1><p class="lead5">${esc(W.lead)}</p>
+   <div class="contribute-audience5">${W.audiences.map(a=>`<p class="sub5"><b>${esc(a.name)}:</b> ${esc(a.text)}</p>`).join('')}</div>
    <section class="sec5" id="w-plan"><h2 class="h2-5 sm">${esc(W.plan.h2)}</h2>
     <ol class="plan5">${W.plan.steps.map((s,i)=>`<li><span class="plan5-n">${i+1}</span><div><b>${s.to?`<a href="#${s.to}">${esc(s.t)}</a>`:esc(s.t)}</b><span>${esc(s.text)}${s.links?' '+s.links.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join(' and ')+'.':''}</span></div></li>`).join('')}</ol>
     <p class="aim5">${esc(W.plan.aim)}</p></section>
@@ -47,8 +48,6 @@ function viewWhy(v){
    <section class="sec5 act5" id="w-funding"><h2 class="h2-5 sm">${esc(W.funding.h2)}</h2><p class="sub5">${esc(W.funding.text)}</p>
     <ul class="grants5">${W.funding.grants.map(g=>`<li><div class="grants5-h"><a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)} ↗</a><span class="acc5-c${/^Closes/.test(g.status)?' due5':''}">${esc(g.status)}</span></div><span>${esc(g.fit)}</span></li>`).join('')}</ul>
     <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></section>
-   <section class="sec5 act5" id="w-authors"><h2 class="h2-5 sm">${esc(W.authors.h2)}</h2><p class="sub5">${esc(W.authors.text)}</p>
-    <div class="btns5">${W.authors.buttons.map(b=>b[1].startsWith('#')?`<a class="btn" href="${esc(b[1])}">${esc(b[0])} →</a>`:ext(b[0],b[1])).join('')}</div></section>
   </div>`;
 }
 

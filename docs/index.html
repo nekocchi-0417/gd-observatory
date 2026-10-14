@@ -1084,6 +1084,9 @@ details.ic5-more summary::-webkit-details-marker{display:none}
 .plan5 li>div>span{display:block;font-family:var(--f-text);font-size:15px;line-height:1.45;color:var(--ink-2);margin-top:6px}
 .plan5 li>div>span a{color:var(--ink);text-underline-offset:2px}
 .aim5{font-size:clamp(18px,1.9vw,22px);font-weight:600;line-height:1.35;color:var(--ink);max-width:40em;margin-top:28px}
+.contribute-audience5{display:grid;gap:12px;margin-top:20px}
+.contribute-audience5 .sub5{margin:0}
+.contribute-audience5 b{color:var(--ink)}
 .act5{max-width:880px}
 .act5 .h2-5 .wip5{vertical-align:middle;margin-left:8px}
 .grants5{list-style:none;margin:18px 0 0;padding:0}
@@ -2374,7 +2377,7 @@ const COPY={
    "buttons": [
     {"t": "Add an indicator or study", "to": "contribute/add"},
     {"t": "Find or offer funding", "to": "contribute/funding"},
-    {"t": "Suggest a correction", "to": "contribute/authors"}
+    {"t": "Suggest a correction", "to": "contribute/add"}
    ],
    "why": "Why this project"
   },
@@ -2420,7 +2423,11 @@ const COPY={
  "why": {
   "nav": "Contribute",
   "h1": "Help improve the map",
-  "lead": "This is a prototype for a live dashboard. Send better evidence, point out mistakes, or help fund the missing measures.",
+  "lead": "We're developing this prototype into a regularly updated dashboard on AI and human influence.",
+  "audiences": [
+   {"name": "Researchers", "text": "Share studies, suggest better indicators, or flag errors."},
+   {"name": "Grantmakers", "text": "Support research to fill measurement gaps and help maintain the dashboard."}
+  ],
   "plan": {
    "h2": "The plan",
    "steps": [
@@ -2433,10 +2440,11 @@ const COPY={
   },
   "contribute": {
    "h2": "Add an indicator or study",
-   "text": "Suggest a dataset, study or measure that should be added. Every proposal is reviewed and credited.",
+   "text": "Suggest a dataset, study or measure, or flag a mistake. Contributions are reviewed before publication.",
    "buttons": [
     ["Propose an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"],
-    ["Share a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml"]
+    ["Share a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml"],
+    ["Suggest a correction", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml"]
    ],
    "note": "Each button opens a short form on GitHub."
   },
@@ -2451,14 +2459,6 @@ const COPY={
     {"name": "Coefficient Giving, capacity-building funding", "status": "Rolling", "fit": "Funds websites, data infrastructure and public discussion, not research itself.", "url": "https://coefficientgiving.org/funds/navigating-transformative-ai/funding-for-work-that-builds-capacity-to-address-risks-from-transformative-ai/"}
    ],
    "note": "No funding call is dedicated to gradual disempowerment. Checked at source on 13 October 2026."
-  },
-  "authors": {
-   "h2": "For the authors of the paper",
-   "text": "The map arranges published evidence along the argument in Gradual Disempowerment (Kulveit and co-authors, 2025). Check the steps, definitions and ratings; then tell us what is wrong.",
-   "buttons": [
-    ["What is counted at each step", "#method/more"],
-    ["Suggest a correction", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml"]
-   ]
   },
   "community": {
    "h2": "Join the community",
@@ -4576,7 +4576,8 @@ function render(id){
   window.scrollTo(0,0);
   if(source){const t=document.getElementById('source-'+source.id);if(t)openAt5(t)}
   /* #gaps/<step> and #why/<section> open the page at that part */
-  const sub=ind&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+ind)||document.querySelector(`[data-sub="${base}/${ind}"]`);if(t)openAt5(t)}
+  const anchor=base==='contribute'&&ind==='authors'?'add':ind;
+  const sub=anchor&&{gaps:'gg-',contribute:'w-',method:'m-'}[base];if(sub){const t=document.getElementById(sub+anchor)||document.querySelector(`[data-sub="${base}/${anchor}"]`);if(t)openAt5(t)}
 }
 document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
@@ -5041,6 +5042,7 @@ function viewWhy(v){
   const W=COPY.why,ext=(t,u)=>`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`;
   v.innerHTML=`<div class="view5 wrap why5">${eye5([esc(W.nav)])}
    <h1 class="h1-5">${esc(W.h1)}</h1><p class="lead5">${esc(W.lead)}</p>
+   <div class="contribute-audience5">${W.audiences.map(a=>`<p class="sub5"><b>${esc(a.name)}:</b> ${esc(a.text)}</p>`).join('')}</div>
    <section class="sec5" id="w-plan"><h2 class="h2-5 sm">${esc(W.plan.h2)}</h2>
     <ol class="plan5">${W.plan.steps.map((s,i)=>`<li><span class="plan5-n">${i+1}</span><div><b>${s.to?`<a href="#${s.to}">${esc(s.t)}</a>`:esc(s.t)}</b><span>${esc(s.text)}${s.links?' '+s.links.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join(' and ')+'.':''}</span></div></li>`).join('')}</ol>
     <p class="aim5">${esc(W.plan.aim)}</p></section>
@@ -5049,8 +5051,6 @@ function viewWhy(v){
    <section class="sec5 act5" id="w-funding"><h2 class="h2-5 sm">${esc(W.funding.h2)}</h2><p class="sub5">${esc(W.funding.text)}</p>
     <ul class="grants5">${W.funding.grants.map(g=>`<li><div class="grants5-h"><a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)} ↗</a><span class="acc5-c${/^Closes/.test(g.status)?' due5':''}">${esc(g.status)}</span></div><span>${esc(g.fit)}</span></li>`).join('')}</ul>
     <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></section>
-   <section class="sec5 act5" id="w-authors"><h2 class="h2-5 sm">${esc(W.authors.h2)}</h2><p class="sub5">${esc(W.authors.text)}</p>
-    <div class="btns5">${W.authors.buttons.map(b=>b[1].startsWith('#')?`<a class="btn" href="${esc(b[1])}">${esc(b[0])} →</a>`:ext(b[0],b[1])).join('')}</div></section>
   </div>`;
 }
 

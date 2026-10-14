@@ -39,7 +39,11 @@ const ROUTES=['map','evidence','capability','adoption','handover','work','share'
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.summary5-link[href="#gaps"]');await p.waitForTimeout(400);console.log('summary opens research gaps',await p.evaluate(()=>location.hash));
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.cta5-links a[href="#contribute/add"]');await p.waitForTimeout(400);console.log('cta scrolls',await p.evaluate(()=>location.hash+' y='+Math.round(scrollY)),await p.$eval('.nav a[aria-current]',e=>e.textContent));
    await p.goto(PAGE+'#map');await p.waitForTimeout(300);await p.click('.nav a[href="#gaps"]');await p.waitForTimeout(400);console.log('research gaps nav',await p.evaluate(()=>location.hash));
-   await p.goto(PAGE+'#contribute/authors');await p.waitForTimeout(400);await p.click('#w-authors .btn[href="#method/more"]');await p.waitForTimeout(400);console.log('method/more opens details',await p.evaluate(()=>location.hash+' open='+document.querySelector('#m-more details').open+' y='+Math.round(scrollY)));
+   await p.goto(PAGE+'#contribute');await p.waitForTimeout(400);
+   console.log('contribute audience',await p.$eval('.contribute-audience5',e=>e.textContent.includes('Researchers:')&&e.textContent.includes('Grantmakers:')));
+   console.log('authors section removed',await p.locator('#w-authors').count());
+   console.log('correction buttons',await p.locator('#w-add a[href*="correction.yml"]').count());
+   await p.goto(PAGE+'#contribute/authors');await p.waitForTimeout(400);console.log('old authors link scrolls to add',await p.evaluate(()=>location.hash+' y='+Math.round(scrollY)),await p.locator('#w-add a[href*="correction.yml"]').count());
    console.log('contribute ext links',await p.$$eval('.why5 a[target=_blank]',a=>a.map(x=>x.href).filter(h=>!/^https:\/\//.test(h)).length),'non-https');
   }
   if(w===400){await p.goto(PAGE+'#map');await p.waitForTimeout(300);console.log('phone open rows',await p.$$eval('.ml5.open',x=>x.length));
