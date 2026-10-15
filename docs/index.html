@@ -1264,12 +1264,19 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
 .takeaway7 a{color:var(--s1);text-underline-offset:3px}
-.supporting7{margin:0 0 28px;font:15px/1.5 var(--f-display)}
-.supporting7 h2{font:650 18px/1.4 var(--f-display);margin:0 0 4px}
+.evidence-grid7{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;align-items:start}
+.evidence-grid7>*{min-width:0}
+.supporting7{margin:0;padding:18px 0 24px;border-top:1px solid var(--rule);font:15px/1.6 var(--f-display);color:var(--ink-2)}
+.supporting7 h2{font:650 15px/1.6 var(--f-display);color:var(--ink);margin:0 0 12px}
+.supporting7>p{margin:0 0 12px}.supporting7 a{color:var(--s1);text-underline-offset:3px}
+.supporting7 .source-minis6{grid-template-columns:1fr;margin-top:16px;gap:24px}
+.supporting7 .source-mini6{border-top:1px solid var(--rule);padding-top:14px}
+.supporting7 .source-mini6 h3{font-size:18px}.supporting7 .source-mini6 dd{font-size:20px}
+.topic-support7{margin-top:30px}
 .supporting7-meta{font-size:13px;color:var(--ink-2);margin:0 0 12px}
 .benchmark-facts7{margin:0}
 .benchmark-facts7>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;padding:12px 0;border-top:1px solid var(--rule)}
-.benchmark-facts7 dt{font-weight:600}.benchmark-facts7 dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.benchmark-facts7 dt{font-weight:600;color:var(--ink)}.benchmark-facts7 dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
 .benchmark-facts7 span{display:block;font-size:13px;font-weight:400;color:var(--ink-2);margin-top:3px}
 .benchmark-facts7 a{color:var(--s1);text-underline-offset:3px}
 .benchmark-facts7 dd b{white-space:nowrap}
@@ -1297,6 +1304,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .related7 p{margin:6px 0 0;max-width:80ch}
 .watch7{padding-left:20px;margin:0 0 20px}.watch7 li{margin:8px 0}
 @media(max-width:720px){
+ .evidence-grid7{grid-template-columns:minmax(0,1fr)}
  .pilot7 .claim5 h1{font-size:30px}
  .evidence-chart7{margin-top:24px;padding-top:20px}.evidence-chart7 h2{font-size:21px}
  .publisher7{gap:3px 12px}.publisher7 span{font-size:12px}
@@ -5400,11 +5408,21 @@ function viewTopic(v,id){
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
     <div class="claim5">${eye5([esc(nameOf(id)),`${i+1} of ${ORDER.length}`])}<h1 class="h1-5 c">${esc(p.h1)}</h1><p class="lead5">${esc(p.summary)}</p></div>
     ${verify5()}
-    <p class="review-links"><a class="go" href="#method/selection">How indicators are selected →</a></p>
-    <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Selected indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
-      <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
     ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#details/${id}">Source details →</a></div><p class="sub5">Charts linked to the selected indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
-    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a></p></section>
+    <div class="disclosures7 evidence-grid7 topic-support7">
+      <section class="supporting7" aria-labelledby="${id}-supporting-title"><h2 id="${id}-supporting-title">Selected indicators</h2>
+        <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
+      <details class="disclosure7" id="${id}-source"><summary>Sources and caveats</summary><div class="disclosure7-body">
+        <p>${esc(p.selection)}</p><dl class="context7">${p.sources.map(s=>`<div><dt>${esc(s.label)}</dt><dd>${esc(s.limit)}</dd></div>`).join('')}</dl>
+        <p class="source-actions7"><a href="#details/${id}">Full source notes</a><a href="#method/selection">How we select indicators</a></p>
+      </div></details>
+      <details class="disclosure7" id="${id}-related"><summary>Related evidence</summary><div class="disclosure7-body">
+        <p>Findings from the selected studies and indicators.</p><ul class="related7">${p.sources.map(s=>`<li><h3>${sourceLink6(s,s.label)}</h3><p>${esc(s.finding)}</p></li>`).join('')}</ul>
+      </div></details>
+      <details class="disclosure7" id="${id}-watch"><summary>What to watch next</summary><div class="disclosure7-body">
+        <p>${esc(p.gap)}</p><p><a href="#gaps/${id}">Research questions →</a></p>
+      </div></details>
+    </div>
     ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['evidence','All steps','Next'])}</div>`;
   if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
   crumbScroll5(v);
@@ -5695,6 +5713,7 @@ function viewCapabilityPilot(v){
       <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
     <p class="takeaway7"><b>What changed:</b> At 80% success, METR's estimated technical-task length increased about <b>${fold}-fold</b>, from <b>${Math.round(first.estimate*60)} seconds for GPT-4 in March 2023</b> to <b>${(last.estimate/60).toFixed(1)} hours for Mythos Preview (early) in April 2026</b>, in human-expert time.</p>
+    <div class="disclosures7 evidence-grid7">
     <section class="supporting7" aria-labelledby="supporting7-title">
       <h2 id="supporting7-title">Other benchmarks</h2>
       <p class="supporting7-meta">o3 → GPT-5 · 2025 · OpenAI-reported results</p>
@@ -5704,7 +5723,6 @@ function viewCapabilityPilot(v){
         <div><dt>Professional work <span>${ext7('https://arxiv.org/html/2510.04374v1#A1.T2','GDPval')} · Preferred to human output</span></dt><dd><b>35.2% → 39.0%</b><span>+3.8 percentage points</span></dd></div>
       </dl>
     </section>
-    <div class="disclosures7">
       <details id="capability-source" class="disclosure7">
         <summary>Source, caveats and data</summary>
         <div class="disclosure7-body">
@@ -5781,8 +5799,13 @@ function viewAdoptionPilot(v){
       <div class="chart" id="gallup-chart7"></div>
       <p class="chart-credit7">Self-reported use, including daily users. Each dot is a survey wave. Redrawn from Gallup's published table, retrieved ${A.retrieved}.</p>
     </figure>
-    <p class="takeaway7"><b>What changed:</b> Regular AI use among US employees rose from <b>11% in May 2023 to 32% in August 2026</b>, a 21-percentage-point increase. ${ext7('https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2','Eurostat also reports wider AI use among EU businesses')}. Together, these suggest spreading adoption, but count users and firms, not work automated.</p>
-    <div class="disclosures7">
+    <p class="takeaway7"><b>What changed:</b> Regular AI use among US employees rose from <b>11% in May 2023 to 32% in August 2026</b>, a 21-percentage-point increase. This counts users, not work automated.</p>
+    <div class="disclosures7 evidence-grid7">
+      <section class="supporting7" aria-labelledby="adoption-supporting-title">
+        <h2 id="adoption-supporting-title">Other indicators</h2>
+        <p>${ext7(p.sources[1].url,'Eurostat: AI use by EU businesses')}</p>
+        <p>Eurostat also reports wider AI use among EU businesses. It counts firms, not employees, so the two surveys are not directly comparable.</p>
+      </section>
       <details class="disclosure7" id="adoption-source">
         <summary>Source, caveats and data</summary>
         <div class="disclosure7-body">

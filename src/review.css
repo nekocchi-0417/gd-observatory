@@ -48,12 +48,19 @@
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
 .takeaway7 a{color:var(--s1);text-underline-offset:3px}
-.supporting7{margin:0 0 28px;font:15px/1.5 var(--f-display)}
-.supporting7 h2{font:650 18px/1.4 var(--f-display);margin:0 0 4px}
+.evidence-grid7{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;align-items:start}
+.evidence-grid7>*{min-width:0}
+.supporting7{margin:0;padding:18px 0 24px;border-top:1px solid var(--rule);font:15px/1.6 var(--f-display);color:var(--ink-2)}
+.supporting7 h2{font:650 15px/1.6 var(--f-display);color:var(--ink);margin:0 0 12px}
+.supporting7>p{margin:0 0 12px}.supporting7 a{color:var(--s1);text-underline-offset:3px}
+.supporting7 .source-minis6{grid-template-columns:1fr;margin-top:16px;gap:24px}
+.supporting7 .source-mini6{border-top:1px solid var(--rule);padding-top:14px}
+.supporting7 .source-mini6 h3{font-size:18px}.supporting7 .source-mini6 dd{font-size:20px}
+.topic-support7{margin-top:30px}
 .supporting7-meta{font-size:13px;color:var(--ink-2);margin:0 0 12px}
 .benchmark-facts7{margin:0}
 .benchmark-facts7>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;padding:12px 0;border-top:1px solid var(--rule)}
-.benchmark-facts7 dt{font-weight:600}.benchmark-facts7 dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.benchmark-facts7 dt{font-weight:600;color:var(--ink)}.benchmark-facts7 dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
 .benchmark-facts7 span{display:block;font-size:13px;font-weight:400;color:var(--ink-2);margin-top:3px}
 .benchmark-facts7 a{color:var(--s1);text-underline-offset:3px}
 .benchmark-facts7 dd b{white-space:nowrap}
@@ -81,6 +88,7 @@
 .related7 p{margin:6px 0 0;max-width:80ch}
 .watch7{padding-left:20px;margin:0 0 20px}.watch7 li{margin:8px 0}
 @media(max-width:720px){
+ .evidence-grid7{grid-template-columns:minmax(0,1fr)}
  .pilot7 .claim5 h1{font-size:30px}
  .evidence-chart7{margin-top:24px;padding-top:20px}.evidence-chart7 h2{font-size:21px}
  .publisher7{gap:3px 12px}.publisher7 span{font-size:12px}

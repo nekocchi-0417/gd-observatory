@@ -252,6 +252,7 @@ function viewCapabilityPilot(v){
       <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
     <p class="takeaway7"><b>What changed:</b> At 80% success, METR's estimated technical-task length increased about <b>${fold}-fold</b>, from <b>${Math.round(first.estimate*60)} seconds for GPT-4 in March 2023</b> to <b>${(last.estimate/60).toFixed(1)} hours for Mythos Preview (early) in April 2026</b>, in human-expert time.</p>
+    <div class="disclosures7 evidence-grid7">
     <section class="supporting7" aria-labelledby="supporting7-title">
       <h2 id="supporting7-title">Other benchmarks</h2>
       <p class="supporting7-meta">o3 → GPT-5 · 2025 · OpenAI-reported results</p>
@@ -261,7 +262,6 @@ function viewCapabilityPilot(v){
         <div><dt>Professional work <span>${ext7('https://arxiv.org/html/2510.04374v1#A1.T2','GDPval')} · Preferred to human output</span></dt><dd><b>35.2% → 39.0%</b><span>+3.8 percentage points</span></dd></div>
       </dl>
     </section>
-    <div class="disclosures7">
       <details id="capability-source" class="disclosure7">
         <summary>Source, caveats and data</summary>
         <div class="disclosure7-body">

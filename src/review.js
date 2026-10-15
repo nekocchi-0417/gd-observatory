@@ -39,11 +39,21 @@ function viewTopic(v,id){
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
     <div class="claim5">${eye5([esc(nameOf(id)),`${i+1} of ${ORDER.length}`])}<h1 class="h1-5 c">${esc(p.h1)}</h1><p class="lead5">${esc(p.summary)}</p></div>
     ${verify5()}
-    <p class="review-links"><a class="go" href="#method/selection">How indicators are selected →</a></p>
-    <section class="sec5 source-mini6-section"><div class="h2row5"><h2 class="h2-5 sm">Selected indicators</h2><a class="go" href="#details/${id}">Why these sources →</a></div>
-      <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
     ${charts.length?`<section class="sec5 priority6-charts"><div class="h2row5"><h2 class="h2-5 sm">Charts to review</h2><a class="go" href="#details/${id}">Source details →</a></div><p class="sub5">Charts linked to the selected indicators. Values still need human checking before citation.</p><div id="priority-charts-${esc(id)}" class="s1"></div>${uncharted.length?`<p class="note5 chart-gap6">Not charted here yet: ${uncharted.map(s=>esc(s.label)).join('; ')}.</p>`:''}</section>`:''}
-    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What is still missing</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="review-links"><a class="go" href="#gaps/${id}">Research questions →</a></p></section>
+    <div class="disclosures7 evidence-grid7 topic-support7">
+      <section class="supporting7" aria-labelledby="${id}-supporting-title"><h2 id="${id}-supporting-title">Selected indicators</h2>
+        <div class="source-minis6">${p.sources.map(s=>sourceMini6(s,id)).join('')}</div></section>
+      <details class="disclosure7" id="${id}-source"><summary>Sources and caveats</summary><div class="disclosure7-body">
+        <p>${esc(p.selection)}</p><dl class="context7">${p.sources.map(s=>`<div><dt>${esc(s.label)}</dt><dd>${esc(s.limit)}</dd></div>`).join('')}</dl>
+        <p class="source-actions7"><a href="#details/${id}">Full source notes</a><a href="#method/selection">How we select indicators</a></p>
+      </div></details>
+      <details class="disclosure7" id="${id}-related"><summary>Related evidence</summary><div class="disclosure7-body">
+        <p>Findings from the selected studies and indicators.</p><ul class="related7">${p.sources.map(s=>`<li><h3>${sourceLink6(s,s.label)}</h3><p>${esc(s.finding)}</p></li>`).join('')}</ul>
+      </div></details>
+      <details class="disclosure7" id="${id}-watch"><summary>What to watch next</summary><div class="disclosure7-body">
+        <p>${esc(p.gap)}</p><p><a href="#gaps/${id}">Research questions →</a></p>
+      </div></details>
+    </div>
     ${pn5(prev?[prev,nameOf(prev)]:['evidence','All steps','Back to'],next?[next,nameOf(next)]:['evidence','All steps','Next'])}</div>`;
   if(charts.length)indicatorCards($(`#priority-charts-${id}`,v),id,{inds:charts,single:charts.length===1,sel:picked[id],onSelect:d=>{picked[id]=d.id;current=id+'/'+d.id;try{history.replaceState(null,'','#'+current)}catch(e){}}});
   crumbScroll5(v);

@@ -33,8 +33,13 @@ function viewAdoptionPilot(v){
       <div class="chart" id="gallup-chart7"></div>
       <p class="chart-credit7">Self-reported use, including daily users. Each dot is a survey wave. Redrawn from Gallup's published table, retrieved ${A.retrieved}.</p>
     </figure>
-    <p class="takeaway7"><b>What changed:</b> Regular AI use among US employees rose from <b>11% in May 2023 to 32% in August 2026</b>, a 21-percentage-point increase. ${ext7('https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2','Eurostat also reports wider AI use among EU businesses')}. Together, these suggest spreading adoption, but count users and firms, not work automated.</p>
-    <div class="disclosures7">
+    <p class="takeaway7"><b>What changed:</b> Regular AI use among US employees rose from <b>11% in May 2023 to 32% in August 2026</b>, a 21-percentage-point increase. This counts users, not work automated.</p>
+    <div class="disclosures7 evidence-grid7">
+      <section class="supporting7" aria-labelledby="adoption-supporting-title">
+        <h2 id="adoption-supporting-title">Other indicators</h2>
+        <p>${ext7(p.sources[1].url,'Eurostat: AI use by EU businesses')}</p>
+        <p>Eurostat also reports wider AI use among EU businesses. It counts firms, not employees, so the two surveys are not directly comparable.</p>
+      </section>
       <details class="disclosure7" id="adoption-source">
         <summary>Source, caveats and data</summary>
         <div class="disclosure7-body">

@@ -6,11 +6,25 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
 (async()=>{
  const browser=await chromium.launch(),errors=[];
  try{
-  for(const width of [1440,390,340])for(const colorScheme of ['light','dark']){
+  for(const width of [1440,760,720,390,340])for(const colorScheme of ['light','dark']){
    const context=await browser.newContext({viewport:{width,height:950},colorScheme});
    const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
    for(const id of Object.keys(topics)){
     await page.goto(PAGE+'#'+id);
+    const support=page.locator('.evidence-grid7');
+    assert.equal(await support.count(),1,`${id}: shared supporting layout`);
+    assert.equal(await support.locator(':scope>.supporting7').count(),1);
+    assert.equal(await support.locator(':scope>.disclosure7').count(),3);
+    assert.equal(await support.locator('details[open]').count(),0);
+    const boxes=await support.locator(':scope>*').evaluateAll(nodes=>nodes.map(n=>{const b=n.getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,bottom:b.bottom,right:b.right}}));
+    if(width>720){
+     assert.ok(Math.abs(boxes[0].y-boxes[1].y)<1,`${id}: indicators and caveats align`);
+     assert.ok(Math.abs(boxes[2].y-boxes[3].y)<1,`${id}: related evidence and watch align`);
+     assert.ok(boxes[1].x>boxes[0].right&&boxes[3].x>boxes[2].right);
+    }else{
+     assert.ok(boxes.every(b=>Math.abs(b.x-boxes[0].x)<1),`${id}: one column on mobile`);
+     assert.ok(boxes.slice(1).every((b,i)=>b.y>=boxes[i].bottom-1),`${id}: mobile sections never overlap`);
+    }
     if(id==='capability'||id==='adoption'){
      const chart=id==='capability'?'#metr-chart7':'#gallup-chart7';
      assert.equal(await page.locator('.evidence-chart7 svg').count(),1);
@@ -76,6 +90,15 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
      assert.equal(await page.locator('.source-mini6').count(),2);
      assert.equal(await page.locator('.source-mini6-cite a:visible').count(),2);
      assert.match(await page.locator('.verify5').innerText(),/Awaiting human review/);
+     for(const summary of await support.locator('summary').all()){
+      await summary.focus();await page.keyboard.press('Enter');
+     }
+     assert.equal(await support.locator('details[open]').count(),3);
+     assert.equal(await page.locator(`#${id}-watch .disclosure7-body>p`).first().innerText(),topics[id].gap);
+     for(const source of topics[id].sources){
+      assert.ok((await page.locator(`#${id}-source`).innerText()).includes(source.limit));
+      assert.ok((await page.locator(`#${id}-related`).innerText()).includes(source.finding));
+     }
     }
     assert.equal(await page.locator('h1').innerText(),topics[id].h1);
     assert.equal(await page.locator('a[href="#method/selection"]').count(),1);
