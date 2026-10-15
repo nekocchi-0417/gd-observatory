@@ -70,36 +70,36 @@
     ]
   },
   "adoption": {
-    "h1": "AI use is spreading, but use is not the same as dependence",
-    "summary": "Repeated surveys track AI use by employees and businesses. They tell us who uses AI, not how much work or decision-making has been handed over.",
-    "selection": "Pair a US employee survey with official EU business statistics. Keep their populations, definitions and denominators separate.",
+    "h1": "How common is regular AI use at work?",
+    "summary": "Regular AI use among US employees rose from 11% in May 2023 to 32% in August 2026. Use is spreading; how much work is delegated remains unclear.",
+    "selection": "Feature Gallup's repeated measure of frequent AI use by US employees. Use Eurostat for separate context on EU businesses, without combining populations or definitions.",
     "gap": "Track the share of work actually delegated, how outputs are checked, and whether people can still do the work without AI.",
     "signal": 3,
     "sources": [
       {
         "id": "gallup",
-        "title": "Gallup employee AI-use frequency",
+        "title": "Gallup regular workplace AI use",
         "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
-        "locate": "Use of AI data table, rows 5/1/26 and 8/1/26; Survey Methods directly above the table.",
-        "label": "Workplace AI use",
+        "locate": "Use of AI table, Frequent AI users column, eight rows from 5/1/23 to 8/1/26; Survey Methods above the table.",
+        "label": "Regular workplace AI use",
         "citation": "Gallup, AI indicator (2026)",
         "type": "Repeated US employee survey",
-        "date": "August 2026 table",
-        "finding": "53% of surveyed US employees reported using AI at work at least a few times a year; 16% used it daily.",
-        "why": "Repeated independent survey coverage, with frequency categories that separate occasional use from routine use.",
-        "limit": "Self-reported frequency, not hours automated or dependence. The source table is newer than parts of its surrounding prose.",
+        "date": "May 2023-August 2026 table; retrieved 14 October 2026",
+        "finding": "The share of US employees using AI at work a few times a week or more rose from 11% in May 2023 to 32% in August 2026, a 21-percentage-point increase.",
+        "why": "Repeated, probability-based employee surveys across occupations. The frequent-use category distinguishes regular use from occasional experimentation.",
+        "limit": "US employees aged 18+ working for organisations. Self-reported AI use, not work automated or dependence. The table is newer than parts of the surrounding prose; wave-specific intervals are not supplied there.",
         "metrics": [
           [
-            "53%",
-            "At least a few times a year"
+            "11%",
+            "A few times a week or more, May 2023"
           ],
           [
-            "16%",
-            "Daily use"
+            "32%",
+            "A few times a week or more, August 2026"
           ]
         ],
         "checks": [
-          "Read the August table row and verify the two frequency labels.",
+          "Check all eight Frequent AI users values and dates; daily users are included, not added separately.",
           "Confirm US employee eligibility; do not call this a share of all adults, work hours or automated tasks."
         ],
         "legacy": [
@@ -117,7 +117,7 @@
         "date": "2025 survey; release 11 December 2025",
         "finding": "20.0% of covered EU enterprises used AI in 2025, up from 13.5% in 2024.",
         "why": "Adds official, recurring measurement outside the US with a defined business population.",
-        "limit": "Businesses with 10 or more people employed in covered sectors; excludes microfirms. Broad AI, not just generative AI. A Netherlands series break needs care.",
+        "limit": "Businesses with 10 or more people in covered sectors; excludes microfirms. Broad AI, not just generative AI. A new AI category in 2025 and a Netherlands series break complicate year-to-year comparisons.",
         "metrics": [
           [
             "13.5%",

@@ -34,9 +34,9 @@
 @media(max-width:720px){.sources6,.source-minis6{grid-template-columns:1fr;gap:32px}.source6 h3{font-size:21px}.source6-metrics dd{font-size:22px}}
 .priority6,.library6{--f-sans:var(--f-display);--f-serif:var(--f-text)}
 .priority6 h1,.priority6 h2,.priority6 h3,.library6 h1,.library6 h2{letter-spacing:0}
-.capability7{max-width:1040px;padding-top:32px;padding-bottom:64px}
-.capability7 .pn5{margin-top:40px}
-.capability7 .claim5 h1{font-size:38px;line-height:1.15;max-width:29ch}
+.pilot7{max-width:1040px;padding-top:32px;padding-bottom:64px}
+.pilot7 .pn5{margin-top:40px}
+.pilot7 .claim5 h1{font-size:38px;line-height:1.15;max-width:29ch}
 .evidence-chart7{margin:30px 0 0;padding:24px 0 18px;border-block:1px solid var(--rule)}
 .publisher7{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;font:13px/1.5 var(--f-display)}
 .publisher7 a{font-weight:750;color:var(--s1);text-underline-offset:3px}.publisher7 span{color:var(--ink-2)}
@@ -47,6 +47,7 @@
 .chart-y-label{margin-bottom:6px}.chart-x-label{text-align:center;margin-top:6px}
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
+.takeaway7 a{color:var(--s1);text-underline-offset:3px}
 .disclosures7{border-bottom:1px solid var(--rule)}
 .disclosure7{border-top:1px solid var(--rule);font:15px/1.6 var(--f-display)}
 .disclosure7>summary{padding:18px 0;cursor:pointer;font-weight:600;color:var(--ink)}
@@ -71,10 +72,10 @@
 .related7 p{margin:6px 0 0;max-width:80ch}
 .watch7{padding-left:20px;margin:0 0 20px}.watch7 li{margin:8px 0}
 @media(max-width:720px){
- .capability7 .claim5 h1{font-size:30px}
+ .pilot7 .claim5 h1{font-size:30px}
  .evidence-chart7{margin-top:24px;padding-top:20px}.evidence-chart7 h2{font-size:21px}
  .publisher7{gap:3px 12px}.publisher7 span{font-size:12px}
  .choice7{margin-bottom:20px}.takeaway7{font-size:17px}
  .disclosure7>summary{padding:17px 0}.chart-y-label{max-width:30ch}
- .capability7 .tip .r{white-space:normal;flex-wrap:wrap}
+ .pilot7 .tip .r{white-space:normal;flex-wrap:wrap}
 }

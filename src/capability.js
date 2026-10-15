@@ -210,12 +210,6 @@ const CAPABILITY7={
       "publisher": "Epoch AI",
       "url": "https://epoch.ai/data/eci-documentation",
       "text": "Combines benchmarks for a broader view of progress. The combined score is less directly interpretable as completed work."
-    },
-    {
-      "title": "GDPval",
-      "publisher": "OpenAI",
-      "url": "https://openai.com/index/gdpval/",
-      "text": "Tests deliverables across 44 occupations. Broader task coverage, but a developer-produced evaluation rather than a test of whole jobs."
     }
   ]
 };
@@ -225,10 +219,10 @@ function csvLink7(name,rows){
   const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');
   return `<a download="${esc(name)}" href="data:text/csv;charset=utf-8,${encodeURIComponent(csv)}">Download chart data (CSV)</a>`;
 }
-function capabilityRelated7(){
-  return `<ul class="related7">${CAPABILITY7.related.map(r=>`<li><h3>${ext7(r.url,r.title)} <span>${esc(r.publisher)}</span></h3><p>${esc(r.text)}${r.update?` ${ext7(r.update,'Study update')}`:''}</p></li>`).join('')}</ul>`;
+function relatedEvidence7(items){
+  return `<ul class="related7">${items.map(r=>`<li><h3>${ext7(r.url,r.title)} <span>${esc(r.publisher)}</span></h3><p>${esc(r.text)}${r.update?` ${ext7(r.update,'Study update')}`:''}</p></li>`).join('')}</ul>`;
 }
-function capabilityYear7(date){
+function decimalYear7(date){
   const year=Number(date.slice(0,4)),start=Date.UTC(year,0,1);
   return year+(Date.parse(date+'T00:00:00Z')-start)/(Date.UTC(year+1,0,1)-start);
 }
@@ -237,7 +231,7 @@ function viewCapabilityPilot(v){
   const minutes=n=>n.toFixed(1)+' min';
   const csv=[['model','release_date','success_rate_percent','estimate_minutes','ci95_low_minutes','ci95_high_minutes','source','source_record','retrieved'],
     ...M.rows.map(r=>[r.name,r.date,80,r.estimate,r.low,r.high,M.data,`results.${r.id}.metrics.p80_horizon_length`,'2026-10-14'])];
-  v.innerHTML=`<div class="view5 wrap priority6 capability7">${crumbs5('capability')}
+  v.innerHTML=`<div class="view5 wrap priority6 pilot7 capability7">${crumbs5('capability')}
     <header class="claim5"><div class="eye5"><span>AI capability</span><i aria-hidden="true">·</i><span>1 of 9</span></div><h1 class="h1-5 c">${esc(p.h1)}</h1></header>
     <figure class="evidence-chart7" aria-labelledby="metr7-title">
       <figcaption>
@@ -249,7 +243,7 @@ function viewCapabilityPilot(v){
       <div class="chart" id="metr-chart7"></div>
       <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
-    <p class="takeaway7"><b>Our reading:</b> AI can take on more technical work. This does not establish reliable performance across whole jobs, or a loss of human control.</p>
+    <p class="takeaway7"><b>What changed:</b> From March 2023 to April 2026, METR's estimated technical-task length at 80% success rose from <b>under a minute to about three hours</b>. Separate studies report progress on ${ext7('https://metr.org/blog/2025-07-14-how-does-time-horizon-vary-across-domains/','maths, science questions and computer use')} and ${ext7('https://arxiv.org/abs/2510.04374','professional work products (OpenAI’s GDPval)')}. These use different measures, not a single rate of improvement across jobs.</p>
     <div class="disclosures7">
       <details id="capability-source" class="disclosure7">
         <summary>Source, caveats and data</summary>
@@ -258,6 +252,7 @@ function viewCapabilityPilot(v){
             <div><dt>What is measured?</dt><dd>The task length at which a tested agent is predicted to succeed 80% of the time. Length means the time a human expert would need, not how long AI runs.</dd></div>
             <div><dt>What does it miss?</dt><dd>Tasks are mainly software, machine learning and cybersecurity, with clear instructions and success criteria. They do not represent whole jobs, every profession, or all AI models. Agent tools and setups also vary.</dd></div>
             <div><dt>How uncertain is it?</dt><dd>These are fitted estimates. For the latest point, the 95% interval is about 1.6–6.6 hours, around an estimate of 3.1 hours. All published intervals are in the table. Human task-time estimates also have limitations.</dd></div>
+            <div><dt>How do the linked studies compare?</dt><dd>METR's exploratory cross-domain analysis uses 50%-success horizons and noisier estimates of human task time. GDPval is an OpenAI-produced evaluation of work products across 44 occupations, scored against human expert outputs. Neither establishes equal progress across occupations or reliable performance on whole jobs.</dd></div>
             <div><dt>How was this chart made?</dt><dd>All ${M.rows.length} TH1.1 records with release dates from 2023 onward are shown at the same 80% threshold. Dates, estimates and intervals come from one METR file. No other datasets, trend line or forecast were added. Release dates are not evaluation dates.</dd></div>
             <div><dt>Is it current?</dt><dd>This is a historical snapshot through April 2026 model releases. METR no longer updates this tracker. Extraction and interpretation are AI-assisted, not independently verified.</dd></div>
           </dl>
@@ -267,7 +262,7 @@ function viewCapabilityPilot(v){
       </details>
       <details class="disclosure7" id="capability-related">
         <summary>Related evidence</summary>
-        <div class="disclosure7-body"><p>Other ways to test capability and its limits. These AI-assisted summaries have not all been manually verified.</p>${capabilityRelated7()}<p><a href="#details/capability">METR and RLI source notes</a></p></div>
+        <div class="disclosure7-body"><p>Additional evidence, beyond the studies linked above. These AI-assisted summaries have not all been manually verified.</p>${relatedEvidence7(CAPABILITY7.related)}<p><a href="#details/capability">METR and RLI source notes</a></p></div>
       </details>
       <details class="disclosure7" id="capability-watch">
         <summary>What to watch next</summary>
@@ -275,7 +270,7 @@ function viewCapabilityPilot(v){
       </details>
     </div>
     ${pn5(['evidence','All steps','Back to'],['adoption',nameOf('adoption')])}</div>`;
-  const annotation=(id,text,dx,dy)=>{const r=M.rows.find(r=>r.id===id);return {x:capabilityYear7(r.date),y:r.estimate,text,dx,dy,lead:true,strong:true}};
+  const annotation=(id,text,dx,dy)=>{const r=M.rows.find(r=>r.id===id);return {x:decimalYear7(r.date),y:r.estimate,text,dx,dy,lead:true,strong:true}};
   const annotations=[
     annotation('gpt_4','GPT-4 · Mar 2023\nLess than 1 minute',22,-62),
     {...annotation('o3_inspect','o3 · Apr 2025\nAbout 30 minutes',-20,-66),anchor:'end'},
@@ -286,7 +281,7 @@ function viewCapabilityPilot(v){
     h:330,legend:false,table:false,axisPlacement:'edges',
     x:{min:2023,max:2026.6,ticks:[2023,2024,2025,2026],fmt:n=>String(n),tip:fmtDate,label:'Model release year'},
     y:{min:0,max:210,ticks:[0,60,120,180],fmt:n=>n===0?'0':n/60+(n===60?' hour':' hours'),tip:minutes,label:'Task length: time a human expert would need'},
-    series:M.rows.map(r=>({name:r.name,color:C.s1,dots:true,markers:'all',end:false,r:4.5,pts:[[capabilityYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(1)}–${r.high.toFixed(1)} minutes`]]})),
+    series:M.rows.map(r=>({name:r.name,color:C.s1,dots:true,markers:'all',end:false,r:4.5,pts:[[decimalYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(1)}–${r.high.toFixed(1)} minutes`]]})),
     ann:annotations,
     annNarrow:[{...annotations[0],dx:4,dy:-58},{...annotations[1],dx:-14,dy:-88},{...annotations[2],dx:-12,dy:8}]
   });

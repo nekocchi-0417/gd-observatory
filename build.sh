@@ -10,7 +10,7 @@ js()  { cat src/charts.js src/data1.js src/data2.js src/data3.js src/signals.js 
         printf '\nconst SELECTED_EVIDENCE = '
         cat src/priority.json
         printf ';\n'
-        cat src/app.js src/components.js src/views.js src/review.js src/capability.js
+        cat src/app.js src/components.js src/views.js src/review.js src/capability.js src/adoption.js
         echo "render((location.hash||'#home').slice(1));initCaveats5();"; }
 
 if [ "$1" = "artifact" ]; then

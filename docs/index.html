@@ -1250,9 +1250,9 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 @media(max-width:720px){.sources6,.source-minis6{grid-template-columns:1fr;gap:32px}.source6 h3{font-size:21px}.source6-metrics dd{font-size:22px}}
 .priority6,.library6{--f-sans:var(--f-display);--f-serif:var(--f-text)}
 .priority6 h1,.priority6 h2,.priority6 h3,.library6 h1,.library6 h2{letter-spacing:0}
-.capability7{max-width:1040px;padding-top:32px;padding-bottom:64px}
-.capability7 .pn5{margin-top:40px}
-.capability7 .claim5 h1{font-size:38px;line-height:1.15;max-width:29ch}
+.pilot7{max-width:1040px;padding-top:32px;padding-bottom:64px}
+.pilot7 .pn5{margin-top:40px}
+.pilot7 .claim5 h1{font-size:38px;line-height:1.15;max-width:29ch}
 .evidence-chart7{margin:30px 0 0;padding:24px 0 18px;border-block:1px solid var(--rule)}
 .publisher7{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;font:13px/1.5 var(--f-display)}
 .publisher7 a{font-weight:750;color:var(--s1);text-underline-offset:3px}.publisher7 span{color:var(--ink-2)}
@@ -1263,6 +1263,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .chart-y-label{margin-bottom:6px}.chart-x-label{text-align:center;margin-top:6px}
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
+.takeaway7 a{color:var(--s1);text-underline-offset:3px}
 .disclosures7{border-bottom:1px solid var(--rule)}
 .disclosure7{border-top:1px solid var(--rule);font:15px/1.6 var(--f-display)}
 .disclosure7>summary{padding:18px 0;cursor:pointer;font-weight:600;color:var(--ink)}
@@ -1287,12 +1288,12 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .related7 p{margin:6px 0 0;max-width:80ch}
 .watch7{padding-left:20px;margin:0 0 20px}.watch7 li{margin:8px 0}
 @media(max-width:720px){
- .capability7 .claim5 h1{font-size:30px}
+ .pilot7 .claim5 h1{font-size:30px}
  .evidence-chart7{margin-top:24px;padding-top:20px}.evidence-chart7 h2{font-size:21px}
  .publisher7{gap:3px 12px}.publisher7 span{font-size:12px}
  .choice7{margin-bottom:20px}.takeaway7{font-size:17px}
  .disclosure7>summary{padding:17px 0}.chart-y-label{max-width:30ch}
- .capability7 .tip .r{white-space:normal;flex-wrap:wrap}
+ .pilot7 .tip .r{white-space:normal;flex-wrap:wrap}
 }
 </style>
 </head>
@@ -4066,36 +4067,36 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "adoption": {
-    "h1": "AI use is spreading, but use is not the same as dependence",
-    "summary": "Repeated surveys track AI use by employees and businesses. They tell us who uses AI, not how much work or decision-making has been handed over.",
-    "selection": "Pair a US employee survey with official EU business statistics. Keep their populations, definitions and denominators separate.",
+    "h1": "How common is regular AI use at work?",
+    "summary": "Regular AI use among US employees rose from 11% in May 2023 to 32% in August 2026. Use is spreading; how much work is delegated remains unclear.",
+    "selection": "Feature Gallup's repeated measure of frequent AI use by US employees. Use Eurostat for separate context on EU businesses, without combining populations or definitions.",
     "gap": "Track the share of work actually delegated, how outputs are checked, and whether people can still do the work without AI.",
     "signal": 3,
     "sources": [
       {
         "id": "gallup",
-        "title": "Gallup employee AI-use frequency",
+        "title": "Gallup regular workplace AI use",
         "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
-        "locate": "Use of AI data table, rows 5/1/26 and 8/1/26; Survey Methods directly above the table.",
-        "label": "Workplace AI use",
+        "locate": "Use of AI table, Frequent AI users column, eight rows from 5/1/23 to 8/1/26; Survey Methods above the table.",
+        "label": "Regular workplace AI use",
         "citation": "Gallup, AI indicator (2026)",
         "type": "Repeated US employee survey",
-        "date": "August 2026 table",
-        "finding": "53% of surveyed US employees reported using AI at work at least a few times a year; 16% used it daily.",
-        "why": "Repeated independent survey coverage, with frequency categories that separate occasional use from routine use.",
-        "limit": "Self-reported frequency, not hours automated or dependence. The source table is newer than parts of its surrounding prose.",
+        "date": "May 2023-August 2026 table; retrieved 14 October 2026",
+        "finding": "The share of US employees using AI at work a few times a week or more rose from 11% in May 2023 to 32% in August 2026, a 21-percentage-point increase.",
+        "why": "Repeated, probability-based employee surveys across occupations. The frequent-use category distinguishes regular use from occasional experimentation.",
+        "limit": "US employees aged 18+ working for organisations. Self-reported AI use, not work automated or dependence. The table is newer than parts of the surrounding prose; wave-specific intervals are not supplied there.",
         "metrics": [
           [
-            "53%",
-            "At least a few times a year"
+            "11%",
+            "A few times a week or more, May 2023"
           ],
           [
-            "16%",
-            "Daily use"
+            "32%",
+            "A few times a week or more, August 2026"
           ]
         ],
         "checks": [
-          "Read the August table row and verify the two frequency labels.",
+          "Check all eight Frequent AI users values and dates; daily users are included, not added separately.",
           "Confirm US employee eligibility; do not call this a share of all adults, work hours or automated tasks."
         ],
         "legacy": [
@@ -4113,7 +4114,7 @@ const SELECTED_EVIDENCE = {
         "date": "2025 survey; release 11 December 2025",
         "finding": "20.0% of covered EU enterprises used AI in 2025, up from 13.5% in 2024.",
         "why": "Adds official, recurring measurement outside the US with a defined business population.",
-        "limit": "Businesses with 10 or more people employed in covered sectors; excludes microfirms. Broad AI, not just generative AI. A Netherlands series break needs care.",
+        "limit": "Businesses with 10 or more people in covered sectors; excludes microfirms. Broad AI, not just generative AI. A new AI category in 2025 and a Netherlands series break complicate year-to-year comparisons.",
         "metrics": [
           [
             "13.5%",
@@ -5383,6 +5384,7 @@ function unchartedSources6(id){
 
 function viewTopic(v,id){
   if(id==='capability'){viewCapabilityPilot(v);return}
+  if(id==='adoption'){viewAdoptionPilot(v);return}
   const p=SELECTED_EVIDENCE[id],i=ORDER.indexOf(id),prev=ORDER[i-1],next=ORDER[i+1];
   const charts=priorityIndicators5(id),uncharted=unchartedSources6(id);
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
@@ -5419,7 +5421,7 @@ function viewSourceMethod(v){
       <li><b>Clear coverage.</b><span>Which countries, people, occupations or tasks were studied? Keep those boundaries visible. A rigorous study can still have narrow coverage.</span></li>
       <li><b>Added value.</b><span>Does this source answer a different part of the question or test whether another finding transfers? Include null results, benefits and conflicting findings.</span></li></ul>
       <p class="sub5">These are editorial criteria, not a numerical score or an exhaustive ranking. We explain why each featured indicator was chosen and what it leaves unanswered. Selection does not depend on whether a finding supports disempowerment.</p></section>
-    <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">The AI capability pilot features one chart from METR's TH1.1 dataset: all evaluated models released from 2023 onward, at the same 80% success threshold. Release dates, estimates and uncertainty intervals come from that single file. We do not combine benchmark versions or add a forecast.</p><p class="sub5">The chart names and links to its source. Its dropdown contains caveats, uncertainty intervals and downloadable values. It is redrawn by this project, not produced or endorsed by METR. Related evidence is listed separately.</p><p class="sub5">Evidence quality and breadth of coverage are separate judgements. Signals to watch are research priorities, not validated warning thresholds. Other topic charts still await this format and human review.</p></section>
+    <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">Each pilot uses one source per chart. AI capability shows all METR TH1.1 models released from 2023 onward, at 80% success. AI adoption shows all eight observations in Gallup's Frequent AI users series, from May 2023 to August 2026. Neither combines datasets or adds a forecast.</p><p class="sub5">Sources stay visible beside the charts. Dropdowns contain caveats, downloadable values and published uncertainty where available. These charts are redrawn by this project, not produced or endorsed by the source organisations.</p><p class="sub5">The takeaways quantify the observed change and link to evidence from other settings, without treating different measures as equivalent. Related-evidence lists add sources not already linked in the takeaway.</p><p class="sub5">Evidence quality and breadth of coverage are separate judgements. Signals to watch are research priorities, not validated warning thresholds. Other topic charts still await this format and human review.</p></section>
     <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Forecasts are provisional.</p></section>
     <section class="sec5" id="m-scales"><h2 class="h2-5 sm">Where the pathways come from</h2><p class="sub5">The pathways are adapted from the <a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Gradual Disempowerment paper ↗</a>.</p></section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">The colours are a provisional, AI-assisted assessment of measurement coverage based on the selected sources. They are not a rigorous review of the full research field or a measure of risk.</p>
@@ -5641,12 +5643,6 @@ const CAPABILITY7={
       "publisher": "Epoch AI",
       "url": "https://epoch.ai/data/eci-documentation",
       "text": "Combines benchmarks for a broader view of progress. The combined score is less directly interpretable as completed work."
-    },
-    {
-      "title": "GDPval",
-      "publisher": "OpenAI",
-      "url": "https://openai.com/index/gdpval/",
-      "text": "Tests deliverables across 44 occupations. Broader task coverage, but a developer-produced evaluation rather than a test of whole jobs."
     }
   ]
 };
@@ -5656,10 +5652,10 @@ function csvLink7(name,rows){
   const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');
   return `<a download="${esc(name)}" href="data:text/csv;charset=utf-8,${encodeURIComponent(csv)}">Download chart data (CSV)</a>`;
 }
-function capabilityRelated7(){
-  return `<ul class="related7">${CAPABILITY7.related.map(r=>`<li><h3>${ext7(r.url,r.title)} <span>${esc(r.publisher)}</span></h3><p>${esc(r.text)}${r.update?` ${ext7(r.update,'Study update')}`:''}</p></li>`).join('')}</ul>`;
+function relatedEvidence7(items){
+  return `<ul class="related7">${items.map(r=>`<li><h3>${ext7(r.url,r.title)} <span>${esc(r.publisher)}</span></h3><p>${esc(r.text)}${r.update?` ${ext7(r.update,'Study update')}`:''}</p></li>`).join('')}</ul>`;
 }
-function capabilityYear7(date){
+function decimalYear7(date){
   const year=Number(date.slice(0,4)),start=Date.UTC(year,0,1);
   return year+(Date.parse(date+'T00:00:00Z')-start)/(Date.UTC(year+1,0,1)-start);
 }
@@ -5668,7 +5664,7 @@ function viewCapabilityPilot(v){
   const minutes=n=>n.toFixed(1)+' min';
   const csv=[['model','release_date','success_rate_percent','estimate_minutes','ci95_low_minutes','ci95_high_minutes','source','source_record','retrieved'],
     ...M.rows.map(r=>[r.name,r.date,80,r.estimate,r.low,r.high,M.data,`results.${r.id}.metrics.p80_horizon_length`,'2026-10-14'])];
-  v.innerHTML=`<div class="view5 wrap priority6 capability7">${crumbs5('capability')}
+  v.innerHTML=`<div class="view5 wrap priority6 pilot7 capability7">${crumbs5('capability')}
     <header class="claim5"><div class="eye5"><span>AI capability</span><i aria-hidden="true">·</i><span>1 of 9</span></div><h1 class="h1-5 c">${esc(p.h1)}</h1></header>
     <figure class="evidence-chart7" aria-labelledby="metr7-title">
       <figcaption>
@@ -5680,7 +5676,7 @@ function viewCapabilityPilot(v){
       <div class="chart" id="metr-chart7"></div>
       <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
-    <p class="takeaway7"><b>Our reading:</b> AI can take on more technical work. This does not establish reliable performance across whole jobs, or a loss of human control.</p>
+    <p class="takeaway7"><b>What changed:</b> From March 2023 to April 2026, METR's estimated technical-task length at 80% success rose from <b>under a minute to about three hours</b>. Separate studies report progress on ${ext7('https://metr.org/blog/2025-07-14-how-does-time-horizon-vary-across-domains/','maths, science questions and computer use')} and ${ext7('https://arxiv.org/abs/2510.04374','professional work products (OpenAI’s GDPval)')}. These use different measures, not a single rate of improvement across jobs.</p>
     <div class="disclosures7">
       <details id="capability-source" class="disclosure7">
         <summary>Source, caveats and data</summary>
@@ -5689,6 +5685,7 @@ function viewCapabilityPilot(v){
             <div><dt>What is measured?</dt><dd>The task length at which a tested agent is predicted to succeed 80% of the time. Length means the time a human expert would need, not how long AI runs.</dd></div>
             <div><dt>What does it miss?</dt><dd>Tasks are mainly software, machine learning and cybersecurity, with clear instructions and success criteria. They do not represent whole jobs, every profession, or all AI models. Agent tools and setups also vary.</dd></div>
             <div><dt>How uncertain is it?</dt><dd>These are fitted estimates. For the latest point, the 95% interval is about 1.6–6.6 hours, around an estimate of 3.1 hours. All published intervals are in the table. Human task-time estimates also have limitations.</dd></div>
+            <div><dt>How do the linked studies compare?</dt><dd>METR's exploratory cross-domain analysis uses 50%-success horizons and noisier estimates of human task time. GDPval is an OpenAI-produced evaluation of work products across 44 occupations, scored against human expert outputs. Neither establishes equal progress across occupations or reliable performance on whole jobs.</dd></div>
             <div><dt>How was this chart made?</dt><dd>All ${M.rows.length} TH1.1 records with release dates from 2023 onward are shown at the same 80% threshold. Dates, estimates and intervals come from one METR file. No other datasets, trend line or forecast were added. Release dates are not evaluation dates.</dd></div>
             <div><dt>Is it current?</dt><dd>This is a historical snapshot through April 2026 model releases. METR no longer updates this tracker. Extraction and interpretation are AI-assisted, not independently verified.</dd></div>
           </dl>
@@ -5698,7 +5695,7 @@ function viewCapabilityPilot(v){
       </details>
       <details class="disclosure7" id="capability-related">
         <summary>Related evidence</summary>
-        <div class="disclosure7-body"><p>Other ways to test capability and its limits. These AI-assisted summaries have not all been manually verified.</p>${capabilityRelated7()}<p><a href="#details/capability">METR and RLI source notes</a></p></div>
+        <div class="disclosure7-body"><p>Additional evidence, beyond the studies linked above. These AI-assisted summaries have not all been manually verified.</p>${relatedEvidence7(CAPABILITY7.related)}<p><a href="#details/capability">METR and RLI source notes</a></p></div>
       </details>
       <details class="disclosure7" id="capability-watch">
         <summary>What to watch next</summary>
@@ -5706,7 +5703,7 @@ function viewCapabilityPilot(v){
       </details>
     </div>
     ${pn5(['evidence','All steps','Back to'],['adoption',nameOf('adoption')])}</div>`;
-  const annotation=(id,text,dx,dy)=>{const r=M.rows.find(r=>r.id===id);return {x:capabilityYear7(r.date),y:r.estimate,text,dx,dy,lead:true,strong:true}};
+  const annotation=(id,text,dx,dy)=>{const r=M.rows.find(r=>r.id===id);return {x:decimalYear7(r.date),y:r.estimate,text,dx,dy,lead:true,strong:true}};
   const annotations=[
     annotation('gpt_4','GPT-4 · Mar 2023\nLess than 1 minute',22,-62),
     {...annotation('o3_inspect','o3 · Apr 2025\nAbout 30 minutes',-20,-66),anchor:'end'},
@@ -5717,9 +5714,83 @@ function viewCapabilityPilot(v){
     h:330,legend:false,table:false,axisPlacement:'edges',
     x:{min:2023,max:2026.6,ticks:[2023,2024,2025,2026],fmt:n=>String(n),tip:fmtDate,label:'Model release year'},
     y:{min:0,max:210,ticks:[0,60,120,180],fmt:n=>n===0?'0':n/60+(n===60?' hour':' hours'),tip:minutes,label:'Task length: time a human expert would need'},
-    series:M.rows.map(r=>({name:r.name,color:C.s1,dots:true,markers:'all',end:false,r:4.5,pts:[[capabilityYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(1)}–${r.high.toFixed(1)} minutes`]]})),
+    series:M.rows.map(r=>({name:r.name,color:C.s1,dots:true,markers:'all',end:false,r:4.5,pts:[[decimalYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(1)}–${r.high.toFixed(1)} minutes`]]})),
     ann:annotations,
     annNarrow:[{...annotations[0],dx:4,dy:-58},{...annotations[1],dx:-14,dy:-88},{...annotations[2],dx:-12,dy:8}]
+  });
+  crumbScroll5(v);
+}
+/* Gallup's published Frequent AI users column; survey-month labels, not fieldwork days. */
+const ADOPTION7={
+  retrieved:'14 October 2026',
+  url:'https://www.gallup.com/699797/indicator-artificial-intelligence.aspx',
+  rows:[
+    {date:'2023-05-01',value:11},
+    {date:'2024-05-01',value:12},
+    {date:'2025-05-01',value:19},
+    {date:'2025-08-01',value:23},
+    {date:'2025-11-01',value:26},
+    {date:'2026-02-01',value:28},
+    {date:'2026-05-01',value:30},
+    {date:'2026-08-01',value:32}
+  ],
+  related:[
+    {title:'How much working time involves AI?',publisher:'RPS · Bick, Blandin & Deming / FRED',url:'https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL',text:'Generative AI assisted an estimated 6.3% of US work hours in Q2 2026. This measures depth of use, but estimates hours from reported time ranges rather than observing them directly.'},
+    {title:'Which tasks use AI?',publisher:'RPS · St. Louis Fed, September 2026',url:'https://www.stlouisfed.org/on-the-economy/2026/sep/what-work-does-generative-ai-do',text:'Breaks adoption down by occupation and task. Helps identify where use is concentrated. It draws on the same survey programme as the work-hours indicator above.'}
+  ]
+};
+function viewAdoptionPilot(v){
+  const A=ADOPTION7,p=SELECTED_EVIDENCE.adoption;
+  const csv=[['survey_month','frequent_ai_users_percent','population','definition','source','retrieved'],
+    ...A.rows.map(r=>[r.date.slice(0,7),r.value,'US employees aged 18+ working for organisations','AI at work a few times a week or more, including daily',A.url,'2026-10-14'])];
+  v.innerHTML=`<div class="view5 wrap priority6 pilot7 adoption7">${crumbs5('adoption')}
+    <header class="claim5"><div class="eye5"><span>AI adoption</span><i aria-hidden="true">·</i><span>2 of 9</span></div><h1 class="h1-5 c">${esc(p.h1)}</h1></header>
+    <figure class="evidence-chart7" aria-labelledby="gallup7-title">
+      <figcaption>
+        <div class="publisher7">${ext7(A.url,'Source: Gallup')}<span>US employee survey · May 2023–August 2026</span></div>
+        <h2 id="gallup7-title">Regular workplace AI use has nearly tripled</h2>
+        <p class="measure7">US employees using AI <b>a few times a week or more</b>.</p>
+        <p class="choice7"><b>Why this indicator?</b> Tracks frequent use across occupations, rather than occasional experimentation.</p>
+      </figcaption>
+      <div class="chart" id="gallup-chart7"></div>
+      <p class="chart-credit7">Self-reported use, including daily users. Each dot is a survey wave. Redrawn from Gallup's published table, retrieved ${A.retrieved}.</p>
+    </figure>
+    <p class="takeaway7"><b>What changed:</b> Regular AI use among US employees rose from <b>11% in May 2023 to 32% in August 2026</b>, a 21-percentage-point increase. ${ext7('https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2','Eurostat also reports wider AI use among EU businesses')}. Together, these suggest spreading adoption, but count users and firms, not work automated.</p>
+    <div class="disclosures7">
+      <details class="disclosure7" id="adoption-source">
+        <summary>Source, caveats and data</summary>
+        <div class="disclosure7-body">
+          <dl class="context7">
+            <div><dt>What counts as regular use?</dt><dd>Gallup's “Frequent AI users”: people using AI at work a few times a week or more, including daily users. This is not everyone who has ever tried AI.</dd></div>
+            <div><dt>Who is covered?</dt><dd>US adults aged 18+ employed full or part time by organisations. Gallup uses a probability-recruited panel and demographic weighting. This is not a global estimate.</dd></div>
+            <div><dt>What does it miss?</dt><dd>Self-reported AI use, not directly observed activity, work hours automated or dependence. It covers AI broadly, not only generative AI.</dd></div>
+            <div><dt>How was this chart made?</dt><dd>All eight “Frequent AI users” values from Gallup's “Use of AI” table, with the published month labels. Lines connect survey waves, not monthly observations. No data from other surveys are added. Wave-specific confidence intervals are not supplied in this table; none have been inferred.</dd></div>
+            <div><dt>What should be checked?</dt><dd>The August 2026 table is newer than the page's May 2026 summary. This chart follows the dated table. Extraction and interpretation are AI-assisted, not independently verified.</dd></div>
+            <div><dt>How does the EU evidence compare?</dt><dd>Eurostat counts businesses with at least 10 people in covered sectors, not employees. It reports 20.0% using AI in 2025 versus 13.5% in 2024. A new AI category in 2025 and a Netherlands series break complicate the comparison. These figures are context, not part of the Gallup curve.</dd></div>
+          </dl>
+          <p class="source-actions7">${csvLink7('gallup-frequent-ai-use-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
+          <div class="data-scroll7" role="region" aria-label="Gallup regular AI use data" tabindex="0"><table class="data7"><caption>US employees using AI at work a few times a week or more</caption><thead><tr><th scope="col">Survey month</th><th scope="col">Share of employees</th></tr></thead><tbody>${A.rows.map(r=>`<tr><th scope="row">${fmtDate(ym(Number(r.date.slice(0,4)),Number(r.date.slice(5,7))))}</th><td>${r.value}%</td></tr>`).join('')}</tbody></table></div>
+        </div>
+      </details>
+      <details class="disclosure7" id="adoption-related">
+        <summary>Related evidence</summary>
+        <div class="disclosure7-body"><p>Additional evidence, beyond the survey linked above. These AI-assisted summaries have not all been manually verified.</p>${relatedEvidence7(A.related)}<p><a href="#details/adoption">Gallup and Eurostat source notes</a></p></div>
+      </details>
+      <details class="disclosure7" id="adoption-watch">
+        <summary>What to watch next</summary>
+        <div class="disclosure7-body"><p>Priorities for measurement, not established warning thresholds:</p><ul class="watch7"><li>Regular use spreading across occupations and countries.</li><li>A growing share of working time involving AI, not just more people trying it.</li><li>Which tasks people delegate, how they check outputs, and whether they can work without AI.</li></ul><p><a href="#gaps/adoption">Research gaps →</a></p></div>
+      </details>
+    </div>
+    ${pn5(['capability',nameOf('capability')],['handover',nameOf('handover')])}</div>`;
+  const points=A.rows.map(r=>[ym(Number(r.date.slice(0,4)),Number(r.date.slice(5,7))),r.value]);
+  Charts.line($('#gallup-chart7',v),{
+    aria:'Gallup survey of US employees: AI use at work a few times a week or more rose from 11 percent in May 2023 to 32 percent in August 2026. Horizontal axis: survey year. Vertical axis: share of US employees, percent. All eight observations appear in the data table below.',
+    h:300,legend:false,table:false,axisPlacement:'edges',
+    x:{min:2023,max:2026.9,ticks:[2023,2024,2025,2026],fmt:n=>String(n),tip:fmtDate,label:'Survey year'},
+    y:{min:0,max:40,ticks:[0,10,20,30,40],fmt:n=>n+'%',tip:n=>n+'%',label:'Share of US employees (%)'},
+    series:[{name:'AI use a few times a week or more',color:C.s1,end:false,markers:'all',w:2.5,r:4.5,pts:points}],
+    ann:[{x:points[0][0],y:11,text:'11% · May 2023',dx:12,dy:-18,strong:true},{x:points[7][0],y:32,text:'32% · Aug 2026',dx:-12,dy:-20,anchor:'end',strong:true}],
+    annNarrow:[{x:points[0][0],y:11,text:'11%\nMay 2023',dx:8,dy:-30,strong:true},{x:points[7][0],y:32,text:'32%\nAug 2026',dx:-10,dy:-28,anchor:'end',strong:true}]
   });
   crumbScroll5(v);
 }

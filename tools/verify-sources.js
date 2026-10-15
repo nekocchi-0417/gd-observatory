@@ -11,35 +11,49 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
    const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
    for(const id of Object.keys(topics)){
     await page.goto(PAGE+'#'+id);
-    if(id==='capability'){
+    if(id==='capability'||id==='adoption'){
+     const chart=id==='capability'?'#metr-chart7':'#gallup-chart7';
      assert.equal(await page.locator('.evidence-chart7 svg').count(),1);
      assert.equal(await page.locator('.publisher7 a:visible').count(),1);
-     assert.equal(await page.locator('.claim5 .lead5, .review-state7, .capability7 .draft5').count(),0);
+     assert.equal(await page.locator('.claim5 .lead5, .review-state7, .pilot7 .draft5').count(),0);
      assert.equal(await page.locator('.disclosure7').count(),3);
      assert.equal(await page.locator('.disclosure7[open]').count(),0);
      assert.equal(await page.locator('.related7 li:visible').count(),0);
-     assert.ok((await page.locator('.capability7').innerText()).split(/\s+/).length<260,'Default view stays concise');
-     assert.equal(await page.locator('#metr-chart7 circle').count(),23);
-     assert.equal(await page.locator('#metr-chart7 .chart-x-label').innerText(),'Model release year');
-     assert.match(await page.locator('#metr-chart7 .chart-y-label').innerText(),/human expert/);
-     const clipped=await page.locator('#metr-chart7 svg').evaluate(svg=>[...svg.querySelectorAll('text')].filter(t=>{const b=t.getBBox();return b.x<0||b.x+b.width>svg.viewBox.baseVal.width||b.y<0||b.y+b.height>svg.viewBox.baseVal.height}).map(t=>t.textContent));
+     assert.ok((await page.locator('.pilot7').innerText()).split(/\s+/).length<260,'Default view stays concise');
+     assert.equal(await page.locator(chart+' circle').count(),id==='capability'?23:8);
+     assert.equal(await page.locator(chart+' .chart-x-label').innerText(),id==='capability'?'Model release year':'Survey year');
+     assert.match(await page.locator(chart+' .chart-y-label').innerText(),id==='capability'?/human expert/:/US employees/);
+     const clipped=await page.locator(chart+' svg').evaluate(svg=>[...svg.querySelectorAll('text')].filter(t=>{const b=t.getBBox();return b.x<0||b.x+b.width>svg.viewBox.baseVal.width||b.y<0||b.y+b.height>svg.viewBox.baseVal.height}).map(t=>t.textContent));
      assert.deepEqual(clipped,[],`Chart labels fit at ${width}`);
      const active=await page.locator('.crumbs [aria-current]').boundingBox(),nav=await page.locator('.crumbs').boundingBox();
      assert.ok(active.x>=nav.x-1&&active.x+active.width<=nav.x+nav.width+1,'Active step is visible');
-     await page.locator('#metr-chart7 svg').focus();await page.keyboard.press('ArrowRight');
-     assert.match(await page.locator('#metr-chart7 .tip').innerText(),/GPT-4/);
-     await page.keyboard.press('Escape');assert.equal(await page.locator('#metr-chart7 .tip').isVisible(),false);
+     await page.locator(chart+' svg').focus();await page.keyboard.press('ArrowRight');
+     assert.match(await page.locator(chart+' .tip').innerText(),id==='capability'?/GPT-4/:/11%/);
+     await page.keyboard.press('Escape');assert.equal(await page.locator(chart+' .tip').isVisible(),false);
+     const takeawayLinks=await page.locator('.takeaway7 a').evaluateAll(a=>a.map(x=>x.href));
+     const relatedLinks=await page.locator('.related7 a').evaluateAll(a=>a.map(x=>x.href));
+     assert.equal(takeawayLinks.length,id==='capability'?2:1);
+     assert.ok(takeawayLinks.every(href=>!relatedLinks.includes(href)),'Related evidence adds sources, not repeated citations');
      for(const summary of await page.locator('.disclosure7>summary').all()){
       await summary.focus();await page.keyboard.press('Enter');
      }
      assert.equal(await page.locator('.disclosure7[open]').count(),3);
      const csvs=await page.locator('a[download]').evaluateAll(links=>links.map(a=>decodeURIComponent(a.href.split(',')[1])));
-     assert.equal(csvs.length,1);assert.equal(csvs[0].split('\r\n').length,24);
-     assert.match(csvs[0],/"GPT-4","2023-03-14","80","0.889561","0.342984","2.523746"/);
-     assert.match(csvs[0],/"80","69.874587","27.026521","170.437873"/);
-     assert.match(csvs[0],/"80","185.911829","97.30292","398.514614"/);
-     assert.equal(await page.locator('.data7 tbody tr').count(),23);
-     assert.equal(await page.locator('.related7 li').count(),4);
+     assert.equal(csvs.length,1);assert.equal(csvs[0].split('\r\n').length,id==='capability'?24:9);
+     if(id==='capability'){
+      assert.match(csvs[0],/"GPT-4","2023-03-14","80","0.889561","0.342984","2.523746"/);
+      assert.match(csvs[0],/"80","69.874587","27.026521","170.437873"/);
+      assert.match(csvs[0],/"80","185.911829","97.30292","398.514614"/);
+      assert.match(await page.locator('.takeaway7').innerText(),/March 2023 to April 2026/);
+     }else{
+      for(const [date,value] of [['2023-05',11],['2024-05',12],['2025-05',19],['2025-08',23],['2025-11',26],['2026-02',28],['2026-05',30],['2026-08',32]]){
+       assert.ok(csvs[0].includes(`"${date}","${value}",`),`Correct Gallup value for ${date}`);
+      }
+      assert.match(await page.locator('.takeaway7').innerText(),/21-percentage-point increase/);
+      assert.match(await page.locator('#adoption-source').innerText(),/confidence intervals are not supplied/);
+     }
+     assert.equal(await page.locator('.data7 tbody tr').count(),id==='capability'?23:8);
+     assert.equal(await page.locator('.related7 li').count(),id==='capability'?3:2);
     }else{
      assert.equal(await page.locator('.source-mini6').count(),2);
      assert.equal(await page.locator('.source-mini6-cite a:visible').count(),2);
@@ -65,8 +79,10 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
    await page.goto(PAGE+'#skills/bastani');assert.equal(await page.locator('#source-bastani').count(),1);
    await page.goto(PAGE+'#review/skills');await page.waitForTimeout(500);assert.equal(await page.locator('[data-review]').count(),0);
    await page.goto(PAGE+'#method');assert.equal(await page.locator('[href="pdf-source-crosswalk.html"]').count(),0);
-   await page.goto(PAGE+'#capability');await page.locator('#capability-source>summary').click();await page.locator('a[href="#method/selection"]').click();
-   assert.match(await page.locator('#m-selection').innerText(),/Added value/);
+   for(const id of ['capability','adoption']){
+    await page.goto(PAGE+'#'+id);await page.locator(`#${id}-source>summary`).click();await page.locator('a[href="#method/selection"]').click();
+    assert.match(await page.locator('#m-selection').innerText(),/Added value/);
+   }
    await context.close();console.log(`Passed ${width}px ${colorScheme}`);
   }
   assert.deepEqual(errors,[]);
