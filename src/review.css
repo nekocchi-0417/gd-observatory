@@ -48,6 +48,12 @@
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
 .takeaway7 a{color:var(--s1);text-underline-offset:3px}
+.capability7 .next-measure9{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px 24px;margin:0 0 24px;padding-top:20px;border-top:1px solid var(--rule);font:15px/1.6 var(--f-display)}
+.capability7 .next-measure9 h2{margin:0;font:650 15px/1.6 var(--f-display);color:var(--ink)}
+.capability7 .next-measure9 p{margin:0;color:var(--ink-2)}
+.capability7 .next-measure9 a{color:var(--s1);text-underline-offset:3px}
+.capability7 .benchmark-heading9{margin:0 0 6px;font:600 17px/1.4 var(--f-display);color:var(--ink)}
+.capability7 .disclosure7-body>.benchmark-caveat9{margin:12px 0 8px;font-size:13px}
 .evidence-grid7{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;align-items:start}
 .evidence-grid7>*{min-width:0}
 .measure-gap8{margin:24px 0 0;padding:14px 0;border-top:1px solid var(--rule);font:16px/1.55 var(--f-display);color:var(--ink-2)}
@@ -99,6 +105,7 @@
 .related7 p{margin:6px 0 0;max-width:80ch}
 .watch7{padding-left:20px;margin:0 0 20px}.watch7 li{margin:8px 0}
 @media(max-width:720px){
+ .capability7 .next-measure9{grid-template-columns:minmax(0,1fr);gap:6px}
  .evidence-grid7{grid-template-columns:minmax(0,1fr)}
  .pilot7 .claim5 h1{font-size:30px}
  .evidence-chart7{margin-top:24px;padding-top:20px}.evidence-chart7 h2{font-size:21px}

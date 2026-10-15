@@ -1264,6 +1264,12 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
 .takeaway7 a{color:var(--s1);text-underline-offset:3px}
+.capability7 .next-measure9{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px 24px;margin:0 0 24px;padding-top:20px;border-top:1px solid var(--rule);font:15px/1.6 var(--f-display)}
+.capability7 .next-measure9 h2{margin:0;font:650 15px/1.6 var(--f-display);color:var(--ink)}
+.capability7 .next-measure9 p{margin:0;color:var(--ink-2)}
+.capability7 .next-measure9 a{color:var(--s1);text-underline-offset:3px}
+.capability7 .benchmark-heading9{margin:0 0 6px;font:600 17px/1.4 var(--f-display);color:var(--ink)}
+.capability7 .disclosure7-body>.benchmark-caveat9{margin:12px 0 8px;font-size:13px}
 .evidence-grid7{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;align-items:start}
 .evidence-grid7>*{min-width:0}
 .measure-gap8{margin:24px 0 0;padding:14px 0;border-top:1px solid var(--rule);font:16px/1.55 var(--f-display);color:var(--ink-2)}
@@ -1315,6 +1321,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .related7 p{margin:6px 0 0;max-width:80ch}
 .watch7{padding-left:20px;margin:0 0 20px}.watch7 li{margin:8px 0}
 @media(max-width:720px){
+ .capability7 .next-measure9{grid-template-columns:minmax(0,1fr);gap:6px}
  .evidence-grid7{grid-template-columns:minmax(0,1fr)}
  .pilot7 .claim5 h1{font-size:30px}
  .evidence-chart7{margin-top:24px;padding-top:20px}.evidence-chart7 h2{font-size:21px}
@@ -6363,25 +6370,20 @@ function viewCapabilityPilot(v){
       <div class="chart" id="metr-chart7"></div>
       <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
-    <p class="takeaway7"><b>What changed:</b> At 80% success, METR's estimated technical-task length increased about <b>${fold}-fold</b>, from <b>${Math.round(first.estimate*60)} seconds for GPT-4 in March 2023</b> to <b>${(last.estimate/60).toFixed(1)} hours for Mythos Preview (early) in April 2026</b>, in human-expert time.</p>
-    <div class="disclosures7 evidence-grid7">
-    <section class="supporting7" aria-labelledby="supporting7-title">
-      <h2 id="supporting7-title">Other benchmarks</h2>
-      <p class="supporting7-meta">o3 → GPT-5 · 2025 · OpenAI-reported results</p>
-      <dl class="benchmark-facts7">
-        <div><dt>Competition maths <span>${ext7('https://openai.com/index/introducing-gpt-5-for-developers/','AIME 2025')} · Correct answers</span></dt><dd><b>88.9% → 94.6%</b><span>+5.7 percentage points</span></dd></div>
-        <div><dt>Science questions <span>${ext7('https://openai.com/index/introducing-gpt-5-for-developers/','GPQA Diamond')} · Correct answers</span></dt><dd><b>83.3% → 85.7%</b><span>+2.4 percentage points</span></dd></div>
-        <div><dt>Professional work <span>${ext7('https://arxiv.org/html/2510.04374v1#A1.T2','GDPval')} · Preferred to human output</span></dt><dd><b>35.2% → 39.0%</b><span>+3.8 percentage points</span></dd></div>
-      </dl>
+    <p class="takeaway7"><b>What changed:</b> At 80% success, METR's estimated technical-task length increased about <b>${fold}-fold</b>, from <b>${Math.round(first.estimate*60)} seconds for GPT-4 in March 2023</b> to <b>${(last.estimate/60).toFixed(1)} hours for Mythos Preview (early) in April 2026</b>, in human-expert time. These are technical test tasks, not whole jobs.</p>
+    <section class="next-measure9" id="capability-watch" aria-labelledby="capability-next-title">
+      <h2 id="capability-next-title">Next measurement needed</h2>
+      <p>Test whole workflows across occupations, measuring success, human checking and total cost. <a href="#gaps/capability">Research priorities →</a></p>
     </section>
+    <div class="disclosures7 evidence-grid7">
       <details id="capability-source" class="disclosure7">
-        <summary>Source, caveats and data</summary>
+        <summary>Sources, data &amp; caveats</summary>
         <div class="disclosure7-body">
           <dl class="context7">
-            <div><dt>Coverage</dt><dd>Mainly software, machine learning and cybersecurity tasks, not whole jobs. Task length is human-expert time, not AI runtime.</dd></div>
+            <div><dt>What is measured</dt><dd>Mainly software, machine learning and cybersecurity tasks. Task length is human-expert time, not AI runtime.</dd></div>
             <div><dt>Uncertainty</dt><dd>The ${fold}-fold change divides point estimates (${last.estimate.toFixed(2)} ÷ ${first.estimate.toFixed(4)} minutes). The latest estimate's 95% interval is 1.6–6.6 hours. Tools and test setups vary.</dd></div>
             <div><dt>Chart data</dt><dd>All ${M.rows.length} METR TH1.1 models released from 2023 onward, at 80% success. No other datasets added. This archived series ends in April 2026.</dd></div>
-            <div><dt>Other benchmarks</dt><dd>Maths/science: high reasoning, no tools. GDPval: expert comparisons, with tools. These historical, developer-reported results use different measures, not a common growth rate or whole-job performance. Small differences may reflect measurement uncertainty.</dd></div>
+            <div><dt>Scope of this selection</dt><dd>Selected indicators, not a review of all capability research. The measurement priority reflects what these sources leave unanswered.</dd></div>
           </dl>
           <p>AI-assisted summary; not independently verified.</p>
           <p class="source-actions7">${ext7(M.url,'Full methodology: METR')}${ext7(M.data,'METR original data')}${csvLink7('metr-th1-1-80-percent-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
@@ -6389,12 +6391,20 @@ function viewCapabilityPilot(v){
         </div>
       </details>
       <details class="disclosure7" id="capability-related">
-        <summary>Related evidence</summary>
-        <div class="disclosure7-body"><p>Additional evidence, beyond the studies linked above. These AI-assisted summaries have not all been manually verified.</p>${relatedEvidence7(CAPABILITY7.related)}<p><a href="#details/capability">METR and RLI source notes</a></p></div>
-      </details>
-      <details class="disclosure7" id="capability-watch">
-        <summary>What to watch next</summary>
-        <div class="disclosure7-body"><p>Priorities for measurement, not established warning thresholds:</p><ul class="watch7"><li>Reliable completion of whole workflows across occupations.</li><li>Less human review, intervention and rework.</li><li>Lower total cost per successful workflow, including supervision.</li></ul><p>Capability alone does not show disempowerment. We also need to track who retains control when work is delegated. <a href="#gaps/capability">Research gaps →</a></p></div>
+        <summary>More evidence</summary>
+        <div class="disclosure7-body">
+          <h3 class="benchmark-heading9">Maths, science and professional work</h3>
+          <p class="supporting7-meta">o3 → GPT-5 · 2025 · OpenAI-reported results</p>
+          <dl class="benchmark-facts7">
+            <div><dt>Competition maths <span>${ext7('https://openai.com/index/introducing-gpt-5-for-developers/','AIME 2025')} · Correct answers</span></dt><dd><b>88.9% → 94.6%</b><span>+5.7 percentage points</span></dd></div>
+            <div><dt>Science questions <span>${ext7('https://openai.com/index/introducing-gpt-5-for-developers/','GPQA Diamond')} · Correct answers</span></dt><dd><b>83.3% → 85.7%</b><span>+2.4 percentage points</span></dd></div>
+            <div><dt>Professional work <span>${ext7('https://arxiv.org/html/2510.04374v1#A1.T2','GDPval')} · Preferred to human output</span></dt><dd><b>35.2% → 39.0%</b><span>+3.8 percentage points</span></dd></div>
+          </dl>
+          <p class="benchmark-caveat9">Maths/science: high reasoning, no tools. GDPval: expert comparisons, with tools. These are different tests, not one rate of progress across jobs. Small differences may reflect uncertainty.</p>
+          ${relatedEvidence7(CAPABILITY7.related)}
+          <p>Working selection, not exhaustive. These AI-assisted summaries have not all been manually verified.</p>
+          <p><a href="#details/capability">METR and RLI source notes</a></p>
+        </div>
       </details>
     </div>
     ${pn5(['evidence','All steps','Back to'],['adoption',nameOf('adoption')])}</div>`;
@@ -6405,7 +6415,7 @@ function viewCapabilityPilot(v){
     {...annotation('claude_mythos_preview_early_inspect','Mythos Preview (early)\nApr 2026 · about 3 hours',-24,5),anchor:'end'}
   ];
   Charts.line($('#metr-chart7',v),{
-    aria:'METR TH1.1 task horizons at 80% success for all 23 evaluated models released from 2023 onward. Horizontal axis: model release year. Vertical axis: task length in human-expert time, not AI runtime. Estimates range from under one minute for GPT-4 in March 2023 to about three hours for Claude Mythos Preview (early) in April 2026. Exact values and uncertainty intervals follow in Source, caveats and data.',
+    aria:'METR TH1.1 task horizons at 80% success for all 23 evaluated models released from 2023 onward. Horizontal axis: model release year. Vertical axis: task length in human-expert time, not AI runtime. Estimates range from under one minute for GPT-4 in March 2023 to about three hours for Claude Mythos Preview (early) in April 2026. Exact values and uncertainty intervals follow in Sources, data and caveats.',
     h:330,legend:false,table:false,axisPlacement:'edges',
     x:{min:2023,max:2026.6,ticks:[2023,2024,2025,2026],fmt:n=>String(n),tip:fmtDate,label:'Model release year'},
     y:{min:0,max:210,ticks:[0,60,120,180],fmt:n=>n===0?'0':n/60+(n===60?' hour':' hours'),tip:minutes,label:'Task length: time a human expert would need'},

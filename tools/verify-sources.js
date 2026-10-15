@@ -13,16 +13,21 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
    const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
    for(const id of Object.keys(topics)){
     await page.goto(PAGE+'#'+id);
+    await page.evaluate(()=>document.fonts.ready);
+    const capabilityPilot=id==='capability',disclosureCount=capabilityPilot?2:3;
     const support=page.locator('.evidence-grid7');
     assert.equal(await support.count(),1,`${id}: shared supporting layout`);
-    assert.equal(await support.locator(':scope>.supporting7').count(),1);
-    assert.equal(await support.locator(':scope>.disclosure7').count(),3);
+    assert.equal(await support.locator(':scope>.supporting7').count(),capabilityPilot?0:1);
+    assert.equal(await support.locator(':scope>.disclosure7').count(),disclosureCount);
     assert.equal(await support.locator('details[open]').count(),0);
     const boxes=await support.locator(':scope>*').evaluateAll(nodes=>nodes.map(n=>{const b=n.getBoundingClientRect();return {x:b.x,y:b.y,width:b.width,bottom:b.bottom,right:b.right}}));
     if(width>720){
      assert.ok(Math.abs(boxes[0].y-boxes[1].y)<1,`${id}: indicators and caveats align`);
-     assert.ok(Math.abs(boxes[2].y-boxes[3].y)<1,`${id}: related evidence and watch align`);
-     assert.ok(boxes[1].x>boxes[0].right&&boxes[3].x>boxes[2].right);
+     assert.ok(boxes[1].x>boxes[0].right);
+     if(!capabilityPilot){
+      assert.ok(Math.abs(boxes[2].y-boxes[3].y)<1,`${id}: related evidence and watch align`);
+      assert.ok(boxes[3].x>boxes[2].right);
+     }
     }else{
      assert.ok(boxes.every(b=>Math.abs(b.x-boxes[0].x)<1),`${id}: one column on mobile`);
      assert.ok(boxes.slice(1).every((b,i)=>b.y>=boxes[i].bottom-1),`${id}: mobile sections never overlap`);
@@ -32,7 +37,7 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
      assert.equal(await page.locator('.evidence-chart7 svg').count(),1);
      assert.equal(await page.locator('.publisher7 a:visible').count(),1);
      assert.equal(await page.locator('.claim5 .lead5, .review-state7, .pilot7 .draft5').count(),0);
-     assert.equal(await page.locator('.disclosure7').count(),3);
+     assert.equal(await page.locator('.disclosure7').count(),disclosureCount);
      assert.equal(await page.locator('.disclosure7[open]').count(),0);
      assert.equal(await page.locator('.related7 li:visible').count(),0);
      assert.ok((await page.locator('.pilot7').innerText()).split(/\s+/).length<260,'Default view stays concise');
@@ -46,14 +51,25 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
      await page.locator(chart+' svg').focus();await page.keyboard.press('ArrowRight');
      assert.match(await page.locator(chart+' .tip').innerText(),id==='capability'?/GPT-4/:/11%/);
      await page.keyboard.press('Escape');assert.equal(await page.locator(chart+' .tip').isVisible(),false);
-     const takeawayLinks=await page.locator('.takeaway7 a, .supporting7 a').evaluateAll(a=>a.map(x=>x.href));
+     const takeawayLinks=await page.locator('.takeaway7 a, .supporting7 a, .benchmark-facts7 a').evaluateAll(a=>a.map(x=>x.href));
      const relatedLinks=await page.locator('.related7 a').evaluateAll(a=>a.map(x=>x.href));
      assert.equal(new Set(takeawayLinks).size,id==='capability'?2:1);
      assert.ok(takeawayLinks.every(href=>!relatedLinks.includes(href)),'Related evidence adds sources, not repeated citations');
+     if(capabilityPilot){
+      assert.deepEqual(await support.locator('summary').allTextContents(),['Sources, data & caveats','More evidence']);
+      assert.equal(await page.locator('.benchmark-facts7:visible').count(),0,'Supporting benchmarks are collapsed');
+      assert.equal(await page.locator('#capability-watch:visible').count(),1,'Measurement priority stays visible');
+      assert.match(await page.locator('#capability-watch').innerText(),/whole workflows.*human checking.*total cost/);
+      assert.match(await page.locator('.takeaway7').innerText(),/technical test tasks, not whole jobs/);
+      const headers=await support.locator('summary').evaluateAll(nodes=>nodes.map(n=>{const b=n.getBoundingClientRect();return {y:b.y,height:b.height,width:b.width}}));
+      assert.ok(Math.abs(headers[0].height-headers[1].height)<1,'Matched disclosure headers');
+      assert.ok(Math.abs(headers[0].width-headers[1].width)<1,'Matched disclosure widths');
+      if(width>720)assert.ok(Math.abs(headers[0].y-headers[1].y)<1,'Matched disclosure baseline');
+     }
      for(const summary of await page.locator('.disclosure7>summary').all()){
       await summary.focus();await page.keyboard.press('Enter');
      }
-     assert.equal(await page.locator('.disclosure7[open]').count(),3);
+     assert.equal(await page.locator('.disclosure7[open]').count(),disclosureCount);
      const sourceNotes=page.locator(`#${id}-source .context7`);
      assert.equal(await sourceNotes.locator('dt').count(),4,'Four short source notes');
      assert.ok((await sourceNotes.innerText()).split(/\s+/).length<=125,'Source notes stay compact');
@@ -79,6 +95,11 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
        assert.equal(Number((end-start).toFixed(1)),change);
       }
       assert.match(await sourceNotes.innerText(),/185.91 ÷ 0.8896/);
+      assert.match(await sourceNotes.innerText(),/not a review of all capability research/);
+      assert.equal(await page.locator('#capability-related .benchmark-facts7').count(),1,'Benchmarks and related sources merged');
+      await page.locator('#capability-source>summary').click();
+      assert.equal(await page.locator('#capability-source[open]').count(),0);
+      assert.equal(await page.locator('#capability-related[open]').count(),1,'Disclosures open independently');
      }else{
       for(const [date,value] of [['2023-05',11],['2024-05',12],['2025-05',19],['2025-08',23],['2025-11',26],['2026-02',28],['2026-05',30],['2026-08',32]]){
        assert.ok(csvs[0].includes(`"${date}","${value}",`),`Correct Gallup value for ${date}`);
