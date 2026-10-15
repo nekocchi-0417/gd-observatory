@@ -2,6 +2,7 @@
 TOPIC_CHARTS.work.data=WORK_SERIES;
 function viewSelectedTopic(v,id){
   const t=TOPIC_CHARTS[id],p=SELECTED_EVIDENCE[id],s=p.sources.find(s=>s.id===t.source),i=ORDER.indexOf(id);
+  const more=[...t.support.map(x=>({title:x.label,url:x.url,text:x.text})),...t.related];
   const csv=[t.columns.concat(['source','checked']),...t.data.map(r=>r.concat([t.dataUrl||s.url,'2026-10-14']))];
   v.innerHTML=`<div class="view5 wrap priority6 pilot7 selected8">${crumbs5(id)}
     <header class="claim5"><div class="eye5"><span>${esc(nameOf(id))}</span><i aria-hidden="true">·</i><span>${i+1} of 9</span></div><h1 class="h1-5 c">${esc(p.h1)}</h1></header>
@@ -14,21 +15,21 @@ function viewSelectedTopic(v,id){
       <p class="chart-credit7">${esc(t.credit)}</p>
     </figure>
     <p class="takeaway7"><b>${esc(t.takeawayLabel)}:</b> ${esc(t.takeaway)}</p>
+    <section class="next-measure9" id="${id}-watch" aria-labelledby="${id}-next-title">
+      <h2 id="${id}-next-title">Next measurement needed</h2>
+      <p>${esc(p.gap)} <a href="#gaps/${id}">Research priorities →</a></p>
+    </section>
     <div class="disclosures7 evidence-grid7">
-      <section class="supporting7" aria-labelledby="${id}-supporting-title"><h2 id="${id}-supporting-title">${esc(t.supportTitle||'Other indicators')}</h2>
-        ${t.support.map(x=>`<p>${ext7(x.url,x.label)}</p><p>${esc(x.text)}</p>`).join('')}</section>
-      <details class="disclosure7" id="${id}-source"><summary>Source, caveats and data</summary><div class="disclosure7-body">
-        <dl class="context7">${t.notes.map(([term,text])=>`<div><dt>${esc(term)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl>
+      <details class="disclosure7" id="${id}-source"><summary>Sources, data &amp; caveats</summary><div class="disclosure7-body">
+        <dl class="context7">${t.notes.map(([term,text])=>`<div><dt>${esc(term==='Coverage'?'What is measured':term)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl>
         <p>AI-assisted summary; not independently verified.</p>
         <p class="source-actions7">${ext7(s.url,'Full methodology: '+t.publisher)}${t.dataUrl?ext7(t.dataUrl,'Original data'):''}${csvLink7(id+'-selected-data-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
         <div class="data-scroll7" role="region" aria-label="${esc(t.title)} data" tabindex="0"><table class="data7"><caption>${esc(t.tableCaption||t.measure)}</caption><thead><tr>${t.columns.map(c=>`<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${t.data.map(r=>`<tr>${r.map((c,i)=>i?`<td>${esc(c)}</td>`:`<th scope="row">${esc(c)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>
       </div></details>
-      <details class="disclosure7" id="${id}-related"><summary>Related evidence</summary><div class="disclosure7-body">
-        ${t.related.length?`<p>Additional evidence; these AI-assisted summaries still need manual review.</p>${relatedEvidence7(t.related)}`:'<p>No additional study is featured yet. The linked sources cover the current selection.</p>'}
+      <details class="disclosure7" id="${id}-related"><summary>More evidence</summary><div class="disclosure7-body">
+        ${relatedEvidence7(more)}
+        <p>Working selection, not exhaustive. These AI-assisted summaries have not all been manually verified.</p>
         <p><a href="#details/${id}">Full source notes</a></p></div></details>
-      <details class="disclosure7" id="${id}-watch"><summary>What to watch next</summary><div class="disclosure7-body">
-        <p>${esc(p.gap)}</p><ul class="watch7">${t.watch.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p>Research priorities, not validated warning thresholds.</p><p><a href="#gaps/${id}">Research gaps →</a></p>
-      </div></details>
     </div>${pn5([ORDER[i-1],nameOf(ORDER[i-1])],ORDER[i+1]?[ORDER[i+1],nameOf(ORDER[i+1])]:['evidence','All steps','Next'])}</div>`;
   drawSelectedChart8($('#'+id+'-chart8',v),t);
   crumbScroll5(v);

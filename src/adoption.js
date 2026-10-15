@@ -19,6 +19,7 @@ const ADOPTION7={
 };
 function viewAdoptionPilot(v){
   const A=ADOPTION7,p=SELECTED_EVIDENCE.adoption;
+  const more=[{title:'Eurostat: AI use by EU businesses',url:p.sources[1].url,text:'Eurostat reports wider AI use among EU businesses. It counts firms, not employees, so the surveys are not directly comparable. Survey changes in 2025, including in the Netherlands, also limit comparisons over time.'},...A.related];
   const csv=[['survey_month','frequent_ai_users_percent','population','definition','source','retrieved'],
     ...A.rows.map(r=>[r.date.slice(0,7),r.value,'US employees aged 18+ working for organisations','AI at work a few times a week or more, including daily',A.url,'2026-10-14'])];
   v.innerHTML=`<div class="view5 wrap priority6 pilot7 adoption7">${crumbs5('adoption')}
@@ -34,20 +35,19 @@ function viewAdoptionPilot(v){
       <p class="chart-credit7">Self-reported use, including daily users. Each dot is a survey wave. Redrawn from Gallup's published table, retrieved ${A.retrieved}.</p>
     </figure>
     <p class="takeaway7"><b>What changed:</b> Regular AI use among US employees rose from <b>11% in May 2023 to 32% in August 2026</b>, a 21-percentage-point increase. This counts users, not work automated.</p>
+    <section class="next-measure9" id="adoption-watch" aria-labelledby="adoption-next-title">
+      <h2 id="adoption-next-title">Next measurement needed</h2>
+      <p>${esc(p.gap)} <a href="#gaps/adoption">Research priorities →</a></p>
+    </section>
     <div class="disclosures7 evidence-grid7">
-      <section class="supporting7" aria-labelledby="adoption-supporting-title">
-        <h2 id="adoption-supporting-title">Other indicators</h2>
-        <p>${ext7(p.sources[1].url,'Eurostat: AI use by EU businesses')}</p>
-        <p>Eurostat also reports wider AI use among EU businesses. It counts firms, not employees, so the two surveys are not directly comparable.</p>
-      </section>
       <details class="disclosure7" id="adoption-source">
-        <summary>Source, caveats and data</summary>
+        <summary>Sources, data &amp; caveats</summary>
         <div class="disclosure7-body">
           <dl class="context7">
-            <div><dt>Coverage</dt><dd>US employees aged 18+, using AI at work a few times a week or more, including daily users.</dd></div>
+            <div><dt>What is measured</dt><dd>US employees aged 18+, using AI at work a few times a week or more, including daily users.</dd></div>
             <div><dt>Limitations</dt><dd>Self-reported use of AI broadly, not work automated or dependence. Confidence intervals are not supplied in the published table.</dd></div>
             <div><dt>Chart data</dt><dd>All eight Gallup frequent-use observations, May 2023–August 2026. Lines connect survey waves; no other surveys are combined.</dd></div>
-            <div><dt>EU context</dt><dd>Eurostat counts businesses, not employees. Survey changes in 2025, including in the Netherlands, make comparisons with earlier years less reliable.</dd></div>
+            <div><dt>Scope of this selection</dt><dd>Selected surveys, not a field-wide review. They describe where AI is used, not whether people can work without it.</dd></div>
           </dl>
           <p>AI-assisted summary; not independently verified.</p>
           <p class="source-actions7">${ext7(A.url,'Full methodology: Gallup')}${csvLink7('gallup-frequent-ai-use-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
@@ -55,12 +55,8 @@ function viewAdoptionPilot(v){
         </div>
       </details>
       <details class="disclosure7" id="adoption-related">
-        <summary>Related evidence</summary>
-        <div class="disclosure7-body"><p>Additional evidence, beyond the survey linked above. These AI-assisted summaries have not all been manually verified.</p>${relatedEvidence7(A.related)}<p><a href="#details/adoption">Gallup and Eurostat source notes</a></p></div>
-      </details>
-      <details class="disclosure7" id="adoption-watch">
-        <summary>What to watch next</summary>
-        <div class="disclosure7-body"><p>Priorities for measurement, not established warning thresholds:</p><ul class="watch7"><li>Regular use spreading across occupations and countries.</li><li>A growing share of working time involving AI, not just more people trying it.</li><li>Which tasks people delegate, how they check outputs, and whether they can work without AI.</li></ul><p><a href="#gaps/adoption">Research gaps →</a></p></div>
+        <summary>More evidence</summary>
+        <div class="disclosure7-body">${relatedEvidence7(more)}<p>Working selection, not exhaustive. These AI-assisted summaries have not all been manually verified.</p><p><a href="#details/adoption">Gallup and Eurostat source notes</a></p></div>
       </details>
     </div>
     ${pn5(['capability',nameOf('capability')],['handover',nameOf('handover')])}</div>`;

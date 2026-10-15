@@ -1264,10 +1264,10 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
 .takeaway7 a{color:var(--s1);text-underline-offset:3px}
-.capability7 .next-measure9{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px 24px;margin:0 0 24px;padding-top:20px;border-top:1px solid var(--rule);font:15px/1.6 var(--f-display)}
-.capability7 .next-measure9 h2{margin:0;font:650 15px/1.6 var(--f-display);color:var(--ink)}
-.capability7 .next-measure9 p{margin:0;color:var(--ink-2)}
-.capability7 .next-measure9 a{color:var(--s1);text-underline-offset:3px}
+.pilot7 .next-measure9{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px 24px;margin:0 0 24px;padding-top:20px;border-top:1px solid var(--rule);font:15px/1.6 var(--f-display)}
+.pilot7 .next-measure9 h2{margin:0;font:650 15px/1.6 var(--f-display);color:var(--ink)}
+.pilot7 .next-measure9 p{margin:0;color:var(--ink-2)}
+.pilot7 .next-measure9 a{color:var(--s1);text-underline-offset:3px}
 .capability7 .benchmark-heading9{margin:0 0 6px;font:600 17px/1.4 var(--f-display);color:var(--ink)}
 .capability7 .disclosure7-body>.benchmark-caveat9{margin:12px 0 8px;font-size:13px}
 .evidence-grid7{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;align-items:start}
@@ -1321,7 +1321,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .related7 p{margin:6px 0 0;max-width:80ch}
 .watch7{padding-left:20px;margin:0 0 20px}.watch7 li{margin:8px 0}
 @media(max-width:720px){
- .capability7 .next-measure9{grid-template-columns:minmax(0,1fr);gap:6px}
+ .pilot7 .next-measure9{grid-template-columns:minmax(0,1fr);gap:6px}
  .evidence-grid7{grid-template-columns:minmax(0,1fr)}
  .pilot7 .claim5 h1{font-size:30px}
  .evidence-chart7{margin-top:24px;padding-top:20px}.evidence-chart7 h2{font-size:21px}
@@ -4725,7 +4725,7 @@ const TOPIC_CHARTS = {
     "why":"Tracks actual payroll outcomes for young workers, rather than predictions of which jobs AI could replace.",
     "credit":"All 60 monthly observations, September 2021–August 2026, from Stanford's dashboard. Exposure is not adoption; this comparison does not establish causation.",
     "takeawayLabel":"What changed",
-    "takeaway":"From November 2022 to August 2026, employment among 22–25-year-olds fell 12.8% in the most AI-exposed fifth of occupations and rose 8.1% in the least exposed. This is a descriptive gap in the ADP sample, not a count of jobs lost to AI.",
+    "takeaway":"From November 2022 to August 2026, employment among 22–25-year-olds fell 12.8% in the most AI-exposed fifth of occupations and rose 8.1% in the least exposed. This is a descriptive gap in the ADP sample, not a count of jobs lost to AI. In Denmark, workplaces encouraging chatbot use showed no extra decline in young workers' employment share through 2024.",
     "dataUrl":"https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip",
     "columns":["Month","Least exposed (Q1)","Q2","Q3","Q4","Most exposed (Q5)"],
     "data":[],
@@ -6093,7 +6093,7 @@ function viewEvidenceDetails(v,id){
     ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
     <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#method/selection">How indicators are selected →</a></p>
     <section class="sec5"><h2 class="h2-5 sm">Selected source and supporting evidence</h2><div class="sources6">${sources.map(sourceCard6).join('')}</div></section>
-    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What remains unmeasured</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="note5">AI-assisted source notes. Selection and interpretation still need independent review.</p></section></div>`;
+    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">Measurement priorities</h2><p class="lead5 sm">${esc(p.gap)}</p>${TOPIC_CHARTS[id]?.watch?`<ul class="watch7">${TOPIC_CHARTS[id].watch.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}<p class="note5">Priorities based on the selected sources, not a field-wide review or validated warning thresholds. Selection and interpretation still need independent review.</p></section></div>`;
   crumbScroll5(v);
 }
 
@@ -6107,7 +6107,7 @@ function viewSourceMethod(v){
       <p class="sub5">These are editorial criteria, not a numerical score or an exhaustive ranking. We explain why each featured indicator was chosen and what it leaves unanswered. Selection does not depend on whether a finding supports disempowerment.</p></section>
     <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">Each evidence page uses one source for its main visual. We do not join different populations, report vintages or definitions into one trend. The source, population and date appear beside every chart; the dropdown includes values and any transformations.</p>
       <details class="det5"><summary>Chart-by-chart construction</summary><ul class="lim5"><li>AI capability: all 23 METR TH1.1 models released from 2023 onward, at 80% success, with published uncertainty.</li><li>AI adoption: all eight Gallup frequent-use observations, May 2023–August 2026.</li><li>Delegation: Anthropic's May 2026 automation and augmentation bucket shares, among conversations assigned either mode. Not a historical trend.</li><li>Entry-level jobs: Stanford/ADP's September 2026 release, all 60 months and five exposure quintiles. Original November 2022 = 100 baseline; no averaging of quintiles.</li><li>Workers' income share: two ILO endpoints from the same March 2026 publication. No inferred annual path.</li><li>Skills: published adjusted exam effects and standard errors × 100. Approximate 95% intervals are calculated as estimate ± 1.96 × SE, not quoted from the paper.</li><li>Culture: Deezer's reported 1–3% stream-share range. No assumed midpoint; not a confidence interval or a fraud-adjusted listening share.</li><li>Government: counts of explicit CSV development-stage labels. Blank stages stay separate; the README discrepancy is disclosed.</li><li>Human influence: Pew's three published felt-control groups. Rounded values are not rescaled; nonresponse is noted.</li></ul></details>
-      <p class="sub5">These visuals are redrawn by this project, not endorsed by the sources. “What changed” describes a dated comparison; “What this shows” describes a snapshot or experiment. Signals to watch are research priorities, not validated warning thresholds.</p></section>
+      <p class="sub5">These visuals are redrawn by this project, not endorsed by the sources. “What changed” describes a dated comparison; “What this shows” describes a snapshot or experiment. Measurement priorities suggest research to do next, not validated warning thresholds.</p></section>
     <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">Selected figures, definitions and links were compared with primary sources using AI assistance on 14 October 2026. This is not an independent audit. Human sign-off is still needed on the extraction and interpretation, especially provider data and proxies for control. The forecast section remains a separate, unverified work in progress.</p></section>
     <section class="sec5" id="m-scales"><h2 class="h2-5 sm">Where the pathways come from</h2><p class="sub5">The pathways are adapted from the <a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Gradual Disempowerment paper ↗</a>.</p></section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">The colours are a provisional, AI-assisted assessment of measurement coverage based on the selected sources. They are not a rigorous review of the full research field or a measure of risk.</p>
@@ -6345,7 +6345,7 @@ function csvLink7(name,rows){
   return `<a download="${esc(name)}" href="data:text/csv;charset=utf-8,${encodeURIComponent(csv)}">Download chart data (CSV)</a>`;
 }
 function relatedEvidence7(items){
-  return `<ul class="related7">${items.map(r=>`<li><h3>${ext7(r.url,r.title)} <span>${esc(r.publisher)}</span></h3><p>${esc(r.text)}${r.update?` ${ext7(r.update,'Study update')}`:''}</p></li>`).join('')}</ul>`;
+  return `<ul class="related7">${items.map(r=>`<li><h3>${ext7(r.url,r.title)}${r.publisher?` <span>${esc(r.publisher)}</span>`:''}</h3><p>${esc(r.text)}${r.update?` ${ext7(r.update,'Study update')}`:''}</p></li>`).join('')}</ul>`;
 }
 function decimalYear7(date){
   const year=Number(date.slice(0,4)),start=Date.UTC(year,0,1);
@@ -6446,6 +6446,7 @@ const ADOPTION7={
 };
 function viewAdoptionPilot(v){
   const A=ADOPTION7,p=SELECTED_EVIDENCE.adoption;
+  const more=[{title:'Eurostat: AI use by EU businesses',url:p.sources[1].url,text:'Eurostat reports wider AI use among EU businesses. It counts firms, not employees, so the surveys are not directly comparable. Survey changes in 2025, including in the Netherlands, also limit comparisons over time.'},...A.related];
   const csv=[['survey_month','frequent_ai_users_percent','population','definition','source','retrieved'],
     ...A.rows.map(r=>[r.date.slice(0,7),r.value,'US employees aged 18+ working for organisations','AI at work a few times a week or more, including daily',A.url,'2026-10-14'])];
   v.innerHTML=`<div class="view5 wrap priority6 pilot7 adoption7">${crumbs5('adoption')}
@@ -6461,20 +6462,19 @@ function viewAdoptionPilot(v){
       <p class="chart-credit7">Self-reported use, including daily users. Each dot is a survey wave. Redrawn from Gallup's published table, retrieved ${A.retrieved}.</p>
     </figure>
     <p class="takeaway7"><b>What changed:</b> Regular AI use among US employees rose from <b>11% in May 2023 to 32% in August 2026</b>, a 21-percentage-point increase. This counts users, not work automated.</p>
+    <section class="next-measure9" id="adoption-watch" aria-labelledby="adoption-next-title">
+      <h2 id="adoption-next-title">Next measurement needed</h2>
+      <p>${esc(p.gap)} <a href="#gaps/adoption">Research priorities →</a></p>
+    </section>
     <div class="disclosures7 evidence-grid7">
-      <section class="supporting7" aria-labelledby="adoption-supporting-title">
-        <h2 id="adoption-supporting-title">Other indicators</h2>
-        <p>${ext7(p.sources[1].url,'Eurostat: AI use by EU businesses')}</p>
-        <p>Eurostat also reports wider AI use among EU businesses. It counts firms, not employees, so the two surveys are not directly comparable.</p>
-      </section>
       <details class="disclosure7" id="adoption-source">
-        <summary>Source, caveats and data</summary>
+        <summary>Sources, data &amp; caveats</summary>
         <div class="disclosure7-body">
           <dl class="context7">
-            <div><dt>Coverage</dt><dd>US employees aged 18+, using AI at work a few times a week or more, including daily users.</dd></div>
+            <div><dt>What is measured</dt><dd>US employees aged 18+, using AI at work a few times a week or more, including daily users.</dd></div>
             <div><dt>Limitations</dt><dd>Self-reported use of AI broadly, not work automated or dependence. Confidence intervals are not supplied in the published table.</dd></div>
             <div><dt>Chart data</dt><dd>All eight Gallup frequent-use observations, May 2023–August 2026. Lines connect survey waves; no other surveys are combined.</dd></div>
-            <div><dt>EU context</dt><dd>Eurostat counts businesses, not employees. Survey changes in 2025, including in the Netherlands, make comparisons with earlier years less reliable.</dd></div>
+            <div><dt>Scope of this selection</dt><dd>Selected surveys, not a field-wide review. They describe where AI is used, not whether people can work without it.</dd></div>
           </dl>
           <p>AI-assisted summary; not independently verified.</p>
           <p class="source-actions7">${ext7(A.url,'Full methodology: Gallup')}${csvLink7('gallup-frequent-ai-use-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
@@ -6482,12 +6482,8 @@ function viewAdoptionPilot(v){
         </div>
       </details>
       <details class="disclosure7" id="adoption-related">
-        <summary>Related evidence</summary>
-        <div class="disclosure7-body"><p>Additional evidence, beyond the survey linked above. These AI-assisted summaries have not all been manually verified.</p>${relatedEvidence7(A.related)}<p><a href="#details/adoption">Gallup and Eurostat source notes</a></p></div>
-      </details>
-      <details class="disclosure7" id="adoption-watch">
-        <summary>What to watch next</summary>
-        <div class="disclosure7-body"><p>Priorities for measurement, not established warning thresholds:</p><ul class="watch7"><li>Regular use spreading across occupations and countries.</li><li>A growing share of working time involving AI, not just more people trying it.</li><li>Which tasks people delegate, how they check outputs, and whether they can work without AI.</li></ul><p><a href="#gaps/adoption">Research gaps →</a></p></div>
+        <summary>More evidence</summary>
+        <div class="disclosure7-body">${relatedEvidence7(more)}<p>Working selection, not exhaustive. These AI-assisted summaries have not all been manually verified.</p><p><a href="#details/adoption">Gallup and Eurostat source notes</a></p></div>
       </details>
     </div>
     ${pn5(['capability',nameOf('capability')],['handover',nameOf('handover')])}</div>`;
@@ -6507,6 +6503,7 @@ function viewAdoptionPilot(v){
 TOPIC_CHARTS.work.data=WORK_SERIES;
 function viewSelectedTopic(v,id){
   const t=TOPIC_CHARTS[id],p=SELECTED_EVIDENCE[id],s=p.sources.find(s=>s.id===t.source),i=ORDER.indexOf(id);
+  const more=[...t.support.map(x=>({title:x.label,url:x.url,text:x.text})),...t.related];
   const csv=[t.columns.concat(['source','checked']),...t.data.map(r=>r.concat([t.dataUrl||s.url,'2026-10-14']))];
   v.innerHTML=`<div class="view5 wrap priority6 pilot7 selected8">${crumbs5(id)}
     <header class="claim5"><div class="eye5"><span>${esc(nameOf(id))}</span><i aria-hidden="true">·</i><span>${i+1} of 9</span></div><h1 class="h1-5 c">${esc(p.h1)}</h1></header>
@@ -6519,21 +6516,21 @@ function viewSelectedTopic(v,id){
       <p class="chart-credit7">${esc(t.credit)}</p>
     </figure>
     <p class="takeaway7"><b>${esc(t.takeawayLabel)}:</b> ${esc(t.takeaway)}</p>
+    <section class="next-measure9" id="${id}-watch" aria-labelledby="${id}-next-title">
+      <h2 id="${id}-next-title">Next measurement needed</h2>
+      <p>${esc(p.gap)} <a href="#gaps/${id}">Research priorities →</a></p>
+    </section>
     <div class="disclosures7 evidence-grid7">
-      <section class="supporting7" aria-labelledby="${id}-supporting-title"><h2 id="${id}-supporting-title">${esc(t.supportTitle||'Other indicators')}</h2>
-        ${t.support.map(x=>`<p>${ext7(x.url,x.label)}</p><p>${esc(x.text)}</p>`).join('')}</section>
-      <details class="disclosure7" id="${id}-source"><summary>Source, caveats and data</summary><div class="disclosure7-body">
-        <dl class="context7">${t.notes.map(([term,text])=>`<div><dt>${esc(term)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl>
+      <details class="disclosure7" id="${id}-source"><summary>Sources, data &amp; caveats</summary><div class="disclosure7-body">
+        <dl class="context7">${t.notes.map(([term,text])=>`<div><dt>${esc(term==='Coverage'?'What is measured':term)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl>
         <p>AI-assisted summary; not independently verified.</p>
         <p class="source-actions7">${ext7(s.url,'Full methodology: '+t.publisher)}${t.dataUrl?ext7(t.dataUrl,'Original data'):''}${csvLink7(id+'-selected-data-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
         <div class="data-scroll7" role="region" aria-label="${esc(t.title)} data" tabindex="0"><table class="data7"><caption>${esc(t.tableCaption||t.measure)}</caption><thead><tr>${t.columns.map(c=>`<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${t.data.map(r=>`<tr>${r.map((c,i)=>i?`<td>${esc(c)}</td>`:`<th scope="row">${esc(c)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>
       </div></details>
-      <details class="disclosure7" id="${id}-related"><summary>Related evidence</summary><div class="disclosure7-body">
-        ${t.related.length?`<p>Additional evidence; these AI-assisted summaries still need manual review.</p>${relatedEvidence7(t.related)}`:'<p>No additional study is featured yet. The linked sources cover the current selection.</p>'}
+      <details class="disclosure7" id="${id}-related"><summary>More evidence</summary><div class="disclosure7-body">
+        ${relatedEvidence7(more)}
+        <p>Working selection, not exhaustive. These AI-assisted summaries have not all been manually verified.</p>
         <p><a href="#details/${id}">Full source notes</a></p></div></details>
-      <details class="disclosure7" id="${id}-watch"><summary>What to watch next</summary><div class="disclosure7-body">
-        <p>${esc(p.gap)}</p><ul class="watch7">${t.watch.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p>Research priorities, not validated warning thresholds.</p><p><a href="#gaps/${id}">Research gaps →</a></p>
-      </div></details>
     </div>${pn5([ORDER[i-1],nameOf(ORDER[i-1])],ORDER[i+1]?[ORDER[i+1],nameOf(ORDER[i+1])]:['evidence','All steps','Next'])}</div>`;
   drawSelectedChart8($('#'+id+'-chart8',v),t);
   crumbScroll5(v);

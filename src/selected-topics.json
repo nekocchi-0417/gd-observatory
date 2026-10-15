@@ -26,7 +26,7 @@
     "why":"Tracks actual payroll outcomes for young workers, rather than predictions of which jobs AI could replace.",
     "credit":"All 60 monthly observations, September 2021–August 2026, from Stanford's dashboard. Exposure is not adoption; this comparison does not establish causation.",
     "takeawayLabel":"What changed",
-    "takeaway":"From November 2022 to August 2026, employment among 22–25-year-olds fell 12.8% in the most AI-exposed fifth of occupations and rose 8.1% in the least exposed. This is a descriptive gap in the ADP sample, not a count of jobs lost to AI.",
+    "takeaway":"From November 2022 to August 2026, employment among 22–25-year-olds fell 12.8% in the most AI-exposed fifth of occupations and rose 8.1% in the least exposed. This is a descriptive gap in the ADP sample, not a count of jobs lost to AI. In Denmark, workplaces encouraging chatbot use showed no extra decline in young workers' employment share through 2024.",
     "dataUrl":"https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip",
     "columns":["Month","Least exposed (Q1)","Q2","Q3","Q4","Most exposed (Q5)"],
     "data":[],
