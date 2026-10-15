@@ -13,7 +13,13 @@ const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.link
     <div><dt>${esc(COPY.linkUI.pillMeasure)}</dt><dd class="r">${lineGlyph5(l,40,12)}<b>${LEVELWORD[l]}</b></dd>${why?`<dd class="w">${esc(why)}</dd>`:''}</div></dl></section>`};
 /* the chain as horizontal tabs along the top of each evidence page; the bar under each name repeats its line style */
 const crumbs5=id=>`<nav class="crumbs" aria-label="Links in the chain">${LINKS.map(l=>`<a href="#${l.id}" data-l="${l.level}" ${l.id===id?'aria-current="page"':''}><span class="ln"></span>${l.n} ${esc(l.name)}</a>`).join('')}<a href="#influence" data-l="0" ${id==='influence'?'aria-current="page"':''}><span class="ln"></span>${esc(END.name)}</a></nav>`;
-const crumbScroll5=v=>{const c=$('.crumbs [aria-current]',v);if(c){const nav=c.parentNode;nav.scrollLeft+=c.getBoundingClientRect().left-nav.getBoundingClientRect().left-40}};
+const crumbScroll5=v=>{
+  const align=()=>{const c=$('.crumbs [aria-current]',v);if(!c||!v.isConnected)return;const nav=c.parentNode;
+    const left=nav.scrollLeft+c.getBoundingClientRect().left-nav.getBoundingClientRect().left;
+    nav.scrollTo({left:Math.max(0,left-(nav.clientWidth-c.offsetWidth)/2),behavior:'instant'});
+  };
+  align();document.fonts.ready.then(align);
+};
 const pn5=(prev,next)=>`<nav class="pn5" aria-label="Previous and next">${prev?`<a href="#${prev[0]}"><span class="lab">← ${esc(prev[2]||'Previous link')}</span><b>${esc(prev[1])}</b></a>`:'<span></span>'}${next?`<a class="nx" href="#${next[0]}"><span class="lab">${esc(next[2]||'Next link')} →</span><b>${esc(next[1])}</b></a>`:''}</nav>`;
 const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest('.acc5-b');if(!b||!root.contains(b))return;const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));document.getElementById(b.getAttribute('aria-controls')).hidden=!o})};
 
@@ -56,10 +62,9 @@ function viewIndex(v){
   const E=COPY.evidence;
   v.innerHTML=`<div class="view5 wrap">${eye5(['Evidence'])}
    <h1 class="h1-5">${esc(E.title)}</h1><p class="lead5">${esc(E.deck)}</p>
-   ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
-   <section class="sec5"><h2 class="h2-5 sm">A focused selection</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. See Methods for the selection criteria.</p><p class="review-links"><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
+   <section class="sec5"><h2 class="h2-5 sm">A focused selection</h2><p class="sub5">One main visual per step, with supporting evidence kept separate. Some show repeated measures; others are experiments or contextual proxies.</p><p class="review-links"><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
   evidenceRows($('#erows',v));
 }
 
@@ -137,7 +142,7 @@ function viewFutures(v){
     <div class="future-grid5 s1">${F.landscape.items.map(proj).join('')}</div></section>
    <section class="sec5 future-land5"><h2 class="h2-5">${esc(F.directions.title)}</h2><p class="sub5">${esc(F.directions.sub)}</p>
     <div class="future-grid5 future-grid5-ideas s1">${F.directions.items.map(direction).join('')}</div></section>
-   <section class="sec5"><div id="fanc"></div></section>
+   <details class="det5 sec5" id="legacy-forecast"><summary>Unverified US labour-share forecast comparison</summary><p class="sub5">Parked for review. This older comparison mixes source baselines and is not the global ILO indicator now featured on the evidence page.</p><div id="fanc"></div></details>
    <section class="sec5"><h2 class="h2-5">Five routes the chain could take</h2><p class="sub5">${esc(F.blocks.routes)} ${esc(COPY.ui.instructions.routes)}</p>
     <div class="routes s1" role="group" aria-label="Route">${ROUTES.map(r=>`<button class="route" data-route="${r.id}" aria-pressed="${r.id===routeSel}"><span class="rn">ROUTE ${r.id}</span><span class="rt">${esc(r.name)}</span><span class="rd">${esc(F.routeDesc[r.id]||r.desc)}</span></button>`).join('')}</div>
     <div class="routebody" id="routebody"></div><p class="note5">${esc(F.routesNote)}</p></section>
@@ -147,7 +152,8 @@ function viewFutures(v){
     <div class="doors5 three s1">${F.moreCards.map(c=>`<a class="door5 wip" href="#futures/more"><b>${esc(c.title)}</b><span>${esc(c.line)}</span>${chev5}</a>`).join('')}</div></section>
    <p class="note5 sec5 s1"><a class="go" href="#gaps">${esc(F.toGap)}</a></p></div>`;
   futuresCard5($('#fanc',v),{title:"Workers' share of US business income: observed so far, and economists' forecasts",
-    note:"Change in percentage points from each source's own baseline. Blue is observed; orange is forecast. Over the last four quarters the share averaged 0.9 points below 2025 (latest quarter −1.8); economists' moderate-progress forecast is −1.5 by 2030. Sources: BLS; Karger, Tetlock et al. (2026); LEAP; Anthropic (Sep 2026).",draw:el=>fanChart(el,false)});
+    note:"Unverified legacy extraction. US nonfarm-business income, not global GDP. Source baselines differ; do not treat this as a single comparable series or cite the values before review.",draw:el=>fanChart(el,false)});
+  $('#legacy-forecast',v).addEventListener('toggle',()=>Charts.redraw());
   drawRoute(v);wireAcc5($('#tacc',v));
   $$('[data-route]',v).forEach(b=>b.addEventListener('click',()=>{routeSel=b.dataset.route;$$('[data-route]',v).forEach(x=>x.setAttribute('aria-pressed',x===b));drawRoute(v)}));
 }

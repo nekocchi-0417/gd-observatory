@@ -1266,6 +1266,17 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .takeaway7 a{color:var(--s1);text-underline-offset:3px}
 .evidence-grid7{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px;align-items:start}
 .evidence-grid7>*{min-width:0}
+.measure-gap8{margin:24px 0 0;padding:14px 0;border-top:1px solid var(--rule);font:16px/1.55 var(--f-display);color:var(--ink-2)}
+.measure-gap8 b{color:var(--ink)}
+.waffle8{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center;padding:24px 0}
+.waffle8-number{font:650 64px/1.1 var(--f-display);color:var(--s1)}
+.waffle8-number span{display:block;margin-top:12px;font:500 16px/1.5 var(--f-display);color:var(--ink)}
+.waffle8-grid{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));gap:5px}
+.waffle8-grid i{aspect-ratio:1;background:var(--grid);border:1px solid transparent}
+.waffle8-grid .filled{background:var(--s1)}
+.waffle8-grid .possible{border:2px solid var(--s1);background:transparent}
+.waffle8-key{font:13px/1.5 var(--f-display);color:var(--ink-2)}
+@media(max-width:720px){.waffle8{grid-template-columns:1fr;gap:20px;padding:12px 0}.waffle8-number{font-size:48px}.waffle8-grid{gap:3px}}
 .supporting7{margin:0;padding:18px 0 24px;border-top:1px solid var(--rule);font:15px/1.6 var(--f-display);color:var(--ink-2)}
 .supporting7 h2{font:650 15px/1.6 var(--f-display);color:var(--ink);margin:0 0 12px}
 .supporting7>p{margin:0 0 12px}.supporting7 a{color:var(--s1);text-underline-offset:3px}
@@ -1323,7 +1334,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   <nav class="nav" aria-label="Sections"><a href="#home" title="Dashboard overview">Home</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#futures" title="Scenario directions and adjacent projects">Futures <span class="wip5">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
-<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.7 · Source selection: 13 October 2026 · AI-assisted primary-source checks; human review pending · <a href="#method">Method and sources</a></span></div></footer>
+<footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.8 · Source checks: 14 October 2026 · AI-assisted, not independently verified · <a href="#method">Method and sources</a></span></div></footer>
 <script>
 /* ---------- small chart kit: line, bars, columns, stack rows, dumbbell, spark ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1437,7 +1448,7 @@ const Charts=(()=>{
   /* ----- horizontal bars (label above bar), supports diverging ----- */
   function bars(el,cfg){if(CAP)return;mount(el,()=>drawBars(el,cfg))}
   function drawBars(el,cfg){
-    const W=width(el),rh=cfg.rh||46,P={l:2,r:64,t:6,b:cfg.axis===false?6:24};
+    const W=width(el),rh=cfg.rh||46,P={l:cfg.axisPlacement==='edges'?16:2,r:64,t:6,b:cfg.axis===false?6:24};
     const rows=cfg.rows,fmt=cfg.fmt||(v=>v),data=rows.filter(r=>!r.head);
     const min=cfg.min??Math.min(0,...data.map(r=>r.value)),max=cfg.max??Math.max(0,...data.map(r=>r.value));
     const neg=min<0;if(neg)P.l=58;
@@ -1454,7 +1465,8 @@ const Charts=(()=>{
     const H=y+P.b;let g='';
     (cfg.ticks||[]).forEach(v=>{g+=`<line x1="${sx(v)}" x2="${sx(v)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><text x="${sx(v)}" y="${H-P.b+15}" text-anchor="middle">${esc(fmt(v))}</text>`});
     const tbl=tableHTML([cfg.catLabel||'',cfg.valLabel||'Value',...(data.some(r=>r.note)?['Note']:[])],data.map(r=>[r.label,r.vlabel||fmt(r.value),...(data.some(q=>q.note)?[r.note||'']:[])]));
-    el.innerHTML=`${axisHTML(cfg.valLabel||'value',cfg.catLabel||'category')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    const edge=cfg.axisPlacement==='edges';
+    el.innerHTML=`${edge?`<div class="chart-y-label">${esc(cfg.catLabel)}</div>`:axisHTML(cfg.valLabel||'value',cfg.catLabel||'category')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${edge?`<div class="chart-x-label">${esc(cfg.valLabel)}</div>`:''}${cfg.table===false?'':tbl}`;
     const tip=el.querySelector('.tip'),svg=el.querySelector('svg');
     el.querySelectorAll('.row').forEach(n=>{const r=rows[+n.dataset.i];n.addEventListener('pointermove',e=>{const b=svg.getBoundingClientRect();tip.innerHTML='';const d=document.createElement('div');d.className='r';const bb=document.createElement('b');bb.textContent=r.vlabel||fmt(r.value);const sp=document.createElement('span');sp.textContent=r.label;d.append(bb,sp);tip.appendChild(d);if(r.note){const nt=document.createElement('div');nt.className='nt';nt.textContent=r.note;tip.appendChild(nt)}tipAt(el,tip,e.clientX-b.left,e.clientY-b.top,W)});n.addEventListener('pointerleave',()=>tip.style.display='none')});
   }
@@ -1586,7 +1598,20 @@ const Charts=(()=>{
       n.addEventListener('click',()=>cfg.onPick&&cfg.onPick(o.r,o.l))});
   }
 
-  return {line,bars,cols,stack,dumbbell,spark,record,capture,redraw};
+  /* Point estimates with horizontal intervals; category labels stay above each row. */
+  function intervals(el,cfg){if(CAP)return;mount(el,()=>{
+    const W=width(el),P={l:24,r:24,t:14,b:32},rh=78,H=P.t+rh*cfg.rows.length+P.b;
+    const sx=x=>P.l+(x-cfg.min)/(cfg.max-cfg.min)*(W-P.l-P.r);
+    let g=cfg.ticks.map(x=>`<line x1="${sx(x)}" x2="${sx(x)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><text x="${sx(x)}" y="${H-10}" text-anchor="middle">${x>0?'+':''}${x}</text>`).join('');
+    g+=`<line x1="${sx(0)}" x2="${sx(0)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink-2)" stroke-dasharray="3 3"/>`;
+    cfg.rows.forEach((r,i)=>{const y=P.t+i*rh,col=i===0?C.s1:C.s2;
+      g+=`<text x="${P.l}" y="${y+14}" class="cat">${esc(r.label)}</text><text x="${W-P.r}" y="${y+14}" text-anchor="end" class="end">${esc(r.value)}</text>`;
+      if(r.low!=null)g+=`<line x1="${sx(r.low)}" x2="${sx(r.high)}" y1="${y+45}" y2="${y+45}" stroke="${col}" stroke-width="3"/><path d="M${sx(r.low)} ${y+39}v12 M${sx(r.high)} ${y+39}v12" stroke="${col}"/>`;
+      g+=`<circle cx="${sx(r.value)}" cy="${y+45}" r="6" fill="${col}" stroke="var(--surface)" stroke-width="2"/>`;
+    });
+    el.innerHTML=`<div class="chart-y-label">${esc(cfg.category)}</div><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria)}">${g}</svg><div class="chart-x-label">${esc(cfg.axis)}</div>`;
+  })}
+  return {line,bars,cols,stack,dumbbell,intervals,spark,record,capture,redraw};
 })();
 /* ---------- content: links 1–4 ---------- */
 const TAGS={direct:'Read at source (AI-assisted)',primary:"Publisher's page",company:"Company's own data",secondary:'Secondary source',derived:'Dashboard calculation'};
@@ -3492,190 +3517,190 @@ const COPY={
     "link": "capability",
     "old": "Task lengths outside software",
     "chip": "Partial coverage",
-    "title": "Task lengths have been tracked over time for software work only",
+    "title": "Track reliable task completion beyond technical work",
     "why": "The theory needs AI able to do the casework and management institutions run on, not only code.",
     "what": "METR-style task-length tests for casework, negotiation and management, re-run on each new model by an independent evaluator.",
-    "closest": "METR tracked software, machine learning and security, adding no model after May 2026; a 2025 one-off covered maths, computer use and driving. The Remote Labor Index scores real freelance projects, but not task length."
+    "closest": "METR measures technical-task horizons; its tracker is no longer actively updated. The Remote Labor Index adds professional projects, with different scoring and coverage. See the selected capability sources."
    },
    {
     "i": 14,
     "link": "capability",
     "old": "Reliability on real work",
     "chip": "Partial coverage",
-    "title": "No independent, repeated test of AI reliability on real work",
+    "title": "Test reliability across complete real-world workflows",
     "why": "A system that succeeds once may fail the next time; institutions need work done right every time.",
     "what": "The same real tasks run many times by an independent evaluator, reporting how often AI succeeds on every run.",
-    "closest": "Princeton's agent reliability tracker measures reliability on benchmark tasks only: accuracy 17 to 80%, reliability 0.69 to 0.87 across 15 agents."
+    "closest": "METR explicitly measures task completion at a chosen success rate. Its technical-task coverage does not establish reliability across whole jobs."
    },
    {
     "i": 15,
     "link": "capability",
     "old": "Cost per completed real task",
     "chip": "Partial coverage",
-    "title": "No series of what a finished real task costs",
+    "title": "Track the full cost of completing work with AI",
     "why": "Cheaper answers do not mean cheaper work; whether firms hand work to AI depends on what a finished job costs.",
     "what": "The full cost of finishing real tasks with AI, including reruns and checking, tracked for each new model.",
-    "closest": "Epoch AI tracks the cost of reaching a fixed benchmark score, about 13 times cheaper each year; that covers benchmark questions, not real work."
+    "closest": "The selected capability benchmarks measure completion or reliability, not the full cost of deployment, retries and human review."
    },
    {
     "i": 16,
     "link": "capability",
     "old": "Lab-to-life gap",
     "chip": "One-off only",
-    "title": "No repeated comparison of benchmark scores with real users' results",
+    "title": "Compare benchmark scores with results for real users",
     "why": "Benchmarks may overstate what people actually get from AI, so capability can look further ahead than its use.",
     "what": "For each new model, its benchmark score set against the results real users get on the same kind of task.",
-    "closest": "One UK trial: AI models alone named the right medical condition in 94.9% of cases; members of the public using them, in under 34.5% (Bean et al. 2026)."
+    "closest": "The capability page separates controlled benchmarks from performance across whole jobs. A repeated comparison with real users remains a monitoring priority."
    },
    {
     "i": 1,
     "link": "adoption",
     "old": "Work hours done with AI, by occupation",
     "chip": "Partial coverage",
-    "title": "No official count of hours worked with AI, by job",
+    "title": "Measure how much working time involves AI, by job",
     "why": "Yes-or-no use hides depth; hours show how much work AI is actually part of.",
     "what": "A quarterly official survey reporting the share of work hours done with AI, broken down by occupation.",
-    "closest": "The St. Louis Fed publishes a quarterly series, also by occupation group, from an online panel: 6.3% of US work hours in Q2 2026. No statistics agency measures it."
+    "closest": "Gallup tracks regular use; the RPS work-hours indicator linked on the adoption page estimates time involving AI. Neither directly measures work handed over or checked."
    },
    {
     "i": 2,
     "link": "handover",
     "old": "The review rate",
     "chip": "Company data only",
-    "title": "No cross-company count of how often people check AI output",
+    "title": "Count meaningful checks of AI output across providers",
     "why": "Checking is the line between delegating a task and losing track of it.",
     "what": "For each task AI completes, whether a person checked the output before it was used, across providers, on one definition.",
-    "closest": "Anthropic reports a human in the loop for at most 73% of agent actions on its public API; one company, one period."
+    "closest": "Anthropic classifies automation and augmentation in conversations. Those patterns do not show whether people checked or used an output."
    },
    {
     "i": 3,
     "link": "work",
     "old": "Junior hiring inside firms that adopt AI",
     "chip": "Not tied to AI",
-    "title": "No regular tracking of junior hiring inside firms that adopt AI",
-    "why": "It would show whether AI, rather than interest rates, is cutting first jobs.",
+    "title": "Link junior hiring to firms' actual AI adoption",
+    "why": "It would help separate AI's contribution from other changes in demand for junior workers.",
     "what": "Payroll data linking the date a firm adopted AI to its hiring by seniority, updated regularly.",
-    "closest": "Stanford and ADP track jobs by age and occupation, not by firm adoption. One 2026 paper (Hosseini and Lichtinger) finds junior employment about 9% lower after six quarters at firms that adopted generative AI, through slower hiring; senior employment unchanged."
+    "closest": "Stanford/ADP tracks age and occupational exposure, not adoption. Humlum and Vestergaard link Danish adoption reports to administrative outcomes, but in a different period and setting."
    },
    {
     "i": 4,
     "link": "share",
     "old": "AI capital's share of income",
     "chip": "No measure exists",
-    "title": "No estimate of how much income goes to AI capital",
+    "title": "Separate AI-related income shifts from other changes",
     "why": "It would show whether money once paid as wages is going to AI owners instead.",
     "what": "National accounts that split capital income into AI-related and other, so changes in workers' share can be traced.",
-    "closest": "The BLS labour share, which cannot separate AI, and press figures on big-tech capital spending."
+    "closest": "ILO global labour income share and BLS US nonfarm-business labour share. Neither attributes changes to AI or identifies who owns AI-related capital."
    },
    {
     "i": 5,
     "link": "skills",
     "old": "Unaided ability, tested twice",
     "chip": "Partial coverage",
-    "title": "No general panel re-tests unaided skills alongside AI use",
-    "why": "Only repeat tests on the same people can show skills fading as AI use grows.",
+    "title": "Re-test unaided skills alongside recorded AI use",
+    "why": "Repeat tests help distinguish lasting learning or skill loss from short-term performance changes.",
     "what": "A panel of workers, students or clinicians, tested on set tasks without AI every year, alongside a record of their AI use.",
-    "closest": "Of 233 studies of generative AI found, only 4 test the same people without AI over months, all narrow. Two clinic audits disagree: one found a loss, a three-year study found none. In one call centre, workers kept their gains during AI outages."
+    "closest": "Bastani et al. test unaided maths performance immediately after practice. The guided tutor and unrestricted tool have different results; neither estimates population-wide long-term change."
    },
    {
     "i": 6,
     "link": "skills",
     "old": "Take-back time",
     "chip": "No measure exists",
-    "title": "No measure of how fast skills recover without AI",
+    "title": "Measure recovery after AI is withdrawn",
     "why": "It shows whether people could take a task back: the difference between reliance and lock-in.",
     "what": "Withdraw AI from a group for a week or a month and measure how long their performance takes to recover.",
-    "closest": "None found. Every withdrawal test found is a single check, minutes to weeks later. In METR's 2026 study, 30 to 50% of developers avoided tasks they would have had to do unaided."
+    "closest": "The selected classroom trial tests performance without AI but does not follow recovery over months."
    },
    {
     "i": 17,
     "link": "skills",
     "old": "Dependence checked against behaviour",
     "chip": "Partial coverage",
-    "title": "No AI-dependence questionnaire checked against what people do",
+    "title": "Check reported AI dependence against behaviour",
     "why": "Without a check against behaviour, a dependence score may label ordinary use as a problem, or miss real dependence.",
     "what": "A short dependence scale tested on the same people against their AI use and their performance without AI, with agreed cut-offs and a representative sample.",
-    "closest": "At least eight AI-dependence scales exist; none has been checked against behaviour or unaided ability, and none has a cut-off or a representative sample."
+    "closest": "The current shortlist does not contain a validated dependence measure linked to repeated unaided performance. This is a gap in this selection, not proof that no relevant study exists."
    },
    {
     "i": 18,
     "link": "skills",
     "old": "Benchmark-to-person link",
     "chip": "No measure exists",
-    "title": "No model benchmark linked to what happens to its users",
+    "title": "Link model behaviour to outcomes for its users",
     "why": "Benchmarks count what models do, such as flattery or manipulation, not whether users' skills or beliefs change. User satisfaction is not a safe guide either.",
     "what": "Studies that give people models with different benchmark scores and measure what changes in those people over time.",
-    "closest": "When Google DeepMind measured both, how often a model used manipulative tactics did not predict how much people's beliefs changed (Akbulut et al. 2026). Users rated more disempowering conversations more highly (Sharma et al. 2026)."
+    "closest": "Anthropic's disempowerment study classifies potential risks in conversations, not lasting changes in people's beliefs or agency. It is linked on the human influence page."
    },
    {
     "i": 7,
     "link": "culture",
     "old": "Attention-weighted AI share",
     "chip": "Company data only",
-    "title": "Only one platform reports attention to AI-made content",
+    "title": "Measure human attention to AI-made content across platforms",
     "why": "AI-made content floods supply; the theory turns on how much of it people actually take in.",
     "what": "The share of minutes read, watched or heard that is AI-made, reported by platform, every quarter.",
-    "closest": "Deezer reports AI tracks at 1 to 3% of its streams; no other platform's figure was found."
+    "closest": "Deezer reports 1–3% of recorded streams for fully AI-generated tracks. Fraud and recommendation exclusions prevent a clean measure of human listening."
    },
    {
     "i": 8,
     "link": "culture",
     "old": "Convergence in what gets published",
     "chip": "No measure exists",
-    "title": "No yearly measure of whether published work grows more alike",
+    "title": "Track diversity in published work over time",
     "why": "If AI makes what is published more uniform, the range of ideas people meet could narrow.",
     "what": "A yearly index of diversity in vocabulary, style and subject across published text, music and images.",
-    "closest": "Lab experiments only; no repeated measure of published work was found."
+    "closest": "Doshi and Hauser find higher creativity ratings but more similarity in AI-assisted short stories. That experiment is not a trend in published culture."
    },
    {
     "i": 9,
     "link": "institutions",
     "old": "Decisions made by AI",
     "chip": "Partial coverage",
-    "title": "Almost no government counts its decisions made with AI",
+    "title": "Count decisions made with AI, not just applications",
     "why": "Disclosures list tools; only decision counts show how much of the state's work runs through AI.",
     "what": "For each high-impact system, decisions per year: fully automated, AI-recommended with sign-off, or made by a person alone.",
-    "closest": "Registers list AI uses (3,611 in the US federal inventory), not decisions. London's Metropolitan Police count face-matching alerts (2,077 in a year). EU online platforms flag automation for each moderation decision (43% fully automated)."
+    "closest": "The US inventory lists 3,611 use cases. The Metropolitan Police report 2,077 facial-recognition alerts in one year. These count different things; neither is a government-wide decision count."
    },
    {
     "i": 10,
     "link": "institutions",
     "old": "The override rate",
     "chip": "No measure exists",
-    "title": "Governments rarely publish how often officials overrule AI",
-    "why": "If officials almost never overrule AI, human sign-off is a formality, not control.",
+    "title": "Publish human reviews, overrides and appeals",
+    "why": "An override rate alone cannot establish meaningful control; reviewers' opportunities, reasons and outcomes also matter.",
     "what": "The share of AI recommendations the responsible official changes, with time spent per case, published for each high-impact system.",
-    "closest": "Hospitals log alert overrides, for older tools. One lab experiment (292 people) and scattered field studies; no government we found publishes override rates."
+    "closest": "The OMB inventory records reported applications and some safeguards, not comparable rates of substantive review and successful appeals. Missing fields do not prove safeguards are absent."
    },
    {
     "i": 11,
     "link": "institutions",
     "old": "Dependence on foreign model providers",
     "chip": "No measure exists",
-    "title": "No breakdown of which countries' AI firms governments rely on",
+    "title": "Track public-sector dependence on model providers",
     "why": "States that buy rather than build AI may lose the ability to change or replace it.",
     "what": "Share of public-sector AI spending and queries by vendor and the vendor's home country, published yearly.",
-    "closest": "In the US inventory, Microsoft appears in 100 of 311 generative-AI uses that name a vendor; in Canada, 38% of 409 registered systems were built by vendors. Singapore reports about 80% of its public officers have used the government chatbot, with no vendor breakdown."
+    "closest": "Public inventories can identify some systems and vendors. Counts of listed tools do not measure spending, query volume or the practical ability to switch suppliers."
    },
    {
     "i": 12,
     "link": "influence",
     "old": "Who can decide",
     "chip": "No measure exists",
-    "title": "No measure of who holds decision power, people or AI",
+    "title": "Observe who can make, refuse or reverse a decision",
     "why": "This is the outcome itself: whether people, not systems, still settle what happens.",
     "what": "For real institutions, the smallest group able to settle an outcome, and the mix of people and AI systems in it.",
-    "closest": "RAND (2026) proposes measuring the smallest group able to settle an outcome; not yet applied."
+    "closest": "Pew measures felt control; Anthropic studies conversational risk. Neither is a validated measure of decision authority across institutions."
    },
    {
     "i": 13,
     "link": "influence",
     "old": "A population measure of disempowerment",
     "chip": "Definitions differ",
-    "title": "No tested, repeated survey of whether AI changes people's say",
+    "title": "Pair repeated surveys of control with observed choices",
     "why": "It is the nearest population-wide signal of the outcome, and cheap enough to repeat every year.",
     "what": "A tested survey scale, paired with simple behavioural tasks, put to the same people every year.",
-    "closest": "Pew: 57% say not too much or no control over AI in their lives. UK: 50% say their views are not represented in decisions about AI (Ada Lovelace Institute and Alan Turing Institute, 2025). Dutch and Finnish panels track attitudes; Chooi, Lee and Li (2026) propose perception surveys, not yet fielded."
+    "closest": "Pew reports 57% of US adults felt little or no control in June 2025. Its topline includes earlier responses, but neither wave shows how much actual authority people have."
    }
   ]
  },
@@ -4154,37 +4179,37 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "handover": {
-    "h1": "Using AI is not the same as handing over control",
-    "summary": "Conversation logs show task requests; a regulator survey distinguishes partial automation from full autonomy. Neither gives a general measure of decisions handed over to AI.",
-    "selection": "Combine observed request patterns with explicit decision-autonomy categories. These are closer to delegation than counts of people trying an AI tool.",
+    "h1": "How much work do people hand over to AI?",
+    "summary": "In May 2026, 48.6% of classified Claude chat and Cowork conversations were labelled automation. Whether people checked or used the output is not observed.",
+    "selection": "Feature Anthropic's observed interaction patterns, which distinguish task completion from collaboration. Keep the UK regulator survey as narrower, provisional context on decision autonomy.",
     "gap": "An independent measure across providers of which decisions AI makes, which people review, and which people can reverse.",
     "signal": 2,
     "sources": [
       {
         "id": "aei",
-        "title": "Anthropic Economic Index: directive task requests",
-        "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
-        "locate": "Chapter 1, Augmentation is again dominant on Claude.ai; Chapter 3 footnote 2 for November sampling; September report Chapter 1 footnote 4 for classifier sensitivity.",
-        "label": "Requests to complete a task",
-        "citation": "Anthropic Economic Index (January 2026)",
+        "title": "Anthropic Economic Index: automation and augmentation",
+        "url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+        "locate": "June release CSV: May 2026, GLOBAL, overall, collaboration_bucket_automation_pct and collaboration_bucket_augmentation_pct. Data documentation defines metrics and platform coverage.",
+        "label": "Automation versus augmentation",
+        "citation": "Anthropic Economic Index (June 2026)",
         "type": "Company logs and classifier",
-        "date": "Claude.ai sample, November 2025",
-        "finding": "Anthropic classified 32% of sampled Claude.ai conversations as directive requests, where the user asks AI to complete a task.",
-        "why": "Behavioural traces distinguish task requests from collaborative assistance.",
-        "limit": "Request style does not show whether the output is checked or used. One provider, changing classifiers and sampling. A dated snapshot, not the newest release.",
+        "date": "Claude chat and Cowork, May 2026; June release",
+        "finding": "Among conversations assigned either mode, 48.62% were classified as automation and 51.38% as augmentation. The 2.61% labelled 'None' is outside this denominator, as verified from component totals.",
+        "why": "Observed interaction patterns are closer to delegation than counts of users. The underlying data are downloadable.",
+        "limit": "One provider's classifier. Automation is not autonomy or absence of oversight. May 2026 includes chat and Cowork; sampling changes prevent a simple comparison with older releases.",
         "metrics": [
           [
-            "32%",
-            "Conversations classified as directive"
+            "48.62%",
+            "Automation among conversations assigned either mode"
           ],
           [
-            "Not observed",
-            "What users did with the output"
+            "51.38%",
+            "Augmentation, same denominator"
           ]
         ],
         "checks": [
-          "Check the directive definition and 32% figure; do not substitute the broader automation category.",
-          "Review classifier and later sampling changes before turning snapshots into a trend."
+          "Check the May GLOBAL overall CSV rows and normalized bucket denominator; unclassified conversations are excluded.",
+          "Review the provider classification and distinguish automation from decision autonomy or human review."
         ],
         "legacy": [
           "aei"
@@ -4199,17 +4224,17 @@ const SELECTED_EVIDENCE = {
         "citation": "Bank of England & FCA (2024)",
         "type": "Regulator survey",
         "date": "118 responding firms; November 2024 report",
-        "finding": "The report says 55% of reported AI use cases involved some automated decision-making; 2% were fully autonomous.",
+        "finding": "The survey distinguishes partial automation from full autonomy. Its firms-versus-use-cases denominator needs reconciliation before percentages are featured.",
         "why": "Directly distinguishes partial automation from full autonomy, in a survey independent of AI providers.",
         "limit": "Firm self-report in one sector, not decision volumes. The chart subtitle and narrative use different denominator wording; retain a provisional label until reconciled.",
         "metrics": [
           [
-            "55%",
-            "Some automated decision-making"
+            "Provisional",
+            "Survey denominator needs review"
           ],
           [
-            "2%",
-            "Fully autonomous; overlapping categories"
+            "UK finance",
+            "One sector, self-reported"
           ]
         ],
         "checks": [
@@ -4221,37 +4246,37 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "work": {
-    "h1": "Young-worker employment is a warning sign, not yet a settled AI effect",
-    "summary": "US payroll data show a gap in exposed occupations. Danish adoption-linked evidence finds no extra decline through 2024. The settings, dates and comparisons differ.",
-    "selection": "Pair a directly relevant US warning signal with an administrative-data study that measures workplace adoption and offers counterevidence.",
+    "h1": "Are entry-level jobs becoming harder to find?",
+    "summary": "In the ADP sample, employment among ages 22–25 fell 12.8% in the most AI-exposed occupations from November 2022 to August 2026. The least-exposed group rose 8.1%; AI causation is not established.",
+    "selection": "Feature Stanford/ADP's monthly age-by-exposure payroll series, with all five quintiles visible. Keep Danish adoption-linked counterevidence separate because its population, outcome and period differ.",
     "gap": "Link firms' AI adoption to junior hiring and training, with comparisons that separate AI from other changes in the labour market.",
     "signal": 2,
     "sources": [
       {
         "id": "canaries",
         "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
-        "url": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
-        "locate": "August 12, 2026 PDF: introduction, PDF page 3; sample, section 1.1; limitations, section 4 and August author note.",
+        "url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/",
+        "locate": "Employment Index by Age Group and AI Exposure; September 2026 data package, Early Career 1 (22-25), all five quintiles, November 2022 = 100.",
         "label": "Young workers in exposed occupations",
         "citation": "Brynjolfsson, Chandar & Chen / Stanford (2026)",
         "type": "Observational working paper",
-        "date": "August 2026 revision; data through June 2026",
-        "finding": "In the ADP payroll sample, employment of 22-25-year-olds in more exposed jobs was 19% below the level implied by keeping pace with less-exposed peers.",
+        "date": "September 2026 dashboard release; data through August 2026",
+        "finding": "From November 2022 to August 2026, the most-exposed quintile's employment index fell from 100 to 87.23; the least-exposed rose to 108.1, among ages 22-25 in the ADP sample.",
         "why": "A repeatable age-by-exposure comparison, with detailed discussion of alternative explanations.",
         "limit": "Descriptive, not jobs proven lost to AI. Exposure is not adoption; sample selection, education and pre-trends affect interpretation.",
         "metrics": [
           [
-            "19%",
-            "Relative kept-pace shortfall"
+            "-12.8%",
+            "Most-exposed quintile, November 2022-August 2026"
           ],
           [
-            "Not causal",
-            "Does not identify jobs lost to AI"
+            "+8.1%",
+            "Least-exposed quintile, same period"
           ]
         ],
         "checks": [
-          "Read page 3: age group, June 2026 endpoint and top-two vs bottom-three exposure quintiles.",
-          "Distinguish the 19% shortfall from the level decline; read the authors' causal caveats."
+          "Check the September package, ages 22-25, quintile definitions, baseline and all 60 monthly values.",
+          "Do not apply the earlier pooled 19% June shortfall to this chart's extreme-quintile August endpoints."
         ],
         "legacy": [
           "canaries"
@@ -4289,9 +4314,9 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "share": {
-    "h1": "Workers' income share is measurable; AI's contribution is not",
-    "summary": "Official statistics track how income is divided between labour and other recipients. Long-run changes predate generative AI, and these series do not explain their causes.",
-    "selection": "Use established official US and global series, rather than stock prices as a substitute for workers' income share.",
+    "h1": "How much economic output goes to workers?",
+    "summary": "The ILO estimates labour's global GDP share fell from 53.0% in 2015 to 52.6% in 2025. This modest decline predates widespread generative AI and does not identify its effect.",
+    "selection": "Feature ILO global labour income share for international coverage, including self-employment. Keep the more frequent BLS US sector measure as separate context, not another point on the same chart.",
     "gap": "Measure changes in labour income alongside actual AI adoption, at firm and sector level, with comparable definitions over time.",
     "signal": 2,
     "sources": [
@@ -4327,29 +4352,29 @@ const SELECTED_EVIDENCE = {
       },
       {
         "id": "ilo-labour-share",
-        "title": "World Employment and Social Outlook: May 2025 Update",
-        "url": "https://www.ilo.org/sites/default/files/2025-05/WESOUpdate_May2025.pdf",
-        "locate": "World Employment and Social Outlook: May 2025 Update, printed pages 7-8 and footnote 13; separate March 19, 2026 ILOSTAT update, labor-share section.",
+        "title": "The world of work and the 2030 Agenda: a ten-year review",
+        "url": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/",
+        "locate": "March 19, 2026 ILOSTAT review, Labour's share of the economy is shrinking. Both endpoints come from this release.",
         "label": "Global labour income share",
-        "citation": "International Labour Organization (2025)",
+        "citation": "International Labour Organization (2026)",
         "type": "Official modelled estimates",
-        "date": "May 2025 report; 2014-2024 comparison",
-        "finding": "The ILO estimated labour's global GDP share at 53.0% in 2014 and 52.4% in 2024. A later update reports partial recovery.",
+        "date": "March 2026 review; 2015-2025 comparison",
+        "finding": "Global labour income share was 53.0% in 2015 and 52.6% in 2025: down 0.4 percentage points. The ILO describes partial recovery after a sharp decline in 2023.",
         "why": "Adds international coverage and estimated self-employed labour income, counterbalancing a US-only story.",
-        "limit": "The 2024 value includes projections. Do not splice report vintages or directly compare this GDP-wide level with the BLS sector measure. No AI attribution.",
+        "limit": "Modelled estimates, subject to revision. Two endpoints, not an annual trajectory. Do not splice report vintages or compare the GDP-wide level directly with the BLS sector measure. No AI attribution.",
         "metrics": [
           [
             "53.0%",
-            "Global GDP, 2014"
+            "Global GDP, 2015"
           ],
           [
-            "52.4%",
-            "2024 estimate, May 2025 vintage"
+            "52.6%",
+            "Global GDP, 2025; March 2026 publication"
           ]
         ],
         "checks": [
-          "Read printed pages 7-8 and footnote 13: dates, projections and self-employment.",
-          "Keep the later recovery note separate; do not infer that all countries or workers experienced the same change."
+          "Check both endpoints in the March 2026 release; do not substitute the older 2014-2024 vintage.",
+          "Confirm definition and modelled-estimate status; obtain annual data before replacing the two-endpoint chart with a line."
         ],
         "legacy": [
           "ls"
@@ -4359,8 +4384,8 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "skills": {
-    "h1": "AI can improve performance without improving learning",
-    "summary": "Short experiments show both benefits and risks. We still lack broad, repeated tests of what people can do after the AI is removed.",
+    "h1": "What can people still do when AI is removed?",
+    "summary": "In one classroom trial, unrestricted GPT reduced later unaided exam scores by 5.4 points out of 100; a guided tutor showed no detectable difference. Long-term skills remain under-measured.",
     "selection": "A classroom trial tests learning without AI; a meta-analysis tests when human judgement adds to AI performance. Neither measures long-term skill loss across society.",
     "gap": "Follow the same people over time, testing unaided ability as well as AI-assisted performance.",
     "signal": "?",
@@ -4374,10 +4399,10 @@ const SELECTED_EVIDENCE = {
         "doi": "10.1073/pnas.2422633122",
         "type": "Peer-reviewed randomized trial",
         "date": "Published June 2025; experiment in 2023",
-        "finding": "Students given an unrestricted GPT tool scored 17% lower on a later unaided exam than the no-AI group. A tutor designed to support learning did not show that penalty.",
+        "finding": "The adjusted unaided exam difference was -5.4 points out of 100 for unrestricted GPT, about 17% relative to the no-AI mean. The guided tutor estimate was -0.4 points, not statistically significant.",
         "why": "Random assignment and an AI-free exam distinguish help with a task from learning that lasts beyond it.",
         "limit": "One school setting and short follow-up; not evidence of permanent or population-wide deskilling. The 17% is relative, not percentage points.",
-        "locate": "Abstract; Table 1, exam columns; Discussion",
+        "locate": "Table 1 column 2: coefficients -0.054/-0.004, SEs 0.022/0.013, control mean 0.321. Multiply by 100 for score points; chart intervals are calculated as estimate +/- 1.96 SE.",
         "checks": [
           "Confirm the 17% relative difference and the no-AI comparison group.",
           "Keep the tutor result and short follow-up alongside the harm finding."
@@ -4438,8 +4463,8 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "culture": {
-    "h1": "More AI content does not necessarily mean more human attention",
-    "summary": "Platform data show growing supply. Experiments suggest AI can also make creative work more similar. Neither establishes a society-wide loss of human cultural influence.",
+    "h1": "How much attention goes to AI-made content?",
+    "summary": "Deezer reports fully AI-generated music at 1–3% of recorded streams, despite over 50% of uploads on peak days. Fraud and platform policy complicate what this says about human attention.",
     "selection": "Pair a recurring platform measure of supply and listening with an independent experiment on creative diversity. No single source covers culture as a whole.",
     "gap": "Measure what people actually read, watch and hear, and whether human creators retain income and influence.",
     "signal": 2,
@@ -4454,7 +4479,7 @@ const SELECTED_EVIDENCE = {
         "date": "Figures stated as of August 2026",
         "finding": "Deezer reports fully AI-generated tracks exceed 50% of uploads on peak days, but account for 1-3% of streams.",
         "why": "Separates how much AI content is supplied from how much is played, using a recurring platform disclosure.",
-        "limit": "One platform and its own detector. Streams include suspected fraud; recommendation policy also affects listening. Peak-day uploads are not an average.",
+        "limit": "One platform and its own detector. Streams may include fraudulent activity; adjustment is unspecified. Recommendation policy also affects listening. Peak-day uploads are not an average.",
         "locate": "Notes to editors; FAQ date note",
         "checks": [
           "Keep 'on peak days', the August 2026 data date, and the 1-3% stream denominator.",
@@ -4474,7 +4499,7 @@ const SELECTED_EVIDENCE = {
           ],
           [
             "1-3%",
-            "All streams; includes suspected fraud"
+            "Recorded streams; fraud adjustment unspecified"
           ]
         ]
       },
@@ -4515,8 +4540,8 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "institutions": {
-    "h1": "Government AI use is visible; decision power is much less so",
-    "summary": "Inventories count reported uses. A police operational report shows some actions after AI alerts. Neither provides a government-wide measure of control or accountability.",
+    "h1": "Who makes the decisions when governments use AI?",
+    "summary": "The US inventory records 3,611 AI use cases, but not decision volumes or meaningful human control. Its CSV explicitly marks 1,480 deployed or piloted; 338 stages are blank.",
     "selection": "Pair an official disclosure inventory with one concrete operational case. Both are inspectable, but neither is an independent audit of all safeguards.",
     "gap": "Publish decision volumes, human reviews, overrides and appeal outcomes for specific high-impact systems.",
     "signal": "?",
@@ -4529,8 +4554,8 @@ const SELECTED_EVIDENCE = {
         "label": "US federal AI inventory",
         "citation": "US Office of Management and Budget (2025 inventory)",
         "type": "Official agency disclosures",
-        "date": "README snapshot dated 13 April 2026",
-        "finding": "The inventory lists 3,611 individual AI use cases; 1,818 were deployed or in pilot. The total includes other development stages.",
+        "date": "2025 inventory; CSV pinned to 14 May 2026 commit",
+        "finding": "The CSV contains 3,611 rows: 1,040 deployed, 440 pilot, 1,479 pre-deployment, 314 retired and 338 blank stages. The README's 1,818 deployed/piloted total includes the blank-stage cases and cannot be reproduced from explicit stage labels.",
         "why": "A reproducible official baseline with public metadata and stage definitions.",
         "limit": "Reported uses, not decisions or audited safeguards. Reporting rules change; missing answers do not necessarily mean missing protections.",
         "metrics": [
@@ -4539,12 +4564,12 @@ const SELECTED_EVIDENCE = {
             "Individual reported use cases, all stages"
           ],
           [
-            "1,818",
-            "Deployed or in pilot"
+            "1,480",
+            "Explicitly deployed or in pilot; 338 stages missing"
           ]
         ],
         "checks": [
-          "Check README Summary/TOTALS, snapshot date and treatment of commercial software.",
+          "Reconcile README's 1,818 with 1,480 explicit deployed/pilot CSV rows plus 338 blank stages; inspect data-sourcing notes.",
           "Check stage and safeguard-field definitions; do not count blank fields as failed safeguards."
         ],
         "legacy": [
@@ -4584,8 +4609,8 @@ const SELECTED_EVIDENCE = {
     ]
   },
   "influence": {
-    "h1": "Human influence is still the hardest outcome to measure",
-    "summary": "A survey of felt control and an exploratory study of AI conversations offer partial signals. Neither measures how much power people retain over the economy, culture or government.",
+    "h1": "Do people still have a meaningful say?",
+    "summary": "57% of US adults reported little or no control over AI's use in their lives in June 2025. This is felt control, not a validated measure of actual decision power.",
     "selection": "Use a representative public survey for felt control and a clearly labelled exploratory study for behaviour in conversations. These are proxies, not a validated overall measure.",
     "gap": "Connect people's reported control to real choices: the ability to refuse, appeal, reverse a decision or act without AI.",
     "signal": "?",
@@ -4664,6 +4689,623 @@ const SELECTED_EVIDENCE = {
   }
 }
 ;
+
+const TOPIC_CHARTS = {
+  "handover": {
+    "source":"aei", "publisher":"Anthropic Economic Index",
+    "scope":"Claude chat and Cowork · May 2026 snapshot",
+    "title":"Task completion and collaboration both remain common",
+    "measure":"Share of conversations classified as automation or augmentation; other conversations excluded.",
+    "why":"Shows how people use AI, not just whether they use it.",
+    "credit":"Redrawn from Anthropic's June 2026 data release. Provider-classified interaction patterns, not observed human oversight.",
+    "takeawayLabel":"What this shows",
+    "takeaway":"In May 2026, 48.6% of classified Claude chat and Cowork conversations were labelled automation, versus 51.4% augmentation. Neither label tells us whether a person checked or acted on the output.",
+    "dataUrl":"https://huggingface.co/datasets/Anthropic/EconomicIndex/blob/main/release_2026_06_26/data/aei_claude_ai_2026-06-26.csv",
+    "columns":["Interaction mode","Share of classified conversations (%)"],
+    "data":[["Automation",48.62],["Augmentation",51.38]],
+    "chart":{"kind":"bars","max":100,"ticks":[0,25,50,75,100],"unit":"%","axis":"Share of classified conversations (%)","category":"Interaction mode","aria":"May 2026 Claude chat and Cowork: automation 48.62%, augmentation 51.38%, among conversations assigned either mode.","rows":[{"label":"Automation","value":48.62,"vlabel":"48.6%"},{"label":"Augmentation","value":51.38,"vlabel":"51.4%"}]},
+    "supportTitle":"Other indicators",
+    "support":[{"label":"Bank of England / FCA: decision autonomy","url":"https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024","text":"A survey of UK finance distinguishes partial automation from full autonomy. Its firms-versus-use-cases denominator needs review, so no percentage is featured here."}],
+    "notes":[["Coverage","Global Claude chat and Cowork, May 2026. Not all providers, workplace activity or Claude Code."],["Definition","Automation: task completion, including feedback loops. Augmentation: learning, iteration or validation."],["Data","Published bucket shares exclude the 2.61% labelled 'None', verified from component totals. The exclusion formula is not explicit in the documentation."],["Limit","Company classification; actual review, use and reversibility of outputs are not observed. Sampling changes limit historical comparison."]],
+    "related":[{"title":"Autonomy varies by product and task","publisher":"Anthropic · June 2026","url":"https://www.anthropic.com/research/economic-index-june-2026-report","text":"The report also compares a classifier-rated autonomy scale across chat, Cowork and Claude Code. This is exploratory context, not a validated measure of lost control."}],
+    "watch":["How often people check, change or reject AI outputs.","Whether delegated decisions remain reversible across providers and sectors."]
+  },
+  "work": {
+    "source":"canaries", "publisher":"Stanford / ADP",
+    "scope":"US payroll sample · Ages 22–25 · September 2026 release",
+    "title":"Young-worker employment diverges by AI exposure",
+    "measure":"Employment index by occupational exposure. Each group's November 2022 level = 100.",
+    "why":"Tracks actual payroll outcomes for young workers, rather than predictions of which jobs AI could replace.",
+    "credit":"All 60 monthly observations, September 2021–August 2026, from Stanford's dashboard. Exposure is not adoption; this comparison does not establish causation.",
+    "takeawayLabel":"What changed",
+    "takeaway":"From November 2022 to August 2026, employment among 22–25-year-olds fell 12.8% in the most AI-exposed fifth of occupations and rose 8.1% in the least exposed. This is a descriptive gap in the ADP sample, not a count of jobs lost to AI.",
+    "dataUrl":"https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip",
+    "columns":["Month","Least exposed (Q1)","Q2","Q3","Q4","Most exposed (Q5)"],
+    "data":[],
+    "chart":{"kind":"work-series"},
+    "supportTitle":"Counterevidence",
+    "support":[{"label":"Humlum & Vestergaard: Danish workplaces","url":"https://www.andershumlum.com/s/chatbots_260313.pdf","text":"Workplaces encouraging chatbot use showed no extra decline in young workers' employment share through 2024. Different country, period and outcome; it does not rule out later US effects."}],
+    "notes":[["Coverage","Ages 22–25 in a balanced sample of ADP client firms. Age is not career stage; the sample is not nationally representative."],["Data","September 2026 release, all five exposure quintiles. Published index values; no averaging of groups or smoothing."],["Limit","Exposure is not employer adoption. Education, earlier trends and other economic changes complicate attribution. No intervals supplied for these descriptive series."],["Earlier headline","The paper's 19% shortfall pools different quintiles and ends in June 2026. It is not the endpoint of this chart."]],
+    "related":[{"title":"The paper behind the dashboard","publisher":"Brynjolfsson, Chandar & Chen · August 2026 revision","url":"https://digitaleconomy.stanford.edu/news/canariesaug26/","text":"Explains the sample, alternative explanations and the earlier pooled comparison. That paper's roughly 19% kept-pace shortfall is a different measure from the two extreme quintiles highlighted here."}],
+    "watch":["Junior hiring and training after documented employer AI adoption.","Whether the gap persists across countries, samples and education groups."]
+  },
+  "share": {
+    "source":"ilo-labour-share", "publisher":"International Labour Organization",
+    "scope":"Global modelled estimates · 2015 and 2025",
+    "title":"Labour's global income share is slightly lower",
+    "measure":"Share of global GDP received as labour income, including estimated self-employed labour income.",
+    "why":"An established international measure of how economic output is divided, with a baseline predating generative AI.",
+    "credit":"Two published endpoints from ILOSTAT's March 2026 review, not an annual series. Same release vintage; no intervening values inferred.",
+    "takeawayLabel":"What changed",
+    "takeaway":"Labour's share of global GDP fell from 53.0% in 2015 to 52.6% in 2025: a 0.4-percentage-point decline. The ILO describes a partial recent recovery; these figures do not identify AI's contribution.",
+    "columns":["Year","Labour income / global GDP (%)"],"data":[[2015,53],[2025,52.6]],
+    "chart":{"kind":"bars","max":100,"ticks":[0,25,50,75,100],"unit":"%","axis":"Labour income as a share of global GDP (%)","category":"Year","aria":"ILO global labour income share: 53.0% in 2015 and 52.6% in 2025. Zero to 100 percent scale.","rows":[{"label":"2015","value":53,"vlabel":"53.0%"},{"label":"2025","value":52.6,"vlabel":"52.6%"}]},
+    "supportTitle":"Other indicators",
+    "support":[{"label":"BLS: US nonfarm-business labour share","url":"https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm","text":"52.8% in Q2 2026. A more frequent US series, but its sector and denominator differ from global GDP. It is not an extra point on the ILO chart."}],
+    "notes":[["Coverage","Global, including estimated labour income of the self-employed. Modelled estimates may be revised."],["Data","2015 and 2025 values from one March 2026 publication. The live bulk download could not be retrieved, so no annual curve is shown."],["Limit","Not typical wages, bargaining power or an AI effect. Countries and sectors can move in different directions."],["Comparison","The BLS measure covers US nonfarm business. Its level cannot be directly compared with the global GDP measure."]],
+    "related":[],
+    "watch":["Income shares within sectors and firms with documented AI adoption.","Whether gains reach workers, including the self-employed, after accounting for other economic changes."]
+  },
+  "skills": {
+    "source":"bastani", "publisher":"Bastani et al. · PNAS",
+    "scope":"One Turkish high school · Randomized classroom trial · 2023",
+    "title":"The kind of AI help matters for later learning",
+    "measure":"Adjusted difference in unaided exam scores versus the no-AI group, on a 100-point scale.",
+    "why":"Tests what students can do after AI is removed, not just how well they perform with it.",
+    "credit":"Table 1, exam model. Dots are published estimates × 100. Bars are approximate 95% intervals calculated from published standard errors. Zero means no difference from the no-AI group.",
+    "takeawayLabel":"What this shows",
+    "takeaway":"After practice with unrestricted GPT, unaided exam scores were 5.4 points lower, about 17% relative to the no-AI group's mean. The guided tutor's −0.4-point estimate was not statistically distinguishable from no AI.",
+    "dataUrl":"https://hamsabastani.github.io/education_llm.pdf",
+    "columns":["Practice tool","Adjusted difference (points / 100)","Published SE × 100","Calculated approximate 95% low","Calculated approximate 95% high"],
+    "data":[["GPT Base",-5.4,2.2,-9.712,-1.088],["GPT Tutor",-0.4,1.3,-2.948,2.148]],
+    "chart":{"kind":"interval","min":-12,"max":4,"ticks":[-12,-8,-4,0,4],"axis":"Difference from no-AI group (points / 100)","category":"AI tool used during practice","aria":"Adjusted unaided exam effects: unrestricted GPT Base minus 5.4 points; guided GPT Tutor minus 0.4 points. Approximate 95% intervals are minus 9.712 to minus 1.088 and minus 2.948 to plus 2.148. Zero is no difference from no AI.","rows":[{"label":"GPT Base · unrestricted","value":-5.4,"low":-9.712,"high":-1.088},{"label":"GPT Tutor · guided","value":-0.4,"low":-2.948,"high":2.148}]},
+    "supportTitle":"During practice",
+    "support":[{"label":"The same trial: assisted performance","url":"https://doi.org/10.1073/pnas.2422633122","text":"Both AI tools improved performance while students had access to them. That benefit did not translate into better unaided exam scores."}],
+    "notes":[["Coverage","One school, grades 9–11; short-term maths exams. Main model: 2,848 student-session observations, not unique students."],["Chart data","Table 1 column 2 coefficients and standard errors × 100. Approximate intervals = estimate ± 1.96 × SE; calculated, not published endpoints."],["17%","−0.054 ÷ 0.321 ≈ −16.8%. The denominator is the no-AI mean. This is not a 17-point score difference."],["Limit","Not permanent skill loss. Tutor's nonsignificant estimate does not prove equivalence. Guardrails and teacher guidance were bundled."]],
+    "related":[{"title":"When human–AI teams help","publisher":"Vaccaro, Almaatouq & Malone · Nature Human Behaviour, 2024","url":"https://arxiv.org/html/2405.06087v2","text":"Across 106 experiments, teams beat people alone on average, but not the better of people or AI alone. This measures task performance, not retained skill."}],
+    "watch":["Repeated unaided tests of the same people over months or years.","Which teaching and review practices preserve skills, and how quickly skills recover without AI."]
+  },
+  "culture": {
+    "source":"deezer", "publisher":"Deezer",
+    "scope":"One music platform · Figures dated August 2026",
+    "title":"AI music is a small share of recorded streams",
+    "measure":"Fully AI-generated tracks as a share of all recorded streams on Deezer.",
+    "why":"Streams are closer to consumption than upload counts, though fraudulent streams prevent a clean measure of human listening.",
+    "credit":"Reported range in Deezer's 13 October 2026 release, not a confidence interval. No 2% midpoint inferred. Sampling window and fraud adjustment are unspecified.",
+    "takeawayLabel":"What this shows",
+    "takeaway":"Deezer reports AI-generated tracks at 1–3% of recorded streams, despite more than half of uploads being AI-made on peak days. Large supply does not establish large human attention, especially when streams can be fraudulent.",
+    "columns":["Measure","Lower reported share (%)","Upper reported share (%)"],"data":[["Fully AI-generated share of recorded streams",1,3]],
+    "chart":{"kind":"waffle","aria":"Fully AI-generated music accounts for a reported 1 to 3 of every 100 recorded streams on Deezer. Includes possible fraud; not a measure of human listening."},
+    "supportTitle":"Supply is different from attention",
+    "support":[{"label":"Deezer: more than 50% of uploads on peak days","url":"https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/","text":"An upload share counts tracks arriving, not plays or listeners. It is a peak-day figure, not an average, and uses a different denominator from the chart."}],
+    "notes":[["Coverage","Deezer only; fully AI-generated tracks detected by the company's own tool, not all AI-assisted music."],["Data","The release reports a 1–3% range. August 2026 date; sampling window unspecified. Squares show the range, not uncertainty around an estimate."],["Limit","Streams may include fraudulent activity; adjustment is unspecified. Detected tracks are excluded from algorithmic recommendations and editorial playlists."],["Transfer","Not an independent audit or a measure of culture-wide human influence."]],
+    "related":[{"title":"Creative gains, more similar stories","publisher":"Doshi & Hauser · Science Advances, 2024","url":"https://doi.org/10.1126/sciadv.adn5290","text":"In a randomized experiment with 293 writers, AI idea access improved story ratings but made stories more similar to one another. A bounded experiment, not a cultural trend."}],
+    "watch":["Independently measured human attention, excluding fraudulent activity.","Creator income and diversity across platforms, alongside AI-generated supply."]
+  },
+  "institutions": {
+    "source":"inventory", "publisher":"US Office of Management and Budget",
+    "scope":"2025 federal inventory · 3,611 individually reported use cases",
+    "gapNote":"This inventory shows AI applications, not how much decision power has been delegated.",
+    "title":"Government AI use is documented unevenly",
+    "measure":"Number of individually reported AI use cases by development stage.",
+    "why":"A public, reproducible starting point for finding systems that need decision-level monitoring.",
+    "credit":"Counts from the official CSV, pinned to 14 May 2026. Blank stages remain separate. Agency self-reports, not an audit or a time trend.",
+    "takeawayLabel":"What this shows",
+    "takeaway":"Of 3,611 reported use cases, 1,480 are explicitly marked deployed or pilot; 338 have no stage recorded. These counts show applications, not decisions, human reviews or successful appeals.",
+    "dataUrl":"https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Data/2025_individually_reported_AI_use_cases.csv",
+    "columns":["Development stage","Use cases"],"data":[["Deployed",1040],["Pilot",440],["Pre-deployment",1479],["Retired",314],["Stage not reported",338]],
+    "chart":{"kind":"bars","max":1600,"ticks":[0,400,800,1200,1600],"unit":"","axis":"Number of individually reported use cases","category":"Reported development stage","aria":"2025 federal AI inventory: 1040 deployed, 440 pilot, 1479 pre-deployment, 314 retired, and 338 with stage not reported. Total 3611.","rows":[{"label":"Deployed","value":1040,"vlabel":"1,040"},{"label":"Pilot","value":440},{"label":"Pre-deployment","value":1479,"vlabel":"1,479"},{"label":"Retired","value":314},{"label":"Stage not reported","value":338}]},
+    "supportTitle":"The missing measure",
+    "support":[{"label":"OMB: inventory and field definitions","url":"https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory","text":"We still need comparable counts of decisions, substantive human reviews, overrides and appeals. A blank field does not prove a safeguard is absent."}],
+    "notes":[["Coverage","3,611 individual public use cases. Consolidated commercial-software reporting and exempt uses are outside this count."],["Chart data","Counted every CSV row by development_stage; no imputation or deduplication. All five groups sum to 3,611."],["Discrepancy","README says 1,818 deployed/piloted. Explicit CSV labels total 1,480; 338 blanks account for the difference. Kept separate pending review."],["Limit","Reporting rules change. Counts do not measure decision volume, oversight quality or authority transferred."]],
+    "related":[{"title":"From AI alerts to human action","publisher":"Metropolitan Police · Annual report, September 2025","url":"https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf","text":"The force reports 2,077 facial-recognition alerts, including 10 false alerts, over a year. Officers review alerts before acting. One operational self-report, not a complete override rate or independent bias audit."}],
+    "watch":["Decision volumes and meaningful reviews for specific high-impact systems.","Whether people can challenge outcomes, and what happens after an appeal."]
+  },
+  "influence": {
+    "source":"pew-control", "publisher":"Pew Research Center",
+    "scope":"US adults · June 9–15, 2025 · 5,023 respondents",
+    "gapNote":"There is no validated overall measure here. Felt control is one contextual signal, not observed decision power.",
+    "title":"Most US adults feel little control over AI's use",
+    "measure":"Reported control over whether AI is used in their lives; share of US adults.",
+    "why":"A representative survey asks about people's experience of control directly, with published questions and methods.",
+    "credit":"Pew's published grouped responses, without renormalizing. Rounded values; 1% nonresponse is omitted in the original grouped chart.",
+    "takeawayLabel":"What this shows",
+    "takeaway":"In June 2025, 57% of US adults said they had little or no control over whether AI was used in their lives. This measures felt control, not whether people have actually lost the ability to decide or appeal.",
+    "dataUrl":"https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf",
+    "columns":["Felt control (published grouping)","US adults (%)"],"data":[["Not too much / none",57],["Some",30],["A great deal / quite a bit",13]],
+    "chart":{"kind":"bars","max":100,"ticks":[0,25,50,75,100],"unit":"%","axis":"Share of US adults (%)","category":"Felt control over whether AI is used","aria":"Pew June 2025: 57% of US adults report not too much or no control, 30% some control, and 13% a great deal or quite a bit. Rounded, nonresponse not shown.","rows":[{"label":"Not too much / none","value":57},{"label":"Some","value":30},{"label":"A great deal / quite a bit","value":13}]},
+    "supportTitle":"A separate question",
+    "support":[{"label":"Pew: 61% would like more control","url":"https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf","text":"Wanting more control is different from reporting little control. The 61% is not the remaining share of the chart above."}],
+    "notes":[["Coverage","Representative US adult survey; June 2025. A dated snapshot, not a demonstrated decline."],["Chart data","AICONTROL1, three groups published by Pew. The 1% nonresponse plus rounded categories totals 101%; values have not been rescaled."],["Uncertainty","Full-sample margin of error: ±1.6 percentage points at 95% confidence. Not a category-specific interval."],["Limit","Perceived control, not observed authority, political influence or AI-caused harm. Wanting more control is AICONTROL2."]],
+    "related":[{"title":"Disempowerment potential in conversations","publisher":"Sharma et al. / Anthropic · Preprint, 2026","url":"https://www.anthropic.com/research/disempowerment-patterns","text":"A provider study flags potentially compromised beliefs, values or actions in a small minority of Claude conversations. Potential risk is not confirmed harm or lasting loss of influence."}],
+    "watch":["Whether people can refuse, reverse or appeal AI-mediated decisions.","Link repeated surveys to observed choices and outcomes, across countries."]
+  }
+}
+;
+
+const WORK_SERIES = [
+  [
+    "2021-09-01",
+    85.25,
+    83.73,
+    84.73,
+    84.69,
+    87.81
+  ],
+  [
+    "2021-10-01",
+    87.39,
+    86.32,
+    89.53,
+    87.23,
+    89.92
+  ],
+  [
+    "2021-11-01",
+    88.12,
+    87.78,
+    92.21,
+    88.34,
+    90.85
+  ],
+  [
+    "2021-12-01",
+    90.28,
+    89.41,
+    94.37,
+    89.16,
+    91.7
+  ],
+  [
+    "2022-01-01",
+    89.42,
+    88.71,
+    92.31,
+    89.96,
+    92.43
+  ],
+  [
+    "2022-02-01",
+    90.8,
+    90.04,
+    91.14,
+    91.03,
+    92.73
+  ],
+  [
+    "2022-03-01",
+    91.4,
+    90.34,
+    90.18,
+    91.41,
+    92.36
+  ],
+  [
+    "2022-04-01",
+    94.54,
+    92.71,
+    90.15,
+    92.63,
+    93.31
+  ],
+  [
+    "2022-05-01",
+    94.69,
+    93.09,
+    89.13,
+    92.76,
+    93.24
+  ],
+  [
+    "2022-06-01",
+    95.89,
+    94.63,
+    90.13,
+    94.28,
+    95.67
+  ],
+  [
+    "2022-07-01",
+    98.02,
+    96.47,
+    92.79,
+    96.6,
+    97.82
+  ],
+  [
+    "2022-08-01",
+    97.63,
+    96.3,
+    92.7,
+    96.92,
+    97.75
+  ],
+  [
+    "2022-09-01",
+    99.31,
+    97.86,
+    96.39,
+    98.79,
+    99.18
+  ],
+  [
+    "2022-10-01",
+    99.65,
+    99.07,
+    98.26,
+    100.1,
+    99.66
+  ],
+  [
+    "2022-11-01",
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  [
+    "2022-12-01",
+    101.2,
+    101.8,
+    101.4,
+    100.2,
+    99.8
+  ],
+  [
+    "2023-01-01",
+    101.1,
+    101.6,
+    100.1,
+    100.6,
+    99.18
+  ],
+  [
+    "2023-02-01",
+    102.7,
+    102.9,
+    100.5,
+    100.9,
+    99.28
+  ],
+  [
+    "2023-03-01",
+    103.4,
+    103.8,
+    100.9,
+    100.6,
+    98.84
+  ],
+  [
+    "2023-04-01",
+    104.2,
+    104.4,
+    100.5,
+    99.87,
+    98.2
+  ],
+  [
+    "2023-05-01",
+    104,
+    104.4,
+    99.98,
+    99.72,
+    97.54
+  ],
+  [
+    "2023-06-01",
+    105.9,
+    105.1,
+    102.6,
+    100.4,
+    99.48
+  ],
+  [
+    "2023-07-01",
+    105.7,
+    104.9,
+    101.7,
+    99.81,
+    98.88
+  ],
+  [
+    "2023-08-01",
+    104.7,
+    104.9,
+    102.2,
+    99.88,
+    98.44
+  ],
+  [
+    "2023-09-01",
+    106.8,
+    106.3,
+    105.6,
+    101.4,
+    99.38
+  ],
+  [
+    "2023-10-01",
+    107,
+    106.7,
+    107.3,
+    101.4,
+    99.05
+  ],
+  [
+    "2023-11-01",
+    108.2,
+    107.2,
+    109.6,
+    101.3,
+    98.93
+  ],
+  [
+    "2023-12-01",
+    107.8,
+    106.5,
+    109.5,
+    99.66,
+    97.47
+  ],
+  [
+    "2024-01-01",
+    107.8,
+    107.5,
+    108.3,
+    100.2,
+    97.31
+  ],
+  [
+    "2024-02-01",
+    107.7,
+    107.7,
+    107.1,
+    99.8,
+    97.12
+  ],
+  [
+    "2024-03-01",
+    108.9,
+    108.5,
+    106.6,
+    99.6,
+    96.25
+  ],
+  [
+    "2024-04-01",
+    108.6,
+    108.6,
+    105.7,
+    98.86,
+    95.38
+  ],
+  [
+    "2024-05-01",
+    110.1,
+    109.8,
+    106.5,
+    98.57,
+    95.64
+  ],
+  [
+    "2024-06-01",
+    109.1,
+    109.8,
+    106.5,
+    98.73,
+    95.99
+  ],
+  [
+    "2024-07-01",
+    107.7,
+    108.5,
+    105.7,
+    97.7,
+    95.12
+  ],
+  [
+    "2024-08-01",
+    109.6,
+    110.1,
+    107.4,
+    98.75,
+    95.64
+  ],
+  [
+    "2024-09-01",
+    108.6,
+    109.4,
+    107.1,
+    98.52,
+    95.29
+  ],
+  [
+    "2024-10-01",
+    109.2,
+    110.3,
+    108.8,
+    98.43,
+    95.34
+  ],
+  [
+    "2024-11-01",
+    111.6,
+    111.9,
+    112.3,
+    98.67,
+    95.54
+  ],
+  [
+    "2024-12-01",
+    110.9,
+    111.4,
+    111.4,
+    97.34,
+    94.29
+  ],
+  [
+    "2025-01-01",
+    110.4,
+    111.1,
+    110.2,
+    97.95,
+    93.83
+  ],
+  [
+    "2025-02-01",
+    110.7,
+    111.2,
+    108.3,
+    97.36,
+    93.17
+  ],
+  [
+    "2025-03-01",
+    109.6,
+    111.3,
+    106.6,
+    96.7,
+    92.21
+  ],
+  [
+    "2025-04-01",
+    109.7,
+    111.5,
+    105,
+    95.73,
+    91.13
+  ],
+  [
+    "2025-05-01",
+    110.2,
+    113,
+    105.5,
+    95.71,
+    91.32
+  ],
+  [
+    "2025-06-01",
+    109,
+    111.8,
+    104.8,
+    95.37,
+    91.43
+  ],
+  [
+    "2025-07-01",
+    108.7,
+    111.7,
+    104.4,
+    94.68,
+    91.18
+  ],
+  [
+    "2025-08-01",
+    110.3,
+    112.9,
+    106.1,
+    95.96,
+    91.23
+  ],
+  [
+    "2025-09-01",
+    108.1,
+    111.9,
+    105,
+    96.1,
+    90.82
+  ],
+  [
+    "2025-10-01",
+    109.6,
+    113.2,
+    108.1,
+    96.37,
+    91.73
+  ],
+  [
+    "2025-11-01",
+    109.7,
+    113.9,
+    110.2,
+    96.32,
+    91.48
+  ],
+  [
+    "2025-12-01",
+    109.3,
+    113.1,
+    110.2,
+    95.57,
+    90.57
+  ],
+  [
+    "2026-01-01",
+    110,
+    112.8,
+    108.6,
+    95.35,
+    90.6
+  ],
+  [
+    "2026-02-01",
+    109.4,
+    112.6,
+    107.6,
+    94.72,
+    89.83
+  ],
+  [
+    "2026-03-01",
+    109.3,
+    111.4,
+    106.4,
+    93.57,
+    88.77
+  ],
+  [
+    "2026-04-01",
+    109,
+    111.5,
+    105.9,
+    92.64,
+    87.85
+  ],
+  [
+    "2026-05-01",
+    109.3,
+    112.3,
+    106.7,
+    92.2,
+    87.56
+  ],
+  [
+    "2026-06-01",
+    109,
+    111.5,
+    106.9,
+    92.26,
+    88.03
+  ],
+  [
+    "2026-07-01",
+    109,
+    111.7,
+    107,
+    92.17,
+    88.49
+  ],
+  [
+    "2026-08-01",
+    108.1,
+    110.3,
+    105.9,
+    92.11,
+    87.23
+  ]
+]
+;
 /* ---------- app: helpers, router, measurement record, shared charts ---------- */
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const sig=l=>`<span class="sig" data-l="${l}" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
@@ -4673,7 +5315,7 @@ const NIND=LINKS.reduce((a,l)=>a+l.inds.length,0);
 const lv=id=>id==='influence'?0:linkById(id).level;
 const ORDER=[...LINKS.map(l=>l.id),'influence'];
 const nameOf=id=>id==='influence'?END.name:linkById(id).name;
-const DRAFT='Draft v0.7',ASOF='13 October 2026';
+const DRAFT='Draft v0.8',ASOF='14 October 2026';
 
 /* ----- the chain map ----- */
 const GEO={W:1200,H:700,EDGE:1030,J:[492,350],S:{capability:[95,350],adoption:[255,350],handover:[415,350],work:[770,140],share:[950,140],skills:[950,280],culture:[950,420],institutions:[950,560],influence:[1128,350]}};
@@ -5173,7 +5815,13 @@ const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.link
     <div><dt>${esc(COPY.linkUI.pillMeasure)}</dt><dd class="r">${lineGlyph5(l,40,12)}<b>${LEVELWORD[l]}</b></dd>${why?`<dd class="w">${esc(why)}</dd>`:''}</div></dl></section>`};
 /* the chain as horizontal tabs along the top of each evidence page; the bar under each name repeats its line style */
 const crumbs5=id=>`<nav class="crumbs" aria-label="Links in the chain">${LINKS.map(l=>`<a href="#${l.id}" data-l="${l.level}" ${l.id===id?'aria-current="page"':''}><span class="ln"></span>${l.n} ${esc(l.name)}</a>`).join('')}<a href="#influence" data-l="0" ${id==='influence'?'aria-current="page"':''}><span class="ln"></span>${esc(END.name)}</a></nav>`;
-const crumbScroll5=v=>{const c=$('.crumbs [aria-current]',v);if(c){const nav=c.parentNode;nav.scrollLeft+=c.getBoundingClientRect().left-nav.getBoundingClientRect().left-40}};
+const crumbScroll5=v=>{
+  const align=()=>{const c=$('.crumbs [aria-current]',v);if(!c||!v.isConnected)return;const nav=c.parentNode;
+    const left=nav.scrollLeft+c.getBoundingClientRect().left-nav.getBoundingClientRect().left;
+    nav.scrollTo({left:Math.max(0,left-(nav.clientWidth-c.offsetWidth)/2),behavior:'instant'});
+  };
+  align();document.fonts.ready.then(align);
+};
 const pn5=(prev,next)=>`<nav class="pn5" aria-label="Previous and next">${prev?`<a href="#${prev[0]}"><span class="lab">← ${esc(prev[2]||'Previous link')}</span><b>${esc(prev[1])}</b></a>`:'<span></span>'}${next?`<a class="nx" href="#${next[0]}"><span class="lab">${esc(next[2]||'Next link')} →</span><b>${esc(next[1])}</b></a>`:''}</nav>`;
 const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest('.acc5-b');if(!b||!root.contains(b))return;const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));document.getElementById(b.getAttribute('aria-controls')).hidden=!o})};
 
@@ -5216,10 +5864,9 @@ function viewIndex(v){
   const E=COPY.evidence;
   v.innerHTML=`<div class="view5 wrap">${eye5(['Evidence'])}
    <h1 class="h1-5">${esc(E.title)}</h1><p class="lead5">${esc(E.deck)}</p>
-   ${verify5()}
    <div class="sec5 s1" id="erows"></div>
    <div class="foot5"><a class="go" href="#gaps">${esc(E.footer.toGap)}</a><span class="note5 inl5">${esc(E.coverage.cta)} <a class="go" href="${esc(COPY.linkUI.brief.proposeUrl)}" target="_blank" rel="noopener">${esc(E.coverage.ctaLink)} ↗</a></span></div>
-   <section class="sec5"><h2 class="h2-5 sm">A focused selection</h2><p class="sub5">Two priority sources per step: recurring indicators where available, and focused studies where they are not. See Methods for the selection criteria.</p><p class="review-links"><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
+   <section class="sec5"><h2 class="h2-5 sm">A focused selection</h2><p class="sub5">One main visual per step, with supporting evidence kept separate. Some show repeated measures; others are experiments or contextual proxies.</p><p class="review-links"><a class="go" href="#method/selection">How sources are chosen →</a></p></section></div>`;
   evidenceRows($('#erows',v));
 }
 
@@ -5297,7 +5944,7 @@ function viewFutures(v){
     <div class="future-grid5 s1">${F.landscape.items.map(proj).join('')}</div></section>
    <section class="sec5 future-land5"><h2 class="h2-5">${esc(F.directions.title)}</h2><p class="sub5">${esc(F.directions.sub)}</p>
     <div class="future-grid5 future-grid5-ideas s1">${F.directions.items.map(direction).join('')}</div></section>
-   <section class="sec5"><div id="fanc"></div></section>
+   <details class="det5 sec5" id="legacy-forecast"><summary>Unverified US labour-share forecast comparison</summary><p class="sub5">Parked for review. This older comparison mixes source baselines and is not the global ILO indicator now featured on the evidence page.</p><div id="fanc"></div></details>
    <section class="sec5"><h2 class="h2-5">Five routes the chain could take</h2><p class="sub5">${esc(F.blocks.routes)} ${esc(COPY.ui.instructions.routes)}</p>
     <div class="routes s1" role="group" aria-label="Route">${ROUTES.map(r=>`<button class="route" data-route="${r.id}" aria-pressed="${r.id===routeSel}"><span class="rn">ROUTE ${r.id}</span><span class="rt">${esc(r.name)}</span><span class="rd">${esc(F.routeDesc[r.id]||r.desc)}</span></button>`).join('')}</div>
     <div class="routebody" id="routebody"></div><p class="note5">${esc(F.routesNote)}</p></section>
@@ -5307,7 +5954,8 @@ function viewFutures(v){
     <div class="doors5 three s1">${F.moreCards.map(c=>`<a class="door5 wip" href="#futures/more"><b>${esc(c.title)}</b><span>${esc(c.line)}</span>${chev5}</a>`).join('')}</div></section>
    <p class="note5 sec5 s1"><a class="go" href="#gaps">${esc(F.toGap)}</a></p></div>`;
   futuresCard5($('#fanc',v),{title:"Workers' share of US business income: observed so far, and economists' forecasts",
-    note:"Change in percentage points from each source's own baseline. Blue is observed; orange is forecast. Over the last four quarters the share averaged 0.9 points below 2025 (latest quarter −1.8); economists' moderate-progress forecast is −1.5 by 2030. Sources: BLS; Karger, Tetlock et al. (2026); LEAP; Anthropic (Sep 2026).",draw:el=>fanChart(el,false)});
+    note:"Unverified legacy extraction. US nonfarm-business income, not global GDP. Source baselines differ; do not treat this as a single comparable series or cite the values before review.",draw:el=>fanChart(el,false)});
+  $('#legacy-forecast',v).addEventListener('toggle',()=>Charts.redraw());
   drawRoute(v);wireAcc5($('#tacc',v));
   $$('[data-route]',v).forEach(b=>b.addEventListener('click',()=>{routeSel=b.dataset.route;$$('[data-route]',v).forEach(x=>x.setAttribute('aria-pressed',x===b));drawRoute(v)}));
 }
@@ -5379,7 +6027,7 @@ COPY.home.snapshot.items[0].text='Benchmarks track AI capability; repeated surve
 COPY.home.snapshot.items[1].text='Some studies find changes in jobs and creative work. Government records show adoption, but not who retains decision power.';
 COPY.home.snapshot.items[2].text='We need repeated tests of unaided ability and direct measures of whether people retain meaningful choices.';
 linkById('capability').level=3;
-linkById('capability').levelWhy='Direct benchmark results, but limited task coverage; one industry-linked benchmark and one discontinued tracker.';
+linkById('capability').levelWhy='Direct technical-task benchmark results, with limited task coverage and a discontinued tracker.';
 COPY.futures.caveat='To be verified. Forecast extractions, historical chart points and scenario assumptions have not been checked in this source review. Do not cite them as established findings.';
 const sourceLink6=(s,label)=>`<a class="source-link6" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(label||s.citation)} <span aria-hidden="true">↗</span></a>`;
 const sourceCard6=s=>`<article class="source6" id="source-${esc(s.id)}">
@@ -5403,6 +6051,7 @@ function unchartedSources6(id){
 function viewTopic(v,id){
   if(id==='capability'){viewCapabilityPilot(v);return}
   if(id==='adoption'){viewAdoptionPilot(v);return}
+  if(TOPIC_CHARTS[id]){viewSelectedTopic(v,id);return}
   const p=SELECTED_EVIDENCE[id],i=ORDER.indexOf(id),prev=ORDER[i-1],next=ORDER[i+1];
   const charts=priorityIndicators5(id),uncharted=unchartedSources6(id);
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
@@ -5431,26 +6080,28 @@ function viewTopic(v,id){
 function viewEvidenceDetails(v,id){
   id=ORDER.includes(id)?id:'capability';
   const p=SELECTED_EVIDENCE[id];
+  const main=TOPIC_CHARTS[id]?.source||(id==='capability'?'metr':'gallup');
+  const sources=[...p.sources].sort((a,b)=>Number(b.id===main)-Number(a.id===main));
   v.innerHTML=`<div class="view5 wrap priority6 detail6">${crumbs5(id)}
     ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
-    ${verify5()}
     <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#method/selection">How indicators are selected →</a></p>
-    <section class="sec5"><h2 class="h2-5 sm">Priority sources</h2><div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
-    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What this pair still misses</h2><p class="lead5 sm">${esc(p.gap)}</p></section></div>`;
+    <section class="sec5"><h2 class="h2-5 sm">Selected source and supporting evidence</h2><div class="sources6">${sources.map(sourceCard6).join('')}</div></section>
+    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What remains unmeasured</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="note5">AI-assisted source notes. Selection and interpretation still need independent review.</p></section></div>`;
   crumbScroll5(v);
 }
 
 function viewSourceMethod(v){
   v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A dashboard of selected evidence, not a systematic review or a test of the whole theory.</p>
-    ${verify5()}
     <section class="sec5" id="m-selection"><h2 class="h2-5 sm">How sources are chosen</h2><ul class="scale5 lim5">
       <li><b>Relevance.</b><span>Does the indicator measure the question at this step? Identify proxies and explain what they miss.</span></li>
       <li><b>Credibility and traceability.</b><span>Can we inspect the original methods and results? Consider study design, uncertainty, independence and repeated measurement. State commercial involvement and publication status.</span></li>
       <li><b>Clear coverage.</b><span>Which countries, people, occupations or tasks were studied? Keep those boundaries visible. A rigorous study can still have narrow coverage.</span></li>
       <li><b>Added value.</b><span>Does this source answer a different part of the question or test whether another finding transfers? Include null results, benefits and conflicting findings.</span></li></ul>
       <p class="sub5">These are editorial criteria, not a numerical score or an exhaustive ranking. We explain why each featured indicator was chosen and what it leaves unanswered. Selection does not depend on whether a finding supports disempowerment.</p></section>
-    <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">Each pilot uses one source per chart. AI capability shows all METR TH1.1 models released from 2023 onward, at 80% success. AI adoption shows all eight observations in Gallup's Frequent AI users series, from May 2023 to August 2026. Neither combines datasets or adds a forecast.</p><p class="sub5">Sources stay visible beside the charts. Dropdowns contain caveats, downloadable values and published uncertainty where available. These charts are redrawn by this project, not produced or endorsed by the source organisations.</p><p class="sub5">The takeaways quantify the observed change and link to evidence from other settings, without treating different measures as equivalent. Related-evidence lists add sources not already linked in the takeaway.</p><p class="sub5">Evidence quality and breadth of coverage are separate judgements. Signals to watch are research priorities, not validated warning thresholds. Other topic charts still await this format and human review.</p></section>
-    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Forecasts are provisional.</p></section>
+    <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">Each evidence page uses one source for its main visual. We do not join different populations, report vintages or definitions into one trend. The source, population and date appear beside every chart; the dropdown includes values and any transformations.</p>
+      <details class="det5"><summary>Chart-by-chart construction</summary><ul class="lim5"><li>AI capability: all 23 METR TH1.1 models released from 2023 onward, at 80% success, with published uncertainty.</li><li>AI adoption: all eight Gallup frequent-use observations, May 2023–August 2026.</li><li>Delegation: Anthropic's May 2026 automation and augmentation bucket shares, among conversations assigned either mode. Not a historical trend.</li><li>Entry-level jobs: Stanford/ADP's September 2026 release, all 60 months and five exposure quintiles. Original November 2022 = 100 baseline; no averaging of quintiles.</li><li>Workers' income share: two ILO endpoints from the same March 2026 publication. No inferred annual path.</li><li>Skills: published adjusted exam effects and standard errors × 100. Approximate 95% intervals are calculated as estimate ± 1.96 × SE, not quoted from the paper.</li><li>Culture: Deezer's reported 1–3% stream-share range. No assumed midpoint; not a confidence interval or a fraud-adjusted listening share.</li><li>Government: counts of explicit CSV development-stage labels. Blank stages stay separate; the README discrepancy is disclosed.</li><li>Human influence: Pew's three published felt-control groups. Rounded values are not rescaled; nonresponse is noted.</li></ul></details>
+      <p class="sub5">These visuals are redrawn by this project, not endorsed by the sources. “What changed” describes a dated comparison; “What this shows” describes a snapshot or experiment. Signals to watch are research priorities, not validated warning thresholds.</p></section>
+    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">Selected figures, definitions and links were compared with primary sources using AI assistance on 14 October 2026. This is not an independent audit. Human sign-off is still needed on the extraction and interpretation, especially provider data and proxies for control. The forecast section remains a separate, unverified work in progress.</p></section>
     <section class="sec5" id="m-scales"><h2 class="h2-5 sm">Where the pathways come from</h2><p class="sub5">The pathways are adapted from the <a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Gradual Disempowerment paper ↗</a>.</p></section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">The colours are a provisional, AI-assisted assessment of measurement coverage based on the selected sources. They are not a rigorous review of the full research field or a measure of risk.</p>
       <p class="sub5">We consider three questions: does the evidence measure the outcome directly, is measurement repeated over time, and how many relevant settings does it cover? The bands below summarise that judgement; they are not calculated scores.</p>
@@ -5841,6 +6492,67 @@ function viewAdoptionPilot(v){
     annNarrow:[{x:points[0][0],y:11,text:'11%\nMay 2023',dx:8,dy:-30,strong:true},{x:points[7][0],y:32,text:'32%\nAug 2026',dx:-10,dy:-28,anchor:'end',strong:true}]
   });
   crumbScroll5(v);
+}
+/* A single source and explicit denominator for each selected visual. */
+TOPIC_CHARTS.work.data=WORK_SERIES;
+function viewSelectedTopic(v,id){
+  const t=TOPIC_CHARTS[id],p=SELECTED_EVIDENCE[id],s=p.sources.find(s=>s.id===t.source),i=ORDER.indexOf(id);
+  const csv=[t.columns.concat(['source','checked']),...t.data.map(r=>r.concat([t.dataUrl||s.url,'2026-10-14']))];
+  v.innerHTML=`<div class="view5 wrap priority6 pilot7 selected8">${crumbs5(id)}
+    <header class="claim5"><div class="eye5"><span>${esc(nameOf(id))}</span><i aria-hidden="true">·</i><span>${i+1} of 9</span></div><h1 class="h1-5 c">${esc(p.h1)}</h1></header>
+    ${t.gapNote?`<p class="measure-gap8"><b>Measurement gap.</b> ${esc(t.gapNote)}</p>`:''}
+    <figure class="evidence-chart7" aria-labelledby="${id}-title8">
+      <figcaption><div class="publisher7">${ext7(s.url,'Source: '+t.publisher)}<span>${esc(t.scope)}</span></div>
+        <h2 id="${id}-title8">${esc(t.title)}</h2><p class="measure7">${esc(t.measure)}</p>
+        <p class="choice7"><b>Why this indicator?</b> ${esc(t.why)}</p></figcaption>
+      <div class="chart" id="${id}-chart8"></div>
+      <p class="chart-credit7">${esc(t.credit)}</p>
+    </figure>
+    <p class="takeaway7"><b>${esc(t.takeawayLabel)}:</b> ${esc(t.takeaway)}</p>
+    <div class="disclosures7 evidence-grid7">
+      <section class="supporting7" aria-labelledby="${id}-supporting-title"><h2 id="${id}-supporting-title">${esc(t.supportTitle||'Other indicators')}</h2>
+        ${t.support.map(x=>`<p>${ext7(x.url,x.label)}</p><p>${esc(x.text)}</p>`).join('')}</section>
+      <details class="disclosure7" id="${id}-source"><summary>Source, caveats and data</summary><div class="disclosure7-body">
+        <dl class="context7">${t.notes.map(([term,text])=>`<div><dt>${esc(term)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl>
+        <p>AI-assisted summary; not independently verified.</p>
+        <p class="source-actions7">${ext7(s.url,'Full methodology: '+t.publisher)}${t.dataUrl?ext7(t.dataUrl,'Original data'):''}${csvLink7(id+'-selected-data-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
+        <div class="data-scroll7" role="region" aria-label="${esc(t.title)} data" tabindex="0"><table class="data7"><caption>${esc(t.tableCaption||t.measure)}</caption><thead><tr>${t.columns.map(c=>`<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${t.data.map(r=>`<tr>${r.map((c,i)=>i?`<td>${esc(c)}</td>`:`<th scope="row">${esc(c)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>
+      </div></details>
+      <details class="disclosure7" id="${id}-related"><summary>Related evidence</summary><div class="disclosure7-body">
+        ${t.related.length?`<p>Additional evidence; these AI-assisted summaries still need manual review.</p>${relatedEvidence7(t.related)}`:'<p>No additional study is featured yet. The linked sources cover the current selection.</p>'}
+        <p><a href="#details/${id}">Full source notes</a></p></div></details>
+      <details class="disclosure7" id="${id}-watch"><summary>What to watch next</summary><div class="disclosure7-body">
+        <p>${esc(p.gap)}</p><ul class="watch7">${t.watch.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p>Research priorities, not validated warning thresholds.</p><p><a href="#gaps/${id}">Research gaps →</a></p>
+      </div></details>
+    </div>${pn5([ORDER[i-1],nameOf(ORDER[i-1])],ORDER[i+1]?[ORDER[i+1],nameOf(ORDER[i+1])]:['evidence','All steps','Next'])}</div>`;
+  drawSelectedChart8($('#'+id+'-chart8',v),t);
+  crumbScroll5(v);
+}
+
+function drawSelectedChart8(el,t){
+  const c=t.chart;
+  if(c.kind==='work-series'){
+    Charts.line(el,{aria:'Stanford ADP payroll sample, ages 22 to 25. Five occupational AI exposure quintiles. Employment index, November 2022 equals 100. By August 2026 the most exposed quintile is at 87.23 and least exposed at 108.1.',h:310,table:false,axisPlacement:'edges',
+      x:{min:2021.6,max:2026.9,ticks:[2022,2023,2024,2025,2026],ticksNarrow:[2022,2024,2026],fmt:n=>String(n),tip:fmtDate,label:'Observation year'},
+      y:{min:75,max:120,ticks:[80,90,100,110,120],fmt:n=>String(n),tip:n=>n.toFixed(2),label:'Employment index (November 2022 = 100)'},zero:100,
+      series:[2,3,4,1,5].map(q=>({name:q===1?'Least exposed (Q1)':q===5?'Most exposed (Q5)':'Middle groups (Q2–Q4)',legend:[2,1,5].includes(q),color:q===1?C.s2:q===5?C.s1:C.ctx,w:q===1||q===5?2.8:1.3,op:q===1||q===5?1:.55,end:false,markers:'none',pts:WORK_SERIES.map(r=>[ym(Number(r[0].slice(0,4)),Number(r[0].slice(5,7))),r[q],'Quintile '+q])})),
+      ann:[{x:2026+7/12,y:108.1,text:'108.1',anchor:'end',dx:-6,dy:-12,strong:true},{x:2026+7/12,y:87.23,text:'87.2',anchor:'end',dx:-6,dy:20,strong:true}]
+    });
+  }else if(c.kind==='bars'){
+    Charts.bars(el,{aria:c.aria,min:0,max:c.max,ticks:c.ticks,fmt:n=>n+c.unit,
+      catLabel:c.category,valLabel:c.axis,table:false,rh:60,axisPlacement:'edges',
+      rows:c.rows.map((r,i)=>({...r,color:i===0?C.s1:C.ctx}))});
+  }else if(c.kind==='line'){
+    Charts.line(el,{aria:c.aria,h:300,table:false,axisPlacement:'edges',
+      x:{...c.x,fmt:n=>String(n),tip:fmtDate},y:{...c.y,fmt:n=>n+c.unit,tip:n=>n+c.unit},
+      series:c.series.map((s,i)=>({...s,color:i===0?C.s1:C.s2,end:false,markers:'none'})),
+      ann:c.ann,annNarrow:c.annNarrow});
+  }else if(c.kind==='interval'){
+    Charts.intervals(el,{...c,table:false});
+  }else if(c.kind==='waffle'){
+    // The outlined cells show the reported range, not a statistical interval.
+    el.innerHTML=`<div class="waffle8" role="img" aria-label="${esc(c.aria)}"><div class="waffle8-number">1–3<span>% of recorded streams</span></div><div class="waffle8-grid">${Array.from({length:100},(_,i)=>`<i class="${i===0?'filled':i<3?'possible':''}"></i>`).join('')}</div></div><p class="waffle8-key"><i></i> One square = 1% of streams. Outlines extend the reported range to 3%.</p>`;
+  }
 }
 render((location.hash||'#home').slice(1));initCaveats5();
 </script>

@@ -1,0 +1,16 @@
+{
+  "checked":"2026-10-14",
+  "human_reviewed":false,
+  "primary_url":"https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/",
+  "published":"2026-03-19",
+  "locator":"Labour's share of the economy is shrinking",
+  "rows":[{"year":2015,"percent_global_gdp":53.0},{"year":2025,"percent_global_gdp":52.6}],
+  "change_percentage_points":-0.4,
+  "vintage_rule":"Both endpoints come from the same publication. Do not splice in 2014/2024 values from the older May 2025 report.",
+  "annual_data_status":"Official bulk directory and SDG_1041_NOC_RT_A link located, but both CSV and gzip endpoints returned zero-byte bodies in this run. No annual observations inferred.",
+  "bulk_url":"https://rplumber.ilo.org/data/indicator?format=.csv.gz&id=SDG_1041_NOC_RT_A",
+  "supporting_url":"https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm",
+  "supporting_value":{"quarter":"2026Q2","percent":52.8,"scope":"US nonfarm business; different denominator from global GDP"},
+  "interpretation":"Modest global decline over a decade, with a partial recent recovery described by ILO. Neither global nor US statistics establish AI causation.",
+  "human_check":"Confirm endpoints and modelled-estimate definition, then obtain a consistent annual series before replacing the endpoint comparison."
+}

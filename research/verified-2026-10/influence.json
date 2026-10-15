@@ -1,0 +1,167 @@
+{
+  "stop": "influence",
+  "verified_on": "2026-10-14",
+  "scope": "Primary-source verification for rendering; dated snapshots, with no claim of exhaustive recency.",
+  "indicators": [
+    {
+      "id": "control",
+      "verification_status": "verified_topline_and_source_chart",
+      "title": "Americans' perceived control over AI in their lives",
+      "publication_date": "2025-09-17",
+      "fieldwork_start": "2025-06-09",
+      "fieldwork_end": "2025-06-15",
+      "population": "U.S. adults, Pew Research Center American Trends Panel wave 173; nationally representative weighted estimates.",
+      "sample_size": 5023,
+      "full_sample_margin_of_error_percentage_points": 1.6,
+      "confidence_level_percent": 95,
+      "question_code": "AICONTROL1",
+      "question_description": "Perceived amount of control over whether AI is used in one's life.",
+      "raw_responses": [
+        { "label": "A great deal", "value": 4, "unit": "percent" },
+        { "label": "Quite a bit", "value": 9, "unit": "percent" },
+        { "label": "Some", "value": 30, "unit": "percent" },
+        { "label": "Not too much", "value": 40, "unit": "percent" },
+        { "label": "None", "value": 17, "unit": "percent" },
+        { "label": "No answer", "value": 1, "unit": "percent" }
+      ],
+      "chart": {
+        "type": "stacked_bar",
+        "title": "Perceived control over whether AI is used in everyday life",
+        "unit": "percent of U.S. adults",
+        "data": [
+          { "label": "A great deal / Quite a bit", "value": 13, "components": ["A great deal", "Quite a bit"] },
+          { "label": "Some", "value": 30, "components": ["Some"] },
+          { "label": "Not too much / None", "value": 57, "components": ["Not too much", "None"] }
+        ],
+        "aggregation": "These three groups and values are published by Pew, not estimated as complements.",
+        "source_ids": ["pew_chapter", "pew_topline", "pew_report"],
+        "source_figure": {
+          "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2024.9.15_AI-and-its-impact_1-06.png?w=310",
+          "pdf_source_id": "pew_report",
+          "pdf_page": 16,
+          "pdf_page_index": 15,
+          "locator": "First control chart on report page 16; AICONTROL1 on topline page 4",
+          "visually_verified": true,
+          "filename_note": "The source image filename contains 2024, but its printed fieldwork is June 9-15, 2025."
+        },
+        "rendering_note": "Preserve the published 13/30/57 grouping, or use the five exact substantive categories. Do not combine this distribution with wanting more control."
+      },
+      "separate_question_context": {
+        "question_code": "AICONTROL2",
+        "question_description": "Comfort with the amount of control over how AI is used, versus wanting more control.",
+        "labels_are_abbreviated": true,
+        "raw_responses": [
+          { "label": "Comfortable with current control", "value": 17, "unit": "percent" },
+          { "label": "Would like more control", "value": 61, "unit": "percent" },
+          { "label": "Not sure", "value": 21, "unit": "percent" },
+          { "label": "No answer", "value": 1, "unit": "percent" }
+        ],
+        "source_ids": ["pew_topline"],
+        "source_figure": {
+          "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2024.9.15_AI-and-its-impact_1-07.png?w=420",
+          "pdf_source_id": "pew_report",
+          "pdf_page": 16,
+          "visually_verified": true
+        },
+        "rendering_note": "Context or a distinct panel only. 61% wanting more control is not the complement of 57% reporting little or no control."
+      },
+      "historical_context_only": {
+        "fieldwork_start": "2024-08-12",
+        "fieldwork_end": "2024-08-18",
+        "question_code": "AICONTROL1",
+        "raw_responses": [
+          { "label": "A great deal", "value": 5 },
+          { "label": "Quite a bit", "value": 9 },
+          { "label": "Some", "value": 27 },
+          { "label": "Not too much", "value": 41 },
+          { "label": "None", "value": 18 },
+          { "label": "No answer", "value": 1 }
+        ],
+        "unit": "percent of U.S. adults",
+        "not_too_much_or_none_percent": 59,
+        "source_ids": ["pew_topline"],
+        "note": "2024 values are reproduced in the 2025 topline; do not assign the 2025 sample size or margin of error to 2024. No significance claim is supplied."
+      },
+      "what_it_shows": "In June 2025, 57% of U.S. adults felt they had little or no control over AI's use in their lives.",
+      "flags": [
+        "Perceived personal control, not measured political influence or actual decision authority.",
+        "Rounded percentages: the five substantive categories total 100, while adding the published 1% no-answer category yields 101. Do not normalize or silently edit values.",
+        "Pew's published grouped chart omits nonresponse; include that note.",
+        "The full-sample margin of error is a survey summary, not a category-specific confidence interval.",
+        "Separate question: desire for more control must not be stacked with felt control.",
+        "This is a 2025 observation, not a claim that no newer survey exists."
+      ],
+      "recommendation": "Use the published three-part felt-control chart; retain the full topline categories for detail."
+    }
+  ],
+  "related_evidence": [
+    {
+      "id": "anthropic_disempowerment_2026",
+      "verification_status": "verified_primary_paper_and_research_release",
+      "title": "Disempowerment potential in Claude.ai conversations",
+      "publication_date": "2026-01-28",
+      "fieldwork_start": "2025-12-12",
+      "fieldwork_end": "2025-12-19",
+      "population": "Random sample of 1,499,397 Claude.ai consumer interactions; 110,233 screened in for detailed classification.",
+      "sample_size": 1499397,
+      "screened_in_count": 110233,
+      "raw_values": [
+        { "metric": "Severe reality-distortion potential", "approximately_one_in": 1300, "approximate": true, "paper_reported_percent": 0.076 },
+        { "metric": "Severe value-judgment-distortion potential", "approximately_one_in": 2100, "approximate": true },
+        { "metric": "Severe action-distortion potential", "approximately_one_in": 6000, "approximate": true }
+      ],
+      "denominator_note": "Prevalence is among sampled interactions, not only screened-in conversations, and not a percentage of users.",
+      "source_ids": ["anthropic_release", "anthropic_paper"],
+      "source_figure": {
+        "source_id": "anthropic_paper",
+        "locator": "Figure 2, section 4.2; exact sample counts in appendix C.1",
+        "note": "Paper figure uses Wilson 95% confidence intervals. No unverified interval endpoints or digitized bar heights supplied."
+      },
+      "what_it_shows": "Classifier-identified potential for compromised judgment in a small fraction of sampled consumer conversations.",
+      "flags": [
+        "Potential harm, not confirmed harm or demonstrated loss of agency.",
+        "Provider study of one platform; automated, partly subjective classification validated against human labels.",
+        "Categories can overlap; do not sum the three rates.",
+        "The separate historical trend uses voluntarily submitted feedback conversations and cannot establish a population trend or cause.",
+        "This measure does not capture structural political or economic disempowerment."
+      ],
+      "recommendation": "Keep as supporting behavioral evidence, distinct from Pew's perceived-control measure."
+    }
+  ],
+  "sources": [
+    {
+      "id": "pew_chapter",
+      "publisher": "Pew Research Center",
+      "url": "https://www.pewresearch.org/science/2025/09/17/ai-in-americans-lives-awareness-experiences-and-attitudes/",
+      "type": "primary_survey_report"
+    },
+    {
+      "id": "pew_topline",
+      "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf",
+      "type": "primary_survey_topline",
+      "locator": "Page 4, AICONTROL1 and AICONTROL2; page 1, rounding note"
+    },
+    {
+      "id": "pew_report",
+      "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.15_AI-and-its-impact_report.pdf",
+      "type": "primary_survey_report_pdf",
+      "locator": "Printed page 16"
+    },
+    {
+      "id": "pew_methodology",
+      "url": "https://www.pewresearch.org/science/2025/09/17/ai-impact-on-people-society-methodology/",
+      "type": "primary_survey_methodology"
+    },
+    {
+      "id": "anthropic_release",
+      "publisher": "Anthropic",
+      "url": "https://www.anthropic.com/research/disempowerment-patterns",
+      "type": "primary_provider_research_release"
+    },
+    {
+      "id": "anthropic_paper",
+      "url": "https://arxiv.org/html/2601.19062v1",
+      "type": "primary_research_preprint"
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "stop": "institutions",
+  "verified_on": "2026-10-14",
+  "scope": "Primary-source verification for rendering; dated snapshots, with no claim of exhaustive recency.",
+  "indicators": [
+    {
+      "id": "omb_2025_inventory",
+      "verification_status": "csv_verified_with_readme_discrepancy",
+      "title": "2025 federal AI inventory by reported development stage",
+      "inventory_year": 2025,
+      "readme_summary_as_of": "2026-04-13",
+      "agency_submission_deadline": "2025-12-22",
+      "agency_public_reporting_deadline": "2026-01-28",
+      "repository_commit": "06c7ebeef5b376524211042bd9673b2a7fefd3e3",
+      "repository_commit_date": "2026-05-14T12:36:20Z",
+      "population": "3,611 individually reported public AI use-case rows from 41 federal agencies in the 2025 OMB inventory.",
+      "chart": {
+        "type": "bar",
+        "title": "Reported development stages in the 2025 federal AI inventory",
+        "unit": "individually reported use cases",
+        "total": 3611,
+        "data": [
+          { "label": "Pre-deployment", "source_value": "Pre-deployment", "value": 1479 },
+          { "label": "Pilot", "source_value": "Pilot", "value": 440 },
+          { "label": "Deployed", "source_value": "Deployed", "value": 1040 },
+          { "label": "Retired", "source_value": "Retired", "value": 314 },
+          { "label": "Stage not reported", "source_value": "", "value": 338 }
+        ],
+        "source_ids": ["omb_csv_pinned"],
+        "source_figure": null,
+        "source_locator": "Direct row counts of development_stage in the official CSV",
+        "rendering_note": "Include all five categories, including missing stages. This is a snapshot, not a trend or a measure of decision power."
+      },
+      "verification": {
+        "method": "Fetched the commit-pinned CSV, decoded UTF-8 with optional BOM, parsed with Python csv.DictReader, counted every data row, and grouped literal development_stage and is_high_impact values. No imputation or deduplication.",
+        "csv_sha256": "a62721202ca4b110ce3c53ffdb688d05ad27a35971a7afda4f1179b2493e31d0",
+        "csv_rows": 3611,
+        "stage_sum": 3611,
+        "csv_deployed_plus_pilot": 1480,
+        "readme_deployed_and_piloted": 1818,
+        "difference": 338,
+        "missing_stage_by_agency": [
+          { "agency": "Department of Commerce", "abbreviation": "DOC", "value": 223 },
+          { "agency": "Department of Education", "abbreviation": "ED", "value": 56 },
+          { "agency": "Tennessee Valley Authority", "abbreviation": "TVA", "value": 59 }
+        ],
+        "reconciliation": "The README counts all 338 cases in these three agencies as deployed/piloted. Their CSV stages are blank, and OMB's data sourcing notes identify missing or unreported stage fields. The 1,818 summary is verified as an official published claim, but cannot be reproduced from explicit CSV stage labels. Keep 1,480 as the directly observed deployed-plus-pilot count and show 338 separately.",
+        "source_ids": ["omb_readme_pinned", "omb_csv_pinned", "omb_sourcing_pinned"]
+      },
+      "high_impact": {
+        "unit": "individually reported use cases",
+        "raw_classifications": [
+          { "label": "High-impact", "value": 445 },
+          { "label": "Presumed High-Impact, but Not High-impact", "value": 110 },
+          { "label": "Not High-impact", "value": 2630 },
+          { "label": "Not reported", "source_value": "", "value": 426 }
+        ],
+        "high_impact_by_stage": [
+          { "label": "Pre-deployment", "value": 140 },
+          { "label": "Pilot", "value": 23 },
+          { "label": "Deployed", "value": 227 },
+          { "label": "Retired", "value": 55 },
+          { "label": "Stage not reported", "value": 0 }
+        ],
+        "high_impact_deployed_plus_pilot": 250,
+        "scope": "The 445 total includes all stages, including 140 pre-deployment and 55 retired. It is not the count of operational high-impact systems.",
+        "definition": "M-25-21 covers AI outputs forming a principal basis for consequential decisions affecting rights, access to services or opportunities, health, safety, infrastructure, or strategic resources. Human oversight does not preclude this designation.",
+        "source_ids": ["omb_csv_pinned", "omb_dictionary_pinned", "omb_m25_21"],
+        "source_locator": "M-25-21 appendix sections 4(a) and 5, printed pages 14 and 19"
+      },
+      "what_it_shows": "The composition and reporting coverage of an official inventory of AI applications.",
+      "flags": [
+        "Summary discrepancy: README says 1,818 deployed/piloted; explicit CSV stages sum to 1,480, with 338 missing.",
+        "Use cases are not decisions, affected people, expenditure, or authority delegated to AI.",
+        "Agency self-reporting with incomplete fields; count rows rather than assuming complete unique identifiers.",
+        "Consolidated commercial off-the-shelf uses are reported separately and are excluded from these 3,611 rows.",
+        "Public inventory scope excludes national-security and intelligence uses, Department of War uses, some research, and legally withheld information.",
+        "Reporting rules changed from 2024, including consolidated reporting and research scope; do not infer a comparable growth rate."
+      ],
+      "recommendation": "Render the five CSV stage counts. Label 1,818 separately as the README summary only if its discrepancy is visible."
+    }
+  ],
+  "related_evidence": [
+    {
+      "id": "met_lfr_annual_2025",
+      "verification_status": "verified_primary_report",
+      "title": "Metropolitan Police live facial recognition annual report",
+      "report_date": "2025-09-30",
+      "report_date_note": "Date of the signed foreword; the report is titled September 2025.",
+      "period_start": "2024-09-11",
+      "period_end": "2025-09-10",
+      "population": "Metropolitan Police LFR deployments in London during this reporting period.",
+      "raw_values": [
+        { "metric": "Crime-hotspot deployments", "value": 203, "unit": "deployments" },
+        { "metric": "Protective-security event deployments", "value": 4, "unit": "deployments" },
+        { "metric": "All deployments", "value": 207, "unit": "deployments", "derived": true, "calculation": "203 + 4" },
+        { "metric": "Faces passing cameras", "value": 3147436, "unit": "estimated face observations", "approximate": true },
+        { "metric": "Alerts", "value": 2077, "unit": "alerts" },
+        { "metric": "True alerts", "value": 2067, "unit": "alerts" },
+        { "metric": "False alerts", "value": 10, "unit": "alerts" },
+        { "metric": "Recorded arrests", "value": 962, "unit": "arrests" },
+        { "metric": "Engagements following false alerts", "value": 6, "unit": "engagements" },
+        { "metric": "Arrests following false alerts", "value": 0, "unit": "arrests" }
+      ],
+      "source_ids": ["met_lfr_report"],
+      "source_figure": {
+        "source_id": "met_lfr_report",
+        "locator": "Section A, Summary of Results, printed page 5; false-alert review on page 15",
+        "kind": "Numbered results and table, not a time-series figure"
+      },
+      "what_it_shows": "Operational use of one police AI tool and its reported alerts and outcomes.",
+      "flags": [
+        "203 counts hotspot deployments only; four event deployments are additional.",
+        "Face observations and arrests need not represent unique people.",
+        "Officers review alerts before deciding whether to approach someone; alerts are not autonomous arrest decisions.",
+        "One force's own report, not an independent causal evaluation or a national trend.",
+        "Do not mix this September-to-September period with calendar-year deployment counts."
+      ],
+      "recommendation": "Useful concrete operational case; retain human review and denominator labels."
+    }
+  ],
+  "sources": [
+    {
+      "id": "omb_repository",
+      "publisher": "U.S. Office of Management and Budget",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "type": "official_repository"
+    },
+    {
+      "id": "omb_readme_pinned",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/blob/06c7ebeef5b376524211042bd9673b2a7fefd3e3/README.md",
+      "type": "official_summary"
+    },
+    {
+      "id": "omb_csv_pinned",
+      "url": "https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Data/2025_individually_reported_AI_use_cases.csv",
+      "type": "official_csv"
+    },
+    {
+      "id": "omb_dictionary_pinned",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/blob/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Validation/data_dictionary.json",
+      "type": "official_data_dictionary"
+    },
+    {
+      "id": "omb_sourcing_pinned",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/blob/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Validation/data_sourcing_summary.md",
+      "type": "official_provenance_notes"
+    },
+    {
+      "id": "omb_m25_21",
+      "url": "https://www.whitehouse.gov/wp-content/uploads/2025/02/M-25-21-Accelerating-Federal-Use-of-AI-through-Innovation-Governance-and-Public-Trust.pdf",
+      "type": "official_memorandum"
+    },
+    {
+      "id": "met_lfr_report",
+      "publisher": "Metropolitan Police Service",
+      "url": "https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf",
+      "type": "primary_operational_report"
+    }
+  ]
+}

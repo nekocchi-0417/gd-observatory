@@ -1059,190 +1059,190 @@ const COPY={
     "link": "capability",
     "old": "Task lengths outside software",
     "chip": "Partial coverage",
-    "title": "Task lengths have been tracked over time for software work only",
+    "title": "Track reliable task completion beyond technical work",
     "why": "The theory needs AI able to do the casework and management institutions run on, not only code.",
     "what": "METR-style task-length tests for casework, negotiation and management, re-run on each new model by an independent evaluator.",
-    "closest": "METR tracked software, machine learning and security, adding no model after May 2026; a 2025 one-off covered maths, computer use and driving. The Remote Labor Index scores real freelance projects, but not task length."
+    "closest": "METR measures technical-task horizons; its tracker is no longer actively updated. The Remote Labor Index adds professional projects, with different scoring and coverage. See the selected capability sources."
    },
    {
     "i": 14,
     "link": "capability",
     "old": "Reliability on real work",
     "chip": "Partial coverage",
-    "title": "No independent, repeated test of AI reliability on real work",
+    "title": "Test reliability across complete real-world workflows",
     "why": "A system that succeeds once may fail the next time; institutions need work done right every time.",
     "what": "The same real tasks run many times by an independent evaluator, reporting how often AI succeeds on every run.",
-    "closest": "Princeton's agent reliability tracker measures reliability on benchmark tasks only: accuracy 17 to 80%, reliability 0.69 to 0.87 across 15 agents."
+    "closest": "METR explicitly measures task completion at a chosen success rate. Its technical-task coverage does not establish reliability across whole jobs."
    },
    {
     "i": 15,
     "link": "capability",
     "old": "Cost per completed real task",
     "chip": "Partial coverage",
-    "title": "No series of what a finished real task costs",
+    "title": "Track the full cost of completing work with AI",
     "why": "Cheaper answers do not mean cheaper work; whether firms hand work to AI depends on what a finished job costs.",
     "what": "The full cost of finishing real tasks with AI, including reruns and checking, tracked for each new model.",
-    "closest": "Epoch AI tracks the cost of reaching a fixed benchmark score, about 13 times cheaper each year; that covers benchmark questions, not real work."
+    "closest": "The selected capability benchmarks measure completion or reliability, not the full cost of deployment, retries and human review."
    },
    {
     "i": 16,
     "link": "capability",
     "old": "Lab-to-life gap",
     "chip": "One-off only",
-    "title": "No repeated comparison of benchmark scores with real users' results",
+    "title": "Compare benchmark scores with results for real users",
     "why": "Benchmarks may overstate what people actually get from AI, so capability can look further ahead than its use.",
     "what": "For each new model, its benchmark score set against the results real users get on the same kind of task.",
-    "closest": "One UK trial: AI models alone named the right medical condition in 94.9% of cases; members of the public using them, in under 34.5% (Bean et al. 2026)."
+    "closest": "The capability page separates controlled benchmarks from performance across whole jobs. A repeated comparison with real users remains a monitoring priority."
    },
    {
     "i": 1,
     "link": "adoption",
     "old": "Work hours done with AI, by occupation",
     "chip": "Partial coverage",
-    "title": "No official count of hours worked with AI, by job",
+    "title": "Measure how much working time involves AI, by job",
     "why": "Yes-or-no use hides depth; hours show how much work AI is actually part of.",
     "what": "A quarterly official survey reporting the share of work hours done with AI, broken down by occupation.",
-    "closest": "The St. Louis Fed publishes a quarterly series, also by occupation group, from an online panel: 6.3% of US work hours in Q2 2026. No statistics agency measures it."
+    "closest": "Gallup tracks regular use; the RPS work-hours indicator linked on the adoption page estimates time involving AI. Neither directly measures work handed over or checked."
    },
    {
     "i": 2,
     "link": "handover",
     "old": "The review rate",
     "chip": "Company data only",
-    "title": "No cross-company count of how often people check AI output",
+    "title": "Count meaningful checks of AI output across providers",
     "why": "Checking is the line between delegating a task and losing track of it.",
     "what": "For each task AI completes, whether a person checked the output before it was used, across providers, on one definition.",
-    "closest": "Anthropic reports a human in the loop for at most 73% of agent actions on its public API; one company, one period."
+    "closest": "Anthropic classifies automation and augmentation in conversations. Those patterns do not show whether people checked or used an output."
    },
    {
     "i": 3,
     "link": "work",
     "old": "Junior hiring inside firms that adopt AI",
     "chip": "Not tied to AI",
-    "title": "No regular tracking of junior hiring inside firms that adopt AI",
-    "why": "It would show whether AI, rather than interest rates, is cutting first jobs.",
+    "title": "Link junior hiring to firms' actual AI adoption",
+    "why": "It would help separate AI's contribution from other changes in demand for junior workers.",
     "what": "Payroll data linking the date a firm adopted AI to its hiring by seniority, updated regularly.",
-    "closest": "Stanford and ADP track jobs by age and occupation, not by firm adoption. One 2026 paper (Hosseini and Lichtinger) finds junior employment about 9% lower after six quarters at firms that adopted generative AI, through slower hiring; senior employment unchanged."
+    "closest": "Stanford/ADP tracks age and occupational exposure, not adoption. Humlum and Vestergaard link Danish adoption reports to administrative outcomes, but in a different period and setting."
    },
    {
     "i": 4,
     "link": "share",
     "old": "AI capital's share of income",
     "chip": "No measure exists",
-    "title": "No estimate of how much income goes to AI capital",
+    "title": "Separate AI-related income shifts from other changes",
     "why": "It would show whether money once paid as wages is going to AI owners instead.",
     "what": "National accounts that split capital income into AI-related and other, so changes in workers' share can be traced.",
-    "closest": "The BLS labour share, which cannot separate AI, and press figures on big-tech capital spending."
+    "closest": "ILO global labour income share and BLS US nonfarm-business labour share. Neither attributes changes to AI or identifies who owns AI-related capital."
    },
    {
     "i": 5,
     "link": "skills",
     "old": "Unaided ability, tested twice",
     "chip": "Partial coverage",
-    "title": "No general panel re-tests unaided skills alongside AI use",
-    "why": "Only repeat tests on the same people can show skills fading as AI use grows.",
+    "title": "Re-test unaided skills alongside recorded AI use",
+    "why": "Repeat tests help distinguish lasting learning or skill loss from short-term performance changes.",
     "what": "A panel of workers, students or clinicians, tested on set tasks without AI every year, alongside a record of their AI use.",
-    "closest": "Of 233 studies of generative AI found, only 4 test the same people without AI over months, all narrow. Two clinic audits disagree: one found a loss, a three-year study found none. In one call centre, workers kept their gains during AI outages."
+    "closest": "Bastani et al. test unaided maths performance immediately after practice. The guided tutor and unrestricted tool have different results; neither estimates population-wide long-term change."
    },
    {
     "i": 6,
     "link": "skills",
     "old": "Take-back time",
     "chip": "No measure exists",
-    "title": "No measure of how fast skills recover without AI",
+    "title": "Measure recovery after AI is withdrawn",
     "why": "It shows whether people could take a task back: the difference between reliance and lock-in.",
     "what": "Withdraw AI from a group for a week or a month and measure how long their performance takes to recover.",
-    "closest": "None found. Every withdrawal test found is a single check, minutes to weeks later. In METR's 2026 study, 30 to 50% of developers avoided tasks they would have had to do unaided."
+    "closest": "The selected classroom trial tests performance without AI but does not follow recovery over months."
    },
    {
     "i": 17,
     "link": "skills",
     "old": "Dependence checked against behaviour",
     "chip": "Partial coverage",
-    "title": "No AI-dependence questionnaire checked against what people do",
+    "title": "Check reported AI dependence against behaviour",
     "why": "Without a check against behaviour, a dependence score may label ordinary use as a problem, or miss real dependence.",
     "what": "A short dependence scale tested on the same people against their AI use and their performance without AI, with agreed cut-offs and a representative sample.",
-    "closest": "At least eight AI-dependence scales exist; none has been checked against behaviour or unaided ability, and none has a cut-off or a representative sample."
+    "closest": "The current shortlist does not contain a validated dependence measure linked to repeated unaided performance. This is a gap in this selection, not proof that no relevant study exists."
    },
    {
     "i": 18,
     "link": "skills",
     "old": "Benchmark-to-person link",
     "chip": "No measure exists",
-    "title": "No model benchmark linked to what happens to its users",
+    "title": "Link model behaviour to outcomes for its users",
     "why": "Benchmarks count what models do, such as flattery or manipulation, not whether users' skills or beliefs change. User satisfaction is not a safe guide either.",
     "what": "Studies that give people models with different benchmark scores and measure what changes in those people over time.",
-    "closest": "When Google DeepMind measured both, how often a model used manipulative tactics did not predict how much people's beliefs changed (Akbulut et al. 2026). Users rated more disempowering conversations more highly (Sharma et al. 2026)."
+    "closest": "Anthropic's disempowerment study classifies potential risks in conversations, not lasting changes in people's beliefs or agency. It is linked on the human influence page."
    },
    {
     "i": 7,
     "link": "culture",
     "old": "Attention-weighted AI share",
     "chip": "Company data only",
-    "title": "Only one platform reports attention to AI-made content",
+    "title": "Measure human attention to AI-made content across platforms",
     "why": "AI-made content floods supply; the theory turns on how much of it people actually take in.",
     "what": "The share of minutes read, watched or heard that is AI-made, reported by platform, every quarter.",
-    "closest": "Deezer reports AI tracks at 1 to 3% of its streams; no other platform's figure was found."
+    "closest": "Deezer reports 1–3% of recorded streams for fully AI-generated tracks. Fraud and recommendation exclusions prevent a clean measure of human listening."
    },
    {
     "i": 8,
     "link": "culture",
     "old": "Convergence in what gets published",
     "chip": "No measure exists",
-    "title": "No yearly measure of whether published work grows more alike",
+    "title": "Track diversity in published work over time",
     "why": "If AI makes what is published more uniform, the range of ideas people meet could narrow.",
     "what": "A yearly index of diversity in vocabulary, style and subject across published text, music and images.",
-    "closest": "Lab experiments only; no repeated measure of published work was found."
+    "closest": "Doshi and Hauser find higher creativity ratings but more similarity in AI-assisted short stories. That experiment is not a trend in published culture."
    },
    {
     "i": 9,
     "link": "institutions",
     "old": "Decisions made by AI",
     "chip": "Partial coverage",
-    "title": "Almost no government counts its decisions made with AI",
+    "title": "Count decisions made with AI, not just applications",
     "why": "Disclosures list tools; only decision counts show how much of the state's work runs through AI.",
     "what": "For each high-impact system, decisions per year: fully automated, AI-recommended with sign-off, or made by a person alone.",
-    "closest": "Registers list AI uses (3,611 in the US federal inventory), not decisions. London's Metropolitan Police count face-matching alerts (2,077 in a year). EU online platforms flag automation for each moderation decision (43% fully automated)."
+    "closest": "The US inventory lists 3,611 use cases. The Metropolitan Police report 2,077 facial-recognition alerts in one year. These count different things; neither is a government-wide decision count."
    },
    {
     "i": 10,
     "link": "institutions",
     "old": "The override rate",
     "chip": "No measure exists",
-    "title": "Governments rarely publish how often officials overrule AI",
-    "why": "If officials almost never overrule AI, human sign-off is a formality, not control.",
+    "title": "Publish human reviews, overrides and appeals",
+    "why": "An override rate alone cannot establish meaningful control; reviewers' opportunities, reasons and outcomes also matter.",
     "what": "The share of AI recommendations the responsible official changes, with time spent per case, published for each high-impact system.",
-    "closest": "Hospitals log alert overrides, for older tools. One lab experiment (292 people) and scattered field studies; no government we found publishes override rates."
+    "closest": "The OMB inventory records reported applications and some safeguards, not comparable rates of substantive review and successful appeals. Missing fields do not prove safeguards are absent."
    },
    {
     "i": 11,
     "link": "institutions",
     "old": "Dependence on foreign model providers",
     "chip": "No measure exists",
-    "title": "No breakdown of which countries' AI firms governments rely on",
+    "title": "Track public-sector dependence on model providers",
     "why": "States that buy rather than build AI may lose the ability to change or replace it.",
     "what": "Share of public-sector AI spending and queries by vendor and the vendor's home country, published yearly.",
-    "closest": "In the US inventory, Microsoft appears in 100 of 311 generative-AI uses that name a vendor; in Canada, 38% of 409 registered systems were built by vendors. Singapore reports about 80% of its public officers have used the government chatbot, with no vendor breakdown."
+    "closest": "Public inventories can identify some systems and vendors. Counts of listed tools do not measure spending, query volume or the practical ability to switch suppliers."
    },
    {
     "i": 12,
     "link": "influence",
     "old": "Who can decide",
     "chip": "No measure exists",
-    "title": "No measure of who holds decision power, people or AI",
+    "title": "Observe who can make, refuse or reverse a decision",
     "why": "This is the outcome itself: whether people, not systems, still settle what happens.",
     "what": "For real institutions, the smallest group able to settle an outcome, and the mix of people and AI systems in it.",
-    "closest": "RAND (2026) proposes measuring the smallest group able to settle an outcome; not yet applied."
+    "closest": "Pew measures felt control; Anthropic studies conversational risk. Neither is a validated measure of decision authority across institutions."
    },
    {
     "i": 13,
     "link": "influence",
     "old": "A population measure of disempowerment",
     "chip": "Definitions differ",
-    "title": "No tested, repeated survey of whether AI changes people's say",
+    "title": "Pair repeated surveys of control with observed choices",
     "why": "It is the nearest population-wide signal of the outcome, and cheap enough to repeat every year.",
     "what": "A tested survey scale, paired with simple behavioural tasks, put to the same people every year.",
-    "closest": "Pew: 57% say not too much or no control over AI in their lives. UK: 50% say their views are not represented in decisions about AI (Ada Lovelace Institute and Alan Turing Institute, 2025). Dutch and Finnish panels track attitudes; Chooi, Lee and Li (2026) propose perception surveys, not yet fielded."
+    "closest": "Pew reports 57% of US adults felt little or no control in June 2025. Its topline includes earlier responses, but neither wave shows how much actual authority people have."
    }
   ]
  },

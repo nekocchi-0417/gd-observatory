@@ -139,37 +139,37 @@
     ]
   },
   "handover": {
-    "h1": "Using AI is not the same as handing over control",
-    "summary": "Conversation logs show task requests; a regulator survey distinguishes partial automation from full autonomy. Neither gives a general measure of decisions handed over to AI.",
-    "selection": "Combine observed request patterns with explicit decision-autonomy categories. These are closer to delegation than counts of people trying an AI tool.",
+    "h1": "How much work do people hand over to AI?",
+    "summary": "In May 2026, 48.6% of classified Claude chat and Cowork conversations were labelled automation. Whether people checked or used the output is not observed.",
+    "selection": "Feature Anthropic's observed interaction patterns, which distinguish task completion from collaboration. Keep the UK regulator survey as narrower, provisional context on decision autonomy.",
     "gap": "An independent measure across providers of which decisions AI makes, which people review, and which people can reverse.",
     "signal": 2,
     "sources": [
       {
         "id": "aei",
-        "title": "Anthropic Economic Index: directive task requests",
-        "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
-        "locate": "Chapter 1, Augmentation is again dominant on Claude.ai; Chapter 3 footnote 2 for November sampling; September report Chapter 1 footnote 4 for classifier sensitivity.",
-        "label": "Requests to complete a task",
-        "citation": "Anthropic Economic Index (January 2026)",
+        "title": "Anthropic Economic Index: automation and augmentation",
+        "url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+        "locate": "June release CSV: May 2026, GLOBAL, overall, collaboration_bucket_automation_pct and collaboration_bucket_augmentation_pct. Data documentation defines metrics and platform coverage.",
+        "label": "Automation versus augmentation",
+        "citation": "Anthropic Economic Index (June 2026)",
         "type": "Company logs and classifier",
-        "date": "Claude.ai sample, November 2025",
-        "finding": "Anthropic classified 32% of sampled Claude.ai conversations as directive requests, where the user asks AI to complete a task.",
-        "why": "Behavioural traces distinguish task requests from collaborative assistance.",
-        "limit": "Request style does not show whether the output is checked or used. One provider, changing classifiers and sampling. A dated snapshot, not the newest release.",
+        "date": "Claude chat and Cowork, May 2026; June release",
+        "finding": "Among conversations assigned either mode, 48.62% were classified as automation and 51.38% as augmentation. The 2.61% labelled 'None' is outside this denominator, as verified from component totals.",
+        "why": "Observed interaction patterns are closer to delegation than counts of users. The underlying data are downloadable.",
+        "limit": "One provider's classifier. Automation is not autonomy or absence of oversight. May 2026 includes chat and Cowork; sampling changes prevent a simple comparison with older releases.",
         "metrics": [
           [
-            "32%",
-            "Conversations classified as directive"
+            "48.62%",
+            "Automation among conversations assigned either mode"
           ],
           [
-            "Not observed",
-            "What users did with the output"
+            "51.38%",
+            "Augmentation, same denominator"
           ]
         ],
         "checks": [
-          "Check the directive definition and 32% figure; do not substitute the broader automation category.",
-          "Review classifier and later sampling changes before turning snapshots into a trend."
+          "Check the May GLOBAL overall CSV rows and normalized bucket denominator; unclassified conversations are excluded.",
+          "Review the provider classification and distinguish automation from decision autonomy or human review."
         ],
         "legacy": [
           "aei"
@@ -184,17 +184,17 @@
         "citation": "Bank of England & FCA (2024)",
         "type": "Regulator survey",
         "date": "118 responding firms; November 2024 report",
-        "finding": "The report says 55% of reported AI use cases involved some automated decision-making; 2% were fully autonomous.",
+        "finding": "The survey distinguishes partial automation from full autonomy. Its firms-versus-use-cases denominator needs reconciliation before percentages are featured.",
         "why": "Directly distinguishes partial automation from full autonomy, in a survey independent of AI providers.",
         "limit": "Firm self-report in one sector, not decision volumes. The chart subtitle and narrative use different denominator wording; retain a provisional label until reconciled.",
         "metrics": [
           [
-            "55%",
-            "Some automated decision-making"
+            "Provisional",
+            "Survey denominator needs review"
           ],
           [
-            "2%",
-            "Fully autonomous; overlapping categories"
+            "UK finance",
+            "One sector, self-reported"
           ]
         ],
         "checks": [
@@ -206,37 +206,37 @@
     ]
   },
   "work": {
-    "h1": "Young-worker employment is a warning sign, not yet a settled AI effect",
-    "summary": "US payroll data show a gap in exposed occupations. Danish adoption-linked evidence finds no extra decline through 2024. The settings, dates and comparisons differ.",
-    "selection": "Pair a directly relevant US warning signal with an administrative-data study that measures workplace adoption and offers counterevidence.",
+    "h1": "Are entry-level jobs becoming harder to find?",
+    "summary": "In the ADP sample, employment among ages 22–25 fell 12.8% in the most AI-exposed occupations from November 2022 to August 2026. The least-exposed group rose 8.1%; AI causation is not established.",
+    "selection": "Feature Stanford/ADP's monthly age-by-exposure payroll series, with all five quintiles visible. Keep Danish adoption-linked counterevidence separate because its population, outcome and period differ.",
     "gap": "Link firms' AI adoption to junior hiring and training, with comparisons that separate AI from other changes in the labour market.",
     "signal": 2,
     "sources": [
       {
         "id": "canaries",
         "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence",
-        "url": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
-        "locate": "August 12, 2026 PDF: introduction, PDF page 3; sample, section 1.1; limitations, section 4 and August author note.",
+        "url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/",
+        "locate": "Employment Index by Age Group and AI Exposure; September 2026 data package, Early Career 1 (22-25), all five quintiles, November 2022 = 100.",
         "label": "Young workers in exposed occupations",
         "citation": "Brynjolfsson, Chandar & Chen / Stanford (2026)",
         "type": "Observational working paper",
-        "date": "August 2026 revision; data through June 2026",
-        "finding": "In the ADP payroll sample, employment of 22-25-year-olds in more exposed jobs was 19% below the level implied by keeping pace with less-exposed peers.",
+        "date": "September 2026 dashboard release; data through August 2026",
+        "finding": "From November 2022 to August 2026, the most-exposed quintile's employment index fell from 100 to 87.23; the least-exposed rose to 108.1, among ages 22-25 in the ADP sample.",
         "why": "A repeatable age-by-exposure comparison, with detailed discussion of alternative explanations.",
         "limit": "Descriptive, not jobs proven lost to AI. Exposure is not adoption; sample selection, education and pre-trends affect interpretation.",
         "metrics": [
           [
-            "19%",
-            "Relative kept-pace shortfall"
+            "-12.8%",
+            "Most-exposed quintile, November 2022-August 2026"
           ],
           [
-            "Not causal",
-            "Does not identify jobs lost to AI"
+            "+8.1%",
+            "Least-exposed quintile, same period"
           ]
         ],
         "checks": [
-          "Read page 3: age group, June 2026 endpoint and top-two vs bottom-three exposure quintiles.",
-          "Distinguish the 19% shortfall from the level decline; read the authors' causal caveats."
+          "Check the September package, ages 22-25, quintile definitions, baseline and all 60 monthly values.",
+          "Do not apply the earlier pooled 19% June shortfall to this chart's extreme-quintile August endpoints."
         ],
         "legacy": [
           "canaries"
@@ -274,9 +274,9 @@
     ]
   },
   "share": {
-    "h1": "Workers' income share is measurable; AI's contribution is not",
-    "summary": "Official statistics track how income is divided between labour and other recipients. Long-run changes predate generative AI, and these series do not explain their causes.",
-    "selection": "Use established official US and global series, rather than stock prices as a substitute for workers' income share.",
+    "h1": "How much economic output goes to workers?",
+    "summary": "The ILO estimates labour's global GDP share fell from 53.0% in 2015 to 52.6% in 2025. This modest decline predates widespread generative AI and does not identify its effect.",
+    "selection": "Feature ILO global labour income share for international coverage, including self-employment. Keep the more frequent BLS US sector measure as separate context, not another point on the same chart.",
     "gap": "Measure changes in labour income alongside actual AI adoption, at firm and sector level, with comparable definitions over time.",
     "signal": 2,
     "sources": [
@@ -312,29 +312,29 @@
       },
       {
         "id": "ilo-labour-share",
-        "title": "World Employment and Social Outlook: May 2025 Update",
-        "url": "https://www.ilo.org/sites/default/files/2025-05/WESOUpdate_May2025.pdf",
-        "locate": "World Employment and Social Outlook: May 2025 Update, printed pages 7-8 and footnote 13; separate March 19, 2026 ILOSTAT update, labor-share section.",
+        "title": "The world of work and the 2030 Agenda: a ten-year review",
+        "url": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/",
+        "locate": "March 19, 2026 ILOSTAT review, Labour's share of the economy is shrinking. Both endpoints come from this release.",
         "label": "Global labour income share",
-        "citation": "International Labour Organization (2025)",
+        "citation": "International Labour Organization (2026)",
         "type": "Official modelled estimates",
-        "date": "May 2025 report; 2014-2024 comparison",
-        "finding": "The ILO estimated labour's global GDP share at 53.0% in 2014 and 52.4% in 2024. A later update reports partial recovery.",
+        "date": "March 2026 review; 2015-2025 comparison",
+        "finding": "Global labour income share was 53.0% in 2015 and 52.6% in 2025: down 0.4 percentage points. The ILO describes partial recovery after a sharp decline in 2023.",
         "why": "Adds international coverage and estimated self-employed labour income, counterbalancing a US-only story.",
-        "limit": "The 2024 value includes projections. Do not splice report vintages or directly compare this GDP-wide level with the BLS sector measure. No AI attribution.",
+        "limit": "Modelled estimates, subject to revision. Two endpoints, not an annual trajectory. Do not splice report vintages or compare the GDP-wide level directly with the BLS sector measure. No AI attribution.",
         "metrics": [
           [
             "53.0%",
-            "Global GDP, 2014"
+            "Global GDP, 2015"
           ],
           [
-            "52.4%",
-            "2024 estimate, May 2025 vintage"
+            "52.6%",
+            "Global GDP, 2025; March 2026 publication"
           ]
         ],
         "checks": [
-          "Read printed pages 7-8 and footnote 13: dates, projections and self-employment.",
-          "Keep the later recovery note separate; do not infer that all countries or workers experienced the same change."
+          "Check both endpoints in the March 2026 release; do not substitute the older 2014-2024 vintage.",
+          "Confirm definition and modelled-estimate status; obtain annual data before replacing the two-endpoint chart with a line."
         ],
         "legacy": [
           "ls"
@@ -344,8 +344,8 @@
     ]
   },
   "skills": {
-    "h1": "AI can improve performance without improving learning",
-    "summary": "Short experiments show both benefits and risks. We still lack broad, repeated tests of what people can do after the AI is removed.",
+    "h1": "What can people still do when AI is removed?",
+    "summary": "In one classroom trial, unrestricted GPT reduced later unaided exam scores by 5.4 points out of 100; a guided tutor showed no detectable difference. Long-term skills remain under-measured.",
     "selection": "A classroom trial tests learning without AI; a meta-analysis tests when human judgement adds to AI performance. Neither measures long-term skill loss across society.",
     "gap": "Follow the same people over time, testing unaided ability as well as AI-assisted performance.",
     "signal": "?",
@@ -359,10 +359,10 @@
         "doi": "10.1073/pnas.2422633122",
         "type": "Peer-reviewed randomized trial",
         "date": "Published June 2025; experiment in 2023",
-        "finding": "Students given an unrestricted GPT tool scored 17% lower on a later unaided exam than the no-AI group. A tutor designed to support learning did not show that penalty.",
+        "finding": "The adjusted unaided exam difference was -5.4 points out of 100 for unrestricted GPT, about 17% relative to the no-AI mean. The guided tutor estimate was -0.4 points, not statistically significant.",
         "why": "Random assignment and an AI-free exam distinguish help with a task from learning that lasts beyond it.",
         "limit": "One school setting and short follow-up; not evidence of permanent or population-wide deskilling. The 17% is relative, not percentage points.",
-        "locate": "Abstract; Table 1, exam columns; Discussion",
+        "locate": "Table 1 column 2: coefficients -0.054/-0.004, SEs 0.022/0.013, control mean 0.321. Multiply by 100 for score points; chart intervals are calculated as estimate +/- 1.96 SE.",
         "checks": [
           "Confirm the 17% relative difference and the no-AI comparison group.",
           "Keep the tutor result and short follow-up alongside the harm finding."
@@ -423,8 +423,8 @@
     ]
   },
   "culture": {
-    "h1": "More AI content does not necessarily mean more human attention",
-    "summary": "Platform data show growing supply. Experiments suggest AI can also make creative work more similar. Neither establishes a society-wide loss of human cultural influence.",
+    "h1": "How much attention goes to AI-made content?",
+    "summary": "Deezer reports fully AI-generated music at 1–3% of recorded streams, despite over 50% of uploads on peak days. Fraud and platform policy complicate what this says about human attention.",
     "selection": "Pair a recurring platform measure of supply and listening with an independent experiment on creative diversity. No single source covers culture as a whole.",
     "gap": "Measure what people actually read, watch and hear, and whether human creators retain income and influence.",
     "signal": 2,
@@ -439,7 +439,7 @@
         "date": "Figures stated as of August 2026",
         "finding": "Deezer reports fully AI-generated tracks exceed 50% of uploads on peak days, but account for 1-3% of streams.",
         "why": "Separates how much AI content is supplied from how much is played, using a recurring platform disclosure.",
-        "limit": "One platform and its own detector. Streams include suspected fraud; recommendation policy also affects listening. Peak-day uploads are not an average.",
+        "limit": "One platform and its own detector. Streams may include fraudulent activity; adjustment is unspecified. Recommendation policy also affects listening. Peak-day uploads are not an average.",
         "locate": "Notes to editors; FAQ date note",
         "checks": [
           "Keep 'on peak days', the August 2026 data date, and the 1-3% stream denominator.",
@@ -459,7 +459,7 @@
           ],
           [
             "1-3%",
-            "All streams; includes suspected fraud"
+            "Recorded streams; fraud adjustment unspecified"
           ]
         ]
       },
@@ -500,8 +500,8 @@
     ]
   },
   "institutions": {
-    "h1": "Government AI use is visible; decision power is much less so",
-    "summary": "Inventories count reported uses. A police operational report shows some actions after AI alerts. Neither provides a government-wide measure of control or accountability.",
+    "h1": "Who makes the decisions when governments use AI?",
+    "summary": "The US inventory records 3,611 AI use cases, but not decision volumes or meaningful human control. Its CSV explicitly marks 1,480 deployed or piloted; 338 stages are blank.",
     "selection": "Pair an official disclosure inventory with one concrete operational case. Both are inspectable, but neither is an independent audit of all safeguards.",
     "gap": "Publish decision volumes, human reviews, overrides and appeal outcomes for specific high-impact systems.",
     "signal": "?",
@@ -514,8 +514,8 @@
         "label": "US federal AI inventory",
         "citation": "US Office of Management and Budget (2025 inventory)",
         "type": "Official agency disclosures",
-        "date": "README snapshot dated 13 April 2026",
-        "finding": "The inventory lists 3,611 individual AI use cases; 1,818 were deployed or in pilot. The total includes other development stages.",
+        "date": "2025 inventory; CSV pinned to 14 May 2026 commit",
+        "finding": "The CSV contains 3,611 rows: 1,040 deployed, 440 pilot, 1,479 pre-deployment, 314 retired and 338 blank stages. The README's 1,818 deployed/piloted total includes the blank-stage cases and cannot be reproduced from explicit stage labels.",
         "why": "A reproducible official baseline with public metadata and stage definitions.",
         "limit": "Reported uses, not decisions or audited safeguards. Reporting rules change; missing answers do not necessarily mean missing protections.",
         "metrics": [
@@ -524,12 +524,12 @@
             "Individual reported use cases, all stages"
           ],
           [
-            "1,818",
-            "Deployed or in pilot"
+            "1,480",
+            "Explicitly deployed or in pilot; 338 stages missing"
           ]
         ],
         "checks": [
-          "Check README Summary/TOTALS, snapshot date and treatment of commercial software.",
+          "Reconcile README's 1,818 with 1,480 explicit deployed/pilot CSV rows plus 338 blank stages; inspect data-sourcing notes.",
           "Check stage and safeguard-field definitions; do not count blank fields as failed safeguards."
         ],
         "legacy": [
@@ -569,8 +569,8 @@
     ]
   },
   "influence": {
-    "h1": "Human influence is still the hardest outcome to measure",
-    "summary": "A survey of felt control and an exploratory study of AI conversations offer partial signals. Neither measures how much power people retain over the economy, culture or government.",
+    "h1": "Do people still have a meaningful say?",
+    "summary": "57% of US adults reported little or no control over AI's use in their lives in June 2025. This is felt control, not a validated measure of actual decision power.",
     "selection": "Use a representative public survey for felt control and a clearly labelled exploratory study for behaviour in conversations. These are proxies, not a validated overall measure.",
     "gap": "Connect people's reported control to real choices: the ability to refuse, appeal, reverse a decision or act without AI.",
     "signal": "?",

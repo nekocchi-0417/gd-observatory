@@ -2,11 +2,13 @@ const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const path=require('path');
 const topics=require('../src/priority.json');
+const selected=require('../src/selected-topics.json');
+const work=require('../src/work-series.json');
 const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index.html');
 (async()=>{
  const browser=await chromium.launch(),errors=[];
  try{
-  for(const width of [1440,760,720,390,340])for(const colorScheme of ['light','dark']){
+  for(const width of (process.env.WIDTHS?process.env.WIDTHS.split(',').map(Number):[1440,760,720,390,340]))for(const colorScheme of ['light','dark']){
    const context=await browser.newContext({viewport:{width,height:950},colorScheme});
    const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
    for(const id of Object.keys(topics)){
@@ -87,20 +89,41 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
      assert.equal(await page.locator('.data7 tbody tr').count(),id==='capability'?23:8);
      assert.equal(await page.locator('.related7 li').count(),id==='capability'?4:2);
     }else{
-     assert.equal(await page.locator('.source-mini6').count(),2);
-     assert.equal(await page.locator('.source-mini6-cite a:visible').count(),2);
-     assert.match(await page.locator('.verify5').innerText(),/Awaiting human review/);
+     const t=selected[id];
+     assert.equal(await page.locator('.evidence-chart7').count(),1);
+     assert.equal(await page.locator('.publisher7 a:visible').count(),1);
+     assert.equal(await page.locator('.verify5').count(),0);
+     assert.ok((await page.locator('.pilot7').innerText()).split(/\s+/).length<310,`${id}: concise default view`);
+     assert.equal(await page.locator('.takeaway7 b').innerText(),t.takeawayLabel+':');
+     assert.ok((await page.locator('.takeaway7').innerText()).includes(t.takeaway));
+     const clipped=await page.locator('.evidence-chart7 svg').evaluateAll(svgs=>svgs.flatMap(svg=>[...svg.querySelectorAll('text')].filter(t=>{const b=t.getBBox();return b.x<-.5||b.x+b.width>svg.viewBox.baseVal.width+.5||b.y<-.5||b.y+b.height>svg.viewBox.baseVal.height+.5}).map(t=>t.textContent)));
+     assert.deepEqual(clipped,[],`${id}: chart labels fit at ${width}`);
+     if(id==='culture'){
+      assert.equal(await page.locator('.waffle8-grid i').count(),100);
+      assert.equal(await page.locator('.waffle8-grid .filled').count(),1);
+      assert.equal(await page.locator('.waffle8-grid .possible').count(),2);
+     }else assert.equal(await page.locator('.evidence-chart7 svg').count(),1);
      for(const summary of await support.locator('summary').all()){
       await summary.focus();await page.keyboard.press('Enter');
      }
      assert.equal(await support.locator('details[open]').count(),3);
      assert.equal(await page.locator(`#${id}-watch .disclosure7-body>p`).first().innerText(),topics[id].gap);
-     for(const source of topics[id].sources){
-      assert.ok((await page.locator(`#${id}-source`).innerText()).includes(source.limit));
-      assert.ok((await page.locator(`#${id}-related`).innerText()).includes(source.finding));
-     }
+     assert.ok((await page.locator(`#${id}-source .context7`).innerText()).split(/\s+/).length<=130,`${id}: compact caveats`);
+     const rows=id==='work'?work:t.data;
+     assert.equal(await page.locator('.data7 tbody tr').count(),rows.length);
+     assert.equal(await page.locator('.related7 li').count(),t.related.length);
+     assert.equal(await page.locator('a[download]').count(),1);
+     const csv=await page.locator('a[download]').evaluate(a=>decodeURIComponent(a.href.split(',')[1]));
+     assert.equal(csv.split('\r\n').length,rows.length+1);
+     assert.ok((await page.locator(`#${id}-source`).innerText()).includes('AI-assisted summary; not independently verified'));
+     const tlinks=await page.locator('.supporting7 a').evaluateAll(a=>a.map(x=>x.href));
+     const rlinks=await page.locator('.related7 a').evaluateAll(a=>a.map(x=>x.href));
+     assert.ok(tlinks.every(h=>!rlinks.includes(h)),`${id}: related sources not duplicated`);
     }
     assert.equal(await page.locator('h1').innerText(),topics[id].h1);
+    await page.evaluate(()=>document.fonts.ready);
+    const crumb=await page.locator('.crumbs [aria-current]').boundingBox(),crumbnav=await page.locator('.crumbs').boundingBox();
+    assert.ok(crumb.x>=crumbnav.x-1&&crumb.x+crumb.width<=crumbnav.x+crumbnav.width+1,`${id}: current step fully visible`);
     assert.equal(await page.locator('a[href="#method/selection"]').count(),1);
     const size=await page.evaluate(()=>({w:innerWidth,scroll:document.documentElement.scrollWidth}));
     assert.ok(size.scroll<=size.w,`${id}: overflow at ${width}`);
@@ -110,12 +133,12 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
     assert.ok(await page.locator('.source6-detail[open]').count());
    }
    await page.goto(PAGE+'#skills');
-   assert.match(await page.locator('.verify5').innerText(),/Awaiting human review/);
+   assert.equal(await page.locator('.verify5').count(),0);
    assert.equal(await page.locator('a[href^="#review"]').count(),0);
    await page.goto(PAGE+'#library/skills');
    assert.equal(await page.locator('.library6').count(),0);
    assert.equal(await page.locator('h1').innerText(),topics.skills.h1);
-   assert.match(await page.locator('.verify5').innerText(),/Awaiting human review/);
+   assert.equal(await page.locator('.verify5').count(),0);
    await page.goto(PAGE+'#skills/literacy');assert.equal(await page.locator('h1').innerText(),topics.skills.h1);
    await page.goto(PAGE+'#skills/bastani');assert.equal(await page.locator('#source-bastani').count(),1);
    await page.goto(PAGE+'#review/skills');await page.waitForTimeout(500);assert.equal(await page.locator('[data-review]').count(),0);

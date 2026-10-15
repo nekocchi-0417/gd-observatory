@@ -10,7 +10,7 @@ COPY.home.snapshot.items[0].text='Benchmarks track AI capability; repeated surve
 COPY.home.snapshot.items[1].text='Some studies find changes in jobs and creative work. Government records show adoption, but not who retains decision power.';
 COPY.home.snapshot.items[2].text='We need repeated tests of unaided ability and direct measures of whether people retain meaningful choices.';
 linkById('capability').level=3;
-linkById('capability').levelWhy='Direct benchmark results, but limited task coverage; one industry-linked benchmark and one discontinued tracker.';
+linkById('capability').levelWhy='Direct technical-task benchmark results, with limited task coverage and a discontinued tracker.';
 COPY.futures.caveat='To be verified. Forecast extractions, historical chart points and scenario assumptions have not been checked in this source review. Do not cite them as established findings.';
 const sourceLink6=(s,label)=>`<a class="source-link6" href="${esc(s.url)}" target="_blank" rel="noopener">${esc(label||s.citation)} <span aria-hidden="true">↗</span></a>`;
 const sourceCard6=s=>`<article class="source6" id="source-${esc(s.id)}">
@@ -34,6 +34,7 @@ function unchartedSources6(id){
 function viewTopic(v,id){
   if(id==='capability'){viewCapabilityPilot(v);return}
   if(id==='adoption'){viewAdoptionPilot(v);return}
+  if(TOPIC_CHARTS[id]){viewSelectedTopic(v,id);return}
   const p=SELECTED_EVIDENCE[id],i=ORDER.indexOf(id),prev=ORDER[i-1],next=ORDER[i+1];
   const charts=priorityIndicators5(id),uncharted=unchartedSources6(id);
   v.innerHTML=`<div class="view5 wrap priority6">${crumbs5(id)}
@@ -62,26 +63,28 @@ function viewTopic(v,id){
 function viewEvidenceDetails(v,id){
   id=ORDER.includes(id)?id:'capability';
   const p=SELECTED_EVIDENCE[id];
+  const main=TOPIC_CHARTS[id]?.source||(id==='capability'?'metr':'gallup');
+  const sources=[...p.sources].sort((a,b)=>Number(b.id===main)-Number(a.id===main));
   v.innerHTML=`<div class="view5 wrap priority6 detail6">${crumbs5(id)}
     ${eye5(['Source details',esc(nameOf(id))])}<h1 class="h1-5">Why these indicators</h1><p class="lead5">${esc(p.selection)}</p>
-    ${verify5()}
     <p class="review-links"><a class="go" href="#${id}">Back to ${esc(nameOf(id))} →</a><a class="go" href="#method/selection">How indicators are selected →</a></p>
-    <section class="sec5"><h2 class="h2-5 sm">Priority sources</h2><div class="sources6">${p.sources.map(sourceCard6).join('')}</div></section>
-    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What this pair still misses</h2><p class="lead5 sm">${esc(p.gap)}</p></section></div>`;
+    <section class="sec5"><h2 class="h2-5 sm">Selected source and supporting evidence</h2><div class="sources6">${sources.map(sourceCard6).join('')}</div></section>
+    <section class="sec5 priority6-gap"><h2 class="h2-5 sm">What remains unmeasured</h2><p class="lead5 sm">${esc(p.gap)}</p><p class="note5">AI-assisted source notes. Selection and interpretation still need independent review.</p></section></div>`;
   crumbScroll5(v);
 }
 
 function viewSourceMethod(v){
   v.innerHTML=`<div class="view5 wrap">${eye5(['Method'])}<h1 class="h1-5">What these sources can tell us</h1><p class="lead5">A dashboard of selected evidence, not a systematic review or a test of the whole theory.</p>
-    ${verify5()}
     <section class="sec5" id="m-selection"><h2 class="h2-5 sm">How sources are chosen</h2><ul class="scale5 lim5">
       <li><b>Relevance.</b><span>Does the indicator measure the question at this step? Identify proxies and explain what they miss.</span></li>
       <li><b>Credibility and traceability.</b><span>Can we inspect the original methods and results? Consider study design, uncertainty, independence and repeated measurement. State commercial involvement and publication status.</span></li>
       <li><b>Clear coverage.</b><span>Which countries, people, occupations or tasks were studied? Keep those boundaries visible. A rigorous study can still have narrow coverage.</span></li>
       <li><b>Added value.</b><span>Does this source answer a different part of the question or test whether another finding transfers? Include null results, benefits and conflicting findings.</span></li></ul>
       <p class="sub5">These are editorial criteria, not a numerical score or an exhaustive ranking. We explain why each featured indicator was chosen and what it leaves unanswered. Selection does not depend on whether a finding supports disempowerment.</p></section>
-    <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">Each pilot uses one source per chart. AI capability shows all METR TH1.1 models released from 2023 onward, at 80% success. AI adoption shows all eight observations in Gallup's Frequent AI users series, from May 2023 to August 2026. Neither combines datasets or adds a forecast.</p><p class="sub5">Sources stay visible beside the charts. Dropdowns contain caveats, downloadable values and published uncertainty where available. These charts are redrawn by this project, not produced or endorsed by the source organisations.</p><p class="sub5">The takeaways quantify the observed change and link to evidence from other settings, without treating different measures as equivalent. Related-evidence lists add sources not already linked in the takeaway.</p><p class="sub5">Evidence quality and breadth of coverage are separate judgements. Signals to watch are research priorities, not validated warning thresholds. Other topic charts still await this format and human review.</p></section>
-    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">The priority claims were compared with primary publications using AI assistance on 13 October 2026. A person still needs to check the extraction, interpretation and suitability for publication. Forecasts are provisional.</p></section>
+    <section class="sec5" id="m-chart-sources"><h2 class="h2-5 sm">Where the charts come from</h2><p class="sub5">Each evidence page uses one source for its main visual. We do not join different populations, report vintages or definitions into one trend. The source, population and date appear beside every chart; the dropdown includes values and any transformations.</p>
+      <details class="det5"><summary>Chart-by-chart construction</summary><ul class="lim5"><li>AI capability: all 23 METR TH1.1 models released from 2023 onward, at 80% success, with published uncertainty.</li><li>AI adoption: all eight Gallup frequent-use observations, May 2023–August 2026.</li><li>Delegation: Anthropic's May 2026 automation and augmentation bucket shares, among conversations assigned either mode. Not a historical trend.</li><li>Entry-level jobs: Stanford/ADP's September 2026 release, all 60 months and five exposure quintiles. Original November 2022 = 100 baseline; no averaging of quintiles.</li><li>Workers' income share: two ILO endpoints from the same March 2026 publication. No inferred annual path.</li><li>Skills: published adjusted exam effects and standard errors × 100. Approximate 95% intervals are calculated as estimate ± 1.96 × SE, not quoted from the paper.</li><li>Culture: Deezer's reported 1–3% stream-share range. No assumed midpoint; not a confidence interval or a fraud-adjusted listening share.</li><li>Government: counts of explicit CSV development-stage labels. Blank stages stay separate; the README discrepancy is disclosed.</li><li>Human influence: Pew's three published felt-control groups. Rounded values are not rescaled; nonresponse is noted.</li></ul></details>
+      <p class="sub5">These visuals are redrawn by this project, not endorsed by the sources. “What changed” describes a dated comparison; “What this shows” describes a snapshot or experiment. Signals to watch are research priorities, not validated warning thresholds.</p></section>
+    <section class="sec5" id="m-status"><h2 class="h2-5 sm">What has been checked</h2><p class="sub5">Selected figures, definitions and links were compared with primary sources using AI assistance on 14 October 2026. This is not an independent audit. Human sign-off is still needed on the extraction and interpretation, especially provider data and proxies for control. The forecast section remains a separate, unverified work in progress.</p></section>
     <section class="sec5" id="m-scales"><h2 class="h2-5 sm">Where the pathways come from</h2><p class="sub5">The pathways are adapted from the <a class="go" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener">Gradual Disempowerment paper ↗</a>.</p></section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">How coverage is assessed</h2><p class="sub5">The colours are a provisional, AI-assisted assessment of measurement coverage based on the selected sources. They are not a rigorous review of the full research field or a measure of risk.</p>
       <p class="sub5">We consider three questions: does the evidence measure the outcome directly, is measurement repeated over time, and how many relevant settings does it cover? The bands below summarise that judgement; they are not calculated scores.</p>

@@ -1,0 +1,105 @@
+{
+  "stop": "culture",
+  "verified_on": "2026-10-14",
+  "scope": "Primary-source verification for rendering; dated snapshots, with no claim of exhaustive recency.",
+  "indicators": [
+    {
+      "id": "deezer",
+      "verification_status": "verified_primary_source",
+      "title": "Fully AI-generated music's share of Deezer streams",
+      "publication_date": "2026-10-13",
+      "observation_date": "2026-08",
+      "date_note": "The release's FAQ dates its figures to August 2026; the stream-share sampling window is unspecified.",
+      "population": "Streams on Deezer; fully AI-generated tracks identified by Deezer's proprietary detector.",
+      "chart": {
+        "type": "interval",
+        "title": "Fully AI-generated music accounts for 1-3% of Deezer streams",
+        "unit": "percent of recorded streams",
+        "data": [
+          { "label": "Fully AI-generated music", "low": 1, "high": 3, "value": null, "display": "1-3%" }
+        ],
+        "range_type": "Publisher-reported range; not a confidence interval",
+        "rendering_note": "Show both endpoints. Do not substitute a 2% midpoint or draw a trend.",
+        "source_ids": ["deezer_toggle_2026"],
+        "source_figure": null,
+        "source_locator": "Notes to editors, AI and fraud paragraph; FAQ date note. Values appear in prose."
+      },
+      "context_only": [
+        {
+          "metric": "Fully AI-generated share of daily uploads",
+          "value": 50,
+          "operator": ">",
+          "unit": "percent of daily deliveries",
+          "qualifier": "On peak days only",
+          "display": ">50% on peak days",
+          "role": "Supply context; a different denominator from streams"
+        },
+        {
+          "metric": "Fraud among streams of fully AI-generated tracks",
+          "value": 85,
+          "operator": "up_to",
+          "unit": "percent",
+          "observation_date": "2025",
+          "role": "Do not use this historical upper bound to calculate an organic share from the 2026 interval"
+        }
+      ],
+      "what_it_shows": "A small recorded stream share on one platform, despite substantial AI-generated supply.",
+      "flags": [
+        "Platform-reported: proprietary detection, not an independent audit.",
+        "Recorded streams do not establish human listening; fraud adjustment is unspecified.",
+        "Detected AI tracks are excluded from algorithmic recommendations and editorial playlists, limiting reach.",
+        "Fully AI-generated music only; do not generalize to all AI-assisted music or other platforms."
+      ],
+      "recommendation": "Use the interval as the main chart and peak-day upload share as context."
+    }
+  ],
+  "related_evidence": [
+    {
+      "id": "doshi_hauser_2024",
+      "verification_status": "verified_primary_paper",
+      "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+      "publication_date": "2024-07-12",
+      "population": "Online randomized short-story experiment: 293 writers and 600 separate evaluators; GPT-4 idea access.",
+      "raw_values": [
+        { "outcome": "Novelty rating", "treatment": "Access to one AI idea", "change_percent_vs_human_only": 5.4, "regression_coefficient": 0.207, "p_value": 0.021 },
+        { "outcome": "Novelty rating", "treatment": "Access to up to five AI ideas", "change_percent_vs_human_only": 8.1, "regression_coefficient": 0.311, "p_value": 0.001, "p_value_operator": "<" },
+        { "outcome": "Usefulness rating", "treatment": "Access to one AI idea", "change_percent_vs_human_only": 3.7, "regression_coefficient": 0.185, "p_value": 0.039 },
+        { "outcome": "Usefulness rating", "treatment": "Access to up to five AI ideas", "change_percent_vs_human_only": 9.0, "regression_coefficient": 0.453, "p_value": 0.001, "p_value_operator": "<" }
+      ],
+      "source_ids": ["doshi_hauser_published", "doshi_hauser_ucl"],
+      "source_figure": {
+        "source_id": "doshi_hauser_ucl",
+        "locator": "Figure 2 and results text, printed page 3; study design Figure 1, page 2",
+        "note": "Effects above are transcribed from results text, not estimated from bar heights."
+      },
+      "what_it_shows": "AI idea access improved individual story ratings while assisted stories were more similar to one another.",
+      "flags": [
+        "One bounded experiment, not a population trend in cultural diversity.",
+        "Percentage changes in rating indices are not percentage-point changes or shares of creative people.",
+        "No unverified numeric diversity effect is supplied."
+      ],
+      "recommendation": "Use as supporting experimental evidence, separate from the Deezer snapshot."
+    }
+  ],
+  "sources": [
+    {
+      "id": "deezer_toggle_2026",
+      "publisher": "Deezer Newsroom",
+      "url": "https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/",
+      "type": "primary_platform_release"
+    },
+    {
+      "id": "doshi_hauser_published",
+      "publisher": "Science Advances",
+      "url": "https://doi.org/10.1126/sciadv.adn5290",
+      "type": "primary_peer_reviewed_paper",
+      "access_note": "Publisher fetch failed; verified published paper through UCL's repository copy."
+    },
+    {
+      "id": "doshi_hauser_ucl",
+      "publisher": "UCL Discovery",
+      "url": "https://discovery.ucl.ac.uk/id/eprint/10195027/1/Generative%20AI%20enhances%20individual%20creativity%20but%20reduces%20the%20collective%20diversity%20of%20novel%20content.pdf",
+      "type": "institutional_copy_of_published_paper"
+    }
+  ]
+}

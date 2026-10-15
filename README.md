@@ -1,10 +1,10 @@
-# Gradual Disempowerment Observatory
+# Gradual Disempowerment Dashboard
 
-A public evidence map for gradual disempowerment: tracking whether AI is weakening human influence, link by link, and what goes unmeasured.
+A public evidence dashboard for gradual disempowerment: tracking whether AI is weakening human influence, step by step, and what goes unmeasured.
 
 ![The home page: the chain from AI capability to human influence, with line style showing how well each stop is measured](assets/screenshots/home.png)
 
-**Status: draft v0.6 (13 October 2026).** A draft evidence map. AI tools helped find and summarise the sources; headline figures are being checked against primary sources before v1.0, and corrections from authors and domain experts are welcome. Every chart says how its figures were obtained and links to its source. Check the source before citing a figure. A checklist of the headline figures to verify is in [`research/checklist/handcheck.csv`](research/checklist/handcheck.csv).
+**Status: draft v0.8 (14 October 2026).** A prototype evidence dashboard. Each of the nine evidence pages features one source-based visual, a concise interpretation, and compact supporting sections. AI-assisted primary-source checks are not independent verification. The current [90-minute publication review](research/checklist/selected-indicators-review.md) records remaining decisions and changes from the older charts. The older `handcheck.csv` is an archive, not the current checklist.
 
 ## What it shows
 
@@ -92,4 +92,4 @@ Figures and quotations from third-party sources remain the property of their pub
 
 ## Cite as
 
-Zhang Yue (2026). *Gradual Disempowerment Observatory* (draft v0.6). Better Futures Project.
+Zhang Yue (2026). *Gradual Disempowerment Dashboard* (draft v0.8). Better Futures Project.

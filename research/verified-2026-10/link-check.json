@@ -1,0 +1,174 @@
+{
+  "checked": "2026-10-14",
+  "method": "Redirect-following HEAD; reachability is not claim verification",
+  "links": [
+    {
+      "url": "https://labs.scale.com/leaderboard/rli",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://labs.scale.com/leaderboard/rli"
+    },
+    {
+      "url": "https://metr.org/time-horizons/",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://metr.org/time-horizons/"
+    },
+    {
+      "url": "https://metr.org/assets/benchmark_results_1_1.yaml",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://metr.org/assets/benchmark_results_1_1.yaml"
+    },
+    {
+      "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx"
+    },
+    {
+      "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2"
+    },
+    {
+      "url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://www.anthropic.com/research/economic-index-june-2026-report"
+    },
+    {
+      "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024"
+    },
+    {
+      "url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/"
+    },
+    {
+      "url": "https://digitaleconomy.stanford.edu/news/canariesaug26/",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://digitaleconomy.stanford.edu/news/canariesaug26/"
+    },
+    {
+      "url": "https://www.andershumlum.com/s/chatbots_260313.pdf",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://static1.squarespace.com/static/5d35e72fcff15f0001b48fc2/t/6a022dda700a5125900234dd/1778527706156/chatbots_260313.pdf"
+    },
+    {
+      "url": "https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm",
+      "status": 403,
+      "result": "access-restricted",
+      "final_url": "https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm"
+    },
+    {
+      "url": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/",
+      "status": 403,
+      "result": "access-restricted",
+      "final_url": "https://ilostat.ilo.org/blog/the-world-of-work-and-the-2030-agenda-a-ten-year-review/"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/"
+    },
+    {
+      "url": "https://arxiv.org/html/2405.06087v2",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://arxiv.org/html/2405.06087v2"
+    },
+    {
+      "url": "https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/"
+    },
+    {
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory"
+    },
+    {
+      "url": "https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf",
+      "status": 403,
+      "result": "access-restricted",
+      "final_url": "https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf"
+    },
+    {
+      "url": "https://www.pewresearch.org/science/2025/09/17/ai-in-americans-lives-awareness-experiences-and-attitudes/",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://www.pewresearch.org/science/2025/09/17/ai-in-americans-lives-awareness-experiences-and-attitudes/"
+    },
+    {
+      "url": "https://www.anthropic.com/research/disempowerment-patterns",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://www.anthropic.com/research/disempowerment-patterns"
+    },
+    {
+      "url": "https://arxiv.org/abs/2601.19062",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://arxiv.org/abs/2601.19062"
+    },
+    {
+      "url": "https://huggingface.co/datasets/Anthropic/EconomicIndex/blob/main/release_2026_06_26/data/aei_claude_ai_2026-06-26.csv",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://huggingface.co/datasets/Anthropic/EconomicIndex/blob/main/release_2026_06_26/data/aei_claude_ai_2026-06-26.csv"
+    },
+    {
+      "url": "https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip"
+    },
+    {
+      "url": "https://doi.org/10.1073/pnas.2422633122",
+      "status": 403,
+      "result": "access-restricted",
+      "final_url": "https://pnas.org/doi/10.1073/pnas.2422633122"
+    },
+    {
+      "url": "https://hamsabastani.github.io/education_llm.pdf",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://hamsabastani.github.io/education_llm.pdf"
+    },
+    {
+      "url": "https://doi.org/10.1126/sciadv.adn5290",
+      "status": 403,
+      "result": "access-restricted",
+      "final_url": "https://www.science.org/doi/10.1126/sciadv.adn5290"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Data/2025_individually_reported_AI_use_cases.csv",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Data/2025_individually_reported_AI_use_cases.csv"
+    },
+    {
+      "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf",
+      "status": 200,
+      "result": "reachable",
+      "final_url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf"
+    }
+  ]
+}

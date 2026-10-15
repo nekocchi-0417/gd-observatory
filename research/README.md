@@ -1,6 +1,6 @@
 # Research workflow
 
-This folder holds the notes and reviews behind the site. No figure has yet been checked by a person. The current first-pass checklist is the website's [18-source review](https://nekocchi-0417.github.io/gd-observatory/#review), generated from [`src/priority.json`](../src/priority.json). Earlier notes and chart extractions are not automatically approved by the new selection.
+This folder holds the notes and reviews behind the site. Human approval is not assumed. Use the current [90-minute selected-indicator review](checklist/selected-indicators-review.md), with [primary-source audit records](verified-2026-10/). The public review route has been retired. Earlier notes and chart extractions are not automatically approved by the new selection.
 
 ## Source review, 13 October 2026
 
@@ -8,7 +8,7 @@ The supplied 95-page landscape scan was cross-referenced against the pre-edit we
 
 - [PDF reference crosswalk](../docs/pdf-source-crosswalk.html): identifier/URL matching, editorial decisions and matching limitations. Links are not unique-study counts.
 - [Priority sources](../src/priority.json): the current published selection, not an exhaustive ranking of the literature.
-- [Awaiting-review library](https://nekocchi-0417.github.io/gd-observatory/#library): earlier source collections; their chart extractions are no longer shown as priority evidence.
+- Earlier source collections remain in the research folders; they are not automatically approved for the current dashboard.
 - The 42-item `handcheck.csv` below is historical, not the current review workload. Forecasts and proposed measurement instruments are outside the 1-2 hour pass.
 
 ## How it was done

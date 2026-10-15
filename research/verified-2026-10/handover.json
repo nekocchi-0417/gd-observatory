@@ -1,0 +1,30 @@
+{
+  "checked": "2026-10-14",
+  "human_reviewed": false,
+  "publisher": "Anthropic",
+  "report": "https://www.anthropic.com/research/economic-index-june-2026-report",
+  "documentation": "https://huggingface.co/datasets/Anthropic/EconomicIndex/blob/main/release_2026_06_26/data_documentation.md",
+  "data": "https://huggingface.co/datasets/Anthropic/EconomicIndex/resolve/main/release_2026_06_26/data/aei_claude_ai_2026-06-26.csv",
+  "sha256": "f974b358bce0e5a8417510c61da4342234cd0de9d9d0b62acf4c6dbcf8ec7b68",
+  "filter": {"date_start":"2026-05-01","date_end_exclusive":"2026-06-01","geo_id":"GLOBAL","geo_level":"global","category_name":"overall","hierarchy_level":0},
+  "published_percentages": {
+    "collaboration_bucket_automation_pct":48.62,
+    "collaboration_bucket_augmentation_pct":51.38,
+    "collaboration_directive_pct":31.38,
+    "collaboration_feedback_loop_pct":15.97,
+    "collaboration_task_iteration_pct":30.41,
+    "collaboration_learning_pct":16.55,
+    "collaboration_validation_pct":3.08,
+    "collaboration_none_pct":2.61
+  },
+  "denominator_check": {
+    "automation_components":47.35,
+    "augmentation_components":50.04,
+    "classified_share":97.39,
+    "formula":"100 * 47.35 / 97.39 = 48.62 to two decimals; 100 * 50.04 / 97.39 = 51.38",
+    "interpretation":"Published buckets exclude unclassified conversations. This is inferred from the numerical identities and must not be labelled a share of all conversations.",
+    "human_check":"Confirm the denominator convention in the source's pipeline/documentation before publication sign-off."
+  },
+  "scope":"Claude chat and Cowork, Free/Pro/Max; not all AI providers or Claude Code. Provider-classified, not independently observed oversight.",
+  "chart":"Two published bucket values, displayed to one decimal; no historical comparison with changed sampling methods."
+}

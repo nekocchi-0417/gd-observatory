@@ -1,0 +1,294 @@
+{
+  "id": "skills",
+  "title": "Unaided mathematics exam performance after GPT-assisted practice",
+  "verification": {
+    "checked_on": "2026-10-14",
+    "checked_by": "AI primary-source table reading plus independent aggregation of author-provided CSV",
+    "source_type": "PRIMARY",
+    "human_reviewed": false,
+    "status": "Published coefficients, standard errors, denominator and raw group means verified",
+    "interpolation_used": false
+  },
+  "sources": [
+    {
+      "id": "pnas",
+      "title": "Bastani et al. (2025), Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+      "url": "https://doi.org/10.1073/pnas.2422633122",
+      "pdf_url": "https://www.pnas.org/doi/pdf/10.1073/pnas.2422633122",
+      "published_online": "2025-06-25",
+      "issue_date": "2025-07-01",
+      "locator": "Table 1, column (2), page 4 of 8; Eq. 1 and Experimental Design, pages 2-3",
+      "access_note": "Publisher PDF text retrieved. Publisher HTML/supplement and screenshot requests were inconsistent or blocked; table independently cross-checked against author manuscript."
+    },
+    {
+      "id": "author_manuscript",
+      "title": "Author-hosted manuscript including appendices",
+      "url": "https://hamsabastani.github.io/education_llm.pdf",
+      "locator": "Table 1, page 10 of 68; subsequent interpretation on page 11",
+      "note": "Table values agree with published PNAS Table 1. This is an author manuscript, not the publisher's typeset version."
+    },
+    {
+      "id": "author_repository",
+      "title": "Author data and analysis code",
+      "url": "https://github.com/obastani/GenAICanHarmLearning",
+      "commit": "2f63dae1a01d51453826fe07ef5cf6678e339588"
+    },
+    {
+      "id": "author_code",
+      "title": "Main regression specification and sample filtering",
+      "url": "https://github.com/obastani/GenAICanHarmLearning/blob/2f63dae1a01d51453826fe07ef5cf6678e339588/main_regressions/main_analysis.R",
+      "note": "Filters Honors == 0; exam model reg3 uses Part3Tot, GPTBase, GPTTutor, gpa_prev, teacher, Session, Grader, Year; SE clustered by Class."
+    },
+    {
+      "id": "author_csv",
+      "title": "Main analysis dataset pinned to inspected commit",
+      "url": "https://raw.githubusercontent.com/obastani/GenAICanHarmLearning/2f63dae1a01d51453826fe07ef5cf6678e339588/main_regressions/final_data.csv",
+      "sha256": "430055b4633eaaf87879bb38eb4b1c9425b91e1d7f529029dc1883e33d91df0a"
+    }
+  ],
+  "study": {
+    "design": "Randomized classroom-assigned field experiment",
+    "setting": "One high school in Turkey; grades 9-11",
+    "intervention_period": "Fall semester, 2023-2024 academic year",
+    "sessions": 4,
+    "minutes_per_session": 90,
+    "outcome": "Closed-book, closed-laptop exam immediately after practice within each session; all three groups tested without AI.",
+    "arms": [
+      {
+        "id": "control",
+        "label": "No AI",
+        "practice": "Textbooks and notes; no provided device"
+      },
+      {
+        "id": "gpt_base",
+        "label": "GPT Base",
+        "practice": "GPT-4 chat interface with basic tutoring prompt"
+      },
+      {
+        "id": "gpt_tutor",
+        "label": "GPT Tutor",
+        "practice": "GPT-4 with teacher-provided solutions and hints plus instructions not to give full answers"
+      }
+    ],
+    "excluded": "Honors-designated classrooms excluded from the main specification",
+    "regression_observations": 2848,
+    "observation_unit": "Student-session, not unique student",
+    "covariates": [
+      "Previous-year normalized GPA",
+      "Session fixed effects",
+      "Grader fixed effects",
+      "Grade-level fixed effects",
+      "Teacher fixed effects"
+    ],
+    "estimand": "Intention-to-treat difference from the no-AI control",
+    "standard_errors": "HC1 robust standard errors clustered by classroom",
+    "source_ids": [
+      "pnas",
+      "author_code"
+    ]
+  },
+  "published_table_1": {
+    "source_ids": [
+      "pnas",
+      "author_manuscript"
+    ],
+    "outcome_scale": "Authors' normalized exam grade from 0 to 1",
+    "unit": "Score points on the authors' 0-1 scale",
+    "rows": [
+      {
+        "arm": "control",
+        "label": "No AI",
+        "estimate": 0,
+        "standard_error": null,
+        "role": "Omitted reference category; zero is a contrast baseline, not its exam score",
+        "p_value": null
+      },
+      {
+        "arm": "gpt_base",
+        "label": "GPT Base",
+        "estimate": -0.054,
+        "standard_error": 0.022,
+        "p_value": null,
+        "p_value_statement": "P < 0.05 as reported; exact p-value not given in Table 1",
+        "significant_at_005": true
+      },
+      {
+        "arm": "gpt_tutor",
+        "label": "GPT Tutor",
+        "estimate": -0.004,
+        "standard_error": 0.013,
+        "p_value": null,
+        "p_value_statement": "Not statistically significant; exact p-value not given in Table 1",
+        "significant_at_005": false
+      }
+    ],
+    "control_arm_mean": 0.321,
+    "control_arm_sd": 0.277,
+    "observations": 2848,
+    "published_confidence_intervals": null,
+    "published_confidence_interval_note": "Table 1 reports standard errors, not CI endpoints.",
+    "practice_context": {
+      "unit": "Score points on authors' 0-1 scale",
+      "control_mean": 0.284,
+      "gpt_base_estimate": 0.137,
+      "gpt_base_se": 0.031,
+      "gpt_tutor_estimate": 0.361,
+      "gpt_tutor_se": 0.032,
+      "note": "Practice was assisted in the treatment arms. Do not mix these outcomes with the unaided-exam chart."
+    }
+  },
+  "interpretation": {
+    "headline": "GPT Base reduced unaided exam scores by about 17% relative to the control mean; GPT Tutor showed no detectable difference.",
+    "relative_effect_formula": "100 * (-0.054 / 0.321)",
+    "calculated_relative_percent": -16.822429906542055,
+    "author_reported_relative_percent": -17,
+    "relative_percent_is_rounded": true,
+    "denominator": "Published no-AI control-arm mean exam score, 0.321",
+    "effect_on_100_point_score_scale": -5.4,
+    "conversion": "Multiply the published 0-1 coefficient by 100: -0.054 -> -5.4 points on a 0-100 score scale, equivalently -5.4 percentage points of maximum score.",
+    "tutor_effect_on_100_point_score_scale": -0.4,
+    "tutor_null": "Statistically indistinguishable from no AI; does not establish equivalence or an exactly zero effect.",
+    "avoid": "Do not call the result a 17-percentage-point fall; do not claim the tutor improves unaided performance; do not replace its -0.004 estimate with zero."
+  },
+  "chart": {
+    "recommended_kind": "coefficient-dot-plot",
+    "title": "Effect of practice support on subsequent unaided exam scores",
+    "subtitle": "Adjusted difference from no-AI control",
+    "unit": "Points on a 0-100 exam-score scale",
+    "source_id": "pnas",
+    "baseline": 0,
+    "values": [
+      {
+        "arm": "control",
+        "label": "No AI (reference)",
+        "value": 0,
+        "standard_error": null,
+        "ci_low": null,
+        "ci_high": null,
+        "is_reference": true
+      },
+      {
+        "arm": "gpt_base",
+        "label": "GPT Base",
+        "value": -5.4,
+        "standard_error": 2.2,
+        "ci_low": -9.712,
+        "ci_high": -1.088,
+        "is_reference": false
+      },
+      {
+        "arm": "gpt_tutor",
+        "label": "GPT Tutor",
+        "value": -0.4,
+        "standard_error": 1.3,
+        "ci_low": -2.948,
+        "ci_high": 2.148,
+        "is_reference": false
+      }
+    ],
+    "transformation": "Published coefficient and standard error multiplied by 100. No control=100 rebasing.",
+    "error_bars": {
+      "kind": "Derived approximate 95% normal-Wald intervals",
+      "formula": "100 * (published coefficient +/- 1.96 * published clustered standard error)",
+      "published": false,
+      "approximate": true,
+      "limitations": "Computed from rounded table entries. They do not use a finite-cluster t critical value and are not published CI endpoints.",
+      "caption_required": "Points are published adjusted estimates; bars are approximate 95% intervals calculated from published clustered standard errors.",
+      "alternative": "Omit derived intervals and display the published SEs in the data table if the renderer cannot distinguish calculated from published uncertainty."
+    },
+    "caption": "Bastani et al., PNAS 2025, Table 1. All groups took the exam without AI. Main model: 2,848 student-session observations.",
+    "reference_note": "No AI at zero denotes the reference for treatment effects, not an observed score of zero."
+  },
+  "optional_raw_group_means": {
+    "purpose": "A defensible alternative three-group score chart, explicitly unadjusted; does not reproduce the adjusted 17% result.",
+    "source_id": "author_csv",
+    "extraction": "Parse CSV with headers exactly as provided. Filter Honors == 0. Group by GPTBase/GPTTutor indicators. Take arithmetic mean of Part3Tot across nonmissing student-session rows.",
+    "weighting": "Each available student-session has equal weight; students attending more sessions contribute more rows.",
+    "unit": "Mean exam score on authors' 0-1 scale",
+    "groups": [
+      {
+        "arm": "control",
+        "label": "No AI",
+        "mean": 0.32142562105387384,
+        "sd": 0.27676749916328064,
+        "student_sessions": 1076,
+        "unique_students": 320,
+        "classrooms": 17
+      },
+      {
+        "arm": "gpt_base",
+        "label": "GPT Base",
+        "mean": 0.2868960014395575,
+        "sd": 0.23298131511290288,
+        "student_sessions": 838,
+        "unique_students": 242,
+        "classrooms": 13
+      },
+      {
+        "arm": "gpt_tutor",
+        "label": "GPT Tutor",
+        "mean": 0.3152000241721054,
+        "sd": 0.2808452881552822,
+        "student_sessions": 985,
+        "unique_students": 277,
+        "classrooms": 14
+      }
+    ],
+    "total_student_sessions": 2899,
+    "unique_students": 839,
+    "classrooms": 44,
+    "regression_complete_cases": 2848,
+    "complete_case_columns": [
+      "Part3Tot",
+      "GPTBase",
+      "GPTTutor",
+      "gpa_prev",
+      "teacher",
+      "Session",
+      "Grader",
+      "Year"
+    ],
+    "score_percent_conversion": "100 * mean gives 32.142562105387384, 28.68960014395575, and 31.52000241721054 points out of 100, respectively.",
+    "confidence_intervals": null,
+    "note": "Means computed from public data, not treatment-group means printed in Table 1. SD is not SE. No naive independent-observation confidence intervals: repeated students and classroom assignment matter. Regression excludes incomplete covariate rows; raw means include all 2,899 non-honors student-sessions."
+  },
+  "limitations": [
+    "Short-term unaided performance after classroom practice; no direct long-term skill-decay estimate.",
+    "One Turkish high school and mathematics tasks; broader population and workplace generalization are untested here.",
+    "The tutor intervention bundled teacher-designed guidance and correct solutions with guardrails; the experiment does not isolate each component.",
+    "A nonsignificant tutor coefficient is not evidence of statistical equivalence.",
+    "Raw group differences differ from covariate-adjusted intention-to-treat coefficients."
+  ],
+  "human_review_flags": [
+    {
+      "id": "S1",
+      "required": true,
+      "check": "Check Table 1 column (2): Base -0.054 (SE 0.022), Tutor -0.004 (SE 0.013), control mean 0.321."
+    },
+    {
+      "id": "S2",
+      "required": true,
+      "check": "Confirm 17% is relative to 0.321; the absolute difference is 5.4 points out of 100, not 17 percentage points."
+    },
+    {
+      "id": "S3",
+      "required": true,
+      "check": "Show Tutor's nonzero estimate and uncertainty; do not call it proven equivalent to control."
+    },
+    {
+      "id": "S4",
+      "required": true,
+      "check": "If error bars are plotted, label them derived approximate 95% intervals, not published CIs."
+    },
+    {
+      "id": "S5",
+      "required": true,
+      "check": "Keep the coefficient chart separate from raw group means; do not place a 17% annotation on the unadjusted means."
+    },
+    {
+      "id": "S6",
+      "required": true,
+      "check": "Label 2,848 as student-session observations; all three groups completed the exam unaided. Human sign-off remains outstanding."
+    }
+  ]
+}

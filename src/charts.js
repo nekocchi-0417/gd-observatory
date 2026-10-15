@@ -110,7 +110,7 @@ const Charts=(()=>{
   /* ----- horizontal bars (label above bar), supports diverging ----- */
   function bars(el,cfg){if(CAP)return;mount(el,()=>drawBars(el,cfg))}
   function drawBars(el,cfg){
-    const W=width(el),rh=cfg.rh||46,P={l:2,r:64,t:6,b:cfg.axis===false?6:24};
+    const W=width(el),rh=cfg.rh||46,P={l:cfg.axisPlacement==='edges'?16:2,r:64,t:6,b:cfg.axis===false?6:24};
     const rows=cfg.rows,fmt=cfg.fmt||(v=>v),data=rows.filter(r=>!r.head);
     const min=cfg.min??Math.min(0,...data.map(r=>r.value)),max=cfg.max??Math.max(0,...data.map(r=>r.value));
     const neg=min<0;if(neg)P.l=58;
@@ -127,7 +127,8 @@ const Charts=(()=>{
     const H=y+P.b;let g='';
     (cfg.ticks||[]).forEach(v=>{g+=`<line x1="${sx(v)}" x2="${sx(v)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><text x="${sx(v)}" y="${H-P.b+15}" text-anchor="middle">${esc(fmt(v))}</text>`});
     const tbl=tableHTML([cfg.catLabel||'',cfg.valLabel||'Value',...(data.some(r=>r.note)?['Note']:[])],data.map(r=>[r.label,r.vlabel||fmt(r.value),...(data.some(q=>q.note)?[r.note||'']:[])]));
-    el.innerHTML=`${axisHTML(cfg.valLabel||'value',cfg.catLabel||'category')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    const edge=cfg.axisPlacement==='edges';
+    el.innerHTML=`${edge?`<div class="chart-y-label">${esc(cfg.catLabel)}</div>`:axisHTML(cfg.valLabel||'value',cfg.catLabel||'category')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria||'Bar chart')}">${g}${m}</svg><div class="tip"></div></div>${edge?`<div class="chart-x-label">${esc(cfg.valLabel)}</div>`:''}${cfg.table===false?'':tbl}`;
     const tip=el.querySelector('.tip'),svg=el.querySelector('svg');
     el.querySelectorAll('.row').forEach(n=>{const r=rows[+n.dataset.i];n.addEventListener('pointermove',e=>{const b=svg.getBoundingClientRect();tip.innerHTML='';const d=document.createElement('div');d.className='r';const bb=document.createElement('b');bb.textContent=r.vlabel||fmt(r.value);const sp=document.createElement('span');sp.textContent=r.label;d.append(bb,sp);tip.appendChild(d);if(r.note){const nt=document.createElement('div');nt.className='nt';nt.textContent=r.note;tip.appendChild(nt)}tipAt(el,tip,e.clientX-b.left,e.clientY-b.top,W)});n.addEventListener('pointerleave',()=>tip.style.display='none')});
   }
@@ -259,5 +260,18 @@ const Charts=(()=>{
       n.addEventListener('click',()=>cfg.onPick&&cfg.onPick(o.r,o.l))});
   }
 
-  return {line,bars,cols,stack,dumbbell,spark,record,capture,redraw};
+  /* Point estimates with horizontal intervals; category labels stay above each row. */
+  function intervals(el,cfg){if(CAP)return;mount(el,()=>{
+    const W=width(el),P={l:24,r:24,t:14,b:32},rh=78,H=P.t+rh*cfg.rows.length+P.b;
+    const sx=x=>P.l+(x-cfg.min)/(cfg.max-cfg.min)*(W-P.l-P.r);
+    let g=cfg.ticks.map(x=>`<line x1="${sx(x)}" x2="${sx(x)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--grid)"/><text x="${sx(x)}" y="${H-10}" text-anchor="middle">${x>0?'+':''}${x}</text>`).join('');
+    g+=`<line x1="${sx(0)}" x2="${sx(0)}" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink-2)" stroke-dasharray="3 3"/>`;
+    cfg.rows.forEach((r,i)=>{const y=P.t+i*rh,col=i===0?C.s1:C.s2;
+      g+=`<text x="${P.l}" y="${y+14}" class="cat">${esc(r.label)}</text><text x="${W-P.r}" y="${y+14}" text-anchor="end" class="end">${esc(r.value)}</text>`;
+      if(r.low!=null)g+=`<line x1="${sx(r.low)}" x2="${sx(r.high)}" y1="${y+45}" y2="${y+45}" stroke="${col}" stroke-width="3"/><path d="M${sx(r.low)} ${y+39}v12 M${sx(r.high)} ${y+39}v12" stroke="${col}"/>`;
+      g+=`<circle cx="${sx(r.value)}" cy="${y+45}" r="6" fill="${col}" stroke="var(--surface)" stroke-width="2"/>`;
+    });
+    el.innerHTML=`<div class="chart-y-label">${esc(cfg.category)}</div><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(cfg.aria)}">${g}</svg><div class="chart-x-label">${esc(cfg.axis)}</div>`;
+  })}
+  return {line,bars,cols,stack,dumbbell,intervals,spark,record,capture,redraw};
 })();
