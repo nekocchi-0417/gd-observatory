@@ -249,14 +249,13 @@ function viewCapabilityPilot(v){
         <summary>Source, caveats and data</summary>
         <div class="disclosure7-body">
           <dl class="context7">
-            <div><dt>What is measured?</dt><dd>The task length at which a tested agent is predicted to succeed 80% of the time. Length means the time a human expert would need, not how long AI runs.</dd></div>
-            <div><dt>What does it miss?</dt><dd>Tasks are mainly software, machine learning and cybersecurity, with clear instructions and success criteria. They do not represent whole jobs, every profession, or all AI models. Agent tools and setups also vary.</dd></div>
-            <div><dt>How uncertain is it?</dt><dd>These are fitted estimates. For the latest point, the 95% interval is about 1.6–6.6 hours, around an estimate of 3.1 hours. All published intervals are in the table. Human task-time estimates also have limitations.</dd></div>
-            <div><dt>How do the linked studies compare?</dt><dd>METR's exploratory cross-domain analysis uses 50%-success horizons and noisier estimates of human task time. GDPval is an OpenAI-produced evaluation of work products across 44 occupations, scored against human expert outputs. Neither establishes equal progress across occupations or reliable performance on whole jobs.</dd></div>
-            <div><dt>How was this chart made?</dt><dd>All ${M.rows.length} TH1.1 records with release dates from 2023 onward are shown at the same 80% threshold. Dates, estimates and intervals come from one METR file. No other datasets, trend line or forecast were added. Release dates are not evaluation dates.</dd></div>
-            <div><dt>Is it current?</dt><dd>This is a historical snapshot through April 2026 model releases. METR no longer updates this tracker. Extraction and interpretation are AI-assisted, not independently verified.</dd></div>
+            <div><dt>Coverage</dt><dd>Mainly software, machine learning and cybersecurity tasks, not whole jobs. Task length is human-expert time, not AI runtime.</dd></div>
+            <div><dt>Uncertainty</dt><dd>The latest estimate is 3.1 hours; its 95% interval is 1.6–6.6 hours. Tools and test setups vary.</dd></div>
+            <div><dt>Chart data</dt><dd>All ${M.rows.length} METR TH1.1 models released from 2023 onward, at 80% success. No other datasets added. This archived series ends in April 2026.</dd></div>
+            <div><dt>Other studies</dt><dd>The linked studies use different tests: METR's cross-domain study uses 50% success; GDPval is OpenAI's evaluation of professional work products.</dd></div>
           </dl>
-          <p class="source-actions7">${ext7(M.data,'METR original data')}${csvLink7('metr-th1-1-80-percent-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
+          <p>AI-assisted summary; not independently verified.</p>
+          <p class="source-actions7">${ext7(M.url,'Full methodology: METR')}${ext7(M.data,'METR original data')}${csvLink7('metr-th1-1-80-percent-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
           <div class="data-scroll7" role="region" aria-label="METR estimates and 95% confidence intervals" tabindex="0"><table class="data7"><caption>All plotted values · human-expert minutes · 80% success</caption><thead><tr><th scope="col">Tested model</th><th scope="col">Released</th><th scope="col">Estimate</th><th scope="col">95% interval</th></tr></thead><tbody>${M.rows.map(r=>`<tr><th scope="row">${esc(r.name)}</th><td>${r.date}</td><td>${minutes(r.estimate)}</td><td>${r.low.toFixed(1)}–${r.high.toFixed(1)} min</td></tr>`).join('')}</tbody></table></div>
         </div>
       </details>

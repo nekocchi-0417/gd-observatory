@@ -38,6 +38,11 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
       await summary.focus();await page.keyboard.press('Enter');
      }
      assert.equal(await page.locator('.disclosure7[open]').count(),3);
+     const sourceNotes=page.locator(`#${id}-source .context7`);
+     assert.equal(await sourceNotes.locator('dt').count(),4,'Four short source notes');
+     assert.ok((await sourceNotes.innerText()).split(/\s+/).length<=125,'Source notes stay compact');
+     assert.equal(await page.locator(`#${id}-source .source-actions7 a`).filter({hasText:'Full methodology:'}).count(),1);
+     assert.match(await page.locator(`#${id}-source`).innerText(),/AI-assisted summary; not independently verified/);
      const csvs=await page.locator('a[download]').evaluateAll(links=>links.map(a=>decodeURIComponent(a.href.split(',')[1])));
      assert.equal(csvs.length,1);assert.equal(csvs[0].split('\r\n').length,id==='capability'?24:9);
      if(id==='capability'){
@@ -50,7 +55,7 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
        assert.ok(csvs[0].includes(`"${date}","${value}",`),`Correct Gallup value for ${date}`);
       }
       assert.match(await page.locator('.takeaway7').innerText(),/21-percentage-point increase/);
-      assert.match(await page.locator('#adoption-source').innerText(),/confidence intervals are not supplied/);
+      assert.match(await page.locator('#adoption-source').innerText(),/Confidence intervals are not supplied/);
      }
      assert.equal(await page.locator('.data7 tbody tr').count(),id==='capability'?23:8);
      assert.equal(await page.locator('.related7 li').count(),id==='capability'?3:2);

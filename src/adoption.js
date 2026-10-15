@@ -39,14 +39,13 @@ function viewAdoptionPilot(v){
         <summary>Source, caveats and data</summary>
         <div class="disclosure7-body">
           <dl class="context7">
-            <div><dt>What counts as regular use?</dt><dd>Gallup's “Frequent AI users”: people using AI at work a few times a week or more, including daily users. This is not everyone who has ever tried AI.</dd></div>
-            <div><dt>Who is covered?</dt><dd>US adults aged 18+ employed full or part time by organisations. Gallup uses a probability-recruited panel and demographic weighting. This is not a global estimate.</dd></div>
-            <div><dt>What does it miss?</dt><dd>Self-reported AI use, not directly observed activity, work hours automated or dependence. It covers AI broadly, not only generative AI.</dd></div>
-            <div><dt>How was this chart made?</dt><dd>All eight “Frequent AI users” values from Gallup's “Use of AI” table, with the published month labels. Lines connect survey waves, not monthly observations. No data from other surveys are added. Wave-specific confidence intervals are not supplied in this table; none have been inferred.</dd></div>
-            <div><dt>What should be checked?</dt><dd>The August 2026 table is newer than the page's May 2026 summary. This chart follows the dated table. Extraction and interpretation are AI-assisted, not independently verified.</dd></div>
-            <div><dt>How does the EU evidence compare?</dt><dd>Eurostat counts businesses with at least 10 people in covered sectors, not employees. It reports 20.0% using AI in 2025 versus 13.5% in 2024. A new AI category in 2025 and a Netherlands series break complicate the comparison. These figures are context, not part of the Gallup curve.</dd></div>
+            <div><dt>Coverage</dt><dd>US employees aged 18+, using AI at work a few times a week or more, including daily users.</dd></div>
+            <div><dt>Limitations</dt><dd>Self-reported use of AI broadly, not work automated or dependence. Confidence intervals are not supplied in the published table.</dd></div>
+            <div><dt>Chart data</dt><dd>All eight Gallup frequent-use observations, May 2023–August 2026. Lines connect survey waves; no other surveys are combined.</dd></div>
+            <div><dt>EU context</dt><dd>Eurostat counts businesses, not employees. Survey changes in 2025, including in the Netherlands, make comparisons with earlier years less reliable.</dd></div>
           </dl>
-          <p class="source-actions7">${csvLink7('gallup-frequent-ai-use-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
+          <p>AI-assisted summary; not independently verified.</p>
+          <p class="source-actions7">${ext7(A.url,'Full methodology: Gallup')}${csvLink7('gallup-frequent-ai-use-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
           <div class="data-scroll7" role="region" aria-label="Gallup regular AI use data" tabindex="0"><table class="data7"><caption>US employees using AI at work a few times a week or more</caption><thead><tr><th scope="col">Survey month</th><th scope="col">Share of employees</th></tr></thead><tbody>${A.rows.map(r=>`<tr><th scope="row">${fmtDate(ym(Number(r.date.slice(0,4)),Number(r.date.slice(5,7))))}</th><td>${r.value}%</td></tr>`).join('')}</tbody></table></div>
         </div>
       </details>
