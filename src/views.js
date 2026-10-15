@@ -13,7 +13,7 @@ const conf5=id=>{const s=sigOf5(id),l=lv(id),S=SIGNALS.links[id]||{},B=COPY.link
     <div><dt>${esc(COPY.linkUI.pillMeasure)}</dt><dd class="r">${lineGlyph5(l,40,12)}<b>${LEVELWORD[l]}</b></dd>${why?`<dd class="w">${esc(why)}</dd>`:''}</div></dl></section>`};
 /* the chain as horizontal tabs along the top of each evidence page; the bar under each name repeats its line style */
 const crumbs5=id=>`<nav class="crumbs" aria-label="Links in the chain">${LINKS.map(l=>`<a href="#${l.id}" data-l="${l.level}" ${l.id===id?'aria-current="page"':''}><span class="ln"></span>${l.n} ${esc(l.name)}</a>`).join('')}<a href="#influence" data-l="0" ${id==='influence'?'aria-current="page"':''}><span class="ln"></span>${esc(END.name)}</a></nav>`;
-const crumbScroll5=v=>{const c=$('.crumbs [aria-current]',v);if(c)try{c.parentNode.scrollLeft=c.offsetLeft-40}catch(e){}};
+const crumbScroll5=v=>{const c=$('.crumbs [aria-current]',v);if(c){const nav=c.parentNode;nav.scrollLeft+=c.getBoundingClientRect().left-nav.getBoundingClientRect().left-40}};
 const pn5=(prev,next)=>`<nav class="pn5" aria-label="Previous and next">${prev?`<a href="#${prev[0]}"><span class="lab">← ${esc(prev[2]||'Previous link')}</span><b>${esc(prev[1])}</b></a>`:'<span></span>'}${next?`<a class="nx" href="#${next[0]}"><span class="lab">${esc(next[2]||'Next link')} →</span><b>${esc(next[1])}</b></a>`:''}</nav>`;
 const wireAcc5=root=>{root.addEventListener('click',e=>{const b=e.target.closest('.acc5-b');if(!b||!root.contains(b))return;const o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));document.getElementById(b.getAttribute('aria-controls')).hidden=!o})};
 

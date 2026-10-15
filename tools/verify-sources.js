@@ -12,18 +12,34 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
    for(const id of Object.keys(topics)){
     await page.goto(PAGE+'#'+id);
     if(id==='capability'){
-     assert.equal(await page.locator('.evidence-chart7 svg').count(),2);
-     assert.equal(await page.locator('.publisher7 a:visible').count(),2);
-     assert.match(await page.locator('.review-state7').innerText(),/awaiting human review/);
-     assert.match(await page.locator('#rli-chart7 .axis-note').innerText(),/X-axis Projects meeting the standard/);
-     assert.match(await page.locator('#metr-chart7 .axis-note').innerText(),/Y-axis Estimated human task time/);
+     assert.equal(await page.locator('.evidence-chart7 svg').count(),1);
+     assert.equal(await page.locator('.publisher7 a:visible').count(),1);
+     assert.equal(await page.locator('.claim5 .lead5, .review-state7, .capability7 .draft5').count(),0);
+     assert.equal(await page.locator('.disclosure7').count(),3);
+     assert.equal(await page.locator('.disclosure7[open]').count(),0);
+     assert.equal(await page.locator('.related7 li:visible').count(),0);
+     assert.ok((await page.locator('.capability7').innerText()).split(/\s+/).length<260,'Default view stays concise');
+     assert.equal(await page.locator('#metr-chart7 circle').count(),23);
+     assert.equal(await page.locator('#metr-chart7 .chart-x-label').innerText(),'Model release year');
+     assert.match(await page.locator('#metr-chart7 .chart-y-label').innerText(),/human expert/);
+     const clipped=await page.locator('#metr-chart7 svg').evaluate(svg=>[...svg.querySelectorAll('text')].filter(t=>{const b=t.getBBox();return b.x<0||b.x+b.width>svg.viewBox.baseVal.width||b.y<0||b.y+b.height>svg.viewBox.baseVal.height}).map(t=>t.textContent));
+     assert.deepEqual(clipped,[],`Chart labels fit at ${width}`);
+     const active=await page.locator('.crumbs [aria-current]').boundingBox(),nav=await page.locator('.crumbs').boundingBox();
+     assert.ok(active.x>=nav.x-1&&active.x+active.width<=nav.x+nav.width+1,'Active step is visible');
+     await page.locator('#metr-chart7 svg').focus();await page.keyboard.press('ArrowRight');
+     assert.match(await page.locator('#metr-chart7 .tip').innerText(),/GPT-4/);
+     await page.keyboard.press('Escape');assert.equal(await page.locator('#metr-chart7 .tip').isVisible(),false);
+     for(const summary of await page.locator('.disclosure7>summary').all()){
+      await summary.focus();await page.keyboard.press('Enter');
+     }
+     assert.equal(await page.locator('.disclosure7[open]').count(),3);
      const csvs=await page.locator('a[download]').evaluateAll(links=>links.map(a=>decodeURIComponent(a.href.split(',')[1])));
-     assert.match(csvs[0],/"Opus 5.5","21.25"/);
-     assert.match(csvs[1],/"50","718.80683","316.685725","3633.786163"/);
-     assert.match(csvs[1],/"80","69.874587","27.026521","170.437873"/);
-     assert.equal(await page.locator('.related7 li').count(),3);
-     for(const summary of await page.locator('.chart-context7 summary').all())await summary.click();
-     for(const summary of await page.locator('.evidence-chart7 .tbl summary').all())await summary.click();
+     assert.equal(csvs.length,1);assert.equal(csvs[0].split('\r\n').length,24);
+     assert.match(csvs[0],/"GPT-4","2023-03-14","80","0.889561","0.342984","2.523746"/);
+     assert.match(csvs[0],/"80","69.874587","27.026521","170.437873"/);
+     assert.match(csvs[0],/"80","185.911829","97.30292","398.514614"/);
+     assert.equal(await page.locator('.data7 tbody tr').count(),23);
+     assert.equal(await page.locator('.related7 li').count(),4);
     }else{
      assert.equal(await page.locator('.source-mini6').count(),2);
      assert.equal(await page.locator('.source-mini6-cite a:visible').count(),2);
@@ -49,7 +65,7 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
    await page.goto(PAGE+'#skills/bastani');assert.equal(await page.locator('#source-bastani').count(),1);
    await page.goto(PAGE+'#review/skills');await page.waitForTimeout(500);assert.equal(await page.locator('[data-review]').count(),0);
    await page.goto(PAGE+'#method');assert.equal(await page.locator('[href="pdf-source-crosswalk.html"]').count(),0);
-   await page.goto(PAGE+'#capability');await page.locator('a[href="#method/selection"]').click();
+   await page.goto(PAGE+'#capability');await page.locator('#capability-source>summary').click();await page.locator('a[href="#method/selection"]').click();
    assert.match(await page.locator('#m-selection').innerText(),/Added value/);
    await context.close();console.log(`Passed ${width}px ${colorScheme}`);
   }

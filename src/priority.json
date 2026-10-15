@@ -1,8 +1,8 @@
 {
   "capability": {
     "h1": "How much useful work can AI complete reliably?",
-    "summary": "Two benchmarks test finished freelance projects and longer technical tasks. Both measure defined tasks; how well the results transfer to everyday jobs remains uncertain.",
-    "selection": "Use a benchmark of professional work products alongside an independent technical-task benchmark that makes the success threshold explicit.",
+    "summary": "Newer AI models handle longer technical tasks in benchmarks. Reliable performance across whole jobs remains uncertain.",
+    "selection": "Feature METR to track technical-task progress at an explicit success rate, with published uncertainty. Use RLI as related evidence on finished projects beyond software.",
     "gap": "Repeated, independent tests of reliable performance across whole workflows, including work beyond software.",
     "signal": 3,
     "sources": [
@@ -38,29 +38,29 @@
       },
       {
         "id": "metr",
-        "title": "METR task-completion horizons at two success rates",
+        "title": "METR task-completion horizons at 80% success",
         "url": "https://metr.org/time-horizons/",
-        "locate": "Definition, Methodological Details and Updates; linked YAML results.claude_opus_4_6_inspect.metrics.p50_horizon_length and p80_horizon_length.",
+        "locate": "Definition, Methodological Details and Updates; linked TH1.1 YAML, all records released from 2023 onward, metrics.p80_horizon_length and release_date.",
         "label": "Reliability on longer tasks",
         "citation": "METR, Task-Completion Time Horizons",
         "type": "Independent nonprofit benchmark",
-        "date": "Frozen TH1.1 results; read 13 October 2026",
-        "finding": "For the tested Opus 4.6 agent, the estimated task horizon is about 12 hours at 50% success, but about 70 minutes at 80% success.",
+        "date": "Frozen TH1.1 results; retrieved 14 October 2026",
+        "finding": "At 80% success, the estimated task horizon rises from under one minute for GPT-4 (March 2023) to about three hours for Claude Mythos Preview (early, April 2026). The chart includes all 23 tested models released from 2023 onward, not just these endpoints.",
         "why": "Makes reliability explicit in human-equivalent task time, with downloadable results and uncertainty estimates.",
-        "limit": "Technical tasks only, not agent runtime. Wide 95% intervals: 5.3-60.6 hours at 50%; 27-170 minutes at 80%. The tracker is no longer actively updated.",
+        "limit": "Technical tasks, not whole jobs or agent runtime. The latest point has a wide 95% interval of 1.6-6.6 hours. Release dates are not evaluation dates. The tracker is no longer actively updated.",
         "metrics": [
           [
-            "~12 hours",
-            "Human-equivalent task time at 50% success"
+            "<1 minute",
+            "GPT-4, March 2023; 80% success"
           ],
           [
-            "~70 minutes",
-            "At 80% success; same tested agent"
+            "~3 hours",
+            "Mythos Preview (early), April 2026; 80% success"
           ]
         ],
         "checks": [
           "Check the definition and stopped-update notice: task difficulty is not unattended runtime.",
-          "In the linked YAML, compare the Opus 4.6 p50/p80 horizons, units and confidence intervals."
+          "In the linked YAML, check all release dates, p80_horizon_length estimates and 95% intervals against the downloadable chart data."
         ],
         "legacy": [
           "metr"

@@ -86,7 +86,9 @@ const Charts=(()=>{
     const xs=[...new Set(cfg.series.filter(s=>s.tip!==false).flatMap(s=>s.pts.map(p=>+p[0].toFixed(4))))].sort((a,b)=>a-b);
     const named=cfg.series.filter(s=>s.name&&s.tip!==false);
     const tbl=tableHTML([cfg.x.label||'Date',...named.map(s=>s.name)],xs.map(x=>[xtf(x),...named.map(s=>{const p=s.pts.find(p=>Math.abs(p[0]-x)<1e-4);return p?ytf(p[1])+(p[2]?' ('+p[2]+')':''):null})]));
-    el.innerHTML=`${lg}${axisHTML(cfg.x.label||'date or year',cfg.y.label||cfg.valLabel||'value')}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(cfg.aria||'Line chart')}">${g}${m}<line class="xh" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink)" stroke-width="1" style="display:none"/><rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent" class="hit"/></svg><div class="tip"></div></div>${cfg.table===false?'':tbl}`;
+    const edgeAxes=cfg.axisPlacement==='edges';
+    const axes=edgeAxes?`<div class="chart-y-label">${esc(cfg.y.label)}</div>`:axisHTML(cfg.x.label||'date or year',cfg.y.label||cfg.valLabel||'value');
+    el.innerHTML=`${lg}${axes}<div style="position:relative"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(cfg.aria||'Line chart')}">${g}${m}<line class="xh" y1="${P.t}" y2="${H-P.b}" stroke="var(--ink)" stroke-width="1" style="display:none"/><rect x="${P.l}" y="${P.t}" width="${W-P.l-P.r}" height="${H-P.t-P.b}" fill="transparent" class="hit"/></svg><div class="tip"></div></div>${edgeAxes?`<div class="chart-x-label">${esc(cfg.x.label)}</div>`:''}${cfg.table===false?'':tbl}`;
     const svg=el.querySelector('svg'),tip=el.querySelector('.tip'),xh=el.querySelector('.xh');
     let idx=-1;
     const show=i=>{
