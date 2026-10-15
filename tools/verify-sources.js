@@ -30,9 +30,9 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
      await page.locator(chart+' svg').focus();await page.keyboard.press('ArrowRight');
      assert.match(await page.locator(chart+' .tip').innerText(),id==='capability'?/GPT-4/:/11%/);
      await page.keyboard.press('Escape');assert.equal(await page.locator(chart+' .tip').isVisible(),false);
-     const takeawayLinks=await page.locator('.takeaway7 a').evaluateAll(a=>a.map(x=>x.href));
+     const takeawayLinks=await page.locator('.takeaway7 a, .supporting7 a').evaluateAll(a=>a.map(x=>x.href));
      const relatedLinks=await page.locator('.related7 a').evaluateAll(a=>a.map(x=>x.href));
-     assert.equal(takeawayLinks.length,id==='capability'?2:1);
+     assert.equal(new Set(takeawayLinks).size,id==='capability'?2:1);
      assert.ok(takeawayLinks.every(href=>!relatedLinks.includes(href)),'Related evidence adds sources, not repeated citations');
      for(const summary of await page.locator('.disclosure7>summary').all()){
       await summary.focus();await page.keyboard.press('Enter');
@@ -49,7 +49,20 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
       assert.match(csvs[0],/"GPT-4","2023-03-14","80","0.889561","0.342984","2.523746"/);
       assert.match(csvs[0],/"80","69.874587","27.026521","170.437873"/);
       assert.match(csvs[0],/"80","185.911829","97.30292","398.514614"/);
-      assert.match(await page.locator('.takeaway7').innerText(),/March 2023 to April 2026/);
+      const takeaway=await page.locator('.takeaway7').innerText();
+      assert.match(takeaway,/209-fold/);
+      assert.match(takeaway,/53 seconds for GPT-4 in March 2023/);
+      assert.match(takeaway,/3.1 hours for Mythos Preview \(early\) in April 2026/);
+      assert.match(takeaway,/human-expert time/);
+      assert.equal(await page.locator('.benchmark-facts7>div').count(),3);
+      assert.match(await page.locator('.supporting7-meta').innerText(),/o3 → GPT-5.*2025.*OpenAI-reported/);
+      for(const [i,start,end,change] of [[0,88.9,94.6,5.7],[1,83.3,85.7,2.4],[2,35.2,39.0,3.8]]){
+       const fact=await page.locator('.benchmark-facts7>div').nth(i).innerText();
+       assert.ok(fact.includes(`${start.toFixed(1)}% → ${end.toFixed(1)}%`));
+       assert.ok(fact.includes(`+${change.toFixed(1)} percentage points`));
+       assert.equal(Number((end-start).toFixed(1)),change);
+      }
+      assert.match(await sourceNotes.innerText(),/185.91 ÷ 0.8896/);
      }else{
       for(const [date,value] of [['2023-05',11],['2024-05',12],['2025-05',19],['2025-08',23],['2025-11',26],['2026-02',28],['2026-05',30],['2026-08',32]]){
        assert.ok(csvs[0].includes(`"${date}","${value}",`),`Correct Gallup value for ${date}`);
@@ -58,7 +71,7 @@ const PAGE=process.env.BASE_URL||'file://'+path.resolve(__dirname,'../docs/index
       assert.match(await page.locator('#adoption-source').innerText(),/Confidence intervals are not supplied/);
      }
      assert.equal(await page.locator('.data7 tbody tr').count(),id==='capability'?23:8);
-     assert.equal(await page.locator('.related7 li').count(),id==='capability'?3:2);
+     assert.equal(await page.locator('.related7 li').count(),id==='capability'?4:2);
     }else{
      assert.equal(await page.locator('.source-mini6').count(),2);
      assert.equal(await page.locator('.source-mini6-cite a:visible').count(),2);

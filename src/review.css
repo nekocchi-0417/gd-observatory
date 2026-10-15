@@ -48,6 +48,15 @@
 .chart-credit7{margin:16px 0 0;font:12px/1.5 var(--f-display);color:var(--ink-2);max-width:90ch}
 .takeaway7{font:18px/1.55 var(--f-display);margin:22px 0 28px;max-width:85ch}
 .takeaway7 a{color:var(--s1);text-underline-offset:3px}
+.supporting7{margin:0 0 28px;font:15px/1.5 var(--f-display)}
+.supporting7 h2{font:650 18px/1.4 var(--f-display);margin:0 0 4px}
+.supporting7-meta{font-size:13px;color:var(--ink-2);margin:0 0 12px}
+.benchmark-facts7{margin:0}
+.benchmark-facts7>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 24px;padding:12px 0;border-top:1px solid var(--rule)}
+.benchmark-facts7 dt{font-weight:600}.benchmark-facts7 dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.benchmark-facts7 span{display:block;font-size:13px;font-weight:400;color:var(--ink-2);margin-top:3px}
+.benchmark-facts7 a{color:var(--s1);text-underline-offset:3px}
+.benchmark-facts7 dd b{white-space:nowrap}
 .disclosures7{border-bottom:1px solid var(--rule)}
 .disclosure7{border-top:1px solid var(--rule);font:15px/1.6 var(--f-display)}
 .disclosure7>summary{padding:18px 0;cursor:pointer;font-weight:600;color:var(--ink)}
@@ -79,3 +88,4 @@
  .disclosure7>summary{padding:17px 0}.chart-y-label{max-width:30ch}
  .pilot7 .tip .r{white-space:normal;flex-wrap:wrap}
 }
+@media(max-width:480px){.benchmark-facts7>div{grid-template-columns:minmax(0,1fr);gap:6px}.benchmark-facts7 dd{text-align:left;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}.benchmark-facts7 dd span{margin:0}}

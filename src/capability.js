@@ -193,6 +193,12 @@ const CAPABILITY7={
   },
   "related": [
     {
+      "title": "Capability across domains",
+      "publisher": "METR · July 2025",
+      "url": "https://metr.org/blog/2025-07-14-how-does-time-horizon-vary-across-domains/",
+      "text": "Explores maths, science and computer use. Uses 50% success and noisier human-time estimates, not the 80% series above."
+    },
+    {
       "title": "Remote Labor Index",
       "publisher": "CAIS / Scale AI",
       "url": "https://labs.scale.com/leaderboard/rli",
@@ -229,6 +235,8 @@ function decimalYear7(date){
 function viewCapabilityPilot(v){
   const p=SELECTED_EVIDENCE.capability,M=CAPABILITY7.metr;
   const minutes=n=>n.toFixed(1)+' min';
+  const first=M.rows.find(r=>r.id==='gpt_4'),last=M.rows.find(r=>r.id==='claude_mythos_preview_early_inspect');
+  const fold=Math.round(last.estimate/first.estimate);
   const csv=[['model','release_date','success_rate_percent','estimate_minutes','ci95_low_minutes','ci95_high_minutes','source','source_record','retrieved'],
     ...M.rows.map(r=>[r.name,r.date,80,r.estimate,r.low,r.high,M.data,`results.${r.id}.metrics.p80_horizon_length`,'2026-10-14'])];
   v.innerHTML=`<div class="view5 wrap priority6 pilot7 capability7">${crumbs5('capability')}
@@ -243,16 +251,25 @@ function viewCapabilityPilot(v){
       <div class="chart" id="metr-chart7"></div>
       <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
-    <p class="takeaway7"><b>What changed:</b> From March 2023 to April 2026, METR's estimated technical-task length at 80% success rose from <b>under a minute to about three hours</b>. Separate studies report progress on ${ext7('https://metr.org/blog/2025-07-14-how-does-time-horizon-vary-across-domains/','maths, science questions and computer use')} and ${ext7('https://arxiv.org/abs/2510.04374','professional work products (OpenAI’s GDPval)')}. These use different measures, not a single rate of improvement across jobs.</p>
+    <p class="takeaway7"><b>What changed:</b> At 80% success, METR's estimated technical-task length increased about <b>${fold}-fold</b>, from <b>${Math.round(first.estimate*60)} seconds for GPT-4 in March 2023</b> to <b>${(last.estimate/60).toFixed(1)} hours for Mythos Preview (early) in April 2026</b>, in human-expert time.</p>
+    <section class="supporting7" aria-labelledby="supporting7-title">
+      <h2 id="supporting7-title">Other benchmarks</h2>
+      <p class="supporting7-meta">o3 → GPT-5 · 2025 · OpenAI-reported results</p>
+      <dl class="benchmark-facts7">
+        <div><dt>Competition maths <span>${ext7('https://openai.com/index/introducing-gpt-5-for-developers/','AIME 2025')} · Correct answers</span></dt><dd><b>88.9% → 94.6%</b><span>+5.7 percentage points</span></dd></div>
+        <div><dt>Science questions <span>${ext7('https://openai.com/index/introducing-gpt-5-for-developers/','GPQA Diamond')} · Correct answers</span></dt><dd><b>83.3% → 85.7%</b><span>+2.4 percentage points</span></dd></div>
+        <div><dt>Professional work <span>${ext7('https://arxiv.org/html/2510.04374v1#A1.T2','GDPval')} · Preferred to human output</span></dt><dd><b>35.2% → 39.0%</b><span>+3.8 percentage points</span></dd></div>
+      </dl>
+    </section>
     <div class="disclosures7">
       <details id="capability-source" class="disclosure7">
         <summary>Source, caveats and data</summary>
         <div class="disclosure7-body">
           <dl class="context7">
             <div><dt>Coverage</dt><dd>Mainly software, machine learning and cybersecurity tasks, not whole jobs. Task length is human-expert time, not AI runtime.</dd></div>
-            <div><dt>Uncertainty</dt><dd>The latest estimate is 3.1 hours; its 95% interval is 1.6–6.6 hours. Tools and test setups vary.</dd></div>
+            <div><dt>Uncertainty</dt><dd>The ${fold}-fold change divides point estimates (${last.estimate.toFixed(2)} ÷ ${first.estimate.toFixed(4)} minutes). The latest estimate's 95% interval is 1.6–6.6 hours. Tools and test setups vary.</dd></div>
             <div><dt>Chart data</dt><dd>All ${M.rows.length} METR TH1.1 models released from 2023 onward, at 80% success. No other datasets added. This archived series ends in April 2026.</dd></div>
-            <div><dt>Other studies</dt><dd>The linked studies use different tests: METR's cross-domain study uses 50% success; GDPval is OpenAI's evaluation of professional work products.</dd></div>
+            <div><dt>Other benchmarks</dt><dd>Maths/science: high reasoning, no tools. GDPval: expert comparisons, with tools. These historical, developer-reported results use different measures, not a common growth rate or whole-job performance. Small differences may reflect measurement uncertainty.</dd></div>
           </dl>
           <p>AI-assisted summary; not independently verified.</p>
           <p class="source-actions7">${ext7(M.url,'Full methodology: METR')}${ext7(M.data,'METR original data')}${csvLink7('metr-th1-1-80-percent-2026-10-14.csv',csv)}<a href="#method/selection">How we select indicators</a></p>
