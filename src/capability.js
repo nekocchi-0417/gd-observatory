@@ -243,12 +243,12 @@ function capabilityRecords7(rows=CAPABILITY7.metr.rows){
     return records;
   },[]);
 }
-function drawCapabilityTrend7(el,h=330){
+function drawCapabilityTrend7(el,h=330,labels={}){
   const rows=CAPABILITY7.metr.rows,records=capabilityRecords7(rows),ids=new Set(records.map(r=>r.id)),last=records.at(-1);
   Charts.line(el,{h,legend:false,table:false,axisPlacement:'edges',
     aria:'METR TH1.1 technical-task length at 80 percent success, March 2023 to April 2026. A line joins record-high point estimates among evaluated models; other tested models remain visible. From 53 seconds to 3.1 hours of human-expert work. Not a fitted trend or a forecast.',
     x:{min:2023,max:2026.65,ticks:[2023,2024,2025,2026],fmt:String,tip:calendarDate7,label:'Model release year'},
-    y:{min:0,max:240,ticks:[0,60,120,180,240],fmt:n=>n===0?'0':`${n/60}h`,tip:n=>n<1?Math.round(n*60)+' sec':fmtMin(n),label:'Task length in human-expert time / 80% success'},
+    y:{min:0,max:240,ticks:[0,60,120,180,240],fmt:n=>n===0?'0':`${n/60}h`,tip:n=>n<1?Math.round(n*60)+' sec':fmtMin(n),label:labels.yLabel||'Task length in human-expert time / 80% success'},
     series:[{name:'Record-high estimates',color:C.s1,w:2.8,markers:'none',end:false,tip:false,rec:false,pts:records.map(r=>[decimalYear7(r.date),r.estimate])},
       ...rows.map(r=>({name:r.name,color:ids.has(r.id)?C.s1:C.s2,dots:true,r:ids.has(r.id)?4:3,markers:'all',end:false,pts:[[decimalYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(2)} to ${r.high.toFixed(2)} minutes`]]}))],
     ann:[{x:decimalYear7(records[0].date),y:records[0].estimate,text:'53 sec',dx:8,dy:-18,strong:true},{x:decimalYear7(last.date),y:last.estimate,text:'3.1 hours',anchor:'end',dx:-8,dy:-18,strong:true}]});

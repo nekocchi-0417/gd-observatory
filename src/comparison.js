@@ -26,7 +26,7 @@ const pairDefs10=[
   {id:'culture',n:'03',title:'More AI content does not mean more attention.',tag:'A counterpoint',left:'uploads',right:'streams',reading:'AI music grew rapidly as a share of new uploads on Deezer, but remained a small share of recorded streams. More supply alone does not show that human creators are losing audiences or income.',need:'Measure genuine audience attention and creator income, alongside AI content supply, across platforms.'}
 ];
 
-function comparisonCard10(key,uid){
+function comparisonCard10(key,uid,home=false){
   const W=COMPARISON_DATA.work;
   const cards={
     capability:{lane:'AI capability',type:'Benchmark trend',title:'Longer tasks, at the same success rate',measure:'Human-expert time for technical tasks AI completes with 80% success.',publisher:'METR',url:CAPABILITY7.metr.url,period:'Mar 2023 - Apr 2026',take:'<strong>About 209 times longer:</strong> from 53 seconds to 3.1 hours. These are technical test tasks, not whole jobs.'},
@@ -37,13 +37,30 @@ function comparisonCard10(key,uid){
     streams:{lane:'Audience attention proxy',type:'Reported range / not a trend',title:'But it is a small share of recorded streams',measure:'Fully AI-generated tracks as a share of all recorded streams on Deezer.',publisher:'Deezer',url:COMPARISON_DATA.music.sourceURL,period:'Apr 2026 report',take:'<strong>Streams are not the same as human listening.</strong> The figure includes fraudulent activity; Deezer also excludes AI music from recommendations.'}
   };
   const c=cards[key],human=['work','skills','streams'].includes(key);
-  const chartNote=key==='capability'?'Line: record-high estimates. Dots: all tested models.':key==='uploads'?'Line connects rounded reports; not continuous observations.':'';
-  return `<figure class="compare-figure10${human?' human10':''}" aria-labelledby="${uid}-title"><figcaption><div class="figure-meta10"><span class="lane10">${esc(c.lane)}</span><span>${esc(c.type)}</span></div><h3 id="${uid}-title">${esc(c.title)}</h3><p class="measure10">${esc(c.measure)}</p><div class="source10">${ext7(c.url,c.publisher)}<span>${esc(c.period)}</span></div></figcaption><div class="chart" id="${uid}" data-comparison-chart="${key}"></div><p class="chart-note10">${chartNote}</p><p class="figure-take10">${key==='work'?esc(c.take):c.take}</p></figure>`;
+  if(home&&key==='capability')Object.assign(c,{
+    title:'Models are completing longer tasks',measure:'',
+    take:'METR estimates that the best model it tested in 2026 could handle technical tasks taking a human expert <strong>about three hours</strong>, up from <strong>under a minute in 2023</strong>.',
+    note:1,noteTitle:'How task length is measured',hint:'Task length is measured by the time a human expert would need. METR estimates it at an 80% success rate.'
+  });
+  if(home&&key==='work')Object.assign(c,{
+    lane:'Employment',title:'Employment is falling among young workers',
+    measure:'US workers aged 22-25, in occupations with the greatest potential for AI assistance.',
+    take:'In these occupations, employment among <strong>22-25-year-olds fell 12.8%</strong> between November 2022 and August 2026. Older age groups saw smaller falls or increases.',
+    note:2,noteTitle:'Which workers are included',hint:'Selected US employers using ADP payroll. Occupations are grouped by how much AI could assist with their tasks.'
+  });
+  const chartNote=home?(key==='capability'?'Each dot is a tested model; the line joins record-high estimates.':'100 = employment in November 2022; 90 = 10% fewer people employed.'):key==='capability'?'Line: record-high estimates. Dots: all tested models.':key==='uploads'?'Line connects rounded reports; not continuous observations.':'';
+  const ref=home?`<sup><button type="button" class="note-ref12" data-home-note="${key}" aria-controls="home-note-${key}" aria-expanded="false" aria-label="Note ${c.note}: ${esc(c.noteTitle)}" title="${esc(c.hint)}">${c.note}</button></sup>`:'';
+  return `<figure class="compare-figure10${human?' human10':''}" aria-labelledby="${uid}-title"><figcaption><div class="figure-meta10"><span class="lane10">${esc(c.lane)}</span>${home?'':`<span>${esc(c.type)}</span>`}</div><h3 id="${uid}-title">${esc(c.title)}${ref}</h3>${c.measure?`<p class="measure10">${esc(c.measure)}</p>`:''}<div class="source10">${ext7(c.url,home?'Source: '+c.publisher:c.publisher)}<span>${esc(c.period)}</span></div></figcaption><div class="chart" id="${uid}" data-comparison-chart="${key}"></div><p class="chart-note10">${chartNote}</p><p class="figure-take10">${key==='work'&&!home?esc(c.take):c.take}</p></figure>`;
 }
 
 function pairMarkup10(pair,home=false){
   const left=pair.id==='culture'?'culture':pair.left,right=pair.id==='culture'?'culture':pair.right;
-  return `<section class="comparison10" id="compare-${pair.id}" ${home?'aria-label="AI capability and employment comparison"':`aria-labelledby="pair-${pair.id}"`}>${home?'':`<header class="pair-head10"><span class="pair-no10">${pair.n}</span><h2 id="pair-${pair.id}">${esc(pair.title)}</h2><span class="pair-tag10">${esc(pair.tag)}</span></header>`}<div class="pair-grid10">${comparisonCard10(pair.left,`${pair.id}-left10`)}${comparisonCard10(pair.right,`${pair.id}-right10`)}</div><p class="pair-reading10"><b>Our reading:</b> ${esc(pair.reading)}</p>${home?'':`<div class="pair-footer10"><details class="pair-notes10"><summary>Sources, caveats &amp; more evidence</summary>${pairNotes10(pair)}</details><div class="pair-links10"><a href="#${left}">${esc(nameOf(left))}: research gaps &#8594;</a>${right===left?'':`<a href="#${right}">${esc(nameOf(right))}: research gaps &#8594;</a>`}</div></div>`}</section>`;
+  return `<section class="comparison10" id="compare-${pair.id}" ${home?'aria-label="AI capability and employment comparison"':`aria-labelledby="pair-${pair.id}"`}>${home?'<p class="snapshot-note12"><b>One selected comparison.</b> These findings are not representative of all AI capabilities or workers. They do not establish that AI caused the employment changes.</p>':`<header class="pair-head10"><span class="pair-no10">${pair.n}</span><h2 id="pair-${pair.id}">${esc(pair.title)}</h2><span class="pair-tag10">${esc(pair.tag)}</span></header>`}<div class="pair-grid10">${comparisonCard10(pair.left,`${pair.id}-left10`,home)}${comparisonCard10(pair.right,`${pair.id}-right10`,home)}</div>${home?`<p class="pair-reading10"><b>The research question:</b> Does employers' use of AI help explain the decline in young-worker employment?</p>${homeNotes12()}`:`<p class="pair-reading10"><b>Our reading:</b> ${esc(pair.reading)}</p><div class="pair-footer10"><details class="pair-notes10"><summary>Sources, caveats &amp; more evidence</summary>${pairNotes10(pair)}</details><div class="pair-links10"><a href="#${left}">${esc(nameOf(left))}: research gaps &#8594;</a>${right===left?'':`<a href="#${right}">${esc(nameOf(right))}: research gaps &#8594;</a>`}</div></div>`}</section>`;
+}
+
+function homeNotes12(){
+  return `<div class="home-notes12"><details id="home-note-capability"><summary>1. How task length is measured</summary><p>METR estimates the task length at which an AI model succeeds 80% of the time. Length is measured by the time a human expert would need. The tests cover software engineering, machine learning and cybersecurity.</p><p>The comparison runs from GPT-4 in March 2023 (53 seconds) to Claude Mythos Preview (early) in April 2026 (3.1 hours): about 209 times the task length. The latest estimate has a wide 95% uncertainty interval of 1.6-6.6 hours.</p><p>The line joins record-high estimates among 23 tested models. This archived benchmark covers well-defined tasks; how far the results carry over to complete jobs remains uncertain.</p><p>${ext7(CAPABILITY7.metr.url,'METR methods')} / <a href="#capability/source">Model results and data</a></p></details>
+    <details id="home-note-work"><summary>2. Which workers are included</summary><p>Stanford and ADP track employment at a selected group of US employers using ADP payroll. This chart includes occupations in the highest fifth of estimated AI exposure: those whose tasks AI could potentially assist with most.</p><p>The six lines compare age groups, each with its own November 2022 baseline of 100. From that baseline to August 2026, employment fell 12.8% among ages 22-25. Changes among older groups ranged from a 3.8% fall to a 9.4% rise.</p><p>The sample has limited coverage of the US labour market. Actual AI use by these employers is unknown, and other economic changes could help explain the pattern.</p><p>${ext7(COMPARISON_DATA.work.sourceURL,'Stanford / ADP study')} / <a href="#work/source">Employment data and further evidence</a></p></details></div>`;
 }
 
 function pairNotes10(p){
@@ -53,8 +70,9 @@ function pairNotes10(p){
 }
 
 function drawComparison10(el,key){
-  if(key==='capability')drawCapabilityTrend7(el,270);
-  else if(key==='work')drawWork10(el);
+  const home=!!el.closest('.home10');
+  if(key==='capability')drawCapabilityTrend7(el,270,home?{yLabel:'Time a human expert would need'}:{});
+  else if(key==='work')drawWork10(el,home?{yLabel:'Number employed (Nov 2022 = 100)',endLabel:'Ages 22-25: down 12.8%'}:{});
   else if(key==='adoption')Charts.line(el,{h:270,legend:false,table:false,axisPlacement:'edges',aria:'Gallup: US employees reporting frequent AI use, 11 percent in May 2023 to 32 percent in August 2026. Eight survey waves.',
     x:{min:2023,max:2026.9,ticks:[2023,2024,2025,2026],fmt:String,tip:fmtDate,label:'Survey year'},y:{min:0,max:40,ticks:[0,10,20,30,40],fmt:n=>n+'%',tip:n=>n+'%',label:'Share of US employees / frequent AI use'},
     series:[{name:'Frequent AI use',color:'var(--ai10)',w:2.8,end:false,markers:'all',pts:ADOPTION7.rows.map(r=>[monthlyYear10(r.date),r.value])}],ann:[{x:monthlyYear10(ADOPTION7.rows[0].date),y:11,text:'11%',dx:6,dy:-16,strong:true},{x:monthlyYear10(ADOPTION7.rows.at(-1).date),y:32,text:'32%',dx:-6,dy:-18,anchor:'end',strong:true}]});
@@ -63,14 +81,14 @@ function drawComparison10(el,key){
   else drawStreamsStat10(el);
 }
 
-function drawWork10(el){
+function drawWork10(el,labels={}){
   const W=COMPARISON_DATA.work;
   const rows=W.data;
   Charts.line(el,{h:270,table:false,legend:false,axisPlacement:'edges',aria:W.aria||W.measure,
     x:{min:2021.65,max:2026.9,ticks:[2022,2023,2024,2025,2026],ticksNarrow:[2022,2024,2026],fmt:String,tip:fmtDate,label:'Observation year'},
-    y:{min:75,max:125,ticks:[80,90,100,110,120],fmt:String,tip:n=>n.toFixed(1),label:'Employment index / Nov 2022 = 100'},zero:100,
+    y:{min:75,max:125,ticks:[80,90,100,110,120],fmt:String,tip:n=>n.toFixed(1),label:labels.yLabel||'Employment index / Nov 2022 = 100'},zero:100,
     series:[...W.series.slice(1),W.series[0]].map(s=>({name:s.label,color:s.columnIndex===1?'var(--human10)':'var(--ink-3)',w:s.columnIndex===1?2.8:1.4,op:s.columnIndex===1?1:.65,dash:s.columnIndex===2,end:false,markers:'none',pts:rows.map(r=>[monthlyYear10(r[0]),r[s.columnIndex]])})),
-    ann:[{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[1],text:'Ages 22-25 / 87.2',anchor:'end',dx:-5,dy:22,strong:true},{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[5],text:'Other age groups',anchor:'end',dx:-5,dy:-18}]});
+    ann:[{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[1],text:labels.endLabel||'Ages 22-25 / 87.2',anchor:'end',dx:-5,dy:22,strong:true},{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[5],text:'Other age groups',anchor:'end',dx:-5,dy:-18}]});
 }
 
 function drawSkillsStat10(el){
@@ -108,8 +126,17 @@ function viewEmerging10(v,anchor){
 }
 
 function viewHome10(v){
-  v.innerHTML=`<div class="wrap page10 home10"><header class="intro10 home-intro10"><div class="eyebrow10">Better Futures Project / Zhang Yue</div><h1>Tracking AI progress and human influence.</h1><p>Gradual disempowerment is the risk that people lose influence as AI takes on more work and decisions. What do the early signals show?</p><div class="intro-links10">${ext7('https://gradual-disempowerment.ai/','Original paper')}<a href="#gaps">Pathways &amp; research gaps &#8594;</a></div></header>${pairMarkup10(pairDefs10[0],true)}<section class="home-next10"><div><h2>A first signal, not the whole picture.</h2><p>Explore changes in work, skills and culture, including evidence that complicates the story.</p></div><a class="main-link10" href="#emerging">Explore emerging evidence &#8594;</a></section><section class="home-doors10"><article><h2>What is measured? What is missing?</h2><p>The proposed pathways, available indicators and measurement gaps, together in one place.</p><a href="#gaps">Research gaps &#8594;</a></article><article><h2>Help improve the dashboard</h2><p>Researchers and grantmakers can add evidence, challenge interpretations or support missing measures.</p><a href="#contribute">Contribute &#8594;</a></article></section></div>`;
+  v.innerHTML=`<div class="wrap page10 home10"><header class="intro10 home-intro10"><div class="eyebrow10">Better Futures Project / Zhang Yue</div><h1>Tracking AI progress and human influence.</h1><p>Gradual disempowerment is the risk that people lose influence over their work and lives as AI takes on more tasks and decisions. We bring together early evidence and questions that need more research.</p><div class="intro-links10">${ext7('https://gradual-disempowerment.ai/','Original paper')}<a href="#gaps">Pathways &amp; research gaps &#8594;</a></div></header>${pairMarkup10(pairDefs10[0],true)}<section class="home-next10"><div><h2>Work, learning and culture</h2><p>Compare findings on employment, AI-assisted learning and the audience for AI-generated music.</p></div><a class="main-link10" href="#emerging">Explore emerging evidence &#8594;</a></section><section class="home-doors10"><article><h2>What we can measure, and what's missing</h2><p>See what researchers can already measure and where better evidence is needed.</p><a href="#gaps">Research gaps &#8594;</a></article><article><h2>Help improve the dashboard</h2><p>Researchers and grantmakers: suggest studies, flag mistakes or fund research on questions we cannot yet answer.</p><a href="#contribute">Contribute &#8594;</a></article></section></div>`;
   mountComparisons10(v);
+  $$('[data-home-note]',v).forEach(button=>{
+    const note=$('#home-note-'+button.dataset.homeNote,v);
+    button.addEventListener('click',()=>{
+      note.open=true;
+      $('summary',note).focus({preventScroll:true});
+      note.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    });
+    note.addEventListener('toggle',()=>button.setAttribute('aria-expanded',String(note.open)));
+  });
 }
 
 function viewResearch10(v){

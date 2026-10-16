@@ -64,12 +64,42 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
   }
   const p=await browser.newPage({viewport:{width:1440,height:950}});
   await p.goto(url+'#home');
+  assert.match(await p.locator('.snapshot-note12').innerText(),/not representative/);
+  assert.match(await p.locator('.snapshot-note12').innerText(),/do not establish that AI caused/);
+  assert.match(await p.locator('#work-left10-title').innerText(),/Models are completing longer tasks/);
+  assert.match(await p.locator('#work-right10-title').innerText(),/Employment is falling among young workers/);
+  assert.match(await p.locator('.human10 .measure10').innerText(),/US workers aged 22-25/);
+  assert.ok(!(await p.locator('.home10').innerText()).includes('209 times'),'Technical ratio stays in collapsed note');
+  assert.ok(!/, not\b/.test(await p.locator('.home10').innerText()),'Avoid compressed x, not y phrasing on the home page');
+  for(const key of ['capability','work']){
+    const button=p.locator(`[data-home-note="${key}"]`),note=p.locator(`#home-note-${key}`);
+    assert.equal(await note.evaluate(d=>d.open),false);
+    assert.ok(await button.getAttribute('title'),'Definition available on hover');
+    await button.focus();await p.keyboard.press('Enter');
+    await p.waitForTimeout(80);
+    assert.equal(await note.evaluate(d=>d.open),true);
+    assert.equal(await button.getAttribute('aria-expanded'),'true');
+    assert.equal(await p.evaluate(()=>document.activeElement.parentElement.id),'home-note-'+key);
+    await note.locator('summary').click();await p.waitForTimeout(80);
+    assert.equal(await button.getAttribute('aria-expanded'),'false');
+  }
+  for(const width of [1440,760,390,340]){
+    await p.setViewportSize({width,height:950});
+    await p.evaluate(()=>document.querySelectorAll('.home-notes12 details').forEach(d=>d.open=true));
+    assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Expanded home notes fit '+width);
+    const sizes=await p.evaluate(()=>({caveat:parseFloat(getComputedStyle(document.querySelector('.snapshot-note12')).fontSize),body:parseFloat(getComputedStyle(document.querySelector('.figure-take10')).fontSize)}));
+    assert.ok(sizes.caveat<sizes.body,'Caveats are visually secondary');
+  }
+  await p.setViewportSize({width:1440,height:950});await p.goto(url+'#home');
+  await p.evaluate(()=>document.querySelectorAll('.home-notes12 details').forEach(d=>d.open=false));
   assert.equal(await p.locator('#work-left10 path[fill="none"]').count(),1,'Capability has a record-high line');
   assert.equal(await p.locator('#work-left10 circle').count(),23,'Every evaluated model remains visible');
   const frontier=await p.evaluate(()=>capabilityRecords7().map(r=>[r.date,r.estimate]));
   assert.ok(frontier.every((r,i)=>!i||r[0]>frontier[i-1][0]&&r[1]>frontier[i-1][1]),'Record-high line rises through observed records');
   await p.getByRole('link',{name:'Explore emerging evidence',exact:false}).click();
   assert.ok(p.url().endsWith('#emerging'));
+  assert.equal(await p.locator('.home-notes12').count(),0,'Copy pilot is scoped to Home');
+  assert.match(await p.locator('#work-left10-title').innerText(),/Longer tasks, at the same success rate/);
   assert.equal(await p.locator('#culture-left10 path[fill="none"]').count(),1,'Upload share has a line');
   assert.equal(await p.locator('#culture-left10 circle').count(),5,'Exactly five source reports');
   assert.equal(await p.locator('#culture-right10 svg, #skills-right10 svg').count(),0,'Snapshots are numbers, not pseudo-trends');
