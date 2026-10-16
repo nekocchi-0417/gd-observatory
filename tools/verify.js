@@ -76,8 +76,8 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
   }
   const p=await browser.newPage({viewport:{width:1440,height:950}});
   await p.goto(url+'#home');
-  assert.match(await p.locator('.snapshot-note12').innerText(),/limited coverage/);
-  assert.match(await p.locator('.snapshot-note12').innerText(),/does not establish causation/);
+  assert.equal(await p.locator('.snapshot-note12').innerText(),'Selected trends in AI capability and employment.');
+  assert.match(await p.locator('#home-note-work').textContent(),/cannot establish the effect of AI on employment/);
   assert.equal(await p.locator('.home-intro10 p,.home-intro10 a,.home-intro10 .eyebrow10,.home-doors10,.home-next10').count(),0,'Home begins with evidence, without the long preamble');
   assert.ok(await p.locator('#work-left10').evaluate(el=>el.getBoundingClientRect().top<500),'Home chart starts within the first 500 desktop pixels');
   assert.match(await p.locator('#work-left10-title').innerText(),/Models are completing longer tasks/);
