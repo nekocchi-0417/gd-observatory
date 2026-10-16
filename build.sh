@@ -16,7 +16,10 @@ js()  { cat src/charts.js src/data1.js src/data2.js src/data3.js src/signals.js 
         printf '\nconst WORK_SERIES = '
         cat src/work-series.json
         printf ';\n'
-        cat src/app.js src/components.js src/views.js src/review.js src/capability.js src/adoption.js src/topics.js src/comparison-data.js src/measurement-data.js src/measurement.js src/comparison.js
+        printf '\nconst EVIDENCE_LIBRARY14 = '
+        cat src/evidence-library.json
+        printf ';\n'
+        cat src/app.js src/components.js src/views.js src/review.js src/capability.js src/adoption.js src/topics.js src/comparison-data.js src/measurement-data.js src/library-url.js src/library.js src/measurement.js src/comparison.js
         echo "render((location.hash||'#home').slice(1));initCaveats5();"; }
 
 if [ "$1" = "artifact" ]; then

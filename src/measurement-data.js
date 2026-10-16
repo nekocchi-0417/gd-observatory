@@ -1,3 +1,24 @@
+// Short visible limits; the full scope and caveats remain in the source notes.
+const INDICATOR_NOTES14={
+  metr:'Performance across whole jobs remains uncertain.',
+  rli:'Actual job performance and client acceptance remain unclear.',
+  gallup:'Reported use does not show how much work AI completes.',
+  euai:'Excludes businesses with fewer than 10 people; definitions changed between years.',
+  aei:'Conversation labels do not reveal whether people checked the results.',
+  canaries:'Actual AI use is unknown; these trends do not establish what caused the decline.',
+  'dk-chatbot-effects':'Covers data through 2024; later employment effects remain open.',
+  'ilo-labour-share':'Two years of estimates; AI\'s contribution is unknown.',
+  ls:'This aggregate does not measure typical wages or AI\'s contribution.',
+  bastani:'One school and short follow-up; longer-term learning effects remain uncertain.',
+  vaccaro:'These experiments do not track lasting changes in skills.',
+  deezer:'One platform; peak-day uploads and potentially fraudulent plays limit the comparison.',
+  doshi:'One short-story experiment; wider cultural trends remain unclear.',
+  inventory:'Reported applications do not count decisions or verify safeguards.',
+  metlfr:'The force reports on its own system; missed matches and override rates remain unclear.',
+  'pew-control':'Perceived control does not establish actual decision-making power.',
+  disempowerment:'Potential risks in conversations do not confirm harm or lasting loss of control.'
+};
+
 // Synthesis of the existing selected evidence; no additional sources.
 // Gap statuses describe this selection only, not the whole research field.
 const MEASUREMENT11 = {

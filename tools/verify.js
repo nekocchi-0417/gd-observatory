@@ -6,7 +6,7 @@ const root=path.resolve(__dirname,'..');
 const out=path.join(root,'dist/verification');
 fs.mkdirSync(out,{recursive:true});
 const url=process.env.VERIFY_URL||'file://'+path.join(root,'docs/index.html');
-const routes=['home','emerging','emerging/work','emerging/skills','emerging/culture','gaps','pathways','capability','adoption','handover','work','share','skills','culture','institutions','influence','method','contribute','gaps/adoption','gaps/influence','details/work','details/capability','details/adoption','details/handover','details/share','details/skills','details/culture','details/institutions','details/influence','work/canaries','adoption/source','adoption/more','evidence','map','review','library/skills','skills/literacy','why','futures','futures/more','unknown'];
+const routes=['home','emerging','emerging/work','emerging/skills','emerging/culture','gaps','pathways','capability','adoption','handover','work','share','skills','culture','institutions','influence','method','contribute','contribute/about','contribute/funding','gaps/adoption','gaps/influence','details/work','details/capability','details/adoption','details/handover','details/share','details/skills','details/culture','details/institutions','details/influence','work/canaries','adoption/source','adoption/more','evidence','map','review','library/skills','library/capability','library/influence','skills/literacy','why','futures','futures/more','unknown'];
 (async()=>{
   const browser=await chromium.launch(),errors=[],overflows=[],badSvg=[],brokenLabels=[];
   for(const width of [1440,1000,760,390,340]){
@@ -43,6 +43,12 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
           assert.equal(await page.locator('.gap-card11').count(),counts[1]);
           assert.equal(await page.locator('.evidence-chart7, .chart').count(),0,`${route}: no large charts on step pages`);
           assert.equal(await page.locator('.next-measure9').count(),0,`${route}: duplicate gap block`);
+          assert.equal(await page.locator('.measurement-intro11>p,.lane-sub11,.measurement-contribute11').count(),0,'No repeated explanatory copy or destination links');
+          assert.equal(await page.locator('.research-back10 a').count(),1,'One back link per step');
+          assert.ok(await page.locator('.indicator-card11').evaluateAll(cards=>cards.every(c=>c.querySelectorAll('a').length===1)),'One source link per indicator');
+          assert.equal(await page.locator('.evidence-library14').evaluate(d=>d.open),false,'Evidence library starts collapsed');
+          const libraryCheck=await page.evaluate(id=>{const rows=libraryEntries14(id),represented=new Set(rows.flatMap(r=>r.sourceURLs));return EVIDENCE_LIBRARY14[id].every(r=>represented.has(r.url))&&new Set(rows.map(r=>r.key)).size===rows.length&&rows.every(r=>/^https?:/.test(r.url))},route);
+          assert.ok(libraryCheck,`${route}: complete, deduplicated HTTP(S) bibliography`);
           await page.evaluate(()=>document.querySelectorAll('#view details').forEach(d=>d.open=true));
           await page.waitForTimeout(70);
           if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))overflows.push(`${width}/${theme}/${route}/expanded`);
@@ -56,7 +62,7 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
           assert.equal(await page.locator('#research-pathways11').evaluate(d=>d.open),width>=980);
           if(width>=980)assert.ok(await page.evaluate(()=>{const svg=document.querySelector('#research-map11 .map5>svg'),box=svg.getBoundingClientRect();return [...svg.querySelectorAll('text')].every(t=>{const r=t.getBoundingClientRect();return r.left>=box.left-1&&r.right<=box.right+1})}),`${width}/${route}: pathway labels stay inside the diagram`);
         }
-        if(route==='method'||route.startsWith('details/')){
+        if(route==='method'||route==='contribute'||route.startsWith('details/')){
           await page.evaluate(()=>document.querySelectorAll('#view details').forEach(d=>d.open=true));
           if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1))overflows.push(`${width}/${theme}/${route}/expanded`);
           await page.evaluate(()=>document.querySelectorAll('#view details').forEach(d=>d.open=false));
@@ -70,8 +76,10 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
   }
   const p=await browser.newPage({viewport:{width:1440,height:950}});
   await p.goto(url+'#home');
-  assert.match(await p.locator('.snapshot-note12').innerText(),/not representative/);
-  assert.match(await p.locator('.snapshot-note12').innerText(),/do not establish that AI caused/);
+  assert.match(await p.locator('.snapshot-note12').innerText(),/limited coverage/);
+  assert.match(await p.locator('.snapshot-note12').innerText(),/does not establish causation/);
+  assert.equal(await p.locator('.home-intro10 p,.home-intro10 a,.home-intro10 .eyebrow10,.home-doors10,.home-next10').count(),0,'Home begins with evidence, without the long preamble');
+  assert.ok(await p.locator('#work-left10').evaluate(el=>el.getBoundingClientRect().top<500),'Home chart starts within the first 500 desktop pixels');
   assert.match(await p.locator('#work-left10-title').innerText(),/Models are completing longer tasks/);
   assert.match(await p.locator('#work-right10-title').innerText(),/Employment is falling among young workers/);
   assert.match(await p.locator('.human10 .measure10').innerText(),/US workers aged 22-25/);
@@ -125,7 +133,7 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
   assert.ok(p.url().endsWith('#emerging/skills'));
   await p.getByRole('link',{name:'AI adoption: research gaps',exact:false}).click();
   assert.ok(p.url().endsWith('#adoption'));
-  await p.getByText('More evidence',{exact:true}).click();
+  await p.locator('#adoption-related>summary').click();
   assert.ok((await p.locator('#adoption-related').innerText()).includes('94%'));
   assert.equal(await p.locator('#adoption-related svg').count(),0);
   await p.goto(url+'#gaps/adoption');
@@ -149,12 +157,22 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
   await p.locator('.st5[data-id="skills"]').click();assert.ok(p.url().endsWith('#skills'));assert.equal(await p.locator('.gaps-lane11').count(),1);
   assert.match(await p.locator('.indicator-card11[data-source="bastani"]').innerText(),/no-AI group/);
   assert.match(await p.locator('.indicator-card11[data-source="bastani"]').innerText(),/5\.4 points lower/);
-  await p.locator('.indicator-card11 a[href="#skills/bastani"]').click();assert.ok((await p.locator('h1').innerText()).includes('Why these sources were selected'));
+  await p.goto(url+'#skills/bastani');assert.ok((await p.locator('h1').innerText()).includes('Why these sources were selected'));
   await p.goto(url+'#capability/source');assert.ok(await p.locator('#capability-source').evaluate(d=>d.open));assert.equal(await p.locator('#capability-source tbody tr').count(),23);
   await p.goto(url+'#work/source');const workCsv=await p.locator('#work-source a[download]').getAttribute('href');assert.match(decodeURIComponent(workCsv),/Ages 50\+/);assert.equal(await p.locator('#work-source tbody tr').count(),60);
   await p.goto(url+'#handover');assert.equal(await p.locator('.indicator-card11').count(),1,'Unresolved denominator not promoted to measured card');
   await p.goto(url+'#culture/source');assert.match(await p.locator('.comparison-data11').innerText(),/separate daily-upload comparison/);
   const schema=await p.evaluate(()=>ORDER.every(id=>MEASUREMENT11[id].measured.every(c=>SELECTED_EVIDENCE[id].sources.some(s=>s.id===c.source))&&MEASUREMENT11[id].gaps.every(c=>Object.hasOwn(GAP_STATUS11,c.status))));assert.ok(schema,'All indicator sources and gap labels resolve');
+  for(const id of ['capability','adoption','handover','work','share','skills','culture','institutions','influence']){
+    await p.goto(url+'#library/'+id);
+    const library=p.locator('.evidence-library14');assert.ok(await library.evaluate(d=>d.open),'Library deep link opens '+id);
+    assert.match(await library.innerText(),/AI-assisted reading list/);
+    const search=library.locator('input'),total=await library.locator('.library-list14 li').count();assert.ok(total>10,id+': includes the broader collection');
+    const title=await library.locator('.library-list14 li h3').first().innerText();await search.fill(title.replace(/\s*↗\s*$/,''));assert.ok(await library.locator('.library-list14 li:visible').count()>0);
+    await search.fill('zz-no-matching-reference-zz');assert.equal(await library.locator('.library-list14 li:visible').count(),0);assert.ok(await library.locator('.library-empty14').isVisible());
+    await search.fill('');assert.equal(await library.locator('.library-list14 li:not([hidden])').count(),total,'Clearing search restores all references');
+  }
+  await p.goto(url+'#contribute/about');assert.match(await p.locator('#w-about').innerText(),/Gradual disempowerment is the risk/);assert.equal(await p.locator('#w-about a[href="https://gradual-disempowerment.ai/"]').count(),1);
   await p.setViewportSize({width:390,height:900});await p.goto(url+'#gaps');await p.locator('#research-pathways11>summary').click();await p.locator('.ml5[data-id="adoption"] .ml5-btn').click();await p.locator('.ml5[data-id="adoption"] [data-t="open"]').click();assert.ok(p.url().endsWith('#adoption'));await p.setViewportSize({width:1440,height:950});
   await p.goto(url);await p.getByRole('link',{name:'Explore emerging evidence',exact:false}).click();await p.goBack();
   assert.equal(await p.locator('.nav [aria-current="page"]').innerText(),'Home','Back to hashless URL returns home');

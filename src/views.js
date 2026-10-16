@@ -42,18 +42,17 @@ function viewMap(v){
 
 /* ----- why this project ----- */
 function viewWhy(v){
-  const W=COPY.why,ext=(t,u)=>`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`;
-  v.innerHTML=`<div class="view5 wrap why5">${eye5([esc(W.nav)])}
-   <h1 class="h1-5">${esc(W.h1)}</h1><p class="lead5">${esc(W.lead)}</p>
-   <div class="contribute-audience5">${W.audiences.map(a=>`<p class="sub5"><b>${esc(a.name)}:</b> ${esc(a.text)}</p>`).join('')}</div>
-   <section class="sec5" id="w-plan"><h2 class="h2-5 sm">${esc(W.plan.h2)}</h2>
+  const W=COPY.why,ext=(t,u)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)} ↗</a>`;
+  v.innerHTML=`<div class="view5 wrap why5">
+   <header id="w-about"><h1 class="h1-5">About the dashboard</h1><p class="lead5">Gradual disempowerment is the risk that people lose influence over their work and lives as AI takes on more tasks and decisions. This prototype brings together selected evidence and questions that need more research.</p><p class="about-source14">${ext('Read the original Gradual Disempowerment paper','https://gradual-disempowerment.ai/')}</p><p class="note5">Better Futures Project / Zhang Yue</p></header>
+   <section class="sec5 act5" id="w-add"><h2 class="h2-5 sm">${esc(W.h1)}</h2><div class="contribute-audience5">${W.audiences.map(a=>`<p class="sub5"><b>${esc(a.name)}:</b> ${esc(a.text)}</p>`).join('')}</div>
+    <div class="contribute-links14">${W.contribute.buttons.map(b=>ext(b[0],b[1])).join('')}</div><p class="note5">${esc(W.contribute.note)}</p></section>
+   <details class="det5" id="w-plan"><summary>${esc(W.plan.h2)}</summary>
     <ol class="plan5">${W.plan.steps.map((s,i)=>`<li><span class="plan5-n">${i+1}</span><div><b>${s.to?`<a href="#${s.to}">${esc(s.t)}</a>`:esc(s.t)}</b><span>${esc(s.text)}${s.links?' '+s.links.map(l=>`<a href="${esc(l[1])}" target="_blank" rel="noopener">${esc(l[0])}</a>`).join(' and ')+'.':''}</span></div></li>`).join('')}</ol>
-    <p class="aim5">${esc(W.plan.aim)}</p></section>
-   <section class="sec5 act5" id="w-add"><h2 class="h2-5 sm">${esc(W.contribute.h2)}</h2><p class="sub5">${esc(W.contribute.text)}</p>
-    <div class="btns5">${W.contribute.buttons.map(b=>ext(b[0],b[1])).join('')}</div><p class="note5">${esc(W.contribute.note)}</p></section>
-   <section class="sec5 act5" id="w-funding"><h2 class="h2-5 sm">${esc(W.funding.h2)}</h2><p class="sub5">${esc(W.funding.text)}</p>
+    <p class="aim5">${esc(W.plan.aim)}</p></details>
+   <details class="det5" id="w-funding"><summary>Funding opportunities</summary><p class="sub5">${esc(W.funding.text)}</p>
     <ul class="grants5">${W.funding.grants.map(g=>`<li><div class="grants5-h"><a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)} ↗</a><span class="acc5-c${/^Closes/.test(g.status)?' due5':''}">${esc(g.status)}</span></div><span>${esc(g.fit)}</span></li>`).join('')}</ul>
-    <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></section>
+    <p class="note5">${esc(W.funding.note)} <a class="go" href="#gaps">${esc(W.funding.gapsLink)} →</a></p></details>
   </div>`;
 }
 

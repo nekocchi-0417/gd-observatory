@@ -10,7 +10,9 @@ A public evidence dashboard for gradual disempowerment: tracking whether AI is w
 
 Gradual disempowerment is the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation ([Kulveit and co-authors, 2025](https://gradual-disempowerment.ai/)).
 
-The site breaks that argument into a chain of nine stops: AI capability, AI adoption, delegation to AI, then four branches (entry-level jobs and workers' share of income, skills and judgement, culture and information, AI in government), ending at human influence. Each step separates **Currently measured** indicators from **Measurement gaps**, using compact cards with source links and limits. Source data and further evidence remain in expandable sections; the large charts are on Home and Emerging evidence.
+The site breaks that argument into a chain of nine stops: AI capability, AI adoption, delegation to AI, then four branches (entry-level jobs and workers' share of income, skills and judgement, culture and information, AI in government), ending at human influence. Each step separates **Currently measured** indicators from **Measurement gaps**, with short findings, source links and essential limits. Detailed source notes and a searchable, AI-assisted **Evidence library** remain collapsed at the bottom; the large charts are on Home and Emerging evidence.
+
+The library reuses the earlier research collections as bibliography entries, without republishing their unchecked numerical claims. It is not a systematic review or a list of independently verified studies. Current selected-source metadata takes precedence where references overlap. Project background and the original paper are under **Contribute**, also linked as **About** in the footer.
 
 Within this selection, AI capability and use have repeated measurements. Direct longitudinal measures of skills, judgement and influence are more limited. This is not a systematic review of all research, and paired trends are not proof of cause and effect.
 
@@ -46,6 +48,7 @@ npm install
 npx playwright install chromium
 npm run verify         # every page at desktop and phone widths, light and dark
 node tools/verify-selected-data.js  # source-data arithmetic and build syntax
+node tools/verify-library.js        # bibliography provenance, deduplication and safe URLs
 ```
 
 ## Where things live
@@ -67,6 +70,8 @@ src/
   comparison-data.js                  original data and provenance for comparisons
   measurement-data.js                 measured indicators and gap summaries for all nine steps
   measurement.js, measurement.css     merged pathways overview and compact step pages
+  library.js, library-url.js           searchable bibliography and shared URL normalization
+  evidence-library.json               generated metadata from earlier research collections
   style.css, components.css, pages.css
   shell_head.html, shell_body.html
 docs/index.html    the built site (served by GitHub Pages)
@@ -75,6 +80,8 @@ tools/             verification and screenshot scripts
 ```
 
 Current figures are defined in `capability.js`, `adoption.js` and `selected-topics.json`; comparisons use `comparison-data.js` and `comparison.js`. Topic summaries and gap cards live in `measurement-data.js`. Update matching interpretations, source notes, CSVs and tests, then rebuild. Legacy `#pathways`, `#map` and `#evidence` links now reach the merged Research gaps page. `data1.js` and `data2.js` retain the earlier indicator collection. Verification screenshots are saved under `dist/verification/`.
+
+After editing the earlier research collections, run `node tools/build-evidence-library.js` to regenerate the bibliography, inspect its skipped/merged-record report, then rebuild. `node tools/build-evidence-library.js --check` checks that the committed catalog is current. `#library/skills` and equivalent links open the library within the corresponding step page.
 
 ## How it was made
 
