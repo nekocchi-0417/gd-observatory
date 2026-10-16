@@ -16,7 +16,7 @@ For each page, open its source dropdown. Check the source date, population, unit
 ## Final Pass (30 Minutes)
 
 - [ ] Income share, 7 min: ILO March 2026 review gives 53.0% in 2015 and 52.6% in 2025, a 0.4-point decline. Both values use one publication vintage. The bulk download returned no usable data during this check, so the chart shows two endpoints, not an annual curve. BLS 52.8% in Q2 2026 is US nonfarm business, not global GDP.
-- [ ] Capability and adoption, 8 min: unchanged pilot data. Reconfirm METR's p80 definition, release dates and 209-fold arithmetic; Gallup's frequent-use definition and 11% to 32% (+21 points). Neither measures whole jobs automated.
+- [ ] Capability and adoption, 8 min: reconfirm METR's p80 definition, release dates and 209-fold arithmetic. Gallup now shows all three cumulative usage groups: frequent 11% to 32%, daily 4% to 16%, total 21% to 53%. Check the eight-row source table, especially August 2026; groups overlap and must not be added. These measures leave whole-job automation unresolved.
 - [ ] Supporting evidence, 8 min: skim Humlum/Vestergaard, Vaccaro, Doshi/Hauser, Met Police and Anthropic disempowerment notes. Check each study's setting and publication status. No source is presented as proving the full pathway.
 - [ ] Cross-page check, 7 min: Home diagram summaries, Evidence rows, source details, Methods and Research gaps should tell the same story. Check one phone-sized view, the light/dark themes, source links and CSV downloads.
 

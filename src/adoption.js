@@ -1,22 +1,39 @@
-/* Gallup's published Frequent AI users column; survey-month labels, not fieldwork days. */
+/* Gallup's three cumulative usage groups; dates follow its published table. */
 const ADOPTION7={
-  retrieved:'14 October 2026',
+  retrieved:'16 October 2026',
   url:'https://www.gallup.com/699797/indicator-artificial-intelligence.aspx',
+  referenceURL:'https://ourworldindata.org/grapher/share-working-adults-united-states-ai-work',
   rows:[
-    {date:'2023-05-01',value:11},
-    {date:'2024-05-01',value:12},
-    {date:'2025-05-01',value:19},
-    {date:'2025-08-01',value:23},
-    {date:'2025-11-01',value:26},
-    {date:'2026-02-01',value:28},
-    {date:'2026-05-01',value:30},
-    {date:'2026-08-01',value:32}
+    {date:'2023-05-01',value:11,daily:4,total:21},
+    {date:'2024-05-01',value:12,daily:4,total:27},
+    {date:'2025-05-01',value:19,daily:8,total:40},
+    {date:'2025-08-01',value:23,daily:10,total:45},
+    {date:'2025-11-01',value:26,daily:12,total:46},
+    {date:'2026-02-01',value:28,daily:13,total:50},
+    {date:'2026-05-01',value:30,daily:15,total:52},
+    {date:'2026-08-01',value:32,daily:16,total:53}
   ],
   related:[
     {title:'How much working time involves AI?',publisher:'RPS · Bick, Blandin & Deming / FRED',url:'https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL',text:'Generative AI assisted an estimated 6.3% of US work hours in Q2 2026. Researchers calculate this from the time ranges workers report; directly observed working hours could give a different estimate.'},
     {title:'Which tasks use AI?',publisher:'RPS · St. Louis Fed, September 2026',url:'https://www.stlouisfed.org/on-the-economy/2026/sep/what-work-does-generative-ai-do',text:'This analysis shows which occupations and tasks account for AI use. It uses the same survey programme as the work-hours indicator above.'}
   ]
 };
+
+function drawAdoption15(el,h=270){
+  const groups=[
+    {key:'total',name:'A few times a year or more',label:'Any use',color:'var(--ink-3)',dash:true,w:1.8},
+    {key:'value',name:'A few times a week or more',label:'Regular',color:'var(--ai10)',w:2.8},
+    {key:'daily',name:'Every day',label:'Daily',color:'var(--warn10)',w:2}
+  ];
+  Charts.line(el,{h,legend:false,table:false,axisPlacement:'edges',
+    aria:'Gallup survey of US employees, May 2023 to August 2026. Use a few times a year or more rose from 21 to 53 percent; a few times a week or more from 11 to 32 percent; daily use from 4 to 16 percent. Groups overlap and must not be added.',
+    x:{min:2023,max:2026.7,ticks:[2023,2024,2025,2026],ticksNarrow:[2023,2024,2025,2026],fmt:String,tip:fmtDate,label:'Survey year'},
+    y:{min:0,max:100,ticks:[0,20,40,60,80,100],fmt:n=>n+'%',tip:n=>n+'%',label:'Share of US employees (%)'},
+    series:groups.map(g=>({name:g.name,color:g.color,dash:g.dash,w:g.w,markers:'all',r:3,
+      endLabel:g.label+' '+ADOPTION7.rows.at(-1)[g.key]+'%',endLabelNarrow:g.label+' '+ADOPTION7.rows.at(-1)[g.key]+'%',
+      pts:ADOPTION7.rows.map(r=>[ym(Number(r.date.slice(0,4)),Number(r.date.slice(5,7))),r[g.key]])}))
+  });
+}
 function viewAdoptionPilot(v){
   const A=ADOPTION7,p=SELECTED_EVIDENCE.adoption;
   const more=[{title:'Eurostat: AI use by EU businesses',url:p.sources[1].url,text:'Eurostat reports wider AI use among EU businesses. It counts firms, not employees, so the surveys are not directly comparable. Survey changes in 2025, including in the Netherlands, also limit comparisons over time.'},...A.related];

@@ -39,9 +39,9 @@ function measurementData11(id){
     url:CAPABILITY7.metr.data,checked:'2026-10-14',note:'These results cover 23 models released from 2023 to April 2026. METR measures how long the tested technical tasks would take a human expert. Applying the results to complete jobs requires further evidence. This series is now archived.'
   };
   if(id==='adoption')return {
-    caption:'Gallup: US employees using AI at work a few times a week or more',
-    columns:['Survey month','Share (%)'],rows:ADOPTION7.rows.map(r=>[r.date.slice(0,7),r.value]),
-    url:ADOPTION7.url,checked:'2026-10-14',note:'All eight published survey results are included. Employees report using AI a few times a week or more; daily users are included. The survey does not establish how much of their working time or which tasks involve AI.'
+    caption:'Gallup: how often US employees use AI at work',
+    columns:['Survey month','A few times a year or more (%)','A few times a week or more (%)','Every day (%)'],rows:ADOPTION7.rows.map(r=>[r.date.slice(0,7),r.total,r.value,r.daily]),
+    url:ADOPTION7.url,checked:'2026-10-16',note:'Eight survey waves from Gallup\'s published table. The groups overlap: daily users are included in regular and any use. Values must not be added. Frequency is self-reported and leaves working time and tasks automated unmeasured.'
   };
   const t=TOPIC_CHARTS[id];
   return {caption:t.tableCaption||t.measure,columns:t.columns,rows:t.data,url:t.dataUrl||source10(id).url,checked:id==='work'?'2026-10-15':'2026-10-14',note:t.credit};
@@ -61,9 +61,12 @@ function relatedMeasurements11(id){
   if(id==='capability')items.push(...CAPABILITY7.related,
     {title:'Answering maths and science questions',publisher:'OpenAI / 2025',url:'https://openai.com/index/introducing-gpt-5-for-developers/',text:'On OpenAI\'s tests, correct answers rose from 88.9% with o3 to 94.6% with GPT-5 on AIME 2025 maths problems, and from 83.3% to 85.7% on GPQA Diamond science questions. Both used high reasoning settings without tools. How these gains affect workplace performance remains uncertain.'},
     {title:'Producing professional work: GDPval',publisher:'OpenAI / 2025',url:'https://arxiv.org/html/2510.04374v1#A1.T2',text:'Experts preferred AI outputs to human-produced work in 35.2% of comparisons for o3 and 39.0% for GPT-5, with tools available. This test assesses work products. Small differences between models may reflect measurement uncertainty.'},
-    {title:'The cost of reaching the same test score',publisher:'Epoch AI',url:'https://epoch.ai/data-insights/llm-inference-price-trends',text:'The price of processing text at a given level of benchmark performance has fallen. Total costs also depend on deployment, retries and human checking.'});
-  else if(id==='adoption')items.push(...ADOPTION7.related,{title:'Potential exposure versus observed use',publisher:'Anthropic / March 2026',url:COMPARISON_DATA.exposure.sourceURL,text:COMPARISON_DATA.exposure.measure+' '+COMPARISON_DATA.exposure.caveat});
+    {title:'The cost of reaching the same test score',publisher:'Epoch AI',url:'https://epoch.ai/data-insights/llm-inference-price-trends',text:'The price of processing text at a given level of benchmark performance has fallen. Total costs also depend on deployment, retries and human checking.'},
+    {title:'Advanced maths performance: FrontierMath',publisher:'Epoch AI / Our World in Data, 2026',url:'https://ourworldindata.org/grapher/ai-frontiermath-over-time',text:'Scores on advanced maths problems in the corrected Tiers 1-3 v2 benchmark, with Python tools available. The June 2026 revision corrected problems; comparisons need to use the same corrected version. OpenAI funded the benchmark and has exclusive access to a subset.'});
+  else if(id==='adoption')items.push(...ADOPTION7.related,{title:'Potential exposure versus observed use',publisher:'Anthropic / March 2026',url:COMPARISON_DATA.exposure.sourceURL,text:COMPARISON_DATA.exposure.measure+' '+COMPARISON_DATA.exposure.caveat},
+    {title:'Workplace AI use: OWID visualisation',publisher:'Gallup / Our World in Data, 2026',url:ADOPTION7.referenceURL,text:'Another presentation of the same Gallup survey, showing daily, frequent and occasional use together. Our chart follows Gallup\'s table through August 2026.'});
   else {const t=TOPIC_CHARTS[id];items.push(...t.support.map(s=>({title:s.label,url:s.url,text:s.text})),...t.related)}
+  if(id==='handover')items.push({title:'Driverless taxi use in California',publisher:'California Public Utilities Commission / Our World in Data, 2026',url:ROBOTAXI15.chartURL,text:'Monthly passenger travel in paid autonomous taxi services. A concrete example of real-world automation; its implications for human driver employment and remote assistance remain open.'});
   const usedURLs=new Set(p.sources.filter(s=>shown.has(s.id)).map(s=>s.url));
   return items.filter(s=>{if(usedURLs.has(s.url))return false;usedURLs.add(s.url);return true});
 }
@@ -76,9 +79,11 @@ function viewMeasurement11(v,id,sub){
       <section class="gaps-lane11" id="research-${id}" aria-labelledby="${id}-gap-title"><header class="lane-header11"><h2 id="${id}-gap-title">Measurement gaps</h2></header><div class="indicator-stack11">${m.gaps.map(measurementGap11).join('')}</div>
         ${studies.length?`<details class="study-ideas11"><summary>Study ideas (${studies.length})</summary><ul>${studies.map(s=>`<li><h3>${esc(s.title)}</h3><p>${esc(s.what)}</p></li>`).join('')}</ul></details>`:''}</section></div>
     <p class="scope-note11">Gaps reflect the selected studies. "Not tracked here" leaves open what other research may measure.</p>
-    <div class="measurement-support14">${measurementSources11(id)}${evidenceLibrary14(id)}</div>
+    <div class="measurement-support14">${id==='handover'?robotaxiExample15():''}${measurementSources11(id)}${evidenceLibrary14(id)}</div>
     ${pn5(i?[ORDER[i-1],nameOf(ORDER[i-1])]:['gaps','All steps','Back to'],i<ORDER.length-1?[ORDER[i+1],nameOf(ORDER[i+1])]:['gaps','All steps','Next'])}</div>`;
   bindEvidenceLibrary14(v,id);
+  if(id==='handover')mountRobotaxi15(v);
   if(sub==='source'||sub==='more'){const d=$('#'+id+(sub==='source'?'-source':'-related'),v);d.open=true;scrollTo11(d)}
+  if(id==='handover'&&sub==='robotaxis'){const d=$('#handover-robotaxis',v);d.open=true;scrollTo11(d)}
   if(sub==='gaps')scrollTo11($('#research-'+id,v));
 }

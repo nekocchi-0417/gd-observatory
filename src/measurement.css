@@ -36,3 +36,5 @@
 .why5 #w-about .lead5{margin-top:18px}.about-source14{font-size:14px;margin:18px 0 12px}.contribute-links14{display:flex;flex-wrap:wrap;gap:14px 28px;margin:22px 0 14px;font-size:14px;font-weight:600}.why5 .det5{margin-top:12px}.why5 .det5 .plan5{padding-top:20px}.why5 .det5>.sub5{margin-top:18px}.why5 #w-about{scroll-margin-top:100px}
 @media(max-width:900px){.home-intro10 h1{font-size:36px}}
 @media(max-width:700px){.home-intro10 h1{font-size:32px}.home-intro10{padding-bottom:12px}.library-summary14{display:block;margin:4px 0 0 17px}.library-list14{max-height:480px}.why5 #w-about{scroll-margin-top:145px}}
+
+.supporting-example15 figure{margin:0;max-width:760px}.supporting-example15 h3{font-size:21px;line-height:1.3;margin-bottom:12px}.supporting-example15 .chart{margin-top:20px;min-height:328px}.supporting-example15 .source10{margin-bottom:0}.supporting-example15 .robotaxi-reading15{font:16px/1.6 var(--f-text);margin:14px 0 10px;max-width:75ch}.supporting-example15 .measurement-data11{max-width:85ch}.supporting-example15 .measurement-data11 p{font-size:13px}

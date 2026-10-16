@@ -72,22 +72,22 @@
   "adoption": {
     "h1": "How common is regular AI use at work?",
     "summary": "The share of US employees using AI regularly rose from 11% in May 2023 to 32% in August 2026. How much work they hand over to AI remains unclear.",
-    "selection": "Use Gallup's repeated surveys to track frequent AI use among US employees. Eurostat adds context on EU businesses. The measures cover different groups and use different definitions, so they must be interpreted separately.",
+    "selection": "Gallup's repeated surveys distinguish occasional, regular and daily AI use among US employees. Eurostat adds context on EU businesses. The measures cover different groups and use different definitions, so they must be interpreted separately.",
     "gap": "Track the share of work people hand over to AI, how they check its output, and whether they can still do the work without it.",
     "signal": 3,
     "sources": [
       {
         "id": "gallup",
-        "title": "Gallup regular workplace AI use",
+        "title": "Gallup workplace AI use by frequency",
         "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
-        "locate": "Use of AI table, Frequent AI users column, eight rows from 5/1/23 to 8/1/26; Survey Methods above the table.",
-        "label": "Regular workplace AI use",
+        "locate": "Use of AI table, Daily, Frequent and Total AI users columns; eight rows from 5/1/23 to 8/1/26. Survey Methods are above the table.",
+        "label": "Workplace AI use by frequency",
         "citation": "Gallup, AI indicator (2026)",
         "type": "Repeated US employee survey",
-        "date": "May 2023-August 2026 table; retrieved 14 October 2026",
-        "finding": "The share of US employees using AI at work a few times a week or more rose from 11% in May 2023 to 32% in August 2026, a 21-percentage-point increase.",
+        "date": "May 2023-August 2026 table; checked 16 October 2026",
+        "finding": "Regular AI use rose from 11% of US employees in May 2023 to 32% in August 2026. Daily use rose from 4% to 16%; use a few times a year or more rose from 21% to 53%.",
         "why": "Gallup repeats surveys of employees across occupations, using a sampling method in which each eligible employee has a known chance of selection. The frequent-use category distinguishes regular use from occasional experimentation.",
-        "limit": "The survey covers US employees aged 18+ working for organisations. Employees report their own AI use; the answers do not measure how much work is automated or how much people depend on AI. The table is newer than parts of the surrounding text and does not provide uncertainty intervals for each survey round.",
+        "limit": "The survey covers US employees aged 18+ working for organisations. Groups overlap: daily users are included in frequent and total use, so the percentages must not be added. Self-reports leave the amount of work automated and dependence unresolved. The table is newer than parts of the surrounding text; it gives no uncertainty intervals for each round.",
         "metrics": [
           [
             "11%",
@@ -99,7 +99,7 @@
           ]
         ],
         "checks": [
-          "Check all eight Frequent AI users values and dates; daily users are included, not added separately.",
+          "Check all 24 values across eight survey waves and three usage groups. Daily users are included in both broader groups; do not add the groups together.",
           "Confirm US employee eligibility; do not call this a share of all adults, work hours or automated tasks."
         ],
         "legacy": [

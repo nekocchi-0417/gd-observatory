@@ -4,7 +4,7 @@ A public evidence dashboard for gradual disempowerment: tracking whether AI is w
 
 ![The home page: technical-task capability and employment trends, with separate sources and axes](assets/screenshots/home.png)
 
-**Status: research prototype (15 October 2026).** The homepage and Emerging evidence compare AI progress with selected human outcomes. Research gaps brings each topic's evidence and missing measures together. AI-assisted primary-source checks are not independent verification. The [comparison source review](research/checklist/comparison-source-review.md) documents new chart choices; the [90-minute review](research/checklist/selected-indicators-review.md) covers the existing selected indicators. The older `handcheck.csv` is an archive.
+**Status: research prototype (16 October 2026).** The homepage and Emerging evidence compare AI progress with selected human outcomes. Research gaps brings each topic's evidence and missing measures together. AI-assisted primary-source checks are not independent verification. The [comparison source review](research/checklist/comparison-source-review.md) documents chart choices; the [OWID source review](research/reviews/24_owid_source_review.md) covers the latest supporting additions. The [90-minute review](research/checklist/selected-indicators-review.md) covers the selected indicators. The older `handcheck.csv` is an archive.
 
 ## What it shows
 
@@ -13,6 +13,8 @@ Gradual disempowerment is the risk that people lose practical influence over the
 The site breaks that argument into a chain of nine stops: AI capability, AI adoption, delegation to AI, then four branches (entry-level jobs and workers' share of income, skills and judgement, culture and information, AI in government), ending at human influence. Each step separates **Currently measured** indicators from **Measurement gaps**, with short findings, source links and essential limits. Detailed source notes and a searchable, AI-assisted **Evidence library** remain collapsed at the bottom; the large charts are on Home and Emerging evidence.
 
 The library reuses the earlier research collections as bibliography entries, without republishing their unchecked numerical claims. It is not a systematic review or a list of independently verified studies. Current selected-source metadata takes precedence where references overlap. Project background and the original paper are under **Contribute**, also linked as **About** in the footer.
+
+The adoption comparison follows Gallup's three overlapping usage groups, with OWID as a visual reference and newer observations from Gallup's own table. Delegation includes a collapsed supporting chart of California robotaxi passenger travel from CPUC data processed by OWID. FrontierMath is a related capability reference only; no new headline capability chart or coverage rating is introduced.
 
 Within this selection, AI capability and use have repeated measurements. Direct longitudinal measures of skills, judgement and influence are more limited. This is not a systematic review of all research, and paired trends are not proof of cause and effect.
 
@@ -49,6 +51,7 @@ npx playwright install chromium
 npm run verify         # every page at desktop and phone widths, light and dark
 node tools/verify-selected-data.js  # source-data arithmetic and build syntax
 node tools/verify-library.js        # bibliography provenance, deduplication and safe URLs
+node tools/verify-owid.js --sources  # OWID additions, responsive charts and original Gallup table
 ```
 
 ## Where things live
@@ -68,6 +71,7 @@ src/
   priority.json, selected-topics.json    selected source notes and chart data
   comparison.js, comparison.css        comparison views and active router
   comparison-data.js                  original data and provenance for comparisons
+  robotaxi-data.js, owid.js            OWID/CPUC supporting data and collapsed chart
   measurement-data.js                 measured indicators and gap summaries for all nine steps
   measurement.js, measurement.css     merged pathways overview and compact step pages
   library.js, library-url.js           searchable bibliography and shared URL normalization

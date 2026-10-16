@@ -41,7 +41,7 @@ const routes=['home','emerging','emerging/work','emerging/skills','emerging/cult
           const counts=await page.evaluate(id=>[MEASUREMENT11[id].measured.length,MEASUREMENT11[id].gaps.length],route);
           assert.equal(await page.locator('.indicator-card11').count(),counts[0]);
           assert.equal(await page.locator('.gap-card11').count(),counts[1]);
-          assert.equal(await page.locator('.evidence-chart7, .chart').count(),0,`${route}: no large charts on step pages`);
+          assert.equal(await page.locator('.evidence-chart7:visible, .chart:visible').count(),0,`${route}: no large charts visible by default on step pages`);
           assert.equal(await page.locator('.next-measure9').count(),0,`${route}: duplicate gap block`);
           assert.equal(await page.locator('.measurement-intro11>p,.lane-sub11,.measurement-contribute11').count(),0,'No repeated explanatory copy or destination links');
           assert.equal(await page.locator('.research-back10 a').count(),1,'One back link per step');

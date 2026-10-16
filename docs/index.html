@@ -1453,6 +1453,8 @@ h1,h2,h3,p,a,summary,dd{overflow-wrap:break-word}
 .why5 #w-about .lead5{margin-top:18px}.about-source14{font-size:14px;margin:18px 0 12px}.contribute-links14{display:flex;flex-wrap:wrap;gap:14px 28px;margin:22px 0 14px;font-size:14px;font-weight:600}.why5 .det5{margin-top:12px}.why5 .det5 .plan5{padding-top:20px}.why5 .det5>.sub5{margin-top:18px}.why5 #w-about{scroll-margin-top:100px}
 @media(max-width:900px){.home-intro10 h1{font-size:36px}}
 @media(max-width:700px){.home-intro10 h1{font-size:32px}.home-intro10{padding-bottom:12px}.library-summary14{display:block;margin:4px 0 0 17px}.library-list14{max-height:480px}.why5 #w-about{scroll-margin-top:145px}}
+
+.supporting-example15 figure{margin:0;max-width:760px}.supporting-example15 h3{font-size:21px;line-height:1.3;margin-bottom:12px}.supporting-example15 .chart{margin-top:20px;min-height:328px}.supporting-example15 .source10{margin-bottom:0}.supporting-example15 .robotaxi-reading15{font:16px/1.6 var(--f-text);margin:14px 0 10px;max-width:75ch}.supporting-example15 .measurement-data11{max-width:85ch}.supporting-example15 .measurement-data11 p{font-size:13px}
 </style>
 </head>
 <body>
@@ -4241,22 +4243,22 @@ const SELECTED_EVIDENCE = {
   "adoption": {
     "h1": "How common is regular AI use at work?",
     "summary": "The share of US employees using AI regularly rose from 11% in May 2023 to 32% in August 2026. How much work they hand over to AI remains unclear.",
-    "selection": "Use Gallup's repeated surveys to track frequent AI use among US employees. Eurostat adds context on EU businesses. The measures cover different groups and use different definitions, so they must be interpreted separately.",
+    "selection": "Gallup's repeated surveys distinguish occasional, regular and daily AI use among US employees. Eurostat adds context on EU businesses. The measures cover different groups and use different definitions, so they must be interpreted separately.",
     "gap": "Track the share of work people hand over to AI, how they check its output, and whether they can still do the work without it.",
     "signal": 3,
     "sources": [
       {
         "id": "gallup",
-        "title": "Gallup regular workplace AI use",
+        "title": "Gallup workplace AI use by frequency",
         "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
-        "locate": "Use of AI table, Frequent AI users column, eight rows from 5/1/23 to 8/1/26; Survey Methods above the table.",
-        "label": "Regular workplace AI use",
+        "locate": "Use of AI table, Daily, Frequent and Total AI users columns; eight rows from 5/1/23 to 8/1/26. Survey Methods are above the table.",
+        "label": "Workplace AI use by frequency",
         "citation": "Gallup, AI indicator (2026)",
         "type": "Repeated US employee survey",
-        "date": "May 2023-August 2026 table; retrieved 14 October 2026",
-        "finding": "The share of US employees using AI at work a few times a week or more rose from 11% in May 2023 to 32% in August 2026, a 21-percentage-point increase.",
+        "date": "May 2023-August 2026 table; checked 16 October 2026",
+        "finding": "Regular AI use rose from 11% of US employees in May 2023 to 32% in August 2026. Daily use rose from 4% to 16%; use a few times a year or more rose from 21% to 53%.",
         "why": "Gallup repeats surveys of employees across occupations, using a sampling method in which each eligible employee has a known chance of selection. The frequent-use category distinguishes regular use from occasional experimentation.",
-        "limit": "The survey covers US employees aged 18+ working for organisations. Employees report their own AI use; the answers do not measure how much work is automated or how much people depend on AI. The table is newer than parts of the surrounding text and does not provide uncertainty intervals for each survey round.",
+        "limit": "The survey covers US employees aged 18+ working for organisations. Groups overlap: daily users are included in frequent and total use, so the percentages must not be added. Self-reports leave the amount of work automated and dependence unresolved. The table is newer than parts of the surrounding text; it gives no uncertainty intervals for each round.",
         "metrics": [
           [
             "11%",
@@ -4268,7 +4270,7 @@ const SELECTED_EVIDENCE = {
           ]
         ],
         "checks": [
-          "Check all eight Frequent AI users values and dates; daily users are included, not added separately.",
+          "Check all 24 values across eight survey waves and three usage groups. Daily users are included in both broader groups; do not add the groups together.",
           "Confirm US employee eligibility; do not call this a share of all adults, work hours or automated tasks."
         ],
         "legacy": [
@@ -17831,25 +17833,42 @@ function viewCapabilityPilot(v){
   drawCapabilityTrend7($('#metr-chart7',v));
   crumbScroll5(v);
 }
-/* Gallup's published Frequent AI users column; survey-month labels, not fieldwork days. */
+/* Gallup's three cumulative usage groups; dates follow its published table. */
 const ADOPTION7={
-  retrieved:'14 October 2026',
+  retrieved:'16 October 2026',
   url:'https://www.gallup.com/699797/indicator-artificial-intelligence.aspx',
+  referenceURL:'https://ourworldindata.org/grapher/share-working-adults-united-states-ai-work',
   rows:[
-    {date:'2023-05-01',value:11},
-    {date:'2024-05-01',value:12},
-    {date:'2025-05-01',value:19},
-    {date:'2025-08-01',value:23},
-    {date:'2025-11-01',value:26},
-    {date:'2026-02-01',value:28},
-    {date:'2026-05-01',value:30},
-    {date:'2026-08-01',value:32}
+    {date:'2023-05-01',value:11,daily:4,total:21},
+    {date:'2024-05-01',value:12,daily:4,total:27},
+    {date:'2025-05-01',value:19,daily:8,total:40},
+    {date:'2025-08-01',value:23,daily:10,total:45},
+    {date:'2025-11-01',value:26,daily:12,total:46},
+    {date:'2026-02-01',value:28,daily:13,total:50},
+    {date:'2026-05-01',value:30,daily:15,total:52},
+    {date:'2026-08-01',value:32,daily:16,total:53}
   ],
   related:[
     {title:'How much working time involves AI?',publisher:'RPS · Bick, Blandin & Deming / FRED',url:'https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL',text:'Generative AI assisted an estimated 6.3% of US work hours in Q2 2026. Researchers calculate this from the time ranges workers report; directly observed working hours could give a different estimate.'},
     {title:'Which tasks use AI?',publisher:'RPS · St. Louis Fed, September 2026',url:'https://www.stlouisfed.org/on-the-economy/2026/sep/what-work-does-generative-ai-do',text:'This analysis shows which occupations and tasks account for AI use. It uses the same survey programme as the work-hours indicator above.'}
   ]
 };
+
+function drawAdoption15(el,h=270){
+  const groups=[
+    {key:'total',name:'A few times a year or more',label:'Any use',color:'var(--ink-3)',dash:true,w:1.8},
+    {key:'value',name:'A few times a week or more',label:'Regular',color:'var(--ai10)',w:2.8},
+    {key:'daily',name:'Every day',label:'Daily',color:'var(--warn10)',w:2}
+  ];
+  Charts.line(el,{h,legend:false,table:false,axisPlacement:'edges',
+    aria:'Gallup survey of US employees, May 2023 to August 2026. Use a few times a year or more rose from 21 to 53 percent; a few times a week or more from 11 to 32 percent; daily use from 4 to 16 percent. Groups overlap and must not be added.',
+    x:{min:2023,max:2026.7,ticks:[2023,2024,2025,2026],ticksNarrow:[2023,2024,2025,2026],fmt:String,tip:fmtDate,label:'Survey year'},
+    y:{min:0,max:100,ticks:[0,20,40,60,80,100],fmt:n=>n+'%',tip:n=>n+'%',label:'Share of US employees (%)'},
+    series:groups.map(g=>({name:g.name,color:g.color,dash:g.dash,w:g.w,markers:'all',r:3,
+      endLabel:g.label+' '+ADOPTION7.rows.at(-1)[g.key]+'%',endLabelNarrow:g.label+' '+ADOPTION7.rows.at(-1)[g.key]+'%',
+      pts:ADOPTION7.rows.map(r=>[ym(Number(r.date.slice(0,4)),Number(r.date.slice(5,7))),r[g.key]])}))
+  });
+}
 function viewAdoptionPilot(v){
   const A=ADOPTION7,p=SELECTED_EVIDENCE.adoption;
   const more=[{title:'Eurostat: AI use by EU businesses',url:p.sources[1].url,text:'Eurostat reports wider AI use among EU businesses. It counts firms, not employees, so the surveys are not directly comparable. Survey changes in 2025, including in the Netherlands, also limit comparisons over time.'},...A.related];
@@ -18240,6 +18259,134 @@ const COMPARISON_DATA = {
     "confidenceIntervalNote": "No confidence interval is published for this rounded category pair."
   }
 };
+// OWID snapshot, with AI-assisted checks against CPUC definitions and selected months.
+// All CSV observations are retained. URLs are provenance; no network requests run here.
+const ROBOTAXI15 = {
+  title: "Passenger travel in California's driverless taxis",
+  chartURL: "https://ourworldindata.org/grapher/passenger-kilometers-traveled-self-driving-taxis",
+  sourceURL: "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs/quarterly-reporting",
+  dataURL: "https://ourworldindata.org/grapher/passenger-kilometers-traveled-self-driving-taxis.csv?v=1&csvType=full&useColumnShortNames=false",
+  metadataURL: "https://ourworldindata.org/grapher/passenger-kilometers-traveled-self-driving-taxis.metadata.json?v=1&csvType=full&useColumnShortNames=false",
+  fullMetadataURL: "https://api.ourworldindata.org/v1/indicators/1296580.metadata.json",
+  checked: "2026-10-16",
+  sourceUpdated: "2026-08-20",
+  entity: "California",
+  frequency: "monthly",
+  unit: "passenger-kilometers",
+  sourceUnit: "kilometers",
+  observationStart: "2022-03-01",
+  observationEnd: "2026-06-01",
+  displayStart: "2023-11-01",
+  source: {
+    publisher: "California Public Utilities Commission",
+    collection: "Autonomous Vehicle Passenger Service Deployment quarterly reports",
+    processor: "Our World in Data",
+    attribution: "California Public Utilities Commission (2026), with major processing by Our World in Data",
+    variableId: 1296580,
+    sourceField: "TotalPMT",
+    csvColumns: ["Entity", "Month", "Passenger-kilometers"],
+    processing: "OWID sums carrier-reported passenger-miles by month and multiplies by 1.60934. These rows preserve the published CSV values without another conversion or rounding.",
+    dateMapping: "CSV months use YYYY-MM. The added day 01 is a monthly plotting key, not the date of a particular trip.",
+    csvSHA256: "8d06abe443334ba638a26f62a606084209f8c53c78225bc36ad00b260c6951cf",
+    metadataSHA256: "1a42ef5d5af17a4c7628795402e717ec6f7985398ccadcedde646c46395f807a"
+  },
+  reuse: {
+    owidLicense: "CC BY 4.0",
+    owidLicenseURL: "https://creativecommons.org/licenses/by/4.0/",
+    sourceLicense: "Public domain, as recorded in OWID's full indicator metadata",
+    sourceTermsURL: "https://www.cpuc.ca.gov/about-cpuc/conditions-of-use",
+    note: "Credit both CPUC and OWID and identify the display-date restriction. CPUC describes its site information as generally public domain, with exceptions for third-party material; original-provider terms still apply."
+  },
+  notes: [
+    "Each passenger-kilometer represents one passenger traveling one kilometer. The total weights distance by passengers carried and excludes empty travel between pickups.",
+    "OWID describes this as California's paid robotaxi deployment service. It covers the reported California operations, with Waymo supplying the passenger travel from November 2023 onward.",
+    "The full history includes Waymo service with a safety driver before August 2023 and Cruise's limited driverless service from June 2022. August-October 2023 includes both operators after paid driverless service was allowed without time-of-day restrictions.",
+    "The display starts in November 2023, after Cruise's October suspension. Cruise reported zero trips in November and left subsequent monthly values blank; those blanks have not been converted into new zero observations here.",
+    "Monthly totals come from quarterly carrier submissions. CPUC changed its reporting calendar and template in January 2025, and some publicly posted fields are redacted. This is not a fixed-fleet or fixed-service-area comparison.",
+    "This series describes the scale of passenger travel in these services. It does not measure their share of all travel, jobs displaced, or safety.",
+    "AI-assisted review checked every copied CSV row, the CPUC passenger-mile definition, and six monthly totals in two quarterly releases. The remaining months were not independently rebuilt from CPUC files; human review remains required."
+  ],
+  rows: [
+    {date: "2022-03-01", value: 20582.791},
+    {date: "2022-04-01", value: 20969.764},
+    {date: "2022-05-01", value: 23900.633},
+    {date: "2022-06-01", value: 18020.906},
+    {date: "2022-07-01", value: 19213.234},
+    {date: "2022-08-01", value: 17840.746},
+    {date: "2022-09-01", value: 17576.172},
+    {date: "2022-10-01", value: 20829.865},
+    {date: "2022-11-01", value: 20903.586},
+    {date: "2022-12-01", value: 24460.535},
+    {date: "2023-01-01", value: 30308.62},
+    {date: "2023-02-01", value: 20492.771},
+    {date: "2023-03-01", value: 22891.252},
+    {date: "2023-04-01", value: 25934.95},
+    {date: "2023-05-01", value: 26214.812},
+    {date: "2023-06-01", value: 16741.611},
+    {date: "2023-07-01", value: 13383.561},
+    {date: "2023-08-01", value: 164303.08},
+    {date: "2023-09-01", value: 317815.97},
+    {date: "2023-10-01", value: 402755.4},
+    {date: "2023-11-01", value: 316579.22},
+    {date: "2023-12-01", value: 423170.03},
+    {date: "2024-01-01", value: 415748},
+    {date: "2024-02-01", value: 416408.47},
+    {date: "2024-03-01", value: 487548.1},
+    {date: "2024-04-01", value: 532755.9},
+    {date: "2024-05-01", value: 905889.8},
+    {date: "2024-06-01", value: 1286120},
+    {date: "2024-07-01", value: 1761990.9},
+    {date: "2024-08-01", value: 2249501.2},
+    {date: "2024-09-01", value: 2499442.2},
+    {date: "2024-10-01", value: 3128965},
+    {date: "2024-11-01", value: 3486609.8},
+    {date: "2024-12-01", value: 3801416},
+    {date: "2025-01-01", value: 3591931},
+    {date: "2025-02-01", value: 3750371},
+    {date: "2025-03-01", value: 5028021},
+    {date: "2025-04-01", value: 5626468},
+    {date: "2025-05-01", value: 6560913.5},
+    {date: "2025-06-01", value: 4417638},
+    {date: "2025-07-01", value: 6027896},
+    {date: "2025-08-01", value: 7005669.5},
+    {date: "2025-09-01", value: 7652047},
+    {date: "2025-10-01", value: 9054656},
+    {date: "2025-11-01", value: 9454403},
+    {date: "2025-12-01", value: 9401292},
+    {date: "2026-01-01", value: 9796341},
+    {date: "2026-02-01", value: 9226116},
+    {date: "2026-03-01", value: 10428064},
+    {date: "2026-04-01", value: 13465390},
+    {date: "2026-05-01", value: 14131260},
+    {date: "2026-06-01", value: 12946270}
+  ]
+};
+/* Supporting example stays collapsed so the step still opens with its synthesis. */
+function robotaxiRows15(){return ROBOTAXI15.rows.filter(r=>r.date>=ROBOTAXI15.displayStart)}
+
+function robotaxiExample15(){
+  const r=ROBOTAXI15,rows=robotaxiRows15();
+  const csv=[['month','passenger_kilometers','source','checked'],...rows.map(x=>[x.date.slice(0,7),x.value,r.dataURL,r.checked])];
+  return `<details class="disclosure7 supporting-example15" id="handover-robotaxis"><summary>Supporting example: driverless taxis</summary><div class="disclosure7-body"><figure aria-labelledby="robotaxi-title15"><figcaption><h3 id="robotaxi-title15">Driverless taxi use has grown in California</h3><p class="source10">${ext7(r.chartURL,'Source: CPUC via Our World in Data')}<span>Nov 2023 - Jun 2026</span></p></figcaption><div class="chart" id="robotaxi-chart15"></div><p class="evidence-note13">One passenger travelling one kilometre = one passenger-kilometre.</p><p class="robotaxi-reading15">Monthly travel grew from about <b>0.32 million passenger-km in November 2023</b> to <b>12.9 million in June 2026</b>.</p></figure><p class="evidence-note13">California paid services; Waymo only in this period. The data leave human driver employment and remote assistance unmeasured.</p><details class="measurement-data11"><summary>Source notes &amp; data</summary><p>Records of paid passenger travel show automation operating outside a test setting. Geography, fleet size and service permissions affect the total. These figures do not establish how much human work was displaced.</p><p>Redrawn from OWID's monthly series, starting after Cruise's October 2023 suspension. Earlier records mix operators and, before August 2023, services with and without onboard safety drivers. Values are unchanged; the line connects monthly observations. Checked with AI assistance on 16 October 2026.</p><p class="source-actions7">${ext7(r.sourceURL,'CPUC reports')}${ext7(r.chartURL,'OWID chart & methods')}${csvLink7('california-robotaxi-passenger-km.csv',csv)}</p><div class="data-scroll7" role="region" tabindex="0" aria-label="Monthly robotaxi passenger-kilometres"><table class="data7"><caption>California paid driverless services: monthly passenger-kilometres</caption><thead><tr><th scope="col">Month</th><th scope="col">Passenger-km</th></tr></thead><tbody>${rows.map(x=>`<tr><th scope="row">${esc(fmtDate(monthlyYear10(x.date)))}</th><td>${esc(x.value.toLocaleString('en-GB',{maximumFractionDigits:3}))}</td></tr>`).join('')}</tbody></table></div></details></div></details>`;
+}
+
+function mountRobotaxi15(v){
+  const d=$('#handover-robotaxis',v);
+  if(!d)return;
+  let mounted=false;
+  d.addEventListener('toggle',()=>{
+    if(!d.open||mounted)return;
+    mounted=true;
+    const rows=robotaxiRows15();
+    Charts.line($('#robotaxi-chart15',v),{h:280,legend:false,table:false,axisPlacement:'edges',
+      aria:'Monthly passenger-kilometres in California paid driverless taxi services, Waymo only. November 2023 to June 2026. All 32 months shown; the total rises from 316,579 to 12,946,270 passenger-kilometres, with fluctuations.',
+      x:{min:2023.8,max:2026.5,ticks:[ym(2023,11),ym(2025,1),ym(2026,6)],fmt:fmtDate,tip:fmtDate,label:'Observation month'},
+      y:{min:0,max:15000000,ticks:[0,5000000,10000000,15000000],fmt:n=>n/1000000+'m',tip:n=>n.toLocaleString('en-GB',{maximumFractionDigits:2})+' passenger-km',label:'Monthly passenger-kilometres (millions)'},
+      series:[{name:'California paid driverless services',color:'var(--ai10)',w:2.5,markers:'all',r:2.5,end:false,pts:rows.map(x=>[monthlyYear10(x.date),x.value])}],
+      ann:[{x:monthlyYear10(rows.at(-1).date),y:rows.at(-1).value,text:'12.9m',dx:-8,dy:23,anchor:'end',strong:true,lead:true}]
+    });
+  });
+}
 // Short visible limits; the full scope and caveats remain in the source notes.
 const INDICATOR_NOTES14={
   metr:'Performance across whole jobs remains uncertain.',
@@ -18310,7 +18457,7 @@ const MEASUREMENT11 = {
       {
         title: "How often employees use AI",
         source: "gallup",
-        finding: "Gallup asks US employees how often they use AI at work. The proportion reporting use a few times a week or more rose from 11% in May 2023 to 32% in August 2026.",
+        finding: "Regular AI use rose from 11% of US employees in May 2023 to 32% in August 2026. Daily use rose from 4% to 16% over the same period.",
         scope: "Gallup repeatedly surveyed US employees aged 18+ working for organisations, from May 2023 to August 2026.",
         limit: "The answers apply to the covered employee population and describe reported frequency of use. They do not measure working hours, tasks completed by AI or whether people can work without it."
       },
@@ -18720,9 +18867,9 @@ function measurementData11(id){
     url:CAPABILITY7.metr.data,checked:'2026-10-14',note:'These results cover 23 models released from 2023 to April 2026. METR measures how long the tested technical tasks would take a human expert. Applying the results to complete jobs requires further evidence. This series is now archived.'
   };
   if(id==='adoption')return {
-    caption:'Gallup: US employees using AI at work a few times a week or more',
-    columns:['Survey month','Share (%)'],rows:ADOPTION7.rows.map(r=>[r.date.slice(0,7),r.value]),
-    url:ADOPTION7.url,checked:'2026-10-14',note:'All eight published survey results are included. Employees report using AI a few times a week or more; daily users are included. The survey does not establish how much of their working time or which tasks involve AI.'
+    caption:'Gallup: how often US employees use AI at work',
+    columns:['Survey month','A few times a year or more (%)','A few times a week or more (%)','Every day (%)'],rows:ADOPTION7.rows.map(r=>[r.date.slice(0,7),r.total,r.value,r.daily]),
+    url:ADOPTION7.url,checked:'2026-10-16',note:'Eight survey waves from Gallup\'s published table. The groups overlap: daily users are included in regular and any use. Values must not be added. Frequency is self-reported and leaves working time and tasks automated unmeasured.'
   };
   const t=TOPIC_CHARTS[id];
   return {caption:t.tableCaption||t.measure,columns:t.columns,rows:t.data,url:t.dataUrl||source10(id).url,checked:id==='work'?'2026-10-15':'2026-10-14',note:t.credit};
@@ -18742,9 +18889,12 @@ function relatedMeasurements11(id){
   if(id==='capability')items.push(...CAPABILITY7.related,
     {title:'Answering maths and science questions',publisher:'OpenAI / 2025',url:'https://openai.com/index/introducing-gpt-5-for-developers/',text:'On OpenAI\'s tests, correct answers rose from 88.9% with o3 to 94.6% with GPT-5 on AIME 2025 maths problems, and from 83.3% to 85.7% on GPQA Diamond science questions. Both used high reasoning settings without tools. How these gains affect workplace performance remains uncertain.'},
     {title:'Producing professional work: GDPval',publisher:'OpenAI / 2025',url:'https://arxiv.org/html/2510.04374v1#A1.T2',text:'Experts preferred AI outputs to human-produced work in 35.2% of comparisons for o3 and 39.0% for GPT-5, with tools available. This test assesses work products. Small differences between models may reflect measurement uncertainty.'},
-    {title:'The cost of reaching the same test score',publisher:'Epoch AI',url:'https://epoch.ai/data-insights/llm-inference-price-trends',text:'The price of processing text at a given level of benchmark performance has fallen. Total costs also depend on deployment, retries and human checking.'});
-  else if(id==='adoption')items.push(...ADOPTION7.related,{title:'Potential exposure versus observed use',publisher:'Anthropic / March 2026',url:COMPARISON_DATA.exposure.sourceURL,text:COMPARISON_DATA.exposure.measure+' '+COMPARISON_DATA.exposure.caveat});
+    {title:'The cost of reaching the same test score',publisher:'Epoch AI',url:'https://epoch.ai/data-insights/llm-inference-price-trends',text:'The price of processing text at a given level of benchmark performance has fallen. Total costs also depend on deployment, retries and human checking.'},
+    {title:'Advanced maths performance: FrontierMath',publisher:'Epoch AI / Our World in Data, 2026',url:'https://ourworldindata.org/grapher/ai-frontiermath-over-time',text:'Scores on advanced maths problems in the corrected Tiers 1-3 v2 benchmark, with Python tools available. The June 2026 revision corrected problems; comparisons need to use the same corrected version. OpenAI funded the benchmark and has exclusive access to a subset.'});
+  else if(id==='adoption')items.push(...ADOPTION7.related,{title:'Potential exposure versus observed use',publisher:'Anthropic / March 2026',url:COMPARISON_DATA.exposure.sourceURL,text:COMPARISON_DATA.exposure.measure+' '+COMPARISON_DATA.exposure.caveat},
+    {title:'Workplace AI use: OWID visualisation',publisher:'Gallup / Our World in Data, 2026',url:ADOPTION7.referenceURL,text:'Another presentation of the same Gallup survey, showing daily, frequent and occasional use together. Our chart follows Gallup\'s table through August 2026.'});
   else {const t=TOPIC_CHARTS[id];items.push(...t.support.map(s=>({title:s.label,url:s.url,text:s.text})),...t.related)}
+  if(id==='handover')items.push({title:'Driverless taxi use in California',publisher:'California Public Utilities Commission / Our World in Data, 2026',url:ROBOTAXI15.chartURL,text:'Monthly passenger travel in paid autonomous taxi services. A concrete example of real-world automation; its implications for human driver employment and remote assistance remain open.'});
   const usedURLs=new Set(p.sources.filter(s=>shown.has(s.id)).map(s=>s.url));
   return items.filter(s=>{if(usedURLs.has(s.url))return false;usedURLs.add(s.url);return true});
 }
@@ -18757,10 +18907,12 @@ function viewMeasurement11(v,id,sub){
       <section class="gaps-lane11" id="research-${id}" aria-labelledby="${id}-gap-title"><header class="lane-header11"><h2 id="${id}-gap-title">Measurement gaps</h2></header><div class="indicator-stack11">${m.gaps.map(measurementGap11).join('')}</div>
         ${studies.length?`<details class="study-ideas11"><summary>Study ideas (${studies.length})</summary><ul>${studies.map(s=>`<li><h3>${esc(s.title)}</h3><p>${esc(s.what)}</p></li>`).join('')}</ul></details>`:''}</section></div>
     <p class="scope-note11">Gaps reflect the selected studies. "Not tracked here" leaves open what other research may measure.</p>
-    <div class="measurement-support14">${measurementSources11(id)}${evidenceLibrary14(id)}</div>
+    <div class="measurement-support14">${id==='handover'?robotaxiExample15():''}${measurementSources11(id)}${evidenceLibrary14(id)}</div>
     ${pn5(i?[ORDER[i-1],nameOf(ORDER[i-1])]:['gaps','All steps','Back to'],i<ORDER.length-1?[ORDER[i+1],nameOf(ORDER[i+1])]:['gaps','All steps','Next'])}</div>`;
   bindEvidenceLibrary14(v,id);
+  if(id==='handover')mountRobotaxi15(v);
   if(sub==='source'||sub==='more'){const d=$('#'+id+(sub==='source'?'-source':'-related'),v);d.open=true;scrollTo11(d)}
+  if(id==='handover'&&sub==='robotaxis'){const d=$('#handover-robotaxis',v);d.open=true;scrollTo11(d)}
   if(sub==='gaps')scrollTo11($('#research-'+id,v));
 }
 /* Comparison views and integrated research gaps, layered onto the topic pages. */
@@ -18796,7 +18948,7 @@ function comparisonCard10(key,uid,home=false){
   const cards={
     capability:{lane:'AI capability',type:'Tests over time',title:'Models are completing longer tasks',measure:'Software, machine-learning and cybersecurity tasks tested by METR.',publisher:'METR',url:CAPABILITY7.metr.url,period:'Mar 2023 - Apr 2026',take:'METR estimates that the best model it tested in 2026 could handle technical tasks taking a human expert <strong>about three hours</strong>, up from <strong>under a minute in 2023</strong>.'},
     work:{lane:'Employment',type:'Monthly payroll records',title:'Employment is falling among young workers',measure:'US workers aged 22-25, in occupations with the greatest potential for AI assistance.',publisher:'Stanford / ADP',url:W.sourceURL,period:'Sep 2021 - Aug 2026',take:'In these occupations, employment among <strong>22-25-year-olds fell 12.8%</strong> between November 2022 and August 2026. Older age groups saw smaller falls or increases.'},
-    adoption:{lane:'AI adoption',type:'Repeated survey',title:'More employees use AI regularly at work',measure:'US employees reporting AI use a few times a week or more.',publisher:'Gallup',url:ADOPTION7.url,period:'May 2023 - Aug 2026',take:'Regular workplace AI use rose from <strong>11% of US employees in May 2023</strong> to <strong>32% in August 2026</strong>, according to Gallup\'s surveys.'},
+    adoption:{lane:'AI adoption',type:'Repeated survey',title:'More employees use AI regularly at work',measure:'How often US employees report using AI in their role.',publisher:'Gallup',url:ADOPTION7.url,period:'May 2023 - Aug 2026',take:'Regular workplace AI use rose from <strong>11% in May 2023 to 32% in August 2026</strong>. Daily use grew from <strong>4% to 16%</strong> of US employees.'},
     skills:{lane:'Learning',type:'One experiment',title:'Students scored lower after practising with unrestricted AI',measure:'Maths exam results after AI-assisted practice at one Turkish high school.',publisher:'Bastani et al. / PNAS',url:source10('skills').url,period:'2023 trial / Published 2025',take:'Students who practised with unrestricted GPT scored <strong>5.4 points lower out of 100</strong> when tested without AI, compared with the no-AI group. The guided tutor group showed no clear difference.'},
     uploads:{lane:'AI music uploads',type:'Five company reports',title:'AI music accounts for a growing share of new uploads',measure:'Fully AI-generated tracks uploaded to Deezer each day.',publisher:'Deezer',url:COMPARISON_DATA.music.sourceURL,period:'Jan 2025 - Apr 2026 reports',take:'AI-generated music rose from <strong>about 10% of Deezer\'s daily uploads in January 2025</strong> to <strong>about 44% in April 2026</strong>.'},
     streams:{lane:'Music played',type:'One reported range',title:'AI music receives a small share of plays',measure:'Fully AI-generated tracks as a share of all recorded plays on Deezer.',publisher:'Deezer',url:COMPARISON_DATA.music.sourceURL,period:'Apr 2026 report',take:'In April 2026, Deezer reported that fully AI-generated tracks received <strong>1-3% of recorded plays</strong>, despite making up about 44% of new daily uploads.'}
@@ -18813,7 +18965,7 @@ function comparisonCard10(key,uid,home=false){
     take:'In these occupations, employment among <strong>22-25-year-olds fell 12.8%</strong> between November 2022 and August 2026. Older age groups saw smaller falls or increases.',
     note:2,noteTitle:'Which workers are included',hint:'Selected US employers using ADP payroll. Occupations are grouped by how much AI could assist with their tasks.'
   });
-  const chartNote={capability:'Each dot is a tested model; the line joins record-high estimates.',work:'100 = employment in November 2022; 90 = 10% fewer people employed.',adoption:'Use is self-reported. The survey does not measure tasks automated.',skills:'One short-term trial; longer-term effects on skills remain uncertain.',uploads:'The line connects five rounded company reports. The detector may change over time.',streams:'Recorded plays include fraud; Deezer also excludes AI music from recommendations.'}[key];
+  const chartNote={capability:'Each dot is a tested model; the line joins record-high estimates.',work:'100 = employment in November 2022; 90 = 10% fewer people employed.',adoption:'Any use: a few times a year or more. Regular: a few times a week or more. Daily users are included in both broader groups.',skills:'One short-term trial; longer-term effects on skills remain uncertain.',uploads:'The line connects five rounded company reports. The detector may change over time.',streams:'Recorded plays include fraud; Deezer also excludes AI music from recommendations.'}[key];
   const ref=home?`<sup><button type="button" class="note-ref12" data-home-note="${key}" aria-controls="home-note-${key}" aria-expanded="false" aria-label="Note ${c.note}: ${esc(c.noteTitle)}" title="${esc(c.hint)}">${c.note}</button></sup>`:'';
   return `<figure class="compare-figure10${human?' human10':''}" aria-labelledby="${uid}-title"><figcaption><div class="figure-meta10"><span class="lane10">${esc(c.lane)}</span>${home?'':`<span>${esc(c.type)}</span>`}</div><h3 id="${uid}-title">${esc(c.title)}${ref}</h3><p class="measure10">${esc(c.measure)}</p><div class="source10">${ext7(c.url,'Source: '+c.publisher)}<span>${esc(c.period)}</span></div></figcaption><div class="chart" id="${uid}" data-comparison-chart="${key}"></div><p class="chart-note10">${chartNote}</p><p class="figure-take10">${c.take}</p></figure>`;
 }
@@ -18830,16 +18982,14 @@ function homeNotes12(){
 
 function pairNotes10(p){
   if(p.id==='work')return `<div class="more10"><div><h4>AI capability</h4><p>METR estimates the task length at which a model succeeds 80% of the time, using the time a human expert would need. The chart includes 23 models released from 2023 onward, and connects record-high estimates. It does not use a fitted trend or project future progress.</p><p>The latest estimate is 3.1 hours, with a wide 95% uncertainty interval of 1.6-6.6 hours. METR's TH1.1 series is archived. Results on these technical tasks may transfer unevenly to complete jobs.</p><p>${ext7(CAPABILITY7.metr.url,'METR methods')} / ${ext7(CAPABILITY7.metr.data,'Original data')}</p></div><div><h4>Employment</h4><p>${esc(COMPARISON_DATA.work.caveat)}</p><p>${ext7(COMPARISON_DATA.work.sourceURL,'Stanford study')} / ${ext7(COMPARISON_DATA.work.dataURL,'Original data')}</p><p>A different finding: a Danish study found no extra decline in young workers' share of workplace employment where chatbot use was encouraged through 2024. ${ext7(originalWork10.support[0].url,'Humlum & Vestergaard')}</p></div></div><p class="source-actions7"><a href="#capability/source">Capability data and uncertainty</a><a href="#work/source">Employment data and caveats</a></p>`;
-  if(p.id==='skills')return `<div class="more10"><div><h4>AI use</h4><p>Gallup asks US employees how often they use AI. These eight survey results include daily users. They leave open how much work people hand over to AI or whether they could do it without assistance.</p><p>${ext7(ADOPTION7.url,'Gallup table and methods')}</p><p>${ext7(COMPARISON_DATA.exposure.sourceURL,'Anthropic: potential assistance and observed use')} adds evidence on which occupations use Claude.</p></div><div><h4>Exam performance without AI</h4><p>Adjusted differences from the no-AI group, on a 100-point exam: unrestricted GPT, -5.4 points (approximate 95% interval: -9.7 to -1.1); guided tutor, -0.4 (-2.9 to +2.1). This one-school trial leaves longer-term learning effects unresolved.</p><p>${ext7(TOPIC_CHARTS.skills.dataUrl,'Bastani et al., Table 1')}</p><p>Both tools improved scores during practice with AI. The tutor estimate is compatible with a small benefit or harm; it also does not establish whether the two AI groups differ from each other.</p></div></div><p class="source-actions7"><a href="#adoption/source">Survey data and caveats</a><a href="#skills/source">Trial data and caveats</a></p>`;
+  if(p.id==='skills')return `<div class="more10"><div><h4>AI use</h4><p>Gallup asks US employees how often they use AI. Daily users are also included in regular and any use; the percentages must not be added. The survey leaves working time and tasks automated unresolved.</p><p>${ext7(ADOPTION7.url,'Gallup table and methods')} / ${ext7(ADOPTION7.referenceURL,'OWID visual reference')}</p><p>Redrawn from all three Gallup columns across eight survey waves. Our World in Data inspired the presentation; Gallup's table supplies the newer August 2026 values.</p></div><div><h4>Exam performance without AI</h4><p>Adjusted differences from the no-AI group, on a 100-point exam: unrestricted GPT, -5.4 points (approximate 95% interval: -9.7 to -1.1); guided tutor, -0.4 (-2.9 to +2.1). This one-school trial leaves longer-term learning effects unresolved.</p><p>${ext7(TOPIC_CHARTS.skills.dataUrl,'Bastani et al., Table 1')}</p><p>Both tools improved scores during practice with AI. The tutor estimate is compatible with a small benefit or harm; it also does not establish whether the two AI groups differ from each other.</p></div></div><p class="source-actions7"><a href="#adoption/source">Survey data and caveats</a><a href="#skills/source">Trial data and caveats</a></p>`;
   return musicNotes10()+`<p>${ext7(TOPIC_CHARTS.culture.related[0].url,'Related experiment: creativity and diversity')}</p><p class="source-actions7"><a href="#culture/source">Source notes and research gaps</a></p>`;
 }
 
 function drawComparison10(el,key){
   if(key==='capability')drawCapabilityTrend7(el,270,{yLabel:'Time a human expert would need'});
   else if(key==='work')drawWork10(el,{yLabel:'Number employed (Nov 2022 = 100)',endLabel:'Ages 22-25: down 12.8%'});
-  else if(key==='adoption')Charts.line(el,{h:270,legend:false,table:false,axisPlacement:'edges',aria:'Gallup: US employees reporting frequent AI use, 11 percent in May 2023 to 32 percent in August 2026. Eight survey waves.',
-    x:{min:2023,max:2026.9,ticks:[2023,2024,2025,2026],fmt:String,tip:fmtDate,label:'Survey year'},y:{min:0,max:40,ticks:[0,10,20,30,40],fmt:n=>n+'%',tip:n=>n+'%',label:'Employees who use AI regularly (%)'},
-    series:[{name:'Frequent AI use',color:'var(--ai10)',w:2.8,end:false,markers:'all',pts:ADOPTION7.rows.map(r=>[monthlyYear10(r.date),r.value])}],ann:[{x:monthlyYear10(ADOPTION7.rows[0].date),y:11,text:'11%',dx:6,dy:-16,strong:true},{x:monthlyYear10(ADOPTION7.rows.at(-1).date),y:32,text:'32%',dx:-6,dy:-18,anchor:'end',strong:true}]});
+  else if(key==='adoption')drawAdoption15(el);
   else if(key==='skills')drawSkillsStat10(el);
   else if(key==='uploads')drawMusicTrend10(el);
   else drawStreamsStat10(el);
@@ -18968,12 +19118,13 @@ function installWork10(){
 function updateMethod10(v){
   const list=$('#m-chart-sources details ul',v);
   if(list){const entry=[...list.children].find(li=>li.textContent.startsWith('Entry-level jobs:'));if(entry)entry.textContent='Entry-level jobs: '+COMPARISON_DATA.work.credit;
+    const adoption=[...list.children].find(li=>li.textContent.startsWith('AI adoption:'));if(adoption)adoption.textContent='AI adoption: all 24 values in Gallup\'s eight survey waves, May 2023-August 2026. Three overlapping groups: daily, a few times a week or more, and a few times a year or more. Dates follow Gallup\'s table. Presentation draws on Our World in Data; all values come directly from Gallup.';
     list.insertAdjacentHTML('beforeend',`<li>Adoption related evidence: ${esc(COMPARISON_DATA.exposure.credit||COMPARISON_DATA.exposure.measure)}</li>`)}
   const para=$('#m-chart-sources > p',v);if(para)para.textContent='The step pages explain what each source measures and which questions remain open. Home and Emerging evidence show larger comparisons. Each chart keeps its own source, population, period and scale, with source data available below or on the linked step page.';
   $('#m-chart-sources h2',v).textContent='Indicators, charts and data';
   $('#m-chart-sources details summary',v).textContent='How the source data are used';
-  list?.insertAdjacentHTML('beforeend','<li>Capability: every tested model remains visible as a point. The line joins estimates that set a new record at the time; it does not project future progress.</li><li>Culture comparison: the line connects five rounded Deezer reports of daily upload share from January 2025 to April 2026. Later peak-day figures are excluded. The 1-3% share of recorded plays comes from one April 2026 report.</li>');
-  const status=$('#m-status > p',v);if(status)status.textContent='The original selected figures were checked against primary sources with AI assistance on 14 October 2026, and the comparison additions on 15 October 2026. Independent human review of the figures and interpretations is still needed. The Futures section remains unverified.';
+  list?.insertAdjacentHTML('beforeend','<li>Capability: every tested model remains visible as a point. The line joins estimates that set a new record at the time; it does not project future progress.</li><li>Culture comparison: the line connects five rounded Deezer reports of daily upload share from January 2025 to April 2026. Later peak-day figures are excluded. The 1-3% share of recorded plays comes from one April 2026 report.</li><li>Supporting robotaxi example: CPUC passenger-travel records processed by Our World in Data. The displayed series starts in November 2023, after Cruise stopped operating. All 32 monthly values through June 2026 are retained. The chart does not measure employment effects or remote assistance.</li>');
+  const status=$('#m-status > p',v);if(status)status.textContent='The selected figures were checked with AI assistance on 14-15 October 2026. Gallup\'s three usage groups and the OWID supporting sources were checked on 16 October 2026. Independent human review of the figures and interpretations is still needed. The Futures section remains unverified.';
 }
 
 installWork10();
@@ -18987,14 +19138,15 @@ render=function(id){
   const [raw,sub]=String(id).split('/'),base=['evidence','record','map','pathways'].includes(raw)?'gaps':raw==='why'?'contribute':raw;
   if(base==='library'){render(ORDER.includes(sub)?sub+'/more':'gaps');return}
   if(base==='review'){render(ORDER.includes(sub)?sub:'gaps');return}
-  if(ORDER.includes(base)&&sub&&!['source','more'].includes(sub)&&!SELECTED_EVIDENCE[base].sources.some(s=>s.id===sub||(s.legacy||[]).includes(sub))){render(base);return}
+  const supporting=base==='handover'&&sub==='robotaxis';
+  if(ORDER.includes(base)&&sub&&!['source','more'].includes(sub)&&!supporting&&!SELECTED_EVIDENCE[base].sources.some(s=>s.id===sub||(s.legacy||[]).includes(sub))){render(base);return}
   const v=$('#view');let active=base;
   window.scrollTo({top:0,behavior:'instant'});
   if(base==='home'||!base)viewHome10(v);
   else if(base==='emerging')viewEmerging10(v,sub);
   else if(base==='gaps'&&!ORDER.includes(sub))viewResearch10(v);
   else if(base==='gaps'&&ORDER.includes(sub))viewMeasurement11(v,sub,'gaps');
-  else if(ORDER.includes(base)&&(!sub||['source','more'].includes(sub))){active='gaps';viewMeasurement11(v,base,sub)}
+  else if(ORDER.includes(base)&&(!sub||['source','more'].includes(sub)||supporting)){active='gaps';viewMeasurement11(v,base,sub)}
   else{
     baseRender10(id);
     if(ORDER.includes(base))active='gaps';

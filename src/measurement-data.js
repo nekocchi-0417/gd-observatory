@@ -68,7 +68,7 @@ const MEASUREMENT11 = {
       {
         title: "How often employees use AI",
         source: "gallup",
-        finding: "Gallup asks US employees how often they use AI at work. The proportion reporting use a few times a week or more rose from 11% in May 2023 to 32% in August 2026.",
+        finding: "Regular AI use rose from 11% of US employees in May 2023 to 32% in August 2026. Daily use rose from 4% to 16% over the same period.",
         scope: "Gallup repeatedly surveyed US employees aged 18+ working for organisations, from May 2023 to August 2026.",
         limit: "The answers apply to the covered employee population and describe reported frequency of use. They do not measure working hours, tasks completed by AI or whether people can work without it."
       },
