@@ -5,7 +5,7 @@
     "title":"Task completion and collaboration both remain common",
     "measure":"Share of conversations classified as automation or augmentation; other conversations excluded.",
     "why":"Shows how people use AI, not just whether they use it.",
-    "credit":"Redrawn from Anthropic's June 2026 data release. Provider-classified interaction patterns, not observed human oversight.",
+    "credit":"Redrawn from Anthropic's June 2026 data release. The provider classifies conversations as task completion (automation) or collaboration (augmentation). These labels do not show whether people checked AI's work.",
     "takeawayLabel":"What this shows",
     "takeaway":"In May 2026, 48.6% of classified Claude chat and Cowork conversations were labelled automation, versus 51.4% augmentation. Neither label tells us whether a person checked or acted on the output.",
     "dataUrl":"https://huggingface.co/datasets/Anthropic/EconomicIndex/blob/main/release_2026_06_26/data/aei_claude_ai_2026-06-26.csv",
@@ -13,10 +13,10 @@
     "data":[["Automation",48.62],["Augmentation",51.38]],
     "chart":{"kind":"bars","max":100,"ticks":[0,25,50,75,100],"unit":"%","axis":"Share of classified conversations (%)","category":"Interaction mode","aria":"May 2026 Claude chat and Cowork: automation 48.62%, augmentation 51.38%, among conversations assigned either mode.","rows":[{"label":"Automation","value":48.62,"vlabel":"48.6%"},{"label":"Augmentation","value":51.38,"vlabel":"51.4%"}]},
     "supportTitle":"Other indicators",
-    "support":[{"label":"Bank of England / FCA: decision autonomy","url":"https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024","text":"A survey of UK finance distinguishes partial automation from full autonomy. Its firms-versus-use-cases denominator needs review, so no percentage is featured here."}],
+    "support":[{"label":"Bank of England / FCA: decision autonomy","url":"https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024","text":"A survey of UK finance distinguishes AI that automates part of a process from AI that acts fully independently. It remains unclear whether its percentages refer to firms or individual uses of AI. The finding remains provisional while this is reviewed, so no percentage is shown here."}],
     "notes":[["Coverage","Global Claude chat and Cowork, May 2026. Not all providers, workplace activity or Claude Code."],["Definition","Automation: task completion, including feedback loops. Augmentation: learning, iteration or validation."],["Data","Published bucket shares exclude the 2.61% labelled 'None', verified from component totals. The exclusion formula is not explicit in the documentation."],["Limit","Company classification; actual review, use and reversibility of outputs are not observed. Sampling changes limit historical comparison."]],
-    "related":[{"title":"Autonomy varies by product and task","publisher":"Anthropic · June 2026","url":"https://www.anthropic.com/research/economic-index-june-2026-report","text":"The report also compares a classifier-rated autonomy scale across chat, Cowork and Claude Code. This is exploratory context, not a validated measure of lost control."}],
-    "watch":["How often people check, change or reject AI outputs.","Whether delegated decisions remain reversible across providers and sectors."]
+    "related":[{"title":"How independently AI acts across products and tasks","publisher":"Anthropic · June 2026","url":"https://www.anthropic.com/research/economic-index-june-2026-report","text":"The report uses an automated system to rate how independently AI acts in chat, Cowork and Claude Code. These exploratory ratings have not been validated as a measure of people losing control."}],
+    "watch":["How often people check, change or reject AI outputs.","Whether people can reverse decisions they hand over to AI, across providers and sectors."]
   },
   "work": {
     "source":"canaries", "publisher":"Stanford / ADP",
@@ -32,10 +32,10 @@
     "data":[],
     "chart":{"kind":"work-series"},
     "supportTitle":"Counterevidence",
-    "support":[{"label":"Humlum & Vestergaard: Danish workplaces","url":"https://www.andershumlum.com/s/chatbots_260313.pdf","text":"Workplaces encouraging chatbot use showed no extra decline in young workers' employment share through 2024. Different country, period and outcome; it does not rule out later US effects."}],
+    "support":[{"label":"Humlum & Vestergaard: Danish workplaces","url":"https://www.andershumlum.com/s/chatbots_260313.pdf","text":"Workplaces encouraging chatbot use showed no extra decline in the share of their workforce made up of young workers through 2024. The study covers a different country and period and measures a different outcome from the US comparison. It cannot rule out later US effects."}],
     "notes":[["Coverage","Ages 22–25 in a balanced sample of ADP client firms. Age is not career stage; the sample is not nationally representative."],["Data","September 2026 release, all five exposure quintiles. Published index values; no averaging of groups or smoothing."],["Limit","Exposure is not employer adoption. Education, earlier trends and other economic changes complicate attribution. No intervals supplied for these descriptive series."],["Earlier headline","The paper's 19% shortfall pools different quintiles and ends in June 2026. It is not the endpoint of this chart."]],
-    "related":[{"title":"The paper behind the dashboard","publisher":"Brynjolfsson, Chandar & Chen · August 2026 revision","url":"https://digitaleconomy.stanford.edu/news/canariesaug26/","text":"Explains the sample, alternative explanations and the earlier pooled comparison. That paper's roughly 19% kept-pace shortfall is a different measure from the age-group comparison shown here."}],
-    "watch":["Junior hiring and training after documented employer AI adoption.","Whether the gap persists across countries, samples and education groups."]
+    "related":[{"title":"The paper behind the dashboard","publisher":"Brynjolfsson, Chandar & Chen · August 2026 revision","url":"https://digitaleconomy.stanford.edu/news/canariesaug26/","text":"The paper describes the sample, other possible explanations, and an earlier comparison that combines exposure groups. Its roughly 19% shortfall measures how far employment fell below the level it would have reached if it had kept pace with the comparison group. That measure differs from the age-group comparison shown here."}],
+    "watch":["How hiring and training for junior workers change after employers adopt AI, with evidence of when adoption occurred.","Whether the employment gap persists across countries, samples and groups with different levels of education."]
   },
   "share": {
     "source":"ilo-labour-share", "publisher":"International Labour Organization",
@@ -43,24 +43,24 @@
     "title":"Labour's global income share is slightly lower",
     "measure":"Share of global GDP received as labour income, including estimated self-employed labour income.",
     "why":"An established international measure of how economic output is divided, with a baseline predating generative AI.",
-    "credit":"Two published endpoints from ILOSTAT's March 2026 review, not an annual series. Same release vintage; no intervening values inferred.",
+    "credit":"Two values from ILOSTAT's March 2026 review show the start and end of the comparison. Both come from the same release. No values have been inferred for the years between them, so the chart does not show how the share changed each year.",
     "takeawayLabel":"What changed",
     "takeaway":"Labour's share of global GDP fell from 53.0% in 2015 to 52.6% in 2025: a 0.4-percentage-point decline. The ILO describes a partial recent recovery; these figures do not identify AI's contribution.",
     "columns":["Year","Labour income / global GDP (%)"],"data":[[2015,53],[2025,52.6]],
     "chart":{"kind":"bars","max":100,"ticks":[0,25,50,75,100],"unit":"%","axis":"Labour income as a share of global GDP (%)","category":"Year","aria":"ILO global labour income share: 53.0% in 2015 and 52.6% in 2025. Zero to 100 percent scale.","rows":[{"label":"2015","value":53,"vlabel":"53.0%"},{"label":"2025","value":52.6,"vlabel":"52.6%"}]},
     "supportTitle":"Other indicators",
-    "support":[{"label":"BLS: US nonfarm-business labour share","url":"https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm","text":"52.8% in Q2 2026. A more frequent US series, but its sector and denominator differ from global GDP. It is not an extra point on the ILO chart."}],
+    "support":[{"label":"BLS: US nonfarm-business labour share","url":"https://www.bls.gov/opub/ted/2026/labor-share-at-its-lowest-level-52-8-percent-in-second-quarter-2026.htm","text":"The US nonfarm-business labour share was 52.8% in Q2 2026. It measures workers' compensation as a share of that sector's output. This series is updated more often, but its coverage and denominator differ from global GDP, so its value cannot be added to the ILO chart."}],
     "notes":[["Coverage","Global, including estimated labour income of the self-employed. Modelled estimates may be revised."],["Data","2015 and 2025 values from one March 2026 publication. The live bulk download could not be retrieved, so no annual curve is shown."],["Limit","Not typical wages, bargaining power or an AI effect. Countries and sectors can move in different directions."],["Comparison","The BLS measure covers US nonfarm business. Its level cannot be directly compared with the global GDP measure."]],
     "related":[],
-    "watch":["Income shares within sectors and firms with documented AI adoption.","Whether gains reach workers, including the self-employed, after accounting for other economic changes."]
+    "watch":["How workers' share of income changes within sectors and firms where AI adoption is documented.","Whether gains reach workers, including the self-employed, after accounting for other economic changes."]
   },
   "skills": {
     "source":"bastani", "publisher":"Bastani et al. · PNAS",
     "scope":"One Turkish high school · Randomized classroom trial · 2023",
     "title":"The kind of AI help matters for later learning",
-    "measure":"Adjusted difference in unaided exam scores versus the no-AI group, on a 100-point scale.",
+    "measure":"Difference in exam scores without AI, compared with the no-AI group (adjusted estimates, in points out of 100).",
     "why":"Tests what students can do after AI is removed, not just how well they perform with it.",
-    "credit":"Table 1, exam model. Dots are published estimates × 100. Bars are approximate 95% intervals calculated from published standard errors. Zero means no difference from the no-AI group.",
+    "credit":"The exam-score differences come from Table 1. Published estimates and standard errors are multiplied by 100 to express them in score points. Approximate 95% intervals are calculated as estimate plus or minus 1.96 times the standard error. Zero means no difference from the no-AI group.",
     "takeawayLabel":"What this shows",
     "takeaway":"After practice with unrestricted GPT, unaided exam scores were 5.4 points lower, about 17% relative to the no-AI group's mean. The guided tutor's −0.4-point estimate was not statistically distinguishable from no AI.",
     "dataUrl":"https://hamsabastani.github.io/education_llm.pdf",
@@ -68,10 +68,10 @@
     "data":[["GPT Base",-5.4,2.2,-9.712,-1.088],["GPT Tutor",-0.4,1.3,-2.948,2.148]],
     "chart":{"kind":"interval","min":-12,"max":4,"ticks":[-12,-8,-4,0,4],"axis":"Difference from no-AI group (points / 100)","category":"AI tool used during practice","aria":"Adjusted unaided exam effects: unrestricted GPT Base minus 5.4 points; guided GPT Tutor minus 0.4 points. Approximate 95% intervals are minus 9.712 to minus 1.088 and minus 2.948 to plus 2.148. Zero is no difference from no AI.","rows":[{"label":"GPT Base · unrestricted","value":-5.4,"low":-9.712,"high":-1.088},{"label":"GPT Tutor · guided","value":-0.4,"low":-2.948,"high":2.148}]},
     "supportTitle":"During practice",
-    "support":[{"label":"The same trial: assisted performance","url":"https://doi.org/10.1073/pnas.2422633122","text":"Both AI tools improved performance while students had access to them. That benefit did not translate into better unaided exam scores."}],
+    "support":[{"label":"The same trial: assisted performance","url":"https://doi.org/10.1073/pnas.2422633122","text":"Both AI tools improved performance while students had access to them. That benefit did not translate into better exam scores when students were tested without AI."}],
     "notes":[["Coverage","One school, grades 9–11; short-term maths exams. Main model: 2,848 student-session observations, not unique students."],["Chart data","Table 1 column 2 coefficients and standard errors × 100. Approximate intervals = estimate ± 1.96 × SE; calculated, not published endpoints."],["17%","−0.054 ÷ 0.321 ≈ −16.8%. The denominator is the no-AI mean. This is not a 17-point score difference."],["Limit","Not permanent skill loss. Tutor's nonsignificant estimate does not prove equivalence. Guardrails and teacher guidance were bundled."]],
-    "related":[{"title":"When human–AI teams help","publisher":"Vaccaro, Almaatouq & Malone · Nature Human Behaviour, 2024","url":"https://arxiv.org/html/2405.06087v2","text":"Across 106 experiments, teams beat people alone on average, but not the better of people or AI alone. This measures task performance, not retained skill."}],
-    "watch":["Repeated unaided tests of the same people over months or years.","Which teaching and review practices preserve skills, and how quickly skills recover without AI."]
+    "related":[{"title":"When people and AI work well together","publisher":"Vaccaro, Almaatouq & Malone · Nature Human Behaviour, 2024","url":"https://arxiv.org/html/2405.06087v2","text":"Across 106 experiments, people working with AI performed better on average than people working alone. Their average performance did not exceed that of whichever performed better on its own: people or AI. These experiments measure task performance. They do not show how well people retain their skills."}],
+    "watch":["Repeated tests of the same people without AI over months or years.","Which teaching and review practices preserve skills, and how quickly skills recover without AI."]
   },
   "culture": {
     "source":"deezer", "publisher":"Deezer",
@@ -79,16 +79,16 @@
     "title":"AI music is a small share of recorded streams",
     "measure":"Fully AI-generated tracks as a share of all recorded streams on Deezer.",
     "why":"Streams are closer to consumption than upload counts, though fraudulent streams prevent a clean measure of human listening.",
-    "credit":"Reported range in Deezer's 13 October 2026 release, not a confidence interval. No 2% midpoint inferred. Sampling window and fraud adjustment are unspecified.",
+    "credit":"The range comes from Deezer's 13 October 2026 release and does not represent a confidence interval, which would describe statistical uncertainty. No 2% midpoint has been inferred. The period covered by the stream sample and any adjustment for fraud are unspecified.",
     "takeawayLabel":"What this shows",
     "takeaway":"Deezer reports AI-generated tracks at 1–3% of recorded streams, despite more than half of uploads being AI-made on peak days. Large supply does not establish large human attention, especially when streams can be fraudulent.",
     "columns":["Measure","Lower reported share (%)","Upper reported share (%)"],"data":[["Fully AI-generated share of recorded streams",1,3]],
     "chart":{"kind":"waffle","aria":"Fully AI-generated music accounts for a reported 1 to 3 of every 100 recorded streams on Deezer. Includes possible fraud; not a measure of human listening."},
     "supportTitle":"Supply is different from attention",
-    "support":[{"label":"Deezer: more than 50% of uploads on peak days","url":"https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/","text":"An upload share counts tracks arriving, not plays or listeners. It is a peak-day figure, not an average, and uses a different denominator from the chart."}],
+    "support":[{"label":"Deezer: more than 50% of uploads on peak days","url":"https://newsroom-deezer.com/2026/10/deezer-ai-music-toggle/","text":"Upload share measures the proportion of arriving tracks that are AI-generated. It does not count plays or listeners. The figure describes peak days and cannot be read as an average across days. It uses uploaded tracks as its total, while the chart uses recorded streams."}],
     "notes":[["Coverage","Deezer only; fully AI-generated tracks detected by the company's own tool, not all AI-assisted music."],["Data","The release reports a 1–3% range. August 2026 date; sampling window unspecified. Squares show the range, not uncertainty around an estimate."],["Limit","Streams may include fraudulent activity; adjustment is unspecified. Detected tracks are excluded from algorithmic recommendations and editorial playlists."],["Transfer","Not an independent audit or a measure of culture-wide human influence."]],
-    "related":[{"title":"Creative gains, more similar stories","publisher":"Doshi & Hauser · Science Advances, 2024","url":"https://doi.org/10.1126/sciadv.adn5290","text":"In a randomized experiment with 293 writers, AI idea access improved story ratings but made stories more similar to one another. A bounded experiment, not a cultural trend."}],
-    "watch":["Independently measured human attention, excluding fraudulent activity.","Creator income and diversity across platforms, alongside AI-generated supply."]
+    "related":[{"title":"Higher creativity ratings and more similar stories","publisher":"Doshi & Hauser · Science Advances, 2024","url":"https://doi.org/10.1126/sciadv.adn5290","text":"In an experiment with 293 writers, access to AI-generated ideas was assigned at random. Access improved story ratings and made stories more similar to one another. This result from a limited experiment does not establish a trend across culture."}],
+    "watch":["Independent measurements of people's attention that exclude fraudulent activity.","Creators' income and the variety of creative work across platforms, alongside the amount of AI-generated content."]
   },
   "institutions": {
     "source":"inventory", "publisher":"US Office of Management and Budget",
@@ -97,17 +97,17 @@
     "title":"Government AI use is documented unevenly",
     "measure":"Number of individually reported AI use cases by development stage.",
     "why":"A public, reproducible starting point for finding systems that need decision-level monitoring.",
-    "credit":"Counts from the official CSV, pinned to 14 May 2026. Blank stages remain separate. Agency self-reports, not an audit or a time trend.",
+    "credit":"Counts come from the official CSV data file, using the version pinned to 14 May 2026. Entries with no development stage recorded remain a separate group. Agencies report these uses themselves; the counts do not provide an audit or show change over time.",
     "takeawayLabel":"What this shows",
     "takeaway":"Of 3,611 reported use cases, 1,480 are explicitly marked deployed or pilot; 338 have no stage recorded. These counts show applications, not decisions, human reviews or successful appeals.",
     "dataUrl":"https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Data/2025_individually_reported_AI_use_cases.csv",
     "columns":["Development stage","Use cases"],"data":[["Deployed",1040],["Pilot",440],["Pre-deployment",1479],["Retired",314],["Stage not reported",338]],
     "chart":{"kind":"bars","max":1600,"ticks":[0,400,800,1200,1600],"unit":"","axis":"Number of individually reported use cases","category":"Reported development stage","aria":"2025 federal AI inventory: 1040 deployed, 440 pilot, 1479 pre-deployment, 314 retired, and 338 with stage not reported. Total 3611.","rows":[{"label":"Deployed","value":1040,"vlabel":"1,040"},{"label":"Pilot","value":440},{"label":"Pre-deployment","value":1479,"vlabel":"1,479"},{"label":"Retired","value":314},{"label":"Stage not reported","value":338}]},
     "supportTitle":"The missing measure",
-    "support":[{"label":"OMB: inventory and field definitions","url":"https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory","text":"We still need comparable counts of decisions, substantive human reviews, overrides and appeals. A blank field does not prove a safeguard is absent."}],
+    "support":[{"label":"OMB: inventory and field definitions","url":"https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory","text":"We still need comparable counts of decisions, meaningful reviews by people, cases where people overrule AI, and appeals. A blank field does not prove a safeguard is absent."}],
     "notes":[["Coverage","3,611 individual public use cases. Consolidated commercial-software reporting and exempt uses are outside this count."],["Chart data","Counted every CSV row by development_stage; no imputation or deduplication. All five groups sum to 3,611."],["Discrepancy","README says 1,818 deployed/piloted. Explicit CSV labels total 1,480; 338 blanks account for the difference. Kept separate pending review."],["Limit","Reporting rules change. Counts do not measure decision volume, oversight quality or authority transferred."]],
-    "related":[{"title":"From AI alerts to human action","publisher":"Metropolitan Police · Annual report, September 2025","url":"https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf","text":"The force reports 2,077 facial-recognition alerts, including 10 false alerts, over a year. Officers review alerts before acting. One operational self-report, not a complete override rate or independent bias audit."}],
-    "watch":["Decision volumes and meaningful reviews for specific high-impact systems.","Whether people can challenge outcomes, and what happens after an appeal."]
+    "related":[{"title":"From AI alerts to human action","publisher":"Metropolitan Police · Annual report, September 2025","url":"https://www.met.police.uk/SysSiteAssets/media/downloads/force-content/met/advice/lfr/other-lfr-documents/live-facial-recognition-annual-report-2025.pdf","text":"The force reports 2,077 facial-recognition alerts, including 10 false alerts, over a year. Officers review alerts before acting. This is one force's report on its own system. It does not fully measure how often officers override alerts or provide an independent audit of bias."}],
+    "watch":["How many decisions AI systems with major consequences for people make, and how often people review those decisions carefully.","Whether people can challenge outcomes, and what happens after an appeal."]
   },
   "influence": {
     "source":"pew-control", "publisher":"Pew Research Center",
@@ -116,16 +116,16 @@
     "title":"Most US adults feel little control over AI's use",
     "measure":"Reported control over whether AI is used in their lives; share of US adults.",
     "why":"A representative survey asks about people's experience of control directly, with published questions and methods.",
-    "credit":"Pew's published grouped responses, without renormalizing. Rounded values; 1% nonresponse is omitted in the original grouped chart.",
+    "credit":"Uses Pew's published response groups. The rounded percentages are reproduced without adjustment to their total. The original grouped chart omits the 1% who did not respond.",
     "takeawayLabel":"What this shows",
     "takeaway":"In June 2025, 57% of US adults said they had little or no control over whether AI was used in their lives. This measures felt control, not whether people have actually lost the ability to decide or appeal.",
     "dataUrl":"https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf",
     "columns":["Felt control (published grouping)","US adults (%)"],"data":[["Not too much / none",57],["Some",30],["A great deal / quite a bit",13]],
     "chart":{"kind":"bars","max":100,"ticks":[0,25,50,75,100],"unit":"%","axis":"Share of US adults (%)","category":"Felt control over whether AI is used","aria":"Pew June 2025: 57% of US adults report not too much or no control, 30% some control, and 13% a great deal or quite a bit. Rounded, nonresponse not shown.","rows":[{"label":"Not too much / none","value":57},{"label":"Some","value":30},{"label":"A great deal / quite a bit","value":13}]},
     "supportTitle":"A separate question",
-    "support":[{"label":"Pew: 61% would like more control","url":"https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf","text":"Wanting more control is different from reporting little control. The 61% is not the remaining share of the chart above."}],
+    "support":[{"label":"Pew: 61% would like more control","url":"https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf","text":"The 61% comes from a separate question about wanting more control. It cannot be treated as the remaining share of the chart, which asks how much control people feel they have."}],
     "notes":[["Coverage","Representative US adult survey; June 2025. A dated snapshot, not a demonstrated decline."],["Chart data","AICONTROL1, three groups published by Pew. The 1% nonresponse plus rounded categories totals 101%; values have not been rescaled."],["Uncertainty","Full-sample margin of error: ±1.6 percentage points at 95% confidence. Not a category-specific interval."],["Limit","Perceived control, not observed authority, political influence or AI-caused harm. Wanting more control is AICONTROL2."]],
-    "related":[{"title":"Disempowerment potential in conversations","publisher":"Sharma et al. / Anthropic · Preprint, 2026","url":"https://www.anthropic.com/research/disempowerment-patterns","text":"A provider study flags potentially compromised beliefs, values or actions in a small minority of Claude conversations. Potential risk is not confirmed harm or lasting loss of influence."}],
-    "watch":["Whether people can refuse, reverse or appeal AI-mediated decisions.","Link repeated surveys to observed choices and outcomes, across countries."]
+    "related":[{"title":"Potential loss of control in AI conversations","publisher":"Sharma et al. / Anthropic · Preprint, 2026","url":"https://www.anthropic.com/research/disempowerment-patterns","text":"A study by the AI provider flags a small minority of Claude conversations as potentially compromising people's beliefs, values or actions. These flags indicate possible risk; they do not confirm harm or a lasting loss of influence."}],
+    "watch":["Whether people can refuse, reverse or appeal decisions made with AI.","Link repeated surveys across countries to the choices people actually make and the outcomes they experience."]
   }
 }

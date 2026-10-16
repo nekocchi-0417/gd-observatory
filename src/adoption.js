@@ -13,8 +13,8 @@ const ADOPTION7={
     {date:'2026-08-01',value:32}
   ],
   related:[
-    {title:'How much working time involves AI?',publisher:'RPS · Bick, Blandin & Deming / FRED',url:'https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL',text:'Generative AI assisted an estimated 6.3% of US work hours in Q2 2026. This measures depth of use, but estimates hours from reported time ranges rather than observing them directly.'},
-    {title:'Which tasks use AI?',publisher:'RPS · St. Louis Fed, September 2026',url:'https://www.stlouisfed.org/on-the-economy/2026/sep/what-work-does-generative-ai-do',text:'Breaks adoption down by occupation and task. Helps identify where use is concentrated. It draws on the same survey programme as the work-hours indicator above.'}
+    {title:'How much working time involves AI?',publisher:'RPS · Bick, Blandin & Deming / FRED',url:'https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL',text:'Generative AI assisted an estimated 6.3% of US work hours in Q2 2026. Researchers calculate this from the time ranges workers report; directly observed working hours could give a different estimate.'},
+    {title:'Which tasks use AI?',publisher:'RPS · St. Louis Fed, September 2026',url:'https://www.stlouisfed.org/on-the-economy/2026/sep/what-work-does-generative-ai-do',text:'This analysis shows which occupations and tasks account for AI use. It uses the same survey programme as the work-hours indicator above.'}
   ]
 };
 function viewAdoptionPilot(v){

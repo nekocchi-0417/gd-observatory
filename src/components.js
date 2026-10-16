@@ -102,7 +102,7 @@ function mapList5(){
     return `<li class="ml5" data-id="${id}" data-coverage="${c.band}"><span class="ml5-line" aria-hidden="true">${coverageGlyph5(c.band,18)}</span>
       <button type="button" class="ml5-btn" aria-expanded="false" aria-controls="mlc5-${id}"><span class="ml5-labels"><span class="ml5-name">${esc(nameOf(id))}</span><span class="ml5-coverage">${esc(coverageBand5(id).label)}</span>${c.band==='major'?`<span class="ml5-prompt">${esc(c.prompt)}</span>`:''}</span>${chev5}</button>
       <div class="ml5-card" id="mlc5-${id}"></div></li>`};
-  return `<ol class="mlist5">${['capability','adoption','handover'].map(row).join('')}<li class="ml5-fork">Then four lines, side by side</li>${['work','share','skills','culture','institutions'].map(row).join('')}<li class="ml5-fork">All four lead to the outcome</li>${row('influence')}</ol>`;
+  return `<ol class="mlist5">${['capability','adoption','handover'].map(row).join('')}<li class="ml5-fork">Four possible pathways</li>${['work','share','skills','culture','institutions'].map(row).join('')}<li class="ml5-fork">A shared question: human influence</li>${row('influence')}</ol>`;
 }
 
 /* the step card: what the step is, how well it is measured, and the way to its evidence */

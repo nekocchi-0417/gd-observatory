@@ -47,64 +47,64 @@ const COPY={
  },
  "coverage": {
   "title": "Where better measurement is needed",
-  "takeaway": "The biggest gaps are in skills, government decisions and human influence.",
-  "note": "Provisional, AI-assisted ratings of measurement coverage, not risk. Relevant research may be missing.",
+  "takeaway": "The selected sources leave important gaps in how skills change over time, how governments make decisions, and how much influence people retain.",
+  "note": "Coverage labels are provisional judgements made with AI assistance. They describe the selected evidence and may miss relevant research. They have not been independently validated and cannot establish the level of risk.",
   "bands": {
-   "major": {"label": "Major gaps", "short": "Major gaps", "description": "Few direct measures"},
-   "partial": {"label": "Partial coverage", "short": "Partial coverage", "description": "Narrow or indirect measures"},
-   "stronger": {"label": "Stronger coverage", "short": "Stronger coverage", "description": "Repeated, direct measures"}
+   "major": {"label": "Major gaps", "short": "Major gaps", "description": "Key outcomes or repeated measures are missing."},
+   "partial": {"label": "Partial coverage", "short": "Partial coverage", "description": "Measures cover part of the question."},
+   "stronger": {"label": "Stronger coverage", "short": "Stronger coverage", "description": "Direct measures are repeated over time."}
   },
   "steps": {
-   "capability": {"band": "partial", "prompt": "Whole-workflow reliability", "need": "Test reliable AI performance across whole workflows, including work beyond software.", "why": "Benchmarks measure defined tasks. They offer limited coverage of complete jobs and workflows."},
-   "adoption": {"band": "stronger", "prompt": "Depth of use and dependence", "need": "Track how much work is delegated and how people check or replace AI outputs.", "why": "Repeated employee surveys and official business statistics directly measure AI use. They do not measure dependence or decisions delegated."},
-   "handover": {"band": "partial", "prompt": "Decisions delegated and reviewed", "need": "Measure which decisions AI makes, which people review, and which people can reverse.", "why": "Provider logs and sector surveys cover some forms of delegation. They do not establish how much decision power people retain."},
-   "work": {"band": "partial", "prompt": "AI-linked hiring and training", "need": "Link firms' AI use to junior hiring and training, separating AI from other labour-market changes.", "why": "Payroll and administrative studies cover particular countries and periods. AI exposure and workplace adoption give different comparisons."},
-   "share": {"band": "stronger", "prompt": "AI's effect on labour income", "need": "Link labour income to actual AI use at firm and sector level.", "why": "Established official series repeatedly measure workers' share of income. Additional research is needed to identify AI's contribution."},
-   "skills": {"band": "major", "prompt": "Skills without AI over time", "need": "Follow the same people over time and test what they can do without AI.", "why": "Short experiments test learning and task performance. Broad, repeated tests of unaided skills are still missing from the selected evidence."},
-   "culture": {"band": "partial", "prompt": "Audience attention and creator income", "need": "Track what people read, watch and hear, alongside human creators' income and influence.", "why": "Platform reports and creative-task experiments cover parts of supply, listening and diversity. They do not measure culture-wide human influence."},
-   "institutions": {"band": "major", "prompt": "Decision and override rates", "need": "Publish decision volumes, human reviews, overrides and appeal outcomes for high-impact AI systems.", "why": "Inventories count reported uses; operational reports cover isolated systems. Direct, comparable measures of decision control remain limited."},
-   "influence": {"band": "major", "prompt": "Real choice and appeal", "need": "Measure whether people can refuse, appeal or reverse decisions, and act without AI.", "why": "Felt-control surveys and exploratory conversation studies offer proxies. They do not directly track people's power over the economy, culture or government."}
+   "capability": {"band": "partial", "prompt": "Reliability across a whole workflow", "need": "Test how reliably AI completes whole workflows, including work beyond software.", "why": "Benchmarks measure performance on defined tasks. The selected evidence covers only part of the work involved in complete jobs and workflows."},
+   "adoption": {"band": "stronger", "prompt": "How people use and depend on AI", "need": "Track how much work people delegate to AI and how they check or replace its outputs.", "why": "Repeated employee surveys and official business statistics directly measure AI use. Further measures are needed to show how much people depend on AI or delegate decisions to it."},
+   "handover": {"band": "partial", "prompt": "Who reviews AI decisions", "need": "Measure which decisions AI makes, which receive human review, and which people can reverse.", "why": "Records from AI providers and sector surveys cover some forms of delegation. They leave open how much decision-making authority people retain."},
+   "work": {"band": "partial", "prompt": "How AI affects hiring and training", "need": "Link firms' AI use to junior hiring and training, accounting for other changes in the labour market.", "why": "Payroll and administrative studies cover particular countries and periods. Estimates of which jobs AI could affect answer a different question from measures of actual workplace use."},
+   "share": {"band": "stronger", "prompt": "AI's effect on workers' income", "need": "Link workers' income to actual AI use within firms and sectors.", "why": "Established official series repeatedly measure workers' share of income. Further research is needed to identify how much AI contributes to changes in that share."},
+   "skills": {"band": "major", "prompt": "Skills without AI over time", "need": "Follow the same people over time and test what they can do without AI.", "why": "Short experiments test learning and task performance. The selected evidence still lacks broad, repeated tests of what people can do without AI."},
+   "culture": {"band": "partial", "prompt": "Attention and income for creators", "need": "Track what people read, watch and hear, alongside human creators' income and influence.", "why": "Platform reports and creative-task experiments measure some aspects of content supply, listening and diversity. They leave open how human influence is changing across culture as a whole."},
+   "institutions": {"band": "major", "prompt": "Human review of AI decisions", "need": "For high-impact AI systems, report how many decisions involve AI, how often people review or override them, and what happens when people appeal.", "why": "Inventories count reported AI uses, while operational reports describe individual systems. Comparable measures of who controls decisions remain limited."},
+   "influence": {"band": "major", "prompt": "Can people challenge AI?", "need": "Measure whether people can refuse, appeal or reverse decisions, and act without AI.", "why": "Surveys of perceived control and exploratory studies of conversations provide indirect evidence. Direct measures of people's power over the economy, culture and government are still missing from this selection."}
   }
  },
  "why": {
   "nav": "Contribute",
   "h1": "Help improve the dashboard",
-  "lead": "We're developing this prototype into a regularly updated dashboard on AI and human influence.",
+  "lead": "We are developing this prototype into a regularly updated dashboard on how AI affects people's skills, choices and influence. Contributions can help improve the evidence and identify what needs to be measured next.",
   "audiences": [
-   {"name": "Researchers", "text": "Share studies, suggest better indicators, or flag errors."},
-   {"name": "Grantmakers", "text": "Support research to fill measurement gaps and help maintain the dashboard."}
+   {"name": "Researchers and other contributors", "text": "Share a study or dataset, suggest a measure, or explain where a summary needs correcting."},
+   {"name": "Grantmakers", "text": "Support research on the measurement gaps and the ongoing work of checking and maintaining the dashboard."}
   ],
   "plan": {
-   "h2": "The plan",
+   "h2": "How the project will develop",
    "steps": [
-    {"t": "Review", "text": "Show what is measured and what is missing.", "to": "home"},
-    {"t": "Measure", "text": "Turn the biggest gaps into studies.", "to": "gaps"},
-    {"t": "Improve", "text": "Use better data to find where action could help most."},
-    {"t": "Forecast", "text": "Later, use the indicators to model plausible futures, in the style of", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
+    {"t": "Review the evidence", "text": "Explain what the selected sources measure, where findings differ, and which questions remain open.", "to": "home"},
+    {"t": "Develop better measures", "text": "Turn important gaps into research questions that studies can address.", "to": "gaps"},
+    {"t": "Inform action", "text": "Use stronger evidence to identify where interventions could help people retain skills and influence."},
+    {"t": "Explore possible futures", "text": "As the evidence develops, connect indicators to scenarios whose assumptions can be checked over time, drawing on projects such as", "links": [["AI 2027", "https://ai-2027.com/"], ["AI 2040", "https://ai-2040.com/"]]}
    ],
-   "aim": "The aim: a shared dashboard that people can update, audit and fund."
+   "aim": "The aim is a shared resource that people can inspect, improve and support over time."
   },
   "contribute": {
    "h2": "Add an indicator or study",
-   "text": "Suggest a dataset, study or measure, or flag a mistake. Contributions are reviewed before publication.",
+   "text": "Suggest a dataset, study or measure, or flag an error in the figures or interpretation. Explain what the source measures, who it covers and any important limits. Conflicting findings and results showing no effect are useful contributions. Submissions are reviewed before publication.",
    "buttons": [
     ["Propose an indicator", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=indicator.yml"],
     ["Share a study", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=study.yml"],
     ["Suggest a correction", "https://github.com/nekocchi-0417/gd-observatory/issues/new?template=correction.yml"]
    ],
-   "note": "Each button opens a short form on GitHub."
+   "note": "Submission forms open on GitHub. A source link and a brief explanation help us review your contribution."
   },
   "funding": {
    "h2": "Find or offer funding",
-   "text": "For researchers: open grants that fit this work. For funders: the gaps most in need of support.",
-   "gapsLink": "The gaps most in need of research",
+   "text": "The opportunities below may be relevant to researchers working on AI and human influence. Funders can use the research gaps to explore where new studies or support for the dashboard could help.",
+   "gapsLink": "Explore the research gaps",
    "grants": [
-    {"name": "Foresight Institute, AI for Science and Safety Nodes", "status": "Closes 31 October 2026", "fit": "The \"Human empowerment\" area asks for evidence on when human oversight adds value.", "url": "https://foresight.org/grants/ai-science-safety-nodes-rfp/"},
-    {"name": "GTR AI Safety Fund", "status": "Rolling", "fit": "Names \"the gradual effects of AI on human development and social behaviour\".", "url": "https://www.gtr-foundation.org/gtr-ai-safety-fund"},
+    {"name": "Foresight Institute, AI for Science and Safety Nodes", "status": "Closes 31 October 2026", "fit": "The \"Human empowerment\" area seeks evidence on when human oversight adds value.", "url": "https://foresight.org/grants/ai-science-safety-nodes-rfp/"},
+    {"name": "GTR AI Safety Fund", "status": "Rolling", "fit": "Its stated interests include \"the gradual effects of AI on human development and social behaviour\".", "url": "https://www.gtr-foundation.org/gtr-ai-safety-fund"},
     {"name": "EA Funds, Transformative AI Fund", "status": "Rolling", "fit": "Typical grants of $10k to $150k for individuals and small teams.", "url": "https://funds.effectivealtruism.org/funds/transformative-ai"},
-    {"name": "Coefficient Giving, capacity-building funding", "status": "Rolling", "fit": "Funds websites, data infrastructure and public discussion, not research itself.", "url": "https://coefficientgiving.org/funds/navigating-transformative-ai/funding-for-work-that-builds-capacity-to-address-risks-from-transformative-ai/"}
+    {"name": "Coefficient Giving, capacity-building funding", "status": "Rolling", "fit": "Supports websites, data infrastructure and public discussion. Research itself falls outside this funding stream.", "url": "https://coefficientgiving.org/funds/navigating-transformative-ai/funding-for-work-that-builds-capacity-to-address-risks-from-transformative-ai/"}
    ],
-   "note": "No funding call is dedicated to gradual disempowerment. Checked at source on 13 October 2026."
+   "note": "None of these calls is dedicated to gradual disempowerment. Details were checked at source on 13 October 2026; confirm current eligibility and deadlines with the funder."
   },
   "community": {
    "h2": "Join the community",
@@ -1059,9 +1059,9 @@ const COPY={
     "link": "capability",
     "old": "Task lengths outside software",
     "chip": "Partial coverage",
-    "title": "Track reliable task completion beyond technical work",
-    "why": "The theory needs AI able to do the casework and management institutions run on, not only code.",
-    "what": "METR-style task-length tests for casework, negotiation and management, re-run on each new model by an independent evaluator.",
+    "title": "Test how reliably AI completes work beyond software",
+    "why": "The proposed pathway depends partly on AI taking on casework, negotiation and management. Measuring performance on these tasks would help assess how far technical capabilities extend into institutional work.",
+    "what": "Have an independent evaluator adapt METR-style tests to casework, negotiation and management. For each new model, measure the length of task it can complete at a specified success rate.",
     "closest": "METR measures technical-task horizons; its tracker is no longer actively updated. The Remote Labor Index adds professional projects, with different scoring and coverage. See the selected capability sources."
    },
    {
@@ -1069,9 +1069,9 @@ const COPY={
     "link": "capability",
     "old": "Reliability on real work",
     "chip": "Partial coverage",
-    "title": "Test reliability across complete real-world workflows",
-    "why": "A system that succeeds once may fail the next time; institutions need work done right every time.",
-    "what": "The same real tasks run many times by an independent evaluator, reporting how often AI succeeds on every run.",
+    "title": "Test reliability across complete workflows",
+    "why": "A successful attempt gives limited information about whether the same system will perform consistently. Repeated tests would help institutions assess how reliably AI can complete the work they need.",
+    "what": "Have an independent evaluator run the same real tasks many times. Report how often AI succeeds and how often it completes every attempt successfully.",
     "closest": "METR explicitly measures task completion at a chosen success rate. Its technical-task coverage does not establish reliability across whole jobs."
    },
    {
@@ -1080,8 +1080,8 @@ const COPY={
     "old": "Cost per completed real task",
     "chip": "Partial coverage",
     "title": "Track the full cost of completing work with AI",
-    "why": "Cheaper answers do not mean cheaper work; whether firms hand work to AI depends on what a finished job costs.",
-    "what": "The full cost of finishing real tasks with AI, including reruns and checking, tracked for each new model.",
+    "why": "Firms need to know the cost of a completed job when deciding whether to delegate work to AI. Time spent checking outputs and repeating failed attempts can change the value of a cheaper model.",
+    "what": "For each new model, measure the full cost of completing real tasks with AI, including repeated attempts and human checking. Track how that cost changes over time.",
     "closest": "The selected capability benchmarks measure completion or reliability, not the full cost of deployment, retries and human review."
    },
    {
@@ -1090,8 +1090,8 @@ const COPY={
     "old": "Lab-to-life gap",
     "chip": "One-off only",
     "title": "Compare benchmark scores with results for real users",
-    "why": "Benchmarks may overstate what people actually get from AI, so capability can look further ahead than its use.",
-    "what": "For each new model, its benchmark score set against the results real users get on the same kind of task.",
+    "why": "Performance on a controlled benchmark may differ from the results people achieve with AI. Repeated comparisons would show how well benchmark improvements translate into useful performance.",
+    "what": "For each new model, compare its benchmark results with the outcomes real users achieve on the same kind of task.",
     "closest": "The capability page separates controlled benchmarks from performance across whole jobs. A repeated comparison with real users remains a monitoring priority."
    },
    {
@@ -1099,9 +1099,9 @@ const COPY={
     "link": "adoption",
     "old": "Work hours done with AI, by occupation",
     "chip": "Partial coverage",
-    "title": "Measure how much working time involves AI, by job",
-    "why": "Yes-or-no use hides depth; hours show how much work AI is actually part of.",
-    "what": "A quarterly official survey reporting the share of work hours done with AI, broken down by occupation.",
+    "title": "Measure how much working time involves AI in each occupation",
+    "why": "Knowing whether someone uses AI leaves open how much of their work involves it. Measuring hours would help distinguish occasional use from use throughout the working day.",
+    "what": "Run an official quarterly survey of the share of working hours that involve AI, with results reported separately for each occupation.",
     "closest": "Gallup tracks regular use; the RPS work-hours indicator linked on the adoption page estimates time involving AI. Neither directly measures work handed over or checked."
    },
    {
@@ -1109,9 +1109,9 @@ const COPY={
     "link": "handover",
     "old": "The review rate",
     "chip": "Company data only",
-    "title": "Count meaningful checks of AI output across providers",
-    "why": "Checking is the line between delegating a task and losing track of it.",
-    "what": "For each task AI completes, whether a person checked the output before it was used, across providers, on one definition.",
+    "title": "Measure how often people check AI outputs before use",
+    "why": "Human review can help people identify errors and retain oversight of delegated work. Records of completed AI tasks alone leave open whether anyone meaningfully checked the results.",
+    "what": "For tasks completed by AI, record whether a person checked the output before it was used. Apply a shared definition of meaningful review across providers so the results can be compared.",
     "closest": "Anthropic classifies automation and augmentation in conversations. Those patterns do not show whether people checked or used an output."
    },
    {
@@ -1120,8 +1120,8 @@ const COPY={
     "old": "Junior hiring inside firms that adopt AI",
     "chip": "Not tied to AI",
     "title": "Link junior hiring to firms' actual AI adoption",
-    "why": "It would help separate AI's contribution from other changes in demand for junior workers.",
-    "what": "Payroll data linking the date a firm adopted AI to its hiring by seniority, updated regularly.",
+    "why": "Connecting hiring to actual adoption would help investigate AI's contribution to changes in demand for junior workers. The analysis would also need to account for other changes affecting those firms.",
+    "what": "Link the dates when firms adopt AI to payroll records of hiring by seniority. Update the data regularly to compare hiring before and after adoption.",
     "closest": "Stanford/ADP tracks age and occupational exposure, not adoption. Humlum and Vestergaard link Danish adoption reports to administrative outcomes, but in a different period and setting."
    },
    {
@@ -1129,9 +1129,9 @@ const COPY={
     "link": "share",
     "old": "AI capital's share of income",
     "chip": "No measure exists",
-    "title": "Separate AI-related income shifts from other changes",
-    "why": "It would show whether money once paid as wages is going to AI owners instead.",
-    "what": "National accounts that split capital income into AI-related and other, so changes in workers' share can be traced.",
+    "title": "Track income associated with AI capital",
+    "why": "Distinguishing income associated with AI capital would help investigate whether shifts in workers' share coincide with gains for AI owners. Establishing that AI caused a shift would require further analysis.",
+    "what": "Develop a way to distinguish AI-related capital income within national accounts, then track it alongside workers' share of income.",
     "closest": "ILO global labour income share and BLS US nonfarm-business labour share. Neither attributes changes to AI or identifies who owns AI-related capital."
    },
    {
@@ -1139,9 +1139,9 @@ const COPY={
     "link": "skills",
     "old": "Unaided ability, tested twice",
     "chip": "Partial coverage",
-    "title": "Re-test unaided skills alongside recorded AI use",
-    "why": "Repeat tests help distinguish lasting learning or skill loss from short-term performance changes.",
-    "what": "A panel of workers, students or clinicians, tested on set tasks without AI every year, alongside a record of their AI use.",
+    "title": "Follow changes in skills without AI over time",
+    "why": "Testing the same people repeatedly would help distinguish lasting learning or skill loss from short-term changes in performance. Recording their AI use would help examine how those changes relate to use.",
+    "what": "Follow a group of workers, students or clinicians. Each year, test their performance on defined tasks without AI and record how they have been using AI.",
     "closest": "Bastani et al. test unaided maths performance immediately after practice. The guided tutor and unrestricted tool have different results; neither estimates population-wide long-term change."
    },
    {
@@ -1149,9 +1149,9 @@ const COPY={
     "link": "skills",
     "old": "Take-back time",
     "chip": "No measure exists",
-    "title": "Measure recovery after AI is withdrawn",
-    "why": "It shows whether people could take a task back: the difference between reliance and lock-in.",
-    "what": "Withdraw AI from a group for a week or a month and measure how long their performance takes to recover.",
+    "title": "Measure how performance recovers after AI is removed",
+    "why": "Recovery time would help assess whether people can resume tasks independently after relying on AI. It could reveal difficulties that a single test immediately after removal would miss.",
+    "what": "Study a group working without AI for a week or a month. Measure whether their performance recovers and, when it does, how long recovery takes.",
     "closest": "The selected classroom trial tests performance without AI but does not follow recovery over months."
    },
    {
@@ -1160,8 +1160,8 @@ const COPY={
     "old": "Dependence checked against behaviour",
     "chip": "Partial coverage",
     "title": "Check reported AI dependence against behaviour",
-    "why": "Without a check against behaviour, a dependence score may label ordinary use as a problem, or miss real dependence.",
-    "what": "A short dependence scale tested on the same people against their AI use and their performance without AI, with agreed cut-offs and a representative sample.",
+    "why": "A questionnaire about dependence needs to distinguish ordinary AI use from difficulty functioning without it. Comparing answers with behaviour would help test whether the measure identifies that difficulty.",
+    "what": "Test a short questionnaire in a representative sample, comparing each person's answers with their AI use and performance without AI. Evaluate the thresholds used to interpret the results before agreeing on cut-offs.",
     "closest": "The current shortlist does not contain a validated dependence measure linked to repeated unaided performance. This is a gap in this selection, not proof that no relevant study exists."
    },
    {
@@ -1169,9 +1169,9 @@ const COPY={
     "link": "skills",
     "old": "Benchmark-to-person link",
     "chip": "No measure exists",
-    "title": "Link model behaviour to outcomes for its users",
-    "why": "Benchmarks count what models do, such as flattery or manipulation, not whether users' skills or beliefs change. User satisfaction is not a safe guide either.",
-    "what": "Studies that give people models with different benchmark scores and measure what changes in those people over time.",
+    "title": "Test how model behaviour affects users over time",
+    "why": "Benchmarks can identify model behaviours such as flattery or manipulation. Direct studies of users are needed to understand whether those behaviours change skills, beliefs or the ability to make independent decisions. Satisfaction alone cannot establish those effects.",
+    "what": "Study people using models with different scores on behavioural benchmarks. Follow changes in their skills, beliefs and decision-making over time to test how benchmark results relate to user outcomes.",
     "closest": "Anthropic's disempowerment study classifies potential risks in conversations, not lasting changes in people's beliefs or agency. It is linked on the human influence page."
    },
    {
@@ -1179,9 +1179,9 @@ const COPY={
     "link": "culture",
     "old": "Attention-weighted AI share",
     "chip": "Company data only",
-    "title": "Measure human attention to AI-made content across platforms",
-    "why": "AI-made content floods supply; the theory turns on how much of it people actually take in.",
-    "what": "The share of minutes read, watched or heard that is AI-made, reported by platform, every quarter.",
+    "title": "Track how much AI-made content people read, watch and hear",
+    "why": "The cultural pathway depends on what reaches people's attention. Measuring time spent with AI-made content would help assess its role in people's experience of culture.",
+    "what": "Each quarter, report the share of time people spend reading, watching or listening to AI-made content on each platform.",
     "closest": "Deezer reports 1–3% of recorded streams for fully AI-generated tracks. Fraud and recommendation exclusions prevent a clean measure of human listening."
    },
    {
@@ -1190,8 +1190,8 @@ const COPY={
     "old": "Convergence in what gets published",
     "chip": "No measure exists",
     "title": "Track diversity in published work over time",
-    "why": "If AI makes what is published more uniform, the range of ideas people meet could narrow.",
-    "what": "A yearly index of diversity in vocabulary, style and subject across published text, music and images.",
+    "why": "If AI use makes published work more uniform, people could encounter a narrower range of ideas and styles. Measuring diversity over time would help investigate whether that change is occurring.",
+    "what": "Develop an annual measure of diversity across published text, music and images, using features such as vocabulary, style and subject where appropriate to each medium.",
     "closest": "Doshi and Hauser find higher creativity ratings but more similarity in AI-assisted short stories. That experiment is not a trend in published culture."
    },
    {
@@ -1199,9 +1199,9 @@ const COPY={
     "link": "institutions",
     "old": "Decisions made by AI",
     "chip": "Partial coverage",
-    "title": "Count decisions made with AI, not just applications",
-    "why": "Disclosures list tools; only decision counts show how much of the state's work runs through AI.",
-    "what": "For each high-impact system, decisions per year: fully automated, AI-recommended with sign-off, or made by a person alone.",
+    "title": "Count government decisions that involve AI",
+    "why": "Decision counts would show how much government work involves AI and what role it plays. An inventory of tools leaves those volumes and roles unclear.",
+    "what": "For each high-impact system, publish annual decision counts in three categories: fully automated, recommended by AI with human sign-off, and made by a person alone.",
     "closest": "The US inventory lists 3,611 use cases. The Metropolitan Police report 2,077 facial-recognition alerts in one year. These count different things; neither is a government-wide decision count."
    },
    {
@@ -1209,9 +1209,9 @@ const COPY={
     "link": "institutions",
     "old": "The override rate",
     "chip": "No measure exists",
-    "title": "Publish human reviews, overrides and appeals",
-    "why": "An override rate alone cannot establish meaningful control; reviewers' opportunities, reasons and outcomes also matter.",
-    "what": "The share of AI recommendations the responsible official changes, with time spent per case, published for each high-impact system.",
+    "title": "Track how officials review and change AI recommendations",
+    "why": "Understanding human control requires evidence about reviewers' opportunities, reasons and outcomes, including appeals. An override rate on its own leaves open whether officials can meaningfully challenge AI recommendations.",
+    "what": "For each high-impact system, publish the share of AI recommendations changed by the responsible official and the time spent reviewing each case.",
     "closest": "The OMB inventory records reported applications and some safeguards, not comparable rates of substantive review and successful appeals. Missing fields do not prove safeguards are absent."
    },
    {
@@ -1220,8 +1220,8 @@ const COPY={
     "old": "Dependence on foreign model providers",
     "chip": "No measure exists",
     "title": "Track public-sector dependence on model providers",
-    "why": "States that buy rather than build AI may lose the ability to change or replace it.",
-    "what": "Share of public-sector AI spending and queries by vendor and the vendor's home country, published yearly.",
+    "why": "Governments that rely on external AI providers may face limits on changing or replacing their systems. Tracking concentration by provider and country would help identify where to investigate that dependence.",
+    "what": "Publish annual shares of public-sector AI spending and queries by provider and by the provider's home country.",
     "closest": "Public inventories can identify some systems and vendors. Counts of listed tools do not measure spending, query volume or the practical ability to switch suppliers."
    },
    {
@@ -1229,9 +1229,9 @@ const COPY={
     "link": "influence",
     "old": "Who can decide",
     "chip": "No measure exists",
-    "title": "Observe who can make, refuse or reverse a decision",
-    "why": "This is the outcome itself: whether people, not systems, still settle what happens.",
-    "what": "For real institutions, the smallest group able to settle an outcome, and the mix of people and AI systems in it.",
+    "title": "Observe who can make, refuse or reverse decisions",
+    "why": "The central question is how much authority people retain over outcomes. Observing who can settle or challenge a real decision would bring measurement closer to that question.",
+    "what": "In real institutions, identify the smallest group able to determine an outcome. Record the roles of people and AI systems, including who can refuse or reverse the decision.",
     "closest": "Pew measures felt control; Anthropic studies conversational risk. Neither is a validated measure of decision authority across institutions."
    },
    {
@@ -1239,9 +1239,9 @@ const COPY={
     "link": "influence",
     "old": "A population measure of disempowerment",
     "chip": "Definitions differ",
-    "title": "Pair repeated surveys of control with observed choices",
-    "why": "It is the nearest population-wide signal of the outcome, and cheap enough to repeat every year.",
-    "what": "A tested survey scale, paired with simple behavioural tasks, put to the same people every year.",
+    "title": "Compare people's sense of control with the choices they can make",
+    "why": "Repeated surveys could track perceived control across a population. Pairing them with observed choices would help assess how that perception relates to people's ability to act.",
+    "what": "Each year, ask the same people a tested set of questions about control and give them simple tasks that reveal which choices they can make.",
     "closest": "Pew reports 57% of US adults felt little or no control in June 2025. Its topline includes earlier responses, but neither wave shows how much actual authority people have."
    }
   ]
@@ -1249,110 +1249,110 @@ const COPY={
  "futures": {
   "nav": "Futures",
   "navTag": "WIP",
-  "title": "Futures, work in progress",
+  "title": "Possible futures: an unverified draft",
   "wipTag": "Work in progress",
-  "caveat": "Work in progress. This page is an overview of related projects, not a literature review. It tracks adjacent work and possible scenario directions before choosing what to build.",
+  "caveat": "Unverified draft. Forecast values, historical chart points and scenario assumptions still need human checking before citation. The related projects and proposed directions are a starting point for further review.",
   "landscape": {
-   "title": "Relevant work to avoid duplicating",
-   "sub": "Labour impacts, economic shock and formal agency-loss models are already active areas. This dashboard can connect these projects through shared indicators and measurement gaps.",
+   "title": "Related research and forecasting projects",
+   "sub": "These selected projects explore economic change, human autonomy and possible AI futures. They provide starting points for connecting scenarios to indicators that this dashboard could track; the selection is incomplete.",
    "items": [
     {
-     "tag": "Crowded",
+     "tag": "Economic research",
      "title": "Economic impacts of frontier AI",
      "org": "SPAR / Rishi Bommasani",
-     "line": "AI diffusion through work, household substitution for labour, new tasks and links between benchmarks and economic indicators.",
+     "line": "Explores how AI spreads through work, how households substitute AI for labour, and how new tasks emerge. It also examines links between benchmark performance and economic indicators.",
      "url": "https://www.sparai.org/projects/f26/rec2PlDq9OODdId2k/"
     },
     {
-     "tag": "Close overlap",
+     "tag": "Labour disruption",
      "title": "From AI exposure to economic shock",
      "org": "SPAR / AI Safety Asia",
-     "line": "Early-warning indicators, transition scenarios and policy triggers for AI-driven labour disruption in Southeast Asia.",
+     "line": "Explores how indicators could give early warning of labour disruption in Southeast Asia, and how different scenarios could inform policy responses.",
      "url": "https://www.sparai.org/projects/f26/rec6h6JTLiswjlgL9/"
     },
     {
-     "tag": "Close overlap",
+     "tag": "Human autonomy",
      "title": "Human autonomy in the age of machines",
      "org": "SPAR / Joshua Krook",
-     "line": "Policy and legal work on protecting human autonomy, thought and decision-making under gradual disempowerment.",
+     "line": "Examines how law and policy could protect people's autonomy, freedom of thought and ability to make decisions as AI takes on more responsibilities.",
      "url": "https://www.sparai.org/projects/f26/recgG94Smce7E8J7G/"
     },
     {
      "tag": "Formal model",
      "title": "Loss of human agency: agent-based model",
      "org": "SPAR",
-     "line": "A formal and computational model of agency loss, tipping surfaces and early-warning indicators.",
+     "line": "Uses formal and computational modelling to explore how people could lose the ability to act and decide, where tipping points might arise, and what early warning could look like.",
      "url": "https://www.sparai.org/projects/f26/reck9hzkSGAMop7vj/"
     },
     {
      "tag": "Scenario work",
      "title": "AI Futures Project at MATS",
      "org": "MATS / AI Futures Project",
-     "line": "Scenario forecasting, economic modelling, takeoff modelling and policy-relevant AI futures work.",
+     "line": "Develops forecasts and scenarios about AI's future, including economic effects, the pace of capability growth and implications for policy.",
      "url": "https://www.matsprogram.org/stream/aifp?cebe326e_page=3"
     },
     {
      "tag": "Forecasting",
      "title": "Metaculus stream at MATS",
      "org": "MATS / Deger Turan",
-     "line": "Forecasting, world-modelling, AI diffusion, labour unions, technological uncertainty and gradual disempowerment.",
+     "line": "Uses forecasting and models of possible futures to explore how AI spreads, how labour unions respond, and how technological uncertainty relates to gradual disempowerment.",
      "url": "https://www.matsprogram.org/stream/turan"
     }
    ]
   },
   "directions": {
-   "title": "Promising directions for this dashboard",
-   "sub": "These look less duplicative than another labour-displacement model. They fit a public dashboard: scenario claims, indicators, and missing measures.",
+   "title": "Possible directions for this dashboard",
+   "sub": "These proposals would connect claims about the future to evidence that can be checked over time. Their scope and feasibility still need review.",
    "items": [
     {
-     "tag": "Coming soon",
+     "tag": "Proposed",
      "title": "Quiet Handoff scenario tracker",
-     "line": "A 2027-2032 scenario with trackable claims across delegation, skills, culture, institutions and human influence."
+     "line": "Develop a 2027-2032 scenario with claims that can be tracked about delegation, skills, culture, institutions and human influence."
     },
     {
-     "tag": "Coming soon",
+     "tag": "Proposed",
      "title": "Government decision accountability",
-     "line": "Track whether public-sector AI disclosure moves from inventories to decision counts, review rates, overrides and appeals."
+     "line": "Track whether public bodies report how many decisions involve AI, how people review or override them, and what happens when decisions are appealed."
     },
     {
-     "tag": "Coming soon",
+     "tag": "Proposed",
      "title": "Skills without AI",
-     "line": "A heatmap of what is known about unaided skill, calibration, judgement and recovery after AI is removed."
+     "line": "Map the evidence on skills and judgement without AI, how accurately people assess their own ability, and how performance recovers after AI is removed."
     },
     {
-     "tag": "Coming soon",
+     "tag": "Proposed",
      "title": "Culture and attention",
-     "line": "Move beyond AI content supply and ask what share of attention, trust and creator income remains human-led."
+     "line": "Track how audience attention, trust and creator income are distributed as AI-generated content becomes more common."
     }
    ]
   },
-  "toGap": "Almost no forecast covers people's say itself. See the gap →",
+  "toGap": "Explore what is needed to measure human influence →",
   "blocks": {
-   "fan": "Workers' share so far, against economists' forecasts: a slow squeeze, not a crash.",
-   "routes": "Five ways the chain could unfold, including a plateau, each with signposts to watch.",
-   "trust": "Past forecasts underestimated AI capability, were mixed on uptake, and shift with question wording.",
-   "more": "More forecasts: AI-progress scenarios, jobs and unemployment, and expert estimates of catastrophic risk."
+   "fan": "This draft compares recorded workers' income shares with economists' forecasts. Differences in source baselines still need review.",
+   "routes": "These five scenarios explore how AI capability, use and human influence could develop, including the possibility that progress slows. Each suggests changes that could help assess whether events are following that path.",
+   "trust": "Forecasts depend on the question asked, the assumptions made and the people responding. The notes below discuss past performance and reasons for caution; these summaries still need verification.",
+   "more": "Explore unverified forecasts of the economy under different AI scenarios, estimates of unemployment, and expert assessments of catastrophic risk."
   },
   "routeDesc": {
-   "A": "AI raises productivity; people keep skills, jobs and say.",
-   "B": "Entry-level work shrinks, so fewer people build skills.",
-   "C": "Institutions route decisions through AI faster than oversight grows.",
-   "D": "Skills, institutions and alternatives decay; taking tasks back is hard.",
-   "E": "Progress, uptake or rules stall before later links move."
+   "A": "AI raises productivity while people retain skills, jobs and influence over decisions.",
+   "B": "Entry-level work shrinks, reducing opportunities for people to build skills.",
+   "C": "Institutions give AI a greater role in decisions faster than human oversight develops.",
+   "D": "Skills, institutions and alternatives weaken, making it harder for people to take tasks back.",
+   "E": "Slower progress, limited adoption or regulatory constraints interrupt the pathway before later changes develop."
   },
-  "routesNote": "The routes are the dashboard's own. \"Seen\" means consistent with a route, not proof of it.",
+  "routesNote": "The dashboard developed these scenarios. Their assumptions and signposts remain unverified. A signpost labelled \"Seen\" is interpreted as consistent with a scenario; it does not establish that the scenario is unfolding.",
   "moreCards": [
    {
     "title": "Three AI-progress scenarios",
-    "line": "What economists expect under slow, moderate and rapid AI progress."
+    "line": "Compare what economists expect under slow, moderate and rapid AI progress. These extracted forecasts still need verification."
    },
    {
     "title": "Jobs and unemployment",
-    "line": "Survey forecasts stay in single digits, except for new graduates."
+    "line": "Compare unemployment estimates with different populations, time horizons and assumptions about AI progress."
    },
    {
     "title": "Catastrophic-risk estimates",
-    "line": "Expert odds of catastrophic harm by 2030, including power centralisation."
+    "line": "Review unverified expert estimates of catastrophic harm by 2030, including harm from concentrated power."
    }
   ]
  },

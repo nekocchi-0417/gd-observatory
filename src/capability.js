@@ -196,13 +196,13 @@ const CAPABILITY7={
       "title": "Capability across domains",
       "publisher": "METR · July 2025",
       "url": "https://metr.org/blog/2025-07-14-how-does-time-horizon-vary-across-domains/",
-      "text": "Explores maths, science and computer use. Uses 50% success and noisier human-time estimates, not the 80% series above."
+      "text": "Tests how AI performance changes across maths, science and computer use. It estimates task length at 50% success, with greater uncertainty about human completion times. Its values therefore need to be read separately from the 80% results featured here."
     },
     {
       "title": "Remote Labor Index",
       "publisher": "CAIS / Scale AI",
       "url": "https://labs.scale.com/leaderboard/rli",
-      "text": "Tests finished freelance projects beyond software. Useful for breadth, but a leaderboard score is not a share of jobs replaced."
+      "text": "Checks completed freelance projects across a wider range of work. The results help test whether AI can produce professional deliverables; they leave actual employment effects unresolved."
     },
     {
       "title": "AI assistance in everyday coding",
@@ -215,7 +215,7 @@ const CAPABILITY7={
       "title": "AI Capabilities Index",
       "publisher": "Epoch AI",
       "url": "https://epoch.ai/data/eci-documentation",
-      "text": "Combines benchmarks for a broader view of progress. The combined score is less directly interpretable as completed work."
+      "text": "Combines results from several tests to track AI progress more broadly. The overall score does not translate directly into an amount of work AI can complete."
     }
   ]
 };

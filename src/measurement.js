@@ -8,11 +8,11 @@ function scrollTo11(el){
 
 function viewResearch11(v){
   const wide=matchMedia('(min-width: 980px)').matches;
-  v.innerHTML=`<div class="wrap page10 research11"><header class="intro10"><div class="eyebrow10">Research gaps</div><h1>What is measured, and what is missing?</h1><p>AI capability and use have repeated indicators. Direct measures of human skills, decisions and influence remain limited in this selection.</p><div class="intro-links10">${ext7('https://gradual-disempowerment.ai/','Original pathways paper')}<a href="#method/coverage">How coverage is assessed &#8594;</a></div></header>
+  v.innerHTML=`<div class="wrap page10 research11"><header class="intro10"><div class="eyebrow10">Research gaps</div><h1>What is measured, and what is missing?</h1><p>Researchers regularly test what AI can do and survey how many people use it. The studies selected here tell us less about how people's skills, choices and influence change over time.</p><div class="intro-links10">${ext7('https://gradual-disempowerment.ai/','Original pathways paper')}<a href="#method/coverage">What the coverage labels mean &#8594;</a></div></header>
     <details class="pathway-disclosure11" id="research-pathways11"${wide?' open':''}><summary>The proposed pathways</summary><div id="research-map11"></div></details>
-    <section class="measurement-index11" aria-labelledby="index-title11"><h2 id="index-title11">Measurement by step</h2><div class="measurement-index-head11" aria-hidden="true"><span>Step</span><span>Currently measured</span><span>Measurement gaps</span><span></span></div>
+    <section class="measurement-index11" aria-labelledby="index-title11"><h2 id="index-title11">What we know at each step</h2><div class="measurement-index-head11" aria-hidden="true"><span>Step</span><span>Currently measured</span><span>Measurement gaps</span><span></span></div>
       <div class="measurement-index-rows11">${ORDER.map((id,i)=>{const m=MEASUREMENT11[id];return `<a class="measurement-row11" href="#${id}"><div class="index-step11"><span>${String(i+1).padStart(2,'0')}</span><h3>${esc(nameOf(id))}</h3></div><p class="index-measured11"><b>Currently measured</b>${esc(m.measuredSummary)}</p><p class="index-gap11"><b>Measurement gaps</b>${esc(m.gapSummary)}</p><span class="index-arrow11" aria-hidden="true">&#8594;</span></a>`}).join('')}</div>
-      <p class="scope-note11">AI-assisted synthesis of selected sources, not a systematic review. A gap here does not mean no relevant research exists.</p>
+      <p class="scope-note11">These AI-assisted summaries cover the sources selected for this dashboard. A systematic review could identify further studies and change our assessment of the gaps.</p>
     </section></div>`;
   mountMap5($('#research-map11',v),{onStop:id=>go(id),compact:true,card:measurementMapCard11});
 }
@@ -36,12 +36,12 @@ function measurementData11(id){
     caption:'METR TH1.1: task length in human-expert minutes at 80% success',
     columns:['Tested model','Released','Estimate (min)','95% low (min)','95% high (min)'],
     rows:CAPABILITY7.metr.rows.map(r=>[r.name,r.date,r.estimate,r.low,r.high]),
-    url:CAPABILITY7.metr.data,checked:'2026-10-14',note:'All 23 tested models released from 2023 onward. Technical tasks, not whole jobs. The archived series ends in April 2026.'
+    url:CAPABILITY7.metr.data,checked:'2026-10-14',note:'These results cover 23 models released from 2023 to April 2026. METR measures how long the tested technical tasks would take a human expert. Applying the results to complete jobs requires further evidence. This series is now archived.'
   };
   if(id==='adoption')return {
     caption:'Gallup: US employees using AI at work a few times a week or more',
     columns:['Survey month','Share (%)'],rows:ADOPTION7.rows.map(r=>[r.date.slice(0,7),r.value]),
-    url:ADOPTION7.url,checked:'2026-10-14',note:'All eight published frequent-use observations. Self-reported use, including daily users; not work hours or tasks automated.'
+    url:ADOPTION7.url,checked:'2026-10-14',note:'All eight published survey results are included. Employees report using AI a few times a week or more; daily users are included. The survey does not establish how much of their working time or which tasks involve AI.'
   };
   const t=TOPIC_CHARTS[id];
   return {caption:t.tableCaption||t.measure,columns:t.columns,rows:t.data,url:t.dataUrl||source10(id).url,checked:id==='work'?'2026-10-15':'2026-10-14',note:t.credit};
@@ -59,9 +59,9 @@ function relatedMeasurements11(id){
   const p=SELECTED_EVIDENCE[id],shown=new Set(MEASUREMENT11[id].measured.map(c=>c.source));
   const items=p.sources.filter(s=>!shown.has(s.id)).map(s=>({title:s.label,publisher:s.type,url:s.url,text:s.finding}));
   if(id==='capability')items.push(...CAPABILITY7.related,
-    {title:'Maths and science question benchmarks',publisher:'OpenAI / 2025',url:'https://openai.com/index/introducing-gpt-5-for-developers/',text:'From o3 to GPT-5: AIME 2025, 88.9% to 94.6%; GPQA Diamond, 83.3% to 85.7%. High reasoning, no tools. These are correct-answer rates on tests, not workplace outcomes.'},
-    {title:'Professional work products: GDPval',publisher:'OpenAI / 2025',url:'https://arxiv.org/html/2510.04374v1#A1.T2',text:'Expert preference for outputs over human work rose from 35.2% for o3 to 39.0% for GPT-5, with tools. A different test from maths or science questions; small differences may reflect uncertainty.'},
-    {title:'The falling price of benchmark-level performance',publisher:'Epoch AI',url:'https://epoch.ai/data-insights/llm-inference-price-trends',text:'Costs per token at fixed benchmark scores have fallen. This is not the total cost of a completed workflow, including checking and reruns.'});
+    {title:'Answering maths and science questions',publisher:'OpenAI / 2025',url:'https://openai.com/index/introducing-gpt-5-for-developers/',text:'On OpenAI\'s tests, correct answers rose from 88.9% with o3 to 94.6% with GPT-5 on AIME 2025 maths problems, and from 83.3% to 85.7% on GPQA Diamond science questions. Both used high reasoning settings without tools. How these gains affect workplace performance remains uncertain.'},
+    {title:'Producing professional work: GDPval',publisher:'OpenAI / 2025',url:'https://arxiv.org/html/2510.04374v1#A1.T2',text:'Experts preferred AI outputs to human-produced work in 35.2% of comparisons for o3 and 39.0% for GPT-5, with tools available. This test assesses work products. Small differences between models may reflect measurement uncertainty.'},
+    {title:'The cost of reaching the same test score',publisher:'Epoch AI',url:'https://epoch.ai/data-insights/llm-inference-price-trends',text:'The price of processing text at a given level of benchmark performance has fallen. Total costs also depend on deployment, retries and human checking.'});
   else if(id==='adoption')items.push(...ADOPTION7.related,{title:'Potential exposure versus observed use',publisher:'Anthropic / March 2026',url:COMPARISON_DATA.exposure.sourceURL,text:COMPARISON_DATA.exposure.measure+' '+COMPARISON_DATA.exposure.caveat});
   else {const t=TOPIC_CHARTS[id];items.push(...t.support.map(s=>({title:s.label,url:s.url,text:s.text})),...t.related)}
   const usedURLs=new Set(p.sources.filter(s=>shown.has(s.id)).map(s=>s.url));
@@ -72,11 +72,11 @@ function viewMeasurement11(v,id,sub){
   const m=MEASUREMENT11[id],p=SELECTED_EVIDENCE[id],i=ORDER.indexOf(id),studies=COPY.gap.items.filter(x=>x.link===id);
   v.innerHTML=`<div class="wrap page10 measurement11"><nav class="research-back10" aria-label="Research navigation"><a href="#gaps">&#8592; Pathways &amp; research gaps</a>${comparisonFor10[id]?`<a href="#emerging/${comparisonFor10[id]}">Charts in emerging evidence &#8594;</a>`:''}</nav>
     <header class="intro10 measurement-intro11"><div class="eyebrow10">${esc(nameOf(id))} / Step ${i+1} of ${ORDER.length}</div><h1>${esc(p.h1)}</h1><p>${esc(m.summary)}</p></header>
-    <div class="measurement-lanes11"><section class="measured-lane11" aria-labelledby="${id}-measured-title"><header class="lane-header11"><h2 id="${id}-measured-title">Currently measured</h2><span>${m.measured.length} ${m.measured.length===1?'indicator':'indicators'}</span></header><p class="lane-sub11">Selected measures, with their limits.</p><div class="indicator-stack11">${m.measured.map(c=>indicatorCard11(c,id)).join('')}</div></section>
-      <section class="gaps-lane11" id="research-${id}" aria-labelledby="${id}-gap-title"><header class="lane-header11"><h2 id="${id}-gap-title">Measurement gaps</h2><span>${m.gaps.length} priorities</span></header><p class="lane-sub11">Limited, indirect or missing in these sources.</p><div class="indicator-stack11">${m.gaps.map(measurementGap11).join('')}</div>
+    <div class="measurement-lanes11"><section class="measured-lane11" aria-labelledby="${id}-measured-title"><header class="lane-header11"><h2 id="${id}-measured-title">Currently measured</h2><span>${m.measured.length} ${m.measured.length===1?'indicator':'indicators'}</span></header><p class="lane-sub11">What the selected studies measure and find.</p><div class="indicator-stack11">${m.measured.map(c=>indicatorCard11(c,id)).join('')}</div></section>
+      <section class="gaps-lane11" id="research-${id}" aria-labelledby="${id}-gap-title"><header class="lane-header11"><h2 id="${id}-gap-title">Measurement gaps</h2><span>${m.gaps.length} questions</span></header><p class="lane-sub11">Questions these studies leave partly or fully unanswered.</p><div class="indicator-stack11">${m.gaps.map(measurementGap11).join('')}</div>
         ${studies.length?`<details class="study-ideas11"><summary>Study ideas (${studies.length})</summary><ul>${studies.map(s=>`<li><h3>${esc(s.title)}</h3><p>${esc(s.what)}</p></li>`).join('')}</ul></details>`:''}</section></div>
-    <div class="measurement-footnote11"><p>AI-assisted synthesis, not a systematic review. "Not tracked here" refers to this selection, not the whole field.</p><a href="#method/selection">How indicators are selected &#8594;</a></div>
-    <div class="disclosures7 evidence-grid7">${measurementSources11(id)}<details class="disclosure7" id="${id}-related"><summary>More evidence</summary><div class="disclosure7-body">${relatedEvidence7(relatedMeasurements11(id))}<p>Working selection. These AI-assisted summaries have not all been manually verified.</p></div></details></div>
+    <div class="measurement-footnote11"><p>These AI-assisted summaries cover selected sources. "Not tracked here" means a measure is missing from this selection; other relevant research may exist.</p><a href="#method/selection">How indicators are selected &#8594;</a></div>
+    <div class="disclosures7 evidence-grid7">${measurementSources11(id)}<details class="disclosure7" id="${id}-related"><summary>More evidence</summary><div class="disclosure7-body">${relatedEvidence7(relatedMeasurements11(id))}<p class="evidence-note13">This working reading list was prepared with AI assistance. Some summaries still need a human check against the original source.</p></div></details></div>
     <div class="measurement-contribute11"><a href="#contribute/add">Suggest an indicator or study &#8594;</a><a href="#gaps">All research gaps &#8594;</a></div>
     ${pn5(i?[ORDER[i-1],nameOf(ORDER[i-1])]:['gaps','All steps','Back to'],i<ORDER.length-1?[ORDER[i+1],nameOf(ORDER[i+1])]:['gaps','All steps','Next'])}</div>`;
   if(sub==='source'||sub==='more'){const d=$('#'+id+(sub==='source'?'-source':'-related'),v);d.open=true;scrollTo11(d)}
