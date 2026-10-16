@@ -108,17 +108,16 @@ function viewEmerging10(v,anchor){
 }
 
 function viewHome10(v){
-  v.innerHTML=`<div class="wrap page10 home10"><header class="intro10 home-intro10"><div class="eyebrow10">Better Futures Project / Zhang Yue</div><h1>Tracking AI progress and human influence.</h1><p>Gradual disempowerment is the risk that people lose influence as AI takes on more work and decisions. What do the early signals show?</p><div class="intro-links10">${ext7('https://gradual-disempowerment.ai/','Original paper')}<a href="#pathways">The proposed pathways &#8594;</a></div></header>${pairMarkup10(pairDefs10[0],true)}<section class="home-next10"><div><h2>A first signal, not the whole picture.</h2><p>Explore changes in work, skills and culture, including evidence that complicates the story.</p></div><a class="main-link10" href="#emerging">Explore emerging evidence &#8594;</a></section><section class="home-doors10"><article><h2>What needs measuring?</h2><p>Find selected evidence, missing indicators and concrete research questions at each step.</p><a href="#gaps">Research gaps &#8594;</a></article><article><h2>How could influence be lost?</h2><p>Follow the proposed links from AI capability and use to work, culture and human control.</p><a href="#pathways">Explore the pathways &#8594;</a></article></section></div>`;
+  v.innerHTML=`<div class="wrap page10 home10"><header class="intro10 home-intro10"><div class="eyebrow10">Better Futures Project / Zhang Yue</div><h1>Tracking AI progress and human influence.</h1><p>Gradual disempowerment is the risk that people lose influence as AI takes on more work and decisions. What do the early signals show?</p><div class="intro-links10">${ext7('https://gradual-disempowerment.ai/','Original paper')}<a href="#gaps">Pathways &amp; research gaps &#8594;</a></div></header>${pairMarkup10(pairDefs10[0],true)}<section class="home-next10"><div><h2>A first signal, not the whole picture.</h2><p>Explore changes in work, skills and culture, including evidence that complicates the story.</p></div><a class="main-link10" href="#emerging">Explore emerging evidence &#8594;</a></section><section class="home-doors10"><article><h2>What is measured? What is missing?</h2><p>The proposed pathways, available indicators and measurement gaps, together in one place.</p><a href="#gaps">Research gaps &#8594;</a></article><article><h2>Help improve the dashboard</h2><p>Researchers and grantmakers can add evidence, challenge interpretations or support missing measures.</p><a href="#contribute">Contribute &#8594;</a></article></section></div>`;
   mountComparisons10(v);
 }
 
 function viewResearch10(v){
-  v.innerHTML=`<div class="wrap page10"><header class="intro10"><div class="eyebrow10">Research gaps</div><h1>What do we still need to measure?</h1><p>Selected evidence and practical research questions, organised by step in the gradual disempowerment pathways.</p><div class="intro-links10"><a href="#pathways">See the pathways &#8594;</a><a href="#method/selection">How indicators are selected &#8594;</a></div></header><div class="gap-index-head10" aria-hidden="true"><span></span><span>Step / selected evidence</span><span>Next measurement needed</span><span></span></div><div class="gap-index10">${ORDER.map((id,i)=>`<a href="#${id}"><span class="step10">${String(i+1).padStart(2,'0')}</span><div><h2>${esc(nameOf(id))}</h2><small>${esc(topicLabels10[id])}</small></div><p>${esc(SELECTED_EVIDENCE[id].gap)}</p><span class="row-arrow10" aria-hidden="true">&#8594;</span></a>`).join('')}</div><p class="gap-caution10">Proposed priorities based on selected sources, not a systematic review of all research. Contributions and contrary findings are welcome.</p></div>`;
+  viewResearch11(v);
 }
 
 function viewPathways10(v){
-  v.innerHTML=`<div class="pathways10"><header class="wrap page10 intro10 path-intro10"><div class="eyebrow10">The proposed pathways</div><h1>How might AI weaken human influence?</h1><p>The pathways are adapted from the ${ext7('https://gradual-disempowerment.ai/','Gradual Disempowerment paper')}. Each step links to its evidence and research gaps.</p></header><div id="prototype-map10"></div><section class="wrap home-next10"><div><h2>From a pathway to a research question.</h2><p>Coverage colours are provisional, AI-assisted judgements, not measured risk scores.</p></div><a class="main-link10" href="#gaps">Research gaps &#8594;</a></section></div>`;
-  mountMap5($('#prototype-map10',v),{onStop:id=>go(id)});
+  viewResearch11(v);
 }
 
 function gapQuestion10(x){
@@ -174,8 +173,10 @@ function installWork10(){
 function updateMethod10(v){
   const list=$('#m-chart-sources details ul',v);
   if(list){const entry=[...list.children].find(li=>li.textContent.startsWith('Entry-level jobs:'));if(entry)entry.textContent='Entry-level jobs: '+COMPARISON_DATA.work.credit;
-    list.insertAdjacentHTML('beforeend',`<li>Adoption supporting chart: ${esc(COMPARISON_DATA.exposure.credit||COMPARISON_DATA.exposure.measure)}</li>`)}
-  const para=$('#m-chart-sources > p',v);if(para)para.textContent='Each chart uses a named source and an explicit definition. Comparisons keep datasets separate, with their own populations, periods and axes. Placing charts together does not establish that one trend caused the other.';
+    list.insertAdjacentHTML('beforeend',`<li>Adoption related evidence: ${esc(COMPARISON_DATA.exposure.credit||COMPARISON_DATA.exposure.measure)}</li>`)}
+  const para=$('#m-chart-sources > p',v);if(para)para.textContent='Topic pages compare selected indicators with measurement gaps. Larger charts stay on Emerging evidence, with separate sources, populations, periods and axes. Placing charts together does not establish cause and effect. Source data remain available on each topic page.';
+  $('#m-chart-sources h2',v).textContent='Indicators, charts and data';
+  $('#m-chart-sources details summary',v).textContent='How the source data are used';
   list?.insertAdjacentHTML('beforeend','<li>Capability: the line connects record-high estimates among the tested models; all model points remain visible. It is not a fitted trend or forecast.</li><li>Culture comparison: five rounded Deezer upload-share reports, January 2025-April 2026; later peak-day figures are excluded. The 1-3% stream share is a separate snapshot, not a trend.</li>');
   const status=$('#m-status > p',v);if(status)status.textContent='The original selected sources were checked with AI assistance on 14 October 2026. Comparison additions were checked against primary sources on 15 October 2026. These checks are not independent review or human sign-off.';
 }
@@ -184,30 +185,29 @@ installWork10();
 COPY.coverage.takeaway='In this selection, direct measures of skills over time, government decisions and human influence remain limited.';
 document.body.insertAdjacentHTML('afterbegin','<a class="skip10" href="#main-content">Skip to content</a>');
 $('.skip10').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();$('#view').focus();$('#view').scrollIntoView({block:'start'})});
-$('.nav').innerHTML=[['home','Home'],['emerging','Emerging evidence'],['gaps','Research gaps'],['pathways','Pathways'],['method','Method'],['contribute','Contribute']].map(([id,label])=>`<a href="#${id}">${label}</a>`).join('');
+$('.nav').innerHTML=[['home','Home'],['emerging','Emerging evidence'],['gaps','Research gaps'],['method','Method'],['contribute','Contribute']].map(([id,label])=>`<a href="#${id}">${label}</a>`).join('');
 $('.ft .wrap').innerHTML='<span><b>Gradual Disempowerment Dashboard</b> / Better Futures Project / Zhang Yue</span><span>AI-assisted source summaries / <a href="#method">Method</a> / <a href="#futures">Futures</a></span>';
 render=function(id){
   clearInterval(tourTimer);tourTimer=null;
-  const [raw,sub]=String(id).split('/'),base=raw==='evidence'||raw==='record'?'gaps':raw==='map'?'pathways':raw==='why'?'contribute':raw;
+  const [raw,sub]=String(id).split('/'),base=['evidence','record','map','pathways'].includes(raw)?'gaps':raw==='why'?'contribute':raw;
   if(['library','review'].includes(base)){render(ORDER.includes(sub)?sub:'gaps');return}
   if(ORDER.includes(base)&&sub&&!['source','more'].includes(sub)&&!SELECTED_EVIDENCE[base].sources.some(s=>s.id===sub||(s.legacy||[]).includes(sub))){render(base);return}
   const v=$('#view');let active=base;
   window.scrollTo({top:0,behavior:'instant'});
   if(base==='home'||!base)viewHome10(v);
   else if(base==='emerging')viewEmerging10(v,sub);
-  else if(base==='pathways')viewPathways10(v);
   else if(base==='gaps'&&!ORDER.includes(sub))viewResearch10(v);
-  else if(base==='gaps'&&ORDER.includes(sub)){baseRender10(sub);attachGaps10(v,sub);requestAnimationFrame(()=>document.getElementById('research-'+sub)?.scrollIntoView({block:'start',behavior:'instant'}))}
+  else if(base==='gaps'&&ORDER.includes(sub))viewMeasurement11(v,sub,'gaps');
+  else if(ORDER.includes(base)&&(!sub||['source','more'].includes(sub))){active='gaps';viewMeasurement11(v,base,sub)}
   else{
-    const publicId=ORDER.includes(base)&&['source','more'].includes(sub)?base:id;
-    baseRender10(publicId);
-    if(ORDER.includes(base)){active='gaps';if(!sub||['source','more'].includes(sub)){attachGaps10(v,base);if(sub){const d=$('#'+base+(sub==='source'?'-source':'-related'),v);if(d){d.open=true;requestAnimationFrame(()=>d.scrollIntoView({block:'start',behavior:'instant'}))}}}}
+    baseRender10(id);
+    if(ORDER.includes(base))active='gaps';
     else if(base==='method')updateMethod10(v);
     else if(base==='details')active='gaps';
     else if(!['contribute','why','futures','method'].includes(base)){viewHome10(v);active='home'}
   }
   current=id;
-  document.title=(ORDER.includes(base)?nameOf(base):{home:'Home',emerging:'Emerging evidence',gaps:'Research gaps',pathways:'Pathways',method:'Method',contribute:'Contribute',futures:'Futures'}[active]||'Dashboard')+' / Gradual Disempowerment Dashboard';
+  document.title=(ORDER.includes(base)?nameOf(base):base==='gaps'&&ORDER.includes(sub)?nameOf(sub):{home:'Home',emerging:'Emerging evidence',gaps:'Research gaps',method:'Method',contribute:'Contribute',futures:'Futures'}[active]||'Dashboard')+' / Gradual Disempowerment Dashboard';
   $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+active?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
   $$('details',v).forEach(d=>d.addEventListener('toggle',()=>{if(d.open)Charts.redraw()}));
 };

@@ -121,7 +121,7 @@ function stepCard5(i,opts={}){
 function mountMap5(el,opts={}){
   const onStop=opts.onStop||(id=>{try{location.hash=id}catch(e){}});
   el.classList.add('mapcard5');
-  el.innerHTML=`<div class="coverage-header5 wrap"><h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>${coverageLegend5()}${coverageNote5()}</div><div class="map5 spotlight-on hover-preview">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
+  el.innerHTML=`<div class="coverage-header5 wrap">${opts.compact?'':`<h2 class="h2-5 sm">${esc(COPY.coverage.title)}</h2><p class="coverage-takeaway5">${esc(COPY.coverage.takeaway)}</p>`}${coverageLegend5()}${coverageNote5()}</div><div class="map5 spotlight-on hover-preview">${mapSVG5()}<div class="card5" aria-live="polite"></div></div>${mapList5()}`;
   const map=$('.map5',el),card=$('.card5',map),list=$('.mlist5',el);
   let sel=0,phoneOpen=true;
   const rm=()=>window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -129,8 +129,8 @@ function mountMap5(el,opts={}){
     map.classList.toggle('has-card',o.card!==false);
     $$('.st5',map).forEach(g=>{const on=g.dataset.id===id;g.classList.toggle('here',on);g.setAttribute('aria-pressed',String(on))});
     $$('.seg5',map).forEach((p,i)=>p.classList.toggle('active',activeSeg5(id,SEGS5[i])));
-    card.innerHTML=stepCard5(sel,{nav:false});
-    $$('.ml5[data-id]',list).forEach(r=>{const on=phoneOpen&&r.dataset.id===id;r.classList.toggle('open',on);$('.ml5-btn',r).setAttribute('aria-expanded',String(on));$('.ml5-card',r).innerHTML=on?stepCard5(sel):''});
+    card.innerHTML=(opts.card||stepCard5)(sel,{nav:false});
+    $$('.ml5[data-id]',list).forEach(r=>{const on=phoneOpen&&r.dataset.id===id;r.classList.toggle('open',on);$('.ml5-btn',r).setAttribute('aria-expanded',String(on));$('.ml5-card',r).innerHTML=on?(opts.card||stepCard5)(sel):''});
     if(o.scroll){const r=$(`.ml5[data-id="${id}"]`,list);if(r&&r.offsetParent)try{r.scrollIntoView({block:'start',behavior:rm()?'auto':'smooth'})}catch(e){}}};
   const preview=id=>select(ORDER.indexOf(id));
   el.addEventListener('click',e=>{

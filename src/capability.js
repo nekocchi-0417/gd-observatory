@@ -221,9 +221,9 @@ const CAPABILITY7={
 };
 
 const ext7=(url,label)=>`<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
-function csvLink7(name,rows){
+function csvLink7(name,rows,label='Download chart data (CSV)'){
   const csv=rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(',')).join('\r\n');
-  return `<a download="${esc(name)}" href="data:text/csv;charset=utf-8,${encodeURIComponent(csv)}">Download chart data (CSV)</a>`;
+  return `<a download="${esc(name)}" href="data:text/csv;charset=utf-8,${encodeURIComponent(csv)}">${esc(label)}</a>`;
 }
 function relatedEvidence7(items){
   return `<ul class="related7">${items.map(r=>`<li><h3>${ext7(r.url,r.title)}${r.publisher?` <span>${esc(r.publisher)}</span>`:''}</h3><p>${esc(r.text)}${r.update?` ${ext7(r.update,'Study update')}`:''}</p></li>`).join('')}</ul>`;
