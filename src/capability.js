@@ -232,6 +232,27 @@ function decimalYear7(date){
   const year=Number(date.slice(0,4)),start=Date.UTC(year,0,1);
   return year+(Date.parse(date+'T00:00:00Z')-start)/(Date.UTC(year+1,0,1)-start);
 }
+function calendarDate7(x){
+  const year=Math.floor(x),start=Date.UTC(year,0,1),days=(Date.UTC(year+1,0,1)-start)/86400000;
+  return new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(start+Math.round((x-year)*days)*86400000);
+}
+function capabilityRecords7(rows=CAPABILITY7.metr.rows){
+  // Only actual record-setting observations are joined, never a fitted or projected value.
+  return [...rows].sort((a,b)=>a.date.localeCompare(b.date)||b.estimate-a.estimate).reduce((records,r)=>{
+    if(!records.length||r.estimate>records.at(-1).estimate)records.push(r);
+    return records;
+  },[]);
+}
+function drawCapabilityTrend7(el,h=330){
+  const rows=CAPABILITY7.metr.rows,records=capabilityRecords7(rows),ids=new Set(records.map(r=>r.id)),last=records.at(-1);
+  Charts.line(el,{h,legend:false,table:false,axisPlacement:'edges',
+    aria:'METR TH1.1 technical-task length at 80 percent success, March 2023 to April 2026. A line joins record-high point estimates among evaluated models; other tested models remain visible. From 53 seconds to 3.1 hours of human-expert work. Not a fitted trend or a forecast.',
+    x:{min:2023,max:2026.65,ticks:[2023,2024,2025,2026],fmt:String,tip:calendarDate7,label:'Model release year'},
+    y:{min:0,max:240,ticks:[0,60,120,180,240],fmt:n=>n===0?'0':`${n/60}h`,tip:n=>n<1?Math.round(n*60)+' sec':fmtMin(n),label:'Task length in human-expert time / 80% success'},
+    series:[{name:'Record-high estimates',color:C.s1,w:2.8,markers:'none',end:false,tip:false,rec:false,pts:records.map(r=>[decimalYear7(r.date),r.estimate])},
+      ...rows.map(r=>({name:r.name,color:ids.has(r.id)?C.s1:C.s2,dots:true,r:ids.has(r.id)?4:3,markers:'all',end:false,pts:[[decimalYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(2)} to ${r.high.toFixed(2)} minutes`]]}))],
+    ann:[{x:decimalYear7(records[0].date),y:records[0].estimate,text:'53 sec',dx:8,dy:-18,strong:true},{x:decimalYear7(last.date),y:last.estimate,text:'3.1 hours',anchor:'end',dx:-8,dy:-18,strong:true}]});
+}
 function viewCapabilityPilot(v){
   const p=SELECTED_EVIDENCE.capability,M=CAPABILITY7.metr;
   const minutes=n=>n.toFixed(1)+' min';
@@ -249,7 +270,7 @@ function viewCapabilityPilot(v){
         <p class="choice7"><b>Why this indicator?</b> It tracks progress at a fixed success rate, with published methods and uncertainty.</p>
       </figcaption>
       <div class="chart" id="metr-chart7"></div>
-      <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
+      <p class="chart-credit7">Line: record-high estimates. Dots: all tested models. Not a fitted trend or forecast. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
     <p class="takeaway7"><b>What changed:</b> At 80% success, METR's estimated technical-task length increased about <b>${fold}-fold</b>, from <b>${Math.round(first.estimate*60)} seconds for GPT-4 in March 2023</b> to <b>${(last.estimate/60).toFixed(1)} hours for Mythos Preview (early) in April 2026</b>, in human-expert time. These are technical test tasks, not whole jobs.</p>
     <section class="next-measure9" id="capability-watch" aria-labelledby="capability-next-title">
@@ -263,7 +284,7 @@ function viewCapabilityPilot(v){
           <dl class="context7">
             <div><dt>What is measured</dt><dd>Mainly software, machine learning and cybersecurity tasks. Task length is human-expert time, not AI runtime.</dd></div>
             <div><dt>Uncertainty</dt><dd>The ${fold}-fold change divides point estimates (${last.estimate.toFixed(2)} ÷ ${first.estimate.toFixed(4)} minutes). The latest estimate's 95% interval is 1.6–6.6 hours. Tools and test setups vary.</dd></div>
-            <div><dt>Chart data</dt><dd>All ${M.rows.length} METR TH1.1 models released from 2023 onward, at 80% success. No other datasets added. This archived series ends in April 2026.</dd></div>
+            <div><dt>Chart data</dt><dd>All ${M.rows.length} METR TH1.1 models released from 2023 onward, at 80% success. The line joins successive record-high point estimates, not a fitted trend or a forecast. No other datasets added. This archived series ends in April 2026.</dd></div>
             <div><dt>Scope of this selection</dt><dd>Selected indicators, not a review of all capability research. The measurement priority reflects what these sources leave unanswered.</dd></div>
           </dl>
           <p>AI-assisted summary; not independently verified.</p>
@@ -289,20 +310,6 @@ function viewCapabilityPilot(v){
       </details>
     </div>
     ${pn5(['evidence','All steps','Back to'],['adoption',nameOf('adoption')])}</div>`;
-  const annotation=(id,text,dx,dy)=>{const r=M.rows.find(r=>r.id===id);return {x:decimalYear7(r.date),y:r.estimate,text,dx,dy,lead:true,strong:true}};
-  const annotations=[
-    annotation('gpt_4','GPT-4 · Mar 2023\nLess than 1 minute',22,-62),
-    {...annotation('o3_inspect','o3 · Apr 2025\nAbout 30 minutes',-20,-66),anchor:'end'},
-    {...annotation('claude_mythos_preview_early_inspect','Mythos Preview (early)\nApr 2026 · about 3 hours',-24,5),anchor:'end'}
-  ];
-  Charts.line($('#metr-chart7',v),{
-    aria:'METR TH1.1 task horizons at 80% success for all 23 evaluated models released from 2023 onward. Horizontal axis: model release year. Vertical axis: task length in human-expert time, not AI runtime. Estimates range from under one minute for GPT-4 in March 2023 to about three hours for Claude Mythos Preview (early) in April 2026. Exact values and uncertainty intervals follow in Sources, data and caveats.',
-    h:330,legend:false,table:false,axisPlacement:'edges',
-    x:{min:2023,max:2026.6,ticks:[2023,2024,2025,2026],fmt:n=>String(n),tip:fmtDate,label:'Model release year'},
-    y:{min:0,max:210,ticks:[0,60,120,180],fmt:n=>n===0?'0':n/60+(n===60?' hour':' hours'),tip:minutes,label:'Task length: time a human expert would need'},
-    series:M.rows.map(r=>({name:r.name,color:C.s1,dots:true,markers:'all',end:false,r:4.5,pts:[[decimalYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(1)}–${r.high.toFixed(1)} minutes`]]})),
-    ann:annotations,
-    annNarrow:[{...annotations[0],dx:4,dy:-58},{...annotations[1],dx:-14,dy:-88},{...annotations[2],dx:-12,dy:8}]
-  });
+  drawCapabilityTrend7($('#metr-chart7',v));
   crumbScroll5(v);
 }

@@ -2,9 +2,9 @@
 
 A public evidence dashboard for gradual disempowerment: tracking whether AI is weakening human influence, step by step, and what goes unmeasured.
 
-![The home page: the chain from AI capability to human influence, with line style showing how well each stop is measured](assets/screenshots/home.png)
+![The home page: technical-task capability and employment trends, with separate sources and axes](assets/screenshots/home.png)
 
-**Status: draft v0.8 (14 October 2026).** A prototype evidence dashboard. Each of the nine evidence pages features one source-based visual, a concise interpretation, and compact supporting sections. AI-assisted primary-source checks are not independent verification. The current [90-minute publication review](research/checklist/selected-indicators-review.md) records remaining decisions and changes from the older charts. The older `handcheck.csv` is an archive, not the current checklist.
+**Status: research prototype (15 October 2026).** The homepage and Emerging evidence compare AI progress with selected human outcomes. Research gaps brings each topic's evidence and missing measures together. AI-assisted primary-source checks are not independent verification. The [comparison source review](research/checklist/comparison-source-review.md) documents new chart choices; the [90-minute review](research/checklist/selected-indicators-review.md) covers the existing selected indicators. The older `handcheck.csv` is an archive.
 
 ## What it shows
 
@@ -12,22 +12,17 @@ Gradual disempowerment is the risk that people lose practical influence over the
 
 The site breaks that argument into a chain of nine stops: AI capability, AI adoption, delegation to AI, then four branches (entry-level jobs and workers' share of income, skills and judgement, culture and information, AI in government), ending at human influence. Each stop's page is a short briefing: the bottom line, how confident to be, the evidence, caveats, blind spots and signals to watch.
 
-The main finding: what AI can do and who uses it are measured again and again. Whether people keep their skills, judgement and say is rarely measured, and almost never on the same people over time.
+Within this selection, AI capability and use have repeated measurements. Direct longitudinal measures of skills, judgement and influence are more limited. This is not a systematic review of all research, and paired trends are not proof of cause and effect.
 
 | Page | What it answers |
 |---|---|
-| **Map** (home) | How could disempowerment unfold? Nine steps, each with a card; then a summary of what is measured often, early signs, and what is hard to see. |
-| **Evidence** | What do we already observe? One row per link; a record of every dated reading since 2021 sits behind a drawer. |
-| **Link pages** | The indicators behind each link, each opening its own chart. |
-| **Gaps** | The measurement agenda: nineteen missing measures, grouped by what each needs next (fund now, develop methodology, monitor later). |
-| **Futures** | Published forecasts, mostly about US jobs and income. Work in progress. |
+| **Home** | AI capability and employment: a first comparison, with links into the dashboard. |
+| **Emerging evidence** | Paired evidence on work, skills and culture. Time-series lines where supported; numerical summaries for snapshots. |
+| **Research gaps** | Nine topic pages, each with its selected chart, interpretation, supporting evidence and missing measures. |
+| **Pathways** | The proposed causal diagram, linking each step to its evidence and research questions. |
+| **Futures** (footer) | Published forecasts, mostly about US jobs and income. Work in progress. |
 | **Method** | How the ratings are reached, how indicators are chosen, known limits and all sources. |
 | **Contribute** | Why measure gradual disempowerment, and how to help: propose an indicator or study, suggest a correction, find funding. |
-
-<table><tr>
-<td><img src="assets/screenshots/evidence.png" alt="The Evidence page: one row per link, coloured by how far the data have moved"></td>
-<td><img src="assets/screenshots/gap.png" alt="The gap page: a matrix of how close each stop is to the outcome against how well it is measured"></td>
-</tr></table>
 
 ## View it
 
@@ -51,6 +46,7 @@ Optional checks (needs Node.js):
 npm install
 npx playwright install chromium
 npm run verify         # every page at desktop and phone widths, light and dark
+node tools/verify-selected-data.js  # source-data arithmetic and build syntax
 ```
 
 ## Where things live
@@ -66,6 +62,10 @@ src/
   app.js           router, measurement record, shared charts
   components.js    map, tour, evidence rows, indicator cards, insight cards, gap matrix, caveat chips
   views.js         the pages
+  capability.js, adoption.js, topics.js   compact selected-evidence pages
+  priority.json, selected-topics.json    selected source notes and chart data
+  comparison.js, comparison.css        comparison views and integrated research gaps
+  comparison-data.js                  original data and provenance for comparisons
   style.css, components.css, pages.css
   shell_head.html, shell_body.html
 docs/index.html    the built site (served by GitHub Pages)
@@ -73,7 +73,7 @@ research/          how the evidence was gathered and checked (see research/READM
 tools/             verification and screenshot scripts
 ```
 
-To change a figure, edit the indicator in `data1.js` or `data2.js` (its chart data, `title`, `read` and `src`), then any matching text in `copy.js`, then rebuild.
+Current topic figures are defined in `capability.js`, `adoption.js` and `selected-topics.json`; comparisons use `comparison-data.js` and `comparison.js`. Update matching interpretations, source notes, CSVs and tests, then rebuild. `data1.js` and `data2.js` retain the earlier indicator collection. Verification screenshots are saved under `dist/verification/`.
 
 ## How it was made
 

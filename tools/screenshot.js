@@ -1,6 +1,6 @@
 // Takes full-page screenshots of the built site.
 // Usage: node tools/screenshot.js "name|route|width|light-or-dark" ...
-//   e.g. node tools/screenshot.js "home|map|1280|light" "skills|skills|390|dark"
+//   e.g. node tools/screenshot.js "home|home|1280|light" "skills|skills|390|dark"
 // Images are written to assets/screenshots/<name>.png
 const { chromium } = require('playwright');
 const path=require('path');

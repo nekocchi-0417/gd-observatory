@@ -1331,6 +1331,84 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
  .pilot7 .tip .r{white-space:normal;flex-wrap:wrap}
 }
 @media(max-width:480px){.benchmark-facts7>div{grid-template-columns:minmax(0,1fr);gap:6px}.benchmark-facts7 dd{text-align:left;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}.benchmark-facts7 dd span{margin:0}}
+/* Comparison views, research navigation and responsive topic pages. */
+:root{
+  --paper:#f7f8f8;--surface:#fff;--surface-2:#edf1f0;--rule:#d5ddda;--grid:#e6ebe8;
+  --ink:#172420;--ink-2:#4e5d57;--ink-3:#63736c;--accent:#096e64;--accent-soft:#e1eeea;
+  --s1:#087d72;--s2:#8b9994;--s3:#b64659;--ctx:#a3afaa;
+  --ai10:#087d72;--human10:#b64659;--warn10:#8a631f;--maxw:1240px;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#111816;--surface:#17201d;--surface-2:#202c27;--rule:#34453d;--grid:#29392f;
+  --ink:#edf3ef;--ink-2:#b6c6bc;--ink-3:#98afa1;--accent:#81cfbf;--accent-soft:#213d33;
+  --s1:#77cdbd;--s2:#9ba9a3;--s3:#ee91a1;--ctx:#657b70;
+  --ai10:#77cdbd;--human10:#ee91a1;--warn10:#dabc81;color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#111816;--surface:#17201d;--surface-2:#202c27;--rule:#34453d;--grid:#29392f;
+  --ink:#edf3ef;--ink-2:#b6c6bc;--ink-3:#98afa1;--accent:#81cfbf;--accent-soft:#213d33;
+  --s1:#77cdbd;--s2:#9ba9a3;--s3:#ee91a1;--ctx:#657b70;
+  --ai10:#77cdbd;--human10:#ee91a1;--warn10:#dabc81;color-scheme:dark;
+}
+body{margin:0}*,*::before,*::after{letter-spacing:0!important}[hidden]{display:none!important}
+h1,h2,h3,p,a,summary,dd{overflow-wrap:break-word}
+.h1-5,.h1-5.c{font-size:38px;line-height:1.14}.h2-5{font-size:30px}.h2-5.sm{font-size:25px}
+.bar .wrap{min-height:62px;gap:4px 20px}.mark{font-size:13px;max-width:245px;line-height:1.2}.mark svg{width:28px}
+.nav{gap:0}.nav a{font-size:13px;padding:8px}.nav a[aria-current="page"]::after{bottom:-6px;background:var(--accent)}
+.skip10{position:fixed;top:-100px;left:12px;background:var(--surface);padding:12px;z-index:100}.skip10:focus{top:12px}
+.page10{padding-top:38px;padding-bottom:56px}.eyebrow10{font:12px/1.4 var(--f-mono);color:var(--ink-3);text-transform:uppercase;margin-bottom:14px}
+.intro10{padding-bottom:30px;max-width:920px}.intro10 h1{font-size:42px;line-height:1.12;max-width:24ch;font-weight:760;text-wrap:balance}.intro10 p{font:19px/1.55 var(--f-text);color:var(--ink-2);max-width:63ch;margin-top:16px}
+.intro10 .intro-links10{font:14px/1.5 var(--f-display);display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:20px}
+.intro-links10 a,.pair-links10 a,.gap-links10 a{font-weight:600;text-decoration:none}.intro-links10 a:hover,.pair-links10 a:hover,.gap-links10 a:hover{text-decoration:underline}
+.home-intro10{max-width:none;padding-bottom:28px}.home-intro10 h1{font-size:44px;max-width:28ch}.home-intro10 p{max-width:68ch}
+.reading-note10{font:13px/1.5 var(--f-display);color:var(--ink-2);margin-bottom:16px;max-width:85ch}
+.jump10{display:flex;gap:8px 24px;flex-wrap:wrap;padding-block:14px;border-block:1px solid var(--rule);margin-bottom:38px;font-size:14px}.jump10 a{text-decoration:none}.jump10 a:hover{text-decoration:underline}
+.comparison10{padding-block:0 42px;scroll-margin-top:100px}.comparison10+.comparison10{padding-top:30px;border-top:1px solid var(--rule)}
+.pair-head10{display:flex;gap:18px;align-items:baseline;margin-bottom:22px}.pair-no10{font:13px/1.4 var(--f-mono);color:var(--ink-3)}.pair-head10 h2{font-size:29px;line-height:1.22;max-width:34ch}.pair-head10 .pair-tag10{font-size:12px;color:var(--warn10);margin-left:auto;white-space:nowrap}
+.pair-grid10{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:38px;align-items:start}
+.compare-figure10{margin:0;min-width:0;padding-top:16px;border-top:3px solid var(--ai10)}.compare-figure10.human10{border-top-color:var(--human10)}
+.figure-meta10{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12px;margin-bottom:10px;color:var(--ink-3)}.figure-meta10 .lane10{color:var(--ai10);font-weight:700}.human10 .figure-meta10 .lane10{color:var(--human10)}
+.compare-figure10 h3{font-size:22px;line-height:1.25;margin-bottom:9px;text-wrap:balance;max-width:32ch}
+.measure10{font-size:13px;line-height:1.5;color:var(--ink-2);min-height:40px;margin-bottom:12px;max-width:57ch}
+.source10{font-size:12px;font-weight:600;display:flex;flex-wrap:wrap;gap:3px 10px;margin-bottom:16px;min-height:19px}.source10 a{color:var(--ink-2)}
+.compare-figure10 .chart{min-height:320px}.compare-figure10 .chart-y-label{min-height:36px;font-size:12px;max-width:none}.compare-figure10 .chart-x-label{font-size:12px;min-height:18px}.compare-figure10 .chart svg{max-width:100%;display:block}.compare-figure10 .lg{font-size:12px;min-height:26px;margin-bottom:5px}
+.compare-figure10.human10 .chart{--s1:var(--human10);--s2:var(--ink-3)}
+.figure-take10{font:16px/1.55 var(--f-text);color:var(--ink-2);padding-top:14px;margin-top:8px;border-top:1px solid var(--rule);min-height:88px}.figure-take10 strong{font-family:var(--f-display);font-size:15px;color:var(--ink);font-weight:650}
+.pair-reading10{margin-top:20px;padding:14px 0 0;border-top:1px solid var(--rule);font-size:14px;line-height:1.6;color:var(--ink-2);max-width:93ch}.pair-reading10 b{color:var(--ink)}
+.pair-footer10{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:14px}.pair-links10{display:flex;gap:10px 22px;flex-wrap:wrap;font-size:13px}
+.pair-notes10{flex:1 1 360px;font-size:13px;color:var(--ink-2);max-width:720px}.pair-notes10 summary{cursor:pointer;font-weight:600;color:var(--ink);padding:9px 0}.pair-notes10[open] summary{margin-bottom:8px}.pair-notes10 p+p{margin-top:12px}.pair-notes10 .source-actions7{margin-top:14px}
+.pair-notes10 .more10{display:grid;grid-template-columns:1fr 1fr;gap:22px}.more10 h4{font-size:13px;margin-bottom:8px}.more10 ul{padding-left:18px;margin:0}.more10 li+li{margin-top:10px}
+.home-next10{border-top:1px solid var(--rule);padding:27px 0;display:flex;justify-content:space-between;align-items:center;gap:24px}.home-next10 h2{font-size:24px;margin-bottom:7px}.home-next10 p{max-width:62ch;color:var(--ink-2)}.main-link10{display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:650;text-decoration:none;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:4px;flex-shrink:0}.main-link10:hover{background:var(--accent);color:var(--surface)}
+.home-doors10{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding-top:26px}.home-doors10 article{border-top:1px solid var(--rule);padding-top:20px}.home-doors10 h2{font-size:22px;margin-bottom:10px}.home-doors10 p{color:var(--ink-2);font:17px/1.5 var(--f-text);margin-bottom:14px}.home-doors10 a{font-size:14px;font-weight:600}
+.end10{margin-top:10px;padding-top:28px;border-top:2px solid var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:38px}.end10 h2{font-size:28px;line-height:1.25}.end10 p{font:18px/1.5 var(--f-text);color:var(--ink-2);margin-bottom:18px}
+.gap-index10{border-top:1px solid var(--ink);margin-top:15px}.gap-index10 a{display:grid;grid-template-columns:30px minmax(150px,1fr) minmax(0,1.4fr) 24px;gap:14px 24px;color:inherit;text-decoration:none;padding:22px 0;border-bottom:1px solid var(--rule);align-items:baseline}.gap-index10 a:hover{background:var(--surface)}.gap-index10 .step10{font:12px var(--f-mono);color:var(--ink-3)}.gap-index10 h2{font-size:18px}.gap-index10 small{display:block;font-size:13px;color:var(--ink-3);margin-top:5px}.gap-index10 p{font:16px/1.5 var(--f-text);color:var(--ink-2)}.gap-index10 .row-arrow10{color:var(--accent);font-size:20px}
+.gap-index-head10{display:grid;grid-template-columns:30px minmax(150px,1fr) minmax(0,1.4fr) 24px;gap:24px;font-size:12px;font-weight:600;color:var(--ink-3);padding-top:15px}
+.research-back10{font-size:13px;margin-bottom:18px;display:flex;gap:20px;flex-wrap:wrap}.research-back10 a{text-decoration:none}.research-back10 a:hover{text-decoration:underline}
+.topic-gaps10{padding-top:30px;margin-top:30px;border-top:2px solid var(--ink);scroll-margin-top:110px}.gap-section-head10{display:grid;grid-template-columns:1fr 1.4fr;gap:24px}.topic-gaps10 h2{font-size:28px;line-height:1.2}.topic-gaps10 .gap-summary10{font:18px/1.5 var(--f-text);color:var(--ink-2)}.gap-caution10{font-size:12px;color:var(--ink-3);margin:14px 0 22px;max-width:85ch}
+.gap-question10{border-top:1px solid var(--rule);padding:18px 0}.gap-question10 h3{font-size:17px;line-height:1.35}.gap-question10 p{font-size:15px;color:var(--ink-2);margin-top:8px;max-width:90ch}.gap-question10 details{font-size:13px;color:var(--ink-2);margin-top:8px}.gap-question10 summary{cursor:pointer;width:fit-content}.gap-question10 details p{font-size:13px}.gap-links10{margin-top:14px;display:flex;gap:10px 24px;flex-wrap:wrap;font-size:13px}
+.gap-more10{border-top:1px solid var(--rule);margin-top:6px}.gap-more10>summary{font-size:14px;font-weight:600;padding:16px 0;cursor:pointer}
+.pilot7 .claim5{margin-top:24px}.pilot7 .claim5 h1{max-width:27ch}.pilot7 .evidence-chart7 h2{font-size:24px}.pilot7 .evidence-grid7{margin-top:22px}.pilot7 .pn5{margin-top:30px}
+.exposure10{margin:0 0 20px}.exposure10 h3{font-size:20px;line-height:1.3;margin-bottom:10px}.exposure10 .chart{margin-top:16px}.exposure10 figcaption p{font-size:14px;margin-top:8px}.exposure10 .data7{font-size:12px}
+.culture-share10{padding-top:8px}.culture-share10 .share-stat10{font-size:48px;font-weight:750;line-height:1.15;color:var(--ai10);margin-bottom:12px}.human10 .share-stat10{color:var(--human10)}.culture-share10 .share-unit10{font-size:14px;line-height:1.5;color:var(--ink-2);margin-bottom:28px}.share-track10{height:32px;background:var(--surface-2);position:relative;border:1px solid var(--rule);margin-top:34px}.share-track10 .share-fill10{position:absolute;top:0;bottom:0;left:0;background:var(--ai10)}.share-track10 .share-bound10{position:absolute;left:50%;top:-14px;bottom:-14px;border-left:2px dashed var(--ai10)}.share-track10 .share-range10{position:absolute;left:1%;width:2%;top:0;bottom:0;border:1px solid var(--human10);background:color-mix(in srgb,var(--human10) 35%,transparent)}.share-track10 .share-point10{position:absolute;left:1%;top:-6px;bottom:-6px;border-left:2px solid var(--human10)}.share-scale10{display:flex;justify-content:space-between;font:12px/1.5 var(--f-mono);margin-top:10px;color:var(--ink-3)}.share-note10{font-size:12px;line-height:1.5;color:var(--ink-2);margin-top:20px;max-width:54ch}
+.path-intro10{padding-bottom:15px;max-width:var(--maxw)}.pathways10 .mapwrap5{margin-top:0}.pathways10 .coverage-guide5{max-width:var(--maxw)}
+.ft{font-size:12px}.btn{white-space:normal}.go{white-space:normal}.chart .tip{max-width:min(340px,100%)}
+.chart-note10{font-size:12px;line-height:1.5;color:var(--ink-3);min-height:36px;margin-top:4px}
+.stat-chart10{display:flex;align-items:center}.result-stat10{width:100%;padding:18px 0;max-width:440px}
+.stat-label10{font-size:14px;color:var(--ink-2);margin-bottom:10px}.stat-value10{font-size:64px;line-height:1.1;font-weight:750;color:var(--human10)}.stat-value10 span{font-size:25px;font-weight:650;white-space:nowrap}
+.stat-unit10{font:18px/1.5 var(--f-text);color:var(--ink-2);margin-top:10px}.stat-context10{display:grid;grid-template-columns:1fr auto;gap:5px 15px;border-top:1px solid var(--rule);padding-top:16px;margin-top:25px;font-size:13px;color:var(--ink-2)}.stat-context10 b{color:var(--ink);font-weight:650}.stat-context10 span:last-child{grid-column:1/-1}.stat-note10{font-size:12px;line-height:1.5;color:var(--ink-3);margin-top:20px}
+@media(min-width:701px){.pair-grid10{align-items:stretch}.compare-figure10{display:grid;grid-row:span 4;grid-template-rows:subgrid}}
+@media(max-width:700px){.result-stat10{padding:10px 0}.stat-value10{font-size:56px}.stat-value10 span{font-size:23px}.chart-note10{min-height:0}.chart-note10:empty{display:none}}
+@media(min-width:1000px){.compare-figure10 figcaption{min-height:167px}.compare-figure10 .chart{min-height:350px}.pair-grid10{column-gap:48px}.home10 .compare-figure10 figcaption{min-height:148px}}
+@media(max-width:900px){.bar .wrap{padding-block:10px}.nav{width:100%}.nav a[aria-current="page"]::after{bottom:-3px}.mark{max-width:none}.pair-grid10{column-gap:24px}.intro10 h1{font-size:38px}.home-intro10 h1{font-size:40px}.pair-head10 h2{font-size:26px}.compare-figure10 h3{font-size:20px}.pair-head10 .pair-tag10{white-space:normal}.gap-index10 a,.gap-index-head10{gap:14px;grid-template-columns:24px minmax(135px,1fr) minmax(0,1.4fr) 16px}}
+@media(max-width:700px){.wrap{padding-inline:20px}.page10{padding-top:26px}.intro10 h1,.home-intro10 h1{font-size:32px;max-width:25ch}.intro10 p{font-size:18px}.intro10{padding-bottom:24px}.pair-grid10{grid-template-columns:1fr;gap:26px}.pair-head10{gap:10px;flex-wrap:wrap;margin-bottom:20px}.pair-head10 h2{font-size:25px;flex:1}.pair-head10 .pair-tag10{flex-basis:100%;margin-left:26px}.compare-figure10 h3{font-size:22px;max-width:29ch}.measure10{min-height:0;margin-bottom:8px}.source10{margin-bottom:12px}.compare-figure10 .chart{min-height:0}.compare-figure10 .chart-y-label{min-height:0}.figure-take10{min-height:0;margin-top:4px;padding-top:12px}.pair-reading10{margin-top:18px}.pair-notes10 .more10{grid-template-columns:1fr;gap:14px}.pair-links10{width:100%}.comparison10{padding-bottom:30px}.comparison10+.comparison10{padding-top:26px}.jump10{gap:8px 18px;margin-bottom:28px}.home-next10{display:block}.home-next10 .main-link10{margin-top:18px}.home-doors10,.end10{grid-template-columns:1fr;gap:24px}.end10 h2{font-size:25px}.gap-index-head10{display:none}.gap-index10 a{grid-template-columns:24px minmax(0,1fr) 20px;gap:5px 12px;padding:20px 0}.gap-index10 a p{grid-column:2}.gap-index10 .row-arrow10{grid-column:3;grid-row:1}.gap-index10 small{font-size:12px}.gap-section-head10{grid-template-columns:1fr;gap:12px}.topic-gaps10 h2{font-size:25px}.h1-5,.h1-5.c{font-size:30px}.h2-5{font-size:26px}.pilot7 .claim5 h1{max-width:24ch}.nav a{padding:6px;font-size:12px}.prototype-note10{font-size:11px}.culture-share10{padding-bottom:12px}.share-stat10{font-size:42px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media(max-width:700px){
+  .nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px 4px;overflow:visible;white-space:normal;width:100%;max-width:100%}
+  .nav a{display:grid;align-items:center;min-height:34px;padding:5px 3px;text-align:center;white-space:normal}
+  .nav a[aria-current="page"]::after{bottom:0;left:6px;right:6px}
+  .mark span{font-size:12px}.bar .wrap{padding-block:8px}
+  .topic-gaps10,.comparison10{scroll-margin-top:145px}
+}
 </style>
 </head>
 <body>
@@ -1338,7 +1416,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   <a class="mark" href="#home" aria-label="Gradual Disempowerment Dashboard, home">
     <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2"/><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6"/></svg>
     <span>Gradual Disempowerment Dashboard</span></a>
-  <nav class="nav" aria-label="Sections"><a href="#home" title="Dashboard overview">Home</a><a href="#evidence" title="What do we already observe?">Evidence</a><a href="#gaps" title="What are we failing to measure?">Research Gaps</a><a href="#futures" title="Scenario directions and adjacent projects">Futures <span class="wip5">WIP</span></a><a href="#method" title="How are judgements made?">Method</a><a href="#contribute" title="How can I help?">Contribute</a></nav>
+  <nav class="nav" aria-label="Sections"><a href="#home">Home</a><a href="#emerging">Emerging evidence</a><a href="#gaps">Research gaps</a><a href="#pathways">Pathways</a><a href="#method">Method</a><a href="#contribute">Contribute</a></nav>
 </div></header>
 <main id="view" tabindex="-1"></main>
 <footer class="ft"><div class="wrap"><span><b style="color:var(--ink)">Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Draft v0.8 · Source checks: 14 October 2026 · AI-assisted, not independently verified · <a href="#method">Method and sources</a></span></div></footer>
@@ -4733,7 +4811,7 @@ const TOPIC_CHARTS = {
     "supportTitle":"Counterevidence",
     "support":[{"label":"Humlum & Vestergaard: Danish workplaces","url":"https://www.andershumlum.com/s/chatbots_260313.pdf","text":"Workplaces encouraging chatbot use showed no extra decline in young workers' employment share through 2024. Different country, period and outcome; it does not rule out later US effects."}],
     "notes":[["Coverage","Ages 22–25 in a balanced sample of ADP client firms. Age is not career stage; the sample is not nationally representative."],["Data","September 2026 release, all five exposure quintiles. Published index values; no averaging of groups or smoothing."],["Limit","Exposure is not employer adoption. Education, earlier trends and other economic changes complicate attribution. No intervals supplied for these descriptive series."],["Earlier headline","The paper's 19% shortfall pools different quintiles and ends in June 2026. It is not the endpoint of this chart."]],
-    "related":[{"title":"The paper behind the dashboard","publisher":"Brynjolfsson, Chandar & Chen · August 2026 revision","url":"https://digitaleconomy.stanford.edu/news/canariesaug26/","text":"Explains the sample, alternative explanations and the earlier pooled comparison. That paper's roughly 19% kept-pace shortfall is a different measure from the two extreme quintiles highlighted here."}],
+    "related":[{"title":"The paper behind the dashboard","publisher":"Brynjolfsson, Chandar & Chen · August 2026 revision","url":"https://digitaleconomy.stanford.edu/news/canariesaug26/","text":"Explains the sample, alternative explanations and the earlier pooled comparison. That paper's roughly 19% kept-pace shortfall is a different measure from the age-group comparison shown here."}],
     "watch":["Junior hiring and training after documented employer AI adoption.","Whether the gap persists across countries, samples and education groups."]
   },
   "share": {
@@ -5389,8 +5467,8 @@ document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
   const a=e.target.closest('a[href^="#"]');if(a&&a.getAttribute('href').length>1){e.preventDefault();go(a.getAttribute('href').slice(1))}
 });
-window.addEventListener('popstate',()=>render((location.hash||'#map').slice(1)));
-window.addEventListener('hashchange',()=>{const h=(location.hash||'#map').slice(1);if(h!==current)render(h)});
+window.addEventListener('popstate',()=>render((location.hash||'#home').slice(1)));
+window.addEventListener('hashchange',()=>{const h=(location.hash||'#home').slice(1);if(h!==current)render(h)});
 
 /* ----- the measurement record: every dated observation behind the site ----- */
 let RECORD=null;
@@ -6351,6 +6429,27 @@ function decimalYear7(date){
   const year=Number(date.slice(0,4)),start=Date.UTC(year,0,1);
   return year+(Date.parse(date+'T00:00:00Z')-start)/(Date.UTC(year+1,0,1)-start);
 }
+function calendarDate7(x){
+  const year=Math.floor(x),start=Date.UTC(year,0,1),days=(Date.UTC(year+1,0,1)-start)/86400000;
+  return new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(start+Math.round((x-year)*days)*86400000);
+}
+function capabilityRecords7(rows=CAPABILITY7.metr.rows){
+  // Only actual record-setting observations are joined, never a fitted or projected value.
+  return [...rows].sort((a,b)=>a.date.localeCompare(b.date)||b.estimate-a.estimate).reduce((records,r)=>{
+    if(!records.length||r.estimate>records.at(-1).estimate)records.push(r);
+    return records;
+  },[]);
+}
+function drawCapabilityTrend7(el,h=330){
+  const rows=CAPABILITY7.metr.rows,records=capabilityRecords7(rows),ids=new Set(records.map(r=>r.id)),last=records.at(-1);
+  Charts.line(el,{h,legend:false,table:false,axisPlacement:'edges',
+    aria:'METR TH1.1 technical-task length at 80 percent success, March 2023 to April 2026. A line joins record-high point estimates among evaluated models; other tested models remain visible. From 53 seconds to 3.1 hours of human-expert work. Not a fitted trend or a forecast.',
+    x:{min:2023,max:2026.65,ticks:[2023,2024,2025,2026],fmt:String,tip:calendarDate7,label:'Model release year'},
+    y:{min:0,max:240,ticks:[0,60,120,180,240],fmt:n=>n===0?'0':`${n/60}h`,tip:n=>n<1?Math.round(n*60)+' sec':fmtMin(n),label:'Task length in human-expert time / 80% success'},
+    series:[{name:'Record-high estimates',color:C.s1,w:2.8,markers:'none',end:false,tip:false,rec:false,pts:records.map(r=>[decimalYear7(r.date),r.estimate])},
+      ...rows.map(r=>({name:r.name,color:ids.has(r.id)?C.s1:C.s2,dots:true,r:ids.has(r.id)?4:3,markers:'all',end:false,pts:[[decimalYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(2)} to ${r.high.toFixed(2)} minutes`]]}))],
+    ann:[{x:decimalYear7(records[0].date),y:records[0].estimate,text:'53 sec',dx:8,dy:-18,strong:true},{x:decimalYear7(last.date),y:last.estimate,text:'3.1 hours',anchor:'end',dx:-8,dy:-18,strong:true}]});
+}
 function viewCapabilityPilot(v){
   const p=SELECTED_EVIDENCE.capability,M=CAPABILITY7.metr;
   const minutes=n=>n.toFixed(1)+' min';
@@ -6368,7 +6467,7 @@ function viewCapabilityPilot(v){
         <p class="choice7"><b>Why this indicator?</b> It tracks progress at a fixed success rate, with published methods and uncertainty.</p>
       </figcaption>
       <div class="chart" id="metr-chart7"></div>
-      <p class="chart-credit7">Each dot is a tested model; uncertainty ranges are in the details below. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
+      <p class="chart-credit7">Line: record-high estimates. Dots: all tested models. Not a fitted trend or forecast. Redrawn from METR's archived data, retrieved ${CAPABILITY7.retrieved}.</p>
     </figure>
     <p class="takeaway7"><b>What changed:</b> At 80% success, METR's estimated technical-task length increased about <b>${fold}-fold</b>, from <b>${Math.round(first.estimate*60)} seconds for GPT-4 in March 2023</b> to <b>${(last.estimate/60).toFixed(1)} hours for Mythos Preview (early) in April 2026</b>, in human-expert time. These are technical test tasks, not whole jobs.</p>
     <section class="next-measure9" id="capability-watch" aria-labelledby="capability-next-title">
@@ -6382,7 +6481,7 @@ function viewCapabilityPilot(v){
           <dl class="context7">
             <div><dt>What is measured</dt><dd>Mainly software, machine learning and cybersecurity tasks. Task length is human-expert time, not AI runtime.</dd></div>
             <div><dt>Uncertainty</dt><dd>The ${fold}-fold change divides point estimates (${last.estimate.toFixed(2)} ÷ ${first.estimate.toFixed(4)} minutes). The latest estimate's 95% interval is 1.6–6.6 hours. Tools and test setups vary.</dd></div>
-            <div><dt>Chart data</dt><dd>All ${M.rows.length} METR TH1.1 models released from 2023 onward, at 80% success. No other datasets added. This archived series ends in April 2026.</dd></div>
+            <div><dt>Chart data</dt><dd>All ${M.rows.length} METR TH1.1 models released from 2023 onward, at 80% success. The line joins successive record-high point estimates, not a fitted trend or a forecast. No other datasets added. This archived series ends in April 2026.</dd></div>
             <div><dt>Scope of this selection</dt><dd>Selected indicators, not a review of all capability research. The measurement priority reflects what these sources leave unanswered.</dd></div>
           </dl>
           <p>AI-assisted summary; not independently verified.</p>
@@ -6408,21 +6507,7 @@ function viewCapabilityPilot(v){
       </details>
     </div>
     ${pn5(['evidence','All steps','Back to'],['adoption',nameOf('adoption')])}</div>`;
-  const annotation=(id,text,dx,dy)=>{const r=M.rows.find(r=>r.id===id);return {x:decimalYear7(r.date),y:r.estimate,text,dx,dy,lead:true,strong:true}};
-  const annotations=[
-    annotation('gpt_4','GPT-4 · Mar 2023\nLess than 1 minute',22,-62),
-    {...annotation('o3_inspect','o3 · Apr 2025\nAbout 30 minutes',-20,-66),anchor:'end'},
-    {...annotation('claude_mythos_preview_early_inspect','Mythos Preview (early)\nApr 2026 · about 3 hours',-24,5),anchor:'end'}
-  ];
-  Charts.line($('#metr-chart7',v),{
-    aria:'METR TH1.1 task horizons at 80% success for all 23 evaluated models released from 2023 onward. Horizontal axis: model release year. Vertical axis: task length in human-expert time, not AI runtime. Estimates range from under one minute for GPT-4 in March 2023 to about three hours for Claude Mythos Preview (early) in April 2026. Exact values and uncertainty intervals follow in Sources, data and caveats.',
-    h:330,legend:false,table:false,axisPlacement:'edges',
-    x:{min:2023,max:2026.6,ticks:[2023,2024,2025,2026],fmt:n=>String(n),tip:fmtDate,label:'Model release year'},
-    y:{min:0,max:210,ticks:[0,60,120,180],fmt:n=>n===0?'0':n/60+(n===60?' hour':' hours'),tip:minutes,label:'Task length: time a human expert would need'},
-    series:M.rows.map(r=>({name:r.name,color:C.s1,dots:true,markers:'all',end:false,r:4.5,pts:[[decimalYear7(r.date),r.estimate,`95% interval: ${r.low.toFixed(1)}–${r.high.toFixed(1)} minutes`]]})),
-    ann:annotations,
-    annNarrow:[{...annotations[0],dx:4,dy:-58},{...annotations[1],dx:-14,dy:-88},{...annotations[2],dx:-12,dy:8}]
-  });
+  drawCapabilityTrend7($('#metr-chart7',v));
   crumbScroll5(v);
 }
 /* Gallup's published Frequent AI users column; survey-month labels, not fieldwork days. */
@@ -6561,6 +6646,492 @@ function drawSelectedChart8(el,t){
     el.innerHTML=`<div class="waffle8" role="img" aria-label="${esc(c.aria)}"><div class="waffle8-number">1–3<span>% of recorded streams</span></div><div class="waffle8-grid">${Array.from({length:100},(_,i)=>`<i class="${i===0?'filled':i<3?'possible':''}"></i>`).join('')}</div></div><p class="waffle8-key"><i></i> One square = 1% of streams. Outlines extend the reported range to 3%.</p>`;
   }
 }
+// Primary-source data for the comparison views; AI-assisted checks, not human sign-off.
+// URLs are provenance only; this file performs no network requests.
+const COMPARISON_DATA = {
+  "music": {
+    "sourceURL": "https://newsroom-deezer.com/2026/04/ai-generated-tracks-represent-44-of-new-uploaded-music/",
+    "checked": "2026-10-15",
+    "uploads": [
+      {"date":"2025-01-24","value":10,"qualifier":"about","url":"https://newsroom-deezer.com/2025/01/deezer-deploys-cutting-edge-ai-detection-tool-for-music-streaming/"},
+      {"date":"2025-04-16","value":18,"qualifier":"over","url":"https://newsroom-deezer.com/2025/04/deezer-reveals-18-of-all-new-music-uploaded-to-streaming-is-fully-ai-generated/"},
+      {"date":"2025-09-11","value":28,"qualifier":"over","url":"https://newsroom-deezer.com/2025/09/28-fully-ai-generated-music/"},
+      {"date":"2026-01-29","value":39,"qualifier":"about","url":"https://newsroom-deezer.com/2026/01/deezer-confirms-demonetization-of-ai-music/"},
+      {"date":"2026-04-20","value":44,"qualifier":"about","url":"https://newsroom-deezer.com/2026/04/ai-generated-tracks-represent-44-of-new-uploaded-music/"}
+    ],
+    "streams": {"reported":"2026-04-20","low":1,"high":3},
+    "notes": "Release dates, not exact observation windows. Daily-upload share of detected fully AI-generated tracks. Body-text approximations take precedence over inconsistent greater-than wording in notes. Detector coverage is not documented as constant. Lines connect reports, not intermediate observations; no fit or forecast. Later July/October 2026 peak-day shares are excluded. Stream-share sampling window and fraud adjustment are unspecified."
+  },
+  "work": {
+    "title": "Employment by age in the most AI-exposed occupations (Q5)",
+    "publisher": "Stanford Digital Economy Lab and ADP Research",
+    "sourceURL": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/",
+    "studyURL": "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/",
+    "dataURL": "https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip",
+    "manifestURL": "https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/manifest.json",
+    "dataMember": "canaries_age_by_exposure.csv",
+    "dictionaryMember": "canaries_age_by_exposure_data_dictionary.md",
+    "vintage": "2026-09-17",
+    "publishedAt": "2026-09-23T03:37:55Z",
+    "checkedOn": "2026-10-15",
+    "observationStart": "2021-09-01",
+    "observationEnd": "2026-08-01",
+    "frequency": "monthly",
+    "unit": "Employment index; November 2022 = 100",
+    "normalizationDate": "2022-11-01",
+    "denominator": "Each age group's own November 2022 employment in exposure quintile 5.",
+    "population": "Workers matched to occupation codes in the dashboard's five-year balanced sample of firms using ADP payroll services.",
+    "exposureGroup": "Quintile 5 (most exposed)",
+    "exposureDefinition": "Highest occupational AI-exposure quintile under Eloundou et al. Occupations receive equal weight when forming quintiles; Q5 does not mean 20% of workers.",
+    "columns": [
+      "date",
+      "ages_22_25",
+      "ages_26_30",
+      "ages_31_34",
+      "ages_35_40",
+      "ages_41_49",
+      "ages_50_plus"
+    ],
+    "series": [
+      {
+        "key": "ages_22_25",
+        "label": "Ages 22-25",
+        "columnIndex": 1,
+        "sourceColumn": "Early Career 1 (22-25)"
+      },
+      {
+        "key": "ages_26_30",
+        "label": "Ages 26-30",
+        "columnIndex": 2,
+        "sourceColumn": "Early Career 2 (26-30)"
+      },
+      {
+        "key": "ages_31_34",
+        "label": "Ages 31-34",
+        "columnIndex": 3,
+        "sourceColumn": "Developing (31-34)"
+      },
+      {
+        "key": "ages_35_40",
+        "label": "Ages 35-40",
+        "columnIndex": 4,
+        "sourceColumn": "Mid-Career 1 (35-40)"
+      },
+      {
+        "key": "ages_41_49",
+        "label": "Ages 41-49",
+        "columnIndex": 5,
+        "sourceColumn": "Mid-Career 2 (41-49)"
+      },
+      {
+        "key": "ages_50_plus",
+        "label": "Ages 50+",
+        "columnIndex": 6,
+        "sourceColumn": "Senior (50+)"
+      }
+    ],
+    "data": [
+      ["2021-09-01",87.81,90.2,89.42,91.41,91.53999999999999,91.64999999999999],
+      ["2021-10-01",89.92,91.61,90.74,92.53,92.47999999999999,92.72],
+      ["2021-11-01",90.85,92.4,91.84,93.17999999999999,93.14,93.55],
+      ["2021-12-01",91.7,93.26,92.47,93.69,93.46,93.85],
+      ["2022-01-01",92.43,94.08999999999999,93.64,94.73,94.69,94.24],
+      ["2022-02-01",92.73,94.67999999999999,94.02000000000001,94.99,95.19999999999999,94.74000000000001],
+      ["2022-03-01",92.36,94.86,94.53,95.41,95.66,95.3],
+      ["2022-04-01",93.31,95.84,95.36,95.98,96.37,95.83],
+      ["2022-05-01",93.24,96.04,95.49,96.3,96.39999999999999,96],
+      ["2022-06-01",95.67,96.66,96.28,96.72,97.05,96.57],
+      ["2022-07-01",97.82,97.94,97.32,97.63,98.04,97.50999999999999],
+      ["2022-08-01",97.75,97.85000000000001,97.5,97.89,98.3,97.91],
+      ["2022-09-01",99.18,98.83,98.7,98.94,99.16,98.7],
+      ["2022-10-01",99.66000000000001,99.6,99.31,99.49,99.55000000000001,99.33999999999999],
+      ["2022-11-01",100,100,100,100,100,100],
+      ["2022-12-01",99.8,100.1,100.4,100.2,99.99,99.98],
+      ["2023-01-01",99.18,100.29999999999998,100.89999999999999,100.89999999999999,100.8,99.97],
+      ["2023-02-01",99.28,100.2,101,101.2,101,100.2],
+      ["2023-03-01",98.83999999999999,100.4,101.4,101.6,101.49999999999999,100.49999999999999],
+      ["2023-04-01",98.2,100.6,101.8,101.8,101.8,100.89999999999999],
+      ["2023-05-01",97.54,100.6,102,102,102.2,101.4],
+      ["2023-06-01",99.48,100.8,102.4,102.4,102.49999999999999,101.6],
+      ["2023-07-01",98.88,100.8,102.4,102.3,102.60000000000001,101.6],
+      ["2023-08-01",98.44000000000001,100.4,102.69999999999999,102.60000000000001,102.69999999999999,102],
+      ["2023-09-01",99.38,101.2,103.4,103.1,103.4,102.4],
+      ["2023-10-01",99.05000000000001,101.29999999999998,103.60000000000001,103.4,103.60000000000001,102.8],
+      ["2023-11-01",98.92999999999999,101.8,104.3,104.1,104.1,103.4],
+      ["2023-12-01",97.47,101.1,103.89999999999999,103.49999999999999,103.60000000000001,102.89999999999999],
+      ["2024-01-01",97.31,101.6,104.60000000000001,104.69999999999999,104.5,102.8],
+      ["2024-02-01",97.11999999999999,101.49999999999999,104.60000000000001,104.80000000000001,104.60000000000001,103],
+      ["2024-03-01",96.25,101.6,104.69999999999999,105.1,104.89999999999999,103.2],
+      ["2024-04-01",95.38,101.2,104.5,105.2,105.1,103.3],
+      ["2024-05-01",95.64,101.6,105,105.60000000000001,105.4,103.69999999999999],
+      ["2024-06-01",95.99,101.2,104.69999999999999,105.5,105.5,103.69999999999999],
+      ["2024-07-01",95.12,100.69999999999999,104.2,105.3,105.3,103.69999999999999],
+      ["2024-08-01",95.64,101.29999999999998,105.1,106.2,106.1,104.4],
+      ["2024-09-01",95.28999999999999,100.89999999999999,104.69999999999999,106,106,104.3],
+      ["2024-10-01",95.34,101.1,105.1,106.4,106.4,104.69999999999999],
+      ["2024-11-01",95.54,101.8,105.60000000000001,107.1,107,105.4],
+      ["2024-12-01",94.28999999999999,101.2,105.2,106.89999999999999,106.80000000000001,105],
+      ["2025-01-01",93.83,101.49999999999999,105.3,107.3,107.3,104.5],
+      ["2025-02-01",93.17,100.8,105,107.3,107.2,104.5],
+      ["2025-03-01",92.21000000000001,100.2,104.60000000000001,107.2,107.1,104.4],
+      ["2025-04-01",91.13,99.88,104.3,107.2,107.2,104.4],
+      ["2025-05-01",91.32000000000001,100.1,104.60000000000001,107.80000000000001,107.5,104.69999999999999],
+      ["2025-06-01",91.43,99.42999999999999,103.89999999999999,107.4,107.4,104.4],
+      ["2025-07-01",91.18,99.05000000000001,103.60000000000001,107.60000000000001,107.5,104.4],
+      ["2025-08-01",91.23,99.27,103.8,108.1,108,104.80000000000001],
+      ["2025-09-01",90.82000000000001,98.97,103.49999999999999,108.3,108.2,105.2],
+      ["2025-10-01",91.73,99.72,104,108.80000000000001,108.80000000000001,105.80000000000001],
+      ["2025-11-01",91.47999999999999,99.92,104,109.2,109.1,106],
+      ["2025-12-01",90.57,99.38,103.60000000000001,109.1,108.80000000000001,105.60000000000001],
+      ["2026-01-01",90.60000000000001,99.53999999999999,103.89999999999999,109.60000000000001,109.4,105],
+      ["2026-02-01",89.83,98.97,103.4,109.5,109.4,105],
+      ["2026-03-01",88.77000000000001,98.28,103,109.1,109.2,104.89999999999999],
+      ["2026-04-01",87.85,97.92999999999999,102.49999999999999,109.1,109.3,105],
+      ["2026-05-01",87.56,97.76,102.2,109.2,109.5,104.89999999999999],
+      ["2026-06-01",88.03,97.18,102,108.89999999999999,109.4,104.89999999999999],
+      ["2026-07-01",88.49000000000001,97.08,102.1,109.2,109.60000000000001,105],
+      ["2026-08-01",87.22999999999999,96.19,101.6,108.60000000000001,109.4,104.80000000000001]
+    ],
+    "precision": "CSV numeric values preserved, including source floating-point tails. Round only for display.",
+    "suggestedDisplayDecimals": 2,
+    "notes": [
+      "Select Q5 rows from the official underlying-series CSV; retain all six age columns and chronological monthly observations.",
+      "Each line has its own baseline of 100. Index levels compare relative trajectories, not absolute employment counts.",
+      "The original study links to the dashboard; the dashboard's live Data link and pinned September ZIP had identical SHA-256 hashes on the check date."
+    ],
+    "caveats": [
+      "Descriptive employment trends by occupational exposure; these are not causal estimates of jobs lost to AI.",
+      "The balanced ADP firm sample is not representative of the entire US labor market or all ADP clients; firm entry and exit are excluded and the five-year window rolls forward.",
+      "Age groups are separate groups, not a fixed cohort followed as it ages. Differences can reflect occupational composition and other labor-market factors.",
+      "Do not average older-age indices or Q4/Q5 indices to invent pooled employment series without the relevant baseline headcount weights.",
+      "The paper's approximately 19% June 2026 shortfall compares pooled high- versus low-exposure young workers. It is a different comparison and vintage, not the gap between these age lines."
+    ],
+    "verification": {
+      "status": "verified-original-csv",
+      "humanReviewed": false,
+      "extraction": "Filter exposure_quintile == 'Quintile 5 (most exposed)'; parse source numeric fields without scaling, rebasing, smoothing or interpolation.",
+      "months": 60,
+      "ageSeries": 6,
+      "numericValues": 360,
+      "missingValues": 0,
+      "baselineAll100": true,
+      "digitized": false,
+      "zipSHA256": "a99c3912381eeb6b1f7e74b6e86dd1e2a760676adc3848ba901254e76086a397",
+      "csvSHA256": "e8ef62f61d6ffcb91ab1c7be85a7d3f671fe7f3e73eca0a385586adfa07a150d",
+      "dictionarySHA256": "f0b57c4d566770805fe3a3a248d8f92bc70a7646e8c7f93ff1b88fdea64d10fa"
+    },
+    "confidenceIntervals": null,
+    "confidenceIntervalNote": "No confidence intervals accompany these descriptive index series."
+  },
+  "exposure": {
+    "title": "Theoretical and observed AI exposure: Computer & Math",
+    "publisher": "Anthropic",
+    "authors": [
+      "Maxim Massenkoff",
+      "Peter McCrory"
+    ],
+    "sourceURL": "https://www.anthropic.com/research/labor-market-impacts",
+    "dataURL": "https://cdn.sanity.io/files/4zrzovbb/website/2b5bbaf2c1eb81dbf6e6fb813c1a24e35a64d376.pdf",
+    "dataLocator": "Report page 7, paragraphs discussing Figure 2; the article's Figure 2 discussion states the same pair.",
+    "appendixURL": "https://cdn.sanity.io/files/4zrzovbb/website/e5f77fc0e77c0185110b5e4b909602791ae76eae.pdf",
+    "datasetURL": "https://huggingface.co/datasets/Anthropic/EconomicIndex/tree/4e5f69fab13a9c3f7d0dcc31a6f893a9818738f6/labor_market_impacts",
+    "vintage": "2026-03-05",
+    "vintageNote": "Report publication date. Observed exposure uses pooled Economic Index samples, not a single March 2026 observation; theoretical ratings derive from Eloundou et al. (2023).",
+    "checkedOn": "2026-10-15",
+    "unit": "Percent on the report's weighted task-exposure scale",
+    "denominator": "All tasks within each occupation, weighted by estimated time spent; occupation scores are then averaged within the broad category using employment weights. Observed 33% is not 33% of the theoretical 94%.",
+    "scope": "One broad occupational category, not an individual occupation or an economy-wide average.",
+    "columns": [
+      "occupation_category",
+      "theoretical_percent",
+      "observed_percent"
+    ],
+    "series": [
+      {
+        "key": "theoretical_percent",
+        "label": "Theoretical capability",
+        "columnIndex": 1
+      },
+      {
+        "key": "observed_percent",
+        "label": "Observed exposure (Claude)",
+        "columnIndex": 2
+      }
+    ],
+    "data": [
+      [
+        "Computer & Math",
+        94,
+        33
+      ]
+    ],
+    "measures": {
+      "theoretical": "Time- and employment-weighted Eloundou beta capability score; task ratings are 1, 0.5 or 0, based on whether LLMs alone or with tools could at least double task speed.",
+      "observed": "Time- and employment-weighted task coverage incorporating sufficient Claude work usage and automation. The appendix gates on theoretical feasibility (beta > 0), weights fully automated usage fully, and gives augmentative usage partial weight."
+    },
+    "precision": "Exact transcription of the authors' published whole-percent values; the underlying estimates are rounded, not known to arbitrary precision.",
+    "approximate": true,
+    "suggestedDisplayDecimals": 0,
+    "notes": [
+      "The numerical source is the article/PDF text, not a CSV of matched category pairs.",
+      "The official job_exposure.csv has 756 occupation rows and only occ_code, title, observed_exposure. task_penetration.csv has 17,998 rows and only task, penetration.",
+      "Neither inspected CSV supplies theoretical category values or the complete task-time and employment weights needed to reproduce Figure 2 pairs.",
+      "Only Computer & Math has both values explicitly stated in the verified article/PDF text. Office & Admin has a published theoretical 90%, but no verified paired observed value; it is excluded."
+    ],
+    "caveats": [
+      "Observed exposure is a Claude-based measure, not all AI usage across the economy.",
+      "Automation weighting means observed exposure is not a pure percentage of tasks, work hours actually automated, workers using AI, or jobs displaced.",
+      "These values do not estimate unemployment, job losses, or causal employment effects.",
+      "The theoretical assessment reflects an earlier capability rubric; neither value is a current live reading.",
+      "Do not fill additional categories by reading the radar chart, averaging occupation rows without weights, or mixing incompatible theoretical occupation scores."
+    ],
+    "verification": {
+      "status": "verified-published-rounded-pair",
+      "humanReviewed": false,
+      "pairCount": 1,
+      "requestedMultiCategoryScope": "Five to eight matched category pairs were not verified from the inspected primary-source downloads; use the one published pair only.",
+      "digitized": false,
+      "inferredValues": false,
+      "datasetRevision": "4e5f69fab13a9c3f7d0dcc31a6f893a9818738f6",
+      "inspectedDownloads": [
+        {
+          "url": "https://huggingface.co/datasets/Anthropic/EconomicIndex/resolve/4e5f69fab13a9c3f7d0dcc31a6f893a9818738f6/labor_market_impacts/job_exposure.csv",
+          "sha256": "4f0a3adf5feeb2ec5f5d02ab18cc5e851a2a4b8470bde84c0c9335017be12d68",
+          "columns": [
+            "occ_code",
+            "title",
+            "observed_exposure"
+          ],
+          "rows": 756
+        },
+        {
+          "url": "https://huggingface.co/datasets/Anthropic/EconomicIndex/resolve/4e5f69fab13a9c3f7d0dcc31a6f893a9818738f6/labor_market_impacts/task_penetration.csv",
+          "sha256": "85bee872db1d55d3e9a7f4e89da5ae4a5d59aa8ec875d728fbf4b7d820984616",
+          "columns": [
+            "task",
+            "penetration"
+          ],
+          "rows": 17998
+        }
+      ]
+    },
+    "confidenceIntervals": null,
+    "confidenceIntervalNote": "No confidence interval is published for this rounded category pair."
+  }
+};
+/* Comparison views and integrated research gaps, layered onto the topic pages. */
+const baseRender10=render;
+const baseSelectedChart10=drawSelectedChart8;
+const originalWork10=structuredClone(TOPIC_CHARTS.work);
+const source10=id=>SELECTED_EVIDENCE[id].sources.find(s=>s.id===TOPIC_CHARTS[id]?.source);
+const topicLabels10={capability:'Technical-task benchmarks',adoption:'Workplace-use surveys',handover:'Provider interaction data',work:'US payroll data',share:'Global labour-income estimates',skills:'Learning experiments',culture:'Platform reports and creative tasks',institutions:'Public-sector records',influence:'Surveys and proxies for control'};
+const comparisonFor10={capability:'work',work:'work',adoption:'skills',skills:'skills',culture:'culture'};
+const monthlyYear10=date=>ym(Number(date.slice(0,4)),Number(date.slice(5,7)));
+const calendarDate10=calendarDate7;
+Object.assign(COMPARISON_DATA.work,{
+  measure:'Employment in the most AI-exposed occupations. Six age groups; ages 22-25 highlighted.',
+  credit:'All 60 months and six age groups from Stanford / ADP, September 2026 release. Highest-exposure quintile only; each age group\'s November 2022 employment = 100. No pooling or smoothing.',
+  takeaway:'From November 2022 to August 2026, employment fell 12.8% for ages 22-25 in the most AI-exposed occupations. Older groups ranged from a 3.8% fall to a 9.4% rise. This does not establish how much of the change AI caused.',
+  caveat:'Selected US ADP firms, not the whole labour market. Age groups are not fixed cohorts; exposure is not actual AI adoption. Occupational mix and other economic changes can explain differences. No confidence intervals are supplied.',
+  selection:'Shows actual employment by age within the same exposure group. Every published age group is retained, rather than selecting the most dramatic older comparison.',
+  aria:'Stanford ADP employment in the highest-exposure quintile. Six age groups, September 2021 to August 2026, November 2022 equals 100. Ages 22-25 end at 87.23; older group endpoints range from 96.19 to 109.4.'
+});
+Object.assign(COMPARISON_DATA.exposure,{
+  measure:'Computer & Math occupations: 94% theoretical exposure versus 33% observed exposure, using Anthropic\'s weighted task-coverage measures.',
+  caveat:'One category and one provider. These are differently constructed exposure measures, not shares of jobs automated. The theoretical rubric dates to 2023; the March 2026 report uses earlier Claude samples.',
+  credit:'One rounded pair explicitly published alongside Figure 2: Computer & Math, 94% theoretical and 33% observed. No other category values inferred from the radar chart.'
+});
+const pairDefs10=[
+  {id:'work',n:'01',title:'AI can do more. Are people losing opportunities?',tag:'Early employment signal',left:'capability',right:'work',reading:'Technical-task capability has advanced sharply. Younger workers are falling behind older workers in the most AI-exposed occupations in this US sample. The charts do not establish that one caused the other.',need:'Link actual employer AI adoption to junior hiring, training and career progression.'},
+  {id:'skills',n:'02',title:'More AI use. What happens to unaided skills?',tag:'One experiment, not a population trend',left:'adoption',right:'skills',reading:'A classroom trial found lower unaided scores after unrestricted GPT practice. We do not yet have a comparable long-term skills trend to set against rising workplace use.',need:'Follow the same people over time, testing both assisted performance and what they can do without AI.'},
+  {id:'culture',n:'03',title:'More AI content does not mean more attention.',tag:'A counterpoint',left:'uploads',right:'streams',reading:'AI music grew rapidly as a share of new uploads on Deezer, but remained a small share of recorded streams. More supply alone does not show that human creators are losing audiences or income.',need:'Measure genuine audience attention and creator income, alongside AI content supply, across platforms.'}
+];
+
+function comparisonCard10(key,uid){
+  const W=COMPARISON_DATA.work;
+  const cards={
+    capability:{lane:'AI capability',type:'Benchmark trend',title:'Longer tasks, at the same success rate',measure:'Human-expert time for technical tasks AI completes with 80% success.',publisher:'METR',url:CAPABILITY7.metr.url,period:'Mar 2023 - Apr 2026',take:'<strong>About 209 times longer:</strong> from 53 seconds to 3.1 hours. These are technical test tasks, not whole jobs.'},
+    work:{lane:'Human outcomes',type:'Employment trend',title:'Young workers are falling behind',measure:W.measure,publisher:'Stanford / ADP',url:W.sourceURL,period:'US payroll sample / Sep 2021 - Aug 2026',take:'Employment among ages 22-25 fell 12.8% from November 2022. Older groups ranged from a 3.8% fall to a 9.4% rise. AI causation is not established.'},
+    adoption:{lane:'AI adoption',type:'Survey trend',title:'Regular AI use is becoming common',measure:'US employees using AI at work a few times a week or more.',publisher:'Gallup',url:ADOPTION7.url,period:'May 2023 - Aug 2026',take:'<strong>11% to 32%</strong> of US employees report regular use. This counts people using AI, not work automated.'},
+    skills:{lane:'Human outcomes',type:'One experiment / not a trend',title:'What happens after AI-assisted practice?',measure:'Unaided maths exam scores after practice, compared with students who had no AI.',publisher:'Bastani et al. / PNAS',url:source10('skills').url,period:'One Turkish school / 2023 trial',take:'Unrestricted GPT practice was followed by lower unaided scores. <strong>The guided tutor showed no clear difference</strong> from the no-AI group.'},
+    uploads:{lane:'AI-generated supply',type:'Reported trend',title:'AI music is taking up more of the supply',measure:'Fully AI-generated tracks as a share of new daily uploads on Deezer.',publisher:'Deezer',url:COMPARISON_DATA.music.sourceURL,period:'Jan 2025 - Apr 2026 reports',take:'<strong>About 10% to 44%</strong> of daily uploads, across five company reports. Later peak-day figures are excluded from this comparison.'},
+    streams:{lane:'Audience attention proxy',type:'Reported range / not a trend',title:'But it is a small share of recorded streams',measure:'Fully AI-generated tracks as a share of all recorded streams on Deezer.',publisher:'Deezer',url:COMPARISON_DATA.music.sourceURL,period:'Apr 2026 report',take:'<strong>Streams are not the same as human listening.</strong> The figure includes fraudulent activity; Deezer also excludes AI music from recommendations.'}
+  };
+  const c=cards[key],human=['work','skills','streams'].includes(key);
+  const chartNote=key==='capability'?'Line: record-high estimates. Dots: all tested models.':key==='uploads'?'Line connects rounded reports; not continuous observations.':'';
+  return `<figure class="compare-figure10${human?' human10':''}" aria-labelledby="${uid}-title"><figcaption><div class="figure-meta10"><span class="lane10">${esc(c.lane)}</span><span>${esc(c.type)}</span></div><h3 id="${uid}-title">${esc(c.title)}</h3><p class="measure10">${esc(c.measure)}</p><div class="source10">${ext7(c.url,c.publisher)}<span>${esc(c.period)}</span></div></figcaption><div class="chart" id="${uid}" data-comparison-chart="${key}"></div><p class="chart-note10">${chartNote}</p><p class="figure-take10">${key==='work'?esc(c.take):c.take}</p></figure>`;
+}
+
+function pairMarkup10(pair,home=false){
+  const left=pair.id==='culture'?'culture':pair.left,right=pair.id==='culture'?'culture':pair.right;
+  return `<section class="comparison10" id="compare-${pair.id}" ${home?'aria-label="AI capability and employment comparison"':`aria-labelledby="pair-${pair.id}"`}>${home?'':`<header class="pair-head10"><span class="pair-no10">${pair.n}</span><h2 id="pair-${pair.id}">${esc(pair.title)}</h2><span class="pair-tag10">${esc(pair.tag)}</span></header>`}<div class="pair-grid10">${comparisonCard10(pair.left,`${pair.id}-left10`)}${comparisonCard10(pair.right,`${pair.id}-right10`)}</div><p class="pair-reading10"><b>Our reading:</b> ${esc(pair.reading)}</p>${home?'':`<div class="pair-footer10"><details class="pair-notes10"><summary>Sources, caveats &amp; more evidence</summary>${pairNotes10(pair)}</details><div class="pair-links10"><a href="#${left}">${esc(nameOf(left))}: research gaps &#8594;</a>${right===left?'':`<a href="#${right}">${esc(nameOf(right))}: research gaps &#8594;</a>`}</div></div>`}</section>`;
+}
+
+function pairNotes10(p){
+  if(p.id==='work')return `<div class="more10"><div><h4>AI capability</h4><p>All 23 METR TH1.1 models released from 2023 onward, at 80% success. The line joins new record-high estimates; it is not METR's fitted trend or a forecast. Human-expert task time, not AI runtime. Latest estimate: 3.1 hours; 95% interval: 1.6-6.6 hours. The series is archived.</p><p>${ext7(CAPABILITY7.metr.url,'METR methods')} / ${ext7(CAPABILITY7.metr.data,'Original data')}</p></div><div><h4>Employment</h4><p>${esc(COMPARISON_DATA.work.caveat)}</p><p>${ext7(COMPARISON_DATA.work.sourceURL,'Stanford study')} / ${ext7(COMPARISON_DATA.work.dataURL,'Original data')}</p><p>Counterevidence: a Danish study found no extra decline in young workers' employment share at workplaces encouraging chatbot use through 2024. ${ext7(originalWork10.support[0].url,'Humlum & Vestergaard')}</p></div></div><p class="source-actions7"><a href="#capability/source">Capability data &amp; intervals</a><a href="#work/source">Employment data &amp; caveats</a></p>`;
+  if(p.id==='skills')return `<div class="more10"><div><h4>AI use</h4><p>Eight self-reported Gallup survey waves. US employees, including daily users. This is not a measure of dependence.</p><p>${ext7(ADOPTION7.url,'Gallup table and methods')}</p><p>${ext7(COMPARISON_DATA.exposure.sourceURL,'Anthropic: potential exposure vs observed use')} provides occupational context, from Claude rather than all AI use.</p></div><div><h4>Unaided performance</h4><p>Adjusted exam effects on a 100-point scale: unrestricted GPT, -5.4 points (approximate 95% interval: -9.7 to -1.1); guided tutor, -0.4 (-2.9 to +2.1). This is one trial, not a trend in skills.</p><p>${ext7(TOPIC_CHARTS.skills.dataUrl,'Bastani et al., Table 1')}</p><p>Both tools improved assisted practice performance. A nonsignificant tutor effect does not prove equivalence or establish a difference between the two AI groups.</p></div></div><p class="source-actions7"><a href="#adoption/source">Survey data &amp; caveats</a><a href="#skills/source">Trial data &amp; caveats</a></p>`;
+  return musicNotes10()+`<p>${ext7(TOPIC_CHARTS.culture.related[0].url,'Related experiment: creativity and diversity')}</p><p class="source-actions7"><a href="#culture/source">Source notes and research gaps</a></p>`;
+}
+
+function drawComparison10(el,key){
+  if(key==='capability')drawCapabilityTrend7(el,270);
+  else if(key==='work')drawWork10(el);
+  else if(key==='adoption')Charts.line(el,{h:270,legend:false,table:false,axisPlacement:'edges',aria:'Gallup: US employees reporting frequent AI use, 11 percent in May 2023 to 32 percent in August 2026. Eight survey waves.',
+    x:{min:2023,max:2026.9,ticks:[2023,2024,2025,2026],fmt:String,tip:fmtDate,label:'Survey year'},y:{min:0,max:40,ticks:[0,10,20,30,40],fmt:n=>n+'%',tip:n=>n+'%',label:'Share of US employees / frequent AI use'},
+    series:[{name:'Frequent AI use',color:'var(--ai10)',w:2.8,end:false,markers:'all',pts:ADOPTION7.rows.map(r=>[monthlyYear10(r.date),r.value])}],ann:[{x:monthlyYear10(ADOPTION7.rows[0].date),y:11,text:'11%',dx:6,dy:-16,strong:true},{x:monthlyYear10(ADOPTION7.rows.at(-1).date),y:32,text:'32%',dx:-6,dy:-18,anchor:'end',strong:true}]});
+  else if(key==='skills')drawSkillsStat10(el);
+  else if(key==='uploads')drawMusicTrend10(el);
+  else drawStreamsStat10(el);
+}
+
+function drawWork10(el){
+  const W=COMPARISON_DATA.work;
+  const rows=W.data;
+  Charts.line(el,{h:270,table:false,legend:false,axisPlacement:'edges',aria:W.aria||W.measure,
+    x:{min:2021.65,max:2026.9,ticks:[2022,2023,2024,2025,2026],ticksNarrow:[2022,2024,2026],fmt:String,tip:fmtDate,label:'Observation year'},
+    y:{min:75,max:125,ticks:[80,90,100,110,120],fmt:String,tip:n=>n.toFixed(1),label:'Employment index / Nov 2022 = 100'},zero:100,
+    series:[...W.series.slice(1),W.series[0]].map(s=>({name:s.label,color:s.columnIndex===1?'var(--human10)':'var(--ink-3)',w:s.columnIndex===1?2.8:1.4,op:s.columnIndex===1?1:.65,dash:s.columnIndex===2,end:false,markers:'none',pts:rows.map(r=>[monthlyYear10(r[0]),r[s.columnIndex]])})),
+    ann:[{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[1],text:'Ages 22-25 / 87.2',anchor:'end',dx:-5,dy:22,strong:true},{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[5],text:'Other age groups',anchor:'end',dx:-5,dy:-18}]});
+}
+
+function drawSkillsStat10(el){
+  el.classList.add('stat-chart10');
+  const [base,tutor]=TOPIC_CHARTS.skills.chart.rows;
+  el.innerHTML=`<div class="result-stat10"><p class="stat-label10">After unrestricted GPT practice</p><p class="stat-value10">${Math.abs(base.value).toFixed(1)} <span>points lower</span></p><p class="stat-unit10">on a 100-point unaided maths exam</p><div class="stat-context10"><span>With a guided AI tutor</span><b>${tutor.value.toFixed(1)} points</b><span>No clear difference from the no-AI group</span></div><p class="stat-note10">One trial, not evidence of a long-term decline.</p></div>`;
+}
+
+function drawStreamsStat10(el){
+  el.classList.add('stat-chart10');
+  const s=COMPARISON_DATA.music.streams;
+  el.innerHTML=`<div class="result-stat10"><p class="stat-label10">AI-generated music</p><p class="stat-value10">${s.low}-${s.high}<span>%</span></p><p class="stat-unit10">of all recorded streams on Deezer</p><div class="stat-context10"><span>Reported in April 2026</span><b>A range, not a time trend</b></div><p class="stat-note10">New uploads and recorded streams have different denominators.</p></div>`;
+}
+
+function drawMusicTrend10(el){
+  const rows=COMPARISON_DATA.music.uploads;
+  Charts.line(el,{h:270,legend:false,table:false,axisPlacement:'edges',aria:'Deezer reported share of daily uploads that are fully AI-generated. About 10 percent in January 2025, over 18 in April, over 28 in September, about 39 in January 2026 and about 44 in April. Line connects five rounded reports, not continuous observations.',
+    x:{min:2024.95,max:2026.42,ticks:[ym(2025,1),ym(2025,7),ym(2026,1),ym(2026,4)],ticksNarrow:[ym(2025,1),ym(2025,7),ym(2026,4)],fmt:fmtDate,tip:fmtDate,label:'Report month'},
+    y:{min:0,max:60,ticks:[0,20,40,60],fmt:n=>n+'%',tip:n=>n+'%',label:'AI-generated share of daily uploads'},
+    series:[{name:'Reported upload share',color:'var(--ai10)',w:2.8,end:false,markers:'all',pts:rows.map(r=>[monthlyYear10(r.date),r.value,r.qualifier==='over'?`Published as over ${r.value}%; point marks the stated threshold.`:`Published as about ${r.value}%.`])}],
+    ann:[{x:monthlyYear10(rows[0].date),y:10,text:'~10%',dx:7,dy:-16,strong:true},{x:monthlyYear10(rows.at(-1).date),y:44,text:'~44%',dx:-8,dy:-18,anchor:'end',strong:true}]});
+}
+
+function musicNotes10(){
+  const m=COMPARISON_DATA.music;
+  return `<p>Five company reports, not a continuous dataset. The line connects rounded figures; April and September 2025 are published as "over" 18% and 28%. Later peak-day figures are a different statistic and are excluded.</p><p>One platform and a proprietary detector whose coverage may change. Most sampling windows are unspecified. The 1-3% stream range is from the April 2026 release and includes fraud; recommendations also exclude AI music. It is not a confidence interval or a measure of human-created output.</p><div class="data-scroll7"><table class="data7"><caption>Deezer daily upload reports</caption><thead><tr><th scope="col">Report</th><th scope="col">AI share</th><th scope="col">Source</th></tr></thead><tbody>${m.uploads.map(r=>`<tr><th scope="row">${esc(fmtDate(monthlyYear10(r.date)))}</th><td>${esc(r.qualifier)} ${r.value}%</td><td>${ext7(r.url,'Deezer')}</td></tr>`).join('')}</tbody></table></div><p class="source-actions7">${csvLink7('deezer-upload-share-reports.csv',[['report_date','percent','qualifier','source'],...m.uploads.map(r=>[r.date,r.value,r.qualifier,r.url])])}${ext7(m.sourceURL,'April 2026 streams and uploads')}</p>`;
+}
+
+function mountComparisons10(v){$$('[data-comparison-chart]',v).forEach(el=>drawComparison10(el,el.dataset.comparisonChart))}
+
+function viewEmerging10(v,anchor){
+  v.innerHTML=`<div class="wrap page10"><header class="intro10"><div class="eyebrow10">Gradual Disempowerment Dashboard / Emerging evidence</div><h1>AI is advancing. What is happening to people?</h1><p>Growing capabilities, changing work and questions about human control. The evidence is uneven; the questions are consequential.</p></header><nav class="jump10" aria-label="Comparisons">${pairDefs10.map(p=>`<a href="#emerging/${p.id}">${p.n} ${p.id==='work'?'Work & opportunities':p.id==='skills'?'Use & skills':'Content & attention'}</a>`).join('')}</nav><p class="reading-note10">Each chart keeps its own units, population and dates. Side-by-side trends are not proof of cause and effect.</p>${pairDefs10.map(p=>pairMarkup10(p)).join('')}<section class="end10"><h2>Are people retaining the ability to act, decide and earn?</h2><div><p>These signals do not answer that larger question. The next step is to measure the missing links.</p><a class="main-link10" href="#gaps">Explore research gaps &#8594;</a></div></section></div>`;
+  mountComparisons10(v);
+  if(anchor)requestAnimationFrame(()=>document.getElementById('compare-'+anchor)?.scrollIntoView({block:'start',behavior:'instant'}));
+}
+
+function viewHome10(v){
+  v.innerHTML=`<div class="wrap page10 home10"><header class="intro10 home-intro10"><div class="eyebrow10">Better Futures Project / Zhang Yue</div><h1>Tracking AI progress and human influence.</h1><p>Gradual disempowerment is the risk that people lose influence as AI takes on more work and decisions. What do the early signals show?</p><div class="intro-links10">${ext7('https://gradual-disempowerment.ai/','Original paper')}<a href="#pathways">The proposed pathways &#8594;</a></div></header>${pairMarkup10(pairDefs10[0],true)}<section class="home-next10"><div><h2>A first signal, not the whole picture.</h2><p>Explore changes in work, skills and culture, including evidence that complicates the story.</p></div><a class="main-link10" href="#emerging">Explore emerging evidence &#8594;</a></section><section class="home-doors10"><article><h2>What needs measuring?</h2><p>Find selected evidence, missing indicators and concrete research questions at each step.</p><a href="#gaps">Research gaps &#8594;</a></article><article><h2>How could influence be lost?</h2><p>Follow the proposed links from AI capability and use to work, culture and human control.</p><a href="#pathways">Explore the pathways &#8594;</a></article></section></div>`;
+  mountComparisons10(v);
+}
+
+function viewResearch10(v){
+  v.innerHTML=`<div class="wrap page10"><header class="intro10"><div class="eyebrow10">Research gaps</div><h1>What do we still need to measure?</h1><p>Selected evidence and practical research questions, organised by step in the gradual disempowerment pathways.</p><div class="intro-links10"><a href="#pathways">See the pathways &#8594;</a><a href="#method/selection">How indicators are selected &#8594;</a></div></header><div class="gap-index-head10" aria-hidden="true"><span></span><span>Step / selected evidence</span><span>Next measurement needed</span><span></span></div><div class="gap-index10">${ORDER.map((id,i)=>`<a href="#${id}"><span class="step10">${String(i+1).padStart(2,'0')}</span><div><h2>${esc(nameOf(id))}</h2><small>${esc(topicLabels10[id])}</small></div><p>${esc(SELECTED_EVIDENCE[id].gap)}</p><span class="row-arrow10" aria-hidden="true">&#8594;</span></a>`).join('')}</div><p class="gap-caution10">Proposed priorities based on selected sources, not a systematic review of all research. Contributions and contrary findings are welcome.</p></div>`;
+}
+
+function viewPathways10(v){
+  v.innerHTML=`<div class="pathways10"><header class="wrap page10 intro10 path-intro10"><div class="eyebrow10">The proposed pathways</div><h1>How might AI weaken human influence?</h1><p>The pathways are adapted from the ${ext7('https://gradual-disempowerment.ai/','Gradual Disempowerment paper')}. Each step links to its evidence and research gaps.</p></header><div id="prototype-map10"></div><section class="wrap home-next10"><div><h2>From a pathway to a research question.</h2><p>Coverage colours are provisional, AI-assisted judgements, not measured risk scores.</p></div><a class="main-link10" href="#gaps">Research gaps &#8594;</a></section></div>`;
+  mountMap5($('#prototype-map10',v),{onStop:id=>go(id)});
+}
+
+function gapQuestion10(x){
+  return `<article class="gap-question10"><h3>${esc(x.title)}</h3><p>${esc(x.what)}</p><details><summary>Why this matters</summary><p>${esc(x.why)}</p></details></article>`;
+}
+
+function attachGaps10(v,id){
+  const root=$('.pilot7',v);if(!root)return;
+  $('.next-measure9',root)?.remove();
+  const items=COPY.gap.items.filter(x=>x.link===id),first=items.slice(0,2),more=items.slice(2);
+  const section=document.createElement('section');section.className='topic-gaps10';section.id='research-'+id;
+  section.innerHTML=`<div class="gap-section-head10"><h2>What needs better measurement?</h2><p class="gap-summary10">${esc(SELECTED_EVIDENCE[id].gap)}</p></div><p class="gap-caution10">Proposed research directions, not a claim that no relevant studies exist. Based on the selected evidence; feasibility and wider coverage need review.</p>${first.map(gapQuestion10).join('')}${more.length?`<details class="gap-more10"><summary>${more.length} more research questions</summary>${more.map(gapQuestion10).join('')}</details>`:''}<div class="gap-links10"><a href="#contribute/add">Suggest evidence or a study &#8594;</a><a href="#gaps">All research gaps &#8594;</a></div>`;
+  root.insertBefore(section,$('.pn5',root));
+  const back=document.createElement('nav');back.className='research-back10';back.setAttribute('aria-label','Research navigation');
+  back.innerHTML=`<a href="#gaps">&#8592; Research gaps</a><a href="#gaps/${id}">Missing indicators &#8595;</a>${comparisonFor10[id]?`<a href="#emerging/${comparisonFor10[id]}">See the comparison &#8594;</a>`:''}`;
+  root.prepend(back);
+  if(id==='adoption')appendExposure10(v);
+  if(id==='work'){
+    const download=$('#work-source a[download]',v);
+    if(download)download.outerHTML=csvLink7('stanford-age-employment-2026-10-15.csv',[TOPIC_CHARTS.work.columns.concat(['source','checked']),...TOPIC_CHARTS.work.data.map(row=>row.concat([COMPARISON_DATA.work.dataURL,'2026-10-15']))]);
+  }
+  if(id==='capability'){
+    const list=$('#capability-related .related7',v);
+    list?.insertAdjacentHTML('beforeend',`<li><h3>${ext7('https://epoch.ai/data-insights/llm-inference-price-trends','The falling price of benchmark-level performance')} <span>Epoch AI</span></h3><p>Costs per token at fixed benchmark scores have fallen. This is not the total cost of a completed workflow, including checking and reruns.</p></li>`);
+  }
+  if(id==='culture'){
+    const body=$('#culture-related .disclosure7-body',v);
+    body?.insertAdjacentHTML('afterbegin','<figure class="exposure10"><figcaption><h3>AI music is growing as a share of uploads</h3><p>Deezer daily upload reports, January 2025 to April 2026.</p></figcaption><div class="chart" id="culture-uploads10"></div></figure>'+musicNotes10());
+    $('#culture-related',v)?.addEventListener('toggle',e=>{if(e.target.open)drawMusicTrend10($('#culture-uploads10',v))});
+  }
+}
+
+function appendExposure10(v){
+  const e=COMPARISON_DATA.exposure,body=$('#adoption-related .disclosure7-body',v);
+  if(!body)return;
+  body.insertAdjacentHTML('afterbegin',`<figure class="exposure10"><figcaption><div class="publisher7">${ext7(e.sourceURL,'Source: Anthropic')}<span>${esc(e.vintage)}</span></div><h3>Potential exposure is not the same as observed use</h3><p>${esc(e.measure)}</p></figcaption><div class="chart" id="exposure-chart10"></div><p>${esc(e.caveat)}</p><p class="source-actions7">${ext7(e.sourceURL,'Full methods')}${e.dataURL?ext7(e.dataURL,'Original data'):''}${csvLink7('anthropic-exposure-comparison.csv',[e.columns,...e.data])}</p></figure>`);
+  const draw=()=>{
+    Charts.bars($('#exposure-chart10',v),{min:0,max:100,ticks:[0,25,50,75,100],fmt:n=>n+'%',table:false,rh:54,axisPlacement:'edges',catLabel:'Occupational category / weighted task coverage',valLabel:'Share (%)',aria:e.measure,rows:e.data.flatMap(r=>[{head:r[0]},{label:'Theoretical exposure',value:r[1],color:'var(--ink-3)'},{label:'Observed exposure (Claude)',value:r[2],color:'var(--ai10)'}])});
+  };
+  const details=$('#adoption-related',v);details.addEventListener('toggle',()=>{if(details.open)draw()});
+}
+
+function installWork10(){
+  const w=COMPARISON_DATA.work,t=TOPIC_CHARTS.work;
+  Object.assign(t,{scope:'US payroll sample / September 2026 release',title:w.title,measure:w.measure,credit:w.credit,takeaway:w.takeaway,dataUrl:w.dataURL,columns:['Month',...w.series.map(s=>s.label)],data:w.data.map(row=>row.map((value,i)=>i?Number(value.toFixed(2)):value)),chart:{kind:'work-ages'},notes:[['Coverage',w.population],['Chart data',w.credit],['Limit',w.caveat],['Selection',w.selection]]});
+  const source=source10('work');source.url=w.sourceURL;source.finding=w.takeaway;source.locate=w.credit;source.limit=w.caveat;source.why=w.selection;
+  source.metrics=[['-12.8%','Ages 22-25, most-exposed quintile, Nov 2022-Aug 2026'],['-3.8% to +9.4%','Range across the five older age groups, same period']];
+  source.checks=['Check all six age groups within quintile 5, with separate November 2022 baselines of 100.','Do not substitute the paper\'s 19% high/low exposure shortfall for an age-group comparison.'];
+  SELECTED_EVIDENCE.work.summary=w.takeaway;SELECTED_EVIDENCE.work.selection=w.selection;COPY.home.card.what.work=w.takeaway;COPY.evidence.rows.work.line=w.takeaway;
+  drawSelectedChart8=function(el,t){if(t.chart.kind==='work-ages')drawWork10(el);else baseSelectedChart10(el,t)};
+}
+
+function updateMethod10(v){
+  const list=$('#m-chart-sources details ul',v);
+  if(list){const entry=[...list.children].find(li=>li.textContent.startsWith('Entry-level jobs:'));if(entry)entry.textContent='Entry-level jobs: '+COMPARISON_DATA.work.credit;
+    list.insertAdjacentHTML('beforeend',`<li>Adoption supporting chart: ${esc(COMPARISON_DATA.exposure.credit||COMPARISON_DATA.exposure.measure)}</li>`)}
+  const para=$('#m-chart-sources > p',v);if(para)para.textContent='Each chart uses a named source and an explicit definition. Comparisons keep datasets separate, with their own populations, periods and axes. Placing charts together does not establish that one trend caused the other.';
+  list?.insertAdjacentHTML('beforeend','<li>Capability: the line connects record-high estimates among the tested models; all model points remain visible. It is not a fitted trend or forecast.</li><li>Culture comparison: five rounded Deezer upload-share reports, January 2025-April 2026; later peak-day figures are excluded. The 1-3% stream share is a separate snapshot, not a trend.</li>');
+  const status=$('#m-status > p',v);if(status)status.textContent='The original selected sources were checked with AI assistance on 14 October 2026. Comparison additions were checked against primary sources on 15 October 2026. These checks are not independent review or human sign-off.';
+}
+
+installWork10();
+COPY.coverage.takeaway='In this selection, direct measures of skills over time, government decisions and human influence remain limited.';
+document.body.insertAdjacentHTML('afterbegin','<a class="skip10" href="#main-content">Skip to content</a>');
+$('.skip10').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();$('#view').focus();$('#view').scrollIntoView({block:'start'})});
+$('.nav').innerHTML=[['home','Home'],['emerging','Emerging evidence'],['gaps','Research gaps'],['pathways','Pathways'],['method','Method'],['contribute','Contribute']].map(([id,label])=>`<a href="#${id}">${label}</a>`).join('');
+$('.ft .wrap').innerHTML='<span><b>Gradual Disempowerment Dashboard</b> / Better Futures Project / Zhang Yue</span><span>AI-assisted source summaries / <a href="#method">Method</a> / <a href="#futures">Futures</a></span>';
+render=function(id){
+  clearInterval(tourTimer);tourTimer=null;
+  const [raw,sub]=String(id).split('/'),base=raw==='evidence'||raw==='record'?'gaps':raw==='map'?'pathways':raw==='why'?'contribute':raw;
+  if(['library','review'].includes(base)){render(ORDER.includes(sub)?sub:'gaps');return}
+  if(ORDER.includes(base)&&sub&&!['source','more'].includes(sub)&&!SELECTED_EVIDENCE[base].sources.some(s=>s.id===sub||(s.legacy||[]).includes(sub))){render(base);return}
+  const v=$('#view');let active=base;
+  window.scrollTo({top:0,behavior:'instant'});
+  if(base==='home'||!base)viewHome10(v);
+  else if(base==='emerging')viewEmerging10(v,sub);
+  else if(base==='pathways')viewPathways10(v);
+  else if(base==='gaps'&&!ORDER.includes(sub))viewResearch10(v);
+  else if(base==='gaps'&&ORDER.includes(sub)){baseRender10(sub);attachGaps10(v,sub);requestAnimationFrame(()=>document.getElementById('research-'+sub)?.scrollIntoView({block:'start',behavior:'instant'}))}
+  else{
+    const publicId=ORDER.includes(base)&&['source','more'].includes(sub)?base:id;
+    baseRender10(publicId);
+    if(ORDER.includes(base)){active='gaps';if(!sub||['source','more'].includes(sub)){attachGaps10(v,base);if(sub){const d=$('#'+base+(sub==='source'?'-source':'-related'),v);if(d){d.open=true;requestAnimationFrame(()=>d.scrollIntoView({block:'start',behavior:'instant'}))}}}}
+    else if(base==='method')updateMethod10(v);
+    else if(base==='details')active='gaps';
+    else if(!['contribute','why','futures','method'].includes(base)){viewHome10(v);active='home'}
+  }
+  current=id;
+  document.title=(ORDER.includes(base)?nameOf(base):{home:'Home',emerging:'Emerging evidence',gaps:'Research gaps',pathways:'Pathways',method:'Method',contribute:'Contribute',futures:'Futures'}[active]||'Dashboard')+' / Gradual Disempowerment Dashboard';
+  $$('.nav a').forEach(a=>a.getAttribute('href')==='#'+active?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+  $$('details',v).forEach(d=>d.addEventListener('toggle',()=>{if(d.open)Charts.redraw()}));
+};
 render((location.hash||'#home').slice(1));initCaveats5();
 </script>
 </body>

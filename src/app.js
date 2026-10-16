@@ -74,8 +74,8 @@ document.addEventListener('click',e=>{
   const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go);return}
   const a=e.target.closest('a[href^="#"]');if(a&&a.getAttribute('href').length>1){e.preventDefault();go(a.getAttribute('href').slice(1))}
 });
-window.addEventListener('popstate',()=>render((location.hash||'#map').slice(1)));
-window.addEventListener('hashchange',()=>{const h=(location.hash||'#map').slice(1);if(h!==current)render(h)});
+window.addEventListener('popstate',()=>render((location.hash||'#home').slice(1)));
+window.addEventListener('hashchange',()=>{const h=(location.hash||'#home').slice(1);if(h!==current)render(h)});
 
 /* ----- the measurement record: every dated observation behind the site ----- */
 let RECORD=null;
