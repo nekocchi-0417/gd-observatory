@@ -8,6 +8,7 @@
   --s1:#1c5cab; --s2:#3f76c0; --s3:#566a60; --ctx:#84968b;
   --coverage-major:#b12b38; --coverage-partial:#9b570b; --coverage-stronger:#14704d;
   --map-path:#63796d;
+  --compare-ai:#006f68; --compare-human:#963857;
 }
 :root[data-theme="dark"] {
   color-scheme:dark;
@@ -18,6 +19,7 @@
   --s1:#8fbdf3; --s2:#79a7e4; --s3:#afc6b8; --ctx:#82988b;
   --coverage-major:#ff8e98; --coverage-partial:#efbb64; --coverage-stronger:#72d5a5;
   --map-path:#82988b;
+  --compare-ai:#74d7cc; --compare-human:#ffabc5;
 }
 :root {
   --maxw:1280px; --page-gutter22:40px; --anchor-offset22:96px;

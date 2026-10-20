@@ -16,7 +16,7 @@ const evidencePairs20 = [
   },
   {
     id: 'culture', n: '03', left: 'uploads', right: 'streams',
-    title: 'AI music makes up far more of new uploads than of listening on Deezer.',
+    title: 'AI music accounts for more of Deezer\'s new uploads than its recorded plays.',
     tag: 'One streaming platform',
     watch: 'A growing upload share alone tells us little about displacement. The next signal is whether human creators lose genuine audience attention or income.'
   }
@@ -47,12 +47,12 @@ function viewEvidence20(v, anchor) {
 
 const gapCoverageSummaries20 = {
   capability:'Benchmarks test defined tasks; performance across complete workflows is less well established.',
-  adoption:'Repeated surveys track how often people and businesses use AI.',
+  adoption:'Repeated surveys track reported AI use in selected countries and workplaces.',
   handover:'Provider logs describe tasks handed to AI; human review and intervention are less visible.',
   work:"Payroll studies track employment in AI-exposed jobs; links to firms' actual AI use are less clear.",
   share:"Official statistics track workers' share of income; AI's contribution is harder to isolate.",
   skills:'Short trials test learning; longer-term changes in unaided skills remain unclear.',
-  culture:'Platform data track AI uploads and listening; coverage of wider audiences and creator income is limited.',
+  culture:'Platform data track AI uploads and recorded plays; genuine audience attention and creator income are less visible.',
   institutions:'Inventories list AI applications; comparable records of decisions, overrides and appeals are limited.',
   influence:"Surveys capture perceived control; people's practical ability to refuse or challenge AI is less directly measured."
 };
@@ -103,7 +103,7 @@ function gapColumns20() {
 }
 
 function viewGaps20(v) {
-  v.innerHTML = `<div class="view5 wrap gaps20"><header class="intro20"><div class="eye5"><span>Research gaps</span></div><h1 class="h1-5">Where do we need better measures?</h1></header>
+  v.innerHTML = `<div class="view5 wrap gaps20"><header class="intro20"><div class="eye5"><span>Research gaps</span></div><h1 class="h1-5">Where do we need better measures?</h1><p class="diagram-intro26">Proposed pathways to gradual disempowerment, with evidence and measurement gaps at each step.</p></header>
     <section class="gap-pathway20" aria-label="Proposed gradual disempowerment pathways"><div id="gaps-map20"></div></section>
     <section class="gap-coverage20" aria-labelledby="gap-coverage-title20"><h2 class="h2-5 sm" id="gap-coverage-title20">What the selected evidence covers</h2>
       ${gapColumns20()}<p class="note5">Provisional, AI-assisted assessment of selected sources. <a href="#method/coverage">How assessed</a></p>
@@ -220,6 +220,11 @@ function renderReorganized20(id) {
 }
 
 installWork10();
+// Align the restored topic copy with the source framing used in Evidence.
+TOPIC_CHARTS.skills.measure='Adjusted difference in unaided exam scores versus the no-AI group, rescaled to 0-100.';
+TOPIC_CHARTS.skills.chart.axis='Score difference (rescaled to 0-100)';
+TOPIC_CHARTS.culture.notes.find(note=>note[0]==='Data')[1]='The 13 October 2026 release dates its figures to August; the stream-sampling window is unspecified. Evidence uses the separate April release. The 1-3% range is reported by Deezer, not a confidence interval.';
+SELECTED_EVIDENCE.culture.sources.find(source=>source.id==='deezer').label='AI music: uploads and recorded plays';
 COPY.home.cta.buttons = COPY.home.cta.buttons.map(button => button.to === 'contribute/funding' ? { ...button, t: 'Find funding', to: 'projects/grants' } : button);
 COPY.home.cta.why = 'How to contribute';
 $('.nav').innerHTML = [['home', 'Home'], ['evidence', 'Evidence'], ['gaps', 'Research gaps'], ['projects', 'Projects & grants'], ['contribute', 'Contribute'], ['method', 'Method']].map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join('');

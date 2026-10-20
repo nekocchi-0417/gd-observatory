@@ -297,6 +297,16 @@ for (const width of [1200, 600, 335]) {
   assert.match(v.textContent, /12\.8%/);
   assert.match(v.textContent, /5\.4 points lower/);
   assert.match(v.textContent, /1-3%/);
+  assert.match(v.querySelector('#work-left20').parentElement.textContent,/80% predicted success/);
+  assert.match(v.querySelector('#work-left20').parentElement.textContent,/Archived TH1.1/);
+  assert.match(v.querySelector('#work-left20').parentElement.textContent,/1.6-6.6/);
+  assert.match(v.querySelector('#skills-right20').textContent,/rescaled to 0-100/);
+  assert.match(v.querySelector('#compare-skills .pair-notes10').textContent,/1.96 times the reported clustered standard error/);
+  assert.match(v.querySelector('#pair-culture').textContent,/recorded plays/);
+  assert(v.querySelector('#work-right20 svg path[stroke="var(--human10, var(--s1))"][stroke-dasharray]'),'Highlighted human outcome has a distinct line style and a topic-page colour fallback');
+  assert.doesNotMatch(h.run('TOPIC_CHARTS.work.related[0].text'),/two extreme quintiles/);
+  assert.match(h.run('TOPIC_CHARTS.skills.measure'),/rescaled to 0-100/);
+  assert.match(h.run('TOPIC_CHARTS.culture.notes.find(note=>note[0]==="Data")[1]'),/separate April release/);
   assert.equal(h.document.querySelector('.nav [aria-current="page"]').getAttribute('href'), '#evidence');
   // The actual chart functions produce finite SVG geometry at both test widths.
   for (const svg of v.querySelectorAll('.chart svg')) {
@@ -344,6 +354,7 @@ for (const width of [1200, 600, 335]) {
     }
     const map=v.querySelector('#gaps-map20');
     assert(map);
+    assert.match(v.querySelector('.diagram-intro26').textContent,/Proposed pathways to gradual disempowerment/);
     assert(v.innerHTML.indexOf('id="gaps-map20"')<v.innerHTML.indexOf('class="gap-columns20"'));
     assert.equal(map.querySelectorAll('.st5').length,9);
     assert.equal(map.querySelectorAll('.ml5[data-id]').length,0);
@@ -558,7 +569,7 @@ for (const theme of ['light', 'dark']) {
   const palette = appearance.match(new RegExp(`:root\\[data-theme="${theme}"\\]\\s*\\{([^}]+)\\}`))[1];
   const colours = Object.fromEntries([...palette.matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map(match => [match[1], rgb(match[2])]));
   for (const background of ['paper', 'surface', 'surface-2']) {
-    for (const foreground of ['ink', 'ink-2', 'ink-3', 'accent', 'coverage-major', 'coverage-partial', 'coverage-stronger']) {
+    for (const foreground of ['ink', 'ink-2', 'ink-3', 'accent', 'coverage-major', 'coverage-partial', 'coverage-stronger', 'compare-ai', 'compare-human']) {
       assert(contrast(colours[foreground], colours[background]) >= 4.5, `${theme}: ${foreground} text on ${background}`);
     }
     for (const foreground of ['s1', 's2', 's3', 'map-path']) {

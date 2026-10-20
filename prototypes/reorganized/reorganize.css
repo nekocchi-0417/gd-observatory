@@ -1,5 +1,5 @@
 /* Page structure is retained; appearance.css supplies theme and spacing overrides. */
-.evidence20 { --ai10:var(--s1); --human10:var(--s3); --warn10:var(--ink-2); }
+.evidence20 { --ai10:var(--compare-ai); --human10:var(--compare-human); --warn10:var(--ink-2); }
 .evidence20 *, .gaps20 * { box-sizing:border-box; letter-spacing:0; }
 .intro20 { max-width:960px; margin-bottom:30px; }
 .intro20 .lead5 { max-width:65ch; margin-top:16px; }
@@ -26,6 +26,7 @@
 .compare-figure10 .chart-y-label { font-size:12px; min-height:36px; }
 .compare-figure10 .chart-x-label { font-size:12px; }
 .compare-figure10.human10 .chart { --s1:var(--human10); --s2:var(--ink-3); }
+.compare-figure10:not(.human10) .chart { --s1:var(--ai10); }
 .chart-note10 { font:12px/1.6 var(--f-display); color:var(--ink-3); margin:6px 0 12px; }
 .figure-take10 { border-top:1px solid var(--rule); padding-top:14px; font:16px/1.6 var(--f-text); color:var(--ink-2); }
 .figure-take10 strong { color:var(--ink); font-weight:650; }
@@ -54,6 +55,7 @@
   }
 }
 .gap-pathway20 { margin-top:28px; }
+.diagram-intro26 { max-width:80ch; margin-top:16px; font:15px/1.6 var(--f-display); color:var(--ink-2); }
 .gap-map-scroll20 { overflow-x:auto; max-width:100%; border-block:1px solid var(--rule); background:var(--surface); --map-bg:var(--surface); }
 .gaps20 .gap-map20 { display:block; min-width:1000px; margin:0; max-width:none; }
 .gap-map20.is-previewing .seg5:not(.active) { opacity:.25; }

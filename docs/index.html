@@ -1345,7 +1345,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 @media(max-width:480px){.benchmark-facts7>div{grid-template-columns:minmax(0,1fr);gap:6px}.benchmark-facts7 dd{text-align:left;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}.benchmark-facts7 dd span{margin:0}}
 </style>
 <meta name="gd-build" content="topic-evidence-maps-2026-10-19"><style>/* Page structure is retained; appearance.css supplies theme and spacing overrides. */
-.evidence20 { --ai10:var(--s1); --human10:var(--s3); --warn10:var(--ink-2); }
+.evidence20 { --ai10:var(--compare-ai); --human10:var(--compare-human); --warn10:var(--ink-2); }
 .evidence20 *, .gaps20 * { box-sizing:border-box; letter-spacing:0; }
 .intro20 { max-width:960px; margin-bottom:30px; }
 .intro20 .lead5 { max-width:65ch; margin-top:16px; }
@@ -1372,6 +1372,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 .compare-figure10 .chart-y-label { font-size:12px; min-height:36px; }
 .compare-figure10 .chart-x-label { font-size:12px; }
 .compare-figure10.human10 .chart { --s1:var(--human10); --s2:var(--ink-3); }
+.compare-figure10:not(.human10) .chart { --s1:var(--ai10); }
 .chart-note10 { font:12px/1.6 var(--f-display); color:var(--ink-3); margin:6px 0 12px; }
 .figure-take10 { border-top:1px solid var(--rule); padding-top:14px; font:16px/1.6 var(--f-text); color:var(--ink-2); }
 .figure-take10 strong { color:var(--ink); font-weight:650; }
@@ -1400,6 +1401,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   }
 }
 .gap-pathway20 { margin-top:28px; }
+.diagram-intro26 { max-width:80ch; margin-top:16px; font:15px/1.6 var(--f-display); color:var(--ink-2); }
 .gap-map-scroll20 { overflow-x:auto; max-width:100%; border-block:1px solid var(--rule); background:var(--surface); --map-bg:var(--surface); }
 .gaps20 .gap-map20 { display:block; min-width:1000px; margin:0; max-width:none; }
 .gap-map20.is-previewing .seg5:not(.active) { opacity:.25; }
@@ -1480,6 +1482,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   --s1:#1c5cab; --s2:#3f76c0; --s3:#566a60; --ctx:#84968b;
   --coverage-major:#b12b38; --coverage-partial:#9b570b; --coverage-stronger:#14704d;
   --map-path:#63796d;
+  --compare-ai:#006f68; --compare-human:#963857;
 }
 :root[data-theme="dark"] {
   color-scheme:dark;
@@ -1490,6 +1493,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
   --s1:#8fbdf3; --s2:#79a7e4; --s3:#afc6b8; --ctx:#82988b;
   --coverage-major:#ff8e98; --coverage-partial:#efbb64; --coverage-stronger:#72d5a5;
   --map-path:#82988b;
+  --compare-ai:#74d7cc; --compare-human:#ffabc5;
 }
 :root {
   --maxw:1280px; --page-gutter22:40px; --anchor-offset22:96px;
@@ -7344,10 +7348,10 @@ const pairDefs10=[
 function comparisonCard10(key,uid,home=false){
   const W=COMPARISON_DATA.work;
   const cards={
-    capability:{lane:'AI capability',type:'Tests over time',title:'Models are completing longer tasks',measure:'Software, machine-learning and cybersecurity tasks tested by METR.',publisher:'METR',url:CAPABILITY7.metr.url,period:'Mar 2023 - Apr 2026',take:'METR estimates that the best model it tested in 2026 could handle technical tasks taking a human expert <strong>about three hours</strong>, up from <strong>under a minute in 2023</strong>.'},
+    capability:{lane:'AI capability',type:'Tests over time',title:'Models are completing longer tasks',measure:'Technical-task length at 80% predicted success, measured in human-expert time.',publisher:'METR',url:CAPABILITY7.metr.url,period:'Mar 2023 - Apr 2026 / Archived TH1.1',take:'In METR\'s archived series, estimated task length rose from <strong>under a minute for GPT-4 in March 2023</strong> to <strong>about three hours for Mythos Preview (early) in April 2026</strong>, at the same success threshold.'},
     work:{lane:'Employment',type:'Monthly payroll records',title:'Employment is falling among young workers',measure:'US workers aged 22-25, in occupations with the greatest potential for AI assistance.',publisher:'Stanford / ADP',url:W.sourceURL,period:'Sep 2021 - Aug 2026',take:'In these occupations, employment among <strong>22-25-year-olds fell 12.8%</strong> between November 2022 and August 2026. Older age groups saw smaller falls or increases.'},
     adoption:{lane:'AI adoption',type:'Repeated survey',title:'More employees use AI regularly at work',measure:'How often US employees report using AI in their role.',publisher:'Gallup',url:ADOPTION7.url,period:'May 2023 - Aug 2026',take:'Regular workplace AI use rose from <strong>11% in May 2023 to 32% in August 2026</strong>. Daily use grew from <strong>4% to 16%</strong> of US employees.'},
-    skills:{lane:'Learning',type:'One experiment',title:'Students scored lower after practising with unrestricted AI',measure:'Maths exam results after AI-assisted practice at one Turkish high school.',publisher:'Bastani et al. / PNAS',url:source10('skills').url,period:'2023 trial / Published 2025',take:'Students who practised with unrestricted GPT scored <strong>5.4 points lower out of 100</strong> when tested without AI, compared with the no-AI group. The guided tutor group showed no clear difference.'},
+    skills:{lane:'Learning',type:'One experiment',title:'Students scored lower after practising with unrestricted AI',measure:'Maths exam results after AI-assisted practice at one Turkish high school.',publisher:'Bastani et al. / PNAS',url:source10('skills').url,period:'2023 trial / Published 2025',take:'After practising with unrestricted GPT, students\' adjusted unaided exam scores were <strong>5.4 points lower on a rescaled 0-100 scale</strong> than the no-AI group. The guided tutor group showed no clear difference.'},
     uploads:{lane:'AI music uploads',type:'Five company reports',title:'AI music accounts for a growing share of new uploads',measure:'Fully AI-generated tracks uploaded to Deezer each day.',publisher:'Deezer',url:COMPARISON_DATA.music.sourceURL,period:'Jan 2025 - Apr 2026 reports',take:'AI-generated music rose from <strong>about 10% of Deezer\'s daily uploads in January 2025</strong> to <strong>about 44% in April 2026</strong>.'},
     streams:{lane:'Music played',type:'One reported range',title:'AI music receives a small share of plays',measure:'Fully AI-generated tracks as a share of all recorded plays on Deezer.',publisher:'Deezer',url:COMPARISON_DATA.music.sourceURL,period:'Apr 2026 report',take:'In April 2026, Deezer reported that fully AI-generated tracks received <strong>1-3% of recorded plays</strong>, despite making up about 44% of new daily uploads.'}
   };
@@ -7363,7 +7367,7 @@ function comparisonCard10(key,uid,home=false){
     take:'In these occupations, employment among <strong>22-25-year-olds fell 12.8%</strong> between November 2022 and August 2026. Older age groups saw smaller falls or increases.',
     note:2,noteTitle:'Which workers are included',hint:'Selected US employers using ADP payroll. Occupations are grouped by how much AI could assist with their tasks.'
   });
-  const chartNote={capability:'Each dot is a tested model; the line joins record-high estimates.',work:'100 = employment in November 2022; 90 = 10% fewer people employed.',adoption:'Any use: a few times a year or more. Regular: a few times a week or more. Daily users are included in both broader groups.',skills:'One short-term trial; longer-term effects on skills remain uncertain.',uploads:'The line connects five rounded company reports. The detector may change over time.',streams:'Recorded plays include fraud; Deezer also excludes AI music from recommendations.'}[key];
+  const chartNote={capability:'Dots show tested models; the line joins record highs. Latest estimate: 3.1 hours (95% interval: 1.6-6.6). Mainly software, ML and cybersecurity tasks.',work:'100 = employment in November 2022; 90 = 10% fewer people employed.',adoption:'Any use: a few times a year or more. Regular: a few times a week or more. Daily users are included in both broader groups.',skills:'Adjusted score differences, rescaled to 0-100. One short-term trial; lasting skill changes were not tested.',uploads:'Five company reports: about 10%, over 18%, over 28%, about 39% and about 44%. The detector may change over time.',streams:'Recorded plays include fraud; Deezer also excludes AI music from recommendations.'}[key];
   const ref=home?`<sup><button type="button" class="note-ref12" data-home-note="${key}" aria-controls="home-note-${key}" aria-expanded="false" aria-label="Note ${c.note}: ${esc(c.noteTitle)}" title="${esc(c.hint)}">${c.note}</button></sup>`:'';
   return `<figure class="compare-figure10${human?' human10':''}" aria-labelledby="${uid}-title"><figcaption><div class="figure-meta10"><span class="lane10">${esc(c.lane)}</span>${home?'':`<span>${esc(c.type)}</span>`}</div><h3 id="${uid}-title">${esc(c.title)}${ref}</h3><p class="measure10">${esc(c.measure)}</p><div class="source10">${ext7(c.url,'Source: '+c.publisher)}<span>${esc(c.period)}</span></div></figcaption><div class="chart" id="${uid}" data-comparison-chart="${key}"></div><p class="chart-note10">${chartNote}</p><p class="figure-take10">${c.take}</p></figure>`;
 }
@@ -7380,12 +7384,12 @@ function homeNotes12(){
 
 function pairNotes10(p){
   if(p.id==='work')return `<div class="more10"><div><h4>AI capability</h4><p>METR estimates the task length at which a model succeeds 80% of the time, using the time a human expert would need. The chart includes 23 models released from 2023 onward, and connects record-high estimates. It does not use a fitted trend or project future progress.</p><p>The latest estimate is 3.1 hours, with a wide 95% uncertainty interval of 1.6-6.6 hours. METR's TH1.1 series is archived. Results on these technical tasks may transfer unevenly to complete jobs.</p><p>${ext7(CAPABILITY7.metr.url,'METR methods')} / ${ext7(CAPABILITY7.metr.data,'Original data')}</p></div><div><h4>Employment</h4><p>${esc(COMPARISON_DATA.work.caveat)}</p><p>${ext7(COMPARISON_DATA.work.sourceURL,'Stanford study')} / ${ext7(COMPARISON_DATA.work.dataURL,'Original data')}</p><p>A different finding: a Danish study found no extra decline in young workers' share of workplace employment where chatbot use was encouraged through 2024. ${ext7(originalWork10.support[0].url,'Humlum & Vestergaard')}</p></div></div><p class="source-actions7"><a href="#capability/source">Capability data and uncertainty</a><a href="#work/source">Employment data and caveats</a></p>`;
-  if(p.id==='skills')return `<div class="more10"><div><h4>AI use</h4><p>Gallup asks US employees how often they use AI. Daily users are also included in regular and any use; the percentages must not be added. The survey leaves working time and tasks automated unresolved.</p><p>${ext7(ADOPTION7.url,'Gallup table and methods')} / ${ext7(ADOPTION7.referenceURL,'OWID visual reference')}</p><p>Redrawn from all three Gallup columns across eight survey waves. Our World in Data inspired the presentation; Gallup's table supplies the newer August 2026 values.</p></div><div><h4>Exam performance without AI</h4><p>Adjusted differences from the no-AI group, on a 100-point exam: unrestricted GPT, -5.4 points (approximate 95% interval: -9.7 to -1.1); guided tutor, -0.4 (-2.9 to +2.1). This one-school trial leaves longer-term learning effects unresolved.</p><p>${ext7(TOPIC_CHARTS.skills.dataUrl,'Bastani et al., Table 1')}</p><p>Both tools improved scores during practice with AI. The tutor estimate is compatible with a small benefit or harm; it also does not establish whether the two AI groups differ from each other.</p></div></div><p class="source-actions7"><a href="#adoption/source">Survey data and caveats</a><a href="#skills/source">Trial data and caveats</a></p>`;
+  if(p.id==='skills')return `<div class="more10"><div><h4>AI use</h4><p>Gallup asks US employees how often they use AI. Daily users are also included in regular and any use; the percentages must not be added. The survey leaves working time and tasks automated unresolved.</p><p>${ext7(ADOPTION7.url,'Gallup table and methods')} / ${ext7(ADOPTION7.referenceURL,'OWID visual reference')}</p><p>Redrawn from all three Gallup columns across eight survey waves. Our World in Data inspired the presentation; Gallup's table supplies the newer August 2026 values.</p></div><div><h4>Exam performance without AI</h4><p>Adjusted differences from the no-AI group, rescaled from 0-1 to 0-100: unrestricted GPT, -5.4 points (approximate 95% interval: -9.7 to -1.1); guided tutor, -0.4 (-2.9 to +2.1). Intervals are calculated as coefficient +/- 1.96 times the reported clustered standard error, then multiplied by 100.</p><p>${ext7(TOPIC_CHARTS.skills.dataUrl,'Bastani et al., Table 1, column 2')}</p><p>One Turkish high school, with immediate unaided exams. Both tools improved practice scores. The tutor estimate permits a small benefit or harm; this comparison does not test whether the two AI groups differ. Longer-term learning remains unresolved.</p></div></div><p class="source-actions7"><a href="#adoption/source">Survey data and caveats</a><a href="#skills/source">Trial data and caveats</a></p>`;
   return musicNotes10()+`<p>${ext7(TOPIC_CHARTS.culture.related[0].url,'Related experiment: creativity and diversity')}</p><p class="source-actions7"><a href="#culture/source">Source notes and research gaps</a></p>`;
 }
 
 function drawComparison10(el,key){
-  if(key==='capability')drawCapabilityTrend7(el,270,{yLabel:'Time a human expert would need'});
+  if(key==='capability')drawCapabilityTrend7(el,270,{yLabel:'Human-expert time (80% success)'});
   else if(key==='work')drawWork10(el,{yLabel:'Number employed (Nov 2022 = 100)',endLabel:'Ages 22-25: down 12.8%'});
   else if(key==='adoption')drawAdoption15(el);
   else if(key==='skills')drawSkillsStat10(el);
@@ -7399,14 +7403,14 @@ function drawWork10(el,labels={}){
   Charts.line(el,{h:270,table:false,legend:false,axisPlacement:'edges',aria:W.aria||W.measure,
     x:{min:2021.65,max:2026.9,ticks:[2022,2023,2024,2025,2026],ticksNarrow:[2022,2024,2026],fmt:String,tip:fmtDate,label:'Observation year'},
     y:{min:75,max:125,ticks:[80,90,100,110,120],fmt:String,tip:n=>n.toFixed(1),label:labels.yLabel||'Employment index / Nov 2022 = 100'},zero:100,
-    series:[...W.series.slice(1),W.series[0]].map(s=>({name:s.label,color:s.columnIndex===1?'var(--human10)':'var(--ink-3)',w:s.columnIndex===1?2.8:1.4,op:s.columnIndex===1?1:.65,dash:s.columnIndex===2,end:false,markers:'none',pts:rows.map(r=>[monthlyYear10(r[0]),r[s.columnIndex]])})),
+    series:[...W.series.slice(1),W.series[0]].map(s=>({name:s.label,color:s.columnIndex===1?'var(--human10, var(--s1))':'var(--ink-3)',w:s.columnIndex===1?2.8:1.4,op:s.columnIndex===1?1:.65,dash:s.columnIndex===1||s.columnIndex===2,end:false,markers:'none',pts:rows.map(r=>[monthlyYear10(r[0]),r[s.columnIndex]])})),
     ann:[{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[1],text:labels.endLabel||'Ages 22-25 / 87.2',anchor:'end',dx:-5,dy:22,strong:true},{x:monthlyYear10(rows.at(-1)[0]),y:rows.at(-1)[5],text:'Other age groups',anchor:'end',dx:-5,dy:-18}]});
 }
 
 function drawSkillsStat10(el){
   el.classList.add('stat-chart10');
   const [base,tutor]=TOPIC_CHARTS.skills.chart.rows;
-  el.innerHTML=`<div class="result-stat10"><p class="stat-label10">After practising with unrestricted GPT</p><p class="stat-value10">${Math.abs(base.value).toFixed(1)} <span>points lower</span></p><p class="stat-unit10">on a 100-point maths exam taken without AI</p><div class="stat-context10"><span>With a guided AI tutor</span><b>${tutor.value.toFixed(1)} points</b><span>No clear difference from the no-AI group</span></div><p class="stat-note10">Both results compare students with a group that practised without AI.</p></div>`;
+  el.innerHTML=`<div class="result-stat10"><p class="stat-label10">After practising with unrestricted GPT</p><p class="stat-value10">${Math.abs(base.value).toFixed(1)} <span>points lower</span></p><p class="stat-unit10">adjusted unaided exam score, rescaled to 0-100</p><div class="stat-context10"><span>With a guided AI tutor</span><b>${tutor.value.toFixed(1)} points</b><span>No clear difference from the no-AI group</span></div><p class="stat-note10">Both results compare students with a group that practised without AI.</p></div>`;
 }
 
 function drawStreamsStat10(el){
@@ -7440,6 +7444,8 @@ function viewEmerging10(v,anchor){
 function installWork10(){
   const w=COMPARISON_DATA.work,t=TOPIC_CHARTS.work;
   Object.assign(t,{scope:'US payroll sample / September 2026 release',title:w.title,measure:w.measure,credit:w.credit,takeaway:w.takeaway,dataUrl:w.dataURL,columns:['Month',...w.series.map(s=>s.label)],data:w.data.map(row=>row.map((value,i)=>i?Number(value.toFixed(2)):value)),chart:{kind:'work-ages'},notes:[['Coverage',w.population],['Chart data',w.credit],['Limit',w.caveat],['Selection',w.selection]]});
+  const paper=t.related.find(item=>item.url==='https://digitaleconomy.stanford.edu/news/canariesaug26/');
+  if(paper)paper.text='Explains the sample and alternative explanations. Its roughly 19% high-versus-low-exposure shortfall uses a different comparison. This chart follows six age groups within the most-exposed occupational quintile.';
   const source=source10('work');source.url=w.sourceURL;source.finding=w.takeaway;source.locate=w.credit;source.limit=w.caveat;source.why=w.selection;
   source.metrics=[['-12.8%','Ages 22-25, most-exposed quintile, Nov 2022-Aug 2026'],['-3.8% to +9.4%','Range across the five older age groups, same period']];
   source.checks=['Check all six age groups within quintile 5, with separate November 2022 baselines of 100.','Do not substitute the paper\'s 19% high/low exposure shortfall for an age-group comparison.'];
@@ -7723,8 +7729,8 @@ function viewMethod22(v) {
         <li><b>AI capability</b><span>METR TH1.1 estimates at 80% success. All 23 selected models remain visible; the line joins record-high estimates. Task length is the time a human expert would need. The line is neither a fitted growth rate nor a forecast.</span></li>
         <li><b>Employment</b><span>The saved September 2026 Stanford/ADP release contains 60 monthly observations for six age groups in the most AI-exposed occupational quintile. Each age group's November 2022 value is 100. The chart shows employment indices, not unemployment rates or an estimated AI effect.</span></li>
         <li><b>AI adoption</b><span>Eight Gallup survey waves. Daily, frequent and any use overlap; the percentages must not be added. These are surveys of US employees.</span></li>
-        <li><b>Learning</b><span>Bastani and colleagues' adjusted differences are rescaled from 0-1 to a 0-100 exam-score scale. The overview shows a study result rather than a time trend.</span></li>
-        <li><b>Music</b><span>Five rounded Deezer upload reports, January 2025 to April 2026, are paired with the April 1-3% recorded-stream range. The line joins release snapshots. Uploads and streams have different denominators; the stream range is not a confidence interval.</span></li>
+        <li><b>Learning</b><span>Bastani and colleagues' adjusted differences are rescaled from 0-1 to a 0-100 exam-score scale. Approximate intervals use 1.96 times the reported clustered standard error. The overview shows an immediate test result; it does not establish lasting skill loss.</span></li>
+        <li><b>Music</b><span>Five rounded Deezer upload reports, January 2025 to April 2026, are paired with the April 1-3% recorded-play range. Recorded plays include fraud. The line joins release snapshots; uploads and plays have different denominators and the range is not a confidence interval.</span></li>
       </ul><p class="note5">Each topic page features one selected chart, a short interpretation and a measurement question. Sources and caveats sit below the chart, with a link to the fuller evidence library. Check source notes before comparing values across pages. Redrawn charts do not imply endorsement by their sources.</p></details>
     </section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">What coverage means</h2>
@@ -7765,7 +7771,7 @@ const evidencePairs20 = [
   },
   {
     id: 'culture', n: '03', left: 'uploads', right: 'streams',
-    title: 'AI music makes up far more of new uploads than of listening on Deezer.',
+    title: 'AI music accounts for more of Deezer\'s new uploads than its recorded plays.',
     tag: 'One streaming platform',
     watch: 'A growing upload share alone tells us little about displacement. The next signal is whether human creators lose genuine audience attention or income.'
   }
@@ -7796,12 +7802,12 @@ function viewEvidence20(v, anchor) {
 
 const gapCoverageSummaries20 = {
   capability:'Benchmarks test defined tasks; performance across complete workflows is less well established.',
-  adoption:'Repeated surveys track how often people and businesses use AI.',
+  adoption:'Repeated surveys track reported AI use in selected countries and workplaces.',
   handover:'Provider logs describe tasks handed to AI; human review and intervention are less visible.',
   work:"Payroll studies track employment in AI-exposed jobs; links to firms' actual AI use are less clear.",
   share:"Official statistics track workers' share of income; AI's contribution is harder to isolate.",
   skills:'Short trials test learning; longer-term changes in unaided skills remain unclear.',
-  culture:'Platform data track AI uploads and listening; coverage of wider audiences and creator income is limited.',
+  culture:'Platform data track AI uploads and recorded plays; genuine audience attention and creator income are less visible.',
   institutions:'Inventories list AI applications; comparable records of decisions, overrides and appeals are limited.',
   influence:"Surveys capture perceived control; people's practical ability to refuse or challenge AI is less directly measured."
 };
@@ -7852,7 +7858,7 @@ function gapColumns20() {
 }
 
 function viewGaps20(v) {
-  v.innerHTML = `<div class="view5 wrap gaps20"><header class="intro20"><div class="eye5"><span>Research gaps</span></div><h1 class="h1-5">Where do we need better measures?</h1></header>
+  v.innerHTML = `<div class="view5 wrap gaps20"><header class="intro20"><div class="eye5"><span>Research gaps</span></div><h1 class="h1-5">Where do we need better measures?</h1><p class="diagram-intro26">Proposed pathways to gradual disempowerment, with evidence and measurement gaps at each step.</p></header>
     <section class="gap-pathway20" aria-label="Proposed gradual disempowerment pathways"><div id="gaps-map20"></div></section>
     <section class="gap-coverage20" aria-labelledby="gap-coverage-title20"><h2 class="h2-5 sm" id="gap-coverage-title20">What the selected evidence covers</h2>
       ${gapColumns20()}<p class="note5">Provisional, AI-assisted assessment of selected sources. <a href="#method/coverage">How assessed</a></p>
@@ -7969,6 +7975,11 @@ function renderReorganized20(id) {
 }
 
 installWork10();
+// Align the restored topic copy with the source framing used in Evidence.
+TOPIC_CHARTS.skills.measure='Adjusted difference in unaided exam scores versus the no-AI group, rescaled to 0-100.';
+TOPIC_CHARTS.skills.chart.axis='Score difference (rescaled to 0-100)';
+TOPIC_CHARTS.culture.notes.find(note=>note[0]==='Data')[1]='The 13 October 2026 release dates its figures to August; the stream-sampling window is unspecified. Evidence uses the separate April release. The 1-3% range is reported by Deezer, not a confidence interval.';
+SELECTED_EVIDENCE.culture.sources.find(source=>source.id==='deezer').label='AI music: uploads and recorded plays';
 COPY.home.cta.buttons = COPY.home.cta.buttons.map(button => button.to === 'contribute/funding' ? { ...button, t: 'Find funding', to: 'projects/grants' } : button);
 COPY.home.cta.why = 'How to contribute';
 $('.nav').innerHTML = [['home', 'Home'], ['evidence', 'Evidence'], ['gaps', 'Research gaps'], ['projects', 'Projects & grants'], ['contribute', 'Contribute'], ['method', 'Method']].map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join('');
