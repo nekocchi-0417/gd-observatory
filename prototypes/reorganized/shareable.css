@@ -1,5 +1,6 @@
 .skip28 { position:fixed; top:-100px; left:24px; padding:12px 16px; z-index:100; background:var(--surface); color:var(--ink); border:2px solid var(--accent); }
 .skip28:focus { top:12px; }
+#main-content { scroll-margin-top:var(--anchor-offset22); }
 .home28 .hero5 { padding-block:76px 64px; }
 .home28 .paper-link28 { margin-top:20px; font:14px/1.6 var(--f-display); }
 .home-sections28 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; padding-block:36px; border-block:1px solid var(--rule); }
