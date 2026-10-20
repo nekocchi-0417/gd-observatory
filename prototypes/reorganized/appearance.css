@@ -74,13 +74,6 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
 .home5 .hero5 .eye5 { margin-bottom:24px; }
 .home5 .purpose5-h { font-size:60px; line-height:1.06; max-width:20ch; letter-spacing:0; }
 .home5 .hero5-g.top5 .purpose5 { font-size:21px; line-height:1.6; max-width:43ch; padding:0; }
-.home5 .hero5-g.top5.measurement-intro25 { grid-template-columns:1fr; gap:20px; }
-.home5 .measurement-intro25 .purpose5-h { max-width:26ch; }
-.home5 .hero5-g.top5.measurement-intro25 .purpose5 { max-width:74ch; }
-.home-finding25 { margin:0; font:20px/1.5 var(--f-display); }
-.home-links25 { display:flex; flex-wrap:wrap; align-items:center; gap:12px 28px; margin:0; }
-.home-paper25 { font:15px/1.5 var(--f-display); color:var(--ink-2); text-decoration:underline; text-underline-offset:3px; }
-.home-links25 a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
 .home5 .sec2h5 { padding-block:28px 48px; }
 .home5 .sec2h5 .h1-5 { font-size:34px; line-height:1.18; max-width:22ch; }
 .home5 .qs5 { font-size:18px; line-height:1.6; gap:6px; }
