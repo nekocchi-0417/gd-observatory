@@ -15,6 +15,7 @@ const freshMaps25=buildDetailedMaps(buildLibraryView(loadInputs()),JSON.parse(fs
 const target = process.argv[2] || 'dist/reorganized-dashboard/index.html';
 const html = fs.readFileSync(path.join(root, target), 'utf8');
 const hasCoverageColumns = html.includes('function gapColumns20(');
+const referenceCountText = count => `${count} ${count === 1 ? 'reference' : 'references'}`;
 if (target === 'docs/index.html') assert(!html.includes('noindex,nofollow'), 'Public build must be indexable');
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(match => match[1]);
 assert.equal(scripts.length, 3);
@@ -118,7 +119,7 @@ function checkLibrary(h) {
         const expected=expectedMapRecords25(data.records,facet,column);
         const route=`library?view=map&area=${area.id}&scope=observed&facet=${facet.id}&measure=${column?.id || ''}`;
         const page=h.render(route);
-        assert.equal(page.querySelector('#library-count23').textContent,`${expected.length} references`);
+        assert.equal(page.querySelector('#library-count23').textContent,referenceCountText(expected.length));
         const actual=[...page.querySelectorAll('.library-record23')].map(el=>el.dataset.libraryId).sort();
         assert.equal(actual.join(','),expected.slice(0,25).map(r=>r.id).sort().join(','),'Detailed map cell must open the same exact sources');
         for(const row of page.querySelectorAll('.library-record23')) {
@@ -133,7 +134,7 @@ function checkLibrary(h) {
   const first=v.querySelector('[data-library-facet="learning"][data-library-measure="unaided"]');
   const count=Number(first.dataset.count);
   click('[data-library-facet="learning"][data-library-measure="unaided"]');
-  assert.equal(v.querySelector('#library-count23').textContent,`${count} references`);
+  assert.equal(v.querySelector('#library-count23').textContent,referenceCountText(count));
   assert.equal(v.querySelectorAll('.library-record23').length,Math.min(25,count));
   assert(v.querySelector('#library-results-title23').scrolled);
   assert.match(h.location.hash,/facet=learning&measure=unaided/);
@@ -163,7 +164,7 @@ function checkLibrary(h) {
   click('[data-library-view="list"]');
   assert.equal(v.querySelector('#library-map-panel23').hidden,true);
   assert.equal(v.querySelector('#library-area-field23').hidden,true);
-  assert.equal(v.querySelector('#library-count23').textContent,`${data.records.length} references`);
+  assert.equal(v.querySelector('#library-count23').textContent,referenceCountText(data.records.length));
   assert.equal(v.querySelector('#library-scope23').value,'all');
   click('#library-next23');
   assert.equal(v.querySelector('#library-page23').textContent,`Page 2 of ${Math.ceil(data.records.length/25)}`);
@@ -180,10 +181,10 @@ function checkLibrary(h) {
   assert.equal(v.querySelector('#library-empty23').hidden,false);
   click('[data-library-clear="all"]');
   filter('#library-topic23','adoption');
-  assert.equal(v.querySelector('#library-count23').textContent,`${data.records.filter(r=>r.topics.includes('adoption')).length} references`);
+  assert.equal(v.querySelector('#library-count23').textContent,referenceCountText(data.records.filter(r=>r.topics.includes('adoption')).length));
   const year=String(data.records.find(r=>r.topics.includes('adoption')).year);
   filter('#library-year23',year);
-  assert.equal(v.querySelector('#library-count23').textContent,`${data.records.filter(r=>r.topics.includes('adoption')&&String(r.year)===year).length} references`);
+  assert.equal(v.querySelector('#library-count23').textContent,referenceCountText(data.records.filter(r=>r.topics.includes('adoption')&&String(r.year)===year).length));
   for(const route of ['library/skills','library?view=map&area=autonomy','library?area=bogus&scope=bogus&topic=bogus&year=bad']) {
     v=h.render(route);
     assert.equal(v.querySelectorAll('h1').length,1);
@@ -227,7 +228,7 @@ function checkTopicResearch(h) {
     cell.dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
     assert.match(h.run('current'),/^library\?/);
     assert.equal(v.querySelector('.library-back23 a').getAttribute('href'),'#'+id);
-    assert.equal(v.querySelector('#library-count23').textContent,`${count} references`);
+    assert.equal(v.querySelector('#library-count23').textContent,referenceCountText(count));
     assert.equal(v.querySelector(`[data-library-facet="${facetID}"][data-library-measure="${measureID}"]`).getAttribute('aria-pressed'),'true');
     v=h.render('library/'+id);
     v.querySelector('[data-library-view="map"]').dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();

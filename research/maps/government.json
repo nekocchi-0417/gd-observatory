@@ -733,7 +733,7 @@
     {
       "title": "Do appeal routes lead to corrections?",
       "measured": "The US inventory records declared appeal processes; the historical Centrelink investigation examines specific complaints and review barriers.",
-      "next": "Proposed extension: link disclosed systems to privacy-preserving appeal records, reasons for reversal, time to remedy, and barriers faced by people who cannot complete an appeal.",
+      "next": "Link disclosed systems to privacy-preserving appeal records, reasons for reversal, time to remedy, and barriers faced by people who cannot complete an appeal.",
       "sources": [
         ["OMB inventory and data dictionary", "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory"],
         ["Centrelink Ombudsman investigation (2017)", "https://www.ombudsman.gov.au/__data/assets/pdf_file/0022/43528/Report-Centrelinks-automated-debt-raising-and-recovery-system-April-2017.pdf"]
@@ -742,7 +742,7 @@
     {
       "title": "When does human intervention improve decisions?",
       "measured": "Child-welfare and bail studies connect algorithmic recommendations to human decisions, with context-dependent benefits and costs of discretion.",
-      "next": "Proposed extension: follow recommendations, override reasons, and later outcomes through tool updates, testing who benefits from intervention rather than treating every override as success or failure.",
+      "next": "Follow recommendations, override reasons, and later outcomes through tool updates, testing who benefits from intervention rather than treating every override as success or failure.",
       "sources": [
         ["Erroneous-score study", "https://arxiv.org/abs/2002.08035"],
         ["Child-welfare worker study", "https://dig.cmu.edu/publications/2022-afst-disparities.html"],
@@ -752,7 +752,7 @@
     {
       "title": "Does public input change AI-assisted policy?",
       "measured": "Consult evaluates how submissions are coded; the German chatbot experiment measures preferences for public-service designs and human fallback.",
-      "next": "Proposed extension: trace minority viewpoints and disputed AI summaries into documented policy revisions, then ask participants whether their views were represented and officials explained their response.",
+      "next": "Trace minority viewpoints and disputed AI summaries into documented policy revisions, then ask participants whether their views were represented and officials explained their response.",
       "sources": [
         ["Consult evaluation (2025)", "https://assets.publishing.service.gov.uk/media/68f63fe01c9076042263f0bd/evaluation-report.pdf"],
         ["German chatbot design experiment", "https://doi.org/10.1016/j.giq.2024.101985"]

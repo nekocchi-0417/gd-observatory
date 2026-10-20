@@ -123,7 +123,7 @@ function refreshLibrary23(v,state,{scroll=false}={}) {
   $('#library-map-scope23',v).textContent=state.view==='map' ? (area.displayScope || 'The original landscape tags have not been independently checked.') : '';
   $('#library-map-method23',v).textContent=state.view==='map' ? (area.scope || '') : '';
   $('#library-selection23',v).innerHTML = facet ? `<span>${esc(facet.label)}${column ? ' / '+esc(column.label) : ''}</span><button type="button" data-library-clear="selection">Clear selection</button>` : '';
-  $('#library-count23',v).textContent = `${matched.length} references`;
+  $('#library-count23',v).textContent = `${matched.length} ${matched.length === 1 ? 'reference' : 'references'}`;
   $('#library-list23',v).innerHTML = matched.slice((state.page-1)*size,state.page*size).map(entry => libraryRecord23(entry,state)).join('');
   $('#library-empty23',v).hidden = matched.length !== 0;
   $('#library-pagination23',v).hidden = pages <= 1;
