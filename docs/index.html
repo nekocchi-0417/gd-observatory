@@ -1680,7 +1680,8 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
 #library-pagination23 { display:flex; align-items:center; justify-content:center; gap:20px; border-top:1px solid var(--rule); padding-top:24px; font-size:13px; }
 #library-pagination23 button { display:grid; place-items:center; width:44px; height:44px; font-size:23px; border:1px solid var(--rule); border-radius:4px; }
 #library-pagination23 button:disabled { opacity:.4; cursor:default; }
-.library-entry23 { display:flex; justify-content:flex-end; margin-top:32px; font:13px var(--f-display); }
+.library-entry23 { display:flex; align-items:baseline; justify-content:flex-end; flex-wrap:wrap; gap:8px 16px; margin-top:32px; font:13px/1.6 var(--f-display); }
+.library-entry23 span { font-size:12px; color:var(--ink-3); }
 .library-footer23 { margin-left:16px; white-space:nowrap; }
 .library23 :is(a,button,input,select,summary,[tabindex]):focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 @media(max-width:900px) {
@@ -7632,8 +7633,10 @@ function libraryCorner23(v,id) {
   if($('.library-entry23',v))return;
   const link=document.createElement('p');link.className='library-entry23';
   const route=topicMaps24[id]?`library?view=map&area=${topicMaps24[id].area}&scope=observed&from=${id}`:`library/${ORDER.includes(id)?id:''}`;
-  link.innerHTML=`<a href="#${esc(route)}">Evidence library &#8594;</a>`;
-  ($('.pilot7',v)||$('.priority6',v)||$('.gaps20',v)||v).append(link);
+  link.innerHTML=`<a href="#${esc(route)}">Evidence library &#8594;</a>${ORDER.includes(id)?'<span>AI-assisted; not comprehensive</span>':''}`;
+  const root=$('.pilot7',v)||$('.priority6',v)||$('.gaps20',v)||v;
+  const next=$('.pn5',root);
+  if(next) next.before(link); else root.append(link);
 }
 
 /* Map counts reuse the library; research proposals are editorial. */
@@ -7697,46 +7700,8 @@ for(const area of LIBRARY_MAP23.areas.filter(a => a.coding === 'explicit-pairs')
   };
 }
 
-function adaptTopicResearch24(root,id) {
-  const topic=topicMaps24[id];
-  if(!topic) {
-    const pending=document.createElement('section');
-    pending.className='map-pending24';pending.setAttribute('aria-labelledby',id+'-map-pending24');
-    pending.innerHTML=`<h2 id="${id}-map-pending24">Evidence map</h2><span>Coming soon</span>`;
-    $('.claim5',root).after(pending);
-    return;
-  }
-  root.classList.add('topic-research24');
-  const header=$('.claim5',root);
-  $('h1',header).textContent=topic.title;
-  const intro=document.createElement('p');
-  intro.className='topic-intro24';
-  intro.textContent=topic.intro;
-  header.append(intro);
-  $('.measure-gap8',root)?.remove();
-
-  const state=libraryState23(`library?view=map&area=${topic.area}&scope=observed&from=${id}`);
-  const explicit=libraryArea23(state).coding === 'explicit-pairs';
-  const map=document.createElement('section');
-  map.className='topic-map24';map.setAttribute('aria-labelledby',id+'-map-title24');
-  map.innerHTML=`<div class="topic-map-heading24"><h2 id="${id}-map-title24">What has been studied</h2><a href="#${esc(libraryRoute23(state))}">Full evidence library &#8594;</a></div>
-    <p class="topic-map-description24">${esc(topic.description)}</p>
-    ${topic.scope?`<p class="topic-map-scope24">${esc(topic.scope)}</p>`:''}
-    ${libraryMap23(libraryBaseRecords23(state),state,{links:true,heading:false})}
-    <p class="topic-note24"><strong>AI-assisted and not yet verified.</strong> ${explicit ? 'Each cell links to sources with a measurement description and scope note. These classifications await human review.' : 'Counts match tags on a reference; whether that measure was used for that construct needs checking.'} Empty cells may reflect missing references.</p>`;
-  header.after(map);
-
-  const gaps=$('#'+id+'-watch',root);
-  gaps.className='topic-questions24';
-  gaps.innerHTML=`<h2 id="${id}-next-title">What needs better measurement</h2><p class="topic-note24">Proposed extensions to selected studies. Their priority needs review.</p>
-    <ol class="topic-question-list24">${topic.questions.map(q=>`<li><h3>${esc(q.title)}</h3><div><p><b>Existing measure</b>${esc(q.measured)}</p><p><b>Proposed extension</b>${esc(q.next)}</p><p class="topic-question-sources24">${q.sources.map(([label,url])=>ext7(url,label)).join(' ')}</p></div></li>`).join('')}</ol>`;
-  map.after(gaps);
-
-  for(const selector of ['.evidence-chart7','.takeaway7','.disclosures7']) $(selector,root)?.remove();
-}
-
 function viewTopicSource24(v,id) {
-  // Preserve source-specific links from Evidence without reintroducing the finding on the map page.
+  // Preserve existing source-note deep links independently of the topic chart.
   savedRender20(id);
   const notes=$('#'+id+'-source .disclosure7-body',v);
   const page=document.createElement('div');page.className='view5 wrap topic-source24';
@@ -7767,7 +7732,7 @@ function viewMethod22(v) {
         <li><b>AI adoption</b><span>Eight Gallup survey waves. Daily, frequent and any use overlap; the percentages must not be added. These are surveys of US employees.</span></li>
         <li><b>Learning</b><span>Bastani and colleagues' adjusted differences are rescaled from 0-1 to a 0-100 exam-score scale. The overview shows a study result rather than a time trend.</span></li>
         <li><b>Music</b><span>Five rounded Deezer upload reports, January 2025 to April 2026, are paired with the April 1-3% recorded-stream range. The line joins release snapshots. Uploads and streams have different denominators; the stream range is not a confidence interval.</span></li>
-      </ul><p class="note5">Topic pages without evidence maps retain their selected charts. Source notes for the <a href="#skills/source">learning trial</a> and <a href="#influence/source">control survey</a> remain available separately. Check source notes before comparing values across pages. Redrawn charts do not imply endorsement by their sources.</p></details>
+      </ul><p class="note5">Each topic page features one selected chart, a short interpretation and a measurement question. Sources and caveats sit below the chart, with a link to the fuller evidence library. Check source notes before comparing values across pages. Redrawn charts do not imply endorsement by their sources.</p></details>
     </section>
     <section class="sec5" id="m-coverage"><h2 class="h2-5 sm">What coverage means</h2>
       <p class="sub5">The colours describe a provisional, AI-assisted reading of the selected measures: how directly they address the question, how often they are repeated and which settings they cover.</p>
@@ -7777,7 +7742,7 @@ function viewMethod22(v) {
         ['stronger', 'The named quantity is measured directly and repeatedly. Broader effects and attribution to AI may remain unclear.']
       ].map(([band, description]) => `<li>${coverageGlyph5(band,20)}<div><b>${esc(COPY.coverage.bands[band].label)}</b><span>${esc(description)}</span></div></li>`).join('')}</ul>
       <p class="note5">These bands have no validated numerical score or study-count threshold. They do not establish field-wide research gaps, the level of risk or a funding ranking.</p>
-      <details class="det5"><summary>How Research gaps is organised</summary><p class="sub5">The pathway diagram shows the proposed connections. Below it, the same nine steps are grouped into Major gaps, Partial coverage and Stronger coverage. Each has a short summary of what the selected evidence covers. Specific measurement questions and research proposals are on the individual topic pages.</p><p class="sub5">Five topics begin with evidence maps: Skills and judgement, Human influence, Delegation to AI, Culture and information, and AI in government. Each map groups sources by the question and measurement method, followed by proposed research extensions. Human influence focuses on individual agency; the government map adds institutional decisions and oversight. Broader political power remains outside this selection.</p><p class="sub5">The maps are AI-assisted and not yet verified. Reference counts do not determine research priorities or coverage colours. Grey "Map coming soon" labels indicate that a map has not been prepared; existing studies remain accessible. They do not indicate a lack of research.</p></details>
+      <details class="det5"><summary>How Research gaps is organised</summary><p class="sub5">The pathway diagram shows the proposed connections. Below it, the same nine steps are grouped into Major gaps, Partial coverage and Stronger coverage. Each has a short summary of what the selected evidence covers. Individual topic pages feature one selected chart and a measurement question.</p><p class="sub5">Evidence maps are available in linked library subpages for Skills and judgement, Human influence, Delegation to AI, Culture and information, and AI in government. They group sources by research facet and measurement method. Human influence focuses on individual agency; the government map adds institutional decisions and oversight. Broader political power remains outside this selection.</p><p class="sub5">The library is AI-assisted, not comprehensive and not yet verified. Its reference counts do not determine research priorities or coverage colours. A missing map or an empty cell does not establish a lack of research.</p></details>
       <p class="review-links"><a href="#gaps">View the topic-level judgments and research questions</a></p>
     </section>
     <section class="sec5" id="m-status"><h2 class="h2-5 sm">Source checks and limitations</h2>
@@ -7898,7 +7863,7 @@ function gapColumns20() {
     const label=COPY.coverage.bands[band], ids=ORDER.filter(id=>coverageOf5(id).band===band);
     return `<section class="coverage-column20" data-coverage="${band}" aria-labelledby="gap-${band}-title20">
       <header class="coverage-column-head20">${coverageGlyph5(band,22)}<div><h3 id="gap-${band}-title20">${esc(label.label)}</h3><p>${esc(label.description)}</p></div></header>
-      <ul>${ids.map(id=>`<li><a href="#${id}" class="gap-step20"><h4>${esc(nameOf(id))}</h4><p>${esc(gapCoverageSummaries20[id])}</p><span class="map-availability24${topicMaps24[id]?'':' is-pending'}">${topicMaps24[id]?'Evidence map':'Map coming soon'}</span></a></li>`).join('')}</ul>
+      <ul>${ids.map(id=>`<li><a href="#${id}" class="gap-step20"><h4>${esc(nameOf(id))}</h4><p>${esc(gapCoverageSummaries20[id])}</p></a></li>`).join('')}</ul>
     </section>`;
   }).join('')}</div>`;
 }
@@ -7920,7 +7885,6 @@ function adaptTopic20(v, id, sub) {
   back.setAttribute('aria-label', 'Research navigation');
   back.innerHTML = '<a href="#gaps">&#8592; Research gaps</a>';
   root.prepend(back);
-  if(root.classList.contains('pilot7')) adaptTopicResearch24(root,id);
   // Keep one home for each gap summary rather than repeating the overview here.
   const watch = $('#' + id + '-watch', v);
   if (watch) {

@@ -173,6 +173,8 @@ function libraryCorner23(v,id) {
   if($('.library-entry23',v))return;
   const link=document.createElement('p');link.className='library-entry23';
   const route=topicMaps24[id]?`library?view=map&area=${topicMaps24[id].area}&scope=observed&from=${id}`:`library/${ORDER.includes(id)?id:''}`;
-  link.innerHTML=`<a href="#${esc(route)}">Evidence library &#8594;</a>`;
-  ($('.pilot7',v)||$('.priority6',v)||$('.gaps20',v)||v).append(link);
+  link.innerHTML=`<a href="#${esc(route)}">Evidence library &#8594;</a>${ORDER.includes(id)?'<span>AI-assisted; not comprehensive</span>':''}`;
+  const root=$('.pilot7',v)||$('.priority6',v)||$('.gaps20',v)||v;
+  const next=$('.pn5',root);
+  if(next) next.before(link); else root.append(link);
 }

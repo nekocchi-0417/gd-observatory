@@ -195,34 +195,39 @@ function checkLibrary(h) {
 }
 
 function checkTopicResearch(h) {
-  if(!h.run('typeof adaptTopicResearch24 === "function"')) return;
   const config=h.run('LIBRARY_MAP23'),records=h.run('LIBRARY_VIEW23.records');
-  const primary=new Set(['RCT','lab experiment','field experiment','natural experiment','quasi-experiment','cross-sectional survey','panel survey','log analysis','qualitative','case study','benchmark']);
+  for(const id of h.run('ORDER')) {
+    const v=h.render(id);
+    assert.equal(v.querySelectorAll('.evidence-chart7').length,1,id+': one featured chart');
+    assert(v.querySelector('.evidence-chart7 .chart svg,.evidence-chart7 .chart [role="img"]'),id+': chart is rendered');
+    assert(v.querySelector('.takeaway7'));
+    assert(v.querySelector('#'+id+'-watch'));
+    assert(v.querySelector('#'+id+'-source .context7'));
+    assert(v.querySelector('#'+id+'-related'));
+    assert.equal(v.querySelector('.topic-map24,.library-map23,.topic-questions24,.map-pending24'),null,'Detailed maps stay in the library');
+    assert.equal(v.querySelectorAll('.library-entry23').length,1);
+    assert.match(v.querySelector('.library-entry23').textContent,/AI-assisted; not comprehensive/);
+    const elements=[...v.querySelectorAll('.evidence-chart7,.disclosures7,.library-entry23,.pn5')].map(el=>el.className.split(' ')[0]);
+    assert.deepEqual(elements,['evidence-chart7','disclosures7','library-entry23','pn5'],'Library link follows the chart notes and precedes next-topic navigation');
+  }
   for(const [id,topic] of Object.entries(h.run('topicMaps24'))) {
     const areaID=topic.area,area=config.areas.find(a=>a.id===areaID),columns=area.columns || config.columns;
     const facetID=area.facets[0].id,measureID=columns[0].id;
     let v=h.render(id);
-    assert.equal(v.querySelector('h1').textContent,h.run(`topicMaps24.${id}.title`));
-    assert.equal(v.querySelectorAll('.topic-map24').length,1);
+    const libraryLink=v.querySelector('.library-entry23 a');
+    const params=new URLSearchParams(libraryLink.getAttribute('href').split('?')[1]);
+    assert.equal(params.get('topic'),null);assert.equal(params.get('from'),id);assert.equal(params.get('scope'),'observed');assert.equal(params.get('area'),areaID);
+    libraryLink.dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
+    assert(v.querySelector('.library23'));
+    assert.match(v.textContent,/AI-assisted and not yet verified/);
+    assert.equal(v.querySelector('.library-back23 a').getAttribute('href'),'#'+id);
     assert.equal(v.querySelectorAll('.library-map23 tbody tr').length,area.facets.length);
-    assert.equal(v.querySelectorAll('.library-cell23[href]').length,area.facets.length*(columns.length+1));
-    assert.equal(v.querySelectorAll('.topic-question-list24 > li').length,topic.questions.length);
-    assert(v.innerHTML.indexOf('class="topic-map24"') < v.innerHTML.indexOf(`id="${id}-watch"`));
-    assert.equal(v.querySelector('.next-measure9,.topic-finding24,.evidence-chart7,.takeaway7,.disclosures7,.map-pending24'),null);
-    assert.doesNotMatch(v.textContent,/Selected finding/);
-    assert.match(v.querySelector('.topic-map24').textContent,/AI-assisted and not yet verified/);
-    assert.match(v.querySelector('.topic-map24').textContent,area.coding==='explicit-pairs' ? /These classifications await human review/ : /whether that measure was used for that construct needs checking/);
-    assert.match(v.querySelector('.topic-map24').textContent,/Empty cells may reflect missing references/);
-    assert.match(v.querySelector('#'+id+'-watch').textContent,/Proposed extensions/);
-    if(id==='influence') assert.match(v.querySelector('.topic-map-scope24').textContent,/Government decisions are covered/);
-    for(const cell of v.querySelectorAll('.library-cell23')) {
-      const route=cell.getAttribute('href').slice(1), params=new URLSearchParams(route.split('?')[1]);
-      assert.equal(params.get('topic'),null);assert.equal(params.get('from'),id);assert.equal(params.get('scope'),'observed');assert.equal(params.get('area'),areaID);
+    assert.equal(v.querySelectorAll('.library-map23 tbody button').length,area.facets.length*(columns.length+1));
+    for(const cell of v.querySelectorAll('.library-map23 tbody button')) {
       const facet=config.areas.find(a=>a.id===areaID).facets.find(f=>f.id===cell.dataset.libraryFacet);
       const column=columns.find(c=>c.id===cell.dataset.libraryMeasure);
       const expected=expectedMapRecords25(records,facet,column);
-      assert.equal(Number(cell.dataset.count),expected.length,'Topic map must retain all relevant area records, independent of old pathway tags');
-      assert.equal(params.get('facet'),facet.id);assert.equal(params.get('measure')||'',column?.id||'');
+      assert.equal(Number(cell.dataset.count),expected.length,'Linked map retains all relevant area records');
     }
     const cell=v.querySelector(`[data-library-facet="${facetID}"][data-library-measure="${measureID}"]`),count=Number(cell.dataset.count);
     cell.dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
@@ -249,18 +254,8 @@ function checkTopicResearch(h) {
     assert.equal(v.querySelector('.research-back20 a').getAttribute('href'),'#'+id);
     assert.match(v.textContent,/AI-assisted summary; not independently verified/);
   }
-  for(const id of h.run('ORDER.filter(id=>!topicMaps24[id])')) {
-    const v=h.render(id);
-    assert.equal(v.querySelector('.topic-research24'),null);
-    assert.equal(v.querySelectorAll('.map-pending24').length,1);
-    assert.match(v.querySelector('.map-pending24').textContent,/Evidence mapComing soon/);
-    assert.equal(v.querySelector('.map-pending24 a,.map-pending24 button'),null,'Pending map must not look actionable');
-    assert(v.querySelector('.evidence-chart7'),id+': existing research remains accessible');
-    assert(v.querySelector('.library-entry23 a'));
-  }
   const overview=h.render('gaps');
-  assert.equal(overview.querySelectorAll('.map-availability24.is-pending').length,4);
-  assert.equal(overview.querySelectorAll('.map-availability24:not(.is-pending)').length,5);
+  assert.equal(overview.querySelectorAll('.map-availability24').length,0,'Keep map status out of the main overview');
 }
 
 for (const theme of ['light', 'dark']) {
@@ -492,7 +487,7 @@ if(hasCoverageColumns) {
     const direct=harness(1200,{initialHash});
     assert.equal(direct.document.querySelectorAll('#view h1').length,1);
     assert.equal(direct.document.querySelector('.nav [aria-current="page"]').getAttribute('href'),initialHash==='#skills'?'#gaps':initialHash);
-    if(initialHash==='#skills') assert(direct.document.querySelector('.topic-map24'));
+    if(initialHash==='#skills') assert(direct.document.querySelector('.evidence-chart7'));
   }
 }
 if (html.includes('const LIBRARY_VIEW23')) {
@@ -512,7 +507,7 @@ if (html.includes('const LIBRARY_VIEW23')) {
     assert(direct.document.querySelector('.library23'));
   }
 }
-if(html.includes('function adaptTopicResearch24')) {
+if(html.includes('const topicMaps24')) {
   for(const id of ['skills','influence','handover','culture','institutions']) for(const initialHash of ['#'+id,'#'+id+'/source','#'+id+'/more','#'+id+'/gaps','#gaps/'+id]) {
     const direct=harness(600,{initialHash});
     if(initialHash.endsWith('/more')) {
@@ -524,7 +519,8 @@ if(html.includes('function adaptTopicResearch24')) {
       assert(direct.document.querySelector('.topic-source24 .disclosure7-body'),initialHash+': retain source-specific notes and caveats');
       assert.equal(direct.location.hash,initialHash);
     } else {
-      assert(direct.document.querySelector('.topic-map24'),initialHash+': map must survive direct entry');
+      assert.equal(direct.document.querySelectorAll('.evidence-chart7').length,1,initialHash+': chart must survive direct entry');
+      assert.equal(direct.document.querySelector('.topic-map24,.library-map23'),null);
       assert.equal(direct.location.hash,initialHash);
       if(initialHash.includes('/')) assert(direct.document.querySelector('#'+id+'-watch').scrolled);
     }
@@ -596,5 +592,5 @@ console.log('PASS: generated SVG geometry at widths 1200, 600 and 335, with sour
 console.log('PASS: light/dark controls, saved preferences, blocked-storage fallback, and no route/chart/disclosure reset on theme change.');
 console.log('PASS: palette text contrast >= 4.5:1 and main chart/diagram colours >= 3:1 in both modes.');
 if(html.includes('const LIBRARY_VIEW23')) console.log('PASS: library routes, filters, all map cell counts, exact source memberships, reset/pagination, query escaping and CSV export.');
-if(html.includes('function adaptTopicResearch24')) console.log('PASS: five topic maps, exact source counts/links, no selected findings, four pending maps and separate source-note routes.');
+if(html.includes('const topicMaps24')) console.log('PASS: one chart per topic, library links below source notes, five linked maps with exact counts, and preserved source-note routes.');
 console.log('Not tested: actual browser layout, CSS overflow, pointer positioning or current remote link availability.');

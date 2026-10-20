@@ -59,46 +59,8 @@ for(const area of LIBRARY_MAP23.areas.filter(a => a.coding === 'explicit-pairs')
   };
 }
 
-function adaptTopicResearch24(root,id) {
-  const topic=topicMaps24[id];
-  if(!topic) {
-    const pending=document.createElement('section');
-    pending.className='map-pending24';pending.setAttribute('aria-labelledby',id+'-map-pending24');
-    pending.innerHTML=`<h2 id="${id}-map-pending24">Evidence map</h2><span>Coming soon</span>`;
-    $('.claim5',root).after(pending);
-    return;
-  }
-  root.classList.add('topic-research24');
-  const header=$('.claim5',root);
-  $('h1',header).textContent=topic.title;
-  const intro=document.createElement('p');
-  intro.className='topic-intro24';
-  intro.textContent=topic.intro;
-  header.append(intro);
-  $('.measure-gap8',root)?.remove();
-
-  const state=libraryState23(`library?view=map&area=${topic.area}&scope=observed&from=${id}`);
-  const explicit=libraryArea23(state).coding === 'explicit-pairs';
-  const map=document.createElement('section');
-  map.className='topic-map24';map.setAttribute('aria-labelledby',id+'-map-title24');
-  map.innerHTML=`<div class="topic-map-heading24"><h2 id="${id}-map-title24">What has been studied</h2><a href="#${esc(libraryRoute23(state))}">Full evidence library &#8594;</a></div>
-    <p class="topic-map-description24">${esc(topic.description)}</p>
-    ${topic.scope?`<p class="topic-map-scope24">${esc(topic.scope)}</p>`:''}
-    ${libraryMap23(libraryBaseRecords23(state),state,{links:true,heading:false})}
-    <p class="topic-note24"><strong>AI-assisted and not yet verified.</strong> ${explicit ? 'Each cell links to sources with a measurement description and scope note. These classifications await human review.' : 'Counts match tags on a reference; whether that measure was used for that construct needs checking.'} Empty cells may reflect missing references.</p>`;
-  header.after(map);
-
-  const gaps=$('#'+id+'-watch',root);
-  gaps.className='topic-questions24';
-  gaps.innerHTML=`<h2 id="${id}-next-title">What needs better measurement</h2><p class="topic-note24">Proposed extensions to selected studies. Their priority needs review.</p>
-    <ol class="topic-question-list24">${topic.questions.map(q=>`<li><h3>${esc(q.title)}</h3><div><p><b>Existing measure</b>${esc(q.measured)}</p><p><b>Proposed extension</b>${esc(q.next)}</p><p class="topic-question-sources24">${q.sources.map(([label,url])=>ext7(url,label)).join(' ')}</p></div></li>`).join('')}</ol>`;
-  map.after(gaps);
-
-  for(const selector of ['.evidence-chart7','.takeaway7','.disclosures7']) $(selector,root)?.remove();
-}
-
 function viewTopicSource24(v,id) {
-  // Preserve source-specific links from Evidence without reintroducing the finding on the map page.
+  // Preserve existing source-note deep links independently of the topic chart.
   savedRender20(id);
   const notes=$('#'+id+'-source .disclosure7-body',v);
   const page=document.createElement('div');page.className='view5 wrap topic-source24';

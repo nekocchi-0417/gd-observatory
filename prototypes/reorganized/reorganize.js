@@ -107,7 +107,7 @@ function gapColumns20() {
     const label=COPY.coverage.bands[band], ids=ORDER.filter(id=>coverageOf5(id).band===band);
     return `<section class="coverage-column20" data-coverage="${band}" aria-labelledby="gap-${band}-title20">
       <header class="coverage-column-head20">${coverageGlyph5(band,22)}<div><h3 id="gap-${band}-title20">${esc(label.label)}</h3><p>${esc(label.description)}</p></div></header>
-      <ul>${ids.map(id=>`<li><a href="#${id}" class="gap-step20"><h4>${esc(nameOf(id))}</h4><p>${esc(gapCoverageSummaries20[id])}</p><span class="map-availability24${topicMaps24[id]?'':' is-pending'}">${topicMaps24[id]?'Evidence map':'Map coming soon'}</span></a></li>`).join('')}</ul>
+      <ul>${ids.map(id=>`<li><a href="#${id}" class="gap-step20"><h4>${esc(nameOf(id))}</h4><p>${esc(gapCoverageSummaries20[id])}</p></a></li>`).join('')}</ul>
     </section>`;
   }).join('')}</div>`;
 }
@@ -129,7 +129,6 @@ function adaptTopic20(v, id, sub) {
   back.setAttribute('aria-label', 'Research navigation');
   back.innerHTML = '<a href="#gaps">&#8592; Research gaps</a>';
   root.prepend(back);
-  if(root.classList.contains('pilot7')) adaptTopicResearch24(root,id);
   // Keep one home for each gap summary rather than repeating the overview here.
   const watch = $('#' + id + '-watch', v);
   if (watch) {
