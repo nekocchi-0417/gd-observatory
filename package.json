@@ -10,6 +10,7 @@
     "verify:static": "node tools/check-reorganized-preview.js docs/index.html",
     "verify:preview": "node tools/check-reorganized-preview.js",
     "verify:library": "node tools/verify-library-view.js",
+    "verify:maps": "node tools/verify-detailed-maps.js",
     "build:artifact": "sh build.sh artifact",
     "verify": "node tools/verify.js",
     "screenshots": "node tools/screenshot.js"

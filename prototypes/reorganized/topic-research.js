@@ -33,7 +33,7 @@ const topicMaps24 = {
     title:'How much control do people retain when AI shapes their decisions?',
     intro:"Explore research on people's choices, sense of agency and control over AI-assisted decisions.",
     description:'Agency and autonomy studies grouped by the constructs and measures tagged in our collection.',
-    scope:'This map focuses on individual agency. Institutional and political influence are not yet mapped here.',
+    scope:'This map focuses on individual agency. Government decisions are covered in the AI in government map; broader political power remains outside this selection.',
     questions:[
       {
         title:'Can people act on their choices?',
@@ -50,6 +50,14 @@ const topicMaps24 = {
     ]
   }
 };
+
+for(const area of LIBRARY_MAP23.areas.filter(a => a.coding === 'explicit-pairs')) {
+  topicMaps24[area.topic]={
+    area:area.id,
+    title:{institutions:'Who can question or change AI-assisted government decisions?',handover:'When people delegate to AI, what control do they keep?',culture:'How does AI change what people create, see and believe?'}[area.topic],
+    intro:area.intro,description:area.description,scope:area.displayScope,questions:area.questions
+  };
+}
 
 function adaptTopicResearch24(root,id) {
   const topic=topicMaps24[id];
@@ -70,13 +78,14 @@ function adaptTopicResearch24(root,id) {
   $('.measure-gap8',root)?.remove();
 
   const state=libraryState23(`library?view=map&area=${topic.area}&scope=observed&from=${id}`);
+  const explicit=libraryArea23(state).coding === 'explicit-pairs';
   const map=document.createElement('section');
   map.className='topic-map24';map.setAttribute('aria-labelledby',id+'-map-title24');
   map.innerHTML=`<div class="topic-map-heading24"><h2 id="${id}-map-title24">What has been studied</h2><a href="#${esc(libraryRoute23(state))}">Full evidence library &#8594;</a></div>
     <p class="topic-map-description24">${esc(topic.description)}</p>
     ${topic.scope?`<p class="topic-map-scope24">${esc(topic.scope)}</p>`:''}
     ${libraryMap23(libraryBaseRecords23(state),state,{links:true,heading:false})}
-    <p class="topic-note24"><strong>AI-assisted and not yet verified.</strong> Counts match tags on a reference; whether that measure was used for that construct needs checking. Empty cells may reflect missing references.</p>`;
+    <p class="topic-note24"><strong>AI-assisted and not yet verified.</strong> ${explicit ? 'Each cell links to sources with a measurement description and scope note. These classifications await human review.' : 'Counts match tags on a reference; whether that measure was used for that construct needs checking.'} Empty cells may reflect missing references.</p>`;
   header.after(map);
 
   const gaps=$('#'+id+'-watch',root);

@@ -55,6 +55,30 @@
       "action": "repair", "fields": {"title": "Huge Majorities Want AI Stopped Immediately", "cite": "Public Citizen (September 2026). Advocacy compilation of polls; individual poll findings require original-source checks.", "year": 2026, "kind": "report"},
       "basis": "Original PDF cover read; bibliography records the actual document title, author and year. Its advocacy claims are not adopted as dashboard findings.",
       "source": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf"
+    },
+    {
+      "collection": "research/scan4/culture.jsonl", "sourceId": "books-reimers",
+      "action": "repair", "fields": {"title": "AI and the Quantity and Usage of Creative Products: Have LLMs Boosted Creation of Valuable Books?", "cite": "Imke Reimers and Joel Waldfogel. NBER Working Paper 34777; first issued January 2026; version used: July 2026 revision (working paper).", "year": 2026},
+      "basis": "NBER's indexed primary landing-page text verifies the authors, current Usage title, January 2026 issue date and July 2026 revision date. This replaces the older Quality title in display metadata only. The raw numerical extraction, findings and verification flag are not revalidated or transferred to the revised version by this bibliography repair.",
+      "source": "https://www.nber.org/papers/w34777"
+    },
+    {
+      "collection": "research/landscape/master.json", "sourceId": "ashkinaze2024",
+      "action": "repair", "fields": {"cite": "Joshua Ashkinaze, Julia Mendelsohn, Li Qiwei, Ceren Budak and Eric Gilbert. First released 24 January 2024; version used: arXiv:2401.13481v3, 31 July 2025. Author record states acceptance at ACM Collective Intelligence 2025.", "year": 2025},
+      "basis": "The version-pinned arXiv page verifies the full author names, including Li Qiwei rather than the raw record's truncated Qiwei, first submission and v3 date. Its comments state conference acceptance; this is not an independent publisher-status check. Display year follows the version used, with initial release retained in the citation. Raw design, findings, publication-type and verification fields remain unchanged and are not approved by this repair.",
+      "source": "https://arxiv.org/abs/2401.13481v3"
+    },
+    {
+      "collection": "research/landscape/master.json", "sourceId": "yakura2024",
+      "action": "repair", "fields": {"cite": "Hiromu Yakura et al. First released 3 September 2024; version used: arXiv:2409.01754v4, 16 July 2026 (preprint).", "year": 2026},
+      "basis": "The version-pinned arXiv page verifies authorship, the September 2024 first submission and July 2026 v4 date. Its abstract includes the podcast analysis and human experiment described in the raw record, so these should not be presented as the 2024 version. No journal publication is identified on the consulted record. Display year follows v4; this bibliography repair does not revalidate the raw numerical extraction, design coding, findings or verification flag.",
+      "source": "https://arxiv.org/abs/2409.01754v4"
+    },
+    {
+      "collection": "research/scan4/culture.jsonl", "sourceId": "yakura-speech",
+      "action": "repair", "fields": {"cite": "Hiromu Yakura et al. First released 3 September 2024; version used: arXiv:2409.01754v4, 16 July 2026 (preprint).", "year": 2026},
+      "basis": "The version-pinned arXiv page verifies authorship and both release dates, making the initial release and version used explicit and consistent with the landscape citation. No journal publication is identified on the consulted record. The original canonical URL is retained; raw design, numerical extraction, findings and verification flag remain unchanged and are not approved by this repair.",
+      "source": "https://arxiv.org/abs/2409.01754v4"
     }
   ]
 }

@@ -9,6 +9,9 @@ catch (error) {
   ({ parseHTML } = require('../dist/test-deps/node_modules/linkedom'));
 }
 const root = path.resolve(__dirname, '..');
+const {buildLibraryView,loadInputs}=require('./build-library-view.js');
+const {buildDetailedMaps,loadDetailedMaps}=require('./build-detailed-maps.js');
+const freshMaps25=buildDetailedMaps(buildLibraryView(loadInputs()),JSON.parse(fs.readFileSync(path.join(root,'research/library-map-config.json'),'utf8')),loadDetailedMaps(root));
 const target = process.argv[2] || 'dist/reorganized-dashboard/index.html';
 const html = fs.readFileSync(path.join(root, target), 'utf8');
 const hasCoverageColumns = html.includes('function gapColumns20(');
@@ -63,13 +66,23 @@ function harness(width, { savedTheme = null, storageBlocked = false, initialHash
   return { document, Event, run, render, flush, listeners, location, storage };
 }
 
+const empiricalDesigns25=new Set(['RCT','lab experiment','field experiment','natural experiment','quasi-experiment','cross-sectional survey','panel survey','log analysis','qualitative','case study','benchmark','administrative dataset','audit']);
+function expectedMapRecords25(records,facet,column) {
+  return records.filter(entry => facet.mapArea
+    ? (entry.mapCodings || []).some(c => c.area===facet.mapArea && c.kind!=='framework' && empiricalDesigns25.has(c.design) && c.observations.some(o=>o.facet===facet.id && (!column || o.measure===column.id)))
+    : entry.kind!=='framework' && entry.landscape.some(c=>empiricalDesigns25.has(c.design) && facet.constructs.some(tag=>c.constructs.includes(tag)) && (!column || column.measures.some(tag=>c.measures.includes(tag)))));
+}
+
 function checkLibrary(h) {
   if (!h.run('typeof LIBRARY_VIEW23 !== "undefined"')) return;
   const data=h.run('LIBRARY_VIEW23'), config=h.run('LIBRARY_MAP23');
-  assert.equal(data.records.length,700);
+  assert.equal(JSON.stringify(data),JSON.stringify(freshMaps25.library),'Embedded library must match current source files; rebuild the site');
+  assert.equal(JSON.stringify(config),JSON.stringify(freshMaps25.mapConfig),'Embedded map definitions must match current source files');
+  assert.equal(data.records.length,700+data.stats.addedReferences);
+  assert.equal(config.areas.length,5);
   assert.equal(data.stats.landscapeReferences,353);
   assert.equal(data.records.filter(e=>e.landscape.length).length,data.stats.landscapeReferences);
-  assert.doesNotMatch(JSON.stringify(data),/futuresearch|"finding"|"verified"|"limits"/i);
+  assert.doesNotMatch(JSON.stringify(data),/futuresearch|"finding"|"verified"/i);
   assert.equal(h.document.querySelectorAll('.library-footer23').length,1);
   for(const id of h.run('ORDER')) {
     const topic=h.render(id);
@@ -94,11 +107,28 @@ function checkLibrary(h) {
     filter('#library-area23',area.id);
     for(const cell of v.querySelectorAll('.library-map23 tbody button')) {
       const facet=area.facets.find(f=>f.id===cell.dataset.libraryFacet);
-      const column=config.columns.find(c=>c.id===cell.dataset.libraryMeasure);
-      const expected=data.records.filter(entry=>entry.kind!=='framework' && entry.landscape.some(c=>primary.has(c.design) && facet.constructs.some(tag=>c.constructs.includes(tag)) && (!column||column.measures.some(tag=>c.measures.includes(tag)))));
+      const column=(area.columns || config.columns).find(c=>c.id===cell.dataset.libraryMeasure);
+      const expected=expectedMapRecords25(data.records,facet,column);
       assert.equal(Number(cell.dataset.count),expected.length,`${area.id}/${facet.id}/${column?.id}`);
     }
   }
+  for(const area of config.areas.filter(a=>a.coding==='explicit-pairs')) {
+    for(const facet of [area.facets[0],area.facets.at(-1)]) {
+      for(const column of [null,...area.columns]) {
+        const expected=expectedMapRecords25(data.records,facet,column);
+        const route=`library?view=map&area=${area.id}&scope=observed&facet=${facet.id}&measure=${column?.id || ''}`;
+        const page=h.render(route);
+        assert.equal(page.querySelector('#library-count23').textContent,`${expected.length} references`);
+        const actual=[...page.querySelectorAll('.library-record23')].map(el=>el.dataset.libraryId).sort();
+        assert.equal(actual.join(','),expected.slice(0,25).map(r=>r.id).sort().join(','),'Detailed map cell must open the same exact sources');
+        for(const row of page.querySelectorAll('.library-record23')) {
+          assert.match(row.textContent,/What was measured and why it is included/);
+          assert(row.querySelector('.library-coding25 li a'),'Every coded reference exposes a source location');
+        }
+      }
+    }
+  }
+  v=h.render('library');
   filter('#library-area23','cognition');
   const first=v.querySelector('[data-library-facet="learning"][data-library-measure="unaided"]');
   const count=Number(first.dataset.count);
@@ -120,20 +150,28 @@ function checkLibrary(h) {
   assert.equal(h.run('libraryCodingScope23({kind:"study"},{design:"lab experiment",side:"both",measures:[]},"human")'),true);
   assert.equal(h.run('libraryCodingScope23({kind:"study"},{design:"lab experiment",side:"both",measures:[]},"model")'),true);
   assert.equal(h.run('libraryMatches23({kind:"study",landscape:[{design:"RCT",constructs:["learning"],measures:[]},{design:"RCT",constructs:[],measures:["unaided performance"]}]},{constructs:["learning"]},{measures:["unaided performance"]},"all")'),false);
+  assert.equal(h.run('libraryMatches23({kind:"study",landscape:[],mapCodings:[{area:"government",design:"audit",observations:[{facet:"appeals",measure:"documents"},{facet:"oversight",measure:"records"}]}]},{id:"appeals",mapArea:"government"},{id:"records"},"observed")'),false,'Different observed pairs cannot create a false positive');
+  const detailedArea=config.areas.find(a=>a.coding==='explicit-pairs');
+  const mixed={id:'test',title:'Mixed coding',citation:'Test reference',year:2025,url:'https://example.org',kind:'study',topics:['skills'],provenance:[],landscape:[{constructs:['learning'],measures:['self-report'],design:'lab experiment',side:'human',domain:'Legacy lab setting'}],mapCodings:[{area:detailedArea.id,kind:'report',design:'audit',side:'institutional',domain:'New institutional audit',timespan:'One-off',limits:'Test scope',observations:[{facet:detailedArea.facets[0].id,measure:detailedArea.columns[0].id,basis:'Audit coding basis',locator:'Report',sourceUrl:'https://example.org/report'}]}]};
+  const humanDetails=h.run(`libraryRecord23(${JSON.stringify(mixed)},{view:'list',scope:'human'})`);
+  assert.match(humanDetails,/Legacy lab setting/);
+  assert.doesNotMatch(humanDetails,/New institutional audit/,'Detail must match active population filter');
+  const allDetails=h.run(`libraryRecord23(${JSON.stringify(mixed)},{view:'list',scope:'all'})`);
+  assert.match(allDetails,/Legacy lab setting/);assert.match(allDetails,/New institutional audit/);
   filter('#library-scope23','synthesis');
   assert.match(v.querySelector('#library-count23').textContent,/\d+ references/);
   click('[data-library-view="list"]');
   assert.equal(v.querySelector('#library-map-panel23').hidden,true);
   assert.equal(v.querySelector('#library-area-field23').hidden,true);
-  assert.equal(v.querySelector('#library-count23').textContent,'700 references');
+  assert.equal(v.querySelector('#library-count23').textContent,`${data.records.length} references`);
   assert.equal(v.querySelector('#library-scope23').value,'all');
   click('#library-next23');
-  assert.equal(v.querySelector('#library-page23').textContent,'Page 2 of 28');
+  assert.equal(v.querySelector('#library-page23').textContent,`Page 2 of ${Math.ceil(data.records.length/25)}`);
   click('#library-prev23');
-  assert.equal(v.querySelector('#library-page23').textContent,'Page 1 of 28');
+  assert.equal(v.querySelector('#library-page23').textContent,`Page 1 of ${Math.ceil(data.records.length/25)}`);
   for(let i=0;i<3;i++)click('[data-library-clear="all"]');
   click('#library-next23');
-  assert.equal(v.querySelector('#library-page23').textContent,'Page 2 of 28','Reset must not accumulate click handlers');
+  assert.equal(v.querySelector('#library-page23').textContent,`Page 2 of ${Math.ceil(data.records.length/25)}`,'Reset must not accumulate click handlers');
   filter('#library-search23','self-efficacy','input');
   assert.notEqual(v.querySelector('#library-count23').textContent,'0 references');
   filter('#library-search23','<img src=x onerror=alert(1)>','input');
@@ -159,27 +197,29 @@ function checkTopicResearch(h) {
   if(!h.run('typeof adaptTopicResearch24 === "function"')) return;
   const config=h.run('LIBRARY_MAP23'),records=h.run('LIBRARY_VIEW23.records');
   const primary=new Set(['RCT','lab experiment','field experiment','natural experiment','quasi-experiment','cross-sectional survey','panel survey','log analysis','qualitative','case study','benchmark']);
-  for(const [id,areaID,facetID,measureID] of [['skills','cognition','learning','unaided'],['influence','autonomy','choice','report']]) {
+  for(const [id,topic] of Object.entries(h.run('topicMaps24'))) {
+    const areaID=topic.area,area=config.areas.find(a=>a.id===areaID),columns=area.columns || config.columns;
+    const facetID=area.facets[0].id,measureID=columns[0].id;
     let v=h.render(id);
     assert.equal(v.querySelector('h1').textContent,h.run(`topicMaps24.${id}.title`));
     assert.equal(v.querySelectorAll('.topic-map24').length,1);
-    assert.equal(v.querySelectorAll('.library-map23 tbody tr').length,8);
-    assert.equal(v.querySelectorAll('.library-cell23[href]').length,64);
-    assert.equal(v.querySelectorAll('.topic-question-list24 > li').length,id==='skills'?3:2);
+    assert.equal(v.querySelectorAll('.library-map23 tbody tr').length,area.facets.length);
+    assert.equal(v.querySelectorAll('.library-cell23[href]').length,area.facets.length*(columns.length+1));
+    assert.equal(v.querySelectorAll('.topic-question-list24 > li').length,topic.questions.length);
     assert(v.innerHTML.indexOf('class="topic-map24"') < v.innerHTML.indexOf(`id="${id}-watch"`));
     assert.equal(v.querySelector('.next-measure9,.topic-finding24,.evidence-chart7,.takeaway7,.disclosures7,.map-pending24'),null);
     assert.doesNotMatch(v.textContent,/Selected finding/);
     assert.match(v.querySelector('.topic-map24').textContent,/AI-assisted and not yet verified/);
-    assert.match(v.querySelector('.topic-map24').textContent,/whether that measure was used for that construct needs checking/);
+    assert.match(v.querySelector('.topic-map24').textContent,area.coding==='explicit-pairs' ? /These classifications await human review/ : /whether that measure was used for that construct needs checking/);
     assert.match(v.querySelector('.topic-map24').textContent,/Empty cells may reflect missing references/);
     assert.match(v.querySelector('#'+id+'-watch').textContent,/Proposed extensions/);
-    if(id==='influence') assert.match(v.querySelector('.topic-map-scope24').textContent,/Institutional and political influence are not yet mapped/);
+    if(id==='influence') assert.match(v.querySelector('.topic-map-scope24').textContent,/Government decisions are covered/);
     for(const cell of v.querySelectorAll('.library-cell23')) {
       const route=cell.getAttribute('href').slice(1), params=new URLSearchParams(route.split('?')[1]);
       assert.equal(params.get('topic'),null);assert.equal(params.get('from'),id);assert.equal(params.get('scope'),'observed');assert.equal(params.get('area'),areaID);
       const facet=config.areas.find(a=>a.id===areaID).facets.find(f=>f.id===cell.dataset.libraryFacet);
-      const column=config.columns.find(c=>c.id===cell.dataset.libraryMeasure);
-      const expected=records.filter(entry=>entry.kind!=='framework'&&entry.landscape.some(c=>primary.has(c.design)&&facet.constructs.some(tag=>c.constructs.includes(tag))&&(!column||column.measures.some(tag=>c.measures.includes(tag)))));
+      const column=columns.find(c=>c.id===cell.dataset.libraryMeasure);
+      const expected=expectedMapRecords25(records,facet,column);
       assert.equal(Number(cell.dataset.count),expected.length,'Topic map must retain all relevant area records, independent of old pathway tags');
       assert.equal(params.get('facet'),facet.id);assert.equal(params.get('measure')||'',column?.id||'');
     }
@@ -201,7 +241,7 @@ function checkTopicResearch(h) {
     v.querySelector('[data-library-clear="all"]').dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
     assert.equal(v.querySelector('.library-back23 a').getAttribute('href'),'#'+id,'Reset preserves return navigation without filtering the corpus');
     v=h.render(id+'/source');
-    assert(v.querySelector('.topic-source24 .data7'),'Source-specific data must remain accessible');
+    assert(v.querySelector('.topic-source24 .disclosure7-body'),'Source-specific notes must remain accessible');
     assert(v.querySelector('#'+id+'-source'));
     assert(v.querySelector('.context7'));
     assert.equal(v.querySelector('.evidence-chart7,.topic-finding24'),null);
@@ -218,8 +258,8 @@ function checkTopicResearch(h) {
     assert(v.querySelector('.library-entry23 a'));
   }
   const overview=h.render('gaps');
-  assert.equal(overview.querySelectorAll('.map-availability24.is-pending').length,7);
-  assert.equal(overview.querySelectorAll('.map-availability24:not(.is-pending)').length,2);
+  assert.equal(overview.querySelectorAll('.map-availability24.is-pending').length,4);
+  assert.equal(overview.querySelectorAll('.map-availability24:not(.is-pending)').length,5);
 }
 
 for (const theme of ['light', 'dark']) {
@@ -472,16 +512,15 @@ if (html.includes('const LIBRARY_VIEW23')) {
   }
 }
 if(html.includes('function adaptTopicResearch24')) {
-  for(const initialHash of ['#skills','#skills/source','#skills/more','#skills/gaps','#gaps/skills','#influence','#influence/source','#influence/more','#influence/gaps','#gaps/influence']) {
+  for(const id of ['skills','influence','handover','culture','institutions']) for(const initialHash of ['#'+id,'#'+id+'/source','#'+id+'/more','#'+id+'/gaps','#gaps/'+id]) {
     const direct=harness(600,{initialHash});
-    const id=initialHash.includes('skills')?'skills':'influence';
     if(initialHash.endsWith('/more')) {
       assert(direct.document.querySelector('.library23'),initialHash+': open topic library on direct entry');
       assert.equal(direct.document.querySelector('#library-topic23').value,'');
       assert.equal(direct.document.querySelector('.library-back23 a').getAttribute('href'),'#'+id);
       assert.match(direct.location.hash,/^#library\?/);
     } else if(initialHash.endsWith('/source')) {
-      assert(direct.document.querySelector('.topic-source24 .data7'),initialHash+': retain source-specific data and caveats');
+      assert(direct.document.querySelector('.topic-source24 .disclosure7-body'),initialHash+': retain source-specific notes and caveats');
       assert.equal(direct.location.hash,initialHash);
     } else {
       assert(direct.document.querySelector('.topic-map24'),initialHash+': map must survive direct entry');
@@ -556,5 +595,5 @@ console.log('PASS: generated SVG geometry at widths 1200, 600 and 335, with sour
 console.log('PASS: light/dark controls, saved preferences, blocked-storage fallback, and no route/chart/disclosure reset on theme change.');
 console.log('PASS: palette text contrast >= 4.5:1 and main chart/diagram colours >= 3:1 in both modes.');
 if(html.includes('const LIBRARY_VIEW23')) console.log('PASS: library routes, filters, all map cell counts, exact source memberships, reset/pagination, query escaping and CSV export.');
-if(html.includes('function adaptTopicResearch24')) console.log('PASS: Skills and Human influence maps, all 128 source links/counts, no selected findings, seven pending maps and separate source-note routes.');
+if(html.includes('function adaptTopicResearch24')) console.log('PASS: five topic maps, exact source counts/links, no selected findings, four pending maps and separate source-note routes.');
 console.log('Not tested: actual browser layout, CSS overflow, pointer positioning or current remote link availability.');

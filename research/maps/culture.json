@@ -1,0 +1,612 @@
+{
+  "id": "culture",
+  "topic": "culture",
+  "label": "Culture and information",
+  "intro": "Research follows AI from cultural production to audience attention, creative work and public understanding.",
+  "description": "Studies of how AI changes cultural production, attention, creative work and public understanding.",
+  "displayScope": "Selected studies measure content, audiences and creative work. Upload counts and brief experiments do not establish wider cultural change.",
+  "scope": "Selected primary empirical sources inspected through web-accessible papers, institutional reports, author abstracts and indexed primary text on 2026-10-19. This is a research selection, not an exhaustive assessment of the field. Empty cells mean no observation is mapped in this selection. Uploads, detected AI text, recommendations, streams, clicks and time spent have different denominators. Experimental ratings and short conversations do not establish population change. Each observation explicitly pairs one facet with one measurement method; source-level design describes the principal design, with mixed components identified in the observation. No reviews, frameworks, forecasts or theory sources are included in default coverage. Research extensions are proposals based on these sources, not claims of global gaps. All classifications await human review.",
+  "facets": [
+    {
+      "id": "production",
+      "label": "Content production",
+      "description": "Creation and supply of AI-generated or AI-assisted cultural material, including creator-reported use. Counts of available works do not measure their audience."
+    },
+    {
+      "id": "exposure",
+      "label": "Exposure and attention",
+      "description": "Encountering, listening to, reading or following links to content. Reported exposure, recorded consumption and usage proxies remain distinct from time spent or comprehension."
+    },
+    {
+      "id": "livelihoods",
+      "label": "Creative livelihoods",
+      "description": "Demand for creative work, commissions and income. Job advertisements, offered pay and reported losses are different outcomes."
+    },
+    {
+      "id": "diversity",
+      "label": "Creativity and diversity",
+      "description": "Creative quality and variety of ideas, works or consumed material. Individual quality ratings, semantic variation and diversity of listening are separate operational measures."
+    },
+    {
+      "id": "representation",
+      "label": "Cultural representation",
+      "description": "How cultural contexts and identities are represented in generated material. Benchmark disparities do not establish effects on communities."
+    },
+    {
+      "id": "language",
+      "label": "Language and expression",
+      "description": "Changes in human vocabulary or expressive choices associated with model outputs, distinguishing immediate imitation from longer cultural transmission."
+    },
+    {
+      "id": "provenance",
+      "label": "Authorship and disclosure",
+      "description": "Detection and attribution of AI involvement, reactions to disclosure and preferences about credit. Detected origin is not equivalent to verified provenance or factual accuracy."
+    },
+    {
+      "id": "persuasion",
+      "label": "Beliefs and persuasion",
+      "description": "Measured changes in belief or policy agreement after AI-mediated communication. Immediate persuasion is not evidence of durable population opinion change."
+    },
+    {
+      "id": "participation",
+      "label": "Participation and voice",
+      "description": "Contributing to knowledge communities or deliberation, being heard and representing dissent. Favorable conversation ratings do not establish civic power or continued participation."
+    },
+    {
+      "id": "gatekeeping",
+      "label": "Platform gatekeeping",
+      "description": "Selection, ranking and referral mechanisms that shape discoverability and distribution. Platform policies alone are not measured effects of those policies."
+    }
+  ],
+  "columns": [
+    {
+      "id": "content_analysis",
+      "label": "Content analysis",
+      "description": "Counts, authorship classifications, lexical frequencies and semantic comparisons in corpora or collected outputs. This measures properties of material, not its audience."
+    },
+    {
+      "id": "platform_records",
+      "label": "Platform and market records",
+      "description": "Recorded uploads, streams, clicks, postings, rankings or market proxies. The observation identifies the unit, denominator and whether the comparison was experimental."
+    },
+    {
+      "id": "self_report",
+      "label": "Surveys and self-report",
+      "description": "Reported use, exposure, income changes or preferences outside an assigned content-response task. Recall, sampling and self-attribution limit interpretation."
+    },
+    {
+      "id": "creative_tasks",
+      "label": "Creative production tasks",
+      "description": "Writing or idea-generation tasks and their quality assessments, identifying whether assessors are people or scoring models. Corpus similarity is separately mapped as content analysis."
+    },
+    {
+      "id": "audience_tasks",
+      "label": "Audience response tasks",
+      "description": "Reactions to assigned material or labels, including credibility, ownership and stated engagement intentions. These are not automatically observed sharing or consumption."
+    },
+    {
+      "id": "dialogue_tasks",
+      "label": "Conversation and deliberation",
+      "description": "Outcomes within structured debates, chat exchanges or group mediation, including belief reports, perceived voice and subsequent language choices. Duration is stated per source."
+    },
+    {
+      "id": "model_tests",
+      "label": "Model and detector tests",
+      "description": "Controlled evaluations of model representations or detector performance against specified inputs and reference labels. No human outcome is inferred from model scores alone."
+    }
+  ],
+  "sources": [
+    {
+      "id": "deezer_music_2026",
+      "title": "Deezer: AI music has surpassed 50% of new music uploads for the first time",
+      "citation": "Deezer (2026), platform report, 21 July.",
+      "url": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/",
+      "year": 2026,
+      "kind": "report",
+      "design": "administrative dataset",
+      "side": "institutional",
+      "domain": "Music uploads and streaming on Deezer",
+      "timespan": "June 2026 upload snapshot; listening reported in July 2026; fraud and annual tagging figures refer to 2025.",
+      "observations": [
+        {
+          "facet": "production",
+          "measure": "platform_records",
+          "basis": "Deezer reports counts and shares of new deliveries flagged as fully AI-generated by its own detector, including peak-day upload shares. The denominator is new uploads, not the catalog or listening.",
+          "locator": "Opening bullets; Notes to editors; FAQ: How many AI-generated tracks is Deezer currently receiving?",
+          "sourceUrl": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/"
+        },
+        {
+          "facet": "exposure",
+          "measure": "platform_records",
+          "basis": "The same release separately reports the share of streams assigned to detected AI tracks and the share of AI-track streams flagged as fraudulent. Neither stream starts nor fraud-inclusive totals measure verified human listening time.",
+          "locator": "Notes to editors: AI and fraud; FAQ: How much of the actual listening on Deezer is AI-generated music?",
+          "sourceUrl": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/"
+        }
+      ],
+      "limits": "One commercially interested platform; detector and fraud labels are not independently audited here. Recommendation exclusions affect reach but their causal effect is not estimated. The page inconsistently describes daily/monthly upload volume and the year tagging began; those details are not used as estimates.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "reimers_waldfogel_books_2026",
+      "title": "AI and the Quantity and Usage of Creative Products: Have LLMs Boosted Creation of Valuable Books?",
+      "citation": "Reimers, I., and Waldfogel, J. (2026). NBER Working Paper 34777, July revision.",
+      "url": "https://www.nber.org/papers/w34777",
+      "year": 2026,
+      "kind": "study",
+      "design": "log analysis",
+      "side": "human",
+      "domain": "Book releases, detected AI involvement and book-use proxies",
+      "timespan": "Abstract compares releases from 2022 through late 2025; paper revised July 2026.",
+      "observations": [
+        {
+          "facet": "production",
+          "measure": "content_analysis",
+          "basis": "The authors compare release volumes and the share of books containing detected AI text over time, and separate output from previously active authors. NBER's disclosures identify support from the detector provider Pangram.",
+          "locator": "NBER abstract; Acknowledgements and Disclosures; July 2026 revision",
+          "sourceUrl": "https://www.nber.org/papers/w34777"
+        },
+        {
+          "facet": "exposure",
+          "measure": "platform_records",
+          "basis": "The abstract distinguishes book supply from use through counts of ratings, sales ranks and average star ratings, comparing AI-containing books with other books. These are usage and evaluation proxies, not direct reading-time measurements.",
+          "locator": "NBER abstract, discussion of book usage and author selection",
+          "sourceUrl": "https://www.nber.org/papers/w34777"
+        }
+      ],
+      "limits": "Working paper. Classification rests on the indexed primary abstract and disclosures; the full paper was inaccessible in this pass. Detector validation, sampling and detailed estimates require human checking. Observational author selection and modeled consumer surplus do not identify economy-wide creative welfare.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "pew_search_clicks_2025",
+      "title": "Google users are less likely to click on links when an AI summary appears in the results",
+      "citation": "Chapekis, A., and Lieb, A. (2025). Pew Research Center, 22 July.",
+      "url": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+      "year": 2025,
+      "kind": "report",
+      "design": "log analysis",
+      "side": "human",
+      "domain": "US Google search behavior and outbound referrals",
+      "timespan": "Browsing during March 2025; matching search results collected 7-17 April 2025.",
+      "observations": [
+        {
+          "facet": "exposure",
+          "measure": "platform_records",
+          "basis": "Consented browsing histories were linked to reconstructed Google results. Next-visited URLs and timestamps classified result clicks, AI-summary source clicks, continued searching and session endings for searches with or without summaries.",
+          "locator": "How we did this; paragraphs on result clicks and session endings",
+          "sourceUrl": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/"
+        },
+        {
+          "facet": "gatekeeping",
+          "measure": "content_analysis",
+          "basis": "The collected search pages were analyzed for which domains and website types appeared in AI-summary citations versus standard results. Citation frequency describes source selection, not the attention those sites received.",
+          "locator": "How we did this; paragraphs on the most frequently cited sources and website types",
+          "sourceUrl": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/"
+        }
+      ],
+      "limits": "Observational US panel, tracked devices and Google only. Search pages were reconstructed later, so individual exposure can be misclassified. Query differences confound summary/no-summary comparisons; clicks are not comprehension or publisher revenue.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "reuters_ai_news_2025",
+      "title": "Generative AI and news report 2025: How people think about AI's role in journalism and society",
+      "citation": "Simon, F., Nielsen, R. K., and Fletcher, R. (2025). Reuters Institute for the Study of Journalism.",
+      "url": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+      "year": 2025,
+      "kind": "report",
+      "design": "cross-sectional survey",
+      "side": "human",
+      "domain": "Public AI and news use in Argentina, Denmark, France, Japan, the UK and the US",
+      "timespan": "5 June-15 July 2025 survey, with comparisons to a 2024 survey using the same methodology; not an individual panel.",
+      "observations": [
+        {
+          "facet": "exposure",
+          "measure": "self_report",
+          "basis": "Respondents reported recent encounters with AI-generated search answers, use of generative AI for news and how often they followed source links. The report treats seeing integrated search answers separately from actively using named AI tools.",
+          "locator": "Methodology; AI-generated search engine answers; Figure 11 and Figure 12",
+          "sourceUrl": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society"
+        },
+        {
+          "facet": "provenance",
+          "measure": "self_report",
+          "basis": "The questionnaire elicited comfort with entirely human, human-led, AI-led and entirely AI-produced news, alongside views of specific newsroom uses. These are stated preferences about authorship arrangements, not a label-effect experiment.",
+          "locator": "Public opinions on the use of generative AI in journalism and news; executive summary",
+          "sourceUrl": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society"
+        }
+      ],
+      "limits": "Online survey and self-report in six countries, not global attention measurement. Recall and recognition of AI vary; country rollout differences affect exposure. Inspected indexed primary report text, including methodology and findings; direct page/PDF retrieval was intermittent.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "demirci_freelance_2025",
+      "title": "Who Is AI Replacing? The Impact of Generative AI on Online Freelancing Platforms",
+      "citation": "Demirci, O., Hannane, J., and Zhu, X. (2025). Management Science 71(10), 8097-8108.",
+      "url": "https://spiral.imperial.ac.uk/entities/publication/88113a91-b994-4717-8526-dadac657f1cb",
+      "year": 2025,
+      "kind": "study",
+      "design": "quasi-experiment",
+      "side": "institutional",
+      "domain": "Demand for freelance writing, coding and image creation on an online labor platform",
+      "timespan": "July 2021-July 2023 job postings; comparisons around ChatGPT and image-generator introductions.",
+      "observations": [
+        {
+          "facet": "livelihoods",
+          "measure": "platform_records",
+          "basis": "Difference-in-differences comparisons use posting counts across more and less exposed job categories around model releases. The published abstract also describes competition, complexity and offered pay for remaining jobs, and separately examines image-creation demand. These are demand indicators rather than realized creator earnings.",
+          "locator": "Imperial repository abstract; CESifo Working Paper 11276, introduction and empirical framework",
+          "sourceUrl": "https://spiral.imperial.ac.uk/entities/publication/88113a91-b994-4717-8526-dadac657f1cb"
+        }
+      ],
+      "limits": "Single platform and nonrandom exposure; causal interpretation depends on comparison trends and concurrent shocks. Writing/coding aggregates are not specific to literary work. Published abstract and indexed working-paper methods inspected; accepted manuscript requires a copy request. Methods text: https://www.econstor.eu/bitstream/10419/305518/1/cesifo1_wp11276.pdf",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "society_authors_2024",
+      "title": "SoA survey reveals a third of translators and quarter of illustrators losing work to AI",
+      "citation": "Society of Authors Policy Team (2024). Survey report, 11 April.",
+      "url": "https://societyofauthors.org/2024/04/11/soa-survey-reveals-a-third-of-translators-and-quarter-of-illustrators-losing-work-to-ai/",
+      "year": 2024,
+      "kind": "report",
+      "design": "cross-sectional survey",
+      "side": "human",
+      "domain": "Writers, illustrators and translators responding to a UK authors' organization",
+      "timespan": "January 2024 survey; retrospective experiences and future expectations asked in the same wave.",
+      "observations": [
+        {
+          "facet": "livelihoods",
+          "measure": "self_report",
+          "basis": "Respondents reported whether they had lost work or experienced reduced income value because of generative AI, with results by creative occupation. The report separately asks about expected future income effects; expectations are not counted as observed losses.",
+          "locator": "Creators' livelihoods at risk; About the survey",
+          "sourceUrl": "https://societyofauthors.org/2024/04/11/soa-survey-reveals-a-third-of-translators-and-quarter-of-illustrators-losing-work-to-ai/"
+        },
+        {
+          "facet": "production",
+          "measure": "self_report",
+          "basis": "The survey asked creators about using generative AI in their work, brainstorming with it and being asked to use it by publishers or commissioners. This measures reported adoption and commissioning pressure, not the volume of AI-produced works.",
+          "locator": "Use of generative AI by creators",
+          "sourceUrl": "https://societyofauthors.org/2024/04/11/soa-survey-reveals-a-third-of-translators-and-quarter-of-illustrators-losing-work-to-ai/"
+        }
+      ],
+      "limits": "Voluntary respondents recruited through an advocacy organization, including nonmembers. Income and causal attribution are self-reported; there is no administrative earnings validation or representative population estimate. Occupational subsamples are smaller than the overall response pool.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "doshi_hauser_creativity_2024",
+      "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+      "citation": "Doshi, A. R., and Hauser, O. P. (2024). Science Advances 10, eadn5290.",
+      "url": "https://doi.org/10.1126/sciadv.adn5290",
+      "year": 2024,
+      "kind": "study",
+      "design": "RCT",
+      "side": "human",
+      "domain": "Online short-fiction writing with optional GPT-4 story ideas",
+      "timespan": "One writing task followed by a separate evaluation phase; published July 2024, without longitudinal creator follow-up.",
+      "observations": [
+        {
+          "facet": "diversity",
+          "measure": "creative_tasks",
+          "basis": "Writers were randomized to no AI ideas or different allowances of AI ideas. Separate evaluators rated the resulting stories for novelty and usefulness without initially knowing AI use. Ratings assess individual work quality, not collective variety.",
+          "locator": "Introduction; Figure 1; Results: Baseline versus generative AI conditions",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/"
+        },
+        {
+          "facet": "diversity",
+          "measure": "content_analysis",
+          "basis": "Embedding cosine similarities compare each story with other stories in its condition and with AI ideas. AI-assisted stories were more similar within this experiment, a different outcome from improved evaluator ratings.",
+          "locator": "Figure 4; Materials and Methods: similarity measures",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/"
+        },
+        {
+          "facet": "provenance",
+          "measure": "audience_tasks",
+          "basis": "After AI assistance was disclosed, evaluators reported authorship ownership and hypothetical profit allocations. These exploratory judgments concern credit, not actual royalty payments.",
+          "locator": "Figure 1B; Discussion; exploratory measures described for section S5",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11244532/"
+        }
+      ],
+      "limits": "Brief constrained fiction task, not professional careers or cultural markets. Semantic similarity is a proxy. The disclosure sequence does not isolate a randomized label-only effect from the content and assistance differences.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "ashkinaze_dynamic_2025",
+      "title": "How AI Ideas Affect the Creativity, Diversity, and Evolution of Human Ideas: Evidence From a Large, Dynamic Experiment",
+      "citation": "Ashkinaze, J., et al. (2025). ACM Collective Intelligence; arXiv v3, first posted 2024.",
+      "url": "https://arxiv.org/abs/2401.13481",
+      "year": 2025,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "Online alternative-use brainstorming with AI examples and successive human responses",
+      "timespan": "Short task sessions in response chains reset after twenty trials; inspected July 2025 version.",
+      "observations": [
+        {
+          "facet": "diversity",
+          "measure": "content_analysis",
+          "basis": "Randomized exposure conditions varied AI examples among prior human ideas. Sentence embeddings measured pairwise diversity within conditions and its change along response chains. High exposure increased collective diversity in this task, unlike the short-fiction setting in Doshi and Hauser.",
+          "locator": "Sections 3.4.2-3.4.4; Table 1; Sections 5.2-5.3",
+          "sourceUrl": "https://arxiv.org/html/2401.13481v3"
+        },
+        {
+          "facet": "diversity",
+          "measure": "creative_tasks",
+          "basis": "An automated creativity scorer assessed participants' submitted alternative uses. The study did not find improved individual creativity from seeing AI examples, distinguishing creativity scores from semantic diversity.",
+          "locator": "Table 1: creativity measure; Section 5.4",
+          "sourceUrl": "https://arxiv.org/html/2401.13481v3"
+        }
+      ],
+      "limits": "Self-selected online sample; brief English-language brainstorming and bounded transmission chains. Automated creativity and embedding measures are proxies. The result does not establish sustained variety in professionally produced or consumed culture.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "naous_cultural_bias_2024",
+      "title": "Having Beer after Prayer? Measuring Cultural Bias in Large Language Models",
+      "citation": "Naous, T., Ryan, M. J., Ritter, A., and Xu, W. (2024). ACL, 16366-16393.",
+      "url": "https://aclanthology.org/2024.acl-long.862/",
+      "year": 2024,
+      "kind": "study",
+      "design": "benchmark",
+      "side": "model",
+      "domain": "Arab and Western cultural entities in Arabic-language model tasks",
+      "timespan": "Model and corpus snapshots evaluated for the 2024 paper; no population follow-up.",
+      "observations": [
+        {
+          "facet": "representation",
+          "measure": "model_tests",
+          "basis": "CAMeL evaluates culturally situated Arabic prompts and Arab/Western entities. Tests examine stereotypes in generated stories, named-entity recognition and sentiment disparities, and preference for Western entities in culturally Arab text-completion contexts.",
+          "locator": "Abstract; Section 4.2: stereotypes; Section 4.3: fairness; Section 4.4: text infilling",
+          "sourceUrl": "https://aclanthology.org/2024.acl-long.862.pdf"
+        }
+      ],
+      "limits": "A specified Arab/Western contrast and Arabic tasks, not a universal cultural-diversity scale. Models and prompts are dated. Human audience uptake, identity change and downstream exclusion are not measured; cultural categories also simplify within-group variation.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "wittenberg_labels_2025",
+      "title": "Labeling AI-generated media online",
+      "citation": "Wittenberg, C., Epstein, Z., Peloquin-Skulski, G., Berinsky, A. J., and Rand, D. G. (2025). PNAS Nexus 4(6), pgaf170.",
+      "url": "https://doi.org/10.1093/pnasnexus/pgaf170",
+      "year": 2025,
+      "kind": "study",
+      "design": "RCT",
+      "side": "human",
+      "domain": "US audience responses to misleading AI-generated social-media images",
+      "timespan": "Two survey experiments in October and December 2023; immediate responses, published 2025.",
+      "observations": [
+        {
+          "facet": "provenance",
+          "measure": "audience_tasks",
+          "basis": "Participants were randomized to labeled or unlabeled post screenshots, with labels emphasizing production process, misleading content or both. Outcomes include perceived credibility, belief in implied claims, stated engagement intentions and perceived information about how an image was made. AI-origin labels changed beliefs without consistently changing engagement intentions.",
+          "locator": "Experimental procedure; Results; Subjective evaluations; Figures 1-4",
+          "sourceUrl": "https://academic.oup.com/pnasnexus/article/4/6/pgaf170/8151894"
+        }
+      ],
+      "limits": "Misleading still-image posts and immediate survey responses, not a live-feed field trial. Stated sharing/liking is not observed behavior. The study does not validate automated detection or cryptographic provenance. Indexed publisher and archived full-text passages inspected; direct retrieval was intermittent.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "liang_detector_bias_2023",
+      "title": "GPT detectors are biased against non-native English writers",
+      "citation": "Liang, W., Yuksekgonul, M., Mao, Y., Wu, E., and Zou, J. (2023). Patterns; author manuscript v3.",
+      "url": "https://arxiv.org/abs/2304.02819",
+      "year": 2023,
+      "kind": "study",
+      "design": "audit",
+      "side": "model",
+      "domain": "AI-text detection on human essays and generated or rewritten text",
+      "timespan": "2023 detector and ChatGPT snapshots; human TOEFL samples predate ChatGPT.",
+      "observations": [
+        {
+          "facet": "provenance",
+          "measure": "model_tests",
+          "basis": "The audit compares detector false positives on human-written TOEFL essays and US school essays, then tests how vocabulary rewriting and prompting alter classification. It directly tests robustness and uneven authorship misclassification, not actual institutional sanctions.",
+          "locator": "Results; Figure 1; Methods: ChatGPT prompts used and Data",
+          "sourceUrl": "https://arxiv.org/html/2304.02819v3"
+        }
+      ],
+      "limits": "Small, differently sourced essay collections and older detectors; results should not be transferred unchanged to current systems. Linguistic-group differences also involve task and corpus differences. The study does not measure denied publication, participation or lost income.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "salvi_persuasion_2025",
+      "title": "On the conversational persuasiveness of GPT-4",
+      "citation": "Salvi, F., Horta Ribeiro, M., Gallotti, R., and West, R. (2025). Nature Human Behaviour 9, 1645-1653; corrected September 2026.",
+      "url": "https://doi.org/10.1038/s41562-025-02194-6",
+      "year": 2025,
+      "kind": "study",
+      "design": "RCT",
+      "side": "human",
+      "domain": "Structured online debates on US social and political propositions",
+      "timespan": "December 2023-April 2024 recruitment; immediate pre/post comparison around a brief debate.",
+      "observations": [
+        {
+          "facet": "persuasion",
+          "measure": "dialogue_tasks",
+          "basis": "Participants were randomized across human/GPT-4 opponents, access/no access to personal demographic information, and topic-strength conditions. Agreement with the proposition was elicited before and after debate and aligned to the opponent's assigned position. The corrected article limits the evidence for personalization beyond GPT-4's general persuasion ability.",
+          "locator": "Experimental design; Methods: Human sample; corrected Discussion, paragraph 4",
+          "sourceUrl": "https://www.nature.com/articles/s41562-025-02194-6"
+        }
+      ],
+      "limits": "Short paid task, assigned stances and US online participants; no durable opinion or voting outcome. The direct personalized/non-personalized GPT-4 contrast was not statistically significant. Correction inspected: https://www.nature.com/articles/s41562-026-02588-0 . No large personalization effect is asserted here.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "tessler_deliberation_2024",
+      "title": "AI can help humans find common ground in democratic deliberation",
+      "citation": "Tessler, M. H., et al. (2024). Science 386, eadq2852.",
+      "url": "https://doi.org/10.1126/science.adq2852",
+      "year": 2024,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "AI-mediated group statements on social and political issues, including a UK virtual citizens' assembly",
+      "timespan": "Bounded deliberation sessions reported in 2024; no long-term civic follow-up described in the inspected abstract.",
+      "observations": [
+        {
+          "facet": "participation",
+          "measure": "dialogue_tasks",
+          "basis": "Participants supplied opinions and critiques to a mediator that iteratively produced group statements. They compared AI and human mediator statements and rated clarity, informativeness and bias. A virtual citizens' assembly replicated findings with a demographically representative UK sample.",
+          "locator": "Authors' publication abstract, sentences on iterative mediation, ratings and replication",
+          "sourceUrl": "https://deepmind.google/research/publications/65220/"
+        },
+        {
+          "facet": "participation",
+          "measure": "content_analysis",
+          "basis": "Text embeddings assessed whether successful group statements incorporated dissenting opinions alongside the majority position. This is textual representation of voice, not a measure of minority influence on binding decisions.",
+          "locator": "Authors' publication abstract, sentence on text embeddings",
+          "sourceUrl": "https://deepmind.google/research/publications/65220/"
+        }
+      ],
+      "limits": "Coding is limited to the authors' primary abstract; full design details require human review. Developer-affiliated research, bounded topics and statement preferences do not establish democratic legitimacy, real policy authority or lasting participation.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "argyle_discourse_2023",
+      "title": "Leveraging AI for democratic discourse: Chat interventions can improve online political conversations at scale",
+      "citation": "Argyle, L. P., et al. (2023). PNAS 120(41), e2311627120.",
+      "url": "https://doi.org/10.1073/pnas.2311627120",
+      "year": 2023,
+      "kind": "study",
+      "design": "field experiment",
+      "side": "human",
+      "domain": "Recruited US participants discussing gun policy with political opponents online",
+      "timespan": "One paired conversation and immediate surveys; published 2023.",
+      "observations": [
+        {
+          "facet": "participation",
+          "measure": "dialogue_tasks",
+          "basis": "Conversation pairs were randomized to control or GPT-3 rephrasing suggestions offered to one partner, who could accept, edit or reject them. Post-chat reports assessed feeling understood and respected and willingness to extend expression rights to political opponents.",
+          "locator": "Experimental design; Treatment Effects; Figure 4; Materials and Methods",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10576030/"
+        },
+        {
+          "facet": "persuasion",
+          "measure": "dialogue_tasks",
+          "basis": "The study also compared policy attitudes and reports no systematic movement attributable to the rephrasing intervention. Improved perceived conversation quality is therefore not coded as evidence of policy persuasion.",
+          "locator": "Significance; Abstract; Conclusion",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10576030/"
+        }
+      ],
+      "limits": "Authors describe a field experiment, but participants were recruited into a structured chat about one issue. Immediate self-reports are not sustained civic participation or observed tolerance. Indexed primary full-text methods/results inspected; direct archive access was intermittent.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "burtch_knowledge_communities_2024",
+      "title": "The consequences of generative AI for online knowledge communities",
+      "citation": "Burtch, G., Lee, D., and Chen, Z. (2024). Scientific Reports 14, 10413.",
+      "url": "https://www.nature.com/articles/s41598-024-61221-0",
+      "year": 2024,
+      "kind": "study",
+      "design": "quasi-experiment",
+      "side": "human",
+      "domain": "Stack Overflow and related Reddit developer communities",
+      "timespan": "October 2021-March 2023; post-ChatGPT period compared with the corresponding prior-year period.",
+      "observations": [
+        {
+          "facet": "participation",
+          "measure": "platform_records",
+          "basis": "Difference-in-differences analyses use topic-level question/post volumes around ChatGPT's release, with corresponding analyses for Reddit communities. Posting-account tenure assesses changes in contributor composition. Declines in Stack Overflow posting were not mirrored by detectable Reddit declines.",
+          "locator": "Methods; Results: LLMs' effect on user content production; Figures 2, 3 and 5",
+          "sourceUrl": "https://www.nature.com/articles/s41598-024-61221-0"
+        },
+        {
+          "facet": "exposure",
+          "measure": "platform_records",
+          "basis": "A separate synthetic-control analysis compares estimated daily Stack Overflow web traffic with a counterfactual constructed from other websites' traffic. These are third-party visit estimates, distinct from the platform's contribution counts.",
+          "locator": "Results: Overall impact of LLMs on community engagement; Figure 1",
+          "sourceUrl": "https://www.nature.com/articles/s41598-024-61221-0"
+        }
+      ],
+      "limits": "Nonrandom launch comparison, short post-launch window and programming communities. Counterfactual validity and concurrent shocks matter. Account age is a composition proxy, not direct evidence of individual exit; traffic estimates do not show what replaced each visit.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "anderson_spotify_2020",
+      "title": "Algorithmic Effects on the Diversity of Consumption on Spotify",
+      "citation": "Anderson, A., Maystre, L., Mehrotra, R., Anderson, I., and Lalmas, M. (2020). Proceedings of The Web Conference.",
+      "url": "https://www.cs.utoronto.ca/~ashton/pubs/alg-effects-spotify-www2020.pdf",
+      "year": 2020,
+      "kind": "study",
+      "design": "field experiment",
+      "side": "human",
+      "domain": "Music recommendation and listening diversity on Spotify before generative AI",
+      "timespan": "Listening snapshots July 2018-July 2019; separate online ranking experiment reported in 2020.",
+      "observations": [
+        {
+          "facet": "diversity",
+          "measure": "platform_records",
+          "basis": "The observational component calculates generalist-specialist listening scores from music embeddings and compares organic and programmed listening, including changes over monthly snapshots. The paper explicitly treats lower diversity associated with recommendations as correlational.",
+          "locator": "Sections 3-5; Section 5.2: Mechanisms of Change; Figure 9",
+          "sourceUrl": "https://www.cs.utoronto.ca/~ashton/pubs/alg-effects-spotify-www2020.pdf"
+        },
+        {
+          "facet": "gatekeeping",
+          "measure": "platform_records",
+          "basis": "A distinct field experiment randomized ranking algorithms for decade-themed playlists and recorded song streams and skips, comparing responses by prior listening diversity. This tests ranking effects on engagement, not long-term homogenization.",
+          "locator": "Section 6: experimental setup and results; Table 1",
+          "sourceUrl": "https://www.cs.utoronto.ca/~ashton/pubs/alg-effects-spotify-www2020.pdf"
+        }
+      ],
+      "limits": "One platform with company coauthors; pre-generative-AI recommender evidence. The randomized ranking experiment cannot convert the separate diversity association into a causal result. Streams/skips are engagement proxies, not reported satisfaction or cultural welfare.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "yakura_spoken_language_2026",
+      "title": "Empirical evidence of Large Language Model's influence on human spoken communication",
+      "citation": "Yakura, H., et al. (2026). arXiv:2409.01754, v4; first posted 2024.",
+      "url": "https://arxiv.org/abs/2409.01754",
+      "year": 2026,
+      "kind": "study",
+      "design": "quasi-experiment",
+      "side": "human",
+      "domain": "English podcast speech and experimentally elicited vocabulary after chatbot interaction",
+      "timespan": "Podcast episodes January 2017-mid-April 2026; separate single-session experiment with a brief distractor; July 2026 preprint version.",
+      "observations": [
+        {
+          "facet": "language",
+          "measure": "content_analysis",
+          "basis": "Podcasts screened for spontaneous dialogue were transcribed consistently. Word-frequency trajectories and synthetic controls compare model-preferred words with comparison words around ChatGPT's release. This measures selected lexical shifts, not a complete change in cultural values or expression.",
+          "locator": "Abstract; Results on spontaneous speech; Methods: podcast collection and synthetic controls",
+          "sourceUrl": "https://arxiv.org/html/2409.01754v4"
+        },
+        {
+          "facet": "language",
+          "measure": "dialogue_tasks",
+          "basis": "In a separate randomized experiment, chatbot descriptions used assigned synonym variants during an image-guessing game. Participants' spoken descriptions and later forced lexical choices measured uptake, including new images after a short distractor without the chatbot present.",
+          "locator": "Figure 4; Methods: Design and experimental phases; Discussion limitations",
+          "sourceUrl": "https://arxiv.org/html/2409.01754v4"
+        }
+      ],
+      "limits": "Preprint; synthetic-control inference depends on comparison words and contemporaneous language trends. Podcasts are not representative everyday speech. The experiment supports brief lexical carryover, not lasting vocabulary or population homogenization; major version changes make the cited version important.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    }
+  ],
+  "questions": [
+    {
+      "title": "Which AI-created works receive human attention?",
+      "measured": "Deezer separates detected uploads from streams and fraud; Pew links browsing records to reconstructed AI-summary results and subsequent clicks.",
+      "next": "Extend these approaches with contemporaneous exposure logging and validated authorship labels, comparing supply, human-only consumption and time spent across platforms under their different recommendation policies.",
+      "sources": [
+        ["Deezer platform report", "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/"],
+        ["Pew search and click analysis", "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/"]
+      ]
+    },
+    {
+      "title": "When does repeated AI use broaden or narrow cultural variety?",
+      "measured": "Doshi and Hauser find greater similarity among assisted stories; Ashkinaze and colleagues find greater collective diversity under high AI-example exposure in chained brainstorming.",
+      "next": "Repeat comparable creation and consumption tasks over months, varying model diversity and exposure across languages; keep individual quality, semantic variety and audience choices as separate outcomes.",
+      "sources": [
+        ["Doshi and Hauser short-fiction experiment", "https://doi.org/10.1126/sciadv.adn5290"],
+        ["Ashkinaze and colleagues dynamic experiment", "https://arxiv.org/abs/2401.13481"]
+      ]
+    },
+    {
+      "title": "Do better AI-mediated conversations sustain participation?",
+      "measured": "Argyle and colleagues measure immediate reciprocity and conversation ratings; Tessler and colleagues measure statement preferences and textual voice; Burtch and colleagues track community posting.",
+      "next": "Follow consenting discussion groups over repeated sessions, testing whether perceived voice predicts return participation, newcomer retention and influence on shared decisions, while recording who stops contributing.",
+      "sources": [
+        ["Argyle and colleagues political-conversation experiment", "https://doi.org/10.1073/pnas.2311627120"],
+        ["Tessler and colleagues group mediation", "https://doi.org/10.1126/science.adq2852"],
+        ["Burtch and colleagues knowledge-community study", "https://www.nature.com/articles/s41598-024-61221-0"]
+      ]
+    }
+  ]
+}

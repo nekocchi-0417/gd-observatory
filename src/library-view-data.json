@@ -430,8 +430,8 @@
     },
     {
       "id": "ref:4318b1c8e5ee54c8",
-      "title": "AI and the Quantity and Quality of Creative Products: Have LLMs Boosted Creation of Valuable Books? (NBER WP 34777)",
-      "citation": "Reimers & Waldfogel 2026",
+      "title": "AI and the Quantity and Usage of Creative Products: Have LLMs Boosted Creation of Valuable Books?",
+      "citation": "Imke Reimers and Joel Waldfogel. NBER Working Paper 34777; first issued January 2026; version used: July 2026 revision (working paper).",
       "url": "https://www.nber.org/papers/w34777",
       "year": 2026,
       "kind": "study",
@@ -1896,6 +1896,49 @@
         }
       ],
       "landscape": []
+    },
+    {
+      "id": "ref:784dbbb39f557cb7",
+      "title": "Empirical evidence of Large Language Model's influence on human spoken communication",
+      "citation": "Hiromu Yakura et al. First released 3 September 2024; version used: arXiv:2409.01754v4, 16 July 2026 (preprint).",
+      "url": "https://arxiv.org/abs/2409.01754",
+      "year": 2026,
+      "kind": "study",
+      "topics": [
+        "skills",
+        "culture"
+      ],
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "yakura2024",
+          "record": 184
+        },
+        {
+          "collection": "research/scan4/culture.jsonl",
+          "sourceId": "yakura-speech",
+          "record": 20
+        }
+      ],
+      "landscape": [
+        {
+          "sourceId": "yakura2024",
+          "constructs": [
+            "creativity/diversity",
+            "collective knowledge"
+          ],
+          "measures": [
+            "usage logs",
+            "behavioural task"
+          ],
+          "design": "natural experiment",
+          "level": "group",
+          "side": "human",
+          "genai": true,
+          "timespan": "years",
+          "domain": "general public"
+        }
+      ]
     },
     {
       "id": "ref:2d1eb2d041a6bba0",
@@ -8257,6 +8300,43 @@
       ]
     },
     {
+      "id": "ref:b8753caa85722dba",
+      "title": "How AI Ideas Affect the Creativity, Diversity, and Evolution of Human Ideas: Evidence From a Large, Dynamic Experiment",
+      "citation": "Joshua Ashkinaze, Julia Mendelsohn, Li Qiwei, Ceren Budak and Eric Gilbert. First released 24 January 2024; version used: arXiv:2401.13481v3, 31 July 2025. Author record states acceptance at ACM Collective Intelligence 2025.",
+      "url": "https://arxiv.org/abs/2401.13481",
+      "year": 2025,
+      "kind": "study",
+      "topics": [
+        "skills"
+      ],
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "ashkinaze2024",
+          "record": 36
+        }
+      ],
+      "landscape": [
+        {
+          "sourceId": "ashkinaze2024",
+          "constructs": [
+            "creativity/diversity",
+            "collective knowledge"
+          ],
+          "measures": [
+            "assisted performance",
+            "behavioural task"
+          ],
+          "design": "lab experiment",
+          "level": "group",
+          "side": "human",
+          "genai": true,
+          "timespan": "single session",
+          "domain": "general public"
+        }
+      ]
+    },
+    {
       "id": "ref:ddd8dca7ac30386a",
       "title": "How AI and Human Behaviors Shape Psychosocial Effects of Chatbot Use: A Longitudinal Randomized Controlled Study",
       "citation": "Fang, Liu, Danry, Lee, Chan, Pataranutaporn, Maes, Phang, Lampe, Ahmad & Agarwal 2025",
@@ -12711,49 +12791,6 @@
       ]
     },
     {
-      "id": "ref:784dbbb39f557cb7",
-      "title": "Empirical evidence of Large Language Model's influence on human spoken communication",
-      "citation": "Yakura et al. 2024",
-      "url": "https://arxiv.org/abs/2409.01754",
-      "year": 2024,
-      "kind": "study",
-      "topics": [
-        "skills",
-        "culture"
-      ],
-      "provenance": [
-        {
-          "collection": "research/landscape/master.json",
-          "sourceId": "yakura2024",
-          "record": 184
-        },
-        {
-          "collection": "research/scan4/culture.jsonl",
-          "sourceId": "yakura-speech",
-          "record": 20
-        }
-      ],
-      "landscape": [
-        {
-          "sourceId": "yakura2024",
-          "constructs": [
-            "creativity/diversity",
-            "collective knowledge"
-          ],
-          "measures": [
-            "usage logs",
-            "behavioural task"
-          ],
-          "design": "natural experiment",
-          "level": "group",
-          "side": "human",
-          "genai": true,
-          "timespan": "years",
-          "domain": "general public"
-        }
-      ]
-    },
-    {
       "id": "ref:daec8c61ea79836b",
       "title": "Evaluating Frontier Models for Dangerous Capabilities",
       "citation": "Phuong et al. 2024",
@@ -13337,43 +13374,6 @@
           ],
           "design": "lab experiment",
           "level": "individual",
-          "side": "human",
-          "genai": true,
-          "timespan": "single session",
-          "domain": "general public"
-        }
-      ]
-    },
-    {
-      "id": "ref:b8753caa85722dba",
-      "title": "How AI Ideas Affect the Creativity, Diversity, and Evolution of Human Ideas: Evidence From a Large, Dynamic Experiment",
-      "citation": "Ashkinaze, Mendelsohn, Qiwei, Budak & Gilbert 2024",
-      "url": "https://arxiv.org/abs/2401.13481",
-      "year": 2024,
-      "kind": "study",
-      "topics": [
-        "skills"
-      ],
-      "provenance": [
-        {
-          "collection": "research/landscape/master.json",
-          "sourceId": "ashkinaze2024",
-          "record": 36
-        }
-      ],
-      "landscape": [
-        {
-          "sourceId": "ashkinaze2024",
-          "constructs": [
-            "creativity/diversity",
-            "collective knowledge"
-          ],
-          "measures": [
-            "assisted performance",
-            "behavioural task"
-          ],
-          "design": "lab experiment",
-          "level": "group",
           "side": "human",
           "genai": true,
           "timespan": "single session",

@@ -1,0 +1,604 @@
+{
+  "id": "delegation",
+  "topic": "handover",
+  "label": "Delegation to AI",
+  "intro": "Evidence on what people hand over, how they check AI, and whether they can intervene or answer for the outcome.",
+  "description": "Selected studies of task handover, advice use, human oversight, and responsibility.",
+  "displayScope": "These sources cover experiments, workplace studies, usage logs, and institutional reports. Empty cells describe this selection, not confirmed gaps across the field.",
+  "scope": "Primary source text inspected on 2026-10-19. This is a purposive selection, not a systematic review or a field-wide coverage estimate. It includes empirical studies and reports, with no standalone reviews or frameworks. Preferences, simulated choices, reported governance, classified usage traces, and observed workplace outcomes remain distinct. Earlier decision-support and conventional automation studies are included as measurement precedents and identified in their limitations. A populated cell does not establish effective control or gradual disempowerment; an empty cell means this selection supplies no observation for that pair. Related vendor reports can share populations and measurement infrastructure and are not independent replications. Experimental interaction records are classified as behavioural tasks, not operational logs. The research extensions below are proposals motivated by these sources, not claims of universal research gaps.",
+  "facets": [
+    {
+      "id": "task_allocation",
+      "label": "What gets handed over",
+      "description": "Which tasks or stages people choose, want, or report assigning to AI. Stated preferences and classified requests do not by themselves show completed delegation."
+    },
+    {
+      "id": "execution_independence",
+      "label": "Work without human input",
+      "description": "How much execution proceeds between human inputs, and the desired or reported division of labour. Turn length and interaction categories are proxies, not measures of decision rights."
+    },
+    {
+      "id": "advice_adoption",
+      "label": "Following AI advice",
+      "description": "Whether people incorporate, copy, agree with, or change their answers toward AI recommendations. Adoption alone does not establish overreliance."
+    },
+    {
+      "id": "error_discrimination",
+      "label": "Recognising bad advice",
+      "description": "Behaviour when advice is known to be wrong or right, including rejection of errors and preservation of correct independent judgments. Final answers need not reveal the checking process."
+    },
+    {
+      "id": "review_work",
+      "label": "Checking and review effort",
+      "description": "The practices, effort, and constraints involved in inspecting AI output. General task difficulty or confidence alone is insufficient to establish how much review occurred."
+    },
+    {
+      "id": "intervention",
+      "label": "Interrupting or overriding",
+      "description": "Observed interruptions, edits, rejections, and overrides, together with any evaluation of their success. More intervention is not automatically better control."
+    },
+    {
+      "id": "decision_authority",
+      "label": "Who can decide",
+      "description": "Who may execute or finalise a decision, including permission settings, adjustable versus binding recommendations, and reported human escalation arrangements. Formal permission is distinct from effective influence."
+    },
+    {
+      "id": "accountability",
+      "label": "Answering for decisions",
+      "description": "Reported responsibility, named accountable roles, and documented reasons or routes for contesting decisions. These measures do not establish that responsibility is enforced or redress succeeds."
+    },
+    {
+      "id": "outcome_quality",
+      "label": "Quality after handover",
+      "description": "Accuracy, appropriateness, completion, or service quality after AI assistance or human intervention. Controlled task scores, retrospective audits, and live service outcomes have different applicability."
+    }
+  ],
+  "columns": [
+    {
+      "id": "self_report",
+      "label": "Surveys and ratings",
+      "description": "Structured reports of preferences, practices, effort, responsibility, or organisational arrangements. Includes institutional respondents; does not establish observed behaviour."
+    },
+    {
+      "id": "behavioural_tasks",
+      "label": "Controlled task behaviour",
+      "description": "Choices, answer revisions, errors, and scored outputs elicited in experiments or simulations, including realistic tasks performed by professionals. Experimental click or chat records belong here."
+    },
+    {
+      "id": "operational_logs",
+      "label": "Operational usage logs",
+      "description": "Recorded actions and interactions during deployed use, including model-classified conversations. Each basis identifies inferred classifications versus directly recorded events."
+    },
+    {
+      "id": "field_outcomes",
+      "label": "Live work outcomes",
+      "description": "Recorded performance or service outcomes from ordinary work, linked to AI access or use. Excludes simulated tasks, productivity perceptions, and retrospective appropriateness ratings."
+    },
+    {
+      "id": "interviews",
+      "label": "Qualitative interviews",
+      "description": "Interview accounts of delegation, review practices, and reasons for retaining control. Accounts are not treated as independently observed events."
+    },
+    {
+      "id": "field_observation",
+      "label": "Observed work practices",
+      "description": "Researchers' direct observation and qualitative coding of people using AI in their ordinary work. Distinct from interviews, telemetry, and scored outcomes."
+    },
+    {
+      "id": "document_audit",
+      "label": "Records and document audits",
+      "description": "Inspection of clinical records, filed decision notices, or reporting schemas against explicit criteria. Records can be incomplete or self-declared; audits do not automatically reveal actual review or redress."
+    }
+  ],
+  "sources": [
+    {
+      "id": "anthropic_economic_primitives_2026",
+      "title": "Economic Index report: Economic primitives",
+      "citation": "Anthropic (2026). Economic Index report: Economic primitives. January report.",
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+      "year": 2026,
+      "kind": "report",
+      "design": "log analysis",
+      "side": "human",
+      "domain": "Consumer and enterprise Claude use across work activities",
+      "timespan": "13-20 November 2025 samples; comparisons with earlier 2025 samples",
+      "observations": [
+        {
+          "facet": "task_allocation",
+          "measure": "operational_logs",
+          "basis": "Automated analysis assigns sampled conversations and API records to occupational tasks and request groupings, then compares collaboration categories across those activities. This measures requests visible to the provider, not employers' total task allocation.",
+          "locator": "Chapter 1, Figures 1.4-1.5 and footnote 1",
+          "sourceUrl": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+        },
+        {
+          "facet": "execution_independence",
+          "measure": "operational_logs",
+          "basis": "The report classifies directive, iterative, and other collaboration patterns and aggregates automation versus augmentation by product and sample period. Directive means minimal conversational back-and-forth; downstream checking is not observed.",
+          "locator": "Chapter 1, collaboration-mode discussion and Figure 1.3",
+          "sourceUrl": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report"
+        }
+      ],
+      "limits": "Provider-authored, one-vendor samples; classifier and product changes complicate comparisons. API records can be mid-session prompt-response pairs. Conversation categories are not verified transfers of authority, completed jobs, or a monotonic trend.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "mccain_agent_autonomy_2026",
+      "title": "Measuring AI agent autonomy in practice",
+      "citation": "McCain et al. (2026). Measuring AI agent autonomy in practice. Anthropic, 18 February.",
+      "url": "https://www.anthropic.com/research/measuring-agent-autonomy",
+      "year": 2026,
+      "kind": "report",
+      "design": "log analysis",
+      "side": "human",
+      "domain": "Deployed coding agents and public API tool use",
+      "timespan": "Late 2025 to early 2026; turn-duration comparison October 2025-January 2026",
+      "observations": [
+        {
+          "facet": "execution_independence",
+          "measure": "operational_logs",
+          "basis": "Claude Code telemetry measures elapsed time from the start of a model turn until completion, a question, or human interruption. Duration is a proxy affected by task mix and product speed.",
+          "locator": "Claude Code is working autonomously for longer; Figure 1",
+          "sourceUrl": "https://www.anthropic.com/research/measuring-agent-autonomy"
+        },
+        {
+          "facet": "decision_authority",
+          "measure": "operational_logs",
+          "basis": "Session settings identify full auto-approval of actions, grouped by account experience. This records permission to execute without individual approval, not whether users scrutinise the resulting work.",
+          "locator": "Experienced users in Claude Code auto-approve more frequently; Figure 2",
+          "sourceUrl": "https://www.anthropic.com/research/measuring-agent-autonomy"
+        },
+        {
+          "facet": "intervention",
+          "measure": "operational_logs",
+          "basis": "Telemetry records human interruptions per turn and distinguishes them from agent clarification stops, with comparisons by account experience and classified task complexity. The analysis does not score correction success.",
+          "locator": "Figures 3-4 and clarification-stop discussion",
+          "sourceUrl": "https://www.anthropic.com/research/measuring-agent-autonomy"
+        }
+      ],
+      "limits": "Vendor study, predominantly coding. Experience comparisons are observational. API safeguards are inferred with limited context; evaluations may appear in traffic. Logged approvals and interruptions do not establish effective oversight.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "huang_anthropic_work_2025",
+      "title": "How AI is transforming work at Anthropic",
+      "citation": "Huang et al. (2025). How AI is transforming work at Anthropic. Anthropic, 2 December.",
+      "url": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic",
+      "year": 2025,
+      "kind": "report",
+      "design": "log analysis",
+      "side": "human",
+      "domain": "Engineering and research inside an AI developer",
+      "timespan": "February and August 2025 transcripts; August 2025 survey and interviews",
+      "observations": [
+        {
+          "facet": "execution_independence",
+          "measure": "operational_logs",
+          "basis": "Internal transcripts supply maximum consecutive tool calls and the number of human turns per transcript in two periods. These are interaction measures, not the share of all employee work completed independently.",
+          "locator": "Claude Code usage trends: Tackling harder problems with less oversight; Figure 3",
+          "sourceUrl": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+        },
+        {
+          "facet": "execution_independence",
+          "measure": "self_report",
+          "basis": "Employees estimate the fraction of their work they can fully delegate, distinguished in the report from frequent AI use that still requires supervision or validation.",
+          "locator": "Summary of key findings: Survey data, item 4",
+          "sourceUrl": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+        },
+        {
+          "facet": "task_allocation",
+          "measure": "interviews",
+          "basis": "Interviewees describe choosing tasks for delegation according to verifiability, stakes, interest, and contextual knowledge, including work they retain. These accounts identify selection criteria rather than a validated delegation policy.",
+          "locator": "Qualitative interviews: AI delegation approaches",
+          "sourceUrl": "https://www.anthropic.com/research/how-ai-is-transforming-work-at-anthropic"
+        }
+      ],
+      "limits": "Mixed-method vendor study of its own staff. Non-anonymous, selected respondents and retrospective reports; log samples are not a matched worker panel. Changing task shares do not establish absolute work volume or causal productivity gains.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "shao_workbank_2025",
+      "title": "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce",
+      "citation": "Shao et al. (2025). Future of Work with AI Agents. arXiv:2506.06576, version 3; WORKBank study.",
+      "url": "https://arxiv.org/abs/2506.06576",
+      "year": 2025,
+      "kind": "study",
+      "design": "cross-sectional survey",
+      "side": "human",
+      "domain": "Workers across computer-compatible occupational tasks",
+      "timespan": "January-May 2025; one survey period",
+      "observations": [
+        {
+          "facet": "task_allocation",
+          "measure": "self_report",
+          "basis": "Workers familiar with occupational tasks rate their desire to automate each task and give reasons after considering enjoyment and employment concerns. These are elicited preferences, not observed handovers.",
+          "locator": "Sections 2.3, 2.5 and 3.1; Figure 4",
+          "sourceUrl": "https://arxiv.org/html/2506.06576v3"
+        },
+        {
+          "facet": "execution_independence",
+          "measure": "self_report",
+          "basis": "Workers choose a desired Human Agency Scale level ranging from independent agent execution to continuous human involvement. Separate expert feasibility ratings do not demonstrate achieved independence or worker control.",
+          "locator": "Sections 2.2-2.4; Figure 2",
+          "sourceUrl": "https://arxiv.org/html/2506.06576v3"
+        }
+      ],
+      "limits": "Online recruitment and selected occupations; preferences depend on participants' understanding of agents. The empirical survey is included once, without a separate framework record for its scale. No adoption or completed-task rate is measured.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "boe_fca_ai_2024",
+      "title": "Artificial intelligence in UK financial services - 2024",
+      "citation": "Bank of England and Financial Conduct Authority (2024). Artificial intelligence in UK financial services - 2024.",
+      "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+      "year": 2024,
+      "kind": "report",
+      "design": "cross-sectional survey",
+      "side": "institutional",
+      "domain": "UK-regulated financial services firms",
+      "timespan": "2024 survey; some comparisons with earlier survey waves",
+      "observations": [
+        {
+          "facet": "decision_authority",
+          "measure": "self_report",
+          "basis": "Firm respondents classify AI use cases by automated decision-making approach, including semi-autonomous arrangements that reserve critical or ambiguous decisions for human oversight. The unit is a reported use case or firm, not an individual decision.",
+          "locator": "Section 2.5: Automated decision-making; Chart 7",
+          "sourceUrl": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024"
+        },
+        {
+          "facet": "accountability",
+          "measure": "self_report",
+          "basis": "Respondents identify governance components, whether someone is accountable for the AI framework, and the persons or bodies accountable for AI use cases. The survey records stated arrangements, not investigations or remedies after failures.",
+          "locator": "Section 3.1: Governance and accountability",
+          "sourceUrl": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024"
+        }
+      ],
+      "limits": "Institutional self-report; includes conventional models and foundation models. Section 2.5 shifts between use-case wording and a firm-labelled chart, so no aggregate delegation share is extracted. Named responsibility is not tested accountability.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "bucinca_forcing_2021",
+      "title": "To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making",
+      "citation": "Bucinca, Malaya and Gajos (2021). To Trust or to Think. Proceedings of the ACM on Human-Computer Interaction, CSCW.",
+      "url": "https://arxiv.org/abs/2102.09692",
+      "year": 2021,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "Online food-substitution decision task with simulated AI advice",
+      "timespan": "Single experimental session with two task blocks",
+      "observations": [
+        {
+          "facet": "error_discrimination",
+          "measure": "behavioural_tasks",
+          "basis": "On deliberately incorrect recommendations, choices distinguish accepting the AI error, making a different error, and selecting the correct option. This directly separates rejecting advice from successfully correcting it across interface conditions.",
+          "locator": "Sections 3.3, 3.6 and 4.1; Table 2",
+          "sourceUrl": "https://arxiv.org/html/2102.09692"
+        }
+      ],
+      "limits": "Short online nutrition task, simulated AI and engineered errors; no workplace follow-up. Results differ between identifying the ingredient and completing the full replacement decision, so the title is not a uniform-effect claim.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "schemmer_reliance_2023",
+      "title": "Appropriate Reliance on AI Advice: Conceptualization and the Effect of Explanations",
+      "citation": "Schemmer, Kuhl, Benz, Bartos and Satzger (2023). Appropriate Reliance on AI Advice. IUI 2023.",
+      "url": "https://arxiv.org/abs/2302.02187",
+      "year": 2023,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "Deceptive hotel-review classification with a support-vector-machine advisor",
+      "timespan": "Single online session; sequential unaided and advised answers",
+      "observations": [
+        {
+          "facet": "advice_adoption",
+          "measure": "behavioural_tasks",
+          "basis": "Participants classify each review before seeing advice and can revise afterward. Among initially wrong answers paired with correct advice, the analysis measures switches to the correct AI recommendation.",
+          "locator": "Sections 3.2 and 5.1-5.3; Table 3",
+          "sourceUrl": "https://arxiv.org/html/2302.02187"
+        },
+        {
+          "facet": "error_discrimination",
+          "measure": "behavioural_tasks",
+          "basis": "Among initially correct judgments paired with incorrect AI advice, the relative self-reliance measure records retention of the correct answer. Initial, final, and advisor accuracy are separately available.",
+          "locator": "Sections 3.2-3.3 and 5.2-5.3; Table 3",
+          "sourceUrl": "https://arxiv.org/html/2302.02187"
+        }
+      ],
+      "limits": "Crowdworkers, one classification task and non-generative advice; review sampling deliberately exposes errors. Included for its empirical experiment, not counted again as a measurement framework. Answer changes do not reveal every reasoning step.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "sele_human_loop_2024",
+      "title": "Putting a human in the loop: Increasing uptake, but decreasing accuracy of automated decision-making",
+      "citation": "Sele and Chugunova (2024). Putting a human in the loop. PLOS ONE 19(2), e0298037.",
+      "url": "https://doi.org/10.1371/journal.pone.0298037",
+      "year": 2024,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "Online prediction of students' mathematics-test performance",
+      "timespan": "Single experimental session with repeated predictions",
+      "observations": [
+        {
+          "facet": "decision_authority",
+          "measure": "behavioural_tasks",
+          "basis": "Participants choose a human or algorithmic prediction source under assigned conditions where the recommendation is either binding or adjustable. Choices measure willingness to delegate with different retained decision rights.",
+          "locator": "Materials and methods; Preference for an algorithm",
+          "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298037"
+        },
+        {
+          "facet": "intervention",
+          "measure": "behavioural_tasks",
+          "basis": "In the adjustable condition, the study records whether and how far participants change recommendations, including comparisons by advice source and the recommendation's error magnitude.",
+          "locator": "Results: adjustments and Correcting larger errors; Tables 1-2",
+          "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298037"
+        },
+        {
+          "facet": "outcome_quality",
+          "measure": "behavioural_tasks",
+          "basis": "Submitted predictions are compared with students' actual test percentiles to assess inaccuracy after adjustments, allowing intervention frequency and decision quality to be evaluated separately.",
+          "locator": "Results; Table 1, inaccuracy specification",
+          "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298037"
+        }
+      ],
+      "limits": "Stylised prediction task with curated, similarly accurate human and statistical-model advice. Conventional automation, not an LLM agent. No organisational authority, live admissions, or longitudinal takeover is tested.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "alon_barkat_busuioc_2023",
+      "title": "Human-AI Interactions in Public Sector Decision Making: Automation Bias and Selective Adherence to Algorithmic Advice",
+      "citation": "Alon-Barkat and Busuioc (2023; online 2022). Journal of Public Administration Research and Theory 33(1), 153-169.",
+      "url": "https://doi.org/10.1093/jopart/muac007",
+      "year": 2023,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "Dutch citizens and civil servants making hypothetical school staffing decisions",
+      "timespan": "Three separate survey experiments; one session per respondent",
+      "observations": [
+        {
+          "facet": "advice_adoption",
+          "measure": "behavioural_tasks",
+          "basis": "Respondents choose which teacher's contract not to renew when numerical advice conflicts with qualitative evaluations. Adherence is coded from that choice, with advice labelled algorithmic or human and later studies varying minority-group cues.",
+          "locator": "Methodology; Study 1 Procedure, pp. 5-7; Studies 2-3",
+          "sourceUrl": "https://arxiv.org/pdf/2103.02381"
+        }
+      ],
+      "limits": "Hypothetical survey decisions, not administrative outcomes or actual AI outputs. No greater adherence to algorithmic than equivalent human advice was found here; selective-adherence patterns differed between citizens and civil servants. Conflicting inputs are not independently adjudicated model errors.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "dratsch_mammography_2023",
+      "title": "Automation Bias in Mammography: The Impact of Artificial Intelligence BI-RADS Suggestions on Reader Performance",
+      "citation": "Dratsch et al. (2023). Automation Bias in Mammography. Radiology. doi:10.1148/radiol.222176.",
+      "url": "https://doi.org/10.1148/radiol.222176",
+      "year": 2023,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "Radiologists reading mammograms with purported AI category suggestions",
+      "timespan": "Bounded reader experiment; archived mammograms acquired in 2017-2019",
+      "observations": [
+        {
+          "facet": "error_discrimination",
+          "measure": "behavioural_tasks",
+          "basis": "After training with correct suggestions, radiologists assign BI-RADS categories to a mixed set containing deliberately incorrect suggestions. Reader accuracy and scoring bias are assessed against the case categories, with comparisons by experience.",
+          "locator": "Abstract: Materials and Methods; Results",
+          "sourceUrl": "https://pubs.rsna.org/doi/10.1148/radiol.222176"
+        }
+      ],
+      "limits": "Small reader panel, archived cases, and experimentally assigned suggestions rather than a deployed generative model. Extraction is limited to the publisher abstract. Final classification errors do not demonstrate lasting deskilling or reveal the review process.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "li_writing_2024",
+      "title": "The Value, Benefits, and Concerns of Generative AI-Powered Assistance in Writing",
+      "citation": "Li, Liang, Peng and Yin (2024). The Value, Benefits, and Concerns of Generative AI-Powered Assistance in Writing. CHI 2024.",
+      "url": "https://arxiv.org/abs/2403.12004",
+      "year": 2024,
+      "kind": "study",
+      "design": "lab experiment",
+      "side": "human",
+      "domain": "Argumentative and creative writing with ChatGPT",
+      "timespan": "Single writing session and immediate exit survey",
+      "observations": [
+        {
+          "facet": "task_allocation",
+          "measure": "behavioural_tasks",
+          "basis": "Participants choose between paid independent writing and an offer with AI editing or AI initial drafting. Randomised offer terms elicit willingness to trade compensation for different divisions of writing work.",
+          "locator": "Sections 3.2-3.3 and 4.1",
+          "sourceUrl": "https://arxiv.org/html/2403.12004v1"
+        },
+        {
+          "facet": "accountability",
+          "measure": "self_report",
+          "basis": "After writing, participants rate willingness to accept responsibility if their article is criticised for misinformation, plagiarism, privacy invasion, or discrimination. These are stated responses to hypothetical criticism.",
+          "locator": "Section 3.3: Exit survey; Section 4.2.5; Figure 8",
+          "sourceUrl": "https://arxiv.org/html/2403.12004v1"
+        }
+      ],
+      "limits": "Short paid writing task. Participants choose their writing mode, so comparisons between modes are not simple randomised treatment effects. Responsibility ratings do not measure legal liability, actual correction, or institutional enforcement.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "lebovitz_radiology_2022",
+      "title": "To Engage or Not to Engage with AI for Critical Judgments: How Professionals Deal with Opacity When Using AI for Medical Diagnosis",
+      "citation": "Lebovitz, Lifshitz-Assaf and Levina (2022). Organization Science 33(1), 126-148. doi:10.1287/orsc.2021.1549.",
+      "url": "https://doi.org/10.1287/orsc.2021.1549",
+      "year": 2022,
+      "kind": "study",
+      "design": "qualitative",
+      "side": "human",
+      "domain": "Breast, chest, and pediatric radiology departments at one US hospital",
+      "timespan": "Ten months of field observation beginning January 2019",
+      "observations": [
+        {
+          "facet": "review_work",
+          "measure": "field_observation",
+          "basis": "Researchers observe diagnostic work and code how radiologists investigate divergent AI outputs, revisit images, and relate model results to clinical knowledge. The evidence concerns review practices, not a timed review-effort measure.",
+          "locator": "Data Collection and Data Analysis, pp. 5-6; Findings",
+          "sourceUrl": "https://www.law.nyu.edu/sites/default/files/Lebovitz%2C%20Lifshitz-Assaf%2C%20Levina%2C%20Printed%20online%2C%20OrgSci2022.pdf"
+        },
+        {
+          "facet": "review_work",
+          "measure": "interviews",
+          "basis": "Formal and informal interviews elicit explanations of recent diagnoses, uncertainty about AI outputs, and reasons for engaging with or disregarding them, supplementing direct observation.",
+          "locator": "Data Collection: Interviews, p. 5; Findings",
+          "sourceUrl": "https://www.law.nyu.edu/sites/default/files/Lebovitz%2C%20Lifshitz-Assaf%2C%20Levina%2C%20Printed%20online%2C%20OrgSci2022.pdf"
+        },
+        {
+          "facet": "advice_adoption",
+          "measure": "field_observation",
+          "basis": "Case observations trace whether radiologists incorporate AI findings into final judgments or disregard them. Department-level patterns are qualitatively compared, without a controlled estimate of diagnostic accuracy.",
+          "locator": "Data Analysis, p. 6; Discussion: Summary of Findings, pp. 13-14",
+          "sourceUrl": "https://www.law.nyu.edu/sites/default/files/Lebovitz%2C%20Lifshitz-Assaf%2C%20Levina%2C%20Printed%20online%2C%20OrgSci2022.pdf"
+        }
+      ],
+      "limits": "One hospital; specialised, pre-LLM diagnostic systems. Qualitative interpretation cannot estimate general adoption rates or causal effects. Interviews, observations, and documents are triangulated within one study, not independent replications.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "brynjolfsson_work_2025",
+      "title": "Generative AI at Work",
+      "citation": "Brynjolfsson, Li and Raymond (2025). Generative AI at Work. Quarterly Journal of Economics; author manuscript arXiv:2304.11771v2.",
+      "url": "https://arxiv.org/abs/2304.11771",
+      "year": 2025,
+      "kind": "study",
+      "design": "quasi-experiment",
+      "side": "human",
+      "domain": "Customer-support agents at one enterprise-software company",
+      "timespan": "Monthly worker observations around staggered rollout, primarily autumn 2020-winter 2021",
+      "observations": [
+        {
+          "facet": "advice_adoption",
+          "measure": "operational_logs",
+          "basis": "Adherence is the fraction of AI suggestions copied or followed with highly similar manually entered text, measured over worker-months. It is not an independent judgment that the suggestions were correct.",
+          "locator": "Section 5.1: Adherence to AI recommendations; Figure 5; Appendix D",
+          "sourceUrl": "https://arxiv.org/html/2304.11771v2"
+        },
+        {
+          "facet": "outcome_quality",
+          "measure": "field_outcomes",
+          "basis": "Work records track issues resolved per hour, handling time, resolution rates, and customer satisfaction around assistant rollout. Event-study and difference-in-differences analyses compare performance with differing AI access.",
+          "locator": "Sections 3-4; Tables 2-3; Figure 2",
+          "sourceUrl": "https://arxiv.org/html/2304.11771v2"
+        }
+      ],
+      "limits": "One firm's GPT-based support assistant; humans retain final messaging discretion. Rollout and adherence are not fully randomised, and adoption effects are not causal effects of choosing to follow advice. Service performance does not measure transfer of authority.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "dellacqua_jagged_frontier_2026",
+      "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality",
+      "citation": "Dell'Acqua et al. (2026). Organization Science. doi:10.1287/orsc.2025.21838. Journal version of the 2023 working paper.",
+      "url": "https://doi.org/10.1287/orsc.2025.21838",
+      "year": 2026,
+      "kind": "study",
+      "design": "field experiment",
+      "side": "human",
+      "domain": "Professional management consultants completing realistic consulting exercises",
+      "timespan": "Bounded experimental tasks using the April 2023 GPT-4 version; journal publication March 2026",
+      "observations": [
+        {
+          "facet": "outcome_quality",
+          "measure": "behavioural_tasks",
+          "basis": "Randomised AI-access groups complete consulting exercises assessed for completion, time, human-graded quality, and correctness on a managerial problem designed to challenge the model. These are professional task scores, not live client outcomes.",
+          "locator": "Sections 3-4; Table 2; Sections 4.1-4.2",
+          "sourceUrl": "https://www.hbs.edu/ris/Publication%20Files/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717.pdf"
+        }
+      ],
+      "limits": "One firm, deliberately selected exercises, and an early GPT-4 version. Access is randomised, but task delegation choices are not. Final accuracy alone does not reveal error recognition. Uses the inspected journal version rather than treating the earlier working paper as another source.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "nanji_alert_overrides_2014",
+      "title": "Overrides of medication-related clinical decision support alerts in outpatients",
+      "citation": "Nanji et al. (2014; online 2013). Journal of the American Medical Informatics Association 21(3), 487-491.",
+      "url": "https://doi.org/10.1136/amiajnl-2013-001813",
+      "year": 2014,
+      "kind": "study",
+      "design": "audit",
+      "side": "human",
+      "domain": "Outpatient electronic prescribing and medication safety alerts",
+      "timespan": "2009-2011 prescribing records",
+      "observations": [
+        {
+          "facet": "intervention",
+          "measure": "operational_logs",
+          "basis": "Electronic prescribing records identify displayed alerts, overrides by alert category, and the reasons clinicians select when overriding. The measure records enacted overrides rather than stated willingness to override.",
+          "locator": "Methods; Tables 2 and 5",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3994856/"
+        },
+        {
+          "facet": "outcome_quality",
+          "measure": "document_audit",
+          "basis": "Reviewers assess a subset of overrides against alert-specific appropriateness criteria developed through chart review and clinical literature. This evaluates the appropriateness of an intervention, not subsequent patient outcomes or prescribers' error awareness.",
+          "locator": "Abstract: Methods; Methods and Results on override appropriateness",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3994856/"
+        }
+      ],
+      "limits": "Conventional clinical decision support, not generative AI. Local alert design and retrospective documentation shape the findings; only a subset receives appropriateness review. Coded reasons need not establish that promised monitoring actually occurred.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    },
+    {
+      "id": "kaushal_dsa_2024",
+      "title": "Automated Transparency: A Legal and Empirical Analysis of the Digital Services Act Transparency Database",
+      "citation": "Kaushal, van de Kerkhof, Goanta, Spanakis and Iamnitchi (2024). Automated Transparency. ACM FAccT 2024.",
+      "url": "https://arxiv.org/abs/2404.02894v2",
+      "year": 2024,
+      "kind": "study",
+      "design": "audit",
+      "side": "institutional",
+      "domain": "Platform content-moderation statements filed in the EU DSA Transparency Database",
+      "timespan": "19-28 November 2023 submissions; reporting schema examined in the 2024 paper",
+      "observations": [
+        {
+          "facet": "decision_authority",
+          "measure": "document_audit",
+          "basis": "Filed statements separately identify automated content detection and fully, partially, or non-automated decisions. The study compares these declared categories across platforms; it does not observe individual moderators exercising authority.",
+          "locator": "Sections 3 and 5.2; Figure 2",
+          "sourceUrl": "https://arxiv.org/html/2404.02894v2"
+        },
+        {
+          "facet": "accountability",
+          "measure": "document_audit",
+          "basis": "The authors compare reporting fields with statement-of-reasons requirements, identify absent redress information in the database schema, and examine the specificity of submitted explanations. This audits traceability, not the success of appeals.",
+          "locator": "Sections 4.1-4.2 and 5.3",
+          "sourceUrl": "https://arxiv.org/html/2404.02894v2"
+        }
+      ],
+      "limits": "Short early snapshot and platform-declared records; automation is not necessarily AI. Database omissions need not mean information was absent from notices sent to users. Platform reporting volume strongly affects aggregate shares; no present-day legal or compliance conclusion is inferred.",
+      "reviewStatus": "AI-assisted; awaiting human review"
+    }
+  ],
+  "questions": [
+    {
+      "title": "Do interventions actually correct mistakes?",
+      "measured": "Claude Code records approvals and interruptions; Sele and Chugunova separately score adjustments and final prediction accuracy.",
+      "next": "Proposed workplace pilot: connect each intervention to independently assessed errors, final quality, and review time across repeated tasks, including cases where no intervention occurs.",
+      "sources": [
+        ["McCain et al., agent autonomy", "https://www.anthropic.com/research/measuring-agent-autonomy"],
+        ["Sele and Chugunova, human oversight experiment", "https://doi.org/10.1371/journal.pone.0298037"]
+      ]
+    },
+    {
+      "title": "Which work should people hand over?",
+      "measured": "WORKBank elicits task-level automation preferences; the consulting experiment scores assisted performance on contrasting work exercises.",
+      "next": "Proposed longitudinal study: follow workers' chosen task allocations and compare desired delegation with actual handovers, review burden, final quality, and later unaided performance on matched tasks.",
+      "sources": [
+        ["Shao et al., WORKBank", "https://arxiv.org/html/2506.06576v3"],
+        ["Dell'Acqua et al., consulting experiment", "https://doi.org/10.1287/orsc.2025.21838"]
+      ]
+    },
+    {
+      "title": "Who answers for delegated decisions?",
+      "measured": "The financial-services survey records accountable roles; the writing experiment elicits willingness to accept responsibility for criticised output.",
+      "next": "Proposed case audit: trace actual decisions from authorised delegation through review, sign-off, documented reasons, and subsequent correction or complaint handling, comparing assigned responsibility with actions taken.",
+      "sources": [
+        ["Bank of England and FCA, governance survey", "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024"],
+        ["Li et al., writing and responsibility", "https://arxiv.org/html/2403.12004v1"]
+      ]
+    }
+  ]
+}

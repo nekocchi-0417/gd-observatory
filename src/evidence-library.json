@@ -3991,6 +3991,21 @@
       ]
     },
     {
+      "id": "skills:784dbbb39f557cb7",
+      "title": "Empirical evidence of Large Language Model's influence on human spoken communication",
+      "citation": "Hiromu Yakura et al. First released 3 September 2024; version used: arXiv:2409.01754v4, 16 July 2026 (preprint).",
+      "url": "https://arxiv.org/abs/2409.01754",
+      "year": 2026,
+      "kind": "study",
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "yakura2024",
+          "record": 184
+        }
+      ]
+    },
+    {
       "id": "skills:d8382d33ad6ac28a",
       "title": "Evaluating Answer Leakage Robustness of LLM Tutors against Adversarial Student Attacks",
       "citation": "Zhao, Knezevic & Kaser 2026",
@@ -5202,6 +5217,21 @@
           "collection": "research/landscape/master.json",
           "sourceId": "arora2025healthbench",
           "record": 172
+        }
+      ]
+    },
+    {
+      "id": "skills:b8753caa85722dba",
+      "title": "How AI Ideas Affect the Creativity, Diversity, and Evolution of Human Ideas: Evidence From a Large, Dynamic Experiment",
+      "citation": "Joshua Ashkinaze, Julia Mendelsohn, Li Qiwei, Ceren Budak and Eric Gilbert. First released 24 January 2024; version used: arXiv:2401.13481v3, 31 July 2025. Author record states acceptance at ACM Collective Intelligence 2025.",
+      "url": "https://arxiv.org/abs/2401.13481",
+      "year": 2025,
+      "kind": "study",
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "ashkinaze2024",
+          "record": 36
         }
       ]
     },
@@ -6466,21 +6496,6 @@
       ]
     },
     {
-      "id": "skills:784dbbb39f557cb7",
-      "title": "Empirical evidence of Large Language Model's influence on human spoken communication",
-      "citation": "Yakura et al. 2024",
-      "url": "https://arxiv.org/abs/2409.01754",
-      "year": 2024,
-      "kind": "study",
-      "provenance": [
-        {
-          "collection": "research/landscape/master.json",
-          "sourceId": "yakura2024",
-          "record": 184
-        }
-      ]
-    },
-    {
       "id": "skills:daec8c61ea79836b",
       "title": "Evaluating Frontier Models for Dangerous Capabilities",
       "citation": "Phuong et al. 2024",
@@ -6672,21 +6687,6 @@
           "collection": "research/landscape/master.json",
           "sourceId": "anderson2024",
           "record": 32
-        }
-      ]
-    },
-    {
-      "id": "skills:b8753caa85722dba",
-      "title": "How AI Ideas Affect the Creativity, Diversity, and Evolution of Human Ideas: Evidence From a Large, Dynamic Experiment",
-      "citation": "Ashkinaze, Mendelsohn, Qiwei, Budak & Gilbert 2024",
-      "url": "https://arxiv.org/abs/2401.13481",
-      "year": 2024,
-      "kind": "study",
-      "provenance": [
-        {
-          "collection": "research/landscape/master.json",
-          "sourceId": "ashkinaze2024",
-          "record": 36
         }
       ]
     },
@@ -9049,8 +9049,8 @@
     },
     {
       "id": "culture:4318b1c8e5ee54c8",
-      "title": "AI and the Quantity and Quality of Creative Products: Have LLMs Boosted Creation of Valuable Books? (NBER WP 34777)",
-      "citation": "Reimers & Waldfogel 2026",
+      "title": "AI and the Quantity and Usage of Creative Products: Have LLMs Boosted Creation of Valuable Books?",
+      "citation": "Imke Reimers and Joel Waldfogel. NBER Working Paper 34777; first issued January 2026; version used: July 2026 revision (working paper).",
       "url": "https://www.nber.org/papers/w34777",
       "year": 2026,
       "kind": "study",
@@ -9210,7 +9210,7 @@
     {
       "id": "culture:784dbbb39f557cb7",
       "title": "Empirical evidence of Large Language Model's influence on human spoken communication",
-      "citation": "Yakura et al. 2024 (v4 2026)",
+      "citation": "Hiromu Yakura et al. First released 3 September 2024; version used: arXiv:2409.01754v4, 16 July 2026 (preprint).",
       "url": "https://arxiv.org/abs/2409.01754",
       "year": 2026,
       "kind": "study",

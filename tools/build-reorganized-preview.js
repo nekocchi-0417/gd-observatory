@@ -3,13 +3,14 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const {buildLibraryView, loadInputs} = require('./build-library-view.js');
+const {loadDetailedMaps,buildDetailedMaps} = require('./build-detailed-maps.js');
 const {libraryCSV} = require('./library-csv.js');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const args = process.argv.slice(2);
 assert(args.length === 0 || (args.length === 1 && args[0] === '--publish'), 'Usage: node tools/build-reorganized-preview.js [--publish]');
 const publish = args.includes('--publish');
-const library = buildLibraryView(loadInputs());
+const {library,mapConfig} = buildDetailedMaps(buildLibraryView(loadInputs()),JSON.parse(read('research/library-map-config.json')),loadDetailedMaps(root));
 const saved = file => read('prototypes/reorganized/base/' + path.basename(file));
 const between = (source, start, end) => {
   const a = source.indexOf(start), b = source.indexOf(end, a + start.length);
@@ -33,7 +34,7 @@ const helpers = [
   between(comparison, 'function installWork10(', 'function updateMethod10('),
   `const DIRECTORY21 = ${JSON.stringify(JSON.parse(read('prototypes/reorganized/directory.json'))).replace(/</g, '\\u003c')};`,
   `const LIBRARY_VIEW23 = ${JSON.stringify(library).replace(/</g, '\\u003c')};`,
-  `const LIBRARY_MAP23 = ${JSON.stringify(JSON.parse(read('research/library-map-config.json'))).replace(/</g, '\\u003c')};`,
+  `const LIBRARY_MAP23 = ${JSON.stringify(mapConfig).replace(/</g, '\\u003c')};`,
   read('prototypes/reorganized/library.js'),
   read('prototypes/reorganized/topic-research.js'),
   read('prototypes/reorganized/method.js'),
