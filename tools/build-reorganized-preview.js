@@ -8,8 +8,12 @@ const {libraryCSV} = require('./library-csv.js');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const args = process.argv.slice(2);
-assert(args.length === 0 || (args.length === 1 && args[0] === '--publish'), 'Usage: node tools/build-reorganized-preview.js [--publish]');
+assert(args.length === 0 || (args.length === 1 && ['--publish', '--research'].includes(args[0])), 'Usage: node tools/build-reorganized-preview.js [--publish | --research]');
 const publish = args.includes('--publish');
+if (!args.includes('--research')) {
+  require('./build-shareable-dashboard.js').build({publish});
+  process.exit(0);
+}
 const {library,mapConfig} = buildDetailedMaps(buildLibraryView(loadInputs()),JSON.parse(read('research/library-map-config.json')),loadDetailedMaps(root));
 const saved = file => read('prototypes/reorganized/base/' + path.basename(file));
 const between = (source, start, end) => {
@@ -53,7 +57,7 @@ const html = saved('docs/index.html')
   .replace('</div></header>\n<main', () => `${themeControl}</div></header>\n<main`)
   .replace('</body>', () => `<script>${helpers}</script></body>`);
 assert(html.includes('class="appearance22"'), 'Theme control must be in the header');
-const output = path.join(root, publish ? 'docs' : 'dist/reorganized-dashboard');
+const output = path.join(root, 'dist/research-dashboard');
 fs.mkdirSync(output, { recursive: true });
 fs.writeFileSync(path.join(output, 'index.html'), html);
 fs.writeFileSync(path.join(output, 'library-references.csv'), libraryCSV(library));

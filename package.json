@@ -7,8 +7,10 @@
   "scripts": {
     "build": "sh build.sh",
     "build:preview": "node tools/build-reorganized-preview.js",
-    "verify:static": "node tools/check-reorganized-preview.js docs/index.html",
-    "verify:preview": "node tools/check-reorganized-preview.js",
+    "build:research": "node tools/build-reorganized-preview.js --research",
+    "verify:static": "node tools/check-shareable-dashboard.js docs/index.html",
+    "verify:preview": "node tools/check-shareable-dashboard.js",
+    "verify:research": "node tools/check-reorganized-preview.js dist/research-dashboard/index.html",
     "verify:library": "node tools/verify-library-view.js",
     "verify:maps": "node tools/verify-detailed-maps.js",
     "build:artifact": "sh build.sh artifact",
