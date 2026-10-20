@@ -1,6 +1,16 @@
 /* Reorganisation of the accepted pre-comparison dashboard. */
 const savedRender20 = render;
 
+function adaptHomeIntro25(v) {
+  const hero = $('.home5 .hero5-g.top5', v);
+  if (!hero) return;
+  hero.classList.add('measurement-intro25');
+  const intro = $('.purpose5', hero);
+  intro.textContent = 'Benchmarks and adoption surveys help us follow what AI can do and where it is used. The evidence assembled here offers a less complete picture of whether people and institutions retain the skills, authority and practical ability to question its decisions.';
+  intro.insertAdjacentHTML('afterend', `<p class="home-finding25"><strong>This dashboard brings those measurement gaps into view.</strong></p>
+    <p class="home-links25"><a class="go" href="#gaps">Research gaps &#8594;</a><a class="home-paper25" href="${esc(COPY.home.paper.url)}" target="_blank" rel="noopener" aria-label="Read the original Gradual Disempowerment paper (opens in a new tab)">Original paper &#8599;</a></p>`);
+}
+
 const evidencePairs20 = [
   {
     id: 'work', n: '01', left: 'capability', right: 'work',
@@ -208,6 +218,7 @@ function renderReorganized20(id) {
     adaptTopic20(v, route.id, route.sub); active = 'gaps';
   } else {
     savedRender20(id);
+    adaptHomeIntro25(v);
     active = ['home', 'map', 'pathways'].includes(route.id) ? 'home' : route.id === 'details' ? 'gaps' : route.id === 'why' ? 'contribute' : route.id;
   }
   current = id;

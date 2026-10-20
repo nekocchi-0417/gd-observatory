@@ -220,6 +220,14 @@ for (const width of [1200, 600, 335]) {
   assert(home.querySelector('#homeMap'));
   assert.equal(home.querySelectorAll('[data-comparison-chart]').length, 0);
   assert.match(home.textContent, /Tracking whether AI is weakening human influence/);
+  const homeIntro = home.querySelector('.measurement-intro25');
+  assert(homeIntro);
+  assert.equal(homeIntro.querySelector('.purpose5').textContent, 'Benchmarks and adoption surveys help us follow what AI can do and where it is used. The evidence assembled here offers a less complete picture of whether people and institutions retain the skills, authority and practical ability to question its decisions.');
+  assert.equal(homeIntro.querySelector('.home-finding25 strong').textContent, 'This dashboard brings those measurement gaps into view.');
+  assert.equal(homeIntro.querySelector('.purpose5').nextElementSibling.className, 'home-finding25');
+  assert.equal(homeIntro.querySelector('.home-links25 a').getAttribute('href'), '#gaps');
+  assert.equal(homeIntro.querySelector('.home-paper25').getAttribute('href'), 'https://gradual-disempowerment.ai/');
+  assert.equal(homeIntro.querySelectorAll('.home-finding25').length, 1);
   const nav = [...h.document.querySelectorAll('.nav a')];
   assert.deepEqual(nav.map(a => a.getAttribute('href')), ['#home', '#evidence', '#gaps', '#projects', '#contribute', '#method']);
   assert.equal(nav.at(-1).textContent, 'Method');

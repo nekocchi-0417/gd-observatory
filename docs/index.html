@@ -1546,6 +1546,13 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
 .home5 .hero5 .eye5 { margin-bottom:24px; }
 .home5 .purpose5-h { font-size:60px; line-height:1.06; max-width:20ch; letter-spacing:0; }
 .home5 .hero5-g.top5 .purpose5 { font-size:21px; line-height:1.6; max-width:43ch; padding:0; }
+.home5 .hero5-g.top5.measurement-intro25 { grid-template-columns:1fr; gap:20px; }
+.home5 .measurement-intro25 .purpose5-h { max-width:26ch; }
+.home5 .hero5-g.top5.measurement-intro25 .purpose5 { max-width:74ch; }
+.home-finding25 { margin:0; font:20px/1.5 var(--f-display); }
+.home-links25 { display:flex; flex-wrap:wrap; align-items:center; gap:12px 28px; margin:0; }
+.home-paper25 { font:15px/1.5 var(--f-display); color:var(--ink-2); text-decoration:underline; text-underline-offset:3px; }
+.home-links25 a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
 .home5 .sec2h5 { padding-block:28px 48px; }
 .home5 .sec2h5 .h1-5 { font-size:34px; line-height:1.18; max-width:22ch; }
 .home5 .qs5 { font-size:18px; line-height:1.6; gap:6px; }
@@ -7714,6 +7721,16 @@ function viewMethod22(v) {
 /* Reorganisation of the accepted pre-comparison dashboard. */
 const savedRender20 = render;
 
+function adaptHomeIntro25(v) {
+  const hero = $('.home5 .hero5-g.top5', v);
+  if (!hero) return;
+  hero.classList.add('measurement-intro25');
+  const intro = $('.purpose5', hero);
+  intro.textContent = 'Benchmarks and adoption surveys help us follow what AI can do and where it is used. The evidence assembled here offers a less complete picture of whether people and institutions retain the skills, authority and practical ability to question its decisions.';
+  intro.insertAdjacentHTML('afterend', `<p class="home-finding25"><strong>This dashboard brings those measurement gaps into view.</strong></p>
+    <p class="home-links25"><a class="go" href="#gaps">Research gaps &#8594;</a><a class="home-paper25" href="${esc(COPY.home.paper.url)}" target="_blank" rel="noopener" aria-label="Read the original Gradual Disempowerment paper (opens in a new tab)">Original paper &#8599;</a></p>`);
+}
+
 const evidencePairs20 = [
   {
     id: 'work', n: '01', left: 'capability', right: 'work',
@@ -7921,6 +7938,7 @@ function renderReorganized20(id) {
     adaptTopic20(v, route.id, route.sub); active = 'gaps';
   } else {
     savedRender20(id);
+    adaptHomeIntro25(v);
     active = ['home', 'map', 'pathways'].includes(route.id) ? 'home' : route.id === 'details' ? 'gaps' : route.id === 'why' ? 'contribute' : route.id;
   }
   current = id;
