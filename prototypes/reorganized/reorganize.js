@@ -107,7 +107,7 @@ function gapColumns20() {
     const label=COPY.coverage.bands[band], ids=ORDER.filter(id=>coverageOf5(id).band===band);
     return `<section class="coverage-column20" data-coverage="${band}" aria-labelledby="gap-${band}-title20">
       <header class="coverage-column-head20">${coverageGlyph5(band,22)}<div><h3 id="gap-${band}-title20">${esc(label.label)}</h3><p>${esc(label.description)}</p></div></header>
-      <ul>${ids.map(id=>`<li><a href="#${id}" class="gap-step20"><h4>${esc(nameOf(id))}</h4><p>${esc(gapCoverageSummaries20[id])}</p></a></li>`).join('')}</ul>
+      <ul>${ids.map(id=>`<li><a href="#${id}" class="gap-step20"><h4>${esc(nameOf(id))}</h4><p>${esc(gapCoverageSummaries20[id])}</p><span class="map-availability24${topicMaps24[id]?'':' is-pending'}">${topicMaps24[id]?'Evidence map':'Map coming soon'}</span></a></li>`).join('')}</ul>
     </section>`;
   }).join('')}</div>`;
 }
@@ -129,7 +129,7 @@ function adaptTopic20(v, id, sub) {
   back.setAttribute('aria-label', 'Research navigation');
   back.innerHTML = '<a href="#gaps">&#8592; Research gaps</a>';
   root.prepend(back);
-  if(id === 'skills' && root.classList.contains('selected8')) adaptSkillsResearch24(root);
+  if(root.classList.contains('pilot7')) adaptTopicResearch24(root,id);
   // Keep one home for each gap summary rather than repeating the overview here.
   const watch = $('#' + id + '-watch', v);
   if (watch) {
@@ -188,6 +188,8 @@ viewSourceMethod = viewMethod22;
 function resolveRoute20(id) {
   if (/^library(?:[/?]|$)/.test(String(id))) return { page:'library' };
   const [base, sub] = String(id || 'home').split('/');
+  if(topicMaps24[base] && sub==='source') return { page:'topic-source', id:base };
+  if(topicMaps24[base] && sub==='more') return { page:'library', route:`library?view=map&area=${topicMaps24[base].area}&scope=observed&from=${base}` };
   if (base === 'projects' || base === 'futures') return { page: 'projects', sub: ['work', 'grants'].includes(sub) ? sub : null };
   if (base === 'contribute' || base === 'why') return sub === 'funding' ? { page: 'projects', sub: 'grants' } : { page: 'contribute' };
   if (base === 'emerging' || base === 'evidence') return { page: 'evidence', sub };
@@ -205,7 +207,8 @@ function renderReorganized20(id) {
   window.scrollTo(0, 0);
   if (route.page === 'evidence') { viewEvidence20(v, route.sub); active = 'evidence'; }
   else if (route.page === 'gaps') { viewGaps20(v); libraryCorner23(v,''); active = 'gaps'; }
-  else if (route.page === 'library') { viewLibrary23(v,id); id=current; active='gaps'; }
+  else if (route.page === 'library') { viewLibrary23(v,route.route || id); id=current; active='gaps'; }
+  else if (route.page === 'topic-source') { viewTopicSource24(v,route.id); active='gaps'; }
   else if (route.page === 'projects') {
     const target = 'projects' + (route.sub ? '/' + route.sub : '');
     if (id !== target) { try { history.replaceState(null, '', '#' + target); } catch (_) {} }
@@ -236,6 +239,6 @@ const libraryFooter23=document.createElement('a');
 libraryFooter23.href='#library';libraryFooter23.className='library-footer23';libraryFooter23.textContent='Evidence library';
 $('.ft .wrap').append(libraryFooter23);
 render = renderReorganized20;
-const skillsEntry24=['skills','skills/source','skills/more','skills/gaps','gaps/skills'].includes(INITIAL_ROUTE23);
-if(skillsEntry24) { try { history.replaceState(null,'','#'+INITIAL_ROUTE23); } catch (_) {} }
-render(skillsEntry24 || /^library(?:[/?]|$)/.test(INITIAL_ROUTE23) ? INITIAL_ROUTE23 : (location.hash || '#home').slice(1));
+const mapEntry24=Object.keys(topicMaps24).some(id=>[id,id+'/source',id+'/more',id+'/gaps','gaps/'+id].includes(INITIAL_ROUTE23));
+if(mapEntry24) { try { history.replaceState(null,'','#'+INITIAL_ROUTE23); } catch (_) {} }
+render(mapEntry24 || /^library(?:[/?]|$)/.test(INITIAL_ROUTE23) ? INITIAL_ROUTE23 : (location.hash || '#home').slice(1));

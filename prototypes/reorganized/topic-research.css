@@ -7,6 +7,7 @@
 .topic-map-heading24 h2,.topic-questions24 > h2 { font-size:24px; line-height:1.35; }
 .topic-map-heading24 a { font-size:13px; }
 .topic-map-description24 { margin:8px 0 18px; font-size:14px; line-height:1.6; color:var(--ink-2); }
+.topic-map-scope24 { margin:0 0 18px; font-size:13px; line-height:1.6; color:var(--ink-2); max-width:90ch; }
 .topic-note24 { font-size:12px; line-height:1.65; color:var(--ink-3); margin:10px 0 0; max-width:100ch; }
 .topic-note24 strong { font-weight:600; }
 .topic-questions24 { margin-top:48px; scroll-margin-top:var(--anchor-offset22); }
@@ -17,13 +18,14 @@
 .topic-question-list24 p { color:var(--ink-2); font-size:15px; line-height:1.65; margin:0 0 12px; }
 .topic-question-list24 p b { display:block; color:var(--ink); font-size:12px; font-weight:600; margin-bottom:3px; }
 .topic-question-list24 .topic-question-sources24 { display:flex; flex-wrap:wrap; gap:8px 20px; font-size:12px; margin:8px 0 0; }
-.topic-finding24 { border-block:1px solid var(--rule); scroll-margin-top:var(--anchor-offset22); }
-.topic-finding24 > summary { min-height:56px; }
-.topic-finding-body24 { max-width:960px; margin-inline:auto; }
-.topic-finding24 .evidence-chart7 { margin-top:0; padding-top:10px; border-top:0; }
-.topic-finding24 .evidence-chart7 h2 { font-size:22px; }
-.topic-finding24 .chart svg { max-width:100%; }
-.topic-finding24 .disclosures7 { border-bottom:0; }
+.map-pending24 { display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 18px; margin-top:28px; padding:16px 0; border-block:1px solid var(--rule); color:var(--ink-3); }
+.map-pending24 h2 { font-size:16px; line-height:1.5; font-weight:500; }
+.map-pending24 span { font-size:13px; }
+.map-availability24 { display:block; width:fit-content; margin-top:12px; font:12px/1.5 var(--f-display); color:var(--ink-2); }
+.map-availability24.is-pending { padding:3px 7px; border-radius:3px; color:var(--ink-3); background:var(--surface-2); }
+.topic-source24 { max-width:1040px; }
+.topic-source24 .disclosure7-body { padding:0; }
+.topic-source24 .data-scroll7 { margin-top:28px; }
 .topic-research24 :is(a,summary,[tabindex]):focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
 @media(max-width:760px) {
   .topic-map-heading24 h2,.topic-questions24 > h2 { font-size:22px; }

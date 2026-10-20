@@ -19,9 +19,11 @@ function libraryState23(route) {
   const [path, query = ''] = String(route).split('?');
   const params = new URLSearchParams(query), topic = params.get('topic') || path.split('/')[1] || '';
   const view = params.get('view') === 'list' || ORDER.includes(path.split('/')[1]) ? 'list' : 'map';
+  const defaultArea = topicMaps24[topic]?.area || LIBRARY_MAP23.areas[0].id;
   const state = {
-    view, area:LIBRARY_MAP23.areas.some(a => a.id === params.get('area')) ? params.get('area') : LIBRARY_MAP23.areas[0].id,
+    view, area:LIBRARY_MAP23.areas.some(a => a.id === params.get('area')) ? params.get('area') : defaultArea,
     topic:ORDER.includes(topic) ? topic : '', q:(params.get('q') || '').slice(0,200),
+    from:ORDER.includes(params.get('from')) ? params.get('from') : '',
     scope:Object.hasOwn(libraryScopes23, params.get('scope')) ? params.get('scope') : view === 'map' ? 'observed' : 'all',
     year:/^\d{4}$/.test(params.get('year') || '') ? params.get('year') : '', facet:'', measure:'', page:1
   };
@@ -32,7 +34,7 @@ function libraryState23(route) {
 
 function libraryRoute23(state) {
   const params = new URLSearchParams();
-  for (const key of ['view','area','topic','q','scope','year','facet','measure']) if (state[key]) params.set(key,state[key]);
+  for (const key of ['view','area','topic','q','scope','year','facet','measure','from']) if (state[key]) params.set(key,state[key]);
   return 'library?' + params.toString();
 }
 
@@ -121,8 +123,9 @@ function refreshLibrary23(v,state,{scroll=false}={}) {
 
 function viewLibrary23(v,route) {
   const state=libraryState23(route), years=[...new Set(LIBRARY_VIEW23.records.map(r => r.year).filter(Boolean))].sort((a,b)=>b-a);
+  const returnTopic=state.from || state.topic;
   const options=(rows,value) => rows.map(([id,label]) => `<option value="${esc(String(id))}"${String(id)===value?' selected':''}>${esc(label)}</option>`).join('');
-  v.innerHTML=`<div class="view5 wrap library23"><nav class="library-back23" aria-label="Research navigation"><a href="#${state.topic || 'gaps'}">&#8592; ${state.topic ? esc(nameOf(state.topic)) : 'Research gaps'}</a></nav>
+  v.innerHTML=`<div class="view5 wrap library23"><nav class="library-back23" aria-label="Research navigation"><a href="#${returnTopic || 'gaps'}">&#8592; ${returnTopic ? esc(nameOf(returnTopic)) : 'Research gaps'}</a></nav>
     <header class="library-header23"><h1>Evidence library</h1><p>Research on AI, cognition and human influence.</p><p class="library-status23"><strong>AI-assisted and not yet verified.</strong> Check original sources before citing.</p></header>
     <div class="library-topline23"><div class="library-tabs23" role="group" aria-label="Library views"><button id="library-tab-map23" type="button" data-library-view="map" aria-controls="library-map-panel23">Evidence maps</button><button id="library-tab-list23" type="button" data-library-view="list" aria-controls="library-results23">All references</button></div><a class="library-download23" href="library-references.csv" download>Download references &#8595;</a></div>
     <form class="library-filters23" role="search" aria-label="Filter evidence library"><label class="library-search23">Search<input id="library-search23" type="search" value="${esc(state.q)}" placeholder="Title, author or topic" autocomplete="off" maxlength="200"></label>
@@ -144,7 +147,7 @@ function viewLibrary23(v,route) {
     const tab=e.target.closest('[data-library-view]');
     if(tab){state.view=tab.dataset.libraryView;state.facet='';state.measure='';state.page=1;state.scope=state.view==='map'?'observed':'all';$('#library-scope23',v).value=state.scope;refreshLibrary23(v,state);tab.focus();return;}
     const clear=e.target.closest('[data-library-clear]');
-    if(clear){if(clear.dataset.libraryClear==='all'){viewLibrary23(v,'library?view='+state.view);$('#library-search23',v).focus();}else{state.facet='';state.measure='';state.page=1;refreshLibrary23(v,state);}return;}
+    if(clear){if(clear.dataset.libraryClear==='all'){viewLibrary23(v,'library?view='+state.view+(state.from?'&from='+state.from+'&area='+state.area:''));$('#library-search23',v).focus();}else{state.facet='';state.measure='';state.page=1;refreshLibrary23(v,state);}return;}
     if(e.target.closest('#library-prev23')&&!$('#library-prev23',v).disabled){state.page--;refreshLibrary23(v,state,{scroll:true});}
     if(e.target.closest('#library-next23')&&!$('#library-next23',v).disabled){state.page++;refreshLibrary23(v,state,{scroll:true});}
   });
@@ -154,6 +157,7 @@ function viewLibrary23(v,route) {
 function libraryCorner23(v,id) {
   if($('.library-entry23',v))return;
   const link=document.createElement('p');link.className='library-entry23';
-  link.innerHTML=`<a href="#library/${ORDER.includes(id)?id:''}">Evidence library &#8594;</a>`;
+  const route=topicMaps24[id]?`library?view=map&area=${topicMaps24[id].area}&scope=observed&from=${id}`:`library/${ORDER.includes(id)?id:''}`;
+  link.innerHTML=`<a href="#${esc(route)}">Evidence library &#8594;</a>`;
   ($('.pilot7',v)||$('.priority6',v)||$('.gaps20',v)||v).append(link);
 }

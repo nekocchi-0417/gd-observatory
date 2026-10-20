@@ -73,7 +73,10 @@ function checkLibrary(h) {
   assert.equal(h.document.querySelectorAll('.library-footer23').length,1);
   for(const id of h.run('ORDER')) {
     const topic=h.render(id);
-    assert.equal(topic.querySelectorAll(`.library-entry23 a[href="#library/${id}"]`).length,1,id);
+    assert.equal(topic.querySelectorAll('.library-entry23 a').length,1,id);
+    const href=topic.querySelector('.library-entry23 a').getAttribute('href');
+    if(h.run(`Boolean(topicMaps24.${id})`)) assert.match(href,new RegExp('from='+id));
+    else assert.equal(href,'#library/'+id);
   }
   assert(h.render('gaps').querySelector('.library-entry23 a'));
   const click=selector=>{h.document.querySelector(selector).dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();};
@@ -152,55 +155,71 @@ function checkLibrary(h) {
   assert(fs.existsSync(path.join(path.dirname(path.join(root,target)),'library-references.csv')));
 }
 
-function checkSkillsResearch(h) {
-  if(!h.run('typeof adaptSkillsResearch24 === "function"')) return;
-  let v=h.render('skills');
-  assert.equal(v.querySelector('h1').textContent,'How does using AI affect our skills and judgement?');
-  assert.equal(v.querySelectorAll('.topic-map24').length,1);
-  assert.equal(v.querySelectorAll('.library-map23 tbody tr').length,8);
-  assert.equal(v.querySelectorAll('.library-cell23[href]').length,64);
-  assert.equal(v.querySelectorAll('.topic-question-list24 > li').length,3);
-  assert(v.innerHTML.indexOf('class="topic-map24"') < v.innerHTML.indexOf('id="skills-watch"'));
-  assert(v.innerHTML.indexOf('id="skills-watch"') < v.innerHTML.indexOf('id="skills-finding24"'));
-  assert.equal(v.querySelector('.next-measure9'),null);
-  assert.equal(v.querySelectorAll('.evidence-chart7').length,1);
-  assert(v.querySelector('#skills-finding24 .evidence-chart7'));
-  assert(!v.querySelector('#skills-finding24').open);
-  assert.match(v.querySelector('.topic-map24').textContent,/AI-assisted and not yet verified/);
-  assert.match(v.querySelector('.topic-map24').textContent,/whether that measure was used for that skill needs checking/);
-  assert.match(v.querySelector('.topic-map24').textContent,/Empty cells may reflect missing references/);
-  assert.match(v.querySelector('#skills-watch').textContent,/proposed extensions/);
+function checkTopicResearch(h) {
+  if(!h.run('typeof adaptTopicResearch24 === "function"')) return;
   const config=h.run('LIBRARY_MAP23'),records=h.run('LIBRARY_VIEW23.records');
   const primary=new Set(['RCT','lab experiment','field experiment','natural experiment','quasi-experiment','cross-sectional survey','panel survey','log analysis','qualitative','case study','benchmark']);
-  for(const cell of v.querySelectorAll('.library-cell23')) {
-    const route=cell.getAttribute('href').slice(1), params=new URLSearchParams(route.split('?')[1]);
-    assert.equal(params.get('topic'),'skills');assert.equal(params.get('scope'),'observed');assert.equal(params.get('area'),'cognition');
-    const facet=config.areas[0].facets.find(f=>f.id===cell.dataset.libraryFacet);
-    const column=config.columns.find(c=>c.id===cell.dataset.libraryMeasure);
-    const expected=records.filter(entry=>entry.topics.includes('skills')&&entry.kind!=='framework'&&entry.landscape.some(c=>primary.has(c.design)&&facet.constructs.some(tag=>c.constructs.includes(tag))&&(!column||column.measures.some(tag=>c.measures.includes(tag)))));
-    assert.equal(Number(cell.dataset.count),expected.length,'Topic map must retain the library filters and same-record tag match');
-    assert.equal(params.get('facet'),facet.id);assert.equal(params.get('measure')||'',column?.id||'');
+  for(const [id,areaID,facetID,measureID] of [['skills','cognition','learning','unaided'],['influence','autonomy','choice','report']]) {
+    let v=h.render(id);
+    assert.equal(v.querySelector('h1').textContent,h.run(`topicMaps24.${id}.title`));
+    assert.equal(v.querySelectorAll('.topic-map24').length,1);
+    assert.equal(v.querySelectorAll('.library-map23 tbody tr').length,8);
+    assert.equal(v.querySelectorAll('.library-cell23[href]').length,64);
+    assert.equal(v.querySelectorAll('.topic-question-list24 > li').length,id==='skills'?3:2);
+    assert(v.innerHTML.indexOf('class="topic-map24"') < v.innerHTML.indexOf(`id="${id}-watch"`));
+    assert.equal(v.querySelector('.next-measure9,.topic-finding24,.evidence-chart7,.takeaway7,.disclosures7,.map-pending24'),null);
+    assert.doesNotMatch(v.textContent,/Selected finding/);
+    assert.match(v.querySelector('.topic-map24').textContent,/AI-assisted and not yet verified/);
+    assert.match(v.querySelector('.topic-map24').textContent,/whether that measure was used for that construct needs checking/);
+    assert.match(v.querySelector('.topic-map24').textContent,/Empty cells may reflect missing references/);
+    assert.match(v.querySelector('#'+id+'-watch').textContent,/Proposed extensions/);
+    if(id==='influence') assert.match(v.querySelector('.topic-map-scope24').textContent,/Institutional and political influence are not yet mapped/);
+    for(const cell of v.querySelectorAll('.library-cell23')) {
+      const route=cell.getAttribute('href').slice(1), params=new URLSearchParams(route.split('?')[1]);
+      assert.equal(params.get('topic'),null);assert.equal(params.get('from'),id);assert.equal(params.get('scope'),'observed');assert.equal(params.get('area'),areaID);
+      const facet=config.areas.find(a=>a.id===areaID).facets.find(f=>f.id===cell.dataset.libraryFacet);
+      const column=config.columns.find(c=>c.id===cell.dataset.libraryMeasure);
+      const expected=records.filter(entry=>entry.kind!=='framework'&&entry.landscape.some(c=>primary.has(c.design)&&facet.constructs.some(tag=>c.constructs.includes(tag))&&(!column||column.measures.some(tag=>c.measures.includes(tag)))));
+      assert.equal(Number(cell.dataset.count),expected.length,'Topic map must retain all relevant area records, independent of old pathway tags');
+      assert.equal(params.get('facet'),facet.id);assert.equal(params.get('measure')||'',column?.id||'');
+    }
+    const cell=v.querySelector(`[data-library-facet="${facetID}"][data-library-measure="${measureID}"]`),count=Number(cell.dataset.count);
+    cell.dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
+    assert.match(h.run('current'),/^library\?/);
+    assert.equal(v.querySelector('.library-back23 a').getAttribute('href'),'#'+id);
+    assert.equal(v.querySelector('#library-count23').textContent,`${count} references`);
+    assert.equal(v.querySelector(`[data-library-facet="${facetID}"][data-library-measure="${measureID}"]`).getAttribute('aria-pressed'),'true');
+    v=h.render('library/'+id);
+    v.querySelector('[data-library-view="map"]').dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
+    assert.equal(v.querySelector('#library-area23').value,areaID,'Topic library should default to its matching map');
+    v=h.render(id+'/more');
+    assert(v.querySelector('.library23'));
+    assert.equal(v.querySelector('#library-topic23').value,'');
+    assert.equal(v.querySelector('#library-area23').value,areaID);
+    assert.equal(v.querySelector('#library-map-panel23').hidden,false);
+    assert.equal(v.querySelector('.library-back23 a').getAttribute('href'),'#'+id);
+    v.querySelector('[data-library-clear="all"]').dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
+    assert.equal(v.querySelector('.library-back23 a').getAttribute('href'),'#'+id,'Reset preserves return navigation without filtering the corpus');
+    v=h.render(id+'/source');
+    assert(v.querySelector('.topic-source24 .data7'),'Source-specific data must remain accessible');
+    assert(v.querySelector('#'+id+'-source'));
+    assert(v.querySelector('.context7'));
+    assert.equal(v.querySelector('.evidence-chart7,.topic-finding24'),null);
+    assert.equal(v.querySelector('.research-back20 a').getAttribute('href'),'#'+id);
+    assert.match(v.textContent,/AI-assisted summary; not independently verified/);
   }
-  const cell=v.querySelector('[data-library-facet="learning"][data-library-measure="unaided"]'),count=Number(cell.dataset.count);
-  cell.dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
-  assert.match(h.run('current'),/^library\?/);
-  assert.equal(v.querySelector('.library-back23 a').getAttribute('href'),'#skills');
-  assert.equal(v.querySelector('#library-count23').textContent,`${count} references`);
-  assert.equal(v.querySelector('[data-library-facet="learning"][data-library-measure="unaided"]').getAttribute('aria-pressed'),'true');
-  v=h.render('skills');
-  const finding=v.querySelector('#skills-finding24');finding.open=true;finding.dispatchEvent(new h.Event('toggle'));h.flush();
-  assert(v.querySelector('#skills-chart8 svg'));
-  assert.doesNotMatch(v.querySelector('#skills-chart8 svg').outerHTML,/NaN|Infinity|undefined/);
-  assert.match(v.querySelector('#skills-chart8 svg').getAttribute('aria-label'),/5\.4/);
-  for(const sub of ['source','more']) {
-    v=h.render('skills/'+sub);
-    assert.equal(v.querySelector('#skills-finding24').open,true,'Nested source deep links must reveal their parent');
-    assert.equal(v.querySelector('#skills-'+(sub==='source'?'source':'related')).open,true);
+  for(const id of h.run('ORDER.filter(id=>!topicMaps24[id])')) {
+    const v=h.render(id);
+    assert.equal(v.querySelector('.topic-research24'),null);
+    assert.equal(v.querySelectorAll('.map-pending24').length,1);
+    assert.match(v.querySelector('.map-pending24').textContent,/Evidence mapComing soon/);
+    assert.equal(v.querySelector('.map-pending24 a,.map-pending24 button'),null,'Pending map must not look actionable');
+    assert(v.querySelector('.evidence-chart7'),id+': existing research remains accessible');
+    assert(v.querySelector('.library-entry23 a'));
   }
-  for(const id of h.run('ORDER.filter(id=>id!=="skills")')) {
-    v=h.render(id);assert.equal(v.querySelector('.topic-research24'),null,id+': pilot must remain scoped');
-    assert(v.querySelector('.evidence-chart7'),id+': existing featured chart is retained');
-  }
+  const overview=h.render('gaps');
+  assert.equal(overview.querySelectorAll('.map-availability24.is-pending').length,7);
+  assert.equal(overview.querySelectorAll('.map-availability24:not(.is-pending)').length,2);
 }
 
 for (const theme of ['light', 'dark']) {
@@ -356,7 +375,8 @@ for (const width of [1200, 600, 335]) {
     }
   }
   v = h.render('skills/source');
-  assert.equal(v.querySelector('#skills-source').open, true);
+  assert(v.querySelector('.topic-source24 .data7'));
+  assert.match(v.textContent,/5\.4/);
   assert.equal(h.document.querySelector('.nav [aria-current="page"]').getAttribute('href'), '#gaps');
   v = h.render('gaps/skills');
   assert(v.querySelector('#skills-watch').scrolled);
@@ -422,7 +442,7 @@ for (const width of [1200, 600, 335]) {
   assert.equal(h.run('Math.abs(TOPIC_CHARTS.skills.chart.rows[0].value)'), 5.4);
   assert.equal(h.run('TOPIC_CHARTS.work.chart.kind'), 'work-ages');
   checkLibrary(h);
-  checkSkillsResearch(h);
+  checkTopicResearch(h);
 }
 }
 const blocked = harness(335, { storageBlocked: true });
@@ -451,12 +471,24 @@ if (html.includes('const LIBRARY_VIEW23')) {
     assert(direct.document.querySelector('.library23'));
   }
 }
-if(html.includes('function adaptSkillsResearch24')) {
-  for(const initialHash of ['#skills/source','#skills/more','#gaps/skills']) {
+if(html.includes('function adaptTopicResearch24')) {
+  for(const initialHash of ['#skills','#skills/source','#skills/more','#skills/gaps','#gaps/skills','#influence','#influence/source','#influence/more','#influence/gaps','#gaps/influence']) {
     const direct=harness(600,{initialHash});
-    assert(direct.document.querySelector('.topic-map24'),initialHash+': pilot must survive direct entry');
-    assert.equal(direct.location.hash,initialHash);
-    if(initialHash!=='#gaps/skills') assert(direct.document.querySelector('#skills-finding24').open,initialHash+': parent disclosure must open');
+    const id=initialHash.includes('skills')?'skills':'influence';
+    if(initialHash.endsWith('/more')) {
+      assert(direct.document.querySelector('.library23'),initialHash+': open topic library on direct entry');
+      assert.equal(direct.document.querySelector('#library-topic23').value,'');
+      assert.equal(direct.document.querySelector('.library-back23 a').getAttribute('href'),'#'+id);
+      assert.match(direct.location.hash,/^#library\?/);
+    } else if(initialHash.endsWith('/source')) {
+      assert(direct.document.querySelector('.topic-source24 .data7'),initialHash+': retain source-specific data and caveats');
+      assert.equal(direct.location.hash,initialHash);
+    } else {
+      assert(direct.document.querySelector('.topic-map24'),initialHash+': map must survive direct entry');
+      assert.equal(direct.location.hash,initialHash);
+      if(initialHash.includes('/')) assert(direct.document.querySelector('#'+id+'-watch').scrolled);
+    }
+    assert.equal(direct.document.querySelector('.topic-finding24'),null);
   }
 }
 assert.equal(blocked.document.documentElement.getAttribute('data-theme'), 'light');
@@ -524,5 +556,5 @@ console.log('PASS: generated SVG geometry at widths 1200, 600 and 335, with sour
 console.log('PASS: light/dark controls, saved preferences, blocked-storage fallback, and no route/chart/disclosure reset on theme change.');
 console.log('PASS: palette text contrast >= 4.5:1 and main chart/diagram colours >= 3:1 in both modes.');
 if(html.includes('const LIBRARY_VIEW23')) console.log('PASS: library routes, filters, all map cell counts, exact source memberships, reset/pagination, query escaping and CSV export.');
-if(html.includes('function adaptSkillsResearch24')) console.log('PASS: Skills-only map pilot, all 64 source links/counts, three proposed questions, collapsed finding/redraw and nested source routes.');
+if(html.includes('function adaptTopicResearch24')) console.log('PASS: Skills and Human influence maps, all 128 source links/counts, no selected findings, seven pending maps and separate source-note routes.');
 console.log('Not tested: actual browser layout, CSS overflow, pointer positioning or current remote link availability.');
