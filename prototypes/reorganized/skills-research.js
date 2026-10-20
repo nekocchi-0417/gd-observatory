@@ -2,13 +2,13 @@
 const skillsQuestions24 = [
   {
     title:'Do skill changes last?',
-    measured:'The classroom trial tests students without AI immediately after practice.',
+    measured:'A Turkish high-school trial tests students without AI immediately after practice.',
     next:'Follow the same people over several months, testing skills without AI and comparing different patterns of AI use against a baseline.',
     sources:[['Bastani et al., 2025','https://hamsabastani.github.io/education_llm.pdf']]
   },
   {
     title:'Does learning transfer to unfamiliar tasks?',
-    measured:'The trial uses exam problems similar to the practice exercises.',
+    measured:'In that trial, exam problems are similar to the practice exercises.',
     next:'Add unfamiliar problems and tasks in a different setting, then test whether people can apply what they learned without AI.',
     sources:[['Bastani et al., 2025','https://hamsabastani.github.io/education_llm.pdf']]
   },
