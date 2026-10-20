@@ -1,0 +1,60 @@
+{
+  "checked": "2026-10-19",
+  "scope": "AI-assisted bibliography repair only. This does not approve legacy findings, numerical extractions, peer-review labels or human verification.",
+  "records": [
+    {
+      "collection": "research/landscape/master.json", "sourceId": "macnamara2024",
+      "action": "repair", "fields": {"link": "https://doi.org/10.1186/s41235-024-00572-8", "kind": "framework", "cite": "Macnamara et al. (2024). Theoretical review, Cognitive Research: Principles and Implications."},
+      "basis": "Publisher title, publication date and abstract checked. This theoretical perspective proposes mechanisms; it does not report a new skill-decay experiment.",
+      "source": "https://link.springer.com/article/10.1186/s41235-024-00572-8"
+    },
+    {
+      "collection": "research/landscape/master.json", "sourceId": "cheng2022",
+      "action": "repair", "fields": {"link": "https://dig.cmu.edu/publications/2022-afst-disparities.html", "cite": "Cheng et al. (2022). CHI; see also the authors' extended analysis."},
+      "basis": "Author-lab page verifies the original paper. Numerical comparisons changed in the extended analysis (arXiv:2204.13872); do not merge the two versions.",
+      "source": "https://dig.cmu.edu/publications/2022-afst-disparities.html"
+    },
+    {
+      "collection": "research/landscape/master.json", "sourceId": "crootof2023",
+      "action": "repair", "fields": {"link": "https://scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2/", "kind": "framework", "cite": "Crootof, Kaminski and Price (2023). Humans in the Loop. Vanderbilt Law Review 76, 429."},
+      "basis": "Journal's original page verifies authors, title and year. Legal/conceptual analysis, not an empirical measure of autonomy.",
+      "source": "https://scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2/"
+    },
+    {
+      "collection": "research/landscape/master.json", "sourceId": "kellogg2024",
+      "action": "repair", "fields": {"link": "https://www.hbs.edu/ris/Publication%20Files/24-074_bee7fd2f-882e-4e8c-adfe-150f8439dff6.pdf", "cite": "Kellogg et al. (2024). Harvard Business School Working Paper 24-074."},
+      "basis": "Original HBS working paper title page and abstract read. Working-paper identity restored; legacy summary has not been independently verified.",
+      "source": "https://www.hbs.edu/ris/Publication%20Files/24-074_bee7fd2f-882e-4e8c-adfe-150f8439dff6.pdf"
+    },
+    {
+      "collection": "research/landscape/master.json", "sourceId": "amnesty2021",
+      "action": "repair", "fields": {"link": "https://www.amnesty.org/en/documents/eur35/4686/2021/en/", "kind": "report", "cite": "Amnesty International (2021). Xenophobic Machines. EUR 35/4686/2021."},
+      "basis": "Original report landing page verifies title, date and report number. Advocacy/investigative report; historical algorithmic system, not a generative-AI experiment.",
+      "source": "https://www.amnesty.org/en/documents/eur35/4686/2021/en/"
+    },
+    {
+      "collection": "research/scan4/adoption.jsonl", "sourceId": "hartley-work-use",
+      "action": "hold",
+      "basis": "Record links to Stanford's compilation rather than the paper. SSRN 5136877 now has a different title (Job Loss Fears in the First Years of Generative Artificial Intelligence) and an August 2026 revision. Resolve the intended version before associating the old title/year or figures with the current paper.",
+      "source": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5136877"
+    },
+    {
+      "collection": "research/scan4/institutions.jsonl", "sourceId": "dsa_sor_schema",
+      "action": "hold",
+      "basis": "The 2023 schema record points to the current dashboard, which is a different object. Match a dated schema/version before restoring this as a separate reference. The dashboard entry remains available.",
+      "source": "https://transparency.dsa.ec.europa.eu/"
+    },
+    {
+      "collection": "research/scan4/influence.jsonl", "sourceId": "yougov-ifs-preemption-2025",
+      "action": "repair", "fields": {"title": "Huge Majorities Want AI Stopped Immediately", "cite": "Public Citizen (September 2026). Advocacy compilation of polls; individual poll findings require original-source checks.", "year": 2026, "kind": "report"},
+      "basis": "The linked PDF is a 2026 Public Citizen compilation, not the original 2025 poll. Use document-level metadata and merge its URL duplicate; preserve the original record as provenance.",
+      "source": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf"
+    },
+    {
+      "collection": "research/scan4/influence.jsonl", "sourceId": "publiccitizen-polling-memo-2026",
+      "action": "repair", "fields": {"title": "Huge Majorities Want AI Stopped Immediately", "cite": "Public Citizen (September 2026). Advocacy compilation of polls; individual poll findings require original-source checks.", "year": 2026, "kind": "report"},
+      "basis": "Original PDF cover read; bibliography records the actual document title, author and year. Its advocacy claims are not adopted as dashboard findings.",
+      "source": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf"
+    }
+  ]
+}

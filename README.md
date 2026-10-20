@@ -2,30 +2,28 @@
 
 A public evidence dashboard for gradual disempowerment: tracking whether AI is weakening human influence, step by step, and what goes unmeasured.
 
-![The home page: technical-task capability and employment trends, with separate sources and axes](assets/screenshots/home.png)
-
-**Status: research prototype (16 October 2026).** The homepage and Emerging evidence compare AI progress with selected human outcomes. Research gaps brings each topic's evidence and missing measures together. AI-assisted primary-source checks are not independent verification. The [comparison source review](research/checklist/comparison-source-review.md) documents chart choices; the [OWID source review](research/reviews/24_owid_source_review.md) covers the latest supporting additions. The [90-minute review](research/checklist/selected-indicators-review.md) covers the selected indicators. The older `handcheck.csv` is an archive.
+**Status: research prototype (19 October 2026).** The accepted pre-comparison homepage is restored, with six selected visuals under Evidence, a Research gaps overview, Projects & grants, Contribute and Method. Light/dark controls retain the reader's preference; light is the default. AI-assisted checks do not establish independent verification. The earlier research notes and screenshots describe different versions and should be read with their dates.
 
 ## What it shows
 
 Gradual disempowerment is the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation ([Kulveit and co-authors, 2025](https://gradual-disempowerment.ai/)).
 
-The site breaks that argument into a chain of nine stops: AI capability, AI adoption, delegation to AI, then four branches (entry-level jobs and workers' share of income, skills and judgement, culture and information, AI in government), ending at human influence. Each step separates **Currently measured** indicators from **Measurement gaps**, with short findings, source links and essential limits. Detailed source notes and a searchable, AI-assisted **Evidence library** remain collapsed at the bottom; the large charts are on Home and Emerging evidence.
+The site breaks that argument into nine stops: AI capability, AI adoption, delegation to AI, then branches covering jobs and income, skills and judgement, culture, and government, ending at human influence. The selected topic pages retain their charts, source notes and measurement questions. Evidence presents three comparisons with separate sources and units.
 
-The library reuses the earlier research collections as bibliography entries, without republishing their unchecked numerical claims. It is not a systematic review or a list of independently verified studies. Current selected-source metadata takes precedence where references overlap. Project background and the original paper are under **Contribute**, also linked as **About** in the footer.
+The repository's working library reuses earlier research collections as bibliography entries without republishing unchecked numerical claims. It is not a systematic review or a list of independently verified studies. A separate library view is planned; the accepted restored topic layout does not yet expose the full collection.
 
-The adoption comparison follows Gallup's three overlapping usage groups, with OWID as a visual reference and newer observations from Gallup's own table. Delegation includes a collapsed supporting chart of California robotaxi passenger travel from CPUC data processed by OWID. FrontierMath is a related capability reference only; no new headline capability chart or coverage rating is introduced.
+The adoption comparison follows Gallup's three overlapping usage groups. The two culture visuals use the same platform's reports, so six visuals do not represent six independent studies. No new narrative, forecast display or coverage rating is introduced by this release.
 
 Within this selection, AI capability and use have repeated measurements. Direct longitudinal measures of skills, judgement and influence are more limited. This is not a systematic review of all research, and paired trends are not proof of cause and effect.
 
 | Page | What it answers |
 |---|---|
-| **Home** | AI capability and employment: a first comparison, with links into the dashboard. |
-| **Emerging evidence** | Paired evidence on work, skills and culture. Time-series lines where supported; numerical summaries for snapshots. |
-| **Research gaps** | The proposed pathways and a measured-versus-missing overview, linking to nine topic pages with indicator cards, gaps and study ideas. |
-| **Futures** (footer) | Published forecasts, mostly about US jobs and income. Work in progress. |
-| **Method** | How the ratings are reached, how indicators are chosen, known limits and all sources. |
-| **Contribute** | Why measure gradual disempowerment, and how to help: propose an indicator or study, suggest a correction, find funding. |
+| **Home** | The original framing, causal diagram and three-row overview. |
+| **Evidence** | Six selected visuals on work, learning and culture, with sources and caveats. |
+| **Research gaps** | A provisional 2x2 grouping linking to the nine topic pages. |
+| **Projects & grants** | Manually checked project and funding listings with dates. |
+| **Contribute** | Submit a study, indicator or correction. |
+| **Method** | Selection, chart construction, coverage limitations and source-check scope. |
 
 ## View it
 
@@ -36,25 +34,31 @@ To switch on GitHub Pages: in the repository, go to **Settings → Pages**, set 
 
 ## Build it
 
-The site is plain HTML, CSS and JavaScript with no framework. The build joins the files in `src/` into one page.
+The site is plain HTML, CSS and JavaScript. The current builder combines the accepted historical base in `prototypes/reorganized/base/` with the reorganized components and selected source modules. It does not require a full Git history.
 
 ```sh
 sh build.sh            # writes docs/index.html
-sh build.sh artifact   # writes dist/artifact.html, for publishing as a Claude artifact
+node tools/build-reorganized-preview.js  # writes the local preview under dist/
 ```
 
 Optional checks (needs Node.js):
 
 ```sh
 npm install
-npx playwright install chromium
-npm run verify         # every page at desktop and phone widths, light and dark
-node tools/verify-selected-data.js  # source-data arithmetic and build syntax
+npm run verify:static  # DOM, routes, SVG geometry, theme and data preservation
 node tools/verify-library.js        # bibliography provenance, deduplication and safe URLs
-node tools/verify-owid.js --sources  # OWID additions, responsive charts and original Gallup table
 ```
 
+The static tests do not verify rendered browser layout. `build:artifact` and the older browser-check scripts are retained for historical versions; they are not the current publication workflow.
+
 ## Where things live
+
+- `prototypes/reorganized/`: accepted base, page overrides, manually maintained directory, Method and theme controls.
+- `tools/build-reorganized-preview.js`: preview and public build; `--publish` writes `docs/`.
+- `src/comparison-data.js`, `src/comparison.js`, `src/capability.js`, `src/adoption.js`: data/chart helpers imported by the current builder. The builder deliberately excludes the newer source router and homepage.
+- `research/library-curation.json`: bibliography-only corrections, preserving original research records.
+
+Earlier source architecture, retained for reference and historical exports:
 
 ```
 src/
@@ -83,9 +87,9 @@ research/          how the evidence was gathered and checked (see research/READM
 tools/             verification and screenshot scripts
 ```
 
-Current figures are defined in `capability.js`, `adoption.js` and `selected-topics.json`; comparisons use `comparison-data.js` and `comparison.js`. Topic summaries and gap cards live in `measurement-data.js`. Update matching interpretations, source notes, CSVs and tests, then rebuild. Legacy `#pathways`, `#map` and `#evidence` links now reach the merged Research gaps page. `data1.js` and `data2.js` retain the earlier indicator collection. Verification screenshots are saved under `dist/verification/`.
+The accepted topic pages inherit their selected releases from the saved base. Check the builder before changing a source module: not every newer `src/` component is active in this version. Update matching interpretations, source notes and tests together. Legacy `#futures` links now open Projects & grants, and `#emerging` opens Evidence.
 
-After editing the earlier research collections, run `node tools/build-evidence-library.js` to regenerate the bibliography, inspect its skipped/merged-record report, then rebuild. `node tools/build-evidence-library.js --check` checks that the committed catalog is current. `#library/skills` and equivalent links open the library within the corresponding step page.
+After editing research records or the curation overlay, run `node tools/build-evidence-library.js`, inspect its skipped/merged-record report, and run `node tools/verify-library.js`. `node tools/audit-library-records.js` regenerates the metadata audit. Bibliographic repair does not approve a study's findings.
 
 ## How it was made
 

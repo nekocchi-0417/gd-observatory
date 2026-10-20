@@ -1,0 +1,858 @@
+{
+  "checked": "2026-10-19",
+  "scope": "AI-assisted bibliography repair only. This does not approve legacy findings, numerical extractions, peer-review labels or human verification.",
+  "claimVerification": "Not performed across the full library. Source identity checks are separate from checks of findings.",
+  "topics": {
+    "capability": {
+      "input": 47,
+      "entries": 45,
+      "skipped": 0,
+      "merged": 2
+    },
+    "adoption": {
+      "input": 49,
+      "entries": 42,
+      "skipped": 2,
+      "merged": 5
+    },
+    "handover": {
+      "input": 40,
+      "entries": 36,
+      "skipped": 0,
+      "merged": 4
+    },
+    "work": {
+      "input": 63,
+      "entries": 62,
+      "skipped": 0,
+      "merged": 1
+    },
+    "share": {
+      "input": 60,
+      "entries": 59,
+      "skipped": 0,
+      "merged": 1
+    },
+    "skills": {
+      "input": 361,
+      "entries": 353,
+      "skipped": 8,
+      "merged": 0
+    },
+    "culture": {
+      "input": 60,
+      "entries": 58,
+      "skipped": 0,
+      "merged": 2
+    },
+    "institutions": {
+      "input": 55,
+      "entries": 51,
+      "skipped": 1,
+      "merged": 3
+    },
+    "influence": {
+      "input": 45,
+      "entries": 42,
+      "skipped": 1,
+      "merged": 2
+    }
+  },
+  "skipped": [
+    {
+      "topic": "adoption",
+      "collection": "research/scan4/adoption.jsonl",
+      "sourceId": "hartley-work-use",
+      "record": 15,
+      "reason": "Held for reference/version review: Record links to Stanford's compilation rather than the paper. SSRN 5136877 now has a different title (Job Loss Fears in the First Years of Generative Artificial Intelligence) and an August 2026 revision. Resolve the intended version before associating the old title/year or figures with the current paper."
+    },
+    {
+      "topic": "adoption",
+      "collection": "research/scan4/adoption.jsonl",
+      "sourceId": "mit-nanda-genai-divide",
+      "record": 45,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "rathje2025",
+      "record": 24,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "chiang2024",
+      "record": 179,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "dellacqua2023",
+      "record": 181,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "yeverechyahu2024",
+      "record": 198,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "sergeeva2020",
+      "record": 201,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "arnold1998",
+      "record": 220,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "weigelt2009",
+      "record": 221,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "kelly2021",
+      "record": 248,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    },
+    {
+      "topic": "institutions",
+      "collection": "research/scan4/institutions.jsonl",
+      "sourceId": "dsa_sor_schema",
+      "record": 55,
+      "reason": "Held for reference/version review: The 2023 schema record points to the current dashboard, which is a different object. Match a dated schema/version before restoring this as a separate reference. The dashboard entry remains available."
+    },
+    {
+      "topic": "influence",
+      "collection": "research/scan4/influence.jsonl",
+      "sourceId": "branham-soroka-wlezien-2017",
+      "record": 36,
+      "reason": "Missing, invalid or unsafe HTTP(S) URL"
+    }
+  ],
+  "merged": [
+    {
+      "topic": "capability",
+      "url": "https://artificialanalysis.ai/articles/opus-5",
+      "kept": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "hle",
+        "record": 14
+      },
+      "merged": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "aa-index",
+        "record": 16
+      }
+    },
+    {
+      "topic": "capability",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance",
+      "kept": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "osworld",
+        "record": 12
+      },
+      "merged": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "aiindex2026",
+        "record": 46
+      }
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-work",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-org",
+        "record": 2
+      }
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-work",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-industry-daily",
+        "record": 3
+      }
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/articles/artificialintelligenceinukbusinesses/2023to2026",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "ons-bics",
+        "record": 24
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "ons-bics-intensity",
+        "record": 25
+      }
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "census-btos",
+        "record": 18
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "census-expectations",
+        "record": 46
+      }
+    },
+    {
+      "topic": "adoption",
+      "url": "https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "rps-hours",
+        "record": 6
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "hours-per-user-derived",
+        "record": 49
+      }
+    },
+    {
+      "topic": "handover",
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-september-2025-report",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-directive",
+        "record": 2
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-classifier-rerun",
+        "record": 4
+      }
+    },
+    {
+      "topic": "handover",
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-september-2025-report",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-directive",
+        "record": 2
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-country-gradient",
+        "record": 5
+      }
+    },
+    {
+      "topic": "handover",
+      "url": "https://www.anthropic.com/research/measuring-agent-autonomy",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "agent-autonomy",
+        "record": 8
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "agent-api-hitl",
+        "record": 9
+      }
+    },
+    {
+      "topic": "handover",
+      "url": "https://arxiv.org/abs/2506.06576",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "workbank",
+        "record": 22
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "human-agency-scale",
+        "record": 23
+      }
+    },
+    {
+      "topic": "work",
+      "url": "https://siepr.stanford.edu/publications/policy-brief/what-really-happening-jobs-separating-ai-hype-reality",
+      "kept": {
+        "collection": "research/scan4/work.jsonl",
+        "sourceId": "siepr-brief",
+        "record": 45
+      },
+      "merged": {
+        "collection": "research/scan4/work.jsonl",
+        "sourceId": "ramp-adopters",
+        "record": 53
+      }
+    },
+    {
+      "topic": "share",
+      "url": "https://leap.forecastingresearch.org/reports/wave7",
+      "kept": {
+        "collection": "research/scan4/share.jsonl",
+        "sourceId": "bls-mfp-ls",
+        "record": 6
+      },
+      "merged": {
+        "collection": "research/scan4/share.jsonl",
+        "sourceId": "leap-wave7",
+        "record": 56
+      }
+    },
+    {
+      "topic": "culture",
+      "url": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/",
+      "kept": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "deezer-uploads",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "deezer-streams",
+        "record": 2
+      }
+    },
+    {
+      "topic": "culture",
+      "url": "https://www.pewresearch.org/internet/2026/06/17/americans-and-ai-2026-chatbots-smart-devices-and-views-on-impact/",
+      "kept": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "pew-ai-summaries-2026",
+        "record": 24
+      },
+      "merged": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "pew-chatbot-purposes-2026",
+        "record": 34
+      }
+    },
+    {
+      "topic": "institutions",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "kept": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_count",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_hi_safeguards",
+        "record": 2
+      }
+    },
+    {
+      "topic": "institutions",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "kept": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_count",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_vendor",
+        "record": 4
+      }
+    },
+    {
+      "topic": "institutions",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "kept": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_count",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_scope",
+        "record": 5
+      }
+    },
+    {
+      "topic": "influence",
+      "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf",
+      "kept": {
+        "collection": "research/scan4/influence.jsonl",
+        "sourceId": "pew-aicontrol1",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/influence.jsonl",
+        "sourceId": "pew-aicontrol2",
+        "record": 2
+      }
+    },
+    {
+      "topic": "influence",
+      "url": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf",
+      "kept": {
+        "collection": "research/scan4/influence.jsonl",
+        "sourceId": "yougov-ifs-preemption-2025",
+        "record": 8
+      },
+      "merged": {
+        "collection": "research/scan4/influence.jsonl",
+        "sourceId": "publiccitizen-polling-memo-2026",
+        "record": 9
+      }
+    }
+  ],
+  "ambiguities": [
+    {
+      "topic": "capability",
+      "url": "https://artificialanalysis.ai/articles/opus-5",
+      "kept": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "hle",
+        "record": 14
+      },
+      "merged": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "aa-index",
+        "record": 16
+      },
+      "fields": [
+        "title"
+      ]
+    },
+    {
+      "topic": "capability",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/technical-performance",
+      "kept": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "osworld",
+        "record": 12
+      },
+      "merged": {
+        "collection": "research/scan4/capability.jsonl",
+        "sourceId": "aiindex2026",
+        "record": 46
+      },
+      "fields": [
+        "title",
+        "citation",
+        "kind"
+      ]
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-work",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-org",
+        "record": 2
+      },
+      "fields": [
+        "title"
+      ]
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-work",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "gallup-industry-daily",
+        "record": 3
+      },
+      "fields": [
+        "title"
+      ]
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/articles/artificialintelligenceinukbusinesses/2023to2026",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "ons-bics",
+        "record": 24
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "ons-bics-intensity",
+        "record": 25
+      },
+      "fields": [
+        "title"
+      ]
+    },
+    {
+      "topic": "adoption",
+      "url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "census-btos",
+        "record": 18
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "census-expectations",
+        "record": 46
+      },
+      "fields": [
+        "title",
+        "kind"
+      ]
+    },
+    {
+      "topic": "adoption",
+      "url": "https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL",
+      "kept": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "rps-hours",
+        "record": 6
+      },
+      "merged": {
+        "collection": "research/scan4/adoption.jsonl",
+        "sourceId": "hours-per-user-derived",
+        "record": 49
+      },
+      "fields": [
+        "title",
+        "citation",
+        "kind"
+      ]
+    },
+    {
+      "topic": "handover",
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-september-2025-report",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-directive",
+        "record": 2
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-classifier-rerun",
+        "record": 4
+      },
+      "fields": [
+        "title",
+        "kind"
+      ]
+    },
+    {
+      "topic": "handover",
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-september-2025-report",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-directive",
+        "record": 2
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "aei-country-gradient",
+        "record": 5
+      },
+      "fields": [
+        "title",
+        "kind"
+      ]
+    },
+    {
+      "topic": "handover",
+      "url": "https://www.anthropic.com/research/measuring-agent-autonomy",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "agent-autonomy",
+        "record": 8
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "agent-api-hitl",
+        "record": 9
+      },
+      "fields": [
+        "title"
+      ]
+    },
+    {
+      "topic": "handover",
+      "url": "https://arxiv.org/abs/2506.06576",
+      "kept": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "workbank",
+        "record": 22
+      },
+      "merged": {
+        "collection": "research/scan4/handover.jsonl",
+        "sourceId": "human-agency-scale",
+        "record": 23
+      },
+      "fields": [
+        "title",
+        "kind"
+      ]
+    },
+    {
+      "topic": "work",
+      "url": "https://siepr.stanford.edu/publications/policy-brief/what-really-happening-jobs-separating-ai-hype-reality",
+      "kept": {
+        "collection": "research/scan4/work.jsonl",
+        "sourceId": "siepr-brief",
+        "record": 45
+      },
+      "merged": {
+        "collection": "research/scan4/work.jsonl",
+        "sourceId": "ramp-adopters",
+        "record": 53
+      },
+      "fields": [
+        "title",
+        "citation"
+      ]
+    },
+    {
+      "topic": "share",
+      "url": "https://leap.forecastingresearch.org/reports/wave7",
+      "kept": {
+        "collection": "research/scan4/share.jsonl",
+        "sourceId": "bls-mfp-ls",
+        "record": 6
+      },
+      "merged": {
+        "collection": "research/scan4/share.jsonl",
+        "sourceId": "leap-wave7",
+        "record": 56
+      },
+      "fields": [
+        "title",
+        "citation",
+        "kind"
+      ]
+    },
+    {
+      "topic": "culture",
+      "url": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/",
+      "kept": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "deezer-uploads",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "deezer-streams",
+        "record": 2
+      },
+      "fields": [
+        "title"
+      ]
+    },
+    {
+      "topic": "culture",
+      "url": "https://www.pewresearch.org/internet/2026/06/17/americans-and-ai-2026-chatbots-smart-devices-and-views-on-impact/",
+      "kept": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "pew-ai-summaries-2026",
+        "record": 24
+      },
+      "merged": {
+        "collection": "research/scan4/culture.jsonl",
+        "sourceId": "pew-chatbot-purposes-2026",
+        "record": 34
+      },
+      "fields": [
+        "title"
+      ]
+    },
+    {
+      "topic": "institutions",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "kept": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_count",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_hi_safeguards",
+        "record": 2
+      },
+      "fields": [
+        "title",
+        "citation"
+      ]
+    },
+    {
+      "topic": "institutions",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "kept": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_count",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_vendor",
+        "record": 4
+      },
+      "fields": [
+        "title",
+        "citation"
+      ]
+    },
+    {
+      "topic": "institutions",
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "kept": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_count",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/institutions.jsonl",
+        "sourceId": "us_inventory_scope",
+        "record": 5
+      },
+      "fields": [
+        "title",
+        "citation"
+      ]
+    },
+    {
+      "topic": "influence",
+      "url": "https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf",
+      "kept": {
+        "collection": "research/scan4/influence.jsonl",
+        "sourceId": "pew-aicontrol1",
+        "record": 1
+      },
+      "merged": {
+        "collection": "research/scan4/influence.jsonl",
+        "sourceId": "pew-aicontrol2",
+        "record": 2
+      },
+      "fields": [
+        "title"
+      ]
+    }
+  ],
+  "possibleDuplicates": [],
+  "curated": [
+    {
+      "topic": "adoption",
+      "collection": "research/scan4/adoption.jsonl",
+      "sourceId": "hartley-work-use",
+      "record": 15,
+      "action": "hold",
+      "basis": "Record links to Stanford's compilation rather than the paper. SSRN 5136877 now has a different title (Job Loss Fears in the First Years of Generative Artificial Intelligence) and an August 2026 revision. Resolve the intended version before associating the old title/year or figures with the current paper.",
+      "source": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5136877"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "kellogg2024",
+      "record": 202,
+      "action": "repair",
+      "basis": "Original HBS working paper title page and abstract read. Working-paper identity restored; legacy summary has not been independently verified.",
+      "source": "https://www.hbs.edu/ris/Publication%20Files/24-074_bee7fd2f-882e-4e8c-adfe-150f8439dff6.pdf"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "cheng2022",
+      "record": 239,
+      "action": "repair",
+      "basis": "Author-lab page verifies the original paper. Numerical comparisons changed in the extended analysis (arXiv:2204.13872); do not merge the two versions.",
+      "source": "https://dig.cmu.edu/publications/2022-afst-disparities.html"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "crootof2023",
+      "record": 243,
+      "action": "repair",
+      "basis": "Journal's original page verifies authors, title and year. Legal/conceptual analysis, not an empirical measure of autonomy.",
+      "source": "https://scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2/"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "amnesty2021",
+      "record": 247,
+      "action": "repair",
+      "basis": "Original report landing page verifies title, date and report number. Advocacy/investigative report; historical algorithmic system, not a generative-AI experiment.",
+      "source": "https://www.amnesty.org/en/documents/eur35/4686/2021/en/"
+    },
+    {
+      "topic": "skills",
+      "collection": "research/landscape/master.json",
+      "sourceId": "macnamara2024",
+      "record": 360,
+      "action": "repair",
+      "basis": "Publisher title, publication date and abstract checked. This theoretical perspective proposes mechanisms; it does not report a new skill-decay experiment.",
+      "source": "https://link.springer.com/article/10.1186/s41235-024-00572-8"
+    },
+    {
+      "topic": "institutions",
+      "collection": "research/scan4/institutions.jsonl",
+      "sourceId": "dsa_sor_schema",
+      "record": 55,
+      "action": "hold",
+      "basis": "The 2023 schema record points to the current dashboard, which is a different object. Match a dated schema/version before restoring this as a separate reference. The dashboard entry remains available.",
+      "source": "https://transparency.dsa.ec.europa.eu/"
+    },
+    {
+      "topic": "influence",
+      "collection": "research/scan4/influence.jsonl",
+      "sourceId": "yougov-ifs-preemption-2025",
+      "record": 8,
+      "action": "repair",
+      "basis": "The linked PDF is a 2026 Public Citizen compilation, not the original 2025 poll. Use document-level metadata and merge its URL duplicate; preserve the original record as provenance.",
+      "source": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf"
+    },
+    {
+      "topic": "influence",
+      "collection": "research/scan4/influence.jsonl",
+      "sourceId": "publiccitizen-polling-memo-2026",
+      "record": 9,
+      "action": "repair",
+      "basis": "Original PDF cover read; bibliography records the actual document title, author and year. Its advocacy claims are not adopted as dashboard findings.",
+      "source": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf"
+    }
+  ],
+  "totals": {
+    "input": 780,
+    "entries": 748,
+    "skipped": 12,
+    "merged": 20
+  }
+}

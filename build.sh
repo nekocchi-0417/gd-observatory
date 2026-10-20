@@ -5,6 +5,12 @@
 set -e
 cd "$(dirname "$0")"
 
+# The accepted reorganized dashboard is the published build. The earlier source
+# assembly below remains available only for the historical artifact export.
+if [ "${1:-}" != "artifact" ]; then
+  exec node tools/build-reorganized-preview.js --publish
+fi
+
 css() { cat src/style.css src/components.css src/pages.css src/review.css src/comparison.css src/measurement.css; }
 js()  { cat src/charts.js src/data1.js src/data2.js src/data3.js src/signals.js src/copy.js
         printf '\nconst SELECTED_EVIDENCE = '

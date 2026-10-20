@@ -744,11 +744,6 @@
           "collection": "research/scan4/adoption.jsonl",
           "sourceId": "stanford-adoption-monitor",
           "record": 14
-        },
-        {
-          "collection": "research/scan4/adoption.jsonl",
-          "sourceId": "hartley-work-use",
-          "record": 15
         }
       ]
     },
@@ -6396,6 +6391,36 @@
       ]
     },
     {
+      "id": "skills:7bed08a348f6d7f0",
+      "title": "Does using artificial intelligence assistance accelerate skill decay and hinder skill development without performers' awareness?",
+      "citation": "Macnamara et al. (2024). Theoretical review, Cognitive Research: Principles and Implications.",
+      "url": "https://doi.org/10.1186/s41235-024-00572-8",
+      "year": 2024,
+      "kind": "framework",
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "macnamara2024",
+          "record": 360
+        }
+      ]
+    },
+    {
+      "id": "skills:7f008201a19033fc",
+      "title": "Don't Expect Juniors to Teach Senior Professionals to Use Generative AI: Emerging Technology Risks and Novice AI Risk Mitigation Tactics",
+      "citation": "Kellogg et al. (2024). Harvard Business School Working Paper 24-074.",
+      "url": "https://www.hbs.edu/ris/Publication%20Files/24-074_bee7fd2f-882e-4e8c-adfe-150f8439dff6.pdf",
+      "year": 2024,
+      "kind": "study",
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "kellogg2024",
+          "record": 202
+        }
+      ]
+    },
+    {
       "id": "skills:3ebc0c7cb0281d7d",
       "title": "Durably reducing conspiracy beliefs through dialogues with AI",
       "citation": "Costello, Pennycook & Rand 2024",
@@ -7641,6 +7666,21 @@
       ]
     },
     {
+      "id": "skills:4eddca1684a0542f",
+      "title": "Humans in the Loop",
+      "citation": "Crootof, Kaminski and Price (2023). Humans in the Loop. Vanderbilt Law Review 76, 429.",
+      "url": "https://scholarship.law.vanderbilt.edu/vlr/vol76/iss2/2/",
+      "year": 2023,
+      "kind": "framework",
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "crootof2023",
+          "record": 243
+        }
+      ]
+    },
+    {
       "id": "skills:7256487436b91f93",
       "title": "Institutionalised Distrust and Human Oversight of Artificial Intelligence: Towards a Democratic Design of AI Governance under the European Union AI Act",
       "citation": "Laux 2023",
@@ -8106,6 +8146,21 @@
       ]
     },
     {
+      "id": "skills:f15fa5362b06d54f",
+      "title": "How Child Welfare Workers Reduce Racial Disparities in Algorithmic Decisions",
+      "citation": "Cheng et al. (2022). CHI; see also the authors' extended analysis.",
+      "url": "https://dig.cmu.edu/publications/2022-afst-disparities.html",
+      "year": 2022,
+      "kind": "study",
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "cheng2022",
+          "record": 239
+        }
+      ]
+    },
+    {
       "id": "skills:e30330b6f93db4e5",
       "title": "In the Land of the Blind, the One-Eyed Man Is King: Knowledge Brokerage in the Age of Learning Algorithms",
       "citation": "Waardenburg, Huysman & Sergeeva 2022",
@@ -8312,6 +8367,21 @@
           "collection": "research/landscape/master.json",
           "sourceId": "vandenbroek2021",
           "record": 218
+        }
+      ]
+    },
+    {
+      "id": "skills:c4dc748b03f27bf4",
+      "title": "Xenophobic Machines: Discrimination through Unregulated Use of Algorithms in the Dutch Childcare Benefits Scandal",
+      "citation": "Amnesty International (2021). Xenophobic Machines. EUR 35/4686/2021.",
+      "url": "https://www.amnesty.org/en/documents/eur35/4686/2021/en/",
+      "year": 2021,
+      "kind": "report",
+      "provenance": [
+        {
+          "collection": "research/landscape/master.json",
+          "sourceId": "amnesty2021",
+          "record": 247
         }
       ]
     },
@@ -10006,11 +10076,6 @@
           "collection": "research/scan4/institutions.jsonl",
           "sourceId": "dsa_tdb",
           "record": 23
-        },
-        {
-          "collection": "research/scan4/institutions.jsonl",
-          "sourceId": "dsa_sor_schema",
-          "record": 55
         }
       ]
     },
@@ -10767,6 +10832,26 @@
       ]
     },
     {
+      "id": "influence:9e2d95b97657eef0",
+      "title": "Huge Majorities Want AI Stopped Immediately",
+      "citation": "Public Citizen (September 2026). Advocacy compilation of polls; individual poll findings require original-source checks.",
+      "url": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf",
+      "year": 2026,
+      "kind": "report",
+      "provenance": [
+        {
+          "collection": "research/scan4/influence.jsonl",
+          "sourceId": "yougov-ifs-preemption-2025",
+          "record": 8
+        },
+        {
+          "collection": "research/scan4/influence.jsonl",
+          "sourceId": "publiccitizen-polling-memo-2026",
+          "record": 9
+        }
+      ]
+    },
+    {
       "id": "influence:e2e464669b3dda29",
       "title": "I checked out one of the biggest anti-AI protests yet",
       "citation": "Heaven, MIT Technology Review 2026",
@@ -10978,26 +11063,6 @@
           "collection": "research/scan4/influence.jsonl",
           "sourceId": "eo-state-ai-laws-2025",
           "record": 31
-        }
-      ]
-    },
-    {
-      "id": "influence:9e2d95b97657eef0",
-      "title": "Federal preemption of state AI laws (NDAA)",
-      "citation": "YouGov / Institute for Family Studies 2025 (via Public Citizen memo)",
-      "url": "https://www.citizen.org/wp-content/uploads/AI-Polling-Memo_9.17.26.pdf",
-      "year": 2025,
-      "kind": "indicator",
-      "provenance": [
-        {
-          "collection": "research/scan4/influence.jsonl",
-          "sourceId": "yougov-ifs-preemption-2025",
-          "record": 8
-        },
-        {
-          "collection": "research/scan4/influence.jsonl",
-          "sourceId": "publiccitizen-polling-memo-2026",
-          "record": 9
         }
       ]
     },

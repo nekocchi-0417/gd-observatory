@@ -1,0 +1,105 @@
+{
+  "reviewed": "2026-10-19",
+  "projects": [
+    {
+      "id": "human-autonomy",
+      "title": "Human Autonomy in the Age of Machines",
+      "organisation": "SPAR / Joshua Krook",
+      "summary": "Research on policies that protect human thought, learning and decision-making as AI use expands.",
+      "period": "Fall 2026",
+      "status": "Applications closed",
+      "url": "https://www.sparai.org/projects/f26/recgG94Smce7E8J7G/",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "agency-model",
+      "title": "Loss of Human Agency: An Agent-Based Model",
+      "organisation": "SPAR / Zhamilia Klycheva",
+      "summary": "A proposed model of how AI reliance and social influence could reinforce a loss of agency.",
+      "period": "Fall 2026",
+      "status": "Applications closed",
+      "url": "https://www.sparai.org/projects/f26/reck9hzkSGAMop7vj/",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "economic-impacts",
+      "title": "Economic Impacts of Frontier AI",
+      "organisation": "SPAR / Rishi Bommasani",
+      "summary": "Research connecting AI adoption and technical benchmarks to changes in work and economic activity.",
+      "period": "Fall 2026",
+      "status": "Applications closed",
+      "url": "https://www.sparai.org/projects/f26/rec2PlDq9OODdId2k/",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "economic-shock",
+      "title": "From AI Exposure to Economic Shock",
+      "organisation": "SPAR / AI Safety Asia",
+      "summary": "Early-warning indicators and policy responses for AI-driven labour disruption in Southeast Asia.",
+      "period": "Fall 2026",
+      "status": "Applications closed",
+      "url": "https://www.sparai.org/projects/f26/rec6h6JTLiswjlgL9/",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "ai-futures",
+      "title": "AI Futures Project at MATS",
+      "organisation": "MATS / AI Futures Project",
+      "summary": "Scenario writing, economic modelling and policy research on possible AI futures.",
+      "period": "Winter 2027",
+      "status": "Upcoming stream",
+      "url": "https://www.matsprogram.org/stream/aifp?cebe326e_page=3",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "metaculus",
+      "title": "Metaculus at MATS",
+      "organisation": "MATS / Vehbi Deger Turan",
+      "summary": "Applied forecasting and research on AI diffusion, coordination and gradual disempowerment.",
+      "period": "Winter 2027",
+      "status": "Upcoming stream",
+      "url": "https://www.matsprogram.org/stream/turan",
+      "checked": "2026-10-19"
+    }
+  ],
+  "grants": [
+    {
+      "id": "foresight",
+      "title": "AI for Science & Safety Nodes",
+      "organisation": "Foresight Institute",
+      "summary": "Includes human empowerment and accountability. In-person participation at the San Francisco or Berlin hubs is strongly preferred.",
+      "status": "Closes 31 Oct 2026",
+      "deadline": "2026-10-31T23:59:00-07:00",
+      "deadlineLabel": "31 Oct 2026, 23:59 PDT",
+      "url": "https://foresight.org/grants/ai-science-safety-nodes-rfp/",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "gtr",
+      "title": "GTR AI Safety Fund",
+      "organisation": "Global Technology Risk Foundation",
+      "summary": "Supports individuals and early-stage organisations, including work on AI's gradual effects on human development and social behaviour.",
+      "status": "Rolling applications",
+      "url": "https://www.gtr-foundation.org/gtr-ai-safety-fund",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "ea-funds",
+      "title": "Transformative AI Fund",
+      "organisation": "EA Funds",
+      "summary": "Early-stage support for individuals and new projects addressing transformative AI. Typical grants are $10,000-$150,000.",
+      "status": "Always open to applications",
+      "url": "https://funds.effectivealtruism.org/funds/transformative-ai",
+      "checked": "2026-10-19"
+    },
+    {
+      "id": "coefficient",
+      "title": "Capacity-building funding",
+      "organisation": "Coefficient Giving",
+      "summary": "Supports research communities, training and public resources about advanced AI risks. Direct research is usually a better fit for other programmes.",
+      "status": "Rolling applications",
+      "url": "https://coefficientgiving.org/funds/navigating-transformative-ai/funding-for-work-that-builds-capacity-to-address-risks-from-transformative-ai/",
+      "checked": "2026-10-19"
+    }
+  ]
+}

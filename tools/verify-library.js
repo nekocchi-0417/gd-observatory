@@ -2,7 +2,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
-const {buildCatalog,serialize,readCollection}=require('./build-evidence-library');
+const {buildCatalog,serialize,readCollection,readCuration,effectiveRecord}=require('./build-evidence-library');
 const canonical=require('../src/library-url');
 const root=path.resolve(__dirname,'..');
 const browser=vm.createContext({URL,module:undefined});
@@ -24,6 +24,7 @@ for(const[input,expected]of cases){
   browser.input=input;assert.equal(vm.runInContext('libraryURL14(input)',browser),expected);
 }
 const {catalog,report}=buildCatalog();
+const curation=readCuration();
 assert.equal(serialize(catalog),serialize(buildCatalog().catalog),'Deterministic generation');
 assert.equal(fs.readFileSync(path.join(root,'src/evidence-library.json'),'utf8'),serialize(catalog),'Committed catalog is current');
 const collections=new Map();let traced=0;
@@ -35,10 +36,16 @@ for(const entries of Object.values(catalog)){
     for(const source of entry.provenance){
       if(!collections.has(source.collection))collections.set(source.collection,readCollection(root,source.collection));
       const record=collections.get(source.collection).find(r=>r.record===source.record).row;
-      assert.equal(record.id,source.sourceId);assert.equal(canonical(record.link),entry.url);traced++;
+      const effective=effectiveRecord(record,source.collection,curation);
+      assert.notEqual(effective.correction?.action,'hold');
+      assert.equal(record.id,source.sourceId);assert.equal(canonical(effective.row.link),entry.url);traced++;
     }
   }
 }
 assert.equal(traced+report.skipped.length,report.totals.input,'Every input record is included or explicitly skipped');
+assert.equal(report.ambiguities.filter(item=>item.fields.includes('year')).length,0,'Known year conflicts are repaired or held');
+assert.equal(catalog.skills.find(entry=>entry.provenance.some(p=>p.sourceId==='macnamara2024')).kind,'framework');
+assert.equal(catalog.skills.find(entry=>entry.provenance.some(p=>p.sourceId==='crootof2023')).kind,'framework');
+assert.equal(report.curated.length,curation.records.length);
 assert.ok(!serialize({title:'</script><script>bad()</script>'}).includes('<'),'Safe inside the built inline script');
 console.log(JSON.stringify({urlCases:cases.length,browserParity:true,deterministic:true,...report.totals,traced},null,2));

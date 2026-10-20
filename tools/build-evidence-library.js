@@ -31,6 +31,16 @@ const LANDSCAPE_KINDS = {
 const compare = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 const textField = value => typeof value === 'string' ? value.trim() : '';
 
+function readCuration(root = ROOT) {
+  const file = path.join(root, 'research/library-curation.json');
+  return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : {records: []};
+}
+
+function effectiveRecord(row, collection, curation) {
+  const correction = curation.records.find(item => item.collection === collection && item.sourceId === row.id);
+  return {row: {...row, ...(correction?.fields || {})}, correction};
+}
+
 function readCollection(root, collection) {
   const text = fs.readFileSync(path.join(root, collection), 'utf8');
   if (collection.endsWith('.jsonl')) {
@@ -43,22 +53,38 @@ function readCollection(root, collection) {
 
 function buildCatalog(root = ROOT) {
   const catalog = {};
-  const report = {topics: {}, skipped: [], merged: [], ambiguities: [], possibleDuplicates: []};
+  const curation = readCuration(root);
+  const selectors = new Set();
+  for (const item of curation.records) {
+    const key = item.collection + ':' + item.sourceId;
+    if (selectors.has(key)) throw new Error('Duplicate curation: ' + key);
+    selectors.add(key);
+    if (!['repair', 'hold'].includes(item.action) || !item.basis || !canonicalURL(item.source)) throw new Error('Incomplete curation: ' + key);
+    for (const field of Object.keys(item.fields || {})) {
+      if (!['title', 'cite', 'year', 'link', 'kind'].includes(field)) throw new Error('Curation must be bibliography-only: ' + field);
+    }
+    const originals = readCollection(root, item.collection).filter(record => record.row.id === item.sourceId);
+    if (originals.length !== 1) throw new Error('Curation must match exactly one original record: ' + key);
+  }
+  const report = {topics: {}, skipped: [], merged: [], ambiguities: [], possibleDuplicates: [], curated: []};
   for (const [topic, collection] of Object.entries(COLLECTIONS)) {
     const records = readCollection(root, collection);
     const entries = new Map();
     const isScan = collection.endsWith('.jsonl');
     let skipped = 0;
-    for (const {row, record} of records) {
+    for (const {row: original, record} of records) {
+      const {row, correction} = effectiveRecord(original, collection, curation);
       if (isScan && row.stop !== topic) throw new Error(`${collection}:${record}: unexpected step ${row.stop}`);
       const provenance = {collection, sourceId: textField(row.id), record};
+      if (correction) report.curated.push({topic, ...provenance, action: correction.action, basis: correction.basis, source: correction.source});
       const url = canonicalURL(row.link);
       const title = textField(row.title), citation = textField(row.cite);
-      const kind = isScan ? row.kind : LANDSCAPE_KINDS[row.type];
+      const kind = correction?.fields?.kind || (isScan ? row.kind : LANDSCAPE_KINDS[row.type]);
       let reason;
-      if (!url) reason = 'Missing, invalid or unsafe HTTP(S) URL';
+      if (correction?.action === 'hold') reason = 'Held for reference/version review: ' + correction.basis;
+      else if (!url) reason = 'Missing, invalid or unsafe HTTP(S) URL';
       else if (!provenance.sourceId || !title || !citation || !Number.isInteger(row.year)) reason = 'Incomplete bibliography metadata';
-      else if (!kind || (isScan && !SCAN_KINDS.has(kind))) reason = 'Unrecognised bibliography kind';
+      else if (!kind || !(new Set([...SCAN_KINDS, ...Object.values(LANDSCAPE_KINDS)])).has(kind)) reason = 'Unrecognised bibliography kind';
       if (reason) {
         report.skipped.push({topic, ...provenance, reason});
         skipped++;
@@ -120,4 +146,4 @@ if (require.main === module) {
   console.log(JSON.stringify({action: args[0] === '--check' ? 'checked' : 'generated', output: OUTPUT, ...report}, null, 2));
 }
 
-module.exports = {COLLECTIONS, canonicalURL, readCollection, buildCatalog, serialize};
+module.exports = {COLLECTIONS, canonicalURL, readCollection, readCuration, effectiveRecord, buildCatalog, serialize};
