@@ -1767,7 +1767,7 @@ function home28(v) {
 
 function diagram28() {
   return `<div class="gap-map-scroll20" tabindex="0" role="region" aria-label="Proposed pathways diagram. Topic reviews are work in progress."><svg class="map5 gap-map20 neutral-map28" viewBox="0 0 ${GEO5.W} ${GEO5.H}" aria-labelledby="path-title28 path-desc28"><title id="path-title28">Proposed pathways of gradual disempowerment</title><desc id="path-desc28">AI capability, adoption and delegation connect to work, income, skills, culture and government, and ultimately human influence. These are proposed relationships. No evidence coverage ratings are shown.</desc><text x="24" y="28" class="map-section28">AI SYSTEMS AND USE</text><text x="490" y="28" class="map-section28">POSSIBLE CONSEQUENCES</text><text x="1040" y="28" class="map-section28">INFLUENCE</text>
-    ${SEGS5.map(s => `<path class="path28" d="M${s.p.map(p => p.join(' ')).join(' L')}"/>`).join('')}
+    ${SEGS5.map(s => { const points = s.from === '_' ? [s.p[0], [GEO5.S.influence[0] - 9, GEO5.TY]] : s.p; return `<path class="path28" d="M${points.map(p => p.join(' ')).join(' L')}"/>`; }).join('')}
     ${TOPICS28.map(([id, title]) => {const [x,y] = GEO5.S[id]; return `<a class="node28" href="#${id}" aria-label="${esc(title)}: work in progress"><title>${esc(title)}: work in progress</title><circle class="hit28" cx="${x}" cy="${y}" r="23"/><circle class="node-ring28" cx="${x}" cy="${y}" r="9"/><text class="node-label28" x="${x}" y="${y - 24}" text-anchor="middle">${esc(title)}</text></a>`;}).join('')}
     </svg></div>`;
 }
@@ -1787,8 +1787,11 @@ function method28(v) {
 }
 
 function render28() {
-  const raw = (location.hash || '#home').slice(1);
-  if (raw === 'main-content') { document.querySelector('#view').focus(); return; }
+  let raw = (location.hash || '#home').slice(1);
+  if (raw === 'main-content') {
+    if (document.querySelector('#view h1')) { document.querySelector('#view').focus(); return; }
+    raw = 'home';
+  }
   const parts = raw.split(/[/?]/), root = parts[0];
   const topic = TOPICS28.find(([id]) => root === id || ['gaps','topic'].includes(root) && parts[1] === id);
   const aliases = {map:'home', about:'method', methods:'method', futures:'projects', grants:'projects', emerging:'evidence', findings:'evidence'};

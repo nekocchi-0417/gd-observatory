@@ -69,6 +69,7 @@ for (const theme of ['light','dark']) {
     assert(topics.includes(a.getAttribute('href').slice(1)));
   }
   for (const p of gaps.querySelectorAll('path')) assert(!/NaN|undefined/.test(p.getAttribute('d')));
+  assert.match(gaps.querySelector('.path28:last-of-type').getAttribute('d'), /1115 216$/, 'The final path must meet the neutral outcome node');
   const method = h.render('method');
   assert.match(method.textContent, /Human review is required/);
   assert.match(method.textContent, /additional branch for skills and judgement/);
@@ -97,6 +98,7 @@ for (const route of ['#skills','#evidence/work','#library?view=map&area=cognitio
   const h = harness(route, null, true);
   assert(h.document.querySelector('.hold28'), 'Initial direct links must not flash draft content');
 }
+assert(harness('#main-content').document.querySelector('#view h1'), 'Reloading a skip-link URL must not leave the page blank');
 assert.throws(() => {
   require('node:child_process').execFileSync(process.execPath, ['tools/build-reorganized-preview.js','--publish','--research'], {cwd:root, stdio:'pipe'});
 }, 'Research mode must not be publishable');
