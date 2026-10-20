@@ -35,6 +35,7 @@ const helpers = [
   `const LIBRARY_VIEW23 = ${JSON.stringify(library).replace(/</g, '\\u003c')};`,
   `const LIBRARY_MAP23 = ${JSON.stringify(JSON.parse(read('research/library-map-config.json'))).replace(/</g, '\\u003c')};`,
   read('prototypes/reorganized/library.js'),
+  read('prototypes/reorganized/skills-research.js'),
   read('prototypes/reorganized/method.js'),
   read('prototypes/reorganized/reorganize.js'),
   read('prototypes/reorganized/appearance.js')
@@ -47,7 +48,7 @@ const themeControl = `<div class="appearance22" role="group" aria-label="Colour 
 const html = saved('docs/index.html')
   .replace('<html lang="en-GB">', '<html lang="en-GB" data-theme="light">')
   .replace('<meta charset="utf-8">', () => `<meta charset="utf-8"><script>${themeInit}</script>`)
-  .replace('</head>', () => `${publish ? '' : '<meta name="robots" content="noindex,nofollow">'}<meta name="gd-build" content="coverage-library-2026-10-19"><style>${read('prototypes/reorganized/reorganize.css')}\n${read('prototypes/reorganized/appearance.css')}\n${read('prototypes/reorganized/library.css')}</style><!--\nLucide icon licence:\n${read('prototypes/reorganized/icons/LICENSE')}\n--></head>`)
+  .replace('</head>', () => `${publish ? '' : '<meta name="robots" content="noindex,nofollow">'}<meta name="gd-build" content="skills-map-pilot-2026-10-19"><style>${read('prototypes/reorganized/reorganize.css')}\n${read('prototypes/reorganized/appearance.css')}\n${read('prototypes/reorganized/library.css')}\n${read('prototypes/reorganized/skills-research.css')}</style><!--\nLucide icon licence:\n${read('prototypes/reorganized/icons/LICENSE')}\n--></head>`)
   .replace('</div></header>\n<main', () => `${themeControl}</div></header>\n<main`)
   .replace('</body>', () => `<script>${helpers}</script></body>`);
 assert(html.includes('class="appearance22"'), 'Theme control must be in the header');

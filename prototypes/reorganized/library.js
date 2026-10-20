@@ -61,20 +61,23 @@ function librarySelectedRecords23(records,state) {
 
 const libraryBin23 = n => n === 0 ? 0 : n < 5 ? 1 : n < 15 ? 2 : n < 30 ? 3 : 4;
 
-function libraryMap23(records,state) {
+function libraryMap23(records,state,{links=false,heading=true}={}) {
   const area = libraryArea23(state), columns = LIBRARY_MAP23.columns;
   const cell = (facet,column) => {
     const count = records.filter(entry => libraryMatches23(entry,facet,column,state.scope)).length;
     const selected = state.facet === facet.id && state.measure === (column?.id || '');
-    return `<button type="button" data-library-facet="${facet.id}" data-library-measure="${column?.id || ''}" data-count="${count}" data-bin="${libraryBin23(count)}" aria-pressed="${selected}" aria-label="${count} references: ${esc(facet.label)}, ${esc(column?.label || 'all measures')}" title="${count} matched references${count === 0 ? '; none in this selection' : ''}">${count}</button>`;
+    const label=`${count} ${count === 1 ? 'reference' : 'references'}: ${facet.label}, ${column?.label || 'all measures'}`;
+    const attributes=`data-library-facet="${facet.id}" data-library-measure="${column?.id || ''}" data-count="${count}" data-bin="${libraryBin23(count)}" aria-label="${esc(label)}" title="${count} matched references${count === 0 ? '; none in this selection' : ''}"`;
+    if(links) return `<a class="library-cell23" href="#${esc(libraryRoute23({...state,facet:facet.id,measure:column?.id || ''}))}" ${attributes}>${count}</a>`;
+    return `<button class="library-cell23" type="button" ${attributes} aria-pressed="${selected}">${count}</button>`;
   };
-  return `<div class="library-map-heading23"><h2>${esc(area.label)}</h2><p>${esc(area.description)}</p></div>
+  return `${heading ? `<div class="library-map-heading23"><h2>${esc(area.label)}</h2><p>${esc(area.description)}</p></div>` : ''}
     <div class="library-map-scroll23" tabindex="0" role="region" aria-label="${esc(area.label)} reference-count table">
       <table class="library-map23"><caption class="sr5">${esc(area.label)}: reference counts by measurement type. The same reference can appear in more than one cell.</caption>
       <thead><tr><th scope="col">Research facet</th>${columns.map(c => `<th scope="col"><abbr title="${esc(c.description)}">${esc(c.label)}</abbr></th>`).join('')}<th scope="col">All measures</th></tr></thead>
       <tbody>${area.facets.map(f => `<tr><th scope="row"><abbr title="${esc(f.description)}">${esc(f.label)}</abbr></th>${columns.map(c => `<td>${cell(f,c)}</td>`).join('')}<td class="library-total23">${cell(f,null)}</td></tr>`).join('')}</tbody></table>
     </div>
-    <div class="library-map-foot23"><div class="library-legend23" aria-label="Reference count legend"><span>Reference count</span>${['0','1-4','5-14','15-29','30+'].map((label,i) => `<span><i data-bin="${i}" aria-hidden="true"></i>${label}</span>`).join('')}</div><p>Counts follow the current filters. References can appear in several cells; totals cannot be added.</p></div>`;
+    <div class="library-map-foot23"><div class="library-legend23" aria-label="Reference count legend"><span>Reference count</span>${['0','1-4','5-14','15-29','30+'].map((label,i) => `<span><i data-bin="${i}" aria-hidden="true"></i>${label}</span>`).join('')}</div><p>${links ? '' : 'Counts follow the current filters. '}References can appear in several cells; totals cannot be added.</p></div>`;
 }
 
 function libraryRecord23(entry) {
@@ -119,7 +122,7 @@ function refreshLibrary23(v,state,{scroll=false}={}) {
 function viewLibrary23(v,route) {
   const state=libraryState23(route), years=[...new Set(LIBRARY_VIEW23.records.map(r => r.year).filter(Boolean))].sort((a,b)=>b-a);
   const options=(rows,value) => rows.map(([id,label]) => `<option value="${esc(String(id))}"${String(id)===value?' selected':''}>${esc(label)}</option>`).join('');
-  v.innerHTML=`<div class="view5 wrap library23"><nav class="library-back23" aria-label="Research navigation"><a href="#gaps">&#8592; Research gaps</a></nav>
+  v.innerHTML=`<div class="view5 wrap library23"><nav class="library-back23" aria-label="Research navigation"><a href="#${state.topic || 'gaps'}">&#8592; ${state.topic ? esc(nameOf(state.topic)) : 'Research gaps'}</a></nav>
     <header class="library-header23"><h1>Evidence library</h1><p>Research on AI, cognition and human influence.</p><p class="library-status23"><strong>AI-assisted and not yet verified.</strong> Check original sources before citing.</p></header>
     <div class="library-topline23"><div class="library-tabs23" role="group" aria-label="Library views"><button id="library-tab-map23" type="button" data-library-view="map" aria-controls="library-map-panel23">Evidence maps</button><button id="library-tab-list23" type="button" data-library-view="list" aria-controls="library-results23">All references</button></div><a class="library-download23" href="library-references.csv" download>Download references &#8595;</a></div>
     <form class="library-filters23" role="search" aria-label="Filter evidence library"><label class="library-search23">Search<input id="library-search23" type="search" value="${esc(state.q)}" placeholder="Title, author or topic" autocomplete="off" maxlength="200"></label>

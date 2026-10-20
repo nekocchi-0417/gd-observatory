@@ -119,6 +119,7 @@ function adaptTopic20(v, id, sub) {
   back.setAttribute('aria-label', 'Research navigation');
   back.innerHTML = '<a href="#gaps">&#8592; Research gaps</a>';
   root.prepend(back);
+  if(id === 'skills' && root.classList.contains('selected8')) adaptSkillsResearch24(root);
   // Keep one home for each gap summary rather than repeating the overview here.
   const watch = $('#' + id + '-watch', v);
   if (watch) {
@@ -128,7 +129,10 @@ function adaptTopic20(v, id, sub) {
   $$('.pn5 a[href="#evidence"]', v).forEach(a => a.setAttribute('href', '#gaps'));
   if (sub === 'source' || sub === 'more') {
     const target = $('#' + id + (sub === 'source' ? '-source' : '-related'), v);
-    if (target) { target.open = true; openAt5(target); }
+    if (target) {
+      for(let parent=target;parent && root.contains(parent);parent=parent.parentElement) if(parent.tagName === 'DETAILS') parent.open=true;
+      openAt5(target);
+    }
   }
   if (sub === 'gaps' && watch) openAt5(watch);
   libraryCorner23(v,id);
@@ -221,4 +225,6 @@ const libraryFooter23=document.createElement('a');
 libraryFooter23.href='#library';libraryFooter23.className='library-footer23';libraryFooter23.textContent='Evidence library';
 $('.ft .wrap').append(libraryFooter23);
 render = renderReorganized20;
-render(/^library(?:[/?]|$)/.test(INITIAL_ROUTE23) ? INITIAL_ROUTE23 : (location.hash || '#home').slice(1));
+const skillsEntry24=['skills','skills/source','skills/more','skills/gaps','gaps/skills'].includes(INITIAL_ROUTE23);
+if(skillsEntry24) { try { history.replaceState(null,'','#'+INITIAL_ROUTE23); } catch (_) {} }
+render(skillsEntry24 || /^library(?:[/?]|$)/.test(INITIAL_ROUTE23) ? INITIAL_ROUTE23 : (location.hash || '#home').slice(1));

@@ -1344,7 +1344,7 @@ details.more5.gap5-g .gap5-h{margin-top:4px}
 }
 @media(max-width:480px){.benchmark-facts7>div{grid-template-columns:minmax(0,1fr);gap:6px}.benchmark-facts7 dd{text-align:left;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}.benchmark-facts7 dd span{margin:0}}
 </style>
-<meta name="gd-build" content="coverage-library-2026-10-19"><style>/* Page structure is retained; appearance.css supplies theme and spacing overrides. */
+<meta name="gd-build" content="skills-map-pilot-2026-10-19"><style>/* Page structure is retained; appearance.css supplies theme and spacing overrides. */
 .evidence20 { --ai10:var(--s1); --human10:var(--s3); --warn10:var(--ink-2); }
 .evidence20 *, .gaps20 * { box-sizing:border-box; letter-spacing:0; }
 .intro20 { max-width:960px; margin-bottom:30px; }
@@ -1625,15 +1625,16 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
 .library-map23 tbody th { vertical-align:middle; font-weight:600; color:var(--ink); }
 .library-map23 abbr { text-decoration:none; cursor:help; }
 .library-map23 td { padding:0; }
-.library-map23 button { display:block; width:100%; height:48px; border-radius:3px; border:1px solid transparent; font:600 15px var(--f-display); font-variant-numeric:tabular-nums; }
-.library23 [data-bin="0"] { background:var(--surface-2); color:var(--ink-3); }
-.library23 [data-bin="1"] { background:color-mix(in srgb,var(--accent) 8%,var(--surface)); color:var(--ink); }
-.library23 [data-bin="2"] { background:color-mix(in srgb,var(--accent) 16%,var(--surface)); color:var(--ink); }
-.library23 [data-bin="3"] { background:color-mix(in srgb,var(--accent) 24%,var(--surface)); color:var(--ink); }
-.library23 [data-bin="4"] { background:color-mix(in srgb,var(--accent) 34%,var(--surface)); color:var(--ink); }
-.library-map23 button:hover { border-color:var(--accent); }
-.library-map23 button[aria-pressed="true"] { outline:2px solid var(--accent); outline-offset:-2px; }
-.library-map23 .library-total23 button { background:transparent; color:var(--ink); border-left:1px solid var(--rule); border-radius:0; }
+.library-map23 .library-cell23 { display:grid; place-items:center; width:100%; height:48px; border-radius:3px; border:1px solid transparent; font:600 15px var(--f-display); font-variant-numeric:tabular-nums; text-decoration:none; }
+:is(.library-map23,.library-legend23) [data-bin="0"] { background:var(--surface-2); color:var(--ink-3); }
+:is(.library-map23,.library-legend23) [data-bin="1"] { background:color-mix(in srgb,var(--accent) 8%,var(--surface)); color:var(--ink); }
+:is(.library-map23,.library-legend23) [data-bin="2"] { background:color-mix(in srgb,var(--accent) 16%,var(--surface)); color:var(--ink); }
+:is(.library-map23,.library-legend23) [data-bin="3"] { background:color-mix(in srgb,var(--accent) 24%,var(--surface)); color:var(--ink); }
+:is(.library-map23,.library-legend23) [data-bin="4"] { background:color-mix(in srgb,var(--accent) 34%,var(--surface)); color:var(--ink); }
+.library-map23 .library-cell23:hover { border-color:var(--accent); }
+.library-map23 .library-cell23:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.library-map23 .library-cell23[aria-pressed="true"] { outline:2px solid var(--accent); outline-offset:-2px; }
+.library-map23 .library-total23 .library-cell23 { background:transparent; color:var(--ink); border-left:1px solid var(--rule); border-radius:0; }
 .library-map-foot23 { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px; margin:14px 0 20px; font-size:12px; color:var(--ink-3); }
 .library-map-foot23 p { max-width:56ch; line-height:1.6; }
 .library-legend23 { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
@@ -1689,6 +1690,42 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
   .library-record-details23 dl > div { grid-template-columns:1fr; gap:0; margin-bottom:6px; }
   .library-record23 h3 { font-size:16px; }
   .library-footer23 { display:inline-block; margin:8px 0 0 12px; }
+}
+
+.pilot7.topic-research24 { max-width:1280px; font-family:var(--f-display); }
+.topic-research24 * { box-sizing:border-box; letter-spacing:0; }
+.topic-research24 .claim5 h1 { max-width:32ch; }
+.topic-intro24 { max-width:74ch; margin-top:16px; color:var(--ink-2); font-size:17px; line-height:1.6; }
+.topic-map24 { margin-top:36px; }
+.topic-map-heading24 { display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:10px 24px; }
+.topic-map-heading24 h2,.topic-questions24 > h2 { font-size:24px; line-height:1.35; }
+.topic-map-heading24 a { font-size:13px; }
+.topic-map-description24 { margin:8px 0 18px; font-size:14px; line-height:1.6; color:var(--ink-2); }
+.topic-note24 { font-size:12px; line-height:1.65; color:var(--ink-3); margin:10px 0 0; max-width:100ch; }
+.topic-note24 strong { font-weight:600; }
+.topic-questions24 { margin-top:48px; scroll-margin-top:var(--anchor-offset22); }
+.topic-question-list24 { list-style:none; counter-reset:question; padding:0; margin:22px 0 32px; }
+.topic-question-list24 li { counter-increment:question; display:grid; grid-template-columns:minmax(220px,1fr) minmax(0,2fr); gap:20px 40px; border-top:1px solid var(--rule); padding:24px 0; }
+.topic-question-list24 h3 { font-size:18px; line-height:1.5; }
+.topic-question-list24 h3::before { content:'0' counter(question); display:block; font-size:12px; font-weight:500; color:var(--ink-3); margin-bottom:6px; }
+.topic-question-list24 p { color:var(--ink-2); font-size:15px; line-height:1.65; margin:0 0 12px; }
+.topic-question-list24 p b { display:block; color:var(--ink); font-size:12px; font-weight:600; margin-bottom:3px; }
+.topic-question-list24 .topic-question-sources24 { display:flex; flex-wrap:wrap; gap:8px 20px; font-size:12px; margin:8px 0 0; }
+.topic-finding24 { border-block:1px solid var(--rule); scroll-margin-top:var(--anchor-offset22); }
+.topic-finding24 > summary { min-height:56px; }
+.topic-finding-body24 { max-width:960px; margin-inline:auto; }
+.topic-finding24 .evidence-chart7 { margin-top:0; padding-top:10px; border-top:0; }
+.topic-finding24 .evidence-chart7 h2 { font-size:22px; }
+.topic-finding24 .chart svg { max-width:100%; }
+.topic-finding24 .disclosures7 { border-bottom:0; }
+.topic-research24 :is(a,summary,[tabindex]):focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+@media(max-width:760px) {
+  .topic-map-heading24 h2,.topic-questions24 > h2 { font-size:22px; }
+  .topic-question-list24 li { grid-template-columns:1fr; gap:12px; padding:22px 0; }
+  .topic-question-list24 h3::before { display:inline; margin-right:12px; }
+  .topic-intro24 { font-size:16px; }
+  .topic-map24 { margin-top:28px; }
+  .topic-questions24 { margin-top:36px; }
 }
 </style><!--
 Lucide icon licence:
@@ -7469,20 +7506,23 @@ function librarySelectedRecords23(records,state) {
 
 const libraryBin23 = n => n === 0 ? 0 : n < 5 ? 1 : n < 15 ? 2 : n < 30 ? 3 : 4;
 
-function libraryMap23(records,state) {
+function libraryMap23(records,state,{links=false,heading=true}={}) {
   const area = libraryArea23(state), columns = LIBRARY_MAP23.columns;
   const cell = (facet,column) => {
     const count = records.filter(entry => libraryMatches23(entry,facet,column,state.scope)).length;
     const selected = state.facet === facet.id && state.measure === (column?.id || '');
-    return `<button type="button" data-library-facet="${facet.id}" data-library-measure="${column?.id || ''}" data-count="${count}" data-bin="${libraryBin23(count)}" aria-pressed="${selected}" aria-label="${count} references: ${esc(facet.label)}, ${esc(column?.label || 'all measures')}" title="${count} matched references${count === 0 ? '; none in this selection' : ''}">${count}</button>`;
+    const label=`${count} ${count === 1 ? 'reference' : 'references'}: ${facet.label}, ${column?.label || 'all measures'}`;
+    const attributes=`data-library-facet="${facet.id}" data-library-measure="${column?.id || ''}" data-count="${count}" data-bin="${libraryBin23(count)}" aria-label="${esc(label)}" title="${count} matched references${count === 0 ? '; none in this selection' : ''}"`;
+    if(links) return `<a class="library-cell23" href="#${esc(libraryRoute23({...state,facet:facet.id,measure:column?.id || ''}))}" ${attributes}>${count}</a>`;
+    return `<button class="library-cell23" type="button" ${attributes} aria-pressed="${selected}">${count}</button>`;
   };
-  return `<div class="library-map-heading23"><h2>${esc(area.label)}</h2><p>${esc(area.description)}</p></div>
+  return `${heading ? `<div class="library-map-heading23"><h2>${esc(area.label)}</h2><p>${esc(area.description)}</p></div>` : ''}
     <div class="library-map-scroll23" tabindex="0" role="region" aria-label="${esc(area.label)} reference-count table">
       <table class="library-map23"><caption class="sr5">${esc(area.label)}: reference counts by measurement type. The same reference can appear in more than one cell.</caption>
       <thead><tr><th scope="col">Research facet</th>${columns.map(c => `<th scope="col"><abbr title="${esc(c.description)}">${esc(c.label)}</abbr></th>`).join('')}<th scope="col">All measures</th></tr></thead>
       <tbody>${area.facets.map(f => `<tr><th scope="row"><abbr title="${esc(f.description)}">${esc(f.label)}</abbr></th>${columns.map(c => `<td>${cell(f,c)}</td>`).join('')}<td class="library-total23">${cell(f,null)}</td></tr>`).join('')}</tbody></table>
     </div>
-    <div class="library-map-foot23"><div class="library-legend23" aria-label="Reference count legend"><span>Reference count</span>${['0','1-4','5-14','15-29','30+'].map((label,i) => `<span><i data-bin="${i}" aria-hidden="true"></i>${label}</span>`).join('')}</div><p>Counts follow the current filters. References can appear in several cells; totals cannot be added.</p></div>`;
+    <div class="library-map-foot23"><div class="library-legend23" aria-label="Reference count legend"><span>Reference count</span>${['0','1-4','5-14','15-29','30+'].map((label,i) => `<span><i data-bin="${i}" aria-hidden="true"></i>${label}</span>`).join('')}</div><p>${links ? '' : 'Counts follow the current filters. '}References can appear in several cells; totals cannot be added.</p></div>`;
 }
 
 function libraryRecord23(entry) {
@@ -7527,7 +7567,7 @@ function refreshLibrary23(v,state,{scroll=false}={}) {
 function viewLibrary23(v,route) {
   const state=libraryState23(route), years=[...new Set(LIBRARY_VIEW23.records.map(r => r.year).filter(Boolean))].sort((a,b)=>b-a);
   const options=(rows,value) => rows.map(([id,label]) => `<option value="${esc(String(id))}"${String(id)===value?' selected':''}>${esc(label)}</option>`).join('');
-  v.innerHTML=`<div class="view5 wrap library23"><nav class="library-back23" aria-label="Research navigation"><a href="#gaps">&#8592; Research gaps</a></nav>
+  v.innerHTML=`<div class="view5 wrap library23"><nav class="library-back23" aria-label="Research navigation"><a href="#${state.topic || 'gaps'}">&#8592; ${state.topic ? esc(nameOf(state.topic)) : 'Research gaps'}</a></nav>
     <header class="library-header23"><h1>Evidence library</h1><p>Research on AI, cognition and human influence.</p><p class="library-status23"><strong>AI-assisted and not yet verified.</strong> Check original sources before citing.</p></header>
     <div class="library-topline23"><div class="library-tabs23" role="group" aria-label="Library views"><button id="library-tab-map23" type="button" data-library-view="map" aria-controls="library-map-panel23">Evidence maps</button><button id="library-tab-list23" type="button" data-library-view="list" aria-controls="library-results23">All references</button></div><a class="library-download23" href="library-references.csv" download>Download references &#8595;</a></div>
     <form class="library-filters23" role="search" aria-label="Filter evidence library"><label class="library-search23">Search<input id="library-search23" type="search" value="${esc(state.q)}" placeholder="Title, author or topic" autocomplete="off" maxlength="200"></label>
@@ -7563,6 +7603,70 @@ function libraryCorner23(v,id) {
   ($('.pilot7',v)||$('.priority6',v)||$('.gaps20',v)||v).append(link);
 }
 
+/* One-topic pilot. Map counts reuse the library; research proposals are editorial. */
+const skillsQuestions24 = [
+  {
+    title:'Do skill changes last?',
+    measured:'The classroom trial tests students without AI immediately after practice.',
+    next:'Follow the same people over several months, testing skills without AI and comparing different patterns of AI use against a baseline.',
+    sources:[['Bastani et al., 2025','https://hamsabastani.github.io/education_llm.pdf']]
+  },
+  {
+    title:'Does learning transfer to unfamiliar tasks?',
+    measured:'The trial uses exam problems similar to the practice exercises.',
+    next:'Add unfamiliar problems and tasks in a different setting, then test whether people can apply what they learned without AI.',
+    sources:[['Bastani et al., 2025','https://hamsabastani.github.io/education_llm.pdf']]
+  },
+  {
+    title:'Can people catch and correct AI errors?',
+    measured:'Experiments test responses to incorrect advice; workplace surveys capture how people say they check AI output.',
+    next:'Track error detection, justified overrides and final accuracy during sustained workplace use, alongside reports of confidence and effort.',
+    sources:[['Bu\u00e7inca et al., 2021','https://arxiv.org/abs/2102.09692'],['Lee et al., 2025','https://doi.org/10.1145/3706598.3713778']]
+  }
+];
+
+function adaptSkillsResearch24(root) {
+  root.classList.add('topic-research24');
+  const header=$('.claim5',root);
+  $('h1',header).textContent='How does using AI affect our skills and judgement?';
+  const intro=document.createElement('p');
+  intro.className='topic-intro24';
+  intro.textContent='Research tests learning, task performance and how people judge AI advice. A central question is how these abilities change with continued use.';
+  header.append(intro);
+  $('.measure-gap8',root)?.remove();
+
+  const state=libraryState23('library?view=map&area=cognition&topic=skills&scope=observed');
+  const map=document.createElement('section');
+  map.className='topic-map24';map.setAttribute('aria-labelledby','skills-map-title24');
+  map.innerHTML=`<div class="topic-map-heading24"><h2 id="skills-map-title24">What has been studied</h2><a href="#${esc(libraryRoute23(state))}">Full evidence library &#8594;</a></div>
+    <p class="topic-map-description24">Studies and evaluations grouped by the skill and measurement tags in our collection.</p>
+    ${libraryMap23(libraryBaseRecords23(state),state,{links:true,heading:false})}
+    <p class="topic-note24"><strong>AI-assisted and not yet verified.</strong> Counts match tags on a reference; whether that measure was used for that skill needs checking. Empty cells may reflect missing references.</p>`;
+  header.after(map);
+
+  const gaps=$('#skills-watch',root);
+  gaps.className='topic-questions24';
+  gaps.innerHTML=`<h2 id="skills-next-title">What needs better measurement</h2><p class="topic-note24">Three proposed extensions to selected studies. Their priority needs review.</p>
+    <ol class="topic-question-list24">${skillsQuestions24.map(q=>`<li><h3>${esc(q.title)}</h3><div><p><b>Existing measure</b>${esc(q.measured)}</p><p><b>Proposed extension</b>${esc(q.next)}</p><p class="topic-question-sources24">${q.sources.map(([label,url])=>ext7(url,label)).join(' ')}</p></div></li>`).join('')}</ol>`;
+  map.after(gaps);
+
+  // Retain the source figure, calculations and related evidence behind one disclosure.
+  const finding=document.createElement('details');
+  finding.className='topic-finding24 disclosure7';finding.id='skills-finding24';
+  finding.innerHTML='<summary>Selected finding: learning after AI-assisted practice</summary>';
+  const body=document.createElement('div');body.className='topic-finding-body24';
+  for(const selector of ['.evidence-chart7','.takeaway7','.disclosures7']) body.append($(selector,root));
+  finding.append(body);gaps.after(finding);
+  const figure=$('.evidence-chart7',finding);
+  $('h2',figure).textContent='Learning depends on the kind of AI help';
+  $('.choice7',figure).textContent='The trial compares unrestricted AI, a guided tutor and practice without AI.';
+  finding.addEventListener('toggle',()=>{
+    if(finding.open) requestAnimationFrame(()=>{
+      if(finding.open && document.body.contains(finding)) drawSelectedChart8($('#skills-chart8',finding),TOPIC_CHARTS.skills);
+    });
+  });
+}
+
 function viewMethod22(v) {
   const selectedCount = ORDER.reduce((n, id) => n + SELECTED_EVIDENCE[id].sources.length, 0);
   v.innerHTML = `<div class="view5 wrap method22">${eye5(['Method'])}
@@ -7595,7 +7699,7 @@ function viewMethod22(v) {
         ['stronger', 'The named quantity is measured directly and repeatedly. Broader effects and attribution to AI may remain unclear.']
       ].map(([band, description]) => `<li>${coverageGlyph5(band,20)}<div><b>${esc(COPY.coverage.bands[band].label)}</b><span>${esc(description)}</span></div></li>`).join('')}</ul>
       <p class="note5">These bands have no validated numerical score or study-count threshold. They do not establish field-wide research gaps, the level of risk or a funding ranking.</p>
-      <details class="det5"><summary>How Research gaps is organised</summary><p class="sub5">The pathway diagram shows the proposed connections. Below it, the same nine steps are grouped into Major gaps, Partial coverage and Stronger coverage. Each has a short summary of what the selected evidence covers. Specific measurement questions and research proposals are on the individual topic pages.</p></details>
+      <details class="det5"><summary>How Research gaps is organised</summary><p class="sub5">The pathway diagram shows the proposed connections. Below it, the same nine steps are grouped into Major gaps, Partial coverage and Stronger coverage. Each has a short summary of what the selected evidence covers. Specific measurement questions and research proposals are on the individual topic pages.</p><p class="sub5">Skills and judgement is a map-led pilot. It uses the library's existing construct and measurement tags, filtered to that topic and to studies and evaluations. Its research questions are proposed extensions to selected studies; reference counts do not determine their priority. The selected chart and its source notes remain available in a dropdown.</p></details>
       <p class="review-links"><a href="#gaps">View the topic-level judgments and research questions</a></p>
     </section>
     <section class="sec5" id="m-status"><h2 class="h2-5 sm">Source checks and limitations</h2>
@@ -7728,6 +7832,7 @@ function adaptTopic20(v, id, sub) {
   back.setAttribute('aria-label', 'Research navigation');
   back.innerHTML = '<a href="#gaps">&#8592; Research gaps</a>';
   root.prepend(back);
+  if(id === 'skills' && root.classList.contains('selected8')) adaptSkillsResearch24(root);
   // Keep one home for each gap summary rather than repeating the overview here.
   const watch = $('#' + id + '-watch', v);
   if (watch) {
@@ -7737,7 +7842,10 @@ function adaptTopic20(v, id, sub) {
   $$('.pn5 a[href="#evidence"]', v).forEach(a => a.setAttribute('href', '#gaps'));
   if (sub === 'source' || sub === 'more') {
     const target = $('#' + id + (sub === 'source' ? '-source' : '-related'), v);
-    if (target) { target.open = true; openAt5(target); }
+    if (target) {
+      for(let parent=target;parent && root.contains(parent);parent=parent.parentElement) if(parent.tagName === 'DETAILS') parent.open=true;
+      openAt5(target);
+    }
   }
   if (sub === 'gaps' && watch) openAt5(watch);
   libraryCorner23(v,id);
@@ -7830,7 +7938,9 @@ const libraryFooter23=document.createElement('a');
 libraryFooter23.href='#library';libraryFooter23.className='library-footer23';libraryFooter23.textContent='Evidence library';
 $('.ft .wrap').append(libraryFooter23);
 render = renderReorganized20;
-render(/^library(?:[/?]|$)/.test(INITIAL_ROUTE23) ? INITIAL_ROUTE23 : (location.hash || '#home').slice(1));
+const skillsEntry24=['skills','skills/source','skills/more','skills/gaps','gaps/skills'].includes(INITIAL_ROUTE23);
+if(skillsEntry24) { try { history.replaceState(null,'','#'+INITIAL_ROUTE23); } catch (_) {} }
+render(skillsEntry24 || /^library(?:[/?]|$)/.test(INITIAL_ROUTE23) ? INITIAL_ROUTE23 : (location.hash || '#home').slice(1));
 
 (() => {
   const control = document.querySelector('.appearance22');
