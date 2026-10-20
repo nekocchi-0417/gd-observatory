@@ -10,7 +10,11 @@ Gradual disempowerment is the risk that people lose practical influence over the
 
 The site breaks that argument into nine stops: AI capability, AI adoption, delegation to AI, then branches covering jobs and income, skills and judgement, culture, and government, ending at human influence. The selected topic pages retain their charts, source notes and measurement questions. Evidence presents three comparisons with separate sources and units.
 
-The repository's working library reuses earlier research collections as bibliography entries without republishing unchecked numerical claims. It is not a systematic review or a list of independently verified studies. A separate library view is planned; the accepted restored topic layout does not yet expose the full collection.
+The working library reuses earlier research collections as bibliography entries without republishing unchecked numerical claims. It is not a systematic review or a list of independently verified studies. The separate `#library` subpage is linked from the footer and topic pages, outside the main navigation.
+
+The draft library contains 700 references after matching canonical URLs across topics; 353 have landscape metadata. Its two eight-facet maps cover skills/decision-making and agency/autonomy. Cells count references whose source records contain both tags, not verified construct-specific measurements. Map counts do not determine the dashboard's coverage ratings. Both the bibliography and tags are explicitly AI-assisted and unverified.
+
+Research gaps restores the causal diagram above three coverage columns, replacing the 2x2. The diagram shows connections and links directly to topics; the columns summarise evidence coverage. Research proposals stay on the topic pages. Topic assignments and coverage labels are unchanged.
 
 The adoption comparison follows Gallup's three overlapping usage groups. The two culture visuals use the same platform's reports, so six visuals do not represent six independent studies. No new narrative, forecast display or coverage rating is introduced by this release.
 
@@ -20,7 +24,7 @@ Within this selection, AI capability and use have repeated measurements. Direct 
 |---|---|
 | **Home** | The original framing, causal diagram and three-row overview. |
 | **Evidence** | Six selected visuals on work, learning and culture, with sources and caveats. |
-| **Research gaps** | A provisional 2x2 grouping linking to the nine topic pages. |
+| **Research gaps** | A causal diagram followed by Major gaps, Partial coverage and Stronger coverage columns linking to the nine topic pages. |
 | **Projects & grants** | Manually checked project and funding listings with dates. |
 | **Contribute** | Submit a study, indicator or correction. |
 | **Method** | Selection, chart construction, coverage limitations and source-check scope. |
@@ -47,6 +51,8 @@ Optional checks (needs Node.js):
 npm install
 npm run verify:static  # DOM, routes, SVG geometry, theme and data preservation
 node tools/verify-library.js        # bibliography provenance, deduplication and safe URLs
+node tools/verify-library-view.js   # cross-topic identities and landscape provenance
+node tools/check-reorganized-preview.js # local preview, including library interactions
 ```
 
 The static tests do not verify rendered browser layout. `build:artifact` and the older browser-check scripts are retained for historical versions; they are not the current publication workflow.
@@ -57,6 +63,9 @@ The static tests do not verify rendered browser layout. `build:artifact` and the
 - `tools/build-reorganized-preview.js`: preview and public build; `--publish` writes `docs/`.
 - `src/comparison-data.js`, `src/comparison.js`, `src/capability.js`, `src/adoption.js`: data/chart helpers imported by the current builder. The builder deliberately excludes the newer source router and homepage.
 - `research/library-curation.json`: bibliography-only corrections, preserving original research records.
+- `research/library-map-config.json`: explicit construct rows and measure-type columns; no inferred outcome/quality scoring.
+- `tools/build-library-view.js`, `src/library-view-data.json`: deduplicated bibliography view with source metadata, excluding unchecked findings and legacy verification flags.
+- `prototypes/reorganized/library.js`, `library.css`: secondary library subpage, filters and clickable count maps.
 
 Earlier source architecture, retained for reference and historical exports:
 
@@ -89,7 +98,9 @@ tools/             verification and screenshot scripts
 
 The accepted topic pages inherit their selected releases from the saved base. Check the builder before changing a source module: not every newer `src/` component is active in this version. Update matching interpretations, source notes and tests together. Legacy `#futures` links now open Projects & grants, and `#emerging` opens Evidence.
 
-After editing research records or the curation overlay, run `node tools/build-evidence-library.js`, inspect its skipped/merged-record report, and run `node tools/verify-library.js`. `node tools/audit-library-records.js` regenerates the metadata audit. Bibliographic repair does not approve a study's findings.
+After editing research records or the curation overlay, run `node tools/build-evidence-library.js`, inspect its skipped/merged-record report, and run `node tools/verify-library.js`. Then regenerate the secondary view with `node tools/build-library-view.js` and test it with `node tools/verify-library-view.js`. The site builder derives fresh view data from the catalog each time. `node tools/audit-library-records.js` regenerates the metadata audit. Bibliographic repair does not approve a study's findings.
+
+The library CSV contains bibliographic details and provenance only, carries an unverified-status column, and neutralises formula-like text. The source/DOM suite tests filters, all displayed cell counts, query escaping, pagination, route persistence and light/dark text contrast. It also checks direct pathway links, keyboard navigation and the absence of repeated gap descriptions on Research gaps. Browser layout checks are separate from this suite.
 
 ## How it was made
 

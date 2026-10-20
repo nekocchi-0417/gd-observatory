@@ -11,6 +11,7 @@ catch (error) {
 const root = path.resolve(__dirname, '..');
 const target = process.argv[2] || 'dist/reorganized-dashboard/index.html';
 const html = fs.readFileSync(path.join(root, target), 'utf8');
+const hasCoverageColumns = html.includes('function gapColumns20(');
 if (target === 'docs/index.html') assert(!html.includes('noindex,nofollow'), 'Public build must be indexable');
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(match => match[1]);
 assert.equal(scripts.length, 3);
@@ -18,8 +19,14 @@ assert(html.indexOf('gd-dashboard-theme') < html.indexOf('<style>'), 'Theme pref
 scripts.forEach((script, i) => new vm.Script(script, { filename: 'preview:' + i }));
 
 // DOM/source tests only. Linkedom does not lay out, render or open the local site.
-function harness(width, { savedTheme = null, storageBlocked = false } = {}) {
-  const { document, HTMLElement, Element, Event } = parseHTML(html);
+function harness(width, { savedTheme = null, storageBlocked = false, initialHash = '#home' } = {}) {
+  const { document, HTMLElement, HTMLSelectElement, Element, Event } = parseHTML(html);
+  // Linkedom exposes a read-only select.value; emulate the browser setter for filter tests.
+  if (!Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value')?.set) Object.defineProperty(HTMLSelectElement.prototype,'value',{
+    configurable:true,
+    get() { return (this.querySelector('option[selected]') || this.querySelector('option'))?.getAttribute('value') || ''; },
+    set(value) { for(const option of this.querySelectorAll('option')) option.toggleAttribute('selected',option.getAttribute('value')===String(value)); }
+  });
   const callbacks = [];
   const listeners = {};
   document.fonts = { ready: Promise.resolve() };
@@ -27,7 +34,7 @@ function harness(width, { savedTheme = null, storageBlocked = false } = {}) {
   Element.prototype.scrollTo = function() {};
   Element.prototype.getBoundingClientRect = () => ({ left: 0, top: 0, width, height: 300 });
   Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, get: () => width });
-  const location = { hash: '#home' };
+  const location = { hash: initialHash };
   const storage = new Map(savedTheme === null ? [] : [['gd-dashboard-theme', savedTheme]]);
   const localStorage = {
     getItem(key) { if (storageBlocked) throw new Error('Storage disabled'); return storage.get(key) ?? null; },
@@ -56,8 +63,97 @@ function harness(width, { savedTheme = null, storageBlocked = false } = {}) {
   return { document, Event, run, render, flush, listeners, location, storage };
 }
 
+function checkLibrary(h) {
+  if (!h.run('typeof LIBRARY_VIEW23 !== "undefined"')) return;
+  const data=h.run('LIBRARY_VIEW23'), config=h.run('LIBRARY_MAP23');
+  assert.equal(data.records.length,700);
+  assert.equal(data.stats.landscapeReferences,353);
+  assert.equal(data.records.filter(e=>e.landscape.length).length,data.stats.landscapeReferences);
+  assert.doesNotMatch(JSON.stringify(data),/futuresearch|"finding"|"verified"|"limits"/i);
+  assert.equal(h.document.querySelectorAll('.library-footer23').length,1);
+  for(const id of h.run('ORDER')) {
+    const topic=h.render(id);
+    assert.equal(topic.querySelectorAll(`.library-entry23 a[href="#library/${id}"]`).length,1,id);
+  }
+  assert(h.render('gaps').querySelector('.library-entry23 a'));
+  const click=selector=>{h.document.querySelector(selector).dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();};
+  const filter=(selector,value,event='change')=>{const el=h.document.querySelector(selector);el.value=value;el.dispatchEvent(new h.Event(event,{bubbles:true}));h.flush();};
+  let v=h.render('library');
+  assert.match(h.document.title,/Evidence library/);
+  assert.match(v.textContent,/AI-assisted and not yet verified/);
+  assert.equal(v.querySelectorAll('.library-map23 tbody tr').length,8);
+  assert.equal(v.querySelectorAll('.library-map23 tbody button').length,64);
+  assert.equal(v.querySelectorAll('.library-record23').length,25);
+  assert.equal(v.querySelector('.library-tabs23 [aria-pressed="true"]').dataset.libraryView,'map');
+  assert.equal(v.querySelector('#library-map-panel23').hidden,false);
+  const primary=new Set(['RCT','lab experiment','field experiment','natural experiment','quasi-experiment','cross-sectional survey','panel survey','log analysis','qualitative','case study','benchmark']);
+  for(const area of config.areas) {
+    filter('#library-area23',area.id);
+    for(const cell of v.querySelectorAll('.library-map23 tbody button')) {
+      const facet=area.facets.find(f=>f.id===cell.dataset.libraryFacet);
+      const column=config.columns.find(c=>c.id===cell.dataset.libraryMeasure);
+      const expected=data.records.filter(entry=>entry.kind!=='framework' && entry.landscape.some(c=>primary.has(c.design) && facet.constructs.some(tag=>c.constructs.includes(tag)) && (!column||column.measures.some(tag=>c.measures.includes(tag)))));
+      assert.equal(Number(cell.dataset.count),expected.length,`${area.id}/${facet.id}/${column?.id}`);
+    }
+  }
+  filter('#library-area23','cognition');
+  const first=v.querySelector('[data-library-facet="learning"][data-library-measure="unaided"]');
+  const count=Number(first.dataset.count);
+  click('[data-library-facet="learning"][data-library-measure="unaided"]');
+  assert.equal(v.querySelector('#library-count23').textContent,`${count} references`);
+  assert.equal(v.querySelectorAll('.library-record23').length,Math.min(25,count));
+  assert(v.querySelector('#library-results-title23').scrolled);
+  assert.match(h.location.hash,/facet=learning&measure=unaided/);
+  assert.equal(h.run('current'),'library'+h.location.hash.slice('#library'.length));
+  const selectedIDs=[...v.querySelectorAll('.library-record23')].map(el=>el.dataset.libraryId);
+  for(const id of selectedIDs) assert(data.records.find(r=>r.id===id).landscape.some(c=>primary.has(c.design)&&c.constructs.includes('learning')&&c.measures.includes('unaided performance')));
+  const savedRoute=h.location.hash.slice(1);
+  v=h.render('home');v=h.render(savedRoute);
+  assert.equal(v.querySelector('[data-library-facet="learning"][data-library-measure="unaided"]').getAttribute('aria-pressed'),'true');
+  click('[data-library-clear="selection"]');
+  assert.equal(v.querySelector('#library-selection23').textContent,'');
+  // Unknown designs must not silently become empirical evidence.
+  assert.equal(h.run('libraryCodingScope23({kind:"study"},{design:null,side:"human",measures:[]},"observed")'),false);
+  assert.equal(h.run('libraryCodingScope23({kind:"study"},{design:"lab experiment",side:"both",measures:[]},"human")'),true);
+  assert.equal(h.run('libraryCodingScope23({kind:"study"},{design:"lab experiment",side:"both",measures:[]},"model")'),true);
+  assert.equal(h.run('libraryMatches23({kind:"study",landscape:[{design:"RCT",constructs:["learning"],measures:[]},{design:"RCT",constructs:[],measures:["unaided performance"]}]},{constructs:["learning"]},{measures:["unaided performance"]},"all")'),false);
+  filter('#library-scope23','synthesis');
+  assert.match(v.querySelector('#library-count23').textContent,/\d+ references/);
+  click('[data-library-view="list"]');
+  assert.equal(v.querySelector('#library-map-panel23').hidden,true);
+  assert.equal(v.querySelector('#library-area-field23').hidden,true);
+  assert.equal(v.querySelector('#library-count23').textContent,'700 references');
+  assert.equal(v.querySelector('#library-scope23').value,'all');
+  click('#library-next23');
+  assert.equal(v.querySelector('#library-page23').textContent,'Page 2 of 28');
+  click('#library-prev23');
+  assert.equal(v.querySelector('#library-page23').textContent,'Page 1 of 28');
+  for(let i=0;i<3;i++)click('[data-library-clear="all"]');
+  click('#library-next23');
+  assert.equal(v.querySelector('#library-page23').textContent,'Page 2 of 28','Reset must not accumulate click handlers');
+  filter('#library-search23','self-efficacy','input');
+  assert.notEqual(v.querySelector('#library-count23').textContent,'0 references');
+  filter('#library-search23','<img src=x onerror=alert(1)>','input');
+  assert.equal(v.querySelector('#library-count23').textContent,'0 references');
+  assert.equal(v.querySelector('img[src="x"]'),null);
+  assert.equal(v.querySelector('#library-empty23').hidden,false);
+  click('[data-library-clear="all"]');
+  filter('#library-topic23','adoption');
+  assert.equal(v.querySelector('#library-count23').textContent,`${data.records.filter(r=>r.topics.includes('adoption')).length} references`);
+  const year=String(data.records.find(r=>r.topics.includes('adoption')).year);
+  filter('#library-year23',year);
+  assert.equal(v.querySelector('#library-count23').textContent,`${data.records.filter(r=>r.topics.includes('adoption')&&String(r.year)===year).length} references`);
+  for(const route of ['library/skills','library?view=map&area=autonomy','library?area=bogus&scope=bogus&topic=bogus&year=bad']) {
+    v=h.render(route);
+    assert.equal(v.querySelectorAll('h1').length,1);
+    assert.doesNotMatch(v.innerHTML,/\bundefined\b|\bNaN\b/);
+    const ids=[...v.querySelectorAll('[id]')].map(el=>el.id);assert.equal(ids.length,new Set(ids).size);
+  }
+  assert(fs.existsSync(path.join(path.dirname(path.join(root,target)),'library-references.csv')));
+}
+
 for (const theme of ['light', 'dark']) {
-for (const width of [600, 335]) {
+for (const width of [1200, 600, 335]) {
   const h = harness(width, { savedTheme: theme === 'light' ? null : theme });
   assert.equal(h.document.documentElement.getAttribute('data-theme'), theme);
   const choices = [...h.document.querySelectorAll('.appearance22 button')];
@@ -123,14 +219,64 @@ for (const width of [600, 335]) {
   }
 
   v = h.render('gaps');
-  assert.equal(v.querySelectorAll('.matrix-cell20').length, 4);
+  assert.equal(v.querySelectorAll('.matrix-cell20').length, hasCoverageColumns ? 0 : 4);
   const stepLinks = [...v.querySelectorAll('.gap-step20')].map(a => a.getAttribute('href'));
   assert.equal(new Set(stepLinks).size, 9);
   assert.equal(stepLinks.length, 9);
-  assert.equal(v.querySelector('[data-group="near-limited"] a').getAttribute('href'), '#influence');
-  assert.equal(v.querySelector('[data-group="near-stronger"] a').getAttribute('href'), '#share');
-  assert.equal(v.querySelector('[data-group="earlier-stronger"] a').getAttribute('href'), '#adoption');
-  assert.match(v.textContent, /does not estimate the size of an effect/);
+  if (hasCoverageColumns) {
+    assert.equal(v.querySelectorAll('.coverage-column20').length,3);
+    assert.deepEqual([...v.querySelectorAll('.coverage-column-head20 h3')].map(el=>el.textContent),['Major gaps','Partial coverage','Stronger coverage']);
+    for (const band of ['major','partial','stronger']) {
+      const expected=Array.from(h.run(`ORDER.filter(id=>coverageOf5(id).band===${JSON.stringify(band)})`),id=>'#'+id);
+      assert.deepEqual([...v.querySelectorAll(`.coverage-column20[data-coverage="${band}"] .gap-step20`)].map(a=>a.getAttribute('href')),expected);
+    }
+    const map=v.querySelector('#gaps-map20');
+    assert(map);
+    assert(v.innerHTML.indexOf('id="gaps-map20"')<v.innerHTML.indexOf('class="gap-columns20"'));
+    assert.equal(map.querySelectorAll('.st5').length,9);
+    assert.equal(map.querySelectorAll('.ml5[data-id]').length,0);
+    assert.equal(map.querySelectorAll('a.st5[role="link"]').length,9);
+    assert.equal(map.querySelectorAll('.coverage-header5').length,0,'Do not repeat the three legend panels above the diagram');
+    assert.equal(v.querySelectorAll('.coverage-key5').length,0);
+    assert.doesNotMatch(map.querySelector('svg').outerHTML,/NaN|Infinity|undefined/);
+    assert.doesNotMatch(v.textContent,/2x2|How the two criteria work|Closer to human influence/);
+    assert(v.querySelector('a[href="#method/coverage"]'));
+    assert.equal(v.querySelectorAll('a[href="#method/coverage"]').length,1);
+    assert.equal(v.querySelector('.gap-coverage20 > h2').textContent,'What the selected evidence covers');
+    assert(v.querySelector('.gap-columns20').nextElementSibling.classList.contains('note5'));
+    assert.equal(map.querySelectorAll('.card5,.research-prompt5,.coverage-label5').length,0);
+    for(const id of h.run('ORDER')) {
+      const summary=v.querySelector(`.gap-step20[href="#${id}"] p`).textContent;
+      assert.equal(summary,h.run(`gapCoverageSummaries20[${JSON.stringify(id)}]`));
+      assert.notEqual(summary,h.run(`coverageOf5(${JSON.stringify(id)}).need`));
+      assert.equal(map.querySelector(`.st5[data-id="${id}"]`).getAttribute('href'),'#'+id);
+      assert.doesNotMatch(map.querySelector(`.st5[data-id="${id}"]`).getAttribute('aria-label'),/Research needed/);
+    }
+    map.querySelector('.st5[data-id="institutions"]').dispatchEvent(new h.Event('pointerover',{bubbles:true}));
+    assert.equal(map.querySelector('.st5.here').dataset.id,'institutions');
+    assert(map.querySelector('.seg5.active'));
+    map.querySelector('.gap-map20').dispatchEvent(new h.Event('pointerleave'));
+    assert.equal(map.querySelector('.st5.here'),null);
+    const arrow=new h.Event('keydown',{bubbles:true,cancelable:true});arrow.key='ArrowRight';
+    map.querySelector('.st5[data-id="capability"]').dispatchEvent(arrow);h.flush();
+    assert(map.querySelector('.st5[data-id="adoption"]').scrolled);
+    const enter=new h.Event('keydown',{bubbles:true,cancelable:true});enter.key='Enter';
+    map.querySelector('.st5[data-id="skills"]').dispatchEvent(enter);h.flush();
+    assert.equal(h.run('current'),'skills');
+    assert.equal(h.location.hash,'#skills');
+    v=h.render('gaps');
+    v.querySelector('.gap-step20[href="#influence"]').dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
+    assert.equal(h.run('current'),'influence');
+    assert.equal(h.document.querySelector('.nav [aria-current="page"]').getAttribute('href'),'#gaps');
+    v=h.render('gaps');
+    v.querySelector('.st5[data-id="skills"] .nm5').dispatchEvent(new h.Event('click',{bubbles:true}));h.flush();
+    assert.equal(h.run('current'),'skills');
+  } else {
+    assert.equal(v.querySelector('[data-group="near-limited"] a').getAttribute('href'), '#influence');
+    assert.equal(v.querySelector('[data-group="near-stronger"] a').getAttribute('href'), '#share');
+    assert.equal(v.querySelector('[data-group="earlier-stronger"] a').getAttribute('href'), '#adoption');
+    assert.match(v.textContent, /does not estimate the size of an effect/);
+  }
 
   const routes = ['home', 'evidence', 'gaps', 'method', 'method/coverage', 'projects', 'projects/work', 'projects/grants', 'futures', 'futures/more', 'contribute', 'contribute/add', 'contribute/funding', 'why/funding',
     ...h.run('ORDER'), ...h.run('ORDER.map(id => id + "/source")'), ...h.run('ORDER.map(id => "gaps/" + id)'), 'details/work'];
@@ -191,8 +337,14 @@ for (const width of [600, 335]) {
   assert.equal(h.run('grantStatus21(DIRECTORY21.grants[1], Date.parse("2026-11-01T07:00:00Z"))'), 'Rolling applications');
   v = h.render('method');
   assert.match(v.textContent, /six selected visuals/);
-  assert.match(v.textContent, /2x2/);
-  assert.match(v.textContent, /Graph distance is a navigation rule/);
+  if(hasCoverageColumns) {
+    assert.match(v.textContent,/How Research gaps is organised/);
+    assert.match(v.textContent,/same nine steps are grouped/);
+    assert.doesNotMatch(v.textContent,/2x2|Graph distance/);
+  } else {
+    assert.match(v.textContent, /2x2/);
+    assert.match(v.textContent, /Graph distance is a navigation rule/);
+  }
   assert.equal(v.querySelectorAll('.coverage-reasons5').length,0);
   assert.doesNotMatch(v.textContent, /Still needed:|Definitions at each step|All 18 priority sources/);
   assert.match(v.textContent, /six age groups/);
@@ -210,9 +362,34 @@ for (const width of [600, 335]) {
   assert.equal(h.run('COMPARISON_DATA.music.uploads.length'), 5);
   assert.equal(h.run('Math.abs(TOPIC_CHARTS.skills.chart.rows[0].value)'), 5.4);
   assert.equal(h.run('TOPIC_CHARTS.work.chart.kind'), 'work-ages');
+  checkLibrary(h);
 }
 }
 const blocked = harness(335, { storageBlocked: true });
+if(hasCoverageColumns) {
+  for(const initialHash of ['#gaps','#evidence','#projects','#contribute']) {
+    const direct=harness(1200,{initialHash});
+    assert.equal(direct.document.querySelectorAll('#view h1').length,1);
+    assert.equal(direct.document.querySelector('.nav [aria-current="page"]').getAttribute('href'),initialHash);
+  }
+}
+if (html.includes('const LIBRARY_VIEW23')) {
+  for(const initialHash of ['#library','#library/skills','#library?view=map&area=autonomy&facet=choice&measure=report']) {
+    const direct=harness(600,{initialHash});
+    assert(direct.document.querySelector('.library23'),initialHash+': direct entry lost');
+    assert.match(direct.location.hash,/^#library\?/);
+    assert.match(direct.document.title,/Evidence library/);
+    if(initialHash==='#library/skills') {
+      assert.equal(direct.document.querySelector('#library-topic23').value,'skills');
+      assert.equal(direct.document.querySelector('#library-map-panel23').hidden,true);
+    }
+    if(initialHash.includes('facet=choice')) assert.equal(direct.document.querySelector('[data-library-facet="choice"][data-library-measure="report"]').getAttribute('aria-pressed'),'true');
+    direct.location.hash='#home';direct.listeners.hashchange.forEach(fn=>fn());direct.flush();
+    assert(direct.document.querySelector('#homeMap'));
+    direct.location.hash=initialHash;direct.listeners.popstate.forEach(fn=>fn());direct.flush();
+    assert(direct.document.querySelector('.library23'));
+  }
+}
 assert.equal(blocked.document.documentElement.getAttribute('data-theme'), 'light');
 blocked.document.querySelector('[data-theme-choice="dark"]').dispatchEvent(new blocked.Event('click', { bubbles: true }));
 assert.equal(blocked.document.documentElement.getAttribute('data-theme'), 'dark');
@@ -224,6 +401,8 @@ assert.equal(reload.document.querySelector('.appearance22 [aria-pressed="true"]'
 const css = fs.readFileSync(path.join(root, 'prototypes/reorganized/reorganize.css'), 'utf8');
 assert.match(css, /@media\(max-width:760px\)/);
 assert.match(css, /grid-template-rows:subgrid/);
+assert.match(css, /\.gap-columns20\s*\{[^}]*grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
+assert.match(css, /\.gap-columns20\s*\{[^}]*grid-template-columns:1fr/);
 assert.doesNotMatch(css, /font-size:\s*[^;}]*vw|letter-spacing:\s*-/);
 const appearance = fs.readFileSync(path.join(root, 'prototypes/reorganized/appearance.css'), 'utf8');
 assert.doesNotMatch(appearance, /font-size:\s*[^;}]*vw|letter-spacing:\s*-/);
@@ -256,10 +435,24 @@ for (const theme of ['light', 'dark']) {
     const tint = colour.map((value, i) => value * 0.1 + colours.surface[i] * 0.9);
     assert(contrast(colour, tint) >= 4.5, `${theme}: ${band} label on tinted legend background`);
   }
+  for(const fraction of [0.08,0.16,0.24,0.34]) {
+    const tint=colours.accent.map((value,i)=>value*fraction+colours.surface[i]*(1-fraction));
+    assert(contrast(colours.ink,tint)>=4.5,`${theme}: heat-map count on ${fraction} tint`);
+  }
 }
-console.log('PASS: historical home, six visuals, chart keyboard events, nine steps in four groups, topic/source routes and Methods references.');
+const {libraryCSV,csvCell}=require('./library-csv.js');
+assert.equal(csvCell('a,"b"\nc'),'"a,""b""\nc"');
+assert.equal(csvCell('=1+1'),'"\'=1+1"');
+assert.equal(csvCell('  @SUM(A1)'),'"\'  @SUM(A1)"');
+assert.equal(csvCell('\tbad'),'"\'\tbad"');
+const exportText=libraryCSV({records:[]});
+assert.match(exportText,/Review status/);
+assert.doesNotMatch(exportText,/Finding|Effect size/);
+console.log('PASS: historical home, six visuals, chart keyboard events, nine grouped steps, topic/source routes and Methods references.');
+if(hasCoverageColumns)console.log('PASS: compact pathway above three coverage columns; no repeated gap text, direct node links, hover/keyboard controls and Method alignment.');
 console.log('PASS: six projects, four grants, three submission links, legacy redirects, expired-deadline handling and Method last in navigation.');
-console.log('PASS: generated SVG geometry at widths 600 and 335, with source values preserved.');
+console.log('PASS: generated SVG geometry at widths 1200, 600 and 335, with source values preserved.');
 console.log('PASS: light/dark controls, saved preferences, blocked-storage fallback, and no route/chart/disclosure reset on theme change.');
 console.log('PASS: palette text contrast >= 4.5:1 and main chart/diagram colours >= 3:1 in both modes.');
+if(html.includes('const LIBRARY_VIEW23')) console.log('PASS: library routes, filters, all map cell counts, exact source memberships, reset/pagination, query escaping and CSV export.');
 console.log('Not tested: actual browser layout, CSS overflow, pointer positioning or current remote link availability.');

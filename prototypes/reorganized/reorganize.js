@@ -1,4 +1,4 @@
-/* Local reorganisation of the accepted pre-comparison dashboard. */
+/* Reorganisation of the accepted pre-comparison dashboard. */
 const savedRender20 = render;
 
 const evidencePairs20 = [
@@ -45,37 +45,70 @@ function viewEvidence20(v, anchor) {
   });
 }
 
-function gapGroups20() {
-  const distance = steps5();
-  const score = { major: 0, partial: 1, stronger: 2 };
-  const ordered = [...ORDER].sort((a, b) => score[coverageOf5(a).band] - score[coverageOf5(b).band] || distance[a] - distance[b] || ORDER.indexOf(a) - ORDER.indexOf(b));
-  return [
-    { id: 'near-limited', near: true, limited: true, title: 'Closer to human influence, less well measured' },
-    { id: 'near-stronger', near: true, limited: false, title: 'Closer to human influence, better measured' },
-    { id: 'earlier-limited', near: false, limited: true, title: 'Earlier in the pathway, less well measured' },
-    { id: 'earlier-stronger', near: false, limited: false, title: 'Earlier in the pathway, better measured' }
-  ].map(group => ({ ...group, ids: ordered.filter(id => (distance[id] <= 1) === group.near && (coverageOf5(id).band !== 'stronger') === group.limited) }));
+const gapCoverageSummaries20 = {
+  capability:'Benchmarks test defined tasks; performance across complete workflows is less well established.',
+  adoption:'Repeated surveys track how often people and businesses use AI.',
+  handover:'Provider logs describe tasks handed to AI; human review and intervention are less visible.',
+  work:"Payroll studies track employment in AI-exposed jobs; links to firms' actual AI use are less clear.",
+  share:"Official statistics track workers' share of income; AI's contribution is harder to isolate.",
+  skills:'Short trials test learning; longer-term changes in unaided skills remain unclear.',
+  culture:'Platform data track AI uploads and listening; coverage of wider audiences and creator income is limited.',
+  institutions:'Inventories list AI applications; comparable records of decisions, overrides and appeals are limited.',
+  influence:"Surveys capture perceived control; people's practical ability to refuse or challenge AI is less directly measured."
+};
+
+function mountGapDiagram20(el) {
+  el.innerHTML=`<div class="gap-map-scroll20" tabindex="0" role="region" aria-label="Proposed gradual disempowerment pathways"><div class="map5 gap-map20">${mapSVG5()}</div></div>`;
+  const map=$('.gap-map20',el);
+  $('svg',map).setAttribute('aria-label','Proposed pathways to gradual disempowerment. Each node links to its topic. Node colours and shapes correspond to the coverage groups below.');
+  $$('.research-prompt5,.coverage-label5',map).forEach(label=>label.remove());
+  // Reuse the pathway geometry, with native topic links and no duplicate research cards.
+  $$('.st5',map).forEach(node=>{
+    const id=node.dataset.id, link=document.createElementNS('http://www.w3.org/2000/svg','a');
+    link.setAttribute('class','st5');link.setAttribute('data-id',id);link.setAttribute('data-coverage',coverageOf5(id).band);
+    link.setAttribute('href','#'+id);link.setAttribute('tabindex','0');link.setAttribute('role','link');
+    link.setAttribute('aria-label',nameOf(id)+'. '+coverageBand5(id).label);
+    while(node.firstChild)link.appendChild(node.firstChild);
+    node.replaceWith(link);
+  });
+  let hovered=null,focused=null;
+  const highlight=()=>{
+    const id=hovered||focused;
+    map.classList.toggle('is-previewing',Boolean(id));
+    $$('.st5',map).forEach(node=>node.classList.toggle('here',node.dataset.id===id));
+    $$('.seg5',map).forEach((path,i)=>path.classList.toggle('active',Boolean(id)&&activeSeg5(id,SEGS5[i])));
+  };
+  map.addEventListener('pointerover',event=>{const node=event.target.closest?.('.st5');hovered=node?.dataset.id||null;highlight();});
+  map.addEventListener('pointerleave',()=>{hovered=null;highlight();});
+  map.addEventListener('focusin',event=>{focused=event.target.closest?.('.st5')?.dataset.id||null;highlight();});
+  map.addEventListener('focusout',event=>{focused=event.relatedTarget?.closest?.('.st5')?.dataset.id||null;highlight();});
+  map.addEventListener('keydown',event=>{
+    const node=event.target.closest?.('.st5');if(!node)return;
+    if(event.key==='Enter'){event.preventDefault();go(node.dataset.id);}
+    else if(['ArrowLeft','ArrowRight'].includes(event.key)){
+      event.preventDefault();const i=ORDER.indexOf(node.dataset.id),next=ORDER[(i+(event.key==='ArrowRight'?1:-1)+ORDER.length)%ORDER.length];
+      const target=$(`.st5[data-id="${next}"]`,map);target.focus();target.scrollIntoView({block:'nearest',inline:'nearest'});
+    }
+  });
 }
 
-function gapMatrix20() {
-  const groups = gapGroups20();
-  const cell = group => `<section class="matrix-cell20" data-group="${group.id}" aria-labelledby="${group.id}-title"><h2 id="${group.id}-title" class="sr5">${group.title}</h2>
-    <ul>${group.ids.map(id => `<li><a href="#${id}" class="gap-step20"><div class="gap-step-head20"><h3>${esc(nameOf(id))}</h3>${coverageBadge5(id)}</div><p>${esc(coverageOf5(id).need)}</p></a></li>`).join('')}</ul></section>`;
-  return `<div class="gap-matrix20" role="group" aria-label="Research gaps by measurement coverage and closeness to human influence">
-    <div class="matrix-axis20">Measurement coverage</div><div class="matrix-col20">Less well measured</div><div class="matrix-col20">Better measured</div>
-    <div class="matrix-row20">Closer to human influence</div>${cell(groups[0])}${cell(groups[1])}
-    <div class="matrix-row20">Earlier in the pathway</div>${cell(groups[2])}${cell(groups[3])}
-  </div>`;
+function gapColumns20() {
+  return `<div class="gap-columns20">${['major','partial','stronger'].map(band => {
+    const label=COPY.coverage.bands[band], ids=ORDER.filter(id=>coverageOf5(id).band===band);
+    return `<section class="coverage-column20" data-coverage="${band}" aria-labelledby="gap-${band}-title20">
+      <header class="coverage-column-head20">${coverageGlyph5(band,22)}<div><h3 id="gap-${band}-title20">${esc(label.label)}</h3><p>${esc(label.description)}</p></div></header>
+      <ul>${ids.map(id=>`<li><a href="#${id}" class="gap-step20"><h4>${esc(nameOf(id))}</h4><p>${esc(gapCoverageSummaries20[id])}</p></a></li>`).join('')}</ul>
+    </section>`;
+  }).join('')}</div>`;
 }
 
 function viewGaps20(v) {
-  v.innerHTML = `<div class="view5 wrap gaps20"><header class="intro20"><div class="eye5"><span>Research gaps</span></div><h1 class="h1-5">Where do we need better measures?</h1><p class="lead5">The selected evidence leaves important questions about skills, oversight and people's ability to influence decisions.</p></header>
-    ${gapMatrix20()}
-    <details class="matrix-method20"><summary>How the two criteria work</summary><dl>
-      <div><dt>How well measured?</dt><dd>Less well measured combines the diagram's major-gap and partial-coverage bands. Better measured uses its stronger-coverage band. Each step keeps its original label.</dd></div>
-      <div><dt>How close to human influence?</dt><dd>Closer means the outcome itself or one connection away in this dashboard's pathway. Earlier steps are two or more connections away. This describes the diagram's structure; it does not estimate the size of an effect.</dd></div>
-    </dl><p>These AI-assisted groupings describe the selected evidence. They can help choose questions to investigate; a systematic review could change them. They do not rank risk, funding value or the total amount of research.</p><a href="#method/coverage">Coverage criteria</a></details>
-    <p class="note5">Provisional grouping of selected sources. Open a step for its indicators, limitations and next measurement needed.</p></div>`;
+  v.innerHTML = `<div class="view5 wrap gaps20"><header class="intro20"><div class="eye5"><span>Research gaps</span></div><h1 class="h1-5">Where do we need better measures?</h1></header>
+    <section class="gap-pathway20" aria-label="Proposed gradual disempowerment pathways"><div id="gaps-map20"></div></section>
+    <section class="gap-coverage20" aria-labelledby="gap-coverage-title20"><h2 class="h2-5 sm" id="gap-coverage-title20">What the selected evidence covers</h2>
+      ${gapColumns20()}<p class="note5">Provisional, AI-assisted assessment of selected sources. <a href="#method/coverage">How assessed</a></p>
+    </section></div>`;
+  mountGapDiagram20($('#gaps-map20',v));
 }
 
 function adaptTopic20(v, id, sub) {
@@ -98,6 +131,7 @@ function adaptTopic20(v, id, sub) {
     if (target) { target.open = true; openAt5(target); }
   }
   if (sub === 'gaps' && watch) openAt5(watch);
+  libraryCorner23(v,id);
 }
 
 function directoryDate21(date) {
@@ -138,6 +172,7 @@ function viewContribute21(v) {
 viewSourceMethod = viewMethod22;
 
 function resolveRoute20(id) {
+  if (/^library(?:[/?]|$)/.test(String(id))) return { page:'library' };
   const [base, sub] = String(id || 'home').split('/');
   if (base === 'projects' || base === 'futures') return { page: 'projects', sub: ['work', 'grants'].includes(sub) ? sub : null };
   if (base === 'contribute' || base === 'why') return sub === 'funding' ? { page: 'projects', sub: 'grants' } : { page: 'contribute' };
@@ -145,7 +180,7 @@ function resolveRoute20(id) {
   if (base === 'gaps' && ORDER.includes(sub)) return { page: 'topic', id: sub, sub: 'gaps' };
   if (base === 'gaps' || base === 'record') return { page: 'gaps' };
   if (ORDER.includes(base)) return { page: 'topic', id: base, sub };
-  if (base === 'review' || base === 'library') return ORDER.includes(sub) ? { page: 'topic', id: sub } : { page: 'gaps' };
+  if (base === 'review') return ORDER.includes(sub) ? { page: 'topic', id: sub } : { page: 'gaps' };
   return { page: 'original', id: base, sub };
 }
 
@@ -155,7 +190,8 @@ function renderReorganized20(id) {
   let active;
   window.scrollTo(0, 0);
   if (route.page === 'evidence') { viewEvidence20(v, route.sub); active = 'evidence'; }
-  else if (route.page === 'gaps') { viewGaps20(v); active = 'gaps'; }
+  else if (route.page === 'gaps') { viewGaps20(v); libraryCorner23(v,''); active = 'gaps'; }
+  else if (route.page === 'library') { viewLibrary23(v,id); id=current; active='gaps'; }
   else if (route.page === 'projects') {
     const target = 'projects' + (route.sub ? '/' + route.sub : '');
     if (id !== target) { try { history.replaceState(null, '', '#' + target); } catch (_) {} }
@@ -174,11 +210,15 @@ function renderReorganized20(id) {
   $$('.nav a').forEach(a => a.getAttribute('href') === '#' + active ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
   const titles = { evidence: 'Evidence', gaps: 'Research gaps', projects: 'Projects & grants', contribute: 'Contribute' };
   if (titles[active]) document.title = titles[active] + ' | Gradual Disempowerment Dashboard';
+  if (route.page === 'library') document.title = 'Evidence library | Gradual Disempowerment Dashboard';
 }
 
 installWork10();
 COPY.home.cta.buttons = COPY.home.cta.buttons.map(button => button.to === 'contribute/funding' ? { ...button, t: 'Find funding', to: 'projects/grants' } : button);
 COPY.home.cta.why = 'How to contribute';
 $('.nav').innerHTML = [['home', 'Home'], ['evidence', 'Evidence'], ['gaps', 'Research gaps'], ['projects', 'Projects & grants'], ['contribute', 'Contribute'], ['method', 'Method']].map(([id, label]) => `<a href="#${id}">${esc(label)}</a>`).join('');
+const libraryFooter23=document.createElement('a');
+libraryFooter23.href='#library';libraryFooter23.className='library-footer23';libraryFooter23.textContent='Evidence library';
+$('.ft .wrap').append(libraryFooter23);
 render = renderReorganized20;
-render((location.hash || '#home').slice(1));
+render(/^library(?:[/?]|$)/.test(INITIAL_ROUTE23) ? INITIAL_ROUTE23 : (location.hash || '#home').slice(1));

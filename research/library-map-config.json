@@ -1,0 +1,45 @@
+{
+  "updated": "2026-10-19",
+  "scope": "Construct and measure tags from the earlier AI-assisted landscape scan. Counts describe linked references in this collection, not independent studies, evidence quality, risk or field-wide coverage.",
+  "areas": [
+    {
+      "id": "cognition",
+      "label": "Skills & decision-making",
+      "description": "Learning, task performance and how people judge advice.",
+      "facets": [
+        {"id":"learning","label":"Learning","constructs":["learning"],"description":"Acquiring knowledge or learning a new task."},
+        {"id":"skills","label":"Skills","constructs":["skill"],"description":"Ability to carry out a task; the tag alone does not establish long-term skill change."},
+        {"id":"expertise","label":"Expert judgement","constructs":["expertise"],"description":"Knowledge and judgement developed through domain experience."},
+        {"id":"memory","label":"Memory & offloading","constructs":["memory/offloading"],"description":"Remembering information and using tools to perform mental work."},
+        {"id":"critical","label":"Critical thinking","constructs":["critical thinking/metacognition"],"description":"Reflection, checking reasoning and judging one's own knowledge."},
+        {"id":"decisions","label":"Decision quality","constructs":["decision quality"],"description":"The quality or accuracy of decisions in the studied setting."},
+        {"id":"reliance","label":"Reliance on advice","constructs":["reliance/automation bias"],"description":"When people accept or reject AI advice, including over- and under-reliance."},
+        {"id":"creativity","label":"Creativity & diversity","constructs":["creativity/diversity"],"description":"Creative output and diversity of ideas; individual quality and group diversity are different outcomes."}
+      ]
+    },
+    {
+      "id":"autonomy",
+      "label":"Agency & autonomy",
+      "description":"People's choices, sense of agency and practical control.",
+      "facets":[
+        {"id":"choice","label":"Autonomy & choice","constructs":["autonomy"],"description":"Research tagged as autonomy; this broad tag does not establish actual freedom of choice or control."},
+        {"id":"agency","label":"Sense of agency","constructs":["sense of agency/ownership"],"description":"Feeling responsible for, or in control of, one's actions and work."},
+        {"id":"beliefs","label":"Beliefs & attitudes","constructs":["beliefs/attitudes"],"description":"Persuasion, belief change and attitude formation; change alone does not establish reduced autonomy."},
+        {"id":"trust","label":"Trust","constructs":["trust"],"description":"Trust in AI and its advice; trust is not a direct measure of control."},
+        {"id":"dependence","label":"Dependence","constructs":["dependence"],"description":"Habitual or psychological reliance on a system."},
+        {"id":"efficacy","label":"Confidence in ability","constructs":["self-efficacy"],"description":"People's belief in their ability to act or perform a task."},
+        {"id":"control","label":"Oversight & control","constructs":["oversight/control"],"description":"Human review, intervention and authority over AI-assisted decisions."},
+        {"id":"reliance","label":"Reliance on advice","constructs":["reliance/automation bias"],"description":"When people accept or reject AI advice, including over- and under-reliance."}
+      ]
+    }
+  ],
+  "columns": [
+    {"id":"report","label":"Self-report","measures":["self-report"],"description":"Reported experiences, beliefs or perceptions."},
+    {"id":"behaviour","label":"Behavioural tasks","measures":["behavioural task"],"description":"Observed choices or behaviour in a task."},
+    {"id":"assisted","label":"Performance with AI","measures":["assisted performance"],"description":"Performance assessed with AI assistance."},
+    {"id":"unaided","label":"Performance without AI","measures":["unaided performance"],"description":"Performance assessed without AI; this tag does not establish prior AI exposure, delayed retention or recovery."},
+    {"id":"logs","label":"Logs & records","measures":["usage logs","admin data"],"description":"Interaction logs, administrative or operational records."},
+    {"id":"model","label":"Model evaluations","measures":["model eval"],"description":"Tests of model behaviour; these do not by themselves establish effects on people."},
+    {"id":"physio","label":"Physiological measures","measures":["neuro/physio"],"description":"Neural or physiological recordings, whose interpretation depends on the specific study."}
+  ]
+}
