@@ -1,6 +1,26 @@
 {
-  "reviewed": "2026-10-19",
+  "reviewed": "2026-10-22",
   "projects": [
+    {
+      "id": "ai-futures",
+      "title": "AI Futures Project at MATS",
+      "organisation": "MATS / AI Futures Project",
+      "summary": "Scenario writing, economic modelling and policy research on possible AI futures.",
+      "period": "Winter 2027",
+      "status": "Upcoming stream",
+      "url": "https://www.matsprogram.org/stream/aifp",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "metaculus",
+      "title": "Metaculus at MATS",
+      "organisation": "MATS / Vehbi Deger Turan",
+      "summary": "Applied forecasting and research on AI diffusion, coordination and gradual disempowerment.",
+      "period": "Winter 2027",
+      "status": "Upcoming stream",
+      "url": "https://www.matsprogram.org/stream/turan",
+      "checked": "2026-10-22"
+    },
     {
       "id": "human-autonomy",
       "title": "Human Autonomy in the Age of Machines",
@@ -40,26 +60,6 @@
       "status": "Applications closed",
       "url": "https://www.sparai.org/projects/f26/rec6h6JTLiswjlgL9/",
       "checked": "2026-10-19"
-    },
-    {
-      "id": "ai-futures",
-      "title": "AI Futures Project at MATS",
-      "organisation": "MATS / AI Futures Project",
-      "summary": "Scenario writing, economic modelling and policy research on possible AI futures.",
-      "period": "Winter 2027",
-      "status": "Upcoming stream",
-      "url": "https://www.matsprogram.org/stream/aifp?cebe326e_page=3",
-      "checked": "2026-10-19"
-    },
-    {
-      "id": "metaculus",
-      "title": "Metaculus at MATS",
-      "organisation": "MATS / Vehbi Deger Turan",
-      "summary": "Applied forecasting and research on AI diffusion, coordination and gradual disempowerment.",
-      "period": "Winter 2027",
-      "status": "Upcoming stream",
-      "url": "https://www.matsprogram.org/stream/turan",
-      "checked": "2026-10-19"
     }
   ],
   "grants": [
@@ -73,6 +73,18 @@
       "deadlineLabel": "31 Oct 2026, 23:59 PDT",
       "url": "https://foresight.org/grants/ai-science-safety-nodes-rfp/",
       "checked": "2026-10-19"
+    },
+    {
+      "id": "cosmos-judgment-prize",
+      "title": "Essay contest: AI for human judgment",
+      "organisation": "Cosmos Institute / Inherent",
+      "summary": "Up to GBP 20,000 in total prizes for essays of up to 1,000 words on AI, organisational design and human judgement. The top prize is GBP 10,000.",
+      "period": "Essay prize",
+      "status": "Closes 8 Nov 2026",
+      "deadlineDate": "2026-11-08",
+      "deadlineLabel": "End of day; timezone not specified",
+      "url": "https://blog.cosmos-institute.org/p/essay-contest-ai-for-human-judgment",
+      "checked": "2026-10-22"
     },
     {
       "id": "gtr",

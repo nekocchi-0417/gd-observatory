@@ -142,7 +142,9 @@ function directoryDate21(date) {
 }
 
 function grantStatus21(grant, now = Date.now()) {
-  return grant.deadline && now > Date.parse(grant.deadline) ? 'Deadline passed' : grant.status;
+  // With no stated timezone, only mark expired after the last possible local day ends.
+  const cutoff = grant.deadline || (grant.deadlineDate && `${grant.deadlineDate}T23:59:59-12:00`);
+  return cutoff && now > Date.parse(cutoff) ? 'Deadline passed' : grant.status;
 }
 
 function directoryRow21(item, grant = false) {
@@ -153,10 +155,10 @@ function directoryRow21(item, grant = false) {
 
 function viewProjects21(v, anchor) {
   v.innerHTML = `<div class="view5 wrap projects21"><header class="intro20"><div class="eye5"><span>Projects &amp; grants</span></div><h1 class="h1-5">Ongoing &amp; upcoming projects</h1><p class="lead5">Research and funding relevant to gradual disempowerment.</p></header>
-    <nav class="directory-nav21" aria-label="Directory sections"><a href="#projects/work">Projects</a><a href="#projects/grants">Grants</a></nav>
+    <nav class="directory-nav21" aria-label="Directory sections"><a href="#projects/work">Projects</a><a href="#projects/grants">Grants &amp; support</a></nav>
     <section class="directory-section21" id="projects-work" aria-labelledby="projects-heading21"><h2 class="h2-5 sm" id="projects-heading21">Research projects</h2><p class="note5">Listed programmes and research proposals; application status is shown separately.</p><ul class="directory-list21">${DIRECTORY21.projects.map(item => directoryRow21(item)).join('')}</ul></section>
-    <section class="directory-section21" id="projects-grants" aria-labelledby="grants-heading21"><h2 class="h2-5 sm" id="grants-heading21">Grants</h2><p class="note5">Potential fits for this work. Check each funder's scope and eligibility.</p><ul class="directory-list21">${DIRECTORY21.grants.map(item => directoryRow21(item, true)).join('')}</ul></section>
-    <p class="note5 directory-review21">Manually updated. Source pages checked with AI assistance on ${directoryDate21(DIRECTORY21.reviewed)}. Confirm availability with the organiser.</p></div>`;
+    <section class="directory-section21" id="projects-grants" aria-labelledby="grants-heading21"><h2 class="h2-5 sm" id="grants-heading21">Grants &amp; support</h2><p class="note5">Funding, prizes and other support relevant to this work. Check each organiser's scope and eligibility.</p><ul class="directory-list21">${DIRECTORY21.grants.map(item => directoryRow21(item, true)).join('')}</ul></section>
+    <p class="note5 directory-review21">Manually updated ${directoryDate21(DIRECTORY21.reviewed)}. Source checks are AI-assisted; confirm availability with the organiser.</p></div>`;
   if (['work', 'grants'].includes(anchor)) requestAnimationFrame(() => document.getElementById('projects-' + anchor)?.scrollIntoView({ block: 'start' }));
 }
 

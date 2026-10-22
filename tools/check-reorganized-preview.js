@@ -430,9 +430,9 @@ for (const width of [1200, 600, 335]) {
   assert.equal(v.querySelector('.future-grid5-ideas'), null);
   assert.equal(v.querySelector('.routes'), null);
   assert.doesNotMatch(v.textContent, /Promising directions|Five routes the chain could take/);
-  assert.equal(v.querySelectorAll('.directory-row21').length, 10);
+  assert.equal(v.querySelectorAll('.directory-row21').length, 11);
   assert.equal(v.querySelectorAll('#projects-work .directory-row21').length, 6);
-  assert.equal(v.querySelectorAll('#projects-grants .directory-row21').length, 4);
+  assert.equal(v.querySelectorAll('#projects-grants .directory-row21').length, 5);
   assert.equal(v.querySelectorAll('.chart').length, 0);
   assert.match(v.textContent, /Manually updated/);
   assert.equal(h.location.hash, '#projects');
@@ -454,11 +454,11 @@ for (const width of [1200, 600, 335]) {
   for (const url of submissions) assert.equal(url.origin, 'https://github.com');
   for (const item of h.run('[...DIRECTORY21.projects, ...DIRECTORY21.grants]')) {
     assert.equal(new URL(item.url).protocol, 'https:');
-    assert.equal(item.checked, '2026-10-19');
+    assert.equal(item.checked, ['ai-futures','metaculus','cosmos-judgment-prize'].includes(item.id) ? '2026-10-22' : '2026-10-19');
   }
   assert.equal(h.run('grantStatus21(DIRECTORY21.grants[0], Date.parse("2026-10-30T00:00:00Z"))'), 'Closes 31 Oct 2026');
   assert.equal(h.run('grantStatus21(DIRECTORY21.grants[0], Date.parse("2026-11-01T07:00:00Z"))'), 'Deadline passed');
-  assert.equal(h.run('grantStatus21(DIRECTORY21.grants[1], Date.parse("2026-11-01T07:00:00Z"))'), 'Rolling applications');
+  assert.equal(h.run('grantStatus21(DIRECTORY21.grants.find(item => item.id === "gtr"), Date.parse("2026-11-01T07:00:00Z"))'), 'Rolling applications');
   v = h.render('method');
   assert.match(v.textContent, /six selected visuals/);
   if(hasCoverageColumns) {
@@ -596,7 +596,7 @@ assert.match(exportText,/Review status/);
 assert.doesNotMatch(exportText,/Finding|Effect size/);
 console.log('PASS: historical home, six visuals, chart keyboard events, nine grouped steps, topic/source routes and Methods references.');
 if(hasCoverageColumns)console.log('PASS: compact pathway above three coverage columns; no repeated gap text, direct node links, hover/keyboard controls and Method alignment.');
-console.log('PASS: six projects, four grants, three submission links, legacy redirects, expired-deadline handling and Method last in navigation.');
+console.log('PASS: six projects, five funding/support listings, three submission links, legacy redirects, expired-deadline handling and Method last in navigation.');
 console.log('PASS: generated SVG geometry at widths 1200, 600 and 335, with source values preserved.');
 console.log('PASS: light/dark controls, saved preferences, blocked-storage fallback, and no route/chart/disclosure reset on theme change.');
 console.log('PASS: palette text contrast >= 4.5:1 and main chart/diagram colours >= 3:1 in both modes.');
