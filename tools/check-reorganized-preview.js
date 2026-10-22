@@ -19,7 +19,7 @@ const referenceCountText = count => `${count} ${count === 1 ? 'reference' : 'ref
 if (target === 'docs/index.html') assert(!html.includes('noindex,nofollow'), 'Public build must be indexable');
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(match => match[1]);
 assert.equal(scripts.length, 3);
-assert(html.indexOf('gd-dashboard-theme') < html.indexOf('<style>'), 'Theme preference loads before first paint');
+assert(html.indexOf('gd-dashboard-visit-theme') >= 0 && html.indexOf('gd-dashboard-visit-theme') < html.indexOf('<style>'), 'Theme preference loads before first paint');
 scripts.forEach((script, i) => new vm.Script(script, { filename: 'preview:' + i }));
 
 // DOM/source tests only. Linkedom does not lay out, render or open the local site.
@@ -39,8 +39,8 @@ function harness(width, { savedTheme = null, storageBlocked = false, initialHash
   Element.prototype.getBoundingClientRect = () => ({ left: 0, top: 0, width, height: 300 });
   Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, get: () => width });
   const location = { hash: initialHash };
-  const storage = new Map(savedTheme === null ? [] : [['gd-dashboard-theme', savedTheme]]);
-  const localStorage = {
+  const storage = new Map(savedTheme === null ? [] : [['gd-dashboard-visit-theme', savedTheme]]);
+  const sessionStorage = {
     getItem(key) { if (storageBlocked) throw new Error('Storage disabled'); return storage.get(key) ?? null; },
     setItem(key, value) { if (storageBlocked) throw new Error('Storage disabled'); storage.set(key, value); }
   };
@@ -51,7 +51,7 @@ function harness(width, { savedTheme = null, storageBlocked = false, initialHash
     matchMedia: () => ({ matches: false, addEventListener() {} })
   };
   const context = vm.createContext({
-    document, window, location, localStorage, structuredClone, console, URL, URLSearchParams,
+    document, window, location, sessionStorage, structuredClone, console, URL, URLSearchParams,
     matchMedia: window.matchMedia,
     history: { pushState(_a, _b, hash) { location.hash = hash; }, replaceState(_a, _b, hash) { location.hash = hash; } },
     requestAnimationFrame(fn) { callbacks.push(fn); },
@@ -328,7 +328,7 @@ for (const width of [1200, 600, 335]) {
   const otherTheme = theme === 'light' ? 'dark' : 'light';
   h.document.querySelector(`[data-theme-choice="${otherTheme}"] svg`).dispatchEvent(new h.Event('click', { bubbles: true }));
   assert.equal(h.document.documentElement.getAttribute('data-theme'), otherTheme);
-  assert.equal(h.storage.get('gd-dashboard-theme'), otherTheme);
+  assert.equal(h.storage.get('gd-dashboard-visit-theme'), otherTheme);
   assert.equal(h.document.querySelector('.appearance22 [aria-pressed="true"]').dataset.themeChoice, otherTheme);
   assert.equal(v.querySelector('.chart svg'), chart);
   assert.equal(sourceNotes.open, true);
@@ -541,7 +541,7 @@ blocked.document.querySelector('[data-theme-choice="dark"]').dispatchEvent(new b
 assert.equal(blocked.document.documentElement.getAttribute('data-theme'), 'dark');
 assert.equal(harness(600, { savedTheme: 'invalid' }).document.documentElement.getAttribute('data-theme'), 'light');
 const reload = harness(600, { savedTheme: 'dark' });
-reload.listeners.storage.forEach(fn => fn({ key: 'gd-dashboard-theme', newValue: 'light' }));
+reload.listeners.storage.forEach(fn => fn({ key: 'gd-dashboard-visit-theme', newValue: 'light' }));
 assert.equal(reload.document.documentElement.getAttribute('data-theme'), 'light');
 assert.equal(reload.document.querySelector('.appearance22 [aria-pressed="true"]').dataset.themeChoice, 'light');
 const css = fs.readFileSync(path.join(root, 'prototypes/reorganized/reorganize.css'), 'utf8');

@@ -11,10 +11,10 @@
     if (!button || !control.contains(button)) return;
     const theme = button.dataset.themeChoice;
     apply(theme);
-    try { localStorage.setItem('gd-dashboard-theme', theme); } catch (_) {}
+    try { sessionStorage.setItem('gd-dashboard-visit-theme', theme); } catch (_) {}
   });
   window.addEventListener('storage', event => {
-    if (event.key === 'gd-dashboard-theme' || event.key === null) {
+    if (event.key === 'gd-dashboard-visit-theme' || event.key === null) {
       apply(event.newValue === 'dark' ? 'dark' : 'light');
     }
   });

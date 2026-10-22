@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
+const {header} = require('./site-shell');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const between = (source, start, end) => {
@@ -15,9 +16,6 @@ function build({publish = false} = {}) {
   const copyContext = vm.createContext({});
   vm.runInContext(read('src/copy.js'), copyContext);
   const contributionButtons = vm.runInContext('COPY.why.contribute.buttons', copyContext);
-  const controls = `<div class="appearance22" role="group" aria-label="Colour theme">${[['light', 'Light', 'sun'], ['dark', 'Dark', 'moon']].map(([theme, label, icon]) => `<button type="button" data-theme-choice="${theme}" aria-label="${label} mode" aria-pressed="${theme === 'light'}">${read(`prototypes/reorganized/icons/${icon}.svg`)}<span class="theme-tip22" aria-hidden="true">${label} mode</span></button>`).join('')}</div>`;
-  const mark = between(base, '  <a class="mark"', '  <nav class="nav"');
-  const nav = [['home', 'Home'], ['evidence', 'Selected evidence'], ['gaps', 'Research gaps'], ['projects', 'Projects & grants'], ['contribute', 'Contribute'], ['method', 'Method']];
   const serialise = value => JSON.stringify(value).replace(/</g, '\\u003c');
   // Only aggregate shared-source counts are needed for the homepage story.
   const library = require('./network-library.js').load();
@@ -51,11 +49,11 @@ function build({publish = false} = {}) {
   const html = `${head}
 ${publish ? '' : '<meta name="robots" content="noindex,nofollow">'}
 <meta name="gd-build" content="topic-review-2026-10-22">
-<style>${read('prototypes/reorganized/reorganize.css')}\n${read('prototypes/reorganized/appearance.css')}\n${read('prototypes/reorganized/shareable.css')}\n${read('prototypes/reorganized/home-story.css')}</style>
+<style>${read('prototypes/reorganized/reorganize.css')}\n${read('prototypes/reorganized/appearance.css')}\n${read('prototypes/reorganized/shareable.css')}\n${read('prototypes/reorganized/home-story.css')}\n${read('prototypes/reorganized/site-header.css')}</style>
 <!-- Lucide icon licence:\n${read('prototypes/reorganized/icons/LICENSE')} -->
 </head><body>
 <a class="skip28" href="#main-content">Skip to content</a>
-<header class="bar"><div class="wrap">${mark}<nav class="nav" aria-label="Sections">${nav.map(([id, label]) => `<a href="#${id}">${label.replace(/&/g, '&amp;')}</a>`).join('')}</nav>${controls}</div></header>
+${header()}
 <main id="view" tabindex="-1"></main>
 <noscript><div class="wrap view5"><h1>Gradual Disempowerment Dashboard</h1><p>This research prototype needs JavaScript to display its topic reviews and charts.</p><p><a href="https://gradual-disempowerment.ai/">Read the original gradual disempowerment paper</a></p></div></noscript>
 <footer class="ft"><div class="wrap"><span><b>Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Research prototype · <a href="#method">Method</a></span></div></footer>

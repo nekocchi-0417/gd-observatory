@@ -1,8 +1,8 @@
-<!doctype html><html lang="en-GB" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Explore connections across the Skills and judgement literature: editable concepts, paper filters and source review."><title>Skills and judgement | GD Literature Map</title><script>// Apply the saved choice before styles paint. Light is the default for this preview.
+<!doctype html><html lang="en-GB" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Explore connections across the Skills and judgement literature: editable concepts, paper filters and source review."><title>Skills and judgement | GD Literature Map</title><script>// Start each visit in light mode; retain an explicit choice within the current tab session.
 (() => {
   let theme = 'light';
   try {
-    const saved = localStorage.getItem('gd-dashboard-theme');
+    const saved = sessionStorage.getItem('gd-dashboard-visit-theme');
     if (saved === 'light' || saved === 'dark') theme = saved;
   } catch (_) {
     // Storage can be unavailable when the preview is opened as a local file.

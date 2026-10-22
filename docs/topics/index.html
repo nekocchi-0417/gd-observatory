@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB" data-theme="light">
 <head>
   <meta charset="utf-8">
@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="Selected research on learning and judgement under AI assistance, and questions for further study.">
   <title>Skills and judgement | Gradual Disempowerment Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="theme-init.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap"><link rel="stylesheet" href="style.css">
   <script src="data.js" defer></script>
   <script src="landscape.js" defer></script>
   <script src="collections.js" defer></script>
@@ -14,28 +14,32 @@
   <script src="research.js" defer></script>
   <script src="runtime.js" defer></script>
   <script src="app.js" defer></script>
-</head>
+<link rel="stylesheet" href="site-header.css"><script src="appearance.js" defer></script></head>
 <body data-view="topic">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="../index.html#home">Gradual Disempowerment <span>Dashboard</span></a>
-      <span class="draft-label">Research draft</span>
-      <button class="theme-button icon-button" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"></button>
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="../index.html#home">Home</a>
-        <a href="evidence.html">Selected evidence</a>
-        <a href="../index.html#gaps" aria-current="page">Research gaps</a>
-        <a href="../index.html#projects">Projects &amp; grants</a>
-        <a href="../index.html#contribute">Contribute</a>
-        <a href="../index.html#method">Method</a>
-      </nav>
-    </div>
-  </header>
+  <header class="bar"><div class="wrap"><a class="mark" href="../index.html#home" aria-label="Gradual Disempowerment Dashboard, home">
+    <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round" /><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2" /><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6" /></svg>
+    <span>Gradual Disempowerment Dashboard</span></a><nav class="nav" aria-label="Sections"><a href="../index.html#home">Home</a><a href="../index.html#evidence">Selected evidence</a><a href="../index.html#gaps" aria-current="page">Research gaps</a><a href="../index.html#projects">Projects &amp; grants</a><a href="../index.html#contribute">Contribute</a><a href="../index.html#method">Method</a></nav><div class="appearance22" role="group" aria-label="Colour theme"><button type="button" data-theme-choice="light" aria-label="Light mode" aria-pressed="true" title="Light mode"><!-- @license lucide-static v0.468.0 - ISC -->
+<svg class="lucide lucide-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+<span class="theme-tip22" aria-hidden="true">Light mode</span></button><button type="button" data-theme-choice="dark" aria-label="Dark mode" aria-pressed="false" title="Dark mode"><!-- @license lucide-static v0.468.0 - ISC -->
+<svg class="lucide lucide-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+</svg>
+<span class="theme-tip22" aria-hidden="true">Dark mode</span></button></div></div></header>
 
   <div class="page-shell">
     <aside class="page-nav">
-      <a class="back-link" href="topics.html"><span aria-hidden="true">&larr;</span> All research topics</a>
+      <a class="back-link" href="topics.html"><span aria-hidden="true">←</span> All research topics</a>
       <label class="topic-switch">Research topic<select id="topic-switch" name="topic"></select></label>
       <nav aria-label="On this page">
         <span class="nav-label">On this page</span>
@@ -47,7 +51,7 @@
 
     <main id="main" tabindex="-1">
       <header class="topic-header">
-        <details class="review-status"><summary><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>AI-assisted &middot; Human review pending</span></summary><p>The map, selections and gap assessments use AI assistance. Their accuracy and completeness still require human review.</p></details>
+        <details class="review-status"><summary><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg><span>AI-assisted · Human review pending</span></summary><p>The map, selections and gap assessments use AI assistance. Their accuracy and completeness still require human review.</p></details>
         <p class="eyebrow">Skills and judgement</p>
         <h1>How does using AI affect learning and judgement?</h1>
         <p class="topic-deck topic-synthesis">AI can help people perform a task, while its effects on learning vary with the task and tool design. The studies selected here offer a less clear picture of how independent judgement changes with prolonged use.</p>
@@ -62,7 +66,7 @@
         <noscript><p>The interactive map needs JavaScript. <a href="library.html">Open the evidence library</a>.</p></noscript>
         <p class="map-note" id="map-note"><span id="map-coverage"></span> Themes overlap. Counts reflect AI-assisted tags, not yet human-checked.</p>
         <div class="map-footer">
-          <a class="library-access" href="library.html">Full evidence library <span id="map-library-count">132 references</span> <span aria-hidden="true">&rarr;</span></a>
+          <a class="library-access" href="library.html">Full evidence library <span id="map-library-count">132 references</span> <span aria-hidden="true">→</span></a>
           <details class="map-method"><summary>How it is mapped</summary><div><p>The map groups the skills and judgement references from the landscape scan by their recorded topic tags and study design. Counts indicate the number of references, not their quality or agreement.</p><p>Tests and trials include randomised, laboratory, field and quasi-experimental studies. Other includes observational, qualitative, theoretical and benchmark work. The collection includes earlier forms of AI alongside generative AI.</p><dl id="map-tag-rules"></dl><p><a href="library.html#selection-method">Scope and selection method</a></p></div></details>
         </div>
       </section>
@@ -74,7 +78,7 @@
         <div id="featured-studies"></div>
         <noscript><p>Study links: <a href="https://doi.org/10.1073/pnas.2422633122">Bastani et al.</a>, <a href="https://arxiv.org/abs/2601.20245v2">Shen and Tamkin</a>, <a href="https://doi.org/10.1038/s41562-024-02024-1">Vaccaro et al.</a>.</p></noscript>
         <details class="supporting" id="supporting">
-          <summary><span>Supporting studies <span class="count">3</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></summary>
+          <summary><span>Supporting studies <span class="count">3</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></summary>
           <div class="supporting-content" id="supporting-studies"></div>
         </details>
       </section>

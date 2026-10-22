@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en-GB" data-theme="light">
 <head>
-<meta charset="utf-8"><script>// Apply the saved choice before styles paint. Light is the default for this preview.
+<meta charset="utf-8"><script>// Start each visit in light mode; retain an explicit choice within the current tab session.
 (() => {
   let theme = 'light';
   try {
-    const saved = localStorage.getItem('gd-dashboard-theme');
+    const saved = sessionStorage.getItem('gd-dashboard-visit-theme');
     if (saved === 'light' || saved === 'dark') theme = saved;
   } catch (_) {
     // Storage can be unavailable when the preview is opened as a local file.
@@ -1724,6 +1724,52 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
 .story-interaction30{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:5 5}.story-measure30{fill:none;stroke:var(--accent);stroke-width:1}.story-lenses30{position:absolute;left:56%;right:0;top:0;bottom:0;opacity:0;visibility:hidden;background:var(--paper)}.lens-list30{height:100%;display:flex;flex-direction:column}.lens-row30{min-height:21.5%;padding:7px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center}.lens-row30 h3{font:500 13px/1.35 var(--f-display);margin:0 0 5px}.lens-row30 p{font:14px/1.4 var(--f-text);color:var(--ink-2);margin:0}.lens-challenges30{display:flex;justify-content:space-between;gap:15px;padding-top:12px;font:11px/1.4 var(--f-display);color:var(--ink-3)}.lens-challenges30 span:before{content:"";display:inline-block;width:26px;height:7px;margin-right:7px;background:linear-gradient(90deg,var(--accent),transparent);opacity:.6}.lens-challenges30 span+span:before{background:repeating-linear-gradient(90deg,var(--accent) 0 5px,transparent 5px 10px)}
 @media(max-width:760px){.story-static30 .lens-list30{height:auto;margin:12px 0 22px}.story-static30 .lens-row30{padding:15px 0}.story-static30 .lens-row30 h3{font-size:14px}.story-static30 .lens-row30 p{font-size:15px}.story-static30 .lens-challenges30{padding-block:15px}}
 @media(prefers-reduced-motion:reduce){.story-node30,.story-dot30{transition:none}}
+
+/* One header and gutter system for the overview, evidence and topic pages. */
+:root { --site-gutter:40px; --site-header-offset:96px; --page-gutter22:var(--site-gutter); --anchor-offset22:var(--site-header-offset); }
+.bar { position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--rule,var(--line)); font-family:"Archivo","Arial Narrow",Arial,sans-serif; }
+.bar .wrap { box-sizing:border-box; display:grid; grid-template-columns:minmax(0,1fr) auto auto; align-items:center; width:100%; max-width:1280px; margin:0 auto; min-height:76px; gap:10px 16px; padding:12px max(var(--site-gutter),env(safe-area-inset-right)) 12px max(var(--site-gutter),env(safe-area-inset-left)); }
+.bar .mark { display:flex; align-items:center; gap:10px; min-width:0; margin:0; color:var(--ink); font:700 14px/1.4 "Archivo","Arial Narrow",Arial,sans-serif; font-stretch:108%; letter-spacing:0; text-decoration:none; }
+.bar .mark span { min-width:0; overflow-wrap:anywhere; }
+.bar .mark>svg { flex:0 0 34px; width:34px; height:14px; }
+.bar .nav { display:flex; flex-wrap:nowrap; gap:2px; width:auto; margin:0; padding:0; overflow:visible; }
+.bar .nav a { box-sizing:border-box; position:relative; display:flex; align-items:center; justify-content:center; min-height:44px; padding:8px; white-space:nowrap; color:var(--ink-2,var(--muted)); font-size:13px; font-weight:500; line-height:1.4; text-decoration:none; border-radius:4px; }
+.bar .nav a:hover { color:var(--ink); background:var(--surface-2,var(--soft)); }
+.bar .nav a[aria-current="page"] { color:var(--ink); font-weight:650; }
+.bar .nav a[aria-current="page"]::after { content:""; position:absolute; height:2px; background:var(--ink); left:8px; right:8px; bottom:0; }
+.bar .appearance22 { display:flex; justify-self:end; gap:2px; padding:3px; border:1px solid var(--rule,var(--line)); border-radius:8px; background:var(--surface-2,var(--soft)); }
+.bar .appearance22 button { box-sizing:border-box; display:grid; place-items:center; position:relative; width:40px; height:40px; padding:0; border:1px solid transparent; border-radius:5px; background:transparent; color:var(--ink-2,var(--muted)); cursor:pointer; }
+.bar .appearance22 button:hover { color:var(--ink); border-color:var(--ink-3,var(--quiet)); }
+.bar .appearance22 button[aria-pressed="true"] { color:var(--ink); background:var(--surface); border-color:var(--ink-3,var(--quiet)); }
+.bar .appearance22 svg { width:19px; height:19px; }
+.bar :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.bar .theme-tip22 { visibility:hidden; position:absolute; right:0; top:calc(100% + 10px); padding:6px 10px; color:var(--ink); background:var(--surface); border:1px solid var(--rule,var(--line)); border-radius:4px; font:12px/1.4 "Archivo",Arial,sans-serif; white-space:nowrap; pointer-events:none; }
+.bar button:hover .theme-tip22,.bar button:focus-visible .theme-tip22 { visibility:visible; }
+@media(max-width:1180px) {
+  :root { --site-header-offset:148px; }
+  .bar .wrap { grid-template-columns:minmax(0,1fr) auto; gap:8px 16px; }
+  .bar .appearance22 { grid-column:2; grid-row:1; }
+  .bar .nav { grid-column:1/-1; grid-row:2; flex-wrap:wrap; gap:2px 12px; }
+}
+@media(max-width:760px) { :root { --site-gutter:28px; } }
+@media(max-width:640px) {
+  :root { --site-gutter:24px; --site-header-offset:208px; }
+  .bar .wrap { gap:8px 12px; }
+  .bar .mark { font-size:13px; gap:8px; }
+  .bar .mark>svg { flex-basis:28px; width:28px; }
+  .bar .nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2px 4px; }
+  .bar .nav a { min-width:0; padding:8px 4px; font-size:12px; white-space:normal; text-align:center; overflow-wrap:anywhere; }
+  .bar .appearance22 button { width:44px; height:44px; }
+}
+@media(max-width:360px) { :root { --site-gutter:16px; } }
+@media(max-height:500px) {
+  :root { --site-header-offset:24px; }
+  .bar { position:static; }
+}
+@media print {
+  :root,:root[data-theme] { color-scheme:light; --paper:#fff; --surface:#fff; --soft:#f0f0f0; --surface-2:#f0f0f0; --ink:#18231e; --ink-2:#43574e; --ink-3:#586b61; --muted:#43574e; --quiet:#586b61; --rule:#c8d3ce; --line:#c8d3ce; --grid:#dce4e0; --accent:#1c5cab; --green:#14704d; --warm:#8b4b12; --human-line:#b03c58; --map-low:#edf2f8; --map-medium:#dbe7f5; --map-high:#bdcfe8; --map-ink:#193d6a; }
+  .bar { display:none; }
+}
 </style>
 <!-- Lucide icon licence:
 ISC License
@@ -1744,10 +1790,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  -->
 </head><body>
 <a class="skip28" href="#main-content">Skip to content</a>
-<header class="bar"><div class="wrap">  <a class="mark" href="#home" aria-label="Gradual Disempowerment Dashboard, home">
-    <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2"/><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6"/></svg>
-    <span>Gradual Disempowerment Dashboard</span></a>
-<nav class="nav" aria-label="Sections"><a href="#home">Home</a><a href="#evidence">Selected evidence</a><a href="#gaps">Research gaps</a><a href="#projects">Projects &amp; grants</a><a href="#contribute">Contribute</a><a href="#method">Method</a></nav><div class="appearance22" role="group" aria-label="Colour theme"><button type="button" data-theme-choice="light" aria-label="Light mode" aria-pressed="true"><!-- @license lucide-static v0.468.0 - ISC -->
+<header class="bar"><div class="wrap"><a class="mark" href="#home" aria-label="Gradual Disempowerment Dashboard, home">
+    <svg width="34" height="14" viewBox="0 0 34 14" aria-hidden="true"><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="3" stroke-linecap="round" /><line x1="17" y1="7" x2="25" y2="7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.1 4.2" /><circle cx="30" cy="7" r="3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.6 1.6" /></svg>
+    <span>Gradual Disempowerment Dashboard</span></a><nav class="nav" aria-label="Sections"><a href="#home">Home</a><a href="#evidence">Selected evidence</a><a href="#gaps">Research gaps</a><a href="#projects">Projects &amp; grants</a><a href="#contribute">Contribute</a><a href="#method">Method</a></nav><div class="appearance22" role="group" aria-label="Colour theme"><button type="button" data-theme-choice="light" aria-label="Light mode" aria-pressed="true" title="Light mode"><!-- @license lucide-static v0.468.0 - ISC -->
 <svg class="lucide lucide-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <circle cx="12" cy="12" r="4" />
   <path d="M12 2v2" />
@@ -1759,7 +1804,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   <path d="m6.34 17.66-1.41 1.41" />
   <path d="m19.07 4.93-1.41 1.41" />
 </svg>
-<span class="theme-tip22" aria-hidden="true">Light mode</span></button><button type="button" data-theme-choice="dark" aria-label="Dark mode" aria-pressed="false"><!-- @license lucide-static v0.468.0 - ISC -->
+<span class="theme-tip22" aria-hidden="true">Light mode</span></button><button type="button" data-theme-choice="dark" aria-label="Dark mode" aria-pressed="false" title="Dark mode"><!-- @license lucide-static v0.468.0 - ISC -->
 <svg class="lucide lucide-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
   <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
 </svg>
@@ -1982,10 +2027,10 @@ render28();
     if (!button || !control.contains(button)) return;
     const theme = button.dataset.themeChoice;
     apply(theme);
-    try { localStorage.setItem('gd-dashboard-theme', theme); } catch (_) {}
+    try { sessionStorage.setItem('gd-dashboard-visit-theme', theme); } catch (_) {}
   });
   window.addEventListener('storage', event => {
-    if (event.key === 'gd-dashboard-theme' || event.key === null) {
+    if (event.key === 'gd-dashboard-visit-theme' || event.key === null) {
       apply(event.newValue === 'dark' ? 'dark' : 'light');
     }
   });

@@ -1,7 +1,7 @@
 :root { --ink-2:var(--muted); --ink-3:var(--quiet); --rule:var(--line); --grid:var(--line); --surface-2:var(--soft); --s1:var(--green); --s2:var(--quiet); --s3:#b03c58; --ctx:var(--quiet); --ai-line:var(--green); --human-line:#b03c58; }
 :root[data-theme="dark"] { --s3:#f095a9; --human-line:#f095a9; }
-.evidence-page { max-width:1280px; margin:auto; padding:48px 40px 0; }
-.evidence-page h1 { max-width:32ch; }
+.evidence-page { max-width:1280px; margin:auto; padding:56px var(--site-gutter,40px) 0; }
+.evidence-page h1 { max-width:32ch; font-size:48px; line-height:1.12; }
 .comparison-scope { font-size:12px; color:var(--quiet); margin-top:18px; max-width:100ch; }
 .evidence-pair { border-top:1px solid var(--line); padding-block:30px 36px; }
 .evidence-pair h2 { font-size:26px; max-width:40ch; margin-bottom:22px; }
@@ -22,6 +22,7 @@
 .chart text.ann.strong,.chart text.end { fill:var(--ink); font-weight:650; }
 .chart text.ann { fill:var(--muted); }
 .chart-y-label,.chart-x-label { color:var(--quiet); font-size:12px; min-height:22px; }
+.chart-y-label { min-height:38px; line-height:1.55; }
 .chart-x-label { text-align:center; margin-top:4px; }
 .chart-credit { font-size:11px; color:var(--quiet); margin-top:8px; }
 .chart .tip { position:absolute; display:none; pointer-events:none; z-index:5; max-width:min(320px,100%); font-size:12px; line-height:1.5; padding:10px 12px; border:1px solid var(--line); border-radius:4px; background:var(--surface); box-shadow:0 4px 14px #0002; }
@@ -50,8 +51,12 @@
 .figure-stat .stat-context { font-size:13px; color:var(--quiet); margin-top:22px; border-top:1px solid var(--line); padding-top:12px; }
 .pair-question { margin-top:22px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; max-width:95ch; }
 .pair-topic-links { display:flex; flex-wrap:wrap; gap:12px 24px; margin-top:12px; font-size:13px; }
+@supports not (grid-template-rows:subgrid) {
+  .evidence-figure { grid-row:auto; grid-template-rows:auto auto 1fr auto; gap:12px; }
+}
 @media(max-width:760px) {
-  .evidence-page { padding:28px 24px 0; }
+  .evidence-page { padding-top:36px; }
+  .evidence-page h1 { font-size:36px; }
   .evidence-pair-grid { grid-template-columns:minmax(0,1fr); gap:28px; }
   .evidence-figure { display:block; }
   .figure-reading { margin-top:16px; }
@@ -59,4 +64,11 @@
   .evidence-pair h2 { font-size:23px; }
   .figure-stat { min-height:230px; }
   .figure-stat strong { font-size:44px; }
+}
+@media(max-width:640px) { .evidence-page h1 { font-size:32px; } }
+@media print {
+  .evidence-page { padding:0; }
+  .evidence-pair-grid { display:block; }
+  .evidence-figure { display:block; break-inside:avoid; margin-block:24px; }
+  .chart svg { height:auto; }
 }

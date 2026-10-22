@@ -10,23 +10,6 @@ const ICONS = {
 const icon = name => `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name]}</svg>`;
 const escapeHTML = value => String(value).replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
 
-const themeButton = document.querySelector('.theme-button');
-let theme = 'light';
-try { theme = (localStorage.getItem('gd-dashboard-theme') || localStorage.getItem('gd-topic-pilot-theme')) === 'dark' ? 'dark' : 'light'; } catch {}
-function applyTheme() {
-  document.documentElement.dataset.theme = theme;
-  const next = theme === 'light' ? 'dark' : 'light';
-  themeButton.innerHTML = icon(next === 'dark' ? 'moon' : 'sun');
-  themeButton.setAttribute('aria-label', `Switch to ${next} mode`);
-  themeButton.title = `Switch to ${next} mode`;
-}
-applyTheme();
-themeButton.addEventListener('click', () => {
-  theme = theme === 'light' ? 'dark' : 'light';
-  applyTheme();
-  try { localStorage.setItem('gd-dashboard-theme', theme); } catch {}
-});
-
 function studyHTML(source) {
   const s = Object.fromEntries(Object.entries(source).map(([key,value]) => [key, typeof value === 'string' ? escapeHTML(value) : value]));
   return `<article class="study" id="study-${s.id}" aria-labelledby="title-${s.id}">

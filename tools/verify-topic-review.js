@@ -21,13 +21,16 @@ function harness(page, query = '', hash = '', theme = 'light', blockedStorage = 
   Element.prototype.getBoundingClientRect = function() { return {left:0,right:600,top:100,bottom:144,width:600,height:44}; };
   Object.defineProperty(Element.prototype,'clientWidth',{configurable:true,get() {return chartWidth;}});
   const location = {search:query,hash,href:`https://example.test/topics/${page}${query}${hash}`};
-  const listeners = {};
-  const storage = new Map([['gd-dashboard-theme',theme]]);
+  const listeners = {}, timers = new Map();
+  let timerId = 0;
+  const storage = new Map(theme ? [['gd-dashboard-visit-theme',theme]] : []);
   const context = vm.createContext({document,URL,URLSearchParams,HTMLDetailsElement,console,
     location,window:{innerWidth:1280,innerHeight:900,addEventListener(name,fn) {(listeners[name] ||= []).push(fn);}},
     history:{replaceState(state,title,url) { location.href=String(url); }},
-    localStorage:{getItem(key) {if (blockedStorage) throw Error('blocked');return storage.get(key);},setItem(key,value) {if (blockedStorage) throw Error('blocked');storage.set(key,value);}},
-    setTimeout,clearTimeout
+    localStorage:{getItem() {return 'dark';}},
+    sessionStorage:{getItem(key) {if (blockedStorage) throw Error('blocked');return storage.get(key);},setItem(key,value) {if (blockedStorage) throw Error('blocked');storage.set(key,value);}},
+    setTimeout(fn) {timers.set(++timerId,fn);return timerId;},
+    clearTimeout(id) {timers.delete(id);}
   });
   const run = script => vm.runInContext(script,context);
   for (const script of document.querySelectorAll('script[src]')) {
@@ -35,7 +38,15 @@ function harness(page, query = '', hash = '', theme = 'light', blockedStorage = 
     assert(fs.existsSync(file),`Missing asset ${file}`);
     run(fs.readFileSync(file,'utf8'));
   }
-  for (const tag of document.querySelectorAll('link[rel="stylesheet"]')) assert(fs.existsSync(path.join(output,tag.getAttribute('href'))));
+  for (const tag of document.querySelectorAll('link[rel="stylesheet"]')) {
+    const href = tag.getAttribute('href');
+    if (!href.startsWith('https://')) assert(fs.existsSync(path.join(output,href)));
+  }
+  assert(document.querySelector('link[href*="fonts.googleapis.com"]'),'Topic pages load the main site fonts');
+  assert.equal(document.querySelector('.bar .mark').getAttribute('href'),'../index.html#home');
+  assert.deepEqual([...document.querySelectorAll('.bar .nav a')].map(a => a.textContent),['Home','Selected evidence','Research gaps','Projects & grants','Contribute','Method']);
+  assert.equal(document.querySelector('.bar .nav [aria-current="page"]').getAttribute('href'),`../index.html#${page === 'evidence.html' ? 'evidence' : 'gaps'}`);
+  assert.equal(document.querySelector('script[src]').getAttribute('src'),'theme-init.js','Theme loads before the styles');
   const ids = [...document.querySelectorAll('[id]')].map(node => node.id);
   assert.equal(ids.length,new Set(ids).size,`${page}${query}: duplicate IDs`);
   for (const a of document.querySelectorAll('a[target="_blank"]')) assert.match(a.rel,/noopener/);
@@ -52,7 +63,11 @@ function harness(page, query = '', hash = '', theme = 'light', blockedStorage = 
   }
   assert.match(document.querySelector('.review-status').textContent,/AI-assisted.*Human review pending/s);
   assert.doesNotMatch(document.body.textContent,/undefined|\bNaN\b|human-vetted|human-verified/);
-  return {document,Event,run,storage,listeners,location};
+  return {document,Event,run,storage,listeners,location,resize(width) {
+    chartWidth = width;
+    for (const fn of listeners.resize || []) fn();
+    for (const [id,fn] of timers) {timers.delete(id);fn();}
+  }};
 }
 
 let mapCells = 0, sourceRecords = 0;
@@ -103,8 +118,9 @@ for (const id of allTopics) {
   assert.equal(selected.document.querySelectorAll('.library-record').length,selected.run('GD_SOURCES.length'));
   const dark = harness('index.html',`?topic=${id}`,'','dark');
   assert.equal(dark.document.documentElement.dataset.theme,'dark');
-  dark.document.querySelector('.theme-button').dispatchEvent(new dark.Event('click'));
-  assert.equal(dark.storage.get('gd-dashboard-theme'),'light');
+  dark.document.querySelector('[data-theme-choice="light"]').dispatchEvent(new dark.Event('click',{bubbles:true}));
+  assert.equal(dark.storage.get('gd-dashboard-visit-theme'),'light');
+  assert.equal(dark.document.documentElement.dataset.theme,'light');
   const switcher = page.document.getElementById('topic-switch');
   switcher.value = 'adoption';switcher.dispatchEvent(new page.Event('change'));
   assert.equal(page.location.href,'index.html?topic=adoption');
@@ -112,12 +128,19 @@ for (const id of allTopics) {
 assert.equal(harness('index.html','?topic=unknown').run('GD_TOPIC_ID'),'skills');
 assert.equal(harness('library.html','?topic=adoption&facet=bad&design=bad').document.querySelectorAll('.library-record').length,harness('library.html','?topic=adoption').run('GD_CATALOG.length'));
 assert.equal(harness('index.html','?topic=work','','dark',true).document.documentElement.dataset.theme,'light');
+for (const file of ['index.html','topics.html','library.html','evidence.html']) {
+  const fresh = harness(file,'','',null);
+  assert.equal(fresh.document.documentElement.dataset.theme,'light',`${file}: a previous persistent dark preference must not override a fresh session`);
+  fresh.document.querySelector('[data-theme-choice="dark"]').dispatchEvent(new fresh.Event('click',{bubbles:true}));
+  assert.equal(fresh.document.documentElement.dataset.theme,'dark');
+  assert.equal(fresh.storage.get('gd-dashboard-visit-theme'),'dark');
+}
 const directory = harness('topics.html');
 assert.equal(directory.document.querySelectorAll('.topic-directory-row').length,9);
 assert.notEqual(directory.run("sourceKey('https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1')"),directory.run("sourceKey('https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2')"));
 assert.equal(directory.run("sourceKey('https://example.org/paper/?utm_source=mail')"),directory.run("sourceKey('https://example.org/paper')"));
 assert.equal(directory.run("sourceKey('https://arxiv.org/abs/2507.09089v3')"),directory.run("sourceKey('https://arxiv.org/pdf/2507.09089')"));
-for (const width of [272,342,600]) {
+for (const width of [272,288,327,342,363,452,580,600]) {
   const evidence = harness('evidence.html','','','light',false,width);
   assert.equal(evidence.document.querySelectorAll('.evidence-pair').length,3);
   assert.equal(evidence.document.querySelectorAll('.evidence-figure').length,6);
@@ -160,5 +183,12 @@ for (const width of [272,342,600]) {
   assert.equal(data('streams')[0][1],1);
   assert.equal(data('streams')[0][2],3);
 }
-console.log('PASS: six evidence panels, primary source links, source-data tables, chart geometry at three widths and keyboard data inspection.');
+const resizing = harness('evidence.html');
+resizing.document.querySelector('.figure-notes').setAttribute('open','');
+for (const width of [272,580,327,600]) {
+  resizing.resize(width);
+  for (const svg of resizing.document.querySelectorAll('.chart svg')) assert.equal(Number(svg.getAttribute('width')),width,'Resizing redraws charts');
+  assert(resizing.document.querySelector('.figure-notes').hasAttribute('open'),'Resizing preserves open source notes');
+}
+console.log('PASS: six evidence panels, primary source links, source-data tables, chart geometry at eight widths, resize events and keyboard data inspection.');
 console.log(`PASS: nine topics, ${mapCells} map/filter cells, ${sourceRecords} topic-library records, gap links, search, themes and topic navigation. DOM checks only; no browser rendering assertion.`);

@@ -17,7 +17,7 @@ assert.doesNotMatch(html, /LIBRARY_VIEW23|COMPARISON_DATA|ADOPTION7|drawAdoption
 assert(!fs.existsSync(path.join(output, 'library-references.csv')), 'Held bibliography must not be downloadable');
 assert.match(fs.readFileSync(path.join(output, 'pdf-source-crosswalk.html'), 'utf8'), /Work in progress/);
 if (target === 'docs/index.html') assert(!html.includes('noindex,nofollow'));
-assert(html.indexOf('gd-dashboard-theme') < html.indexOf('<style>'));
+assert(html.indexOf('gd-dashboard-visit-theme') >= 0 && html.indexOf('gd-dashboard-visit-theme') < html.indexOf('<style>'));
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]);
 assert.equal(scripts.length, 2, 'No legacy runtime may be embedded');
 scripts.forEach(script => new vm.Script(script));
@@ -27,11 +27,12 @@ function harness(hash = '#home', savedTheme = null, blockedStorage = false) {
   Element.prototype.scrollIntoView = function() { this.scrolled = true; };
   Element.prototype.focus = function() { this.focused = true; };
   const location = {hash, replace(url) { this.destination = url; }}, listeners = {}, callbacks = [];
-  const storage = new Map(savedTheme ? [['gd-dashboard-theme', savedTheme]] : []);
+  const storage = new Map(savedTheme ? [['gd-dashboard-visit-theme', savedTheme]] : []);
   const window = {scrollTo() {}, addEventListener(name, fn) { (listeners[name] ||= []).push(fn); }};
   const context = vm.createContext({document, window, location, console, Date, Intl,
     requestAnimationFrame(fn) { callbacks.push(fn); },
-    localStorage: {
+    localStorage: {getItem() { return 'dark'; }},
+    sessionStorage: {
       getItem(key) { if (blockedStorage) throw Error('Storage blocked'); return storage.get(key) ?? null; },
       setItem(key, val) { if (blockedStorage) throw Error('Storage blocked'); storage.set(key, val); }
     }
@@ -112,11 +113,12 @@ for (const theme of ['light','dark']) {
   const next = theme === 'light' ? 'dark' : 'light';
   h.document.querySelector(`[data-theme-choice="${next}"]`).dispatchEvent(new h.Event('click', {bubbles:true}));
   assert.equal(h.document.documentElement.dataset.theme, next);
-  assert.equal(h.storage.get('gd-dashboard-theme'), next);
+  assert.equal(h.storage.get('gd-dashboard-visit-theme'), next);
   assert.equal(h.document.querySelectorAll('[data-theme-choice][aria-pressed="true"]').length, 1);
-  h.listeners.storage.forEach(fn => fn({key:'gd-dashboard-theme',newValue:null}));
+  h.listeners.storage.forEach(fn => fn({key:'gd-dashboard-visit-theme',newValue:null}));
   assert.equal(h.document.documentElement.dataset.theme, 'light');
 }
+assert.equal(harness().document.documentElement.dataset.theme,'light','New sessions start light even with a previous persistent dark preference');
 for (const route of ['#skills','#evidence/work','#library?view=map&area=cognition','#review']) {
   const h = harness(route, null, true);
   if (route === '#review') assert(h.document.querySelector('.hold28'));
