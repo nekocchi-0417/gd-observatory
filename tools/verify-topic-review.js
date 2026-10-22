@@ -62,6 +62,10 @@ for (const id of allTopics) {
   assert(page.document.querySelector('h1').textContent.length > 20);
   assert(page.document.querySelectorAll('.study').length >= 3);
   assert(page.document.querySelectorAll('.gap-row').length >= 2);
+  if (id !== 'skills') {
+    assert(page.document.querySelector('#map-coverage a[href*="collection=imported"]'));
+    assert.match(page.document.querySelector('#map-coverage').textContent,/await assessment and are not included in this map/);
+  }
   for (const facet of page.run('GD_FACETS')) {
     assert(page.document.querySelector('#map-tag-rules').textContent.includes(facet.label));
   }

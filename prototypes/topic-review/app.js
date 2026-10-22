@@ -95,7 +95,14 @@ if (document.body.dataset.view === 'topic') {
   }).join('')}</tr>`).join('');
   document.getElementById('map-library-count').textContent = `${GD_CATALOG.length} references`;
   const mappedCount = GD_CATALOG.filter(source => GD_FACETS.some(facet => matchesFacet(source,facet.id))).length;
-  document.getElementById('map-coverage').textContent = `${mappedCount} ${isSkills ? 'library references' : 'extracted sources'} mapped.`;
+  const mapCoverage = document.getElementById('map-coverage');
+  mapCoverage.textContent = `${mappedCount} of ${GD_CATALOG.length} library records mapped.`;
+  if (!isSkills && GD_CATALOG.length > mappedCount) {
+    const leads = document.createElement('a');
+    leads.href = topicURL('library.html',{collection:'imported'});
+    leads.textContent = `${GD_CATALOG.length-mappedCount} further reading leads`;
+    mapCoverage.append(' ',leads,' await assessment and are not included in this map.');
+  }
   document.getElementById('map-tag-rules').innerHTML = GD_FACETS.map(facet => `<dt>${escapeHTML(facet.label)}</dt><dd>${escapeHTML(facet.tags.join(', '))}</dd>`).join('');
   document.getElementById('featured-studies').innerHTML = GD_SOURCES.filter(source => source.featured).map(studyHTML).join('');
   document.getElementById('supporting-studies').innerHTML = GD_SOURCES.filter(source => !source.featured).map(studyHTML).join('');

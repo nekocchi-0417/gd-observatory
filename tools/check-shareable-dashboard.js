@@ -87,7 +87,17 @@ for (const theme of ['light','dark']) {
   assert.match(method.textContent, /Selected evidence brings together six findings/);
   assert.match(method.textContent, /additional branch for skills and judgement/);
   assert(!method.querySelector('a[href*="csv"]'));
-  assert.equal(h.render('projects').querySelectorAll('[data-listing]').length, 10);
+  const projects = h.render('projects');
+  assert.equal(projects.querySelectorAll('[data-listing]').length, 11);
+  assert.deepEqual([...projects.querySelectorAll('#projects-work [data-listing]')].slice(0,2).map(row => row.dataset.listing),['ai-futures','metaculus']);
+  assert.equal(projects.querySelector('#grants-heading21').textContent,'Grants & support');
+  const contest = projects.querySelector('[data-listing="cosmos-judgment-prize"]');
+  assert(contest.querySelector('a[href="https://blog.cosmos-institute.org/p/essay-contest-ai-for-human-judgment"]'));
+  assert.match(contest.textContent,/Essay prize/);
+  assert.match(contest.textContent,/20,000/);
+  assert.match(contest.textContent,/timezone not specified/);
+  assert.equal(h.run('grantStatus21(DIRECTORY21.grants.find(g => g.id === "cosmos-judgment-prize"), Date.parse("2026-11-08T23:00:00Z"))'),'Closes 8 Nov 2026');
+  assert.equal(h.run('grantStatus21(DIRECTORY21.grants.find(g => g.id === "cosmos-judgment-prize"), Date.parse("2026-11-09T12:00:00Z"))'),'Deadline passed');
   assert(h.render('projects/grants').querySelector('#projects-grants').scrolled);
   assert.equal(h.render('contribute').querySelectorAll('.submission-list21 a').length, 3);
   for (const route of ['home','projects','contribute','method','gaps']) {
