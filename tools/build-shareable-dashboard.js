@@ -32,7 +32,6 @@ function build({publish = false} = {}) {
     }));
   }
   const script = [
-    `const STORY_ICONS31 = ${serialise(Object.fromEntries(['play','pause','chevron-left','chevron-right','rotate-ccw','book-open'].map(name=>[name,read(`prototypes/reorganized/icons/${name}.svg`)])))};`,
     `const HOME_NETWORK30 = ${serialise({updated:library.updated,pairs:[...pairs].map(([id,count])=>{const [a,b]=id.split('/');return {a,b,count};})})};`,
     `const DIRECTORY21 = ${serialise(JSON.parse(read('prototypes/reorganized/directory.json')))};`,
     `const COPY = ${serialise({why: {contribute: {buttons: contributionButtons}}})};`,

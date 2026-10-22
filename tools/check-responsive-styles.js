@@ -38,20 +38,16 @@ for (const [width,height] of [[320,568],[375,812],[640,900],[768,1024],[1024,768
   assert.equal(value(shell,'.bar','position',viewport),height <= 500 ? 'static' : 'sticky');
   assert.equal(value(evidence,'.evidence-pair-grid','grid-template-columns',viewport),width <= 760 ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1fr)');
   const staticStory = width <= 760 || height <= 760;
-  assert.equal(value(story,'.story-static30','display',viewport),'block','Read-all fallback is available at every width');
-  assert.equal(value(story,'[data-story-mode="player"] .story-static30','display',viewport),staticStory ? 'block' : 'none');
-  assert.equal(value(story,'[data-story-mode="player"] .story-track30','display',viewport),staticStory ? 'none' : 'block');
-  assert.equal(value(story,'.story-toolbar31','grid-template-columns',viewport),width <= 760 ? 'minmax(0,1fr) auto' : 'auto minmax(180px,1fr) auto');
+  assert.equal(value(story,'.story-static30','display',viewport),staticStory ? 'block' : 'none');
+  if (staticStory) assert.equal(value(story,'.story-track30','display',viewport),'none');
   assert.equal(value(topic,'.page-nav','position',viewport),width <= 760 || height <= 650 ? 'static' : 'sticky');
 }
 const reduced = {width:1440,height:900,reduced:true};
-assert.equal(value(story,'[data-story-mode="player"] .story-track30','display',reduced),'none');
-assert.equal(value(story,'[data-story-mode="player"] .story-static30','display',reduced),'block');
+assert.equal(value(story,'.story-track30','display',reduced),'none');
+assert.equal(value(story,'.story-static30','display',reduced),'block');
 assert.equal(value(topic,'html','scroll-behavior',reduced),'auto');
 const print = {width:1000,height:1200,medium:'print'};
 assert.equal(value(shell,'.bar','display',print),'none');
-assert.equal(value(story,'.home-story30[data-story-mode] .story-static30','display',print),'block');
-assert.equal(value(story,'.home-story30[data-story-mode] .story-static30>section','display',print),'block','Printing includes every scene');
-assert.equal(value(story,'.home-story30[data-story-mode] .story-toolbar31','display',print),'none');
+assert.equal(value(story,'.story-static30','display',print),'block');
 assert.equal(value(evidence,'.evidence-pair-grid','display',print),'block');
 console.log('PASS: CSS parses; breakpoint rules cover eight screen sizes, short windows, reduced motion and print. This is a source-level check, not browser rendering.');
