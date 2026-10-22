@@ -8,3 +8,5 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 
 .legend-match{width:20px;border-top:1px dashed var(--muted)}.map-skip{display:inline-block;margin:0 20px 15px;font-size:11px}
+
+.legend-note{font-size:12px;line-height:1.6;color:var(--ink);margin:10px 20px 0}.legend i{flex-shrink:0}@media(max-width:760px){.legend-note{margin-inline:14px}}
