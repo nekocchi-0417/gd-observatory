@@ -1,122 +1,90 @@
-# Gradual Disempowerment Dashboard
+# Gradual Disempowerment Observatory
 
-A public evidence dashboard for gradual disempowerment: tracking whether AI is weakening human influence, step by step, and what goes unmeasured.
+A research prototype for understanding how growing reliance on AI could weaken human influence, and how we might measure that change.
 
-**Status: research prototype (19 October 2026).** The accepted pre-comparison homepage is restored, with six selected visuals under Evidence, a Research gaps overview, Projects & grants, Contribute and Method. Light/dark controls retain the reader's preference; light is the default. AI-assisted checks do not establish independent verification. The earlier research notes and screenshots describe different versions and should be read with their dates.
+**Current release: 22 October 2026.** The homepage follows three chapters: a proposed pathway and interacting harms; the challenge of measuring them across disciplines; and a connected-literature preview. The same nine nodes carry the desktop scroll narrative. Phones show the same story in ordinary reading order. The homepage opens a separate **Skills and judgement** explorer; the separately prepared topic reviews and selected-evidence pages are also preserved, with human review pending.
 
-## What it shows
+[View the site](https://nekocchi-0417.github.io/gd-observatory/) · [Skills explorer](https://nekocchi-0417.github.io/gd-observatory/skills.html) · [Original GD proposal](https://gradual-disempowerment.ai/)
 
-Gradual disempowerment is the risk that people lose practical influence over the economy, culture and the state as AI systems replace human work and participation ([Kulveit and co-authors, 2025](https://gradual-disempowerment.ai/)).
+## What the maps mean
 
-The site breaks that argument into nine stops: AI capability, AI adoption, delegation to AI, then branches covering jobs and income, skills and judgement, culture, and government, ending at human influence. The selected topic pages retain their charts, source notes and measurement questions. Evidence presents three comparisons with separate sources and units.
+- Homepage arrows show proposed relationships, adapted from the GD paper with an additional Skills and judgement branch. Dashed connections between harms illustrate a hypothesis, not established effects.
+- The measurement scene shows illustrative, overlapping research lenses. It does not assign coverage scores.
+- The final homepage network counts shared references in the draft catalog's existing topic assignments plus explicit related-area tags from the 22 October expansion. These links replace the causal arrows; they have a different meaning.
+- The explorer's **Concepts** view matches editable whole phrases in reference titles and construct/domain metadata. Abstracts and full texts are not searched. Shared concepts suggest relevance, not agreement, citation relationships or causation.
+- **GD areas** uses the existing topic assignments of references within the Skills collection. It is not a complete literature review of the other areas.
+- Alternate versions or repeated use of the same underlying data can remain. Source counts and citation counts do not establish measurement quality. Missing citation counts stay distinct from zero. No field-wide gap verdict or coverage gradient is published.
 
-The working library reuses earlier research collections as bibliography entries without republishing unchecked numerical claims. It is not a systematic review or a list of independently verified studies. The separate `#library` subpage is linked from the footer and topic pages, outside the main navigation.
+## Skills and judgement MVP
 
-The draft library contains 700 references after matching canonical URLs across topics; 353 have landscape metadata. Its two eight-facet maps cover skills/decision-making and agency/autonomy. Cells count references whose source records contain both tags, not verified construct-specific measurements. Map counts do not determine the dashboard's coverage ratings. Both the bibliography and tags are explicitly AI-assisted and unverified.
+The explorer contains **353 references**, combining the 19 October base catalog with the **22 October topic-review expansion**. The combined bibliography has 775 references after URL and bibliographic matching: 700 base records plus 75 additions from 181 detailed topic-source records. The overlay matches 106 extracted records to existing entries, including 23 alternate-URL matches using an exact title, publication year and named-author overlap with a single candidate. Original IDs are retained. The Skills subset remains 353 references, and 32 now have explicit updated review provenance. The inspector exposes each match method and reviewed-source link; these joins remain reviewable. This overlay preserves original reference IDs and keeps source-review status separate from users’ local assessments.
 
-Research gaps restores the causal diagram above three coverage columns, replacing the 2x2. The diagram shows connections and links directly to topics; the columns summarise evidence coverage. Research proposals stay on the topic pages. Topic assignments and coverage labels are unchanged.
+Users can:
 
-The adoption comparison follows Gallup's three overlapping usage groups. The two culture visuals use the same platform's reports, so six visuals do not represent six independent studies. No new narrative, forecast display or coverage rating is introduced by this release.
+- Select concepts or pairs of concepts; inspect the references shared by two GD areas.
+- Filter by title/author, publication years, minimum citations, missing counts, collection, topic and review status; sort by concept matches, citations or date.
+- Size paper dots by a compressed citation scale or use equal sizes. The map shows up to 24 references; all matching results appear in a paginated list.
+- Inspect exact matching phrases, source links and related references.
+- Edit all eight concept keyword lists, restore defaults with undo, and share a URL containing filters and the selected paper.
+- Save source-review drafts and assessments, inspect an outcome-by-follow-up matrix, and export/import a workspace with validation, backup and undo.
 
-Within this selection, AI capability and use have repeated measurements. Direct longitudinal measures of skills, judgement and influence are more limited. This is not a systematic review of all research, and paired trends are not proof of cause and effect.
+The **OpenAlex snapshot from 22 October 2026** contains counts for **197 of the 353 references**, matched by exact DOI, including arXiv DOI. Counts change over time and may combine versions. No fuzzy title inference was used. The snapshot and optional refresh tool are `prototypes/paper-network/citations.json` and `tools/fetch-network-citations.py`.
 
-| Page | What it answers |
-|---|---|
-| **Home** | The original framing, causal diagram and three-row overview. |
-| **Evidence** | Six selected visuals on work, learning and culture, with sources and caveats. |
-| **Research gaps** | A causal diagram followed by Major gaps, Partial coverage and Stronger coverage columns linking to the nine topic pages. |
-| **Projects & grants** | Manually checked project and funding listings with dates. |
-| **Contribute** | Submit a study, indicator or correction. |
-| **Method** | Selection, chart construction, coverage limitations and source-check scope. |
+An initial review queue selects up to 40 studies using draft human/both metadata and default concept matches. It excludes catalog-noted retractions. It is a convenience sample, not a systematic search; the default view is the whole Skills collection. Retraction notes remain visible when those records appear in the wider collection.
 
-## View it
+Reviews and drafts are stored locally under `gd-skills-pilot-v1`. They do not change the repository, synchronize across devices or get sent to a server. Export to preserve or share them. A checked assessment requires an excerpt and locator, but remains the user's assessment. Only saved checked assessments enter the matrix, and the matrix follows the current filters. Empty cells are questions to investigate, not evidence that the field has no research. One primary outcome per reference is supported.
 
-- **Online:** https://nekocchi-0417.github.io/gd-observatory/
-- **On your computer:** open `docs/index.html` in a browser. It is one self-contained file.
+View links do not include custom rules or reviews; use a workspace export for those. Original local pilot workspaces are retained under their original storage keys. Imports containing references outside the Skills collection are rejected without replacing the current workspace.
 
-To switch on GitHub Pages: in the repository, go to **Settings → Pages**, set **Source** to "Deploy from a branch", pick branch `main` and folder `/docs`, and save.
+## Build and check
 
-## Build it
-
-The site is plain HTML, CSS and JavaScript. The current builder combines the accepted historical base in `prototypes/reorganized/base/` with the reorganized components and selected source modules. It does not require a full Git history.
-
-```sh
-sh build.sh            # writes docs/index.html
-node tools/build-reorganized-preview.js  # writes the local preview under dist/
-```
-
-Optional checks (needs Node.js):
+The site is plain HTML, CSS and JavaScript. Each published page embeds its scripts, styles and data; fonts are optional external assets.
 
 ```sh
-npm install
-npm run verify:static  # DOM, routes, SVG geometry, theme and data preservation
-node tools/verify-library.js        # bibliography provenance, deduplication and safe URLs
-node tools/verify-library-view.js   # cross-topic identities and landscape provenance
-node tools/check-reorganized-preview.js # local preview, including library interactions
+npm ci --ignore-scripts
+node tools/build-reorganized-preview.js             # dist/reorganized-dashboard/
+node tools/check-shareable-dashboard.js             # homepage, routes, themes
+node tools/verify-topic-review.js dist/reorganized-dashboard/topics # integrated topic pages
+node tools/check-home-story-motion.js               # transitions, reduced motion and cleanup
+node tools/check-skills-explorer.js                 # filtering, matching, persistence, review scope
+node tools/verify-paper-network.js                  # matching and original pilot checks
+node tools/build-reorganized-preview.js --publish   # docs/index.html and docs/skills.html
+node tools/check-shareable-dashboard.js docs/index.html
+node tools/check-skills-explorer.js docs/skills.html
+python3 -m http.server 8766 --directory dist/reorganized-dashboard
 ```
 
-The static tests do not verify rendered browser layout. `build:artifact` and the older browser-check scripts are retained for historical versions; they are not the current publication workflow.
+GitHub Pages serves `main` → `/docs`. The `--research` mode is a separate historical preview; combining it with `--publish` is rejected. Static checks do not substitute for visual browser checks.
 
 ## Where things live
 
-- `prototypes/reorganized/`: accepted base, page overrides, manually maintained directory, Method and theme controls.
-- `tools/build-reorganized-preview.js`: preview and public build; `--publish` writes `docs/`.
-- `src/comparison-data.js`, `src/comparison.js`, `src/capability.js`, `src/adoption.js`: data/chart helpers imported by the current builder. The builder deliberately excludes the newer source router and homepage.
-- `research/library-curation.json`: bibliography-only corrections, preserving original research records.
-- `research/library-map-config.json`: explicit construct rows and measure-type columns; no inferred outcome/quality scoring.
-- `tools/build-library-view.js`, `src/library-view-data.json`: deduplicated bibliography view with source metadata, excluding unchecked findings and legacy verification flags.
-- `prototypes/reorganized/library.js`, `library.css`: secondary library subpage, filters and clickable count maps.
+- `prototypes/reorganized/home-story.js` and `.css`: homepage copy, persistent nodes, transitions and phone layout.
+- `prototypes/reorganized/shareable.js`: public routes into the updated topic and selected-evidence pages.
+- `prototypes/paper-network/skills.html`, `.css`, `.js`: explorer UI and local workspace.
+- `prototypes/paper-network/skills-model.js`: query, intersection, citation and graph logic.
+- `prototypes/paper-network/concepts.js`: eight starting concept definitions and keyword rules.
+- `tools/build-shareable-dashboard.js` and `build-skills-explorer.js`: public assembly and data scoping.
+- `src/library-view-data.json`: base bibliography; `tools/network-library.js` overlays the 22 October topic-review sources by canonical URL or a unique exact-title/year/author match, without publishing their findings in the map.
+- `research/`: earlier research collections, curation and review notes. Historical screenshots and ratings describe their dated versions, not this release.
 
-Earlier source architecture, retained for reference and historical exports:
+To integrate an updated bibliography, regenerate `src/library-view-data.json` with the existing library tools, check stable reference IDs and schema compatibility, rerun the current builds and checks, and inspect changed matches. The public builder consumes that generated snapshot plus the explicitly dated topic-review overlay; it does not run a new literature search. Citation refresh is a separate step. Bibliographic repair does not approve a paper's findings.
 
-```
-src/
-  copy.js          all page text (headlines, card labels, gap items, method)
-  data1.js         indicators for capability, adoption, hand-over, entry-level work
-  data2.js         indicators for workers' share, skills, culture, institutions, human influence
-  data3.js         futures scenarios, routes, missing measures, rating rubric, glossary
-  signals.js       "what the data show" ratings per link, and the trend word per indicator
-  charts.js        hand-written SVG chart kit (line, bars, record strip, and more)
-  app.js           router, measurement record, shared charts
-  components.js    map, tour, evidence rows, indicator cards, insight cards, gap matrix, caveat chips
-  views.js         the pages
-  capability.js, adoption.js, topics.js   selected data and reusable chart functions
-  priority.json, selected-topics.json    selected source notes and chart data
-  comparison.js, comparison.css        comparison views and active router
-  comparison-data.js                  original data and provenance for comparisons
-  robotaxi-data.js, owid.js            OWID/CPUC supporting data and collapsed chart
-  measurement-data.js                 measured indicators and gap summaries for all nine steps
-  measurement.js, measurement.css     merged pathways overview and compact step pages
-  library.js, library-url.js           searchable bibliography and shared URL normalization
-  evidence-library.json               generated metadata from earlier research collections
-  style.css, components.css, pages.css
-  shell_head.html, shell_body.html
-docs/index.html    the built site (served by GitHub Pages)
-research/          how the evidence was gathered and checked (see research/README.md)
-tools/             verification and screenshot scripts
-```
+## Original local prototypes
 
-The accepted topic pages inherit their selected releases from the saved base. Check the builder before changing a source module: not every newer `src/` component is active in this version. Update matching interpretations, source notes and tests together. Legacy `#futures` links now open Projects & grants, and `#emerging` opens Evidence.
+`python3 tools/build-paper-network.py` still builds the original 700-reference node explorer and `pilot.html` under `dist/paper-network/`. These prototypes and their workspace keys remain unchanged. The original pilot's matrix uses collection/search, whereas the published Skills MVP's matrix follows all current filters. The original pilot requires saving review edits before reload; the new Skills page preserves drafts automatically.
 
-After editing research records or the curation overlay, run `node tools/build-evidence-library.js`, inspect its skipped/merged-record report, and run `node tools/verify-library.js`. Then regenerate the secondary view with `node tools/build-library-view.js` and test it with `node tools/verify-library-view.js`. The site builder derives fresh view data from the catalog each time. `node tools/audit-library-records.js` regenerates the metadata audit. Bibliographic repair does not approve a study's findings.
+## Review next
 
-The library CSV contains bibliographic details and provenance only, carries an unverified-status column, and neutralises formula-like text. The source/DOM suite tests filters, all displayed cell counts, query escaping, pagination, route persistence and light/dark text contrast. It also checks direct pathway links, keyboard navigation and the absence of repeated gap descriptions on Research gaps. Browser layout checks are separate from this suite.
+1. Audit broad keyword matches and existing topic assignments against source abstracts/full texts, especially links spanning GD areas.
+2. Review the interacting-harms narrative and dashed links as a proposed mechanism, including countervailing effects and interventions.
+3. Define a defensible coverage rubric before introducing a gradient: directness of measures, population/setting, study design and repeated follow-up should remain distinct from source volume.
+4. Review the integrated literature update and decide whether concept definitions and the initial queue need revision.
+5. Extend multi-outcome review and shared curation if researchers use the local workflow regularly.
 
-## How it was made
+The scroll-continuity reference was [Anthropic's Economic Scenarios](https://www.anthropic.com/institute/econ-scenarios). Its visual assets and economic model are not included here.
 
-The evidence was gathered and checked with an AI-assisted research workflow: parallel research passes per domain, spot checks against primary sources, then several rounds of fact-checking, copy-editing, design critique and red-teaming. The notes and reviews are in [`research/`](research/README.md), so every rating can be traced back to its evidence. Draft v0.6 rebuilt the home page, the evidence pages and the gaps page after a design review, and added the GitHub issue forms in `.github/ISSUE_TEMPLATE/`. Draft v0.5 adds a fourth scan of the evidence for eight stops ([`research/scan4/`](research/scan4/)) and a landscape review of AI's effects on skills and judgement ([`research/landscape/`](research/landscape/)).
+## Corrections and licence
 
-## Corrections
+Please open an issue with the page, the claim or label, and a source link. Code is [MIT](LICENSE); page text and data compilations are [CC BY 4.0](LICENSE-CONTENT.md). Third-party source material retains its original ownership.
 
-Corrections and suggestions are welcome. Please open an issue with the page, the figure, and a link to the source.
-
-## Licence
-
-- Code (`src/`, `tools/`, `build.sh`): [MIT](LICENSE).
-- Content (page text, data compilations and everything in `research/`): [CC BY 4.0](LICENSE-CONTENT.md). Reuse freely with credit.
-
-Figures and quotations from third-party sources remain the property of their publishers; each is linked to its source.
-
-## Cite as
-
-Zhang Yue (2026). *Gradual Disempowerment Dashboard* (draft v0.8). Better Futures Project.
+Zhang Yue (2026). *Gradual Disempowerment Observatory* (research prototype). Better Futures Project.

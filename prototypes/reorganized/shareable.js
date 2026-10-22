@@ -18,8 +18,7 @@ function hold28(v, title, topic = false) {
 }
 
 function home28(v) {
-  v.innerHTML = `<div class="home5 home28"><section class="hero5 wrap"><div class="eye5">Better Futures Project / Zhang Yue</div><div class="hero5-g top5"><h1 class="h1-5 purpose5-h" id="main-content">Tracking whether AI is weakening human influence</h1><div><p class="purpose5">How could increasing reliance on AI change people's skills, choices and influence?</p><p class="paper-link28">${ext7('https://gradual-disempowerment.ai/', 'The original gradual disempowerment paper')}</p></div></div></section>
-    <section class="wrap home-sections28" aria-label="Explore the dashboard"><div><h2 class="h2-5 sm"><a href="#gaps">Research questions <span aria-hidden="true">→</span></a></h2><p>Nine topics along the proposed pathways.</p></div><div><h2 class="h2-5 sm"><a href="#projects">Projects &amp; grants <span aria-hidden="true">→</span></a></h2><p>Research programmes and funding opportunities.</p></div><div><h2 class="h2-5 sm"><a href="#contribute">Contribute <span aria-hidden="true">→</span></a></h2><p>Share a study, a measure or a correction.</p></div></section><div class="wrap"><p class="release-note28">Research prototype. Topic reviews and selected evidence are AI-assisted and pending human review.</p></div></div>`;
+  v.innerHTML = homeStory30();
 }
 
 function diagram28() {
@@ -38,7 +37,7 @@ function gaps28(v) {
 function method28(v) {
   v.innerHTML = `<div class="view5 wrap method22"><header class="intro20"><div class="eye5">Method</div><h1 class="h1-5" id="main-content">What this prototype covers</h1><p class="lead5">Research on how AI could affect human skills, choices and influence.</p></header>
     <section class="method-section28"><h2 class="h2-5 sm">The pathways</h2><p>The diagram is adapted from ${ext7('https://gradual-disempowerment.ai/', 'the gradual disempowerment paper')}, with an additional branch for skills and judgement. It organises research questions around the proposed relationships.</p></section>
-    <section class="method-section28"><h2 class="h2-5 sm">Current status</h2><p>Topic pages contain AI-assisted research summaries, evidence maps and open measurement questions. Selected evidence brings together six findings with source data and caveats. Both are pending human review. Evidence-coverage ratings remain on hold.</p></section>
+    <section class="method-section28"><h2 class="h2-5 sm">Current status</h2><p>Topic pages contain AI-assisted research summaries, evidence maps and open measurement questions. Selected evidence brings together six findings with source data and caveats. Both are pending human review. Evidence-coverage ratings remain on hold. The <a href="skills.html">Skills and judgement literature explorer</a> adds editable concept rules, connected references and local source reviews. Keyword matches and shared sources suggest relevance; they do not establish causal effects or agreement.</p></section>
     <section class="method-section28"><h2 class="h2-5 sm">How sources are selected</h2><p>The shortlist prioritises relevance, clear outcomes, useful comparisons or repeated observations, and traceable primary sources. It includes findings that complicate the argument. Each source states why it was selected.</p><details class="method-details28"><summary>Scope and review checks</summary><p>This is a targeted scoping scan, not a systematic review. The October 22 expansion distinguishes full-paper access, official summaries and abstracts. Imported reading leads are kept separate from detailed extractions.</p><ul><li>Confirm the primary source, version, population and outcome.</li><li>Check figures, units, comparisons and the time period.</li><li>Match each claim to the study's design and scope.</li><li>Consider competing explanations and contradictory evidence.</li></ul><p>Human review is still required. Search records and limitations accompany each topic library. The skills and judgement page retains the earlier scan.</p></details></section>
     <section class="method-section28"><h2 class="h2-5 sm">Maps and measurement gaps</h2><p>The expanded maps group extracted sources by research question and measurement over time. Skills and judgement retains its theme-by-design map. Counts describe these collections; they do not score evidence quality or establish a field-wide gap.</p><p>Each proposed measurement gap links to the sources behind it. These provisional interpretations can change as the review expands.</p></section>
     <section class="method-section28"><h2 class="h2-5 sm">Projects &amp; grants</h2><p>The directory is manually maintained. Each entry links to its organiser and shows its last source-check date. Availability can change.</p></section></div>`;
@@ -50,6 +49,7 @@ function render28() {
     if (document.querySelector('#view h1')) { document.querySelector('#view').focus(); return; }
     raw = 'home';
   }
+  disposeHomeStory30();
   const parts = raw.split(/[/?]/), root = parts[0];
   const topic = TOPICS28.find(([id]) => root === id || ['gaps','topic'].includes(root) && parts[1] === id);
   const aliases = {map:'home', about:'method', methods:'method', futures:'projects', grants:'projects', emerging:'evidence', findings:'evidence'};
@@ -71,6 +71,7 @@ function render28() {
     else a.removeAttribute('aria-current');
   });
   window.scrollTo(0, 0);
+  if (route === 'home') installHomeStory30();
 }
 window.addEventListener('hashchange', () => { render28(); document.querySelector('#view').focus({preventScroll:true}); });
 render28();

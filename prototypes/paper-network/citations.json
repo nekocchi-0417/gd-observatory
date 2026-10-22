@@ -1,0 +1,1358 @@
+{
+  "provider": "OpenAlex",
+  "retrieved": "2026-10-22T09:38:08.830537+00:00",
+  "method": "Exact DOI, including arXiv DOI identifiers; no title inference.",
+  "records": {
+    "ref:23980a43b97f6d7c": {
+      "count": 0,
+      "work": "https://openalex.org/W7162445417",
+      "title": "AI in the Enterprise: How People Use M365 Copilot Chat",
+      "doi": "10.48550/arxiv.2605.23958"
+    },
+    "ref:9cfeb03334d65abb": {
+      "count": 1,
+      "work": "https://openalex.org/W7141572184",
+      "title": "ARC-AGI-3: A New Challenge for Frontier Agentic Intelligence",
+      "doi": "10.48550/arxiv.2603.24621"
+    },
+    "ref:d455caf7d0562998": {
+      "count": 4,
+      "work": "https://openalex.org/W4405273923",
+      "title": "Artificial Intelligence Tools Expand Scientists' Impact but Contract Science's Focus (Just accepted by Nature, to be online soon)",
+      "doi": "10.48550/arxiv.2412.07727"
+    },
+    "ref:97e881c16a0420fa": {
+      "count": 24,
+      "work": "https://openalex.org/W7135068508",
+      "title": "Biased AI writing assistants shift users’ attitudes on societal issues",
+      "doi": "10.1126/sciadv.adw5578"
+    },
+    "ref:df7cf49e8a02c10a": {
+      "count": 0,
+      "work": "https://openalex.org/W7165768553",
+      "title": "Color me confounded: A critical analysis of media comparisons on ChatGPT in education",
+      "doi": "10.1016/j.compedu.2026.105701"
+    },
+    "ref:9037362509e07da7": {
+      "count": 0,
+      "work": "https://openalex.org/W7196925414",
+      "title": "DelusionEval: Measuring Delusion-Linked Behaviors in AI Chatbots",
+      "doi": "10.48550/arxiv.2608.05004"
+    },
+    "ref:908adb11e36a3c6a": {
+      "count": 0,
+      "work": "https://openalex.org/W7211999531",
+      "title": "Delusions and Harms Associated with AI Chatbot Use: Early Evidence from 185 Real-World Reports",
+      "doi": "10.48550/arxiv.2609.08027"
+    },
+    "ref:b4541bb711d35471": {
+      "count": 26,
+      "work": "https://openalex.org/W7124675369",
+      "title": "Development and validation of the AI dependence scale for Chinese undergraduates and a preliminary exploration",
+      "doi": "10.3389/fpsyg.2025.1725393"
+    },
+    "ref:221a839d997b4da5": {
+      "count": 2,
+      "work": "https://openalex.org/W7171538174",
+      "title": "Development and validation of the German version of the large language model dependency scale (LLM-D12)",
+      "doi": "10.1007/s44163-026-01781-4"
+    },
+    "ref:784dbbb39f557cb7": {
+      "count": 17,
+      "work": "https://openalex.org/W4402955145",
+      "title": "Data and trained models for \"Empirical Evidence of Large Language Model's Influence on Human Spoken Communication\"",
+      "doi": "10.48550/arxiv.2409.01754"
+    },
+    "ref:d8382d33ad6ac28a": {
+      "count": 0,
+      "work": "https://openalex.org/W7155211817",
+      "title": "Evaluating Answer Leakage Robustness of LLM Tutors against Adversarial Student Attacks",
+      "doi": "10.48550/arxiv.2604.18660"
+    },
+    "ref:0a08d1efb3cebdab": {
+      "count": 1,
+      "work": "https://openalex.org/W7141437170",
+      "title": "Evaluating Language Models for Harmful Manipulation",
+      "doi": "10.48550/arxiv.2603.25326"
+    },
+    "ref:95fb906e750b7845": {
+      "count": 0,
+      "work": "https://openalex.org/W7162081764",
+      "title": "Faster Completion, Less Learning: Generative AI Reduced Study Time on Math Problems and the Knowledge They Build",
+      "doi": "10.48550/arxiv.2605.21629"
+    },
+    "ref:49d7dc398e1767c0": {
+      "count": 0,
+      "work": "https://openalex.org/W7170218259",
+      "title": "Generative AI floods and dilutes the market for books",
+      "doi": "10.48550/arxiv.2607.20349"
+    },
+    "ref:337c29cf0d98e34f": {
+      "count": 7,
+      "work": "https://openalex.org/W7126029612",
+      "title": "How AI Impacts Skill Formation",
+      "doi": "10.48550/arxiv.2601.20245"
+    },
+    "ref:9fea13dcf7b90775": {
+      "count": 0,
+      "work": "https://openalex.org/W7135082015",
+      "title": "Intentional binding reflects pair dynamics and sense of agency in embodied joint action in human-human dyads but not in human-computer dyads",
+      "doi": "10.3389/fpsyg.2026.1768740"
+    },
+    "ref:6f4c219bbf3b8e95": {
+      "count": 0,
+      "work": "https://openalex.org/W7152478049",
+      "title": "LLM Spirals of Delusion: A Benchmarking Audit Study of AI Chatbot Interfaces",
+      "doi": "10.48550/arxiv.2604.06188"
+    },
+    "ref:30c8bcf22b30aa66": {
+      "count": 2,
+      "work": "https://openalex.org/W7166855485",
+      "title": "Learning-centred use of generative AI and later academic functioning: a baseline-adjusted three-wave panel study",
+      "doi": "10.3389/fpsyg.2026.1878514"
+    },
+    "ref:f91f77bcb8b1d6be": {
+      "count": 0,
+      "work": "https://openalex.org/W7163428765",
+      "title": "Mitigating Automation Bias in Physician-LLM Diagnostic Reasoning Using Behavioral Nudges: A Randomized Controlled Trial",
+      "doi": "10.64898/2026.06.01.26354596"
+    },
+    "ref:cf1390f531e435cc": {
+      "count": 96,
+      "work": "https://openalex.org/W7128444586",
+      "title": "Reliability of LLMs as medical assistants for the general public: a randomized preregistered study",
+      "doi": "10.1038/s41591-025-04074-y"
+    },
+    "ref:29d3f50fbaed18fd": {
+      "count": 1,
+      "work": "https://openalex.org/W7125145393",
+      "title": "The AI Genie Phenomenon and Three Types of AI Chatbot Addiction: Escapist Roleplays, Pseudosocial Companions, and Epistemic Rabbit Holes",
+      "doi": "10.48550/arxiv.2601.13348"
+    },
+    "ref:42053e49f3d92ffc": {
+      "count": 10,
+      "work": "https://openalex.org/W7164527973",
+      "title": "The Cybernetic Teammate: A Field Experiment on Generative AI and Teamwork",
+      "doi": "10.1287/orsc.2025.20702"
+    },
+    "ref:d2a1b3f6589d2027": {
+      "count": 0,
+      "work": "https://openalex.org/W7162631966",
+      "title": "The Decision to Verify: How Warmth and User Characteristics Shape Reliance on Conversational Agents for Information Search",
+      "doi": "10.48550/arxiv.2605.28498"
+    },
+    "ref:66e60decf1825ccc": {
+      "count": 1,
+      "work": "https://openalex.org/W7130615426",
+      "title": "Towards a Science of AI Agent Reliability",
+      "doi": "10.48550/arxiv.2602.16666"
+    },
+    "ref:daff38a8b1af0af3": {
+      "count": 4,
+      "work": "https://openalex.org/W7162869572",
+      "title": "When cognitive offloading becomes dependence: how AI dependence mediates the pathway from academic stress to burnout and anxiety",
+      "doi": "10.1186/s40359-026-04911-w"
+    },
+    "ref:937db71f6277a8c2": {
+      "count": 2,
+      "work": "https://openalex.org/W7125896591",
+      "title": "Who's in Charge? Disempowerment Patterns in Real-World LLM Usage",
+      "doi": "10.48550/arxiv.2601.19062"
+    },
+    "ref:d0b996a866e6e3a1": {
+      "count": 4,
+      "work": "https://openalex.org/W4415272146",
+      "title": "A Longitudinal Randomized Control Study of Companion Chatbot Use: Anthropomorphism and Its Mediating Role on Social Impacts",
+      "doi": "10.48550/arxiv.2509.19515"
+    },
+    "ref:d1f8ac5119556848": {
+      "count": 10,
+      "work": "https://openalex.org/W4410882152",
+      "title": "A four-wave longitudinal study on attitudes toward the use of AI in different domains—The self-determination theory and locus of control perspective",
+      "doi": "10.1016/j.teler.2025.100220"
+    },
+    "ref:bcf18e11d5a9ac5d": {
+      "count": 63,
+      "work": "https://openalex.org/W4415002361",
+      "title": "AI makes you smarter but none the wiser: The disconnect between performance and metacognition",
+      "doi": "10.1016/j.chb.2025.108779"
+    },
+    "ref:98f83f89ec4b9fa5": {
+      "count": 200,
+      "work": "https://openalex.org/W4411505840",
+      "title": "AI tutoring outperforms in-class active learning: an RCT introducing a novel research-based design in an authentic educational setting",
+      "doi": "10.1038/s41598-025-97652-6"
+    },
+    "ref:eefaeacd8a3f92b4": {
+      "count": 0,
+      "work": "https://openalex.org/W4414742900",
+      "title": "AnchoredAI: Contextual Anchoring of AI Comments Improves Writer Agency and Ownership",
+      "doi": "10.48550/arxiv.2509.16128"
+    },
+    "ref:e51afb691f3d6d13": {
+      "count": 13,
+      "work": "https://openalex.org/W4413640513",
+      "title": "Automation Bias in Large Language Model Assisted Diagnostic Reasoning Among AI-Trained Physicians",
+      "doi": "10.1101/2025.08.23.25334280"
+    },
+    "ref:894084a9a2f9050c": {
+      "count": 0,
+      "work": "https://openalex.org/W4414385338",
+      "title": "Automation, AI, and the Intergenerational Transmission of Knowledge",
+      "doi": "10.48550/arxiv.2507.16078"
+    },
+    "ref:d9211497b4ade445": {
+      "count": 760,
+      "work": "https://openalex.org/W4405211386",
+      "title": "Beware of metacognitive laziness: Effects of generative artificial intelligence on learning motivation, processes, and performance",
+      "doi": "10.1111/bjet.13544"
+    },
+    "ref:e8e831690367b3de": {
+      "count": 3,
+      "work": "https://openalex.org/W4414972313",
+      "title": "BrokenMath: A Benchmark for Sycophancy in Theorem Proving with LLMs",
+      "doi": "10.48550/arxiv.2510.04721"
+    },
+    "ref:6d2a04e688b47b99": {
+      "count": 48,
+      "work": "https://openalex.org/W4413128655",
+      "title": "ChatGPT in Education: An Effect in Search of a Cause",
+      "doi": "10.1111/jcal.70105"
+    },
+    "ref:b1ecd7b31c24954d": {
+      "count": 6,
+      "work": "https://openalex.org/W4416891289",
+      "title": "Clinical knowledge in LLMs does not translate to human interactions",
+      "doi": "10.48550/arxiv.2504.18919"
+    },
+    "ref:b69442f1638d0077": {
+      "count": 1,
+      "work": "https://openalex.org/W4407212467",
+      "title": "Coach not crutch: Evidence that AI can improve writing skill despite reducing effort",
+      "doi": "10.48550/arxiv.2502.02880"
+    },
+    "ref:e235a6de1c436487": {
+      "count": 1,
+      "work": "https://openalex.org/W4417280606",
+      "title": "DarkBench: Benchmarking Dark Patterns in Large Language Models",
+      "doi": "10.48550/arxiv.2503.10728"
+    },
+    "ref:49dbf6f91c25f4d6": {
+      "count": 197,
+      "work": "https://openalex.org/W4411948293",
+      "title": "Delving into LLM-assisted writing in biomedical publications through excess vocabulary",
+      "doi": "10.1126/sciadv.adt3813"
+    },
+    "ref:889ebcfd8a862173": {
+      "count": 25,
+      "work": "https://openalex.org/W4412774887",
+      "title": "Development and validation of the conversational AI dependence scale for Chinese college students",
+      "doi": "10.3389/fpsyg.2025.1621540"
+    },
+    "ref:baa87f77c239f841": {
+      "count": 510,
+      "work": "https://openalex.org/W4405318562",
+      "title": "Does ChatGPT enhance student learning? A systematic review and meta-analysis of experimental studies",
+      "doi": "10.1016/j.compedu.2024.105224"
+    },
+    "ref:fb7d845e32c67ecf": {
+      "count": 26,
+      "work": "https://openalex.org/W4383860750",
+      "title": "Comparing Traditional and LLM-based Search for Consumer Choice: A Randomized Experiment",
+      "doi": "10.48550/arxiv.2307.03744"
+    },
+    "ref:e8cead1286712477": {
+      "count": 78,
+      "work": "https://openalex.org/W4410358178",
+      "title": "Emergent social conventions and collective bias in LLM populations",
+      "doi": "10.1126/sciadv.adu9368"
+    },
+    "ref:e82778a833477f9c": {
+      "count": 298,
+      "work": "https://openalex.org/W4413186556",
+      "title": "Endoscopist deskilling risk after exposure to artificial intelligence in colonoscopy: a multicentre, observational study",
+      "doi": "10.1016/s2468-1253(25)00133-5"
+    },
+    "ref:b92ecc6bc09fe227": {
+      "count": 0,
+      "work": "https://openalex.org/W4414857680",
+      "title": "Evaluating Gemini in an arena for learning",
+      "doi": "10.48550/arxiv.2505.24477"
+    },
+    "ref:b0fe5d0a0a45d7d7": {
+      "count": 7,
+      "work": "https://openalex.org/W4417119099",
+      "title": "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce",
+      "doi": "10.48550/arxiv.2506.06576"
+    },
+    "ref:235715db4629a50b": {
+      "count": 173,
+      "work": "https://openalex.org/W4407150885",
+      "title": "GPT-4 assistance for improvement of physician performance on patient care tasks: a randomized controlled trial",
+      "doi": "10.1038/s41591-024-03456-y"
+    },
+    "ref:ecd5c00b1267ed2c": {
+      "count": 273,
+      "work": "https://openalex.org/W4411627694",
+      "title": "Generative AI without guardrails can harm learning: Evidence from high school mathematics",
+      "doi": "10.1073/pnas.2422633122"
+    },
+    "ref:b1c1d3785b5866c3": {
+      "count": 15,
+      "work": "https://openalex.org/W4413029926",
+      "title": "Generative artificial intelligence (GenAI) use and dependence: an approach from behavioral economics",
+      "doi": "10.3389/fpubh.2025.1634121"
+    },
+    "ref:e6e162eaede36463": {
+      "count": 13,
+      "work": "https://openalex.org/W4406961142",
+      "title": "Gradual Disempowerment: Systemic Existential Risks from Incremental AI Development",
+      "doi": "10.48550/arxiv.2501.16946"
+    },
+    "ref:00b351d11ea8d9f5": {
+      "count": 224,
+      "work": "https://openalex.org/W4414192430",
+      "title": "How People Use ChatGPT",
+      "doi": "10.3386/w34255"
+    },
+    "ref:a02c84529c848d07": {
+      "count": 1,
+      "work": "https://openalex.org/W4417070105",
+      "title": "HumanAgencyBench: Scalable Evaluation of Human Agency Support in AI Assistants",
+      "doi": "10.48550/arxiv.2509.08494"
+    },
+    "ref:f7f4d94423a4f5cd": {
+      "count": 1,
+      "work": "https://openalex.org/W4415948687",
+      "title": "Impact of AI Tools on Learning Outcomes: Decreasing Knowledge and Over-Reliance",
+      "doi": "10.48550/arxiv.2510.16019"
+    },
+    "ref:b514098a34212eac": {
+      "count": 0,
+      "work": "https://openalex.org/W4417094366",
+      "title": "Large Language Model Use Impact Locus of Control",
+      "doi": "10.48550/arxiv.2505.11406"
+    },
+    "ref:2b0aaa49502ed8b7": {
+      "count": 9,
+      "work": "https://openalex.org/W4412520922",
+      "title": "Long-term impact of computer-aided adenoma detection: a prospective observational study",
+      "doi": "10.1055/a-2661-2624"
+    },
+    "ref:e0859c3d41dae341": {
+      "count": 15,
+      "work": "https://openalex.org/W4414690271",
+      "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+      "doi": "10.48550/arxiv.2507.09089"
+    },
+    "ref:39359f6cab2dcea0": {
+      "count": 136,
+      "work": "https://openalex.org/W4413764808",
+      "title": "AI-induced Deskilling in Medicine: A Mixed-Method Review and Research Agenda for Healthcare and Beyond",
+      "doi": "10.1007/s10462-025-11352-1"
+    },
+    "ref:1003668372cbf9d8": {
+      "count": 2,
+      "work": "https://openalex.org/W4416526844",
+      "title": "NoveltyBench: Evaluating Language Models for Humanlike Diversity",
+      "doi": "10.48550/arxiv.2504.05228"
+    },
+    "ref:db0920af76a38940": {
+      "count": 280,
+      "work": "https://openalex.org/W4410496075",
+      "title": "On the conversational persuasiveness of GPT-4",
+      "doi": "10.1038/s41562-025-02194-6"
+    },
+    "ref:6ffe861aab95b948": {
+      "count": 41,
+      "work": "https://openalex.org/W4417076522",
+      "title": "Persuading voters using human–artificial intelligence dialogues",
+      "doi": "10.1038/s41586-025-09771-9"
+    },
+    "ref:9f4bcd2f3a2857d3": {
+      "count": 30,
+      "work": "https://openalex.org/W4408224376",
+      "title": "Scaling language model size yields diminishing returns for single-message political persuasion",
+      "doi": "10.1073/pnas.2413443122"
+    },
+    "ref:aa8dc2e4cd22c8af": {
+      "count": 60,
+      "work": "https://openalex.org/W4415230966",
+      "title": "SycEval: Evaluating LLM Sycophancy",
+      "doi": "10.1609/aies.v8i1.36598"
+    },
+    "ref:cdf98a9521a7b81a": {
+      "count": 17,
+      "work": "https://openalex.org/W4414816520",
+      "title": "Sycophantic AI Decreases Prosocial Intentions and Promotes Dependence",
+      "doi": "10.48550/arxiv.2510.01395"
+    },
+    "ref:3b8adddaef2ab88a": {
+      "count": 122,
+      "work": "https://openalex.org/W4409736277",
+      "title": "The Dark Side of AI Companionship: A Taxonomy of Harmful Algorithmic Behaviors in Human-AI Relationships",
+      "doi": "10.1145/3706598.3713429"
+    },
+    "ref:096d0b181f73a2f3": {
+      "count": 52,
+      "work": "https://openalex.org/W4404724208",
+      "title": "The Development and Validation of an Artificial Intelligence Chatbot Dependence Scale",
+      "doi": "10.1089/cyber.2024.0240"
+    },
+    "ref:2e5c14ac62388abd": {
+      "count": 1,
+      "work": "https://openalex.org/W4417098922",
+      "title": "The Homogenizing Effect of Large Language Models on Human Expression and Thought",
+      "doi": "10.48550/arxiv.2508.01491"
+    },
+    "ref:f4084ad61b811134": {
+      "count": 12,
+      "work": "https://openalex.org/W4415318303",
+      "title": "The Psychogenic Machine: Simulating AI Psychosis, Delusion Reinforcement and Harm Enablement in Large Language Models",
+      "doi": "10.48550/arxiv.2509.10970"
+    },
+    "ref:6e7f20cdc8084670": {
+      "count": 29,
+      "work": "https://openalex.org/W4415070629",
+      "title": "The Rise of AI Companions: Interaction with AI Companions and Psychological Well-being",
+      "doi": "10.48550/arxiv.2506.12605"
+    },
+    "ref:a3523b84e7906c36": {
+      "count": 40,
+      "work": "https://openalex.org/W4417076749",
+      "title": "The levers of political persuasion with conversational artificial intelligence",
+      "doi": "10.1126/science.aea3884"
+    },
+    "ref:2c43c518537cd486": {
+      "count": 0,
+      "work": "https://openalex.org/W4405355289",
+      "title": "Unifying AI Tutor Evaluation: An Evaluation Taxonomy for Pedagogical Ability Assessment of LLM-Powered AI Tutors",
+      "doi": "10.48550/arxiv.2412.09416"
+    },
+    "ref:dfddf98c85b14afb": {
+      "count": 203,
+      "work": "https://openalex.org/W4406679533",
+      "title": "What large language models know and what people think they know",
+      "doi": "10.1038/s42256-024-00976-7"
+    },
+    "ref:61bacc549465e4b0": {
+      "count": 6,
+      "work": "https://openalex.org/W4415198176",
+      "title": "When Large Language Models are More PersuasiveThan Incentivized Humans, and Why",
+      "doi": "10.48550/arxiv.2505.09662"
+    },
+    "ref:8d390ddd551d01d1": {
+      "count": 2,
+      "work": "https://openalex.org/W4415083061",
+      "title": "Wikipedia Contributions in the Wake of ChatGPT",
+      "doi": "10.48550/arxiv.2503.00757"
+    },
+    "ref:0e0e98a2f0cc4f61": {
+      "count": 4,
+      "work": "https://openalex.org/W4417063314",
+      "title": "Working with AI: Measuring the Applicability of Generative AI to Occupations",
+      "doi": "10.48550/arxiv.2507.07935"
+    },
+    "ref:ea6fc23b5ac6e82a": {
+      "count": 210,
+      "work": "https://openalex.org/W4417258000",
+      "title": "Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task",
+      "doi": "10.48550/arxiv.2506.08872"
+    },
+    "ref:ed7dee5100145a47": {
+      "count": 12,
+      "work": "https://openalex.org/W4401201171",
+      "title": "AI Companions Reduce Loneliness",
+      "doi": "10.48550/arxiv.2407.19096"
+    },
+    "ref:7c20c85b74a4ecf6": {
+      "count": 189,
+      "work": "https://openalex.org/W4392715481",
+      "title": "AI Technology panic—is AI Dependence Bad for Mental Health? A Cross-Lagged Panel Model and the Mediating Roles of Motivations for AI Use Among Adolescents",
+      "doi": "10.2147/prbm.s440889"
+    },
+    "ref:f2a1fafc55c2c8bb": {
+      "count": 196,
+      "work": "https://openalex.org/W4403511027",
+      "title": "AI can help humans find common ground in democratic deliberation",
+      "doi": "10.1126/science.adq2852"
+    },
+    "ref:670753accf4a8cd1": {
+      "count": 774,
+      "work": "https://openalex.org/W4400949264",
+      "title": "AI models collapse when trained on recursively generated data",
+      "doi": "10.1038/s41586-024-07566-y"
+    },
+    "ref:762857cfa2fab91d": {
+      "count": 22,
+      "work": "https://openalex.org/W4288007844",
+      "title": "Algorithmic Risk Assessment in the Hands of Humans",
+      "doi": "10.1257/pol.20220620"
+    },
+    "ref:69d07976d0e99836": {
+      "count": 176,
+      "work": "https://openalex.org/W4401518309",
+      "title": "An empirical investigation of the impact of ChatGPT on creativity",
+      "doi": "10.1038/s41562-024-01953-1"
+    },
+    "ref:3f0f5926316f59a3": {
+      "count": 691,
+      "work": "https://openalex.org/W4392504765",
+      "title": "Artificial intelligence and illusions of understanding in scientific research",
+      "doi": "10.1038/s41586-024-07146-0"
+    },
+    "ref:86b787e3800eccf4": {
+      "count": 4,
+      "work": "https://openalex.org/W4387725627",
+      "title": "Bridging the Novice-Expert Gap via Models of Decision-Making: A Case Study on Remediating Math Mistakes",
+      "doi": "10.48550/arxiv.2310.10648"
+    },
+    "ref:e382dd69de296e4e": {
+      "count": 25,
+      "work": "https://openalex.org/W4404340929",
+      "title": "Chatbot Companionship: A Mixed-Methods Study of Companion Chatbot Usage Patterns and Their Relationship to Loneliness in Active Users",
+      "doi": "10.48550/arxiv.2410.21596"
+    },
+    "ref:7fa185a65c1ec5b1": {
+      "count": 253,
+      "work": "https://openalex.org/W4396833177",
+      "title": "CodeAid: Evaluating a Classroom Deployment of an LLM-based Programming Assistant that Balances Student and Educator Needs",
+      "doi": "10.1145/3613904.3642773"
+    },
+    "ref:0106224add5f966f": {
+      "count": 255,
+      "work": "https://openalex.org/W4401121063",
+      "title": "Cognitive ease at a cost: LLMs reduce mental effort but compromise depth in student scientific inquiry",
+      "doi": "10.1016/j.chb.2024.108386"
+    },
+    "ref:c2c74478f7496a54": {
+      "count": 1,
+      "work": "https://openalex.org/W4405714974",
+      "title": "Collaborative Gym: A Framework for Enabling and Evaluating Human-Agent Collaboration",
+      "doi": "10.48550/arxiv.2412.15701"
+    },
+    "ref:9cff4c1133b21124": {
+      "count": 145,
+      "work": "https://openalex.org/W4392714531",
+      "title": "Development and validation of a scale for dependence on artificial intelligence in university students",
+      "doi": "10.3389/feduc.2024.1323898"
+    },
+    "ref:63fcb9d4cd220dc8": {
+      "count": 401,
+      "work": "https://openalex.org/W4396946012",
+      "title": "Do you have AI dependency? The roles of academic self-efficacy, academic stress, and performance expectations on problematic AI usage behavior",
+      "doi": "10.1186/s41239-024-00467-0"
+    },
+    "ref:d07d0d46d6658095": {
+      "count": 21,
+      "work": "https://openalex.org/W4386651352",
+      "title": "Does Writing with Language Models Reduce Content Diversity?",
+      "doi": "10.48550/arxiv.2309.05196"
+    },
+    "ref:7bed08a348f6d7f0": {
+      "count": 93,
+      "work": "https://openalex.org/W4400519915",
+      "title": "Does using artificial intelligence assistance accelerate skill decay and hinder skill development without performers’ awareness?",
+      "doi": "10.1186/s41235-024-00572-8"
+    },
+    "ref:3ebc0c7cb0281d7d": {
+      "count": 324,
+      "work": "https://openalex.org/W4402474910",
+      "title": "Durably reducing conspiracy beliefs through dialogues with AI",
+      "doi": "10.1126/science.adq1814"
+    },
+    "ref:cde228fcc2060d68": {
+      "count": 9,
+      "work": "https://openalex.org/W4391897332",
+      "title": "Effective and Scalable Math Support: Evidence on the Impact of an AI- Tutor on Math Achievement in Ghana",
+      "doi": "10.48550/arxiv.2402.09809"
+    },
+    "ref:423e5081e338eebb": {
+      "count": 2,
+      "work": "https://openalex.org/W4391988000",
+      "title": "EmoBench: Evaluating the Emotional Intelligence of Large Language Models",
+      "doi": "10.48550/arxiv.2402.12071"
+    },
+    "ref:daec8c61ea79836b": {
+      "count": 11,
+      "work": "https://openalex.org/W4393063881",
+      "title": "Evaluating Frontier Models for Dangerous Capabilities",
+      "doi": "10.48550/arxiv.2403.13793"
+    },
+    "ref:9e3100afb316c589": {
+      "count": 110,
+      "work": "https://openalex.org/W4399426804",
+      "title": "Evaluating the persuasive influence of political microtargeting with large language models",
+      "doi": "10.1073/pnas.2403116121"
+    },
+    "ref:25c6f4c485a9b22e": {
+      "count": 53,
+      "work": "https://openalex.org/W4405023296",
+      "title": "Fact-checking information from large language models can decrease headline discernment",
+      "doi": "10.1073/pnas.2322823121"
+    },
+    "ref:c188811f51812514": {
+      "count": 177,
+      "work": "https://openalex.org/W4404330874",
+      "title": "GPT-4o System Card",
+      "doi": "10.48550/arxiv.2410.21276"
+    },
+    "ref:1e30269e6a69cfdf": {
+      "count": 4,
+      "work": "https://openalex.org/W4396600897",
+      "title": "Generative AI Usage and Exam Performance",
+      "doi": "10.48550/arxiv.2404.19699"
+    },
+    "ref:7044012a1069ffcf": {
+      "count": 941,
+      "work": "https://openalex.org/W4400578758",
+      "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+      "doi": "10.1126/sciadv.adn5290"
+    },
+    "ref:b4618a8a4efbf7d1": {
+      "count": 13,
+      "work": "https://openalex.org/W4390572947",
+      "title": "Generative AI is already widespread in the public sector",
+      "doi": "10.48550/arxiv.2401.01291"
+    },
+    "ref:b6ae2b61fdb2c8e0": {
+      "count": 453,
+      "work": "https://openalex.org/W4392447866",
+      "title": "Generative artificial intelligence, human creativity, and art",
+      "doi": "10.1093/pnasnexus/pgae052"
+    },
+    "ref:753030f7d523c6a8": {
+      "count": 193,
+      "work": "https://openalex.org/W4392956046",
+      "title": "Heterogeneity and predictors of the effects of AI assistance on radiologists",
+      "doi": "10.1038/s41591-024-02850-w"
+    },
+    "ref:43352b10e28c2bb2": {
+      "count": 184,
+      "work": "https://openalex.org/W4391556516",
+      "title": "Homogenization Effects of Large Language Models on Human Creative Ideation",
+      "doi": "10.1145/3635636.3656204"
+    },
+    "ref:d298f1531748a765": {
+      "count": 358,
+      "work": "https://openalex.org/W4389393309",
+      "title": "How does generative artificial intelligence impact student creativity?",
+      "doi": "10.1016/j.yjoc.2023.100072"
+    },
+    "ref:06fc8ea7e6e52247": {
+      "count": 116,
+      "work": "https://openalex.org/W4402713326",
+      "title": "How large language models can reshape collective intelligence",
+      "doi": "10.1038/s41562-024-01959-9"
+    },
+    "ref:3a4d237c78572443": {
+      "count": 7,
+      "work": "https://openalex.org/W4392012031",
+      "title": "Ironies of Generative AI: Understanding and mitigating productivity loss in human-AI interactions",
+      "doi": "10.48550/arxiv.2402.11364"
+    },
+    "ref:1a66b055e8d38494": {
+      "count": 14,
+      "work": "https://openalex.org/W4393924649",
+      "title": "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data",
+      "doi": "10.48550/arxiv.2404.01413"
+    },
+    "ref:cbc61e0e3b61d612": {
+      "count": 506,
+      "work": "https://openalex.org/W4392783116",
+      "title": "Is it harmful or helpful? Examining the causes and consequences of generative AI usage among university students",
+      "doi": "10.1186/s41239-024-00444-7"
+    },
+    "ref:0a43094df3045266": {
+      "count": 705,
+      "work": "https://openalex.org/W4403813762",
+      "title": "Large Language Model Influence on Diagnostic Reasoning",
+      "doi": "10.1001/jamanetworkopen.2024.40969"
+    },
+    "ref:a5f94c45e5d1780f": {
+      "count": 7,
+      "work": "https://openalex.org/W4387838712",
+      "title": "Large Language Models Help Humans Verify Truthfulness -- Except When They Are Convincingly Wrong",
+      "doi": "10.48550/arxiv.2310.12558"
+    },
+    "ref:6e4a08895da3905a": {
+      "count": 62,
+      "work": "https://openalex.org/W4402462263",
+      "title": "Large language models reduce public knowledge sharing on online Q&A platforms",
+      "doi": "10.1093/pnasnexus/pgae400"
+    },
+    "ref:c82b5cd2353a89c9": {
+      "count": 314,
+      "work": "https://openalex.org/W4400047099",
+      "title": "Large Legal Fictions: Profiling Legal Hallucinations in Large Language Models",
+      "doi": "10.1093/jla/laae003"
+    },
+    "ref:fa68b9096986b1bc": {
+      "count": 4,
+      "work": "https://openalex.org/W4405766242",
+      "title": "LearnLM: Improving Gemini for Learning",
+      "doi": "10.48550/arxiv.2412.16429"
+    },
+    "ref:8e4056d73fa53a8a": {
+      "count": 14,
+      "work": "https://openalex.org/W4405627034",
+      "title": "Lessons From an App Update at Replika AI: Identity Discontinuity in Human-AI Relationships",
+      "doi": "10.48550/arxiv.2412.14190"
+    },
+    "ref:182df7d69126dfa5": {
+      "count": 246,
+      "work": "https://openalex.org/W4391105189",
+      "title": "Loneliness and suicide mitigation for students using GPT3-enabled chatbots",
+      "doi": "10.1038/s44184-023-00047-6"
+    },
+    "ref:5c3ecfcda488b976": {
+      "count": 73,
+      "work": "https://openalex.org/W4392781833",
+      "title": "Monitoring AI-Modified Content at Scale: A Case Study on the Impact of ChatGPT on AI Conference Peer Reviews",
+      "doi": "10.48550/arxiv.2403.07183"
+    },
+    "ref:4c560e547beb1c22": {
+      "count": 27,
+      "work": "https://openalex.org/W4391678298",
+      "title": "Putting a human in the loop: Increasing uptake, but decreasing accuracy of automated decision-making",
+      "doi": "10.1371/journal.pone.0298037"
+    },
+    "ref:ac4e78a89709b1eb": {
+      "count": 2,
+      "work": "https://openalex.org/W4403662203",
+      "title": "Synthetic Human Memories: AI-Edited Images and Videos Can Implant False Memories and Distort Recollection",
+      "doi": "10.48550/arxiv.2409.08895"
+    },
+    "ref:dea67fc4d4d653ad": {
+      "count": 179,
+      "work": "https://openalex.org/W4389913593",
+      "title": "The AI Ghostwriter Effect: When Users do not Perceive Ownership of AI-Generated Text but Self-Declare as Authors",
+      "doi": "10.1145/3637875"
+    },
+    "ref:ef23371f00a0bda2": {
+      "count": 13,
+      "work": "https://openalex.org/W4396784687",
+      "title": "The AI Review Lottery: Widespread AI-Assisted Peer Reviews Boost Paper Scores and Acceptance Rates",
+      "doi": "10.48550/arxiv.2405.02150"
+    },
+    "ref:68a2a51c1625bfd8": {
+      "count": 199,
+      "work": "https://openalex.org/W4392972228",
+      "title": "The Effects of Generative AI on Design Fixation and Divergent Thinking",
+      "doi": "10.1145/3613904.3642919"
+    },
+    "ref:0f1f39215ca5b6e2": {
+      "count": 83,
+      "work": "https://openalex.org/W4396674231",
+      "title": "The consequences of generative AI for online knowledge communities",
+      "doi": "10.1038/s41598-024-61221-0"
+    },
+    "ref:1ac2d42d12afe01c": {
+      "count": 1514,
+      "work": "https://openalex.org/W4399790131",
+      "title": "The effects of over-reliance on AI dialogue systems on students' cognitive abilities: a systematic review",
+      "doi": "10.1186/s40561-024-00316-7"
+    },
+    "ref:0673224c4790e9f8": {
+      "count": 311,
+      "work": "https://openalex.org/W4392153984",
+      "title": "The potential of generative AI for personalized persuasion at scale",
+      "doi": "10.1038/s41598-024-53755-0"
+    },
+    "ref:e54b7342995c0be4": {
+      "count": 24,
+      "work": "https://openalex.org/W4402345999",
+      "title": "Towards Responsible Development of Generative AI for Education: An Evaluation-Driven Approach",
+      "doi": "10.48550/arxiv.2407.12687"
+    },
+    "ref:2c9cdc324a2ad24d": {
+      "count": 42,
+      "work": "https://openalex.org/W4394893256",
+      "title": "Tracking Firm Use of AI in Real Time: A Snapshot from the Business Trends and Outlook Survey",
+      "doi": "10.3386/w32319"
+    },
+    "ref:39a222ed5d5a9c62": {
+      "count": 438,
+      "work": "https://openalex.org/W4399992361",
+      "title": "Trust and reliance on AI — An experimental study on the extent and costs of overreliance on AI",
+      "doi": "10.1016/j.chb.2024.108352"
+    },
+    "ref:bfbd9f1d2794ff03": {
+      "count": 6,
+      "work": "https://openalex.org/W4403885569",
+      "title": "Tutor CoPilot: A Human-AI Approach for Scaling Real-Time Expertise",
+      "doi": "10.48550/arxiv.2410.03017"
+    },
+    "ref:5b5b75e3d08a8096": {
+      "count": 574,
+      "work": "https://openalex.org/W4403839497",
+      "title": "When combinations of humans and AI are useful: A systematic review and meta-analysis",
+      "doi": "10.1038/s41562-024-02024-1"
+    },
+    "ref:72614bbeadf16ad2": {
+      "count": 122,
+      "work": "https://openalex.org/W4313590506",
+      "title": "‘Just like I thought’: Street‐level bureaucrats trust AI recommendations if they confirm their professional judgment",
+      "doi": "10.1111/puar.13602"
+    },
+    "ref:612025622a6508a9": {
+      "count": 2,
+      "work": "https://openalex.org/W4388747879",
+      "title": "Are You Sure? Challenging LLMs Leads to Performance Drops in The FlipFlop Experiment",
+      "doi": "10.48550/arxiv.2311.08596"
+    },
+    "ref:36e96845075040b8": {
+      "count": 73,
+      "work": "https://openalex.org/W4380715494",
+      "title": "Artificial Artificial Artificial Intelligence: Crowd Workers Widely Use Large Language Models for Text Production Tasks",
+      "doi": "10.48550/arxiv.2306.07899"
+    },
+    "ref:2b821576f5e798bc": {
+      "count": 359,
+      "work": "https://openalex.org/W4367668513",
+      "title": "Automation Bias in Mammography: The Impact of Artificial Intelligence BI-RADS Suggestions on Reader Performance",
+      "doi": "10.1148/radiol.222176"
+    },
+    "ref:0632396953b4b52e": {
+      "count": 181,
+      "work": "https://openalex.org/W4362673335",
+      "title": "ChatGPT’s inconsistent moral advice influences users’ judgment",
+      "doi": "10.1038/s41598-023-31341-0"
+    },
+    "ref:9b23eee790aa51ca": {
+      "count": 2091,
+      "work": "https://openalex.org/W4384154918",
+      "title": "Experimental evidence on the productivity effects of generative artificial intelligence",
+      "doi": "10.1126/science.adh2586"
+    },
+    "ref:69c045771397c1ae": {
+      "count": 504,
+      "work": "https://openalex.org/W4312204748",
+      "title": "Exploring relationship development with social chatbots: A mixed-method study of replika",
+      "doi": "10.1016/j.chb.2022.107600"
+    },
+    "ref:4c55d06f32589610": {
+      "count": 40,
+      "work": "https://openalex.org/W4362706570",
+      "title": "GPT detectors are biased against non-native English writers",
+      "doi": "10.48550/arxiv.2304.02819"
+    },
+    "ref:bed75bfbf5b41ffd": {
+      "count": 540,
+      "work": "https://openalex.org/W4330336443",
+      "title": "GPTs are GPTs: An Early Look at the Labor Market Impact Potential of Large Language Models",
+      "doi": "10.48550/arxiv.2303.10130"
+    },
+    "ref:0485f4b1054b2434": {
+      "count": 460,
+      "work": "https://openalex.org/W4211002924",
+      "title": "Human–AI Interactions in Public Sector Decision Making: “Automation Bias” and “Selective Adherence” to Algorithmic Advice",
+      "doi": "10.1093/jopart/muac007"
+    },
+    "ref:7256487436b91f93": {
+      "count": 122,
+      "work": "https://openalex.org/W4387409702",
+      "title": "Institutionalised distrust and human oversight of artificial intelligence: towards a democratic design of AI governance under the European Union AI Act",
+      "doi": "10.1007/s00146-023-01777-z"
+    },
+    "ref:cf65086923734fae": {
+      "count": 139,
+      "work": "https://openalex.org/W4387299971",
+      "title": "Leveraging AI for democratic discourse: Chat interventions can improve online political conversations at scale",
+      "doi": "10.1073/pnas.2311627120"
+    },
+    "ref:e40fe465b602bd6f": {
+      "count": 126,
+      "work": "https://openalex.org/W4388835050",
+      "title": "Machine culture",
+      "doi": "10.1038/s41562-023-01742-2"
+    },
+    "ref:83851533e71d525e": {
+      "count": 236,
+      "work": "https://openalex.org/W4389947931",
+      "title": "Measuring the Impact of AI in the Diagnosis of Hospitalized Patients",
+      "doi": "10.1001/jama.2023.22295"
+    },
+    "ref:342c0120c8d48988": {
+      "count": 20,
+      "work": "https://openalex.org/W4381713199",
+      "title": "Opportunities and Risks of LLMs for Scalable Deliberation with Polis",
+      "doi": "10.48550/arxiv.2306.11932"
+    },
+    "ref:c25455fe6cae84fe": {
+      "count": 50,
+      "work": "https://openalex.org/W4388705463",
+      "title": "People devalue generative AI’s competence but not its advice in addressing societal and personal challenges",
+      "doi": "10.1038/s44271-023-00032-x"
+    },
+    "ref:a82f62fcc1ad28a8": {
+      "count": 46,
+      "work": "https://openalex.org/W4387801479",
+      "title": "Sociotechnical Safety Evaluation of Generative AI Systems",
+      "doi": "10.48550/arxiv.2310.11986"
+    },
+    "ref:2c4864423ffd49f9": {
+      "count": 103,
+      "work": "https://openalex.org/W4324028585",
+      "title": "Superhuman artificial intelligence can improve human decision-making by increasing novelty",
+      "doi": "10.1073/pnas.2214840120"
+    },
+    "ref:b44ce1b31bb1aa09": {
+      "count": 24,
+      "work": "https://openalex.org/W4386242315",
+      "title": "The Bureaucratic Challenge to AI Governance: An Empirical Assessment of Implementation at U.S. Federal Agencies",
+      "doi": "10.1145/3600211.3604701"
+    },
+    "ref:3b3d54e9d61f0b98": {
+      "count": 3,
+      "work": "https://openalex.org/W4366552069",
+      "title": "The Unintended Consequences of Censoring Digital Technology -- Evidence from Italy's ChatGPT Ban",
+      "doi": "10.48550/arxiv.2304.09339"
+    },
+    "ref:e563da9b3a45cc73": {
+      "count": 48,
+      "work": "https://openalex.org/W4382619745",
+      "title": "Towards Measuring the Representation of Subjective Global Opinions in Language Models",
+      "doi": "10.48550/arxiv.2306.16388"
+    },
+    "ref:7951bdb54fd936a6": {
+      "count": 136,
+      "work": "https://openalex.org/W4387892136",
+      "title": "AI Supported Degradation of the Self Concept: A Theoretical Framework Grounded in Established Cognitive and Computational Mechanisms",
+      "doi": "10.48550/arxiv.2310.13548"
+    },
+    "ref:2b5ab794f4cd3438": {
+      "count": 75,
+      "work": "https://openalex.org/W4226139013",
+      "title": "Towards a Science of Human-AI Decision Making: A Survey of Empirical Studies",
+      "doi": "10.48550/arxiv.2112.11471"
+    },
+    "ref:202ee2fcd09e1db0": {
+      "count": 99,
+      "work": "https://openalex.org/W4378087384",
+      "title": "Training with AI: Evidence from chess computers",
+      "doi": "10.1002/smj.3512"
+    },
+    "ref:e2dc0d3d701f1a9e": {
+      "count": 114,
+      "work": "https://openalex.org/W4361866126",
+      "title": "Whose Opinions Do Language Models Reflect?",
+      "doi": "10.48550/arxiv.2303.17548"
+    },
+    "ref:df774c0446fb101a": {
+      "count": 84,
+      "work": "https://openalex.org/W4386158236",
+      "title": "Will Generative Artificial Intelligence Chatbots Generate Delusions in Individuals Prone to Psychosis?",
+      "doi": "10.1093/schbul/sbad128"
+    },
+    "ref:1c7df96962c56148": {
+      "count": 1062,
+      "work": "https://openalex.org/W4224990248",
+      "title": "Artificial Intelligence and Jobs: Evidence from Online Vacancies",
+      "doi": "10.1086/718327"
+    },
+    "ref:cd36bb65654c0147": {
+      "count": 53,
+      "work": "https://openalex.org/W4312050653",
+      "title": "Discovering Language Model Behaviors with Model-Written Evaluations",
+      "doi": "10.48550/arxiv.2212.09251"
+    },
+    "ref:e30330b6f93db4e5": {
+      "count": 165,
+      "work": "https://openalex.org/W3217118223",
+      "title": "In the Land of the Blind, the One-Eyed Man Is King: Knowledge Brokerage in the Age of Learning Algorithms",
+      "doi": "10.1287/orsc.2021.1544"
+    },
+    "ref:09a0757c35988dc4": {
+      "count": 59,
+      "work": "https://openalex.org/W4281748205",
+      "title": "Teaching Models to Express Their Uncertainty in Words",
+      "doi": "10.48550/arxiv.2205.14334"
+    },
+    "ref:46c45340d63d158d": {
+      "count": 254,
+      "work": "https://openalex.org/W3200421165",
+      "title": "The flaws of policies requiring human oversight of government algorithms",
+      "doi": "10.1016/j.clsr.2022.105681"
+    },
+    "ref:f711c854a70a21ed": {
+      "count": 623,
+      "work": "https://openalex.org/W4205420544",
+      "title": "To Engage or Not to Engage with AI for Critical Judgments: How Professionals Deal with Opacity When Using AI for Medical Diagnosis",
+      "doi": "10.1287/orsc.2021.1549"
+    },
+    "ref:e350b8617eb368d2": {
+      "count": 402,
+      "work": "https://openalex.org/W4312179235",
+      "title": "Too human and not human enough: A grounded theory analysis of mental health harms from emotional dependence on the social chatbot Replika",
+      "doi": "10.1177/14614448221142007"
+    },
+    "ref:88276294009a2d04": {
+      "count": 143,
+      "work": "https://openalex.org/W3164854573",
+      "title": "Algorithmic monoculture and social welfare",
+      "doi": "10.1073/pnas.2018340118"
+    },
+    "ref:0b1bcdc8293aa9e0": {
+      "count": 146,
+      "work": "https://openalex.org/W3138692432",
+      "title": "Consequences of cognitive offloading: Boosting performance but diminishing memory",
+      "doi": "10.1177/17470218211008060"
+    },
+    "ref:d5f6cd6098c977f9": {
+      "count": 532,
+      "work": "https://openalex.org/W3130937151",
+      "title": "Do as AI say: susceptibility in deployment of clinical decision-aids",
+      "doi": "10.1038/s41746-021-00385-9"
+    },
+    "ref:0a37deca8142d012": {
+      "count": 247,
+      "work": "https://openalex.org/W3128621548",
+      "title": "How machine-learning recommendations influence clinician treatment selections: the example of antidepressant selection",
+      "doi": "10.1038/s41398-021-01224-x"
+    },
+    "ref:9d979574fd43e5a7": {
+      "count": 563,
+      "work": "https://openalex.org/W3159104979",
+      "title": "Occupational, industry, and geographic exposure to artificial intelligence: A novel dataset and its potential uses",
+      "doi": "10.1002/smj.3286"
+    },
+    "ref:9c110b0c3f431b27": {
+      "count": 189,
+      "work": "https://openalex.org/W3169518303",
+      "title": "When Knowledge Work and Analytical Technologies Collide: The Practices and Consequences of Black Boxing Algorithmic Technologies",
+      "doi": "10.1177/00018392211016755"
+    },
+    "ref:95ea848d16a6b2b1": {
+      "count": 328,
+      "work": "https://openalex.org/W3181262202",
+      "title": "When the Machine Meets the Expert: An Ethnography of Developing AI for Hiring",
+      "doi": "10.25300/misq/2021/16559"
+    },
+    "ref:d47c5f48b5ec4b81": {
+      "count": 221,
+      "work": "https://openalex.org/W3007910004",
+      "title": "A Case for Humans-in-the-Loop: Decisions in the Presence of Erroneous Algorithmic Scores",
+      "doi": "10.1145/3313831.3376638"
+    },
+    "ref:37564be0ad84b29e": {
+      "count": 808,
+      "work": "https://openalex.org/W2981686111",
+      "title": "A systematic review of algorithm aversion in augmented decision making",
+      "doi": "10.1002/bdm.2155"
+    },
+    "ref:b6ea491a06faae2c": {
+      "count": 643,
+      "work": "https://openalex.org/W3003802619",
+      "title": "AI-Mediated Communication: Definition, Research Agenda, and Ethical Considerations",
+      "doi": "10.1093/jcmc/zmz022"
+    },
+    "ref:c4aa18470a25210d": {
+      "count": 2679,
+      "work": "https://openalex.org/W2990520658",
+      "title": "Algorithms at Work: The New Contested Terrain of Control",
+      "doi": "10.5465/annals.2018.0174"
+    },
+    "ref:65f037f6820d76e9": {
+      "count": 118,
+      "work": "https://openalex.org/W3014693099",
+      "title": "Appropriateness of Overridden Alerts in Computerized Physician Order Entry: Systematic Review",
+      "doi": "10.2196/15653"
+    },
+    "ref:3ae904776e5252a9": {
+      "count": 209,
+      "work": "https://openalex.org/W3015865106",
+      "title": "Habitual use of GPS negatively impacts spatial memory during self-guided navigation",
+      "doi": "10.1038/s41598-020-62877-0"
+    },
+    "ref:71ce1e4c11b51c24": {
+      "count": 1011,
+      "work": "https://openalex.org/W3036298167",
+      "title": "Human–computer collaboration for skin cancer recognition",
+      "doi": "10.1038/s41591-020-0942-0"
+    },
+    "ref:40b97ce24d12ab37": {
+      "count": 2020,
+      "work": "https://openalex.org/W2800068874",
+      "title": "Algorithm appreciation: People prefer algorithmic to human judgment",
+      "doi": "10.1016/j.obhdp.2018.12.005"
+    },
+    "ref:b1f2f662dee08eaf": {
+      "count": 275,
+      "work": "https://openalex.org/W2901481055",
+      "title": "Disparate Interactions",
+      "doi": "10.1145/3287560.3287563"
+    },
+    "ref:71a74a9c392f8120": {
+      "count": 137,
+      "work": "https://openalex.org/W2944289672",
+      "title": "GPS use negatively affects environmental learning through spatial transformation abilities",
+      "doi": "10.1016/j.jenvp.2019.05.001"
+    },
+    "ref:09eccbd3eb4f5496": {
+      "count": 136,
+      "work": "https://openalex.org/W2914665179",
+      "title": "Liable, but Not in Control? Ensuring Meaningful Human Agency in Automated Decision‐Making Systems",
+      "doi": "10.1002/poi3.198"
+    },
+    "ref:9a70388f3b28898b": {
+      "count": 283,
+      "work": "https://openalex.org/W2783431373",
+      "title": "Shadow Learning: Building Robotic Surgical Skill When Approved Means Fail",
+      "doi": "10.1177/0001839217751692"
+    },
+    "ref:211b06cb1fc9778e": {
+      "count": 249,
+      "work": "https://openalex.org/W2890929629",
+      "title": "Discretion in Hiring*",
+      "doi": "10.1093/qje/qjx042"
+    },
+    "ref:d6a9854b596e843d": {
+      "count": 1029,
+      "work": "https://openalex.org/W2551317447",
+      "title": "Human Decisions and Machine Predictions",
+      "doi": "10.1093/qje/qjx032"
+    },
+    "ref:49f158890c9eb37a": {
+      "count": 343,
+      "work": "https://openalex.org/W2770836081",
+      "title": "Teaming With a Synthetic Teammate: Insights into Human-Autonomy Teaming",
+      "doi": "10.1177/0018720817743223"
+    },
+    "ref:379410417c8b39fe": {
+      "count": 438,
+      "work": "https://openalex.org/W2512902140",
+      "title": "Automation bias and verification complexity: a systematic review",
+      "doi": "10.1093/jamia/ocw105"
+    },
+    "ref:2e5a464ad6c4b8a3": {
+      "count": 136,
+      "work": "https://openalex.org/W2478282530",
+      "title": "Using the Internet to access information inflates future use of the Internet to access other information",
+      "doi": "10.1080/09658211.2016.1210171"
+    },
+    "ref:434ac329f049b574": {
+      "count": 1426,
+      "work": "https://openalex.org/W4243906228",
+      "title": "Cognitive Offloading",
+      "doi": "10.1016/j.tics.2016.07.002"
+    },
+    "ref:a189eccf68f626df": {
+      "count": 69,
+      "work": "https://openalex.org/W2338427307",
+      "title": "Flying the Needles",
+      "doi": "10.1177/0018720816640394"
+    },
+    "ref:368333785efe2494": {
+      "count": 3165,
+      "work": "https://openalex.org/W3125633690",
+      "title": "Algorithm Aversion: People Erroneously Avoid Algorithms after Seeing Them Err",
+      "doi": "10.1037/xge0000033"
+    },
+    "ref:5a4a565d64dfbf10": {
+      "count": 320,
+      "work": "https://openalex.org/W2151132174",
+      "title": "Searching for explanations: How the Internet inflates estimates of internal knowledge.",
+      "doi": "10.1037/xge0000070"
+    },
+    "ref:8cac45161b2ccead": {
+      "count": 578,
+      "work": "https://openalex.org/W2099865247",
+      "title": "The search engine manipulation effect (SEME) and its possible impact on the outcomes of elections",
+      "doi": "10.1073/pnas.1419828112"
+    },
+    "ref:075e7a85b8c3c16b": {
+      "count": 275,
+      "work": "https://openalex.org/W2150814306",
+      "title": "Point-and-Shoot Memories",
+      "doi": "10.1177/0956797613504438"
+    },
+    "ref:e33ec502f97b578a": {
+      "count": 151,
+      "work": "https://openalex.org/W2102341133",
+      "title": "The Retention of Manual Flying Skills in the Automated Cockpit",
+      "doi": "10.1177/0018720814535628"
+    },
+    "ref:0d68319e05b9dd46": {
+      "count": 778,
+      "work": "https://openalex.org/W2104890410",
+      "title": "The Decline of the U.S. Labor Share",
+      "doi": "10.1353/eca.2013.0016"
+    },
+    "ref:75909b0cd3729c28": {
+      "count": 185,
+      "work": "https://openalex.org/W2115897811",
+      "title": "Automation Technology and Sense of Control: A Window on Human Agency",
+      "doi": "10.1371/journal.pone.0034075"
+    },
+    "ref:7a73390e962283be": {
+      "count": 1129,
+      "work": "https://openalex.org/W2281090488",
+      "title": "Automation bias: a systematic review of frequency, effect mediators, and mitigators",
+      "doi": "10.1136/amiajnl-2011-000089"
+    },
+    "ref:e566e85b037ba6fa": {
+      "count": 1738,
+      "work": "https://openalex.org/W1964596829",
+      "title": "Google Effects on Memory: Cognitive Consequences of Having Information at Our Fingertips",
+      "doi": "10.1126/science.1207745"
+    },
+    "ref:03065ebe73ab90b0": {
+      "count": 1661,
+      "work": "https://openalex.org/W1979004942",
+      "title": "Complacency and Bias in Human Use of Automation: An Attentional Integration",
+      "doi": "10.1177/0018720810376055"
+    },
+    "ref:03bead2d20a84e88": {
+      "count": 51,
+      "work": "https://openalex.org/W2003175157",
+      "title": "The relationship between manual handling performance and recent flying experience in air transport pilots",
+      "doi": "10.1080/00140130903342349"
+    },
+    "ref:87c43c86b78ba149": {
+      "count": 443,
+      "work": "https://openalex.org/W2087900015",
+      "title": "Wayfinding with a GPS-based mobile navigation system: A comparison with maps and direct experience",
+      "doi": "10.1016/j.jenvp.2007.09.002"
+    },
+    "ref:60da04b9ac7776f1": {
+      "count": 2172,
+      "work": "https://openalex.org/W2147453867",
+      "title": "Experimental Study of Inequality and Unpredictability in an Artificial Cultural Market",
+      "doi": "10.1126/science.1121066"
+    },
+    "ref:c8c3e7a27a885f99": {
+      "count": 1116,
+      "work": "https://openalex.org/W2110922423",
+      "title": "Overriding of Drug Safety Alerts in Computerized Physician Order Entry",
+      "doi": "10.1197/jamia.m1809"
+    },
+    "ref:8ec7ba737d382663": {
+      "count": 697,
+      "work": "https://openalex.org/W2081011876",
+      "title": "Does automation bias decision-making?",
+      "doi": "10.1006/ijhc.1999.0252"
+    },
+    "ref:1353b0c626064d35": {
+      "count": 661,
+      "work": "https://openalex.org/W1967643317",
+      "title": "Factors That Influence Skill Decay and Retention: A Quantitative Review and Analysis",
+      "doi": "10.1207/s15327043hup1101_3"
+    },
+    "ref:3db67ae495592c49": {
+      "count": 1395,
+      "work": "https://openalex.org/W2124853884",
+      "title": "The Out-of-the-Loop Performance Problem and Level of Control in Automation",
+      "doi": "10.1518/001872095779064555"
+    },
+    "ref:044f0bfc55ce8fe9": {
+      "count": 183,
+      "work": "https://openalex.org/W1975711826",
+      "title": "Effects of Hand-Held Calculators in Precollege Mathematics Education: A Meta-Analysis",
+      "doi": "10.2307/749255"
+    },
+    "ref:159a6572d202c892": {
+      "count": 2102,
+      "work": "https://openalex.org/W2008653298",
+      "title": "Ironies of automation",
+      "doi": "10.1016/0005-1098(83)90046-8"
+    },
+    "ref:3e4a5dea3aec490f": {
+      "count": 69,
+      "work": "https://openalex.org/W4387561453",
+      "title": "GardenBench: A lightweight, daily evaluation of LLM capabilities",
+      "doi": "10.48550/arxiv.2310.06770"
+    },
+    "ref:1c294c3f51d7bc1f": {
+      "count": 12,
+      "work": "https://openalex.org/W4388964563",
+      "title": "GAIA: a benchmark for General AI Assistants",
+      "doi": "10.48550/arxiv.2311.12983"
+    },
+    "ref:ae53acd076cd8923": {
+      "count": 30,
+      "work": "https://openalex.org/W4388926373",
+      "title": "GPQA: A Graduate-Level Google-Proof Q&A Benchmark",
+      "doi": "10.48550/arxiv.2311.12022"
+    },
+    "ref:259b57a1bad9f373": {
+      "count": 10,
+      "work": "https://openalex.org/W4404397121",
+      "title": "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI",
+      "doi": "10.48550/arxiv.2411.04872"
+    },
+    "ref:2f6995438e08e0d9": {
+      "count": 20,
+      "work": "https://openalex.org/W4402345509",
+      "title": "LAB-Bench: Measuring Capabilities of Language Models for Biology Research",
+      "doi": "10.48550/arxiv.2407.10362"
+    },
+    "ref:171cfc96b2d201b8": {
+      "count": 6,
+      "work": "https://openalex.org/W4403324055",
+      "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+      "doi": "10.48550/arxiv.2410.05080"
+    },
+    "ref:e72161b1710d329e": {
+      "count": 0,
+      "work": "https://openalex.org/W7221103730",
+      "title": "On the estimation and validity of AI time horizons---a statistical look at the METR plot",
+      "doi": "10.48550/arxiv.2610.12466"
+    },
+    "ref:1c0e37196fff20cd": {
+      "count": 523,
+      "work": "https://openalex.org/W2135556086",
+      "title": "Human Performance Consequences of Stages and Levels of Automation",
+      "doi": "10.1177/0018720813501549"
+    },
+    "ref:ed1f900800240996": {
+      "count": 227,
+      "work": "https://openalex.org/W3125444036",
+      "title": "Labor Share Decline and Intellectual Property Products Capital",
+      "doi": "10.3982/ecta17477"
+    },
+    "ref:21c71f1e377a42fb": {
+      "count": 10,
+      "work": "https://openalex.org/W4318899527",
+      "title": "AI model GPT-3 (dis)informs us better than humans",
+      "doi": "10.48550/arxiv.2301.11924"
+    },
+    "ref:31fe040fed511b91": {
+      "count": 0,
+      "work": "https://openalex.org/W7120150422",
+      "title": "Large language models can effectively convince people to believe conspiracies",
+      "doi": "10.48550/arxiv.2601.05050"
+    },
+    "ref:1402198e7ab18a44": {
+      "count": 0,
+      "work": "https://openalex.org/W7127955808",
+      "title": "Different Time, Different Language: Revisiting the Bias Against Non-Native Speakers in GPT Detectors",
+      "doi": "10.48550/arxiv.2602.05769"
+    },
+    "ref:786286889baca739": {
+      "count": 172,
+      "work": "https://openalex.org/W4353007481",
+      "title": "Can AI-Generated Text be Reliably Detected?",
+      "doi": "10.48550/arxiv.2303.11156"
+    },
+    "ref:93b4bfeb5fce4ae5": {
+      "count": 2,
+      "work": "https://openalex.org/W4399794200",
+      "title": "Challenging the Machine: Contestability in Government AI Systems",
+      "doi": "10.48550/arxiv.2406.10430"
+    },
+    "ref:417bcb5eae3976d6": {
+      "count": 1,
+      "work": "https://openalex.org/W4225300711",
+      "title": "Extended Analysis of \"How Child Welfare Workers Reduce Racial Disparities in Algorithmic Decisions\"",
+      "doi": "10.48550/arxiv.2204.13872"
+    },
+    "ref:326d279db20c3d2e": {
+      "count": 2182,
+      "work": "https://openalex.org/W2887734062",
+      "title": "Good Gig, Bad Gig: Autonomy and Algorithmic Control in the Global Gig Economy",
+      "doi": "10.1177/0950017018785616"
+    }
+  },
+  "errors": []
+}

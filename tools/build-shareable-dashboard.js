@@ -19,12 +19,27 @@ function build({publish = false} = {}) {
   const mark = between(base, '  <a class="mark"', '  <nav class="nav"');
   const nav = [['home', 'Home'], ['evidence', 'Selected evidence'], ['gaps', 'Research gaps'], ['projects', 'Projects & grants'], ['contribute', 'Contribute'], ['method', 'Method']];
   const serialise = value => JSON.stringify(value).replace(/</g, '\\u003c');
-  // Topic reviews and charts have separate pages; the overview stays lightweight.
+  // Only aggregate shared-source counts are needed for the homepage story.
+  const library = require('./network-library.js').load();
+  fs.mkdirSync(path.join(root,'dist'),{recursive:true});
+  fs.writeFileSync(path.join(root,'dist/network-library.json'),JSON.stringify(library));
+  assert(Array.isArray(library.records), 'Library snapshot must contain records');
+  const topicIds = new Set(['capability','adoption','handover','work','share','skills','culture','institutions','influence']);
+  const pairs = new Map();
+  for (const r of library.records) {
+    assert(Array.isArray(r.topics) && r.topics.every(id => topicIds.has(id)), `Review new topic mappings for ${r.id} before publishing`);
+    const topics = [...new Set(r.topics)].sort();
+    topics.forEach((a, i) => topics.slice(i + 1).forEach(b => {
+      const id = a + '/' + b; pairs.set(id, (pairs.get(id) || 0) + 1);
+    }));
+  }
   const script = [
+    `const HOME_NETWORK30 = ${serialise({updated:library.updated,pairs:[...pairs].map(([id,count])=>{const [a,b]=id.split('/');return {a,b,count};})})};`,
     `const DIRECTORY21 = ${serialise(JSON.parse(read('prototypes/reorganized/directory.json')))};`,
     `const COPY = ${serialise({why: {contribute: {buttons: contributionButtons}}})};`,
     between(read('src/components.js'), 'const GEO5=', 'const activeSeg5='),
     between(read('prototypes/reorganized/reorganize.js'), 'function directoryDate21(', 'viewSourceMethod = viewMethod22;'),
+    read('prototypes/reorganized/home-story.js'),
     read('prototypes/reorganized/shareable.js'),
     read('prototypes/reorganized/appearance.js')
   ].join('\n');
@@ -32,11 +47,11 @@ function build({publish = false} = {}) {
   const head = base.slice(0, base.indexOf('</head>'))
     .replace('<html lang="en-GB">', '<html lang="en-GB" data-theme="light">')
     .replace('<meta charset="utf-8">', () => `<meta charset="utf-8"><script>${read('prototypes/reorganized/theme-init.js')}</script>`)
-    .replace(/<meta name="description"[^>]+>/, '<meta name="description" content="A research prototype on AI and human influence: proposed pathways, research questions, projects and funding opportunities.">');
+    .replace(/<meta name="description"[^>]+>/, '<meta name="description" content="Explore how AI-related harms could interact, how different disciplines measure them, and how the Skills and judgement literature connects.">');
   const html = `${head}
 ${publish ? '' : '<meta name="robots" content="noindex,nofollow">'}
 <meta name="gd-build" content="topic-review-2026-10-22">
-<style>${read('prototypes/reorganized/reorganize.css')}\n${read('prototypes/reorganized/appearance.css')}\n${read('prototypes/reorganized/shareable.css')}</style>
+<style>${read('prototypes/reorganized/reorganize.css')}\n${read('prototypes/reorganized/appearance.css')}\n${read('prototypes/reorganized/shareable.css')}\n${read('prototypes/reorganized/home-story.css')}</style>
 <!-- Lucide icon licence:\n${read('prototypes/reorganized/icons/LICENSE')} -->
 </head><body>
 <a class="skip28" href="#main-content">Skip to content</a>
@@ -49,6 +64,7 @@ ${publish ? '' : '<meta name="robots" content="noindex,nofollow">'}
   fs.mkdirSync(output, {recursive: true});
   require('./build-topic-review.js').build({output: path.join(output,'topics')});
   fs.writeFileSync(path.join(output, 'index.html'), html);
+  require('./build-skills-explorer.js').build(output, {publish});
   // Retired direct downloads must not continue exposing the held bibliography.
   fs.rmSync(path.join(output, 'library-references.csv'), {force: true});
   fs.writeFileSync(path.join(output, 'pdf-source-crosswalk.html'), '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Evidence library | Work in progress</title><body style="font-family:Arial,sans-serif;line-height:1.6;margin:48px auto;padding:0 24px;max-width:640px"><main><p>Work in progress</p><h1>Evidence library</h1><p>The source list is being reviewed before publication.</p><a href="index.html#home">Return to the dashboard</a></main></body></html>');

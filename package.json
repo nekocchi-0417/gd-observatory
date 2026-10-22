@@ -15,7 +15,11 @@
     "verify:maps": "node tools/verify-detailed-maps.js",
     "build:artifact": "sh build.sh artifact",
     "verify": "node tools/verify.js",
-    "screenshots": "node tools/screenshot.js"
+    "screenshots": "node tools/screenshot.js",
+    "build:network": "python3 tools/build-paper-network.py",
+    "verify:network": "node tools/verify-paper-network.js",
+    "verify:skills": "node tools/check-skills-explorer.js",
+    "verify:story": "node tools/check-home-story-motion.js"
   },
   "devDependencies": {
     "linkedom": "0.18.12",
