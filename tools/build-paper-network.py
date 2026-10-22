@@ -12,3 +12,8 @@ output = ROOT / 'dist/paper-network/index.html'
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(template)
 print(output)
+pilot = (ROOT / 'prototypes/paper-network/pilot.html').read_text()
+for name in ['concepts.js', 'pilot.js', 'style.css']:
+    pilot = pilot.replace('/* INLINE:' + name + ' */', (ROOT / 'prototypes/paper-network' / name).read_text())
+pilot = pilot.replace('/* INLINE:DATA */', json.dumps(data, ensure_ascii=True).replace('<', '\\u003c'))
+(output.parent / 'pilot.html').write_text(pilot)

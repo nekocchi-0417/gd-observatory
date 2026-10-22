@@ -136,3 +136,13 @@ The preview separates existing topic assignments, keyword suggestions, and local
 Choose a node, inspect the matched phrases, and accept/remove links. Decisions persist in browser storage, support undo, and can be exported/imported as JSON; they do not edit source records. Imports merge decisions and replace conflicting choices for the same reference/node. Files opened directly may have browser-specific storage behavior; localhost is preferred.
 
 The graph shows up to 48 connected references, prioritizing records with more links. Node counts cover all filtered references. All results remain available in the paginated list. Layout positions do not encode semantic distance. This initial graph uses a fixed layout rather than dragging or force simulation.
+
+### Delegation and skill-retention concept pilot
+
+The same preview build also writes `dist/paper-network/pilot.html`, linked from the nine-node explorer. Eight concepts have editable keyword lists, definitions and cross-node mappings. Title and construct/domain metadata matches explain connections; the related-paper panel lists shared concepts rather than inferring citations or agreement.
+
+An initial 40-reference queue is selected deterministically from human/both landscape records classified as studies, favoring records matching more default concepts. It is an unreviewed convenience sample, not a systematic search or representative field sample; changing rules does not change queue membership. Users may switch to the entire catalog.
+
+The comparison table distinguishes catalog hints from user-entered population, design, primary outcome and outcome-specific follow-up. The matrix counts only records the user marks source checked, requiring a source excerpt and page/section. Unknown classifications remain explicit. Reviews do not establish independent verification, causal inference, or field-wide gaps. The matrix uses the current collection/search, independent of concept/status filters, and allows one primary outcome per reference. Related papers can come from outside the queue.
+
+Rules, saved reviews, queue IDs and research notes persist separately from the original node-review workspace. JSON export/import preserves them; import replaces the workspace after validation, saves a browser-local backup and provides undo. Unsaved review form edits survive paper switching within the session, but must be saved before reload/export. Bibliographic data and public publication remain unchanged.
