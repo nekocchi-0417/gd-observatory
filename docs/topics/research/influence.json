@@ -1,0 +1,801 @@
+{
+  "topicId": "influence",
+  "name": "Human influence / autonomy",
+  "question": "Do people retain a meaningful say over AI-shaped decisions?",
+  "synthesis": "The reviewed studies do not support a single verdict about human autonomy. AI can steer judgments, constrain workplace discretion, or help groups deliberate, but feeling in control is different from having effective choices or collective decision power. Evidence about lasting effects is uneven, and proposed measures of society-wide power should not be read as observed trends.",
+  "facets": [
+    {
+      "id": "felt",
+      "label": "Perceived control and volition",
+      "description": "People's felt ability to choose, endorse actions, and avoid unwanted AI involvement; distinct from objectively available rights."
+    },
+    {
+      "id": "judgment",
+      "label": "Independent judgment and beliefs",
+      "description": "Effects on beliefs, values, expression, and informed opinion formation, including beneficial correction and unwanted steering."
+    },
+    {
+      "id": "practical",
+      "label": "Effective choice and intervention",
+      "description": "Actual opportunities and capacities to refuse, change, contest, understand, or stop AI-shaped decisions."
+    },
+    {
+      "id": "workplace",
+      "label": "Workplace discretion and voice",
+      "description": "Control over work methods and schedules, management constraints, consultation, and bargaining opportunities."
+    },
+    {
+      "id": "collective",
+      "label": "Collective representation and power",
+      "description": "Whose views enter group decisions, whose preferences determine outcomes, and who controls agendas and decisive coalitions."
+    },
+    {
+      "id": "durability",
+      "label": "Persistence and recovery",
+      "description": "Whether effects endure, capabilities transfer without assistance, and people can recover independent action after withdrawal."
+    }
+  ],
+  "sources": [
+    {
+      "id": "in-pew25",
+      "title": "How Americans View AI and Its Impact on People and Society",
+      "authors": "Brian Kennedy, Eileen Yam, Emma Kikuchi, Isabelle Pula, Javier Fuentes",
+      "year": 2025,
+      "url": "https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/",
+      "publisher": "Pew Research Center",
+      "kind": "study",
+      "design": "Weighted American Trends Panel survey with comparable control questions reported for two waves; aggregate comparisons, not within-person change analysis.",
+      "population": "5,023 US adults in the June 2025 wave; control question asked of all respondents, not only AI users.",
+      "geography": "United States.",
+      "duration": "June 9-15, 2025, with August 12-18, 2024 comparison; published September 17, 2025.",
+      "measure": "AICONTROL1 perceived control over AI use in one's life; AICONTROL2 desire for more control is a separate item.",
+      "finding": "In 2025, 57% reported not too much or no control, versus 59% in 2024. This describes perceived control, not verified veto or appeal rights; no significance claim is made for the difference.",
+      "limitations": "Self-report, broad wording, and possible changing interpretations of AI; panel membership does not make these aggregate estimates longitudinal.",
+      "facets": [
+        "felt"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Report control section; official topline PDF page 4, AICONTROL1/AICONTROL2.",
+      "sourceNote": "Report and questionnaire inspected: https://www.pewresearch.org/wp-content/uploads/sites/20/2025/09/PS_2025.9.17_AI-and-its-impact_topline.pdf .",
+      "selected": true,
+      "selectionReason": "Repeated national survey item provides a clear measure of perceived, not structural, control.",
+      "headline": "Many Americans feel little control over AI's role in their lives",
+      "searchOrigin": "Accepted Pew lead -> report -> official questionnaire and wave dates."
+    },
+    {
+      "id": "in-whos26",
+      "title": "Who's in Charge? Disempowerment Patterns in Real-World LLM Usage",
+      "authors": "Mrinank Sharma, Miles McCain, Raymond Douglas, David Duvenaud",
+      "year": 2026,
+      "url": "https://arxiv.org/html/2601.19062v1",
+      "publisher": "arXiv; Anthropic and academic authors",
+      "kind": "study",
+      "design": "Automated conversation-risk classification plus a separate historical analysis of feedback-bearing conversations.",
+      "population": "1,499,397 consumer Claude.ai conversations in the main sample; separate historical sample of 563,612 feedback-bearing conversations.",
+      "geography": "Claude.ai users; no representative geographic sampling.",
+      "duration": "Main snapshot December 12-19, 2025; historical October 2024-November 2025, with partial November; v1 January 27, 2026.",
+      "measure": "Potential distortion of reality, values, and actions; authority projection, dependency, vulnerability, attachment, and transcript-level actualization markers.",
+      "finding": "Risk patterns appeared in real conversations, and higher-risk interactions could receive positive feedback. Historical risk indicators increased, while actualization markers did not rise monotonically.",
+      "limitations": "Potential risk is not confirmed agency loss. No linked-person follow-up or external harm validation; feedback selection and classifiers affect trends.",
+      "facets": [
+        "judgment",
+        "practical",
+        "durability"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 4.1-4.5; Appendix C Table 11; Appendix E Table 12.",
+      "sourceNote": "Methods/results and sampling appendices inspected. Repeated label applies only to historical aggregates; the main week is a snapshot.",
+      "selected": true,
+      "selectionReason": "Large real-use risk study with explicit limits on what conversation markers establish.",
+      "headline": "Conversation risk markers are not confirmed loss of agency",
+      "searchOrigin": "Accepted Who's in Charge lead -> arXiv v1 and historical-data appendix.",
+      "relatedTopics": [
+        "handover"
+      ]
+    },
+    {
+      "id": "in-feps24",
+      "title": "Computer in command: Consequences of algorithmic management for workers",
+      "authors": "Magnus Thorn Jensen, Gerard Rinse Oosterwijk, Asbjorn Sonne Norgaard",
+      "year": 2024,
+      "url": "https://feps-europe.eu/wp-content/uploads/2024/06/Policy-Study-Int-Report-Algorithmic-Management-web-PP.pdf",
+      "publisher": "Foundation for European Progressive Studies and Nordic partners",
+      "kind": "study",
+      "design": "Cross-sectional union-member survey, exposure indices, and multivariable associations including employee-influence and transparency interactions.",
+      "population": "6,769 responses, including 5,141 complete and 1,628 partial; selected sectors, especially warehousing and customer service.",
+      "geography": "Denmark, Finland, Norway, Sweden.",
+      "duration": "One survey wave reported June 2024; exact field dates not established in inspected methods.",
+      "measure": "Reported algorithmic-management exposure, task autonomy, influence, transparency, workload, stress, and satisfaction.",
+      "finding": "Greater exposure was associated with lower autonomy. At high employee influence/transparency, some negative associations were attenuated or absent; workload and stress patterns were not uniformly removed.",
+      "limitations": "Convenience sample, self-report and country-sector composition differences; cross-sectional moderation does not prove protective causal effects.",
+      "facets": [
+        "workplace",
+        "felt",
+        "collective"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Section 4 Research design; autonomy analysis; employee influence/transparency section; regression appendices.",
+      "sourceNote": "Primary report methods and relevant results inspected; algorithmic management includes software that is not modern generative AI.",
+      "selected": true,
+      "selectionReason": "Adds institutional worker voice and conditional null findings beyond individual chatbot interactions.",
+      "headline": "Worker voice may matter alongside algorithmic management",
+      "searchOrigin": "Algorithmic management worker autonomy Nordic survey -> FEPS report.",
+      "relatedTopics": [
+        "handover"
+      ]
+    },
+    {
+      "id": "in-bennett23",
+      "title": "How does HCI Understand Human Agency and Autonomy?",
+      "authors": "Daniel Bennett, Oussama Metatla, Anne Roudaut, Elisa D. Mekler",
+      "year": 2023,
+      "url": "https://arxiv.org/html/2301.12490v2",
+      "doi": "10.1145/3544548.3580651",
+      "publisher": "ACM CHI; arXiv author version",
+      "kind": "review",
+      "design": "Conceptual literature review and qualitative coding of three decades of HCI research.",
+      "population": "Selected HCI publications, not a population of AI users.",
+      "geography": "HCI research literature; geographic coverage is not population-representative.",
+      "duration": "Thirty-year literature scope; inspected v2 February 2, 2023; no participant follow-up.",
+      "measure": "Conceptual distinctions involving causality/identity, material/experienced agency, timescales, and independence/interdependence.",
+      "finding": "Agency and autonomy describe several partly different constructs. An intervention can affect felt control, actual capacity, and identity differently, so a single label can conceal divergent outcomes.",
+      "limitations": "Interpretive review, not an outcome meta-analysis or validation of a universal autonomy score.",
+      "facets": [
+        "felt",
+        "practical",
+        "judgment",
+        "durability"
+      ],
+      "temporal": "none",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Section 3 Review Method; Section 4.4; Section 5.4 limitations.",
+      "sourceNote": "Author methods and conceptual analysis inspected; no prevalence or causal effect inferred.",
+      "selected": false,
+      "searchOrigin": "Accepted autonomy-framework lead -> CHI author full text."
+    },
+    {
+      "id": "in-mhc18",
+      "title": "Meaningful Human Control over Autonomous Systems: A Philosophical Account",
+      "authors": "Filippo Santoni de Sio, Jeroen van den Hoven",
+      "year": 2018,
+      "url": "https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2018.00015/full",
+      "doi": "10.3389/frobt.2018.00015",
+      "publisher": "Frontiers in Robotics and AI",
+      "kind": "framework",
+      "design": "Normative philosophical account adapting responsibility theory to autonomous systems.",
+      "population": "No empirical participant sample.",
+      "geography": "Not applicable; examples span military and civilian systems.",
+      "duration": "Conceptual publication in 2018; no observation period.",
+      "measure": "Proposed tracking of relevant human reasons and environmental facts, and tracing outcomes to responsible humans with adequate understanding.",
+      "finding": "Meaningful control requires more than a nominal human-in-the-loop position. Responsibility can involve system designers and institutions as well as immediate operators.",
+      "limitations": "Necessary conditions are normative and context-dependent, not a validated scale or proof that controlled systems are morally good.",
+      "facets": [
+        "practical",
+        "collective"
+      ],
+      "temporal": "none",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Meaningful Human Control: Tracking and Tracing Conditions; The Broader Picture.",
+      "sourceNote": "Publisher argument and design implications inspected; classified as framework rather than empirical evidence.",
+      "selected": false,
+      "searchOrigin": "Meaningful human control tracking tracing -> foundational philosophical paper.",
+      "relatedTopics": [
+        "handover"
+      ]
+    },
+    {
+      "id": "in-verhagen24",
+      "title": "Meaningful human control and variable autonomy in human-robot teams for firefighting",
+      "authors": "Ruben S. Verhagen, Mark A. Neerincx, Myrthe L. Tielman",
+      "year": 2024,
+      "url": "https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2024.1323980/full",
+      "doi": "10.3389/frobt.2024.1323980",
+      "publisher": "Frontiers in Robotics and AI",
+      "kind": "study",
+      "design": "Qualitative expert focus group with reflexive thematic analysis, informing a proposed future robot-team evaluation.",
+      "population": "Five meaningful-control experts from engineering, law, human factors, and computer science; not operational firefighters.",
+      "geography": "Delft-led online study; participant-country distribution not established.",
+      "duration": "One approximately 90-minute focus group; published February 1, 2024; exact collection date not established.",
+      "measure": "Expert assessment of traceability, situation awareness, intervention hits/misses, overload, and responsibility understanding.",
+      "finding": "Experts distinguished formal intervention authority from meaningful control and warned that good task outcomes alone do not establish control. They supported context-sensitive assessment rather than a universal threshold.",
+      "limitations": "Small purposive expert sample; the proposed operator simulation and quantitative measures were not validated by this focus group.",
+      "facets": [
+        "practical"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 3-4; Section 5 proposed evaluation/user study.",
+      "sourceNote": "Completed focus-group findings separated from the future-tense user-study proposal.",
+      "selected": false,
+      "searchOrigin": "Meaningful control operationalization -> firefighting variable-autonomy paper.",
+      "relatedTopics": [
+        "handover"
+      ]
+    },
+    {
+      "id": "in-oecd25",
+      "title": "Algorithmic management in the workplace: New evidence from an OECD employer survey",
+      "authors": "Anna Milanez, Annikka Lemmens, Carla Ruggiu",
+      "year": 2025,
+      "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/02/algorithmic-management-in-the-workplace_3c84ed6d/287c13c4-en.pdf",
+      "doi": "10.1787/287c13c4-en",
+      "publisher": "OECD Artificial Intelligence Papers, No. 31",
+      "kind": "study",
+      "design": "Weighted cross-sectional telephone survey of employers/managers about software-mediated worker management.",
+      "population": "6,047 firms with at least 20 employees; respondents ideally mid-level managers or supervisors.",
+      "geography": "France, Germany, Italy, Japan, Spain, United States.",
+      "duration": "June-August 2024 fieldwork; published February 6, 2025.",
+      "measure": "Adoption, perceived managerial decision quality and discretion, accountability concerns, and governance/consultation practices.",
+      "finding": "Managers reported benefits to decision-making and their own work alongside concerns about accountability, opaque logic, and worker health. Manager-reported benefits do not establish worker autonomy.",
+      "limitations": "Self-report, low response rates, and manager perspective; software need not contain AI. Consultation presence is not evidence of effective worker influence.",
+      "facets": [
+        "workplace",
+        "collective",
+        "practical"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Introduction; Chapters 2-4; Annex A sampling and Annex B questionnaire.",
+      "sourceNote": "Primary report methods, results, and sampling limitations inspected; no employer/employee causal comparison.",
+      "selected": false,
+      "searchOrigin": "OECD algorithmic management autonomy employer survey -> original 2025 report.",
+      "relatedTopics": [
+        "handover"
+      ]
+    },
+    {
+      "id": "in-wood19",
+      "title": "Good Gig, Bad Gig: Autonomy and Algorithmic Control in the Global Gig Economy",
+      "authors": "Alex J. Wood, Mark Graham, Vili Lehdonvirta, Isis Hjorth",
+      "year": 2019,
+      "url": "https://journals.sagepub.com/doi/pdf/10.1177/0950017018785616",
+      "doi": "10.1177/0950017018785616",
+      "publisher": "Work, Employment and Society / SAGE",
+      "kind": "study",
+      "design": "Purposive worker interviews and a non-probability cross-regional survey on two remote-work platforms.",
+      "population": "107 interviewees and 679 retained survey respondents; distinct samples.",
+      "geography": "Interviews in Philippines, Malaysia, Vietnam, Kenya, Nigeria, South Africa; survey in the two regions.",
+      "duration": "Seven months of fieldwork distributed September 2014-December 2015; survey dates not extracted; online 2018, 2019 issue.",
+      "measure": "Experienced discretion, flexibility, task variety, algorithmic/reputational constraints, pay, hours, and wellbeing.",
+      "finding": "Workers described flexibility and discretion alongside rating-based constraint, irregular hours, overwork, and insecurity. Autonomy in task execution coexisted with weak bargaining position.",
+      "limitations": "Purposive samples, non-probability survey and selected platforms; not a causal AI intervention or evidence specifically about generative AI.",
+      "facets": [
+        "workplace",
+        "felt",
+        "collective"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Methods, journal pages 62-64; Autonomy in the shadow of algorithmic management; Discussion.",
+      "sourceNote": "Publisher PDF methods/findings inspected. A long fieldwork window does not imply repeated observations of the same workers.",
+      "selected": false,
+      "searchOrigin": "Global gig economy autonomy algorithmic control -> publisher primary PDF."
+    },
+    {
+      "id": "in-algosoc26",
+      "title": "AlgoSoc AI Opinion Monitor: Engagement and algorithmic awareness",
+      "authors": "AlgoSoc Consortium; dashboard by Fabio Votta and Ernesto de Leon",
+      "year": 2026,
+      "url": "https://monitor.algosoc.org/en/engagement.html",
+      "publisher": "AlgoSoc Consortium",
+      "kind": "series",
+      "design": "Recurring LISS-panel survey dashboard with aggregate wave and demographic comparisons.",
+      "population": "Around 4,000 participants per wave; first wave 3,946 according to methodology page.",
+      "geography": "Netherlands.",
+      "duration": "Dashboard waves March 2024, December 2024, May 2025, December 2025, May 2026; agency-related items unavailable for May 2026.",
+      "measure": "Self-reported ability to recognize personalization, locate disabling settings, access used data, and influence recommendations.",
+      "finding": "The instrument distinguishes awareness from knowing how to act on recommendations. It offers repeated item measurement, but no numeric trend is asserted here because chart values were not independently extracted.",
+      "limitations": "Reported knowledge is not a practical control test. Displayed aggregates do not establish within-person trajectories; item availability varies by wave.",
+      "facets": [
+        "felt",
+        "practical"
+      ],
+      "temporal": "repeated",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Engagement: personalization-awareness item block; About: Methodology.",
+      "sourceNote": "Official dashboard text and https://monitor.algosoc.org/en/about.html inspected; microdata, retention, and weights not assessed.",
+      "selected": false,
+      "searchOrigin": "Algorithmic awareness control longitudinal survey -> AlgoSoc official monitor."
+    },
+    {
+      "id": "in-chen15",
+      "title": "Basic psychological need satisfaction, need frustration, and need strength across four cultures",
+      "authors": "Beiwen Chen, Maarten Vansteenkiste, Wim Beyers, et al.",
+      "year": 2015,
+      "url": "https://link.springer.com/article/10.1007/s11031-014-9450-1",
+      "doi": "10.1007/s11031-014-9450-1",
+      "publisher": "Motivation and Emotion / Springer",
+      "kind": "study",
+      "design": "Two cross-cultural psychometric studies of basic-need satisfaction/frustration and wellbeing.",
+      "population": "685 late adolescents in Study 1; 1,051 young participants in Study 2.",
+      "geography": "Belgium and China in Study 1; Belgium, China, United States, Peru in Study 2.",
+      "duration": "Cross-sectional studies; exact field dates unavailable in abstract; online November 2014, 2015 issue.",
+      "measure": "Autonomy, competence, and relatedness satisfaction/frustration; need strength and wellbeing.",
+      "finding": "Need satisfaction and frustration had differentiated wellbeing associations across cultural samples. This supplies a measurement foundation for felt autonomy, not evidence of an AI effect.",
+      "limitations": "Abstract-only inspection; general psychological measures require validation in AI contexts and cannot substitute for actual rights or institutional power.",
+      "facets": [
+        "felt"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Publisher Abstract, Studies 1 and 2.",
+      "sourceNote": "Publisher abstract and metadata inspected; full scale items and invariance tables not inspected.",
+      "selected": false,
+      "searchOrigin": "Autonomy satisfaction frustration cross-cultural measurement -> original validation article."
+    },
+    {
+      "id": "in-jakesch23",
+      "title": "Co-Writing with Opinionated Language Models Affects Users' Views",
+      "authors": "Maurice Jakesch, Advait Bhat, Daniel Buschek, Lior Zalmanson, Mor Naaman",
+      "year": 2023,
+      "url": "https://arxiv.org/html/2302.00560v1",
+      "doi": "10.1145/3544548.3581196",
+      "publisher": "ACM CHI; arXiv author paper",
+      "kind": "study",
+      "design": "Randomized co-writing experiment with hidden pro/anti-social-media prompts versus unassisted writing; independent text judgments.",
+      "population": "1,506 retained writers and 500 separate text judges, recruited through Prolific.",
+      "geography": "United States.",
+      "duration": "Single writing session averaging 5.9 minutes and post-task survey; exact field dates not established; v1 February 2023.",
+      "measure": "Expressed opinions, post-task attitudes, suggestion acceptance, and perceived assistant influence.",
+      "finding": "Opinionated suggestions shifted writing and subsequent reported views even though participants could reject suggestions and wrote much text themselves.",
+      "limitations": "Deliberately strong manipulation on one topic; retrospective pre-task-opinion proxy was treatment-sensitive. No lasting attitude or political-power outcome established.",
+      "facets": [
+        "judgment",
+        "practical"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 3.3-3.5; Sections 4.1-4.4; limitations.",
+      "sourceNote": "Author methods/results inspected; immediate post-task views are not longitudinal follow-up.",
+      "selected": false,
+      "searchOrigin": "Opinionated LLM co-writing influence -> CHI primary author manuscript.",
+      "relatedTopics": [
+        "culture"
+      ]
+    },
+    {
+      "id": "in-salvi25",
+      "title": "On the conversational persuasiveness of GPT-4",
+      "authors": "Francesco Salvi, Manoel Horta Ribeiro, Riccardo Gallotti, Robert West",
+      "year": 2025,
+      "url": "https://www.nature.com/articles/s41562-025-02194-6",
+      "doi": "10.1038/s41562-025-02194-6",
+      "publisher": "Nature Human Behaviour",
+      "kind": "study",
+      "design": "Preregistered randomized debate experiment varying human/GPT-4 opponent, personalization, and topic strength; corrected journal analysis.",
+      "population": "900 unique retained participants across 600 debates; not the earlier preprint sample.",
+      "geography": "US adults recruited through Prolific.",
+      "duration": "Ten-minute debates with immediate outcomes; original publication May 19, 2025, correction September 3, 2026. Exact collection dates not extracted from corrected version.",
+      "measure": "Post-debate ordinal agreement conditional on pre-debate agreement and opponent condition.",
+      "finding": "Personalized GPT-4 outperformed the human baseline, but the corrected direct comparison with non-personalized GPT-4 was not significant (P=0.0678). Personalization's additional benefit is not established by that comparison.",
+      "limitations": "Short paid debates and model-specific prompts; belief change is not necessarily autonomy loss or real-world behavior change.",
+      "facets": [
+        "judgment"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Experimental design; Aggregate results; Methods; September 2026 Author Correction.",
+      "sourceNote": "Corrected publisher article and notice read: https://www.nature.com/articles/s41562-026-02588-0 . Earlier 2024 preprint not used for estimates.",
+      "selected": false,
+      "searchOrigin": "Persuasion study lead -> author preprint -> correction search -> corrected publisher full text.",
+      "relatedTopics": [
+        "culture"
+      ]
+    },
+    {
+      "id": "in-lin25",
+      "title": "Persuading voters using human-artificial intelligence dialogues",
+      "authors": "Hause Lin, Gabriela Czarnek, Benjamin Lewis, Joshua P. White, Adam J. Berinsky, Thomas H. Costello, Gordon Pennycook, David G. Rand",
+      "year": 2025,
+      "url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/9/583/files/2026/01/persuadingvoters_2025.pdf",
+      "doi": "10.1038/s41586-025-09771-9",
+      "publisher": "Nature; author-hosted paper",
+      "kind": "study",
+      "design": "Preregistered randomized persuasion dialogues about candidates and a ballot measure; US recontact follow-up.",
+      "population": "Online participants in multiple election experiments; 1,936 US respondents completed follow-up, 83.95% of that experiment's sample.",
+      "geography": "United States, Canada, Poland.",
+      "duration": "2024 US and 2025 Canadian/Polish elections; US follow-up October 4-November 2, 2024, 30-63 days after treatment.",
+      "measure": "Candidate preference, stated vote choice/likelihood, persistence, and claim accuracy.",
+      "finding": "Dialogues shifted candidate preferences; part of the US effect persisted at recontact. Claims favoring right-leaning candidates were less accurate across the three country contexts.",
+      "limitations": "Stated preference is not verified voting or aggregate election influence; follow-up attrition and fact-checking methods matter.",
+      "facets": [
+        "judgment",
+        "durability"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Main results; persistence analysis; Methods: US experiment follow-up.",
+      "sourceNote": "Author PDF results and follow-up methods inspected; longitudinal label rests on linked US recontact, not on cross-country pooling.",
+      "selected": false,
+      "searchOrigin": "Recent political AI persuasion primary papers -> author-hosted Nature paper.",
+      "relatedTopics": [
+        "culture"
+      ]
+    },
+    {
+      "id": "in-hackenburg25",
+      "title": "The levers of political persuasion with conversational AI",
+      "authors": "Kobi Hackenburg, Ben M. Tappin, Luke Hewitt, Ed Saunders, Sid Black, Hause Lin, Catherine Fist, Helen Margetts, David G. Rand, Christopher Summerfield",
+      "year": 2025,
+      "url": "https://researchonline.lse.ac.uk/id/eprint/130605/1/combined_file_002_.pdf",
+      "doi": "10.1126/science.aea3884",
+      "publisher": "Science; LSE accepted manuscript",
+      "kind": "study",
+      "design": "Three survey experiments varying model scale, post-training, prompting and personalization, with automated factual-claim assessment and validation.",
+      "population": "76,977 English-fluent adult participants, 19 LLMs, and 707 political issues across experiments.",
+      "geography": "United Kingdom, Prolific recruitment.",
+      "duration": "December 2024-May 2025; short conversations and immediate outcomes; accepted version of December 2025 article.",
+      "measure": "Attitude change and accuracy of generated factual claims.",
+      "finding": "Post-training and prompting had larger effects on persuasion than personalization or scale in these comparisons. More persuasive approaches could produce less accurate claims.",
+      "limitations": "Opt-in paid tasks; automated fact extraction/checking imperfect; no demonstrated aggregate political power or durable behavioral effect.",
+      "facets": [
+        "judgment"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Main results; Supplementary Methods: Participants and fact-check validation.",
+      "sourceNote": "Accepted manuscript and relevant methods inspected, not every supplementary analysis; experiments are not a longitudinal user panel.",
+      "selected": false,
+      "searchOrigin": "Latest political persuasion experiments -> LSE institutional author manuscript.",
+      "relatedTopics": [
+        "culture"
+      ]
+    },
+    {
+      "id": "in-costello24",
+      "title": "Durably reducing conspiracy beliefs through dialogues with AI",
+      "authors": "Thomas H. Costello, Gordon Pennycook, David G. Rand",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39264999/",
+      "doi": "10.1126/science.adq1814",
+      "publisher": "Science; primary abstract indexed by PubMed",
+      "kind": "study",
+      "design": "Personalized GPT-4 Turbo dialogue intervention with subsequent participant follow-up; original result now carries an editorial concern.",
+      "population": "2,190 conspiracy-believing participants reported in original abstract.",
+      "geography": "Recruitment geography not established in inspected abstract/official summary.",
+      "duration": "Original paper reports two-month follow-up; September 13, 2024 publication; editorial concern June 11, 2026.",
+      "measure": "Strength of nominated conspiracy belief and related intentions before/after dialogue and at follow-up.",
+      "finding": "The original paper reported persistent belief reduction, but the 2026 Editorial Expression of Concern materially qualifies its reliability. It is retained as contested evidence, not a secure autonomy-enhancement finding.",
+      "limitations": "An expression of concern is not a retraction. Notice details and underlying data were not fully assessed; belief correction is not itself a validated autonomy measure.",
+      "facets": [
+        "judgment",
+        "durability"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Original Abstract and Expression of concern in; notice's Expression of concern for.",
+      "sourceNote": "Original abstract, MIT summary, and notice linkage verified: https://pubmed.ncbi.nlm.nih.gov/42275523/ ; notice DOI 10.1126/science.aej2383. Neither full paper nor notice body inspected.",
+      "selected": false,
+      "searchOrigin": "AI belief correction -> official summary -> publication-status check prompted by related-topic review -> PubMed linked notice.",
+      "relatedTopics": [
+        "culture"
+      ]
+    },
+    {
+      "id": "in-darvishi24",
+      "title": "Impact of AI assistance on student agency",
+      "authors": "Ali Darvishi, Hassan Khosravi, Shazia Sadiq, Dragan Gasevic, George Siemens",
+      "year": 2024,
+      "url": "https://researchmgt.monash.edu/ws/portalfiles/portal/572678646/564026501_oa.pdf",
+      "doi": "10.1016/j.compedu.2023.104967",
+      "publisher": "Computers & Education; Monash author repository",
+      "kind": "study",
+      "design": "Randomized field withdrawal experiment: four weeks of prompts for everyone, then continued prompts, withdrawal, checklist, or combined support.",
+      "population": "1,625 consenting students submitting peer reviews across ten undergraduate courses.",
+      "geography": "University of Queensland, Australia.",
+      "duration": "Eight weeks in second semester 2020; online November 2023, 2024 issue.",
+      "measure": "Feedback specificity, relevance, repetition, length, time, and peer helpfulness as operational proxies for self-regulation/agency.",
+      "finding": "Withdrawal worsened several automated quality metrics; checklists partly compensated. Peer helpfulness did not uniformly favor continued AI, complicating a single agency verdict.",
+      "limitations": "Feedback prompts used rules and language-similarity models, not generative chatbots. Product-quality proxies are not direct measures of volition or institutional authority.",
+      "facets": [
+        "durability",
+        "practical"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 3.1-3.2; Sections 4-5; Figure 6 and limitations.",
+      "sourceNote": "Methods and outcome-specific results inspected; follows learners across eight weeks rather than treating repeated questions as follow-up.",
+      "selected": false,
+      "searchOrigin": "AI assistance student agency withdrawal experiment -> primary repository PDF.",
+      "relatedTopics": [
+        "handover",
+        "skills"
+      ]
+    },
+    {
+      "id": "in-tessler24",
+      "title": "AI can help humans find common ground in democratic deliberation",
+      "authors": "Michael Henry Tessler, Michiel A. Bakker, Daniel Jarrett, Hannah Sheahan, Martin J. Chadwick, Raphael Koster, Georgina Evans, Lucy Campbell-Gillingham, Tantum Collins, David C. Parkes, Matthew Botvinick, Christopher Summerfield",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39418380/",
+      "doi": "10.1126/science.adq2852",
+      "publisher": "Science; primary abstract indexed by PubMed",
+      "kind": "study",
+      "design": "Experiments comparing AI-mediated group statements with human mediation, plus a virtual citizens' assembly.",
+      "population": "5,734 participants across experiments; assembly included a demographically representative UK sample.",
+      "geography": "United Kingdom.",
+      "duration": "Bounded deliberation exercises; published October 18, 2024. Exact field dates and later follow-up unavailable in abstract.",
+      "measure": "Statement preference, perceived clarity/fairness, opinion convergence, and text-based inclusion of dissent.",
+      "finding": "Participants preferred AI-generated statements, and views converged. Text analysis suggested dissenting views entered successful statements, providing a positive example of supported deliberation.",
+      "limitations": "Approval and semantic inclusion are not binding decision power. Abstract-only inspection cannot establish minority protection or durable institutional effects.",
+      "facets": [
+        "collective",
+        "judgment"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Primary Abstract; publisher structured abstract.",
+      "sourceNote": "Primary abstract opened and metadata verified; full experimental protocols and supplement not inspected.",
+      "selected": true,
+      "selectionReason": "Adds a concrete positive collective-deliberation result, clearly separated from political authority.",
+      "headline": "AI mediation can help groups find common ground",
+      "searchOrigin": "AI democratic deliberation Habermas Machine -> author/publisher trail -> primary abstract.",
+      "relatedTopics": [
+        "culture"
+      ]
+    },
+    {
+      "id": "in-rand26",
+      "title": "A Formal Model of How Artificial Intelligence Erodes Human Agency",
+      "authors": "Alvin Moon, Benjamin Boudreaux",
+      "year": 2026,
+      "url": "https://www.rand.org/pubs/research_reports/RRA4817-1.html",
+      "publisher": "RAND",
+      "kind": "proposal",
+      "design": "Formal social-choice model and proposed collective-agency metrics, not an empirical trend study.",
+      "population": "Abstract human/AI decision-making coalitions; no observed population.",
+      "geography": "Not applicable to a formal model.",
+      "duration": "Published April 20, 2026; no empirical follow-up.",
+      "measure": "Proposed distribution of decisive coalitions, minimal coalition size, and human/AI composition; agenda control as a mechanism.",
+      "finding": "The model identifies ways decision power could concentrate through changed membership or agendas. Its terminal decisive-coalition state is a mathematical result under assumptions, not an observed societal endpoint.",
+      "limitations": "Metrics need operational definitions, data, and validation. Coalition structure does not directly measure felt autonomy or prove irreversible real-world loss.",
+      "facets": [
+        "collective",
+        "practical",
+        "durability"
+      ],
+      "temporal": "none",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Official report summary: Key Takeaways and Recommendations.",
+      "sourceNote": "RAND's official summary inspected; full mathematical derivations not inspected. Proposal label is intentional.",
+      "selected": true,
+      "selectionReason": "Makes institutional/collective power explicit while honestly showing that the measurement approach is proposed.",
+      "headline": "Collective decision power needs measures beyond perceived control",
+      "searchOrigin": "Accepted RAND formal-model lead -> official publication page.",
+      "relatedTopics": [
+        "handover"
+      ]
+    },
+    {
+      "id": "in-gradual25",
+      "title": "Gradual Disempowerment: Systemic Existential Risks from Incremental AI Development",
+      "authors": "Jan Kulveit, Raymond Douglas, Nora Ammann, Deger Turan, David Krueger, David Duvenaud",
+      "year": 2025,
+      "url": "https://arxiv.org/html/2501.16946v2",
+      "publisher": "arXiv",
+      "kind": "framework",
+      "design": "Conceptual scenario analysis of interacting economic, cultural, and state incentives.",
+      "population": "Societal systems considered theoretically; no empirical sample.",
+      "geography": "General mechanisms, not country-level estimates.",
+      "duration": "Inspected v2 January 29, 2025; no measured trajectory or follow-up.",
+      "measure": "Proposed indicators of human influence, participation, and system dependence, with cross-system interactions.",
+      "finding": "Argues that incremental substitution could weaken the incentives that keep institutions responsive to people, even without a sudden AI takeover. This is a hypothesized mechanism, not an estimated probability or established trend.",
+      "limitations": "Scenario assumptions and countervailing institutional responses are not empirically identified; suggested indicators have not been validated here.",
+      "facets": [
+        "collective",
+        "durability"
+      ],
+      "temporal": "none",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 2-5; Section 6.2 Estimating Human Disempowerment.",
+      "sourceNote": "Author framework and measurement proposals inspected; illustrative external facts are not treated as a direct test of the theory.",
+      "selected": false,
+      "searchOrigin": "Gradual disempowerment collective agency indicators -> original framework v2."
+    },
+    {
+      "id": "in-hab26",
+      "title": "HumanAgencyBench: Scalable Evaluation of Human Agency Support in AI Assistants",
+      "authors": "Benjamin Sturgeon, Daniel Samuelson, Jacob Haimes, Jacy Reese Anthis",
+      "year": 2026,
+      "url": "https://arxiv.org/html/2509.08494v2",
+      "publisher": "arXiv",
+      "kind": "study",
+      "design": "Benchmark construction and model audit using simulated queries, model judges, and human-rating validation.",
+      "population": "Evaluated AI assistants and synthetic interaction cases, not a sample of users followed in daily life.",
+      "geography": "No representative human geographic population.",
+      "duration": "Initial September 2025 preprint; inspected v2 September 20, 2026. Audit window not extracted; no user follow-up.",
+      "measure": "Clarifying questions, value non-manipulation, misinformation correction, important-decision deference, learning encouragement, and social boundaries.",
+      "finding": "Agency-support scores varied across models and behaviors; stronger general capability did not consistently imply stronger support. Scores describe rubric-defined assistant behavior, not measured effects on human autonomy.",
+      "limitations": "Normative rubric choices, synthetic cases, evaluator dependence and uncertain predictive validity for real user outcomes.",
+      "facets": [
+        "judgment",
+        "practical",
+        "durability"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 2-5; evaluator agreement and limitations; version header.",
+      "sourceNote": "Latest inspected author version; benchmark evaluation is empirical, but proposed agency constructs are not validated human-outcome measures.",
+      "selected": false,
+      "searchOrigin": "Human agency AI benchmark evaluation -> HumanAgencyBench v2.",
+      "relatedTopics": [
+        "handover"
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "title": "Validate distinct kinds of control without collapsing them",
+      "summary": "The corpus measures felt control, behavior, and collective power on different scales.",
+      "basis": "Pew and psychological scales capture perceptions; meaningful-control work examines responsible intervention; RAND proposes coalition measures. These constructs can diverge rather than substitute for one another.",
+      "next": "Measure perceived volition alongside observed refusal/appeal success, available alternatives, and institutional decision rights. Test convergent and discriminant validity across languages and affected groups before creating any composite score.",
+      "refs": [
+        "in-pew25",
+        "in-chen15",
+        "in-bennett23",
+        "in-mhc18",
+        "in-verhagen24",
+        "in-rand26"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Separate durable change from immediate steering and risk markers",
+      "summary": "Only some studies follow the same people, and their outcomes are not interchangeable.",
+      "basis": "Conversation flags and short writing tasks do not establish lasting harm. Lin includes delayed attitudes and Darvishi withdrawal performance; Costello's claimed persistence is qualified by an editorial concern.",
+      "next": "Run independently replicated, consented multi-month studies with attrition reporting, withdrawal tests, behavior outside the interface, and participant-endorsed goals. Distinguish temporary reliance, useful learning, and recoverable versus persistent constraints.",
+      "refs": [
+        "in-whos26",
+        "in-jakesch23",
+        "in-lin25",
+        "in-darvishi24",
+        "in-costello24"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Test whether institutional voice changes actual outcomes",
+      "summary": "Consultation and consensus are promising but incomplete proxies for decision power.",
+      "basis": "Manager reports, Nordic employee associations, and platform-worker interviews address different positions in organizations. Deliberation experiments show preferred statements, while coalition models propose structural measures; neither alone establishes binding representation.",
+      "next": "Follow workplaces or civic bodies before and after AI adoption, observing whose proposals enter agendas, whose appeals succeed, who can veto, and which decisions change. Compare participation arrangements and pre-existing bargaining inequalities.",
+      "refs": [
+        "in-oecd25",
+        "in-feps24",
+        "in-wood19",
+        "in-tessler24",
+        "in-rand26",
+        "in-gradual25"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Distinguish persuasion from autonomy-enhancing information",
+      "summary": "Opinion change alone cannot identify informed choice or manipulation.",
+      "basis": "Persuasion varies with prompting, factual accuracy, and context. Salvi's correction weakens a specific personalization claim; assistant-behavior benchmarks do not measure users' own informed endorsement or practical freedom.",
+      "next": "Compare accurate and inaccurate advice under disclosed and undisclosed persuasive aims, measuring knowledge, values endorsed after reflection, ability to opt out, and later behavior. Validate benchmark scores against those outcomes rather than agreement alone.",
+      "refs": [
+        "in-salvi25",
+        "in-hackenburg25",
+        "in-lin25",
+        "in-jakesch23",
+        "in-hab26",
+        "in-algosoc26"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    }
+  ],
+  "searchLog": [
+    {
+      "query": "Accepted leads: Pew AI control, Who's in Charge, RAND human agency model",
+      "date": "2026-10-22",
+      "scope": "Official survey report/questionnaire, author preprint and sampling appendix, RAND publication summary.",
+      "notes": "Imported records were treated as leads only. Verified wave dates, conversation units, and theoretical versus measured claims."
+    },
+    {
+      "query": "human autonomy agency measurement meaningful human control tracking tracing",
+      "date": "2026-10-22",
+      "scope": "HCI review, psychological validation paper, philosophical framework, and expert operationalization study.",
+      "notes": "Separated experience, effective capacity, responsibility, and collective power. Bounded English-language scoping search, not exhaustive."
+    },
+    {
+      "query": "algorithmic management autonomy worker voice OECD Nordic Good Gig Bad Gig",
+      "date": "2026-10-22",
+      "scope": "Original OECD/FEPS reports and publisher worker-study PDF.",
+      "notes": "Sought methodological and geographic diversity; preserved both enabling and constraining experiences and avoided causal interpretation of surveys."
+    },
+    {
+      "query": "AI persuasion opinionated co-writing deliberation conspiracy belief reduction",
+      "date": "2026-10-22",
+      "scope": "Primary author/publisher papers, official institutional summary, and indexed primary abstracts.",
+      "notes": "Included positive, adverse, and null contrasts. Persuasion and agreement were not treated as direct measures of autonomy."
+    },
+    {
+      "query": "Salvi conversational persuasiveness correction 2026; Costello Science editorial expression of concern",
+      "date": "2026-10-22",
+      "scope": "Corrected Nature article and correction notice; PubMed original/linked editorial notice.",
+      "notes": "Salvi correction DOI 10.1038/s41562-026-02588-0 read in full. Costello concern DOI 10.1126/science.aej2383 linkage verified; notice body unavailable, so no claim about its detailed grounds."
+    },
+    {
+      "query": "AI assistance student agency withdrawal; HumanAgencyBench; AlgoSoc control awareness monitor",
+      "date": "2026-10-22",
+      "scope": "Primary educational field experiment, versioned benchmark paper, and official survey dashboard/methodology.",
+      "notes": "Distinguished same-student follow-up, model audit snapshots, and repeated aggregate survey waves."
+    },
+    {
+      "query": "political AI persuasion recent experiments Lin Hackenburg 2025",
+      "date": "2026-10-22",
+      "scope": "Nature author PDF and Science accepted manuscript with supplementary methods.",
+      "notes": "Checked sample geography and delayed follow-up separately; no inference from attitudes to actual votes or society-wide political control."
+    }
+  ],
+  "exclusions": [
+    {
+      "title": "On the Conversational Persuasiveness of Large Language Models: 2024 working-paper version",
+      "url": "https://arxiv.org/html/2403.14380v1",
+      "reason": "Inspected for discovery, then superseded by corrected 2025 journal record. Earlier sample/estimates are not mixed with the final analysis."
+    },
+    {
+      "title": "Uncorrected claim that personalized GPT-4 significantly outperforms non-personalized GPT-4",
+      "url": "https://www.nature.com/articles/s41562-026-02588-0",
+      "reason": "September 2026 author correction changes this direct comparison to nonsignificant; retained article reflects the correction, not the original claim."
+    },
+    {
+      "title": "Unqualified positive headline from Durably reducing conspiracy beliefs through dialogues with AI",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42275523/",
+      "reason": "Excluded from highlighted evidence because the original paper has a June 2026 editorial expression of concern. Qualified original record retained; notice is not a separate experiment."
+    },
+    {
+      "title": "Later OECD summaries of the same employer survey",
+      "url": "https://doi.org/10.1787/287c13c4-en",
+      "reason": "Not independent measurements; original survey report retained."
+    },
+    {
+      "title": "Testing theories of American politics: Elites, interest groups, and average citizens",
+      "url": "https://doi.org/10.1017/S1537592714001595",
+      "reason": "Useful pre-AI structural-power background, but not direct evidence of AI effects; not added to avoid implying causal relevance from historical policy associations."
+    },
+    {
+      "title": "The Work Design Questionnaire (WDQ): developing and validating a comprehensive measure for assessing job design and the nature of work",
+      "url": "https://doi.org/10.1037/0021-9010.91.6.1321",
+      "reason": "Relevant foundational autonomy instrument, but inspectable primary full text was not obtained in this pass; not promoted from search snippets."
+    }
+  ],
+  "reviewNotes": [
+    "This is a bounded AI-assisted scoping scan, not a systematic review or a complete map of the field. Sources were checked on 2026-10-22; no record carries a human-review designation.",
+    "Perceived control, informed endorsement, effective intervention, workplace discretion, and collective decision power are distinct. None of the reviewed measures alone establishes all of them.",
+    "The Costello 2024 paper has a verified June 11, 2026 editorial expression of concern, DOI 10.1126/science.aej2383. The original result remains contested here; the notice's full grounds were not assessed. An expression of concern is not a retraction.",
+    "Salvi's September 3, 2026 correction, DOI 10.1038/s41562-026-02588-0, removes the claimed significant direct advantage of personalized over non-personalized GPT-4. The corrected comparison with the human baseline is a different result.",
+    "Pew's perceived-control item appears in both 2024 and 2025. Its repeated aggregate estimates are not an analysis of individual panel-member change. Who's in Charge combines a main snapshot with a separate historical feedback sample.",
+    "Longitudinal labels apply to linked follow-up or withdrawal studies, not merely to long collection windows. RAND and Gradual Disempowerment are proposed/conceptual accounts with no observed societal trajectory.",
+    "Full-text status means relevant primary methods and results were inspected, not that all supplements or raw data were independently reproduced. Tessler and Chen were assessed from primary abstracts; RAND and AlgoSoc from official summaries/documentation.",
+    "Positive deliberation findings concern statement preference and inclusion, not binding political authority. Workplace studies include non-generative algorithms and cannot be read as effects of current chatbots alone.",
+    "Geographic coverage includes multiple European settings, North America, China, Peru, Japan, Southeast Asia, Sub-Saharan Africa, and Australia, but designs and samples are too different for country rankings or global prevalence estimates."
+  ]
+}

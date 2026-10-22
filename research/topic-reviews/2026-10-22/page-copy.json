@@ -1,0 +1,82 @@
+{
+  "capability": {
+    "synthesis": "Models are improving on technical tests and prepared professional tasks. Reliability and performance in everyday work are less consistent: results depend on the task, the tools available and how success is judged. The studies below help separate benchmark progress from the work people can confidently hand over.",
+    "sources": {
+      "cap-metr-horizons": {"headline":"Models complete longer technical tasks","finding":"METR tracks the difficulty of technical tasks AI can complete at a chosen success rate, using human-expert time. Its historical series shows progress; updates to the public chart stopped in September 2026."},
+      "cap-epoch-eci": {"headline":"Progress across a wider set of tests","finding":"Epoch combines multiple benchmarks to follow model capabilities over time. It reports faster frontier progress after reasoning models appeared. The index's scale reflects performance across tests."},
+      "cap-rli": {"headline":"AI is improving on paid freelance projects","finding":"The Remote Labor Index tests whether AI can deliver work that an expert would accept. Newer models and agent setups perform better, while the results also depend on how deliverables are graded."},
+      "cap-gdpval": {"headline":"AI can produce useful professional work","finding":"On prepared tasks from 44 occupations, some model outputs approach the quality of professional work. The evaluation provides a broader test of work products, with limited evidence about ongoing work inside organisations."},
+      "cap-reliability": {"headline":"High scores can hide unreliable behaviour","finding":"Across 15 models and two benchmarks, accuracy improved much more than the study's reliability measures. Consistency, robustness and the ability to anticipate failures varied even among capable systems."}
+    }
+  },
+  "work": {
+    "synthesis": "Some US payroll and online-platform studies find weaker hiring or demand for work exposed to AI. Studies in Denmark and Finland find limited or no comparable deterioration in the outcomes they track. These differences make actual AI use, local conditions and the distinction between hiring and existing workers' earnings important to measure.",
+    "sources": {
+      "work-canaries-2026": {"headline":"Hiring weakened for young workers in exposed US jobs","finding":"In the study's ADP sample, employment among highly exposed 22-25-year-olds fell behind their less-exposed peers. The authors estimate a 19% relative shortfall through June 2026, driven mainly by reduced hiring."},
+      "work-humlum-2026": {"headline":"Little average change in Danish earnings or hours","finding":"Danish workers reported changes in their tasks after using AI chatbots, while linked records showed little average change in earnings or hours. The estimates rule out average effects larger than 2% over the study's two-year window."},
+      "work-finland-youth": {"headline":"Finnish youth employment shows a different pattern"},
+      "work-brynjolfsson-productivity": {"headline":"AI helped less-experienced support agents"},
+      "work-demirci-platform": {"headline":"Freelance demand fell for writing and coding"}
+    }
+  },
+  "handover": {
+    "synthesis": "Usage data show which tasks people hand to AI and how often they intervene. Experiments show that effective oversight also depends on expertise, task difficulty and the cost of checking answers. Evidence is less connected on whether people retain the authority and ability to catch mistakes during routine work.",
+    "sources": {
+      "ho-aei-jan26": {"headline":"People use AI to assist and complete tasks","finding":"Anthropic classifies sampled conversations as assistance or automation. In its November sample, assistance was more common. How much work AI completes and how much decision authority it receives are measured separately."},
+      "ho-agent-autonomy26": {"headline":"Some coding sessions run longer between check-ins","finding":"The longest 0.1% of Claude Code turns grew from under 25 to over 45 minutes; the median stayed near 45 seconds. More experienced users both auto-approved more actions and interrupted more often."},
+      "ho-workbank26": {"headline":"Workers want different levels of AI involvement"},
+      "ho-vaccaro24": {"headline":"Teaming up works better for some tasks than others"},
+      "ho-vasconcelos23": {"headline":"Explanations help when people can check them"}
+    }
+  },
+  "adoption": {
+    "synthesis": "More workers and businesses report using AI in several recurring surveys, though growth varies across countries and firm sizes. Occasional use is more common than intensive use. Different survey questions and samples make it difficult to compare headline rates or tell how much everyday work has changed.",
+    "sources": {
+      "adopt-btos-current": {"headline":"US business use varies by firm size","finding":"Between 17% and 20% of businesses reported recent AI use in the reviewed Census survey waves. Use rose among firms with at least 20 employees. A questionnaire change in late 2025 limits comparisons with earlier waves."},
+      "adopt-rps-hours": {"headline":"AI assists a small share of total working hours","finding":"The survey's central estimate was 5.31% of working hours in Q3 2026. This estimate measures intensity of use, which can change differently from the number of people trying AI."},
+      "adopt-eurostat-firms": {"headline":"AI use rose among European businesses","finding":"20% of covered EU enterprises used AI in 2025, up from 13.5% in 2024. Rates varied substantially by country, from 5.2% in Romania to 42% in Denmark."},
+      "adopt-brazil-tic": {"headline":"Brazil's reported business adoption stayed flat","finding":"13% of covered Brazilian enterprises reported AI use in 2024, the same rounded share as in 2021 and 2023. Use was much higher among large firms."},
+      "adopt-mind-gap": {"headline":"Similar questions reveal differences across countries","finding":"A coordinated survey found work adoption of 43% in the US in early 2026, compared with 25.6%-36.3% across the European countries studied. Differences in assisted hours were larger than differences in any use."}
+    }
+  },
+  "share": {
+    "synthesis": "Official statistics track how much income goes to labour, but different accounting methods can produce different trends. These series alone cannot identify AI's contribution. Studies of workplaces and earlier innovations help show who gains, while evidence linking widespread AI use to income distribution remains limited.",
+    "sources": {
+      "share-bls-nfb": {"headline":"The US labour share reached a series low","finding":"In the inspected BLS release, labour received 52.8% of income in the nonfarm business sector in Q2 2026, the lowest share in that series. Explaining the change requires evidence beyond this aggregate measure."},
+      "share-ilo-weso": {"headline":"The estimated global labour share fell slightly","finding":"ILO estimates put the global labour-income share at 52.4% in 2024, down from 53% in 2014. The estimate includes an adjustment for income earned by self-employed workers."},
+      "share-gutierrez-piton": {"headline":"Accounting choices change the international picture","finding":"After adjusting for comparable accounting boundaries, the authors find stable or rising labour shares in major advanced economies except the US and Canada."},
+      "share-humlum-2026": {"headline":"Changes in tasks brought little average change in pay","finding":"Danish workers reported changes in their tasks after using AI chatbots, while linked administrative records showed limited average earnings effects."},
+      "share-kline-patents": {"headline":"Innovation gains can reach workers unevenly","finding":"An earlier study of patent awards found compensation gains concentrated among existing workers, men and higher earners. Entry wages changed little, suggesting that access to innovation gains can differ within the same firm."}
+    }
+  },
+  "institutions": {
+    "synthesis": "Public registers help identify where governments use AI. Experiments and audits show mixed effects on decisions, including cases where workers reduce disparities and cases where providing a tool changes little. Whether people can obtain an explanation, correct a decision or stop a failing system is less consistently tracked.",
+    "sources": {
+      "institutions-us-inventory": {"headline":"Public inventories help locate government AI use","finding":"The reviewed federal inventory lists 3,611 reported use cases from 56 agency submissions, including 445 classified as high-impact. It provides a starting point for studies of deployment and oversight."},
+      "institutions-alon-busuioc": {"headline":"Officials did not always favour algorithmic advice","finding":"Dutch experiments found no greater deference to algorithmic advice than to equivalent advice from people. Effects differed between public participants and civil servants."},
+      "institutions-imai-psa": {"headline":"Risk scores changed little in a pretrial trial","finding":"Randomly providing judges with a risk assessment had little overall effect on decisions or subsequent behaviour. Effects varied across some groups."},
+      "institutions-gao-procurement": {"headline":"Oversight requires procurement and evaluation skills","finding":"A GAO audit identified challenges in acquiring and evaluating AI and weaknesses in sharing lessons across agencies. Whether the recommended changes improved outcomes still needs assessment."},
+      "institutions-afst-reanalysis": {"headline":"Workers reduced disparities in child-welfare screening","finding":"Workers' decisions were less racially disparate than algorithm-only decisions. Data corrections changed the accuracy comparison, leaving no clear conclusion about which approach was more accurate."}
+    }
+  },
+  "influence": {
+    "synthesis": "Studies show AI can steer judgements, limit discretion at work and help groups find common ground. Feeling in control and having the power to change a decision are different outcomes. Lasting effects on individual choice and collective authority remain unevenly measured in the studies reviewed here.",
+    "sources": {
+      "in-pew25": {"headline":"Many Americans feel little control over AI's role","finding":"In 2025, 57% of surveyed US adults reported little or no control over AI's role in their lives, compared with 59% in 2024. The survey tracks perceived control; the small change is not treated as a meaningful trend here."},
+      "in-whos26": {"headline":"Some conversations show risks to independent judgement","finding":"Anthropic identified conversation patterns that could undermine users' judgement. Higher-risk interactions could receive positive feedback, but the study does not establish lasting changes in people's autonomy."},
+      "in-feps24": {"headline":"Workers' say in AI use may help preserve autonomy","finding":"Surveyed workers exposed to algorithmic management reported less autonomy. Some negative associations were weaker or absent where employee influence and transparency were high."},
+      "in-tessler24": {"headline":"AI mediation helped groups find common ground","finding":"Participants preferred AI-generated group statements, and their views converged. The study offers an example of supported deliberation, with open questions about how this translates into real decision-making power."},
+      "in-rand26": {"headline":"A proposed way to measure who can decide outcomes","finding":"RAND models the smallest groups able to determine a collective decision and the mix of humans and AI within them. These measures are a proposal for studying power; they have not yet been applied to track societal change."}
+    }
+  },
+  "culture": {
+    "synthesis": "AI-generated content is growing on some platforms, while its share of people's attention can remain much smaller. Experiments also find that AI can improve individual creative work while making outputs more alike. The links between content supply, lasting influence and creators' income remain less clear in this collection.",
+    "sources": {
+      "culture-deezer-series": {"headline":"AI music is growing in uploads, with few plays"},
+      "culture-pew-clicks": {"headline":"Fewer clicks on searches with AI summaries"},
+      "culture-doshi-creativity": {"headline":"AI ideas improve stories and make them more alike"},
+      "culture-deverna-checks": {"headline":"AI fact-checks had mixed effects on judgement"},
+      "culture-demirci-demand": {"headline":"Fewer freelance postings for creative work"}
+    }
+  }
+}
