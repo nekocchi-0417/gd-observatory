@@ -120,3 +120,19 @@ Figures and quotations from third-party sources remain the property of their pub
 ## Cite as
 
 Zhang Yue (2026). *Gradual Disempowerment Dashboard* (draft v0.8). Better Futures Project.
+
+## Paper–node explorer preview (22 October 2026)
+
+An isolated MVP under `prototypes/paper-network/` uses the 700-reference draft catalog. It does not change the public build or release the held bibliography.
+
+```sh
+python3 tools/build-paper-network.py
+node tools/verify-paper-network.js
+# Open dist/paper-network/index.html, or serve that directory locally.
+```
+
+The preview separates existing topic assignments, keyword suggestions, and locally accepted links. Edit the per-node keyword arrays in `matcher.js`. Matching uses normalized whole words/phrases in titles and landscape construct/domain metadata; abstracts are not available in this catalog. Title hits rank above metadata hits. Keyword matches do not establish support, causality, quality, or independent evidence.
+
+Choose a node, inspect the matched phrases, and accept/remove links. Decisions persist in browser storage, support undo, and can be exported/imported as JSON; they do not edit source records. Imports merge decisions and replace conflicting choices for the same reference/node. Files opened directly may have browser-specific storage behavior; localhost is preferred.
+
+The graph shows up to 48 connected references, prioritizing records with more links. Node counts cover all filtered references. All results remain available in the paginated list. Layout positions do not encode semantic distance. This initial graph uses a fixed layout rather than dragging or force simulation.

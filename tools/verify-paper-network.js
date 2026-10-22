@@ -1,0 +1,16 @@
+const assert = require('node:assert/strict');
+const {contains,matches,links,nodes} = require('../prototypes/paper-network/matcher.js');
+assert(!contains('newsworthy autonomy','news'));
+assert(contains('Human–AI decision-support','decision support'));
+const r={id:'test',title:'Automation bias in government decision support',topics:['skills'],landscape:[]};
+assert.deepEqual(matches(r).map(m=>m.node),['handover','institutions']);
+assert.equal(links(r).find(l=>l.node==='skills').status,'existing assignment');
+assert.equal(links(r).find(l=>l.node==='handover').status,'keyword suggestion');
+assert(!links(r,{test:{handover:'remove'}}).some(l=>l.node==='handover'));
+assert.equal(links(r,{test:{culture:'keep'}}).find(l=>l.node==='culture').status,'accepted locally');
+assert(!matches({...r,title:'Unrelated title',citation:'Government',topics:['institutions']}).length);
+assert.equal(matches({...r,title:'Autonomy',landscape:[{constructs:['autonomy']}]}).find(m=>m.node==='influence').hits.length,1);
+const records=require('../src/library-view-data.json').records;
+assert(records.every(r=>links(r).every(l=>nodes.some(n=>n.id===l.node))));
+console.log(JSON.stringify({references:records.length,withKeywordMatches:records.filter(r=>matches(r).length).length,withAdditionalSuggestions:records.filter(r=>links(r).some(l=>l.status==='keyword suggestion')).length},null,2));
+console.log('Matcher boundaries, normalization, provenance separation and review overrides passed.');
