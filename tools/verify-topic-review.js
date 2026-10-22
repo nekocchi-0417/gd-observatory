@@ -34,19 +34,25 @@ function harness(page, query = '', hash = '', theme = 'light', blockedStorage = 
   });
   const run = script => vm.runInContext(script,context);
   for (const script of document.querySelectorAll('script[src]')) {
-    const file = path.join(output,script.getAttribute('src'));
+    const file = path.join(output,script.getAttribute('src').split('?')[0]);
     assert(fs.existsSync(file),`Missing asset ${file}`);
     run(fs.readFileSync(file,'utf8'));
   }
   for (const tag of document.querySelectorAll('link[rel="stylesheet"]')) {
     const href = tag.getAttribute('href');
-    if (!href.startsWith('https://')) assert(fs.existsSync(path.join(output,href)));
+    if (!href.startsWith('https://')) assert(fs.existsSync(path.join(output,href.split('?')[0])));
   }
   assert(document.querySelector('link[href*="fonts.googleapis.com"]'),'Topic pages load the main site fonts');
   assert.equal(document.querySelector('.bar .mark').getAttribute('href'),'../index.html#home');
   assert.deepEqual([...document.querySelectorAll('.bar .nav a')].map(a => a.textContent),['Home','Selected evidence','Research gaps','Projects & grants','Contribute','Method']);
   assert.equal(document.querySelector('.bar .nav [aria-current="page"]').getAttribute('href'),`../index.html#${page === 'evidence.html' ? 'evidence' : 'gaps'}`);
-  assert.equal(document.querySelector('script[src]').getAttribute('src'),'theme-init.js','Theme loads before the styles');
+  assert.match(document.querySelector('script[src]').getAttribute('src'),/^theme-init\.js\?v=[a-f0-9]{12}$/,'Theme loads before the styles');
+  for (const tag of document.querySelectorAll('script[src],link[rel="stylesheet"]')) {
+    const url = tag.getAttribute(tag.localName === 'script' ? 'src' : 'href');
+    if (url.startsWith('https://')) continue;
+    const [file,version] = url.split('?v=');
+    assert.equal(version,require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(output,file))).digest('hex').slice(0,12),'Local assets have content-based cache keys');
+  }
   const ids = [...document.querySelectorAll('[id]')].map(node => node.id);
   assert.equal(ids.length,new Set(ids).size,`${page}${query}: duplicate IDs`);
   for (const a of document.querySelectorAll('a[target="_blank"]')) assert.match(a.rel,/noopener/);

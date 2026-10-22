@@ -21,16 +21,21 @@ assert.equal(M.pairs(rs,r=>r.topics).find(p=>p.a==='handover'&&p.b==='influence'
 assert(M.isRetracted({title:'Paper',citation:'Retracted in 2026'}));
 const target=process.argv[2]||'dist/reorganized-dashboard/skills.html';const html=fs.readFileSync(path.resolve(__dirname,'..',target),'utf8');
 assert(!html.includes('/* INLINE:'));const scripts=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m=>m[1]);scripts.forEach(s=>new vm.Script(s));
-function harness(saved,blocked=false){
- const {document,Event,HTMLSelectElement}=parseHTML(html);const data=new Map(saved?[['gd-skills-pilot-v1',saved]]:[]),events={};
+function harness(saved,blocked=false,theme=null){
+ const {document,Event,HTMLSelectElement}=parseHTML(html);const data=new Map(saved?[['gd-skills-pilot-v1',saved]]:[]),events={},visit=new Map(theme?[['gd-dashboard-visit-theme',theme]]:[]);
+ data.set('gd-dashboard-theme','dark');
  // linkedom lacks the writable selected value that browsers provide.
  Object.defineProperty(HTMLSelectElement.prototype,'value',{configurable:true,get(){return this.querySelector('option[selected]')?.value||this.querySelector('option')?.value||'';},set(v){for(const o of this.querySelectorAll('option'))o.toggleAttribute('selected',o.value===v);}});
  const location={search:'',pathname:'/skills.html',href:'http://localhost/skills.html'},window={addEventListener:(n,f)=>events[n]=f,matchMedia:()=>({matches:false})};
- const context=vm.createContext({document,window,location,history:{replaceState:(_,__,url)=>location.href='http://localhost'+url},console,URL,URLSearchParams,Blob,setTimeout,localStorage:{getItem:k=>{if(blocked)throw Error('Blocked');return data.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('Blocked');data.set(k,v);}}});
+ const context=vm.createContext({document,window,location,history:{replaceState:(_,__,url)=>location.href='http://localhost'+url},console,URL,URLSearchParams,Blob,setTimeout,sessionStorage:{getItem:k=>{if(blocked)throw Error('Blocked');return visit.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('Blocked');visit.set(k,v);}},localStorage:{getItem:k=>{if(blocked)throw Error('Blocked');return data.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('Blocked');data.set(k,v);}}});
  const run=s=>vm.runInContext(s,context);scripts.forEach((s,i)=>{run(s);if(i===2)context.GDConcepts=window.GDConcepts;if(i===3)context.GDSkills=window.GDSkills;});
- return {run,document,data,events};
+ return {run,document,data,events,visit};
 }
 const expected=require('./network-library.js').load().records.filter(r=>r.topics.includes('skills')).length;const h=harness();assert.equal(h.run('records.length'),expected);assert.equal(h.document.querySelectorAll('.reference-row').length,15);assert.equal(h.run('visibleRows.length'),expected);
+assert.equal(h.document.documentElement.dataset.theme,'light','Explorer starts light, ignoring stale persistent theme');
+h.document.querySelector('#theme').onclick();assert.equal(h.visit.get('gd-dashboard-visit-theme'),'dark');
+assert.equal(harness(undefined,false,'dark').document.documentElement.dataset.theme,'dark','Explicit session choice survives navigation');
+assert.equal(harness(undefined,true,'dark').document.documentElement.dataset.theme,'light','Unavailable storage falls back to light');
 h.run("change({concept:'bias',connection:'retention'})");assert(h.run('visibleRows.length')>0);assert(h.run("visibleRows.every(r=>matches(r).some(m=>m.id==='bias')&&matches(r).some(m=>m.id==='retention'))"));
 h.run("change({...M.defaults,view:'areas'});choosePair('institutions','influence')");assert(h.run("visibleRows.every(r=>r.topics.includes('institutions')&&r.topics.includes('influence'))"));
 h.run("change({...M.defaults});choosePaper(records[0].id,false)");assert(h.document.querySelector('#review-form'));assert(h.document.querySelector('.source-link').getAttribute('rel').includes('noopener'));

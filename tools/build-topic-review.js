@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const vm = require('node:vm');
+const {createHash} = require('node:crypto');
 const {parseHTML} = require('linkedom');
 const {header,fonts} = require('./site-shell');
 const root = path.resolve(__dirname, '..');
@@ -71,13 +72,6 @@ function build({output = 'dist/topic-review'} = {}) {
   fs.mkdirSync(destination,{recursive:true});
   const files = ['index.html','topics.html','library.html','app.js','runtime.js','style.css','data.js','landscape.js','collections.js','topics.js','evidence.html','evidence.css','evidence.js','ICON-LICENSE.txt'];
   for (const file of files) fs.copyFileSync(path.join(templateDirectory,file),path.join(destination,file));
-  for (const file of ['index.html','topics.html','library.html','evidence.html']) {
-    const {document} = parseHTML(fs.readFileSync(path.join(destination,file),'utf8'));
-    document.querySelector('header.site-header').outerHTML = header({prefix:'../index.html',active:file === 'evidence.html' ? 'evidence' : 'gaps'});
-    document.querySelector('link[rel="stylesheet"]').insertAdjacentHTML('beforebegin',`<script src="theme-init.js"></script>${fonts}`);
-    document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="site-header.css"><script src="appearance.js" defer></script>');
-    fs.writeFileSync(path.join(destination,file),document.toString());
-  }
   for (const file of ['theme-init.js','appearance.js','site-header.css']) fs.copyFileSync(path.join(root,'prototypes/reorganized',file),path.join(destination,file));
   const script = `'use strict';\nconst GD_EXPANSION = ${JSON.stringify(reviews).replace(/</g,'\\u003c')};\n`;
   new vm.Script(script,{filename:'research.js'});
@@ -90,6 +84,20 @@ function build({output = 'dist/topic-review'} = {}) {
   fs.mkdirSync(path.join(destination,'research'),{recursive:true});
   for (const id of topicIds) fs.copyFileSync(path.join(researchDirectory,`${id}.json`),path.join(destination,'research',`${id}.json`));
   fs.copyFileSync(path.join(researchDirectory,'selected-evidence.json'),path.join(destination,'research/selected-evidence.json'));
+  for (const file of ['index.html','topics.html','library.html','evidence.html']) {
+    const {document} = parseHTML(fs.readFileSync(path.join(destination,file),'utf8'));
+    document.querySelector('header.site-header').outerHTML = header({prefix:'../index.html',active:file === 'evidence.html' ? 'evidence' : 'gaps'});
+    document.querySelector('link[rel="stylesheet"]').insertAdjacentHTML('beforebegin',`<script src="theme-init.js"></script>${fonts}`);
+    document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="site-header.css"><script src="appearance.js" defer></script>');
+    // Keep a cached old runtime from loading against a newly deployed header.
+    for (const tag of document.querySelectorAll('script[src],link[rel="stylesheet"]')) {
+      const attribute = tag.localName === 'script' ? 'src' : 'href', asset = tag.getAttribute(attribute);
+      if (asset.startsWith('https://')) continue;
+      const hash = createHash('sha256').update(fs.readFileSync(path.join(destination,asset))).digest('hex').slice(0,12);
+      tag.setAttribute(attribute,`${asset}?v=${hash}`);
+    }
+    fs.writeFileSync(path.join(destination,file),document.toString());
+  }
   return {destination,reviews};
 }
 
