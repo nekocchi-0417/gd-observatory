@@ -103,3 +103,12 @@ assert.throws(() => {
   require('node:child_process').execFileSync(process.execPath, ['tools/build-reorganized-preview.js','--publish','--research'], {cwd:root, stdio:'pipe'});
 }, 'Research mode must not be publishable');
 console.log('Shareable release: held routes, absent draft payloads, diagram, directory, themes and source checks passed.');
+
+const story = harness('#home');
+assert.equal(story.document.querySelectorAll('[data-story-node]').length, 9);
+assert.equal(story.run('STORY_COPY30.length'), 5);
+assert(story.document.querySelector('#story-entry30[hidden] a[href="skills.html"]'));
+assert.equal(story.document.querySelectorAll('#gd-story30 select,#gd-story30 input,#gd-story30 table').length,0);
+assert(story.document.querySelector('.story-lenses30').textContent.includes('Psychology & education'));
+assert(fs.existsSync(path.join(output,'skills.html')));
+console.log('Three-part homepage, clean entry point and separate Skills explorer passed.');

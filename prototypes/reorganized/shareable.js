@@ -17,8 +17,7 @@ function hold28(v, title, topic = false) {
 }
 
 function home28(v) {
-  v.innerHTML = `<div class="home5 home28"><section class="hero5 wrap"><div class="eye5">Better Futures Project / Zhang Yue</div><div class="hero5-g top5"><h1 class="h1-5 purpose5-h" id="main-content">Tracking whether AI is weakening human influence</h1><div><p class="purpose5">How could increasing reliance on AI change people's skills, choices and influence?</p><p class="paper-link28">${ext7('https://gradual-disempowerment.ai/', 'The original gradual disempowerment paper')}</p></div></div></section>
-    <section class="wrap home-sections28" aria-label="Explore the dashboard"><div><h2 class="h2-5 sm"><a href="#gaps">Research questions <span aria-hidden="true">→</span></a></h2><p>Nine topics along the proposed pathways.</p></div><div><h2 class="h2-5 sm"><a href="#projects">Projects &amp; grants <span aria-hidden="true">→</span></a></h2><p>Research programmes and funding opportunities.</p></div><div><h2 class="h2-5 sm"><a href="#contribute">Contribute <span aria-hidden="true">→</span></a></h2><p>Share a study, a measure or a correction.</p></div></section><div class="wrap"><p class="release-note28">Research prototype. Selected findings and topic reviews are in progress.</p></div></div>`;
+  v.innerHTML = homeStory30();
 }
 
 function diagram28() {
@@ -37,7 +36,7 @@ function gaps28(v) {
 function method28(v) {
   v.innerHTML = `<div class="view5 wrap method22"><header class="intro20"><div class="eye5">Method</div><h1 class="h1-5" id="main-content">What this prototype covers</h1><p class="lead5">Research on how AI could affect human skills, choices and influence.</p></header>
     <section class="method-section28"><h2 class="h2-5 sm">The pathways</h2><p>The diagram is adapted from ${ext7('https://gradual-disempowerment.ai/', 'the gradual disempowerment paper')}, with an additional branch for skills and judgement. It organises research questions around the proposed relationships.</p></section>
-    <section class="method-section28"><h2 class="h2-5 sm">Current status</h2><p>Findings, topic reviews and evidence maps are being reviewed before publication. Evidence-coverage ratings are also on hold.</p></section>
+    <section class="method-section28"><h2 class="h2-5 sm">Current status</h2><p>Findings, topic reviews and evidence maps are being reviewed before publication. Evidence-coverage ratings are also on hold. The <a href="skills.html">Skills and judgement literature pilot</a> lets you explore draft source metadata, edit matching rules and record your own source reviews. Shared sources and keyword overlaps suggest relevance; they do not establish causal effects, agreement between papers or field-wide coverage.</p></section>
     <section class="method-section28"><h2 class="h2-5 sm">How sources will be selected</h2><p>The planned selection will prioritise direct relevance to each question, sound methods, clear population and time coverage, and traceable sources. It will include findings that challenge the interpretation.</p><details class="method-details28"><summary>Review checks</summary><ul><li>Confirm the primary source, version, population and outcome.</li><li>Check figures, units, comparisons and any chart transformations.</li><li>Match each claim to the study's design and scope.</li><li>Review competing explanations and relevant contradictory evidence.</li></ul><p>AI assists discovery and extraction. Human review is required before a finding is featured. A curated selection will not establish that a research area has no evidence.</p></details></section>
     <section class="method-section28"><h2 class="h2-5 sm">Projects &amp; grants</h2><p>The directory is manually maintained. Each entry links to its organiser and shows its last source-check date. Availability can change.</p></section></div>`;
 }
@@ -48,6 +47,7 @@ function render28() {
     if (document.querySelector('#view h1')) { document.querySelector('#view').focus(); return; }
     raw = 'home';
   }
+  disposeHomeStory30();
   const parts = raw.split(/[/?]/), root = parts[0];
   const topic = TOPICS28.find(([id]) => root === id || ['gaps','topic'].includes(root) && parts[1] === id);
   const aliases = {map:'home', about:'method', methods:'method', futures:'projects', grants:'projects', emerging:'evidence', findings:'evidence'};
@@ -67,6 +67,7 @@ function render28() {
     else a.removeAttribute('aria-current');
   });
   window.scrollTo(0, 0);
+  if (route === 'home') installHomeStory30();
 }
 window.addEventListener('hashchange', () => { render28(); document.querySelector('#view').focus({preventScroll:true}); });
 render28();

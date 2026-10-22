@@ -1,0 +1,46 @@
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),assert=require('node:assert/strict');
+const {parseHTML}=require('linkedom');
+const M=require('../prototypes/paper-network/skills-model.js'),C=require('../prototypes/paper-network/concepts.js');
+// Exercise edge cases that could otherwise make an empty map look like a research gap.
+const rs=[{id:'a',title:'Automation bias and retention',citation:'A',year:2020,topics:['skills','handover','influence'],landscape:[]},{id:'b',title:'Automation bias',citation:'B',year:2024,topics:['skills','handover'],landscape:[]},{id:'c',title:'Retention',citation:'C',year:null,topics:['skills'],landscape:[]}];
+const citations={records:{a:{count:0},b:{count:100}}},ctx={matches:r=>C.match(r,C.defaults),citations,queue:['b']};
+const select=s=>M.select(rs,{...M.defaults,...s},ctx).map(r=>r.id);
+assert.deepEqual(select({concept:'bias',connection:'retention'}),['a']);
+assert.deepEqual(select({area:'handover',area2:'influence'}),['a']);
+assert.deepEqual(select({cites:'5',unknown:'include'}),['b','c']);
+assert.deepEqual(select({cites:'5',unknown:'exclude'}),['b']);
+assert.deepEqual(select({from:'2021'}),['b']);
+assert.deepEqual(select({from:'2024',to:'2020'}),[]);
+assert.deepEqual(select({sort:'citations'}),['b','a','c']);
+assert.deepEqual(select({collection:'queue'}),['b']);
+assert.equal(M.citation(rs[0],citations),0);assert.equal(M.citation(rs[2],citations),null);
+assert.equal(M.radius(0,'citations'),M.radius(null,'citations'));assert(M.radius(100,'citations')>M.radius(0,'citations'));assert.equal(M.radius(100,'equal'),M.radius(0,'equal'));
+assert.deepEqual(M.readQuery('?view=bad&concept=nope&cites=-1').view,'concepts');
+const shared={...M.defaults,concept:'bias',connection:'retention',q:'human & AI',from:'2020',area2:'influence'};assert.deepEqual(M.readQuery('?'+M.query(shared)),shared);
+assert.equal(M.pairs(rs,r=>r.topics).find(p=>p.a==='handover'&&p.b==='influence').ids.length,1);
+assert(M.isRetracted({title:'Paper',citation:'Retracted in 2026'}));
+const target=process.argv[2]||'dist/reorganized-dashboard/skills.html';const html=fs.readFileSync(path.resolve(__dirname,'..',target),'utf8');
+assert(!html.includes('/* INLINE:'));const scripts=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m=>m[1]);scripts.forEach(s=>new vm.Script(s));
+function harness(saved,blocked=false){
+ const {document,Event,HTMLSelectElement}=parseHTML(html);const data=new Map(saved?[['gd-skills-pilot-v1',saved]]:[]),events={};
+ // linkedom lacks the writable selected value that browsers provide.
+ Object.defineProperty(HTMLSelectElement.prototype,'value',{configurable:true,get(){return this.querySelector('option[selected]')?.value||this.querySelector('option')?.value||'';},set(v){for(const o of this.querySelectorAll('option'))o.toggleAttribute('selected',o.value===v);}});
+ const location={search:'',pathname:'/skills.html',href:'http://localhost/skills.html'},window={addEventListener:(n,f)=>events[n]=f,matchMedia:()=>({matches:false})};
+ const context=vm.createContext({document,window,location,history:{replaceState:(_,__,url)=>location.href='http://localhost'+url},console,URL,URLSearchParams,Blob,setTimeout,localStorage:{getItem:k=>{if(blocked)throw Error('Blocked');return data.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('Blocked');data.set(k,v);}}});
+ const run=s=>vm.runInContext(s,context);scripts.forEach((s,i)=>{run(s);if(i===2)context.GDConcepts=window.GDConcepts;if(i===3)context.GDSkills=window.GDSkills;});
+ return {run,document,data,events};
+}
+const expected=require('../src/library-view-data.json').records.filter(r=>r.topics.includes('skills')).length;const h=harness();assert.equal(h.run('records.length'),expected);assert.equal(h.document.querySelectorAll('.reference-row').length,15);assert.equal(h.run('visibleRows.length'),expected);
+h.run("change({concept:'bias',connection:'retention'})");assert(h.run('visibleRows.length')>0);assert(h.run("visibleRows.every(r=>matches(r).some(m=>m.id==='bias')&&matches(r).some(m=>m.id==='retention'))"));
+h.run("change({...M.defaults,view:'areas'});choosePair('institutions','influence')");assert(h.run("visibleRows.every(r=>r.topics.includes('institutions')&&r.topics.includes('influence'))"));
+h.run("change({...M.defaults});choosePaper(records[0].id,false)");assert(h.document.querySelector('#review-form'));assert(h.document.querySelector('.source-link').getAttribute('rel').includes('noopener'));
+h.run("drafts[records[0].id]={population:'A saved draft',design:'',outcome:'unknown',duration:'unknown',quote:'',locator:'',note:'',status:'checked'};persist()");
+const loaded=harness(h.data.get('gd-skills-pilot-v1'));assert.equal(loaded.run('drafts[records[0].id].population'),'A saved draft');assert.equal(loaded.run('matrixRows.length'),0,'A draft checked status must not enter the matrix');
+assert.throws(()=>h.run("validateWorkspace({...workspace(),queue:['missing-id']})"));
+assert.throws(()=>h.run("validateWorkspace({...workspace(),reviews:{[records[0].id]:{...drafts[records[0].id],status:'checked'}}})"));
+h.run("reviews[records[0].id]=C.validateReview({...drafts[records[0].id],quote:'Example excerpt',locator:'Methods',outcome:'unaided',duration:'days'});persist();render()");assert.equal(h.run('matrixRows.length'),1);
+h.run("change({q:'no matching title zzz'})");assert.equal(h.run('matrixRows.length'),0);assert(h.document.querySelector('.empty'));
+const broken=harness('{bad JSON');assert.equal(broken.data.get('gd-skills-pilot-v1'),'{bad JSON','Invalid saved state must not be overwritten');
+assert.match(harness(undefined,true).document.querySelector('#storage-note').textContent,/preserved|unavailable/);
+const emptyRules=JSON.parse(h.data.get('gd-skills-pilot-v1'));emptyRules.rules=emptyRules.rules.map(c=>({...c,terms:[]}));const noMatches=harness(JSON.stringify(emptyRules));assert.equal(noMatches.run('allPairs.length'),0);assert.equal(noMatches.document.querySelectorAll('.graph-paper').length,0);assert(noMatches.document.querySelectorAll('.reference-row').length>0,'No concept matches must not erase the collection');
+console.log('Skills explorer: pair intersections, unknown citations, dates, sorting, URL state, pagination, saved drafts, review validation, matrix scope, empty rules and blocked storage passed.');
