@@ -2,7 +2,7 @@
 
 A research prototype for understanding how growing reliance on AI could weaken human influence, and how we might measure that change.
 
-**Current release: 22 October 2026.** The homepage follows three chapters: a proposed pathway and interacting harms; the challenge of measuring them across disciplines; and a connected-literature preview. The same nine nodes carry the desktop scroll narrative. Phones show the same story in ordinary reading order. The homepage opens a separate **Skills and judgement** explorer; other topic reviews and selected findings remain work in progress.
+**Current release: 22 October 2026.** The homepage follows three chapters: a proposed pathway and interacting harms; the challenge of measuring them across disciplines; and a connected-literature preview. The same nine nodes carry the desktop scroll narrative. Phones show the same story in ordinary reading order. The homepage opens a separate **Skills and judgement** explorer; the separately prepared topic reviews and selected-evidence pages are also preserved, with human review pending.
 
 [View the site](https://nekocchi-0417.github.io/gd-observatory/) · [Skills explorer](https://nekocchi-0417.github.io/gd-observatory/skills.html) · [Original GD proposal](https://gradual-disempowerment.ai/)
 
@@ -10,14 +10,14 @@ A research prototype for understanding how growing reliance on AI could weaken h
 
 - Homepage arrows show proposed relationships, adapted from the GD paper with an additional Skills and judgement branch. Dashed connections between harms illustrate a hypothesis, not established effects.
 - The measurement scene shows illustrative, overlapping research lenses. It does not assign coverage scores.
-- The final homepage network counts shared references in the draft catalog's existing topic assignments. These links replace the causal arrows; they have a different meaning.
+- The final homepage network counts shared references in the draft catalog's existing topic assignments plus explicit related-area tags from the 22 October expansion. These links replace the causal arrows; they have a different meaning.
 - The explorer's **Concepts** view matches editable whole phrases in reference titles and construct/domain metadata. Abstracts and full texts are not searched. Shared concepts suggest relevance, not agreement, citation relationships or causation.
 - **GD areas** uses the existing topic assignments of references within the Skills collection. It is not a complete literature review of the other areas.
-- Source counts and citation counts do not establish measurement quality. Missing citation counts stay distinct from zero. No field-wide gap verdict or coverage gradient is published.
+- Alternate versions or repeated use of the same underlying data can remain. Source counts and citation counts do not establish measurement quality. Missing citation counts stay distinct from zero. No field-wide gap verdict or coverage gradient is published.
 
 ## Skills and judgement MVP
 
-The explorer contains **353 draft references**, taken from `src/library-view-data.json` dated **19 October 2026**. A deeper review of other topics is being prepared separately; it was not available on the remote when this release was assembled.
+The explorer contains **353 references**, combining the 19 October base catalog with the **22 October topic-review expansion**. The combined bibliography has 775 references after URL and bibliographic matching: 700 base records plus 75 additions from 181 detailed topic-source records. The overlay matches 106 extracted records to existing entries, including 23 alternate-URL matches using an exact title, publication year and named-author overlap with a single candidate. Original IDs are retained. The Skills subset remains 353 references, and 32 now have explicit updated review provenance. The inspector exposes each match method and reviewed-source link; these joins remain reviewable. This overlay preserves original reference IDs and keeps source-review status separate from users’ local assessments.
 
 Users can:
 
@@ -43,7 +43,8 @@ The site is plain HTML, CSS and JavaScript. Each published page embeds its scrip
 ```sh
 npm ci --ignore-scripts
 node tools/build-reorganized-preview.js             # dist/reorganized-dashboard/
-node tools/check-shareable-dashboard.js             # homepage, routes, themes, held findings
+node tools/check-shareable-dashboard.js             # homepage, routes, themes
+node tools/verify-topic-review.js dist/reorganized-dashboard/topics # integrated topic pages
 node tools/check-home-story-motion.js               # transitions, reduced motion and cleanup
 node tools/check-skills-explorer.js                 # filtering, matching, persistence, review scope
 node tools/verify-paper-network.js                  # matching and original pilot checks
@@ -58,15 +59,15 @@ GitHub Pages serves `main` → `/docs`. The `--research` mode is a separate hist
 ## Where things live
 
 - `prototypes/reorganized/home-story.js` and `.css`: homepage copy, persistent nodes, transitions and phone layout.
-- `prototypes/reorganized/shareable.js`: public routes and held topic/selected-finding pages.
+- `prototypes/reorganized/shareable.js`: public routes into the updated topic and selected-evidence pages.
 - `prototypes/paper-network/skills.html`, `.css`, `.js`: explorer UI and local workspace.
 - `prototypes/paper-network/skills-model.js`: query, intersection, citation and graph logic.
 - `prototypes/paper-network/concepts.js`: eight starting concept definitions and keyword rules.
 - `tools/build-shareable-dashboard.js` and `build-skills-explorer.js`: public assembly and data scoping.
-- `src/library-view-data.json`: generated bibliography with provenance, not approved findings.
+- `src/library-view-data.json`: base bibliography; `tools/network-library.js` overlays the 22 October topic-review sources by canonical URL or a unique exact-title/year/author match, without publishing their findings in the map.
 - `research/`: earlier research collections, curation and review notes. Historical screenshots and ratings describe their dated versions, not this release.
 
-To integrate an updated bibliography, regenerate `src/library-view-data.json` with the existing library tools, check stable reference IDs and schema compatibility, rerun the current builds and checks, and inspect changed matches. The public builder consumes that generated snapshot; it does not run a new literature search. Citation refresh is a separate step. Bibliographic repair does not approve a paper's findings.
+To integrate an updated bibliography, regenerate `src/library-view-data.json` with the existing library tools, check stable reference IDs and schema compatibility, rerun the current builds and checks, and inspect changed matches. The public builder consumes that generated snapshot plus the explicitly dated topic-review overlay; it does not run a new literature search. Citation refresh is a separate step. Bibliographic repair does not approve a paper's findings.
 
 ## Original local prototypes
 
@@ -77,7 +78,7 @@ To integrate an updated bibliography, regenerate `src/library-view-data.json` wi
 1. Audit broad keyword matches and existing topic assignments against source abstracts/full texts, especially links spanning GD areas.
 2. Review the interacting-harms narrative and dashed links as a proposed mechanism, including countervailing effects and interventions.
 3. Define a defensible coverage rubric before introducing a gradient: directness of measures, population/setting, study design and repeated follow-up should remain distinct from source volume.
-4. Integrate the separate literature-review update, then assess whether it changes concept definitions, source scope or the initial queue.
+4. Review the integrated literature update and decide whether concept definitions and the initial queue need revision.
 5. Extend multi-outcome review and shared curation if researchers use the local workflow regularly.
 
 The scroll-continuity reference was [Anthropic's Economic Scenarios](https://www.anthropic.com/institute/econ-scenarios). Its visual assets and economic model are not included here.

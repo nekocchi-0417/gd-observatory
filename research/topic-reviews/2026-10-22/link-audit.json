@@ -1,0 +1,1636 @@
+{
+  "checkedAt": "2026-10-22T09:11:33.965Z",
+  "method": "Sequential HTTP HEAD requests, followed by GET only for servers refusing HEAD. Accessibility checks do not verify source content or claims.",
+  "results": [
+    {
+      "url": "https://metr.org/time-horizons/",
+      "sources": [
+        "capability/cap-metr-horizons",
+        "selected-evidence/capability"
+      ],
+      "status": 200,
+      "finalURL": "https://metr.org/time-horizons/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://metr.org/notes/2026-01-22-time-horizon-limitations/",
+      "sources": [
+        "capability/cap-metr-limits"
+      ],
+      "status": 200,
+      "finalURL": "https://metr.org/notes/2026-01-22-time-horizon-limitations/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+      "sources": [
+        "capability/cap-metr-dev-rct"
+      ],
+      "status": 200,
+      "finalURL": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+      "sources": [
+        "capability/cap-metr-dev-update"
+      ],
+      "status": 200,
+      "finalURL": "https://metr.org/blog/2026-02-24-uplift-update/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://metr.org/blog/2026-09-22-claude-opus-5-5/",
+      "sources": [
+        "capability/cap-metr-opus55"
+      ],
+      "status": 200,
+      "finalURL": "https://metr.org/blog/2026-09-22-claude-opus-5-5/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://epoch.ai/eci",
+      "sources": [
+        "capability/cap-epoch-eci"
+      ],
+      "status": 200,
+      "finalURL": "https://epoch.ai/eci",
+      "result": "reachable"
+    },
+    {
+      "url": "https://labs.scale.com/leaderboard/rli",
+      "sources": [
+        "capability/cap-rli"
+      ],
+      "status": 200,
+      "finalURL": "https://labs.scale.com/leaderboard/rli",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2510.04374v1",
+      "sources": [
+        "capability/cap-gdpval"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2510.04374v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2310.06770v3",
+      "sources": [
+        "capability/cap-swebench"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2310.06770v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://labs.scale.com/leaderboard/swe_bench_pro",
+      "sources": [
+        "capability/cap-swepro"
+      ],
+      "status": 200,
+      "finalURL": "https://labs.scale.com/leaderboard/swe_bench_pro",
+      "result": "reachable"
+    },
+    {
+      "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+      "sources": [
+        "capability/cap-sweaudit"
+      ],
+      "status": 403,
+      "finalURL": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://arxiv.org/html/2311.12983v1",
+      "sources": [
+        "capability/cap-gaia"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2311.12983v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2404.07972v2",
+      "sources": [
+        "capability/cap-osworld"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2404.07972v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2311.12022",
+      "sources": [
+        "capability/cap-gpqa"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2311.12022",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2411.04872",
+      "sources": [
+        "capability/cap-frontiermath"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2411.04872",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2407.10362v3",
+      "sources": [
+        "capability/cap-labbench"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2407.10362v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2410.05080v3",
+      "sources": [
+        "capability/cap-scienceagent"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2410.05080v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2412.14161v3",
+      "sources": [
+        "capability/cap-agentcompany"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2412.14161v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2602.16666v3",
+      "sources": [
+        "capability/cap-reliability"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2602.16666v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2511.04703v1",
+      "sources": [
+        "capability/cap-validity-review"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2511.04703v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-09962-4",
+      "sources": [
+        "capability/cap-hle"
+      ],
+      "status": 200,
+      "finalURL": "https://idp.nature.com/transit?redirect_uri=https%3A%2F%2Fwww.nature.com%2Farticles%2Fs41586-025-09962-4&code=e60363c2-98d2-41eb-90cd-1fa47c01c8a1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.futurehouse.org/research/hle-exam",
+      "sources": [
+        "capability/cap-hle-audit"
+      ],
+      "status": 200,
+      "finalURL": "https://www.futurehouse.org/research/hle-exam",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.hbs.edu/ris/Publication%20Files/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717.pdf",
+      "sources": [
+        "capability/cap-jagged",
+        "handover/ho-dellacqua26"
+      ],
+      "status": 200,
+      "finalURL": "https://www.hbs.edu/ris/Publication%20Files/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://epoch.ai/publications/can-ai-automate-epoch",
+      "sources": [
+        "capability/cap-epoch-work"
+      ],
+      "status": 200,
+      "finalURL": "https://epoch.ai/publications/can-ai-automate-epoch",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2610.12466v1",
+      "sources": [
+        "capability/cap-metr-statistics"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2610.12466v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "sources": [
+        "adoption/adopt-btos-current"
+      ],
+      "status": 200,
+      "finalURL": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.census.gov/hfp/btos/downloads/AI%20Question%20Wording%20Updates.pdf",
+      "sources": [
+        "adoption/adopt-btos-wording"
+      ],
+      "status": 200,
+      "finalURL": "https://www.census.gov/hfp/btos/downloads/AI%20Question%20Wording%20Updates.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.census.gov/library/working-papers/2024/adrm/CES-WP-24-16.html",
+      "sources": [
+        "adoption/adopt-btos-foundation"
+      ],
+      "status": 200,
+      "finalURL": "https://www.census.gov/library/working-papers/2024/adrm/CES-WP-24-16.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-25.pdf",
+      "sources": [
+        "adoption/adopt-btos-microstructure"
+      ],
+      "status": 200,
+      "finalURL": "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-25.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.stlouisfed.org/on-the-economy/2025/nov/state-generative-ai-adoption-2025",
+      "sources": [
+        "adoption/adopt-rps-revision"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://fred.stlouisfed.org/series/RPSGENAIASSISTWRKHRSALL",
+      "sources": [
+        "adoption/adopt-rps-hours"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html",
+      "sources": [
+        "adoption/adopt-fed-comparison"
+      ],
+      "status": 200,
+      "finalURL": "https://www.federalreserve.gov/econres/notes/feds-notes/monitoring-ai-adoption-in-the-u-s-economy-20260403.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.pewresearch.org/social-trends/2025/02/25/u-s-workers-are-more-worried-than-hopeful-about-future-ai-use-in-the-workplace/",
+      "sources": [
+        "adoption/adopt-pew-workers"
+      ],
+      "status": 200,
+      "finalURL": "https://www.pewresearch.org/social-trends/2025/02/25/u-s-workers-are-more-worried-than-hopeful-about-future-ai-use-in-the-workplace/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+      "sources": [
+        "adoption/adopt-gallup-frequency",
+        "selected-evidence/adoption",
+        "selected-evidence/adoption"
+      ],
+      "status": 200,
+      "finalURL": "https://www.gallup.com/699797/indicator-artificial-intelligence.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://news.gallup.com/opinion/methodology/711806/gallup-developed-global-survey-questions.aspx",
+      "sources": [
+        "adoption/adopt-gallup-cognitive"
+      ],
+      "status": 200,
+      "finalURL": "https://news.gallup.com/opinion/methodology/711806/gallup-developed-global-survey-questions.aspx",
+      "result": "reachable"
+    },
+    {
+      "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2",
+      "sources": [
+        "adoption/adopt-eurostat-firms"
+      ],
+      "status": 200,
+      "finalURL": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260210-1",
+      "sources": [
+        "adoption/adopt-eurostat-people"
+      ],
+      "status": 200,
+      "finalURL": "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260210-1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/articles/artificialintelligenceinukbusinesses/2023to2026",
+      "sources": [
+        "adoption/adopt-ons-business"
+      ],
+      "status": 200,
+      "finalURL": "https://www.ons.gov.uk/businessindustryandtrade/business/businessservices/articles/artificialintelligenceinukbusinesses/2023to2026",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/latest-release",
+      "sources": [
+        "adoption/adopt-abs-business"
+      ],
+      "status": 200,
+      "finalURL": "https://www.abs.gov.au/statistics/industry/technology-and-innovation/characteristics-australian-business/latest-release",
+      "result": "reachable"
+    },
+    {
+      "url": "https://cetic.br/media/docs/publicacoes/2/20250512122204/tic_empresas_2024_livro_eletronico.pdf",
+      "sources": [
+        "adoption/adopt-brazil-tic"
+      ],
+      "status": 200,
+      "finalURL": "https://cetic.br/media/docs/publicacoes/2/20250512122204/tic_empresas_2024_livro_eletronico.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://oecd.ai/en/ai-publications/ict-usage-surveys",
+      "sources": [
+        "adoption/adopt-oecd-measurement"
+      ],
+      "status": 200,
+      "finalURL": "https://oecd.ai/en/ai-publications/ict-usage-surveys",
+      "result": "reachable"
+    },
+    {
+      "url": "https://knowledge.uchicago.edu/records/j95qg-jxd71",
+      "sources": [
+        "adoption/adopt-denmark-inequality"
+      ],
+      "status": 200,
+      "finalURL": "https://knowledge.uchicago.edu/records/j95qg-jxd71",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.brookings.edu/articles/still-waters-rapid-currents-early-labor-market-transformation-under-generative-ai/",
+      "sources": [
+        "adoption/adopt-denmark-outcomes"
+      ],
+      "status": 200,
+      "finalURL": "https://www.brookings.edu/articles/still-waters-rapid-currents-early-labor-market-transformation-under-generative-ai/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.frbsf.org/research-and-insights/publications/system-research-st-louis-fed/2026/07/what-work-does-generative-ai-do/",
+      "sources": [
+        "adoption/adopt-task-survey"
+      ],
+      "status": 200,
+      "finalURL": "https://www.frbsf.org/research-and-insights/publications/system-research-st-louis-fed/2026/07/what-work-does-generative-ai-do/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+      "sources": [
+        "adoption/adopt-anthropic-index",
+        "handover/ho-aei-jan26"
+      ],
+      "status": 200,
+      "finalURL": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+      "result": "reachable"
+    },
+    {
+      "url": "https://ramp.com/data/ai-index",
+      "sources": [
+        "adoption/adopt-ramp-spend"
+      ],
+      "status": 200,
+      "finalURL": "https://ramp.com/data/ai-index",
+      "result": "reachable"
+    },
+    {
+      "url": "https://cdn.openai.com/pdf/a253471f-8260-40c6-a2cc-aa93fe9f142e/economic-research-chatgpt-usage-paper.pdf",
+      "sources": [
+        "adoption/adopt-chatgpt-usage",
+        "handover/ho-chatgpt25"
+      ],
+      "status": 200,
+      "finalURL": "https://cdn.openai.com/pdf/a253471f-8260-40c6-a2cc-aa93fe9f142e/economic-research-chatgpt-usage-paper.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://openai.com/index/how-chatgpt-adoption-has-expanded/",
+      "sources": [
+        "adoption/adopt-chatgpt-cohorts"
+      ],
+      "status": 403,
+      "finalURL": "https://openai.com/index/how-chatgpt-adoption-has-expanded/",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://www.stlouisfed.org/on-the-economy/2026/mar/mind-gap-ai-adoption-europe-us",
+      "sources": [
+        "adoption/adopt-mind-gap"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op395.en.pdf",
+      "sources": [
+        "adoption/adopt-ecb-safe"
+      ],
+      "status": 200,
+      "finalURL": "https://www.ecb.europa.eu/pub/pdf/scpops/ecb.op395.en.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.anthropic.com/research/economic-index-march-2026-report",
+      "sources": [
+        "handover/ho-aei-mar26"
+      ],
+      "status": 200,
+      "finalURL": "https://www.anthropic.com/research/economic-index-march-2026-report",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "sources": [
+        "handover/ho-aei-jun26"
+      ],
+      "status": 200,
+      "finalURL": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.anthropic.com/research/measuring-agent-autonomy",
+      "sources": [
+        "handover/ho-agent-autonomy26"
+      ],
+      "status": 200,
+      "finalURL": "https://www.anthropic.com/research/measuring-agent-autonomy",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.anthropic.com/research/claude-code-expertise",
+      "sources": [
+        "handover/ho-code-expertise26"
+      ],
+      "status": 200,
+      "finalURL": "https://www.anthropic.com/research/claude-code-expertise",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+      "sources": [
+        "handover/ho-boe24"
+      ],
+      "status": 200,
+      "finalURL": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2506.06576v3",
+      "sources": [
+        "handover/ho-workbank26"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2506.06576v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://journals.sagepub.com/doi/10.1177/0018720813501549",
+      "sources": [
+        "handover/ho-onnasch14"
+      ],
+      "status": 403,
+      "finalURL": "https://journals.sagepub.com/doi/10.1177/0018720813501549",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://arxiv.org/html/2405.06087v2",
+      "sources": [
+        "handover/ho-vaccaro24"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2405.06087v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2102.09692v1",
+      "sources": [
+        "handover/ho-bucinca21"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2102.09692v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2302.02187v3",
+      "sources": [
+        "handover/ho-schemmer23"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2302.02187v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298037",
+      "sources": [
+        "handover/ho-sele24",
+        "institutions/institutions-sele-oversight"
+      ],
+      "status": 200,
+      "finalURL": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298037",
+      "result": "reachable"
+    },
+    {
+      "url": "https://marketing.wharton.upenn.edu/wp-content/uploads/2020/07/Dietvorst-Simmons-Massey-2014.pdf",
+      "sources": [
+        "handover/ho-dietvorst15"
+      ],
+      "status": 200,
+      "finalURL": "https://marketing.wharton.upenn.edu/wp-content/uploads/2020/07/Dietvorst-Simmons-Massey-2014.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2016/08/Dietvorst-Simmons-Massey-2018.pdf",
+      "sources": [
+        "handover/ho-dietvorst18"
+      ],
+      "status": 200,
+      "finalURL": "https://faculty.wharton.upenn.edu/wp-content/uploads/2016/08/Dietvorst-Simmons-Massey-2018.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2006.14779v3",
+      "sources": [
+        "handover/ho-bansal21"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2006.14779v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://cicl.stanford.edu/papers/vasconcelos2022explanations.pdf",
+      "sources": [
+        "handover/ho-vasconcelos23"
+      ],
+      "status": 200,
+      "finalURL": "https://cicl.stanford.edu/papers/vasconcelos2022explanations.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41598-022-18751-2",
+      "sources": [
+        "handover/ho-reverberi22"
+      ],
+      "status": 200,
+      "finalURL": "https://idp.nature.com/transit?redirect_uri=https%3A%2F%2Fwww.nature.com%2Farticles%2Fs41598-022-18751-2&code=0eb55bc4-a657-48e2-a958-79c599b947ea",
+      "result": "reachable"
+    },
+    {
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2825395",
+      "sources": [
+        "handover/ho-goh24"
+      ],
+      "status": 403,
+      "finalURL": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2825395",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+      "sources": [
+        "work/work-canaries-2026"
+      ],
+      "status": 200,
+      "finalURL": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/",
+      "sources": [
+        "work/work-canaries-series",
+        "selected-evidence/work"
+      ],
+      "status": 200,
+      "finalURL": "https://digitaleconomy.stanford.edu/project/indicators/canaries-dashboard/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.rfberlin.com/wp-content/uploads/2026/03/26078.pdf",
+      "sources": [
+        "work/work-humlum-2026",
+        "share/share-humlum-2026"
+      ],
+      "status": 200,
+      "finalURL": "https://www.rfberlin.com/wp-content/uploads/2026/03/26078.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.etla.fi/wp-content/uploads/ETLA-Working-Papers-135.pdf",
+      "sources": [
+        "work/work-finland-youth"
+      ],
+      "status": 200,
+      "finalURL": "https://www.etla.fi/wp-content/uploads/ETLA-Working-Papers-135.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://docs.iza.org/dp18767.pdf",
+      "sources": [
+        "work/work-norway-2026"
+      ],
+      "status": 200,
+      "finalURL": "https://liser.lu/en",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.anthropic.com/research/labor-market-impacts",
+      "sources": [
+        "work/work-anthropic-2026"
+      ],
+      "status": 200,
+      "finalURL": "https://www.anthropic.com/research/labor-market-impacts",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-56.pdf",
+      "sources": [
+        "work/work-census-graduates"
+      ],
+      "status": 200,
+      "finalURL": "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-56.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.newyorkfed.org/research/college-labor-market",
+      "sources": [
+        "work/work-nyfed-college"
+      ],
+      "status": 200,
+      "finalURL": "https://www.newyorkfed.org/research/college-labor-market",
+      "result": "reachable"
+    },
+    {
+      "url": "https://libertystreeteconomics.newyorkfed.org/2025/09/are-businesses-scaling-back-hiring-due-to-ai/",
+      "sources": [
+        "work/work-nyfed-business"
+      ],
+      "status": 200,
+      "finalURL": "https://libertystreeteconomics.newyorkfed.org/2025/09/are-businesses-scaling-back-hiring-due-to-ai/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://budgetlab.yale.edu/research/tracking-impact-ai-labor-market",
+      "sources": [
+        "work/work-yale-tracker"
+      ],
+      "status": 200,
+      "finalURL": "https://budgetlab.yale.edu/research/tracking-impact-ai-labor-market",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.kcl.ac.uk/news/new-study-reveals-early-impact-of-ai-on-job-market-in-uk",
+      "sources": [
+        "work/work-uk-teeselink"
+      ],
+      "status": 200,
+      "finalURL": "https://www.kcl.ac.uk/news/new-study-reveals-early-impact-of-ai-on-job-market-in-uk",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2303.10130",
+      "sources": [
+        "work/work-eloundou-exposure"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2303.10130",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2304.11771v2",
+      "sources": [
+        "work/work-brynjolfsson-productivity"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2304.11771v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.ifo.de/sites/default/files/docbase/docs/cesifo1_wp11276.pdf",
+      "sources": [
+        "work/work-demirci-platform"
+      ],
+      "status": 200,
+      "finalURL": "https://www.ifo.de/sites/default/files/docbase/docs/cesifo1_wp11276.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.ifo.de/sites/default/files/docbase/docs/cesifo1_wp10601.pdf",
+      "sources": [
+        "work/work-hui-freelancers"
+      ],
+      "status": 200,
+      "finalURL": "https://www.ifo.de/sites/default/files/docbase/docs/cesifo1_wp10601.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.ilo.org/publications/generative-ai-and-jobs-2025-update",
+      "sources": [
+        "work/work-ilo-exposure"
+      ],
+      "status": 200,
+      "finalURL": "https://www.ilo.org/publications/generative-ai-and-jobs-2025-update",
+      "result": "reachable"
+    },
+    {
+      "url": "https://economics.mit.edu/sites/default/files/inline-files/Noy_Zhang_1_0.pdf",
+      "sources": [
+        "work/work-noy-zhang"
+      ],
+      "status": 200,
+      "finalURL": "https://economics.mit.edu/sites/default/files/inline-files/Noy_Zhang_1_0.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3",
+      "sources": [
+        "work/work-task-framework"
+      ],
+      "status": 200,
+      "finalURL": "https://www.aeaweb.org/articles?id=10.1257/jep.33.2.3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/",
+      "sources": [
+        "work/work-remote-mentoring"
+      ],
+      "status": 200,
+      "finalURL": "https://libertystreeteconomics.newyorkfed.org/2026/06/remote-work-leaves-younger-workers-sidelined/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://hiringlab.indeed.com/2026/07/23/the-labor-market-is-tilting-toward-seniority/",
+      "sources": [
+        "work/work-indeed-seniority"
+      ],
+      "status": 200,
+      "finalURL": "https://hiringlab.indeed.com/2026/07/23/the-labor-market-is-tilting-toward-seniority/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://economics.mit.edu/sites/default/files/2023-12/New%20Frontiers%20-%20The%20Origins%20and%20Content%20of%20New%20Work%201940-2018.pdf",
+      "sources": [
+        "work/work-new-frontiers"
+      ],
+      "status": 200,
+      "finalURL": "https://economics.mit.edu/sites/default/files/2023-12/New%20Frontiers%20-%20The%20Origins%20and%20Content%20of%20New%20Work%201940-2018.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.etla.fi/en/publications/academic-publications/winners-and-losers-of-generative-ai-early-evidence-of-shifts-in-freelancer-demand/",
+      "sources": [
+        "work/work-teutloff-platform"
+      ],
+      "status": 200,
+      "finalURL": "https://www.etla.fi/en/publications/academic-publications/winners-and-losers-of-generative-ai-early-evidence-of-shifts-in-freelancer-demand/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://research.aalto.fi/en/publications/assessing-early-labour-market-effects-of-generative-ai-evidence-f/",
+      "sources": [
+        "work/work-finland-all"
+      ],
+      "status": 200,
+      "finalURL": "https://research.aalto.fi/en/publications/assessing-early-labour-market-effects-of-generative-ai-evidence-f/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bls.gov/news.release/prod2.nr0.htm",
+      "sources": [
+        "share/share-bls-nfb"
+      ],
+      "status": 403,
+      "finalURL": "https://www.bls.gov/news.release/prod2.nr0.htm",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://www.bls.gov/opub/hom/msp/calculation.htm",
+      "sources": [
+        "share/share-bls-method"
+      ],
+      "status": 403,
+      "finalURL": "https://www.bls.gov/opub/hom/msp/calculation.htm",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://www.bls.gov/opub/mlr/2017/article/estimating-the-us-labor-share.htm",
+      "sources": [
+        "share/share-bls-estimating"
+      ],
+      "status": 403,
+      "finalURL": "https://www.bls.gov/opub/mlr/2017/article/estimating-the-us-labor-share.htm",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://fred.stlouisfed.org/series/A4002E1A156NBEA",
+      "sources": [
+        "share/share-bea-gdi"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://apps.bea.gov/well-being/",
+      "sources": [
+        "share/share-bea-prototype"
+      ],
+      "status": 200,
+      "finalURL": "https://apps.bea.gov/well-being/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://unstats.un.org/sdgs/metadata/files/Metadata-10-04-01.pdf",
+      "sources": [
+        "share/share-ilo-metadata"
+      ],
+      "status": 200,
+      "finalURL": "https://unstats.un.org/sdgs/metadata/files/Metadata-10-04-01.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.ilo.org/sites/default/files/2025-05/WESOUpdate_May2025.pdf",
+      "sources": [
+        "share/share-ilo-weso"
+      ],
+      "status": 200,
+      "finalURL": "https://www.ilo.org/sites/default/files/2025-05/WESOUpdate_May2025.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.aeaweb.org/articles?id=10.1257/jep.38.2.107",
+      "sources": [
+        "share/share-karabarbounis"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://www.aeaweb.org/articles?id=10.1257/aeri.20190285",
+      "sources": [
+        "share/share-gutierrez-piton"
+      ],
+      "status": 200,
+      "finalURL": "https://www.aeaweb.org/articles?id=10.1257/aeri.20190285",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.oecd.org/en/publications/has-the-labour-share-declined_2dcfc715-en.html",
+      "sources": [
+        "share/share-oecd-cho"
+      ],
+      "status": 403,
+      "finalURL": "https://www.oecd.org/en/publications/has-the-labour-share-declined_2dcfc715-en.html",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://economics.mit.edu/sites/default/files/publications/Autor%20et%20al_2020_The%20Fall%20of%20the%20Labor%20Share%20and%20t.pdf",
+      "sources": [
+        "share/share-superstar"
+      ],
+      "status": 200,
+      "finalURL": "https://economics.mit.edu/sites/default/files/publications/Autor%20et%20al_2020_The%20Fall%20of%20the%20Labor%20Share%20and%20t.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-economics-080921-103046",
+      "sources": [
+        "share/share-grossman-oberfield"
+      ],
+      "status": 403,
+      "finalURL": "https://www.annualreviews.org/content/journals/10.1146/annurev-economics-080921-103046",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA17477",
+      "sources": [
+        "share/share-koh-ipp"
+      ],
+      "status": 403,
+      "finalURL": "https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA17477",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://www.brookings.edu/wp-content/uploads/2020/12/StansburySummers-Final-web.pdf",
+      "sources": [
+        "share/share-worker-power"
+      ],
+      "status": 200,
+      "finalURL": "https://www.brookings.edu/wp-content/uploads/2020/12/StansburySummers-Final-web.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://origin.www.wga.org/contracts/know-your-rights/artificial-intelligence",
+      "sources": [
+        "share/share-wga-2023"
+      ],
+      "status": 200,
+      "finalURL": "https://origin.www.wga.org/contracts/know-your-rights/artificial-intelligence",
+      "result": "reachable"
+    },
+    {
+      "url": "https://origin.www.wga.org/contracts/contracts/mba/2026-mba-contract-changes-faq",
+      "sources": [
+        "share/share-wga-2026"
+      ],
+      "status": 200,
+      "finalURL": "https://origin.www.wga.org/contracts/contracts/mba/2026-mba-contract-changes-faq",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.sagaftra.org/sag-aftra-members-approve-2025-video-game-agreement",
+      "sources": [
+        "share/share-sag-games"
+      ],
+      "status": 403,
+      "finalURL": "https://www.sagaftra.org/sag-aftra-members-approve-2025-video-game-agreement",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/06/11/Broadening-the-Gains-from-Generative-AI-The-Role-of-Fiscal-Policies-549639",
+      "sources": [
+        "share/share-imf-fiscal"
+      ],
+      "status": 403,
+      "finalURL": "https://www.imf.org/en/Publications/Staff-Discussion-Notes/Issues/2024/06/11/Broadening-the-Gains-from-Generative-AI-The-Role-of-Fiscal-Policies-549639",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://economics.mit.edu/sites/default/files/2024-10/The%20Simple%20Macroeconomics%20of%20AI.pdf",
+      "sources": [
+        "share/share-acemoglu-macro"
+      ],
+      "status": 200,
+      "finalURL": "https://economics.mit.edu/sites/default/files/2024-10/The%20Simple%20Macroeconomics%20of%20AI.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.bls.gov/news.release/union2.nr0.htm",
+      "sources": [
+        "share/share-bls-unions"
+      ],
+      "status": 403,
+      "finalURL": "https://www.bls.gov/news.release/union2.nr0.htm",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://davidcard.berkeley.edu/papers/dp6086.pdf",
+      "sources": [
+        "share/share-card-rents"
+      ],
+      "status": 200,
+      "finalURL": "https://davidcard.berkeley.edu/papers/dp6086.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://eml.berkeley.edu/~pkline/papers/KPWZ_QJE_2019.pdf",
+      "sources": [
+        "share/share-kline-patents"
+      ],
+      "status": 200,
+      "finalURL": "https://eml.berkeley.edu/~pkline/papers/KPWZ_QJE_2019.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/",
+      "sources": [
+        "culture/culture-deezer-series"
+      ],
+      "status": 200,
+      "finalURL": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://newsroom-deezer.com/2025/11/deezer-ipsos-survey-ai-music/",
+      "sources": [
+        "culture/culture-deezer-ipsos"
+      ],
+      "status": 200,
+      "finalURL": "https://newsroom-deezer.com/2025/11/deezer-ipsos-survey-ai-music/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+      "sources": [
+        "culture/culture-pew-clicks"
+      ],
+      "status": 200,
+      "finalURL": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2312.00506v3",
+      "sources": [
+        "culture/culture-doshi-creativity"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2312.00506v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2301.11924v2",
+      "sources": [
+        "culture/culture-spitale-tweets"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2301.11924v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39264999/",
+      "sources": [
+        "culture/culture-costello-2024",
+        "influence/in-costello24"
+      ],
+      "status": 203,
+      "finalURL": "https://pubmed.ncbi.nlm.nih.gov/39264999/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2601.05050v3",
+      "sources": [
+        "culture/culture-costello-motives"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2601.05050v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2608.06151v2",
+      "sources": [
+        "culture/culture-emerging-conspiracies"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2608.06151v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2304.02819v3",
+      "sources": [
+        "culture/culture-liang-detectors"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2304.02819v3",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2602.05769v1",
+      "sources": [
+        "culture/culture-czech-detectors"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2602.05769v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2303.11156v4",
+      "sources": [
+        "culture/culture-sadasivan-detection"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2303.11156v4",
+      "result": "reachable"
+    },
+    {
+      "url": "https://chartbeat.com/resources/general/what-ai-headline-testing-reveals-about-audience-engagement/",
+      "sources": [
+        "culture/culture-chartbeat-headlines"
+      ],
+      "status": 200,
+      "finalURL": "https://chartbeat.com/resources/general/what-ai-headline-testing-reveals-about-audience-engagement/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39630865/",
+      "sources": [
+        "culture/culture-deverna-checks"
+      ],
+      "status": 203,
+      "finalURL": "https://pubmed.ncbi.nlm.nih.gov/39630865/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://societyofauthors.org/2024/04/11/soa-survey-reveals-a-third-of-translators-and-quarter-of-illustrators-losing-work-to-ai/",
+      "sources": [
+        "culture/culture-soa-income"
+      ],
+      "status": 403,
+      "finalURL": "https://societyofauthors.org/2024/04/11/soa-survey-reveals-a-third-of-translators-and-quarter-of-illustrators-losing-work-to-ai/",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://spiral.imperial.ac.uk/entities/publication/88113a91-b994-4717-8526-dadac657f1cb",
+      "sources": [
+        "culture/culture-demirci-demand"
+      ],
+      "status": 200,
+      "finalURL": "https://spiral.imperial.ac.uk/entities/publication/88113a91-b994-4717-8526-dadac657f1cb",
+      "result": "reachable"
+    },
+    {
+      "url": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+      "sources": [
+        "culture/culture-reuters-news"
+      ],
+      "status": 200,
+      "finalURL": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.cs.utoronto.ca/~ashton/pubs/alg-effects-spotify-www2020.pdf",
+      "sources": [
+        "culture/culture-spotify-diversity"
+      ],
+      "status": 200,
+      "finalURL": "https://www.cs.utoronto.ca/~ashton/pubs/alg-effects-spotify-www2020.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.princeton.edu/~mjs3/salganik_dodds_watts06_full.pdf",
+      "sources": [
+        "culture/culture-salganik-market"
+      ],
+      "status": 200,
+      "finalURL": "https://www.princeton.edu/~mjs3/salganik_dodds_watts06_full.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://collaborate.princeton.edu/en/publications/on-the-conversational-persuasiveness-of-gpt-4/",
+      "sources": [
+        "culture/culture-salvi-persuasion"
+      ],
+      "status": 200,
+      "finalURL": "https://collaborate.princeton.edu/en/publications/on-the-conversational-persuasiveness-of-gpt-4/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-024-07566-y",
+      "sources": [
+        "culture/culture-model-collapse"
+      ],
+      "status": 200,
+      "finalURL": "https://idp.nature.com/transit?redirect_uri=https%3A%2F%2Fwww.nature.com%2Farticles%2Fs41586-024-07566-y&code=6146de1f-d66f-4f0f-9591-96a6d8aafaab",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2404.01413v2",
+      "sources": [
+        "culture/culture-accumulation"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2404.01413v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38444602/",
+      "sources": [
+        "culture/culture-zhou-art"
+      ],
+      "status": 203,
+      "finalURL": "https://pubmed.ncbi.nlm.nih.gov/38444602/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2302.00560",
+      "sources": [
+        "culture/culture-jakesch-cowriting"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2302.00560",
+      "result": "reachable"
+    },
+    {
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "sources": [
+        "institutions/institutions-us-inventory"
+      ],
+      "status": 200,
+      "finalURL": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.gov.uk/algorithmic-transparency-records",
+      "sources": [
+        "institutions/institutions-uk-atrs"
+      ],
+      "status": 200,
+      "finalURL": "https://www.gov.uk/algorithmic-transparency-records",
+      "result": "reachable"
+    },
+    {
+      "url": "https://files.gao.gov/reports/GAO-25-107653/index.html",
+      "sources": [
+        "institutions/institutions-gao-use"
+      ],
+      "status": 200,
+      "finalURL": "https://files.gao.gov/reports/GAO-25-107653/index.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.nao.org.uk/reports/use-of-artificial-intelligence-in-government/",
+      "sources": [
+        "institutions/institutions-nao-2024"
+      ],
+      "status": 200,
+      "finalURL": "https://www.nao.org.uk/reports/use-of-artificial-intelligence-in-government/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://english.rekenkamer.nl/documents/2024/10/16/focus-on-ai-in-central-government",
+      "sources": [
+        "institutions/institutions-dutch-audit"
+      ],
+      "status": 200,
+      "finalURL": "https://english.rekenkamer.nl/documents/2024/10/16/focus-on-ai-in-central-government",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html",
+      "sources": [
+        "institutions/institutions-canada-register"
+      ],
+      "status": 200,
+      "finalURL": "https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://academic.oup.com/jpart/article/33/1/153/6524536",
+      "sources": [
+        "institutions/institutions-alon-busuioc"
+      ],
+      "status": 403,
+      "finalURL": "https://academic.oup.com/jpart/article/33/1/153/6524536",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://jenniferdoleac.com/wp-content/uploads/2026/08/StevensonDoleac2024.pdf",
+      "sources": [
+        "institutions/institutions-stevenson-doleac"
+      ],
+      "status": 200,
+      "finalURL": "https://jenniferdoleac.com/wp-content/uploads/2026/08/StevensonDoleac2024.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://imai.fas.harvard.edu/research/PRAI.html",
+      "sources": [
+        "institutions/institutions-imai-psa"
+      ],
+      "status": 200,
+      "finalURL": "https://imai.fas.harvard.edu/research/PRAI.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2308.05224",
+      "sources": [
+        "institutions/institutions-saxena-childwelfare"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2308.05224",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.benzevgreen.com/wp-content/uploads/2022/04/22-clsr.pdf",
+      "sources": [
+        "institutions/institutions-green-review"
+      ],
+      "status": 200,
+      "finalURL": "https://www.benzevgreen.com/wp-content/uploads/2022/04/22-clsr.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://files.gao.gov/reports/GAO-26-107859/index.html",
+      "sources": [
+        "institutions/institutions-gao-procurement"
+      ],
+      "status": 200,
+      "finalURL": "https://files.gao.gov/reports/GAO-26-107859/index.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.anao.gov.au/work/performance-audit/australian-taxation-offices-adoption-of-artificial-intelligence",
+      "sources": [
+        "institutions/institutions-ato-audit"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://www.anao.gov.au/work/performance-audit/artificial-intelligence-and-medicare-benefits-integrity",
+      "sources": [
+        "institutions/institutions-medicare-audit"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://assets.publishing.service.gov.uk/media/683db42bd23a62e5d32680d0/M365_Copilot_Experiment_Findings_Report.pdf",
+      "sources": [
+        "institutions/institutions-uk-copilot"
+      ],
+      "status": 200,
+      "finalURL": "https://assets.publishing.service.gov.uk/media/683db42bd23a62e5d32680d0/M365_Copilot_Experiment_Findings_Report.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/abs/2406.10430",
+      "sources": [
+        "institutions/institutions-landau-contest"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/abs/2406.10430",
+      "result": "reachable"
+    },
+    {
+      "url": "https://cmsassets.ombo.nsw.gov.au/assets/Reports/Utilising-Generative-AI-for-ESL-Complainants-Report.pdf",
+      "sources": [
+        "institutions/institutions-nsw-language"
+      ],
+      "status": 200,
+      "finalURL": "https://cmsassets.ombo.nsw.gov.au/assets/Reports/Utilising-Generative-AI-for-ESL-Complainants-Report.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/automated-decision-making/guide-scope-directive-automated-decision-making.html",
+      "sources": [
+        "institutions/institutions-canada-scope"
+      ],
+      "status": 200,
+      "finalURL": "https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/automated-decision-making/guide-scope-directive-automated-decision-making.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://robodebt.royalcommission.gov.au/publications/report",
+      "sources": [
+        "institutions/institutions-robodebt-recs"
+      ],
+      "result": "access-not-confirmed",
+      "error": "TimeoutError"
+    },
+    {
+      "url": "https://arxiv.org/html/2204.13872v1",
+      "sources": [
+        "institutions/institutions-afst-reanalysis"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2204.13872v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://cmsassets.ombo.nsw.gov.au/assets/Reports/Revenue-NSW-The-lawfulness-of-its-garnishee-order-process.pdf",
+      "sources": [
+        "institutions/institutions-nsw-garnishee"
+      ],
+      "status": 200,
+      "finalURL": "https://cmsassets.ombo.nsw.gov.au/assets/Reports/Revenue-NSW-The-lawfulness-of-its-garnishee-order-process.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/",
+      "sources": [
+        "influence/in-pew25"
+      ],
+      "status": 200,
+      "finalURL": "https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2601.19062v1",
+      "sources": [
+        "influence/in-whos26"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2601.19062v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://feps-europe.eu/wp-content/uploads/2024/06/Policy-Study-Int-Report-Algorithmic-Management-web-PP.pdf",
+      "sources": [
+        "influence/in-feps24"
+      ],
+      "status": 200,
+      "finalURL": "https://feps-europe.eu/wp-content/uploads/2024/06/Policy-Study-Int-Report-Algorithmic-Management-web-PP.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2301.12490v2",
+      "sources": [
+        "influence/in-bennett23"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2301.12490v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2018.00015/full",
+      "sources": [
+        "influence/in-mhc18"
+      ],
+      "status": 200,
+      "finalURL": "https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2018.00015/full",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2024.1323980/full",
+      "sources": [
+        "influence/in-verhagen24"
+      ],
+      "status": 200,
+      "finalURL": "https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2024.1323980/full",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/02/algorithmic-management-in-the-workplace_3c84ed6d/287c13c4-en.pdf",
+      "sources": [
+        "influence/in-oecd25"
+      ],
+      "status": 403,
+      "finalURL": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/02/algorithmic-management-in-the-workplace_3c84ed6d/287c13c4-en.pdf",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://journals.sagepub.com/doi/pdf/10.1177/0950017018785616",
+      "sources": [
+        "influence/in-wood19"
+      ],
+      "status": 403,
+      "finalURL": "https://journals.sagepub.com/doi/pdf/10.1177/0950017018785616",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://monitor.algosoc.org/en/engagement.html",
+      "sources": [
+        "influence/in-algosoc26"
+      ],
+      "status": 200,
+      "finalURL": "https://monitor.algosoc.org/en/engagement.html",
+      "result": "reachable"
+    },
+    {
+      "url": "https://link.springer.com/article/10.1007/s11031-014-9450-1",
+      "sources": [
+        "influence/in-chen15"
+      ],
+      "status": 200,
+      "finalURL": "https://idp.springer.com/transit?redirect_uri=https%3A%2F%2Flink.springer.com%2Farticle%2F10.1007%2Fs11031-014-9450-1&code=44bc2667-d32a-4ca1-830a-3334b070cffd",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2302.00560v1",
+      "sources": [
+        "influence/in-jakesch23"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2302.00560v1",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41562-025-02194-6",
+      "sources": [
+        "influence/in-salvi25"
+      ],
+      "status": 200,
+      "finalURL": "https://idp.nature.com/transit?redirect_uri=https%3A%2F%2Fwww.nature.com%2Farticles%2Fs41562-025-02194-6&code=90607119-0d31-4532-b6fb-4bec3ae1afdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/9/583/files/2026/01/persuadingvoters_2025.pdf",
+      "sources": [
+        "influence/in-lin25"
+      ],
+      "status": 200,
+      "finalURL": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/9/583/files/2026/01/persuadingvoters_2025.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://researchonline.lse.ac.uk/id/eprint/130605/1/combined_file_002_.pdf",
+      "sources": [
+        "influence/in-hackenburg25"
+      ],
+      "status": 200,
+      "finalURL": "https://researchonline.lse.ac.uk/id/eprint/130605/1/combined_file_002_.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://researchmgt.monash.edu/ws/portalfiles/portal/572678646/564026501_oa.pdf",
+      "sources": [
+        "influence/in-darvishi24"
+      ],
+      "status": 200,
+      "finalURL": "https://researchmgt.monash.edu/ws/portalfiles/portal/572678646/564026501_oa.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39418380/",
+      "sources": [
+        "influence/in-tessler24"
+      ],
+      "status": 203,
+      "finalURL": "https://pubmed.ncbi.nlm.nih.gov/39418380/",
+      "result": "reachable"
+    },
+    {
+      "url": "https://www.rand.org/pubs/research_reports/RRA4817-1.html",
+      "sources": [
+        "influence/in-rand26"
+      ],
+      "status": 403,
+      "finalURL": "https://www.rand.org/pubs/research_reports/RRA4817-1.html",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://arxiv.org/html/2501.16946v2",
+      "sources": [
+        "influence/in-gradual25"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2501.16946v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://arxiv.org/html/2509.08494v2",
+      "sources": [
+        "influence/in-hab26"
+      ],
+      "status": 200,
+      "finalURL": "https://arxiv.org/html/2509.08494v2",
+      "result": "reachable"
+    },
+    {
+      "url": "https://metr.org/assets/benchmark_results_1_1.yaml",
+      "sources": [
+        "selected-evidence/capability"
+      ],
+      "status": 200,
+      "finalURL": "https://metr.org/assets/benchmark_results_1_1.yaml",
+      "result": "reachable"
+    },
+    {
+      "url": "https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip",
+      "sources": [
+        "selected-evidence/work"
+      ],
+      "status": 200,
+      "finalURL": "https://storage.googleapis.com/aviary-del-public/release_memos/2026-09/downloads/canaries_age_by_exposure_results.zip",
+      "result": "reachable"
+    },
+    {
+      "url": "https://doi.org/10.1073/pnas.2422633122",
+      "sources": [
+        "selected-evidence/skills"
+      ],
+      "status": 403,
+      "finalURL": "https://pnas.org/doi/10.1073/pnas.2422633122",
+      "result": "access-not-confirmed"
+    },
+    {
+      "url": "https://hamsabastani.github.io/education_llm.pdf",
+      "sources": [
+        "selected-evidence/skills"
+      ],
+      "status": 200,
+      "finalURL": "https://hamsabastani.github.io/education_llm.pdf",
+      "result": "reachable"
+    },
+    {
+      "url": "https://newsroom-deezer.com/2026/04/ai-generated-tracks-represent-44-of-new-uploaded-music/",
+      "sources": [
+        "selected-evidence/uploads",
+        "selected-evidence/uploads",
+        "selected-evidence/streams",
+        "selected-evidence/streams"
+      ],
+      "status": 200,
+      "finalURL": "https://newsroom-deezer.com/2026/04/ai-generated-tracks-represent-44-of-new-uploaded-music/",
+      "result": "reachable"
+    }
+  ],
+  "summary": {
+    "reachable": 153,
+    "needs-link-review": 0,
+    "access-not-confirmed": 27
+  }
+}

@@ -30,7 +30,7 @@ function harness(saved,blocked=false){
  const run=s=>vm.runInContext(s,context);scripts.forEach((s,i)=>{run(s);if(i===2)context.GDConcepts=window.GDConcepts;if(i===3)context.GDSkills=window.GDSkills;});
  return {run,document,data,events};
 }
-const expected=require('../src/library-view-data.json').records.filter(r=>r.topics.includes('skills')).length;const h=harness();assert.equal(h.run('records.length'),expected);assert.equal(h.document.querySelectorAll('.reference-row').length,15);assert.equal(h.run('visibleRows.length'),expected);
+const expected=require('./network-library.js').load().records.filter(r=>r.topics.includes('skills')).length;const h=harness();assert.equal(h.run('records.length'),expected);assert.equal(h.document.querySelectorAll('.reference-row').length,15);assert.equal(h.run('visibleRows.length'),expected);
 h.run("change({concept:'bias',connection:'retention'})");assert(h.run('visibleRows.length')>0);assert(h.run("visibleRows.every(r=>matches(r).some(m=>m.id==='bias')&&matches(r).some(m=>m.id==='retention'))"));
 h.run("change({...M.defaults,view:'areas'});choosePair('institutions','influence')");assert(h.run("visibleRows.every(r=>r.topics.includes('institutions')&&r.topics.includes('influence'))"));
 h.run("change({...M.defaults});choosePaper(records[0].id,false)");assert(h.document.querySelector('#review-form'));assert(h.document.querySelector('.source-link').getAttribute('rel').includes('noopener'));
@@ -44,3 +44,13 @@ const broken=harness('{bad JSON');assert.equal(broken.data.get('gd-skills-pilot-
 assert.match(harness(undefined,true).document.querySelector('#storage-note').textContent,/preserved|unavailable/);
 const emptyRules=JSON.parse(h.data.get('gd-skills-pilot-v1'));emptyRules.rules=emptyRules.rules.map(c=>({...c,terms:[]}));const noMatches=harness(JSON.stringify(emptyRules));assert.equal(noMatches.run('allPairs.length'),0);assert.equal(noMatches.document.querySelectorAll('.graph-paper').length,0);assert(noMatches.document.querySelectorAll('.reference-row').length>0,'No concept matches must not erase the collection');
 console.log('Skills explorer: pair intersections, unknown citations, dates, sorting, URL state, pagination, saved drafts, review validation, matrix scope, empty rules and blocked storage passed.');
+
+const merged=require('./network-library.js').load();
+const original=require('../src/library-view-data.json').records;
+assert(original.every(old=>merged.records.some(r=>r.id===old.id)), 'Overlay must preserve every original workspace ID');
+assert.deepEqual(merged,require('./network-library.js').load());
+assert(merged.records.filter(r=>r.topicReviews?.length).every(r=>r.topicReviews.every(t=>t.url&&t.identityMethod&&t.checkedOn)));
+const darvishi=merged.records.filter(r=>r.title==='Impact of AI assistance on student agency');
+assert.equal(darvishi.length,1,'The two repository copies must not be counted separately');
+assert(darvishi[0].topics.includes('influence')&&darvishi[0].topics.includes('skills'));
+console.log('Updated bibliography: stable IDs, deterministic joins, explicit match provenance and duplicate repository handling passed.');

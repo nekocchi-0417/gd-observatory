@@ -1,0 +1,18 @@
+{
+  "description": "Required fields are enforced by tools/build-topic-review.js. This file documents the editorial contract.",
+  "version": 1,
+  "reviewStatus": "AI-assisted; human review pending",
+  "scope": "Targeted, non-exhaustive scoping scan. No systematic-review or field-wide absence claim.",
+  "temporal": {
+    "snapshot": "A single measurement window or short experiment, without a continuing comparable series.",
+    "repeated": "Measurements repeated across dates or releases; units or participants can change.",
+    "longitudinal": "The same people, organisations or units followed over time. Duration is reported separately.",
+    "none": "Review, conceptual framework or proposed measurement without a new empirical trajectory."
+  },
+  "sourceInspection": {
+    "primary-fulltext": "Relevant sections of the primary paper or report were accessible to the AI-assisted review.",
+    "primary-summary": "An official author, publisher, dataset or institutional description was inspected.",
+    "primary-abstract": "Only the primary abstract was available or inspected."
+  },
+  "map": "Research facet by temporal design, using only extracted records from this expansion. Themes overlap; cells count sources, not independent datasets, quality, risk or absence of research."
+}

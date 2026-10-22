@@ -1,0 +1,776 @@
+{
+  "topicId": "handover",
+  "name": "Delegation to AI",
+  "question": "When people delegate to AI, what control do they retain?",
+  "synthesis": "In this scan, task automation, permission to act, and effective oversight are different things. Usage reports show changing work allocation, while experiments find benefits, harms, and null results depending on the task, verification costs, and comparison baseline. Giving people adjustment rights can increase adoption without improving decisions; workers' preferences and their actual authority also need separate measurement.",
+  "facets": [
+    {
+      "id": "allocation",
+      "label": "Task and decision allocation",
+      "description": "Who sets goals, plans work, selects actions, and executes them; automation is not equivalent to decision authority."
+    },
+    {
+      "id": "permissions",
+      "label": "Permission and intervention",
+      "description": "Approval requirements, interruptions, adjustment rights, and the practical ability to stop or reverse actions."
+    },
+    {
+      "id": "calibration",
+      "label": "Reliance and error detection",
+      "description": "Accepting useful advice while detecting and rejecting incorrect advice, including the cost of verification."
+    },
+    {
+      "id": "outcomes",
+      "label": "Decision quality and workload",
+      "description": "Accuracy, quality, time, and workload relative to human-only, AI-only, and combined alternatives."
+    },
+    {
+      "id": "preferences",
+      "label": "Voluntary and desired delegation",
+      "description": "Whether delegation matches workers' preferences and whether users can choose the level of involvement."
+    },
+    {
+      "id": "recovery",
+      "label": "Fallback and retained capability",
+      "description": "Situation awareness, performance during automation failures, and capacity to resume unaided work."
+    }
+  ],
+  "sources": [
+    {
+      "id": "ho-aei-jan26",
+      "title": "Anthropic Economic Index report: Economic primitives",
+      "authors": "Anthropic Economics team",
+      "year": 2026,
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+      "publisher": "Anthropic",
+      "kind": "series",
+      "design": "Recurring provider telemetry report using privacy-preserving automated conversation classifications and comparisons between sampling waves.",
+      "population": "Sampled Claude.ai conversations and first-party API traffic; not a representative sample of workers.",
+      "geography": "Countries with observed Claude usage; adoption is geographically uneven.",
+      "duration": "November 2025 sample, compared with August and January 2025; published January 15, 2026.",
+      "measure": "Augmentation/automation interaction modes, plus separately estimated decision autonomy, complexity, skills, purpose, and success.",
+      "finding": "Among sampled November Claude.ai conversations, augmentation was 52% and automation 45%, reversing the previous wave's ordering. Highly automated tasks can still involve little delegated decision authority.",
+      "limitations": "Classifier-dependent, provider-specific composition changes; conversation success is not audited downstream success or retained authority.",
+      "facets": [
+        "allocation",
+        "permissions",
+        "outcomes"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Chapter 1: Overview; Chapter 2: Economic primitives, autonomy discussion.",
+      "sourceNote": "Official report methods and relevant results inspected. These are repeated aggregate samples, not linked-person follow-up.",
+      "selected": true,
+      "selectionReason": "Recurring deployment evidence that explicitly separates interaction automation from decision autonomy.",
+      "headline": "Automation is not the same as delegated authority",
+      "searchOrigin": "Accepted collection lead -> official January 2026 report -> economic-primitives definitions.",
+      "relatedTopics": [
+        "influence"
+      ]
+    },
+    {
+      "id": "ho-aei-mar26",
+      "title": "Anthropic Economic Index report: Learning curves",
+      "authors": "Anthropic Economics team",
+      "year": 2026,
+      "url": "https://www.anthropic.com/research/economic-index-march-2026-report",
+      "publisher": "Anthropic",
+      "kind": "series",
+      "design": "Next release of the same provider series, combining wave comparisons with cross-sectional tenure associations.",
+      "population": "One million conversations sampled from each of Claude.ai and first-party API traffic.",
+      "geography": "Observed international Claude users, not population-representative.",
+      "duration": "February 5-12, 2026, compared with November 2025; published March 24, 2026.",
+      "measure": "Task distribution, automation/augmentation, user tenure, and classifier-assessed success.",
+      "finding": "Augmentation increased slightly in both traffic channels. Longer-tenure users had higher assessed success; the authors explicitly allow both learning and selection of sophisticated early adopters as explanations.",
+      "limitations": "Tenure association is not within-person causal learning. Coding workflows split into API calls, complicating task and channel comparisons.",
+      "facets": [
+        "allocation",
+        "outcomes"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "What has changed since our last report; Learning curves; Chapter 1 sampling description.",
+      "sourceNote": "Official HTML inspected; related release, not an independent replication of January findings.",
+      "selected": false,
+      "searchOrigin": "January AEI report -> official March 2026 update."
+    },
+    {
+      "id": "ho-aei-jun26",
+      "title": "Anthropic Economic Index report: Cadences",
+      "authors": "Anthropic Economics team",
+      "year": 2026,
+      "url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "publisher": "Anthropic",
+      "kind": "series",
+      "design": "Continuous usage measurement introduced alongside a voluntary survey linked to usage logs.",
+      "population": "Observed Claude product traffic and responding users; survey respondents are a selected subset.",
+      "geography": "International product users with uneven geographic coverage.",
+      "duration": "Spring 2026; artifact analysis April 10-June 10, survey launched April with linkage analyses in mid-May to early June; published June 26.",
+      "measure": "Usage cadence, delegation modes, and reported effects on pay, security, meaning, autonomy, and learning.",
+      "finding": "More automated use was associated with more optimistic reported work outcomes. Reported learning was comparatively flat across delegation levels; this does not exclude actual skill erosion.",
+      "limitations": "Survey associations are not treatment effects. Continuous collection and product segmentation differ from previous week-long releases.",
+      "facets": [
+        "allocation",
+        "preferences",
+        "recovery"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Perceptions chapter; continuous-measurement introduction; artifact sampling footnote 8.",
+      "sourceNote": "Relevant official report sections inspected; repeated telemetry and cross-sectional linked survey must not be merged into a longitudinal claim.",
+      "selected": false,
+      "searchOrigin": "Official AEI release trail -> June 2026 report.",
+      "relatedTopics": [
+        "influence"
+      ]
+    },
+    {
+      "id": "ho-agent-autonomy26",
+      "title": "Measuring AI agent autonomy in practice",
+      "authors": "Anthropic research team",
+      "year": 2026,
+      "url": "https://www.anthropic.com/research/measuring-agent-autonomy",
+      "publisher": "Anthropic",
+      "kind": "study",
+      "design": "One-off retrospective telemetry study of Claude Code workflows and API tool calls, including aggregate time trends.",
+      "population": "Millions of observed interactions; Code workflows and isolated API calls have different units.",
+      "geography": "Provider users; no representative country sampling.",
+      "duration": "Principal Code duration trend October 2025-January 2026; released February 18, 2026.",
+      "measure": "Uninterrupted turn duration, permission settings, human interruptions, and classified action risk/reversibility.",
+      "finding": "The 99.9th percentile of Code turn duration rose from under 25 to over 45 minutes, while the median remained about 45 seconds. More experienced-user groups both auto-approved more and interrupted more.",
+      "limitations": "The extreme-tail statistic is not a typical session. Pooled tenure patterns are not demonstrated causal individual change; approvals do not show appropriate oversight.",
+      "facets": [
+        "permissions",
+        "allocation",
+        "calibration"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Claude Code autonomy-duration figure; experience/permission and interruption figures; limitations.",
+      "sourceNote": "Official methods, figure discussion, and limitations inspected; not a recurring index or human-task-time capability benchmark.",
+      "selected": true,
+      "selectionReason": "Directly observes permission and intervention behavior while exposing unit and tail-statistic pitfalls.",
+      "headline": "Longer autonomous turns do not establish effective oversight",
+      "searchOrigin": "Accepted agent-autonomy lead -> official February 2026 research report.",
+      "relatedTopics": [
+        "influence"
+      ]
+    },
+    {
+      "id": "ho-code-expertise26",
+      "title": "Agentic coding and persistent returns to expertise",
+      "authors": "Anthropic Economics team",
+      "year": 2026,
+      "url": "https://www.anthropic.com/research/claude-code-expertise",
+      "publisher": "Anthropic",
+      "kind": "study",
+      "design": "Retrospective session classification, with aggregate changes over months and associations between inferred expertise and outcomes.",
+      "population": "Approximately 400,000 interactive sessions from approximately 235,000 users.",
+      "geography": "Observed Claude Code users; not representative of occupations or countries.",
+      "duration": "October 2025-April 2026; published June 16, 2026.",
+      "measure": "Planning versus execution decisions, work per instruction, domain expertise, and transcript-evidenced completion.",
+      "finding": "People generally made planning decisions and Claude execution decisions. Greater domain expertise was associated with more work per instruction and higher success; similar average coding success across occupations did not eliminate expertise advantages.",
+      "limitations": "Occupation and expertise are inferred; completion evidence is narrower than independent quality or authority audits. Aggregate time comparisons do not follow fixed workers.",
+      "facets": [
+        "allocation",
+        "outcomes"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Key findings; The division of labor; Success depends on what the user brings.",
+      "sourceNote": "Official report inspected; repeated temporal classification rests on its monthly comparisons, not merely its seven-month sample window.",
+      "selected": false,
+      "searchOrigin": "Agent-autonomy report -> linked official coding-expertise update."
+    },
+    {
+      "id": "ho-chatgpt25",
+      "title": "How People Use ChatGPT",
+      "authors": "Aaron Chatterji, Tom Cunningham, David Deming, Zoe Hitzig, Christopher Ong, Carl Shan, Kevin Wadman",
+      "year": 2025,
+      "url": "https://cdn.openai.com/pdf/a253471f-8260-40c6-a2cc-aa93fe9f142e/economic-research-chatgpt-usage-paper.pdf",
+      "publisher": "OpenAI; NBER working paper 34255",
+      "kind": "study",
+      "design": "Privacy-preserving automated classification of sampled consumer conversations and historical aggregate trends.",
+      "population": "Approximately 1.1 million sampled consumer ChatGPT conversations; excludes enterprise integrations.",
+      "geography": "International consumer users; not representative of all work or decision makers.",
+      "duration": "May 15, 2024-June 26, 2025; September 15, 2025 paper version.",
+      "measure": "Asking, Doing, and Expressing message categories, topics, work status, and aggregate changes.",
+      "finding": "Substantial use involved asking for information or assistance as well as producing outputs. The Doing category records requests for outputs, not autonomous execution or transfer of legal decision authority.",
+      "limitations": "Classifier and sampling uncertainty; message, conversation, and user denominators differ; no downstream decision-outcome audit.",
+      "facets": [
+        "allocation"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Section 3 data/methods; Section 5.3 Asking, Doing, Expressing and associated figures.",
+      "sourceNote": "Official paper PDF inspected, not just release summary; historical study rather than an established recurring series.",
+      "selected": false,
+      "searchOrigin": "Accepted ChatGPT-usage lead -> official research PDF."
+    },
+    {
+      "id": "ho-boe24",
+      "title": "Artificial intelligence in UK financial services - 2024",
+      "authors": "Bank of England and Financial Conduct Authority",
+      "year": 2024,
+      "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+      "publisher": "Bank of England; FCA",
+      "kind": "series",
+      "design": "Regulator survey release in a recurring institutional AI-adoption programme; delegation estimates here are a single-wave cross-section.",
+      "population": "Responding UK financial-services firms and their reported AI use cases.",
+      "geography": "United Kingdom.",
+      "duration": "2024 survey; published November 21, 2024. Exact field dates not established in inspected sections.",
+      "measure": "Firm-reported decision automation and human oversight categories across use cases.",
+      "finding": "Of reported use cases, 55% involved some automated decision-making and 2% were fully autonomous. These are use-case shares, not shares of firms or transactions.",
+      "limitations": "Self-report and respondent selection; broad AI definition. Oversight arrangements do not establish reviewers' error detection or reversal success.",
+      "facets": [
+        "allocation",
+        "permissions"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Executive summary; Automated decision-making section and corresponding chart.",
+      "sourceNote": "Official report inspected. The ambiguous 24% semi-autonomous statistic is not propagated; denominator wording warrants review.",
+      "selected": false,
+      "searchOrigin": "UK financial-services AI automated decision-making survey -> regulator report.",
+      "relatedTopics": [
+        "influence"
+      ]
+    },
+    {
+      "id": "ho-workbank26",
+      "title": "Future of Work with AI Agents: Auditing Automation and Augmentation Potential across the U.S. Workforce",
+      "authors": "Yijia Shao, Humishka Zope, Yucheng Jiang, Jiaxin Pei, David Nguyen, Erik Brynjolfsson, Diyi Yang",
+      "year": 2026,
+      "url": "https://arxiv.org/html/2506.06576v3",
+      "publisher": "arXiv; Stanford research team",
+      "kind": "study",
+      "design": "Worker mini-interviews and task preferences compared with expert capability judgments; introduces a Human Agency Scale.",
+      "population": "1,500 domain workers; 844 tasks spanning 104 occupations, with AI-expert assessments.",
+      "geography": "United States.",
+      "duration": "Worker collection January-May 2025; initial June 2025 paper, inspected v3 February 1, 2026.",
+      "measure": "Desired automation and preferred human involvement, contrasted with expert-rated feasibility and observed use.",
+      "finding": "Workers' desired delegation varied across tasks and occupations and did not simply match observed LLM use. Routine-task automation preferences coexisted with demand for human involvement elsewhere.",
+      "limitations": "Preferences and expert forecasts are not deployed-agent outcomes. Occupational selection and a new involvement scale limit generalization to autonomy or bargaining power.",
+      "facets": [
+        "preferences",
+        "allocation"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 2.5, 3.1, 3.3; limitations; Appendix D.",
+      "sourceNote": "Version-specific methods and results inspected; do not count earlier revisions independently.",
+      "selected": true,
+      "selectionReason": "Adds worker preferences, a distinct counterweight to telemetry and capability estimates.",
+      "headline": "Observed use does not reveal workers' preferred delegation",
+      "searchOrigin": "Worker preferences AI agents Human Agency Scale -> WORKBank paper v3.",
+      "relatedTopics": [
+        "influence"
+      ]
+    },
+    {
+      "id": "ho-onnasch14",
+      "title": "Human Performance Consequences of Stages and Levels of Automation: An Integrated Meta-Analysis",
+      "authors": "Linda Onnasch, Christopher D. Wickens, Huiyang Li, Dietrich Manzey",
+      "year": 2014,
+      "url": "https://journals.sagepub.com/doi/10.1177/0018720813501549",
+      "doi": "10.1177/0018720813501549",
+      "publisher": "Human Factors / SAGE",
+      "kind": "review",
+      "design": "Meta-analysis of 18 automation experiments distinguishing stages and levels.",
+      "population": "Participants in included automation experiments; detailed sample composition unavailable in inspected abstract.",
+      "geography": "Not established from abstract.",
+      "duration": "2014 issue, online August 2013; included experiment dates and follow-up not established.",
+      "measure": "Routine and failure performance, situation awareness, and workload.",
+      "finding": "Higher automation benefited routine performance but worsened failure performance and situation awareness, particularly across the boundary from information analysis to action selection.",
+      "limitations": "Pre-generative-AI tasks; abstract-only inspection prevents independent assessment of heterogeneity, coding, and risk of bias.",
+      "facets": [
+        "allocation",
+        "outcomes",
+        "recovery"
+      ],
+      "temporal": "none",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Publisher Abstract: Method, Results, Conclusion.",
+      "sourceNote": "Publisher abstract opened; subscription full text not inspected. No claim of full review.",
+      "selected": false,
+      "searchOrigin": "Automation levels failure performance situation awareness meta-analysis -> publisher abstract."
+    },
+    {
+      "id": "ho-vaccaro24",
+      "title": "When combinations of humans and AI are useful: A systematic review and meta-analysis",
+      "authors": "Michelle Vaccaro, Abdullah Almaatouq, Thomas W. Malone",
+      "year": 2024,
+      "url": "https://arxiv.org/html/2405.06087v2",
+      "doi": "10.1038/s41562-024-02024-1",
+      "publisher": "Nature Human Behaviour; author manuscript on arXiv",
+      "kind": "review",
+      "design": "Systematic review and multilevel meta-analysis comparing human-AI combinations with humans alone and the better standalone agent.",
+      "population": "106 experiments in 74 papers, yielding 370 effect sizes.",
+      "geography": "Multiple study settings; not a representative global sample.",
+      "duration": "Included research January 2020-June 2023; inspected October 29, 2024 v2.",
+      "measure": "Standardized task performance against distinct baselines; task and interface moderators.",
+      "finding": "Combined performance improved over humans alone on average but fell below the better human-or-AI baseline. Decision tasks and creation tasks differed; explanations were not a significant overall moderator.",
+      "limitations": "Heterogeneous short experiments, largely before current agents; average performance cannot determine who should hold authority.",
+      "facets": [
+        "outcomes",
+        "calibration"
+      ],
+      "temporal": "none",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Results on synergy and augmentation; moderator analysis; Methods search/inclusion criteria.",
+      "sourceNote": "Author full text inspected after publisher access failure; this scan is not itself a systematic review.",
+      "selected": true,
+      "selectionReason": "Makes baseline choice explicit and summarizes both positive and negative performance evidence.",
+      "headline": "Better than a person alone is not necessarily better than either alone",
+      "searchOrigin": "Human-AI decision oversight experimental meta-analysis -> Vaccaro author manuscript."
+    },
+    {
+      "id": "ho-bucinca21",
+      "title": "To Trust or to Think: Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making",
+      "authors": "Zana Bucinca, Maja Barbara Malaya, Krzysztof Z. Gajos",
+      "year": 2021,
+      "url": "https://arxiv.org/html/2102.09692v1",
+      "doi": "10.1145/3449287",
+      "publisher": "Proceedings of the ACM on Human-Computer Interaction",
+      "kind": "study",
+      "design": "Randomized comparison of cognitive-forcing and explanation interfaces in simulated AI-assisted food decisions.",
+      "population": "199 retained participants from US Mechanical Turk recruitment.",
+      "geography": "United States.",
+      "duration": "Single approximately 15-minute session with 26 questions; field dates not established.",
+      "measure": "Acceptance of incorrect advice, decision accuracy, interface preference, and Need for Cognition.",
+      "finding": "Cognitive-forcing interventions reduced overreliance but were less preferred; effects differed by cognitive motivation. Reduced overreliance did not establish an overall accuracy improvement across all trials.",
+      "limitations": "Simulated advice, exclusions, short low-stakes task, and heterogeneous benefits limit transfer to professional oversight.",
+      "facets": [
+        "calibration",
+        "outcomes",
+        "preferences"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 3.3-3.6, Results, Discussion and Limitations.",
+      "sourceNote": "February 19, 2021 author version inspected; repeated questions within one experiment are not longitudinal follow-up.",
+      "selected": false,
+      "searchOrigin": "Overreliance cognitive forcing human AI decisions -> author full text."
+    },
+    {
+      "id": "ho-schemmer23",
+      "title": "Appropriate Reliance on AI Advice: Conceptualization and the Effect of Explanations",
+      "authors": "Max Schemmer, Niklas Kuhl, Carina Benz, Andrea Bartos, Gerhard Satzger",
+      "year": 2023,
+      "url": "https://arxiv.org/html/2302.02187v3",
+      "doi": "10.1145/3581641.3584066",
+      "publisher": "ACM IUI; arXiv author version",
+      "kind": "study",
+      "design": "Explanation experiment and proposed two-dimensional reliance operationalization using hotel-review deception detection.",
+      "population": "200 Prolific participants.",
+      "geography": "Recruitment country not established in inspected methods.",
+      "duration": "Single experiment; inspected v3 April 13, 2023; field dates not established.",
+      "measure": "Relative AI reliance when AI corrects an initial error, and relative self-reliance when initial human judgment is correct but AI errs.",
+      "finding": "Explanations increased uptake of correct advice and confidence, without significant improvement in overall accuracy or resistance to incorrect advice. Some model paths used a relaxed significance threshold.",
+      "limitations": "One artificial task; conditional denominators matter; mediation associations do not establish a psychological causal mechanism.",
+      "facets": [
+        "calibration",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Reliance definitions; Sections 6.1-6.2; Tables 3-5.",
+      "sourceNote": "Methods/results inspected, including difference between descriptive tests and SEM significance conventions.",
+      "selected": false,
+      "searchOrigin": "Appropriate reliance RAIR RSR explanations -> IUI paper v3."
+    },
+    {
+      "id": "ho-sele24",
+      "title": "Putting a human in the loop: Increasing uptake, but decreasing accuracy of automated decision-making",
+      "authors": "Daniela Sele, Marina Chugunova",
+      "year": 2024,
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298037",
+      "doi": "10.1371/journal.pone.0298037",
+      "publisher": "PLOS ONE",
+      "kind": "study",
+      "design": "Incentivized prediction experiment comparing delegation with adjustable human-in-the-loop advice and human versus algorithm source labels.",
+      "population": "292 participants from the Zurich subject pool, mainly students.",
+      "geography": "Switzerland; prediction stimuli concerned US students.",
+      "duration": "One session, 20 predictions in four blocks without accuracy feedback; published February 9, 2024.",
+      "measure": "Choice of algorithmic advice, adjustments, confidence, and prediction error.",
+      "finding": "Adjustment rights increased algorithm uptake, but participants' revisions reduced accuracy. Confidence and nominal control therefore did not track better final decisions in this setting.",
+      "limitations": "Student sample, stylized prediction and no outcome feedback; not evidence that oversight is inherently harmful.",
+      "facets": [
+        "permissions",
+        "preferences",
+        "outcomes",
+        "calibration"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Experimental design; Results on uptake and adjustments; Discussion.",
+      "sourceNote": "Publisher methods/results inspected; task-block repetition is not longitudinal follow-up.",
+      "selected": false,
+      "searchOrigin": "Human-in-loop delegation uptake accuracy experiment -> PLOS paper.",
+      "relatedTopics": [
+        "influence"
+      ]
+    },
+    {
+      "id": "ho-dietvorst15",
+      "title": "Algorithm aversion: People erroneously avoid algorithms after seeing them err",
+      "authors": "Berkeley J. Dietvorst, Joseph P. Simmons, Cade Massey",
+      "year": 2015,
+      "url": "https://marketing.wharton.upenn.edu/wp-content/uploads/2020/07/Dietvorst-Simmons-Massey-2014.pdf",
+      "doi": "10.1037/xge0000033",
+      "publisher": "Journal of Experimental Psychology: General; Wharton-hosted paper",
+      "kind": "study",
+      "design": "Five experiments manipulating experience with human and algorithmic prediction before choices of forecaster.",
+      "population": "Laboratory and online forecasting participants; detailed pooled denominator not extracted.",
+      "geography": "US university and online recruitment; country distribution of online participants not established.",
+      "duration": "Short experimental sessions; 2014 advance-online manuscript, 2015 journal issue; no durable follow-up established.",
+      "measure": "Choice of forecaster, confidence, and predictive accuracy after observing errors.",
+      "finding": "Participants became less willing to use algorithms after seeing errors even when the algorithm outperformed the human alternative.",
+      "limitations": "Forecasting systems and controlled error exposure predate modern LLM agents; avoidance is relative to the available comparator, not a universal attitude.",
+      "facets": [
+        "preferences",
+        "calibration",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Experiments 1-5 and General Discussion.",
+      "sourceNote": "Author-hosted advance paper inspected; file's 2014 date is not the journal issue year.",
+      "selected": false,
+      "searchOrigin": "Foundational algorithm aversion -> Wharton author PDF."
+    },
+    {
+      "id": "ho-dietvorst18",
+      "title": "Overcoming Algorithm Aversion: People Will Use Imperfect Algorithms If They Can (Even Slightly) Modify Them",
+      "authors": "Berkeley J. Dietvorst, Joseph P. Simmons, Cade Massey",
+      "year": 2018,
+      "url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2016/08/Dietvorst-Simmons-Massey-2018.pdf",
+      "doi": "10.1287/mnsc.2016.2643",
+      "publisher": "Management Science; Wharton-hosted paper",
+      "kind": "study",
+      "design": "Three incentivized forecasting experiments manipulating permission and extent of forecast adjustment.",
+      "population": "Experimental forecasting participants; pooled sample not extracted.",
+      "geography": "US research context; detailed recruitment-country coverage not established.",
+      "duration": "Single-session experiments; online 2016, 2018 journal issue; no later follow-up.",
+      "measure": "Algorithm choice, degree of modification, satisfaction, and realized forecasting accuracy.",
+      "finding": "Allowing even limited modification increased algorithm use and improved performance through greater adoption. More adjustment freedom was not necessary for the adoption benefit.",
+      "limitations": "Benefit depends on the alternative participants otherwise choose; it does not show that individual edits improve an algorithm's own forecast.",
+      "facets": [
+        "permissions",
+        "preferences",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Studies 1-3; General Discussion.",
+      "sourceNote": "Author-hosted paper inspected; distinct experiment set from the 2015 aversion paper.",
+      "selected": false,
+      "searchOrigin": "Algorithm aversion paper -> follow-on modification-rights experiments.",
+      "relatedTopics": [
+        "influence"
+      ]
+    },
+    {
+      "id": "ho-bansal21",
+      "title": "Does the Whole Exceed its Parts? The Effect of AI Explanations on Complementary Team Performance",
+      "authors": "Gagan Bansal, Tongshuang Wu, Joyce Zhou, Raymond Fok, Besmira Nushi, Ece Kamar, Marco Tulio Ribeiro, Daniel S. Weld",
+      "year": 2021,
+      "url": "https://arxiv.org/html/2006.14779v3",
+      "publisher": "ACM CHI; arXiv author manuscript",
+      "kind": "study",
+      "design": "Controlled user studies across sentiment-classification and LSAT tasks, comparing explanation variants with confidence-only assistance.",
+      "population": "Screened online crowdworkers across three datasets; exclusions and screening varied by task.",
+      "geography": "Online recruitment; country coverage not extracted.",
+      "duration": "Short single-task sessions; v3 January 12, 2021; no longitudinal follow-up.",
+      "measure": "Human-only, AI-only, and team accuracy; agreement with correct and incorrect recommendations.",
+      "finding": "Teams achieved complementary performance in these tasks, but explanations did not significantly improve on confidence-only assistance. Some explanations increased acceptance of incorrect recommendations.",
+      "limitations": "Selected tasks with comparably capable partners; screening and chosen explanation designs restrict generalization.",
+      "facets": [
+        "calibration",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 4-6; Figure 4.",
+      "sourceNote": "Full author HTML methods/results inspected after initial abstract retrieval; no participant total inferred from inconsistent screening prose.",
+      "selected": false,
+      "searchOrigin": "Experimental review citation trail -> Bansal et al. author manuscript."
+    },
+    {
+      "id": "ho-vasconcelos23",
+      "title": "Explanations Can Reduce Overreliance on AI Systems During Decision-Making",
+      "authors": "Helena Vasconcelos, Matthew Jorke, Madeleine Grunde-McLaughlin, Tobias Gerstenberg, Michael S. Bernstein, Ranjay Krishna",
+      "year": 2023,
+      "url": "https://cicl.stanford.edu/papers/vasconcelos2022explanations.pdf",
+      "doi": "10.1145/3579605",
+      "publisher": "Proceedings of the ACM on Human-Computer Interaction",
+      "kind": "study",
+      "design": "Five experiments manipulating task difficulty, explanation-verification cost, and incentives in simulated AI-assisted mazes.",
+      "population": "731 participants across experiments.",
+      "geography": "Online experimental recruitment; country distribution not established in extraction.",
+      "duration": "Short experiment sessions; 2023 publication, author-file name contains 2022; no later follow-up.",
+      "measure": "Incorrect-advice acceptance and accuracy under differing verification and independent-solving costs.",
+      "finding": "Explanations reduced overreliance on harder tasks when verification was relatively inexpensive, but did not produce the same benefit on easy or medium tasks.",
+      "limitations": "Maze tasks and simulated assistance; the cost account needs testing in consequential professional workflows.",
+      "facets": [
+        "calibration",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Experiments and General Discussion; task/explanation difficulty comparisons.",
+      "sourceNote": "Author-hosted full paper inspected; positive evidence is conditional, not a universal explanation benefit.",
+      "selected": true,
+      "selectionReason": "Provides a concrete, testable positive counterexample to blanket claims that explanations cannot improve reliance.",
+      "headline": "Affordable verification can make explanations useful",
+      "searchOrigin": "Explanations overreliance verification cost -> Stanford author paper."
+    },
+    {
+      "id": "ho-reverberi22",
+      "title": "Experimental evidence of effective human-AI collaboration in medical decision-making",
+      "authors": "Carlo Reverberi, Tommaso Rigon, Aldo Solari, Cesare Hassan, Paolo Cherubini, GI Genius CADx Study Group, Andrea Cherubini",
+      "year": 2022,
+      "url": "https://www.nature.com/articles/s41598-022-18751-2",
+      "doi": "10.1038/s41598-022-18751-2",
+      "publisher": "Scientific Reports",
+      "kind": "study",
+      "design": "Within-participant lesion-video evaluation before and with AI diagnostic advice; confidence and belief revision analyzed.",
+      "population": "21 endoscopists evaluating 504 colorectal-lesion videos.",
+      "geography": "International clinical collaborators; European, Israeli, and Japanese institutions represented.",
+      "duration": "Two experimental viewing sessions; no patient follow-up; published September 2, 2022. Session spacing not extracted.",
+      "measure": "Diagnosis accuracy, correct versus incorrect advice uptake, confidence calibration.",
+      "finding": "Endoscopists more often accepted correct than incorrect advice, and assisted diagnostic accuracy improved. This offers a domain-specific positive example of selective reliance.",
+      "limitations": "Video evaluation rather than live patient outcomes; advice order, confidence cues, and definitions of AI uncertainty matter; disclosed commercial ties.",
+      "facets": [
+        "calibration",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Experimental design/Figure 1; Results; Discussion; competing interests.",
+      "sourceNote": "Publisher full text inspected; paired short experimental sessions are not treated as durable longitudinal evidence.",
+      "selected": false,
+      "searchOrigin": "Human-AI clinical complementarity positive experiment -> Scientific Reports."
+    },
+    {
+      "id": "ho-dellacqua26",
+      "title": "Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality",
+      "authors": "Fabrizio Dell'Acqua, Edward McFowland III, Ethan Mollick, Hila Lifshitz-Assaf, Katherine Kellogg, Saran Rajendran, Lisa Krayer, Francois Candelon, Karim R. Lakhani",
+      "year": 2026,
+      "url": "https://www.hbs.edu/ris/Publication%20Files/dell-acqua-et-al-2026-navigating-the-jagged-technological-frontier_5c589c8c-fbb5-458f-b285-c944746cd717.pdf",
+      "publisher": "Organization Science; Harvard Business School author paper",
+      "kind": "study",
+      "design": "Randomized professional consulting-task experiments with GPT-4 access and training conditions.",
+      "population": "Boston Consulting Group consultants; separate task-experiment samples and exclusions.",
+      "geography": "Multinational consulting firm; not representative of the global workforce.",
+      "duration": "Bounded task sessions, originally reported in 2023; inspected revised 2026 paper; exact field dates not extracted.",
+      "measure": "Task completion, speed, evaluator-rated quality, and correctness on a task outside the model's reliable range.",
+      "finding": "Assistance improved performance on suitable tasks but reduced correctness on a deliberately challenging task outside the model's frontier.",
+      "limitations": "Model/task-specific boundary and artificial assignment; not a long-term organizational authority study.",
+      "facets": [
+        "outcomes",
+        "calibration"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Experiment descriptions; task-performance results; Table 7 and Discussion.",
+      "sourceNote": "Revised author PDF inspected; earlier working-paper estimates are not mixed with this version.",
+      "selected": false,
+      "searchOrigin": "Human-AI field experiment jagged frontier -> HBS revised 2026 paper."
+    },
+    {
+      "id": "ho-goh24",
+      "title": "Large Language Model Influence on Diagnostic Reasoning: A Randomized Clinical Trial",
+      "authors": "Ethan Goh, Robert Gallo, Jason Hom, et al.",
+      "year": 2024,
+      "url": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2825395",
+      "doi": "10.1001/jamanetworkopen.2024.40969",
+      "publisher": "JAMA Network Open",
+      "kind": "study",
+      "design": "Randomized physician trial of GPT-4 plus conventional resources versus conventional resources alone; blinded rubric scoring.",
+      "population": "50 physicians, 25 per group, completing up to six clinical vignettes.",
+      "geography": "United States.",
+      "duration": "November 29-December 29, 2023 recruitment/experiment period; individual 60-minute sessions.",
+      "measure": "Diagnostic-reasoning rubric score; exploratory LLM-alone comparison.",
+      "finding": "Adjusted assisted-versus-control difference was 2 percentage points (95% CI -4 to 8), not statistically significant. LLM-alone exploratory performance did not translate into demonstrated physician-assistance gains.",
+      "limitations": "Small sample, vignette rather than patient outcomes, limited familiarization, and exploratory standalone-model comparison.",
+      "facets": [
+        "outcomes",
+        "calibration"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Methods: trial design; Results; Table 3; Limitations.",
+      "sourceNote": "Publisher full text and score confidence interval inspected. No claim that a nonsignificant estimate proves equivalence.",
+      "selected": false,
+      "searchOrigin": "LLM diagnostic reasoning randomized physician trial null findings -> DOI/publisher full text."
+    }
+  ],
+  "gaps": [
+    {
+      "title": "Permission logs are not validated oversight outcomes",
+      "summary": "Within this corpus, deployment logs and controlled reliance tasks remain weakly connected.",
+      "basis": "Usage reports observe approvals and interruptions; experiments assess whether advice is correct. More intervention or more explanation is not consistently better performance.",
+      "next": "Link consented workflow logs to independently adjudicated error opportunities, intervention timing, successful reversals, and verification costs. Report denominators for necessary, unnecessary, missed, and successful interventions.",
+      "refs": [
+        "ho-agent-autonomy26",
+        "ho-schemmer23",
+        "ho-bucinca21",
+        "ho-vasconcelos23"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Aggregate change does not identify personal dependence or learning",
+      "summary": "Repeated provider measurements can reflect changing users, tasks, interfaces, and models.",
+      "basis": "The AEI reverses earlier automation patterns, while tenure and coding-expertise associations have plausible selection explanations. Consumer task categories are not authority measures.",
+      "next": "Follow consenting workers and stable task families through model/interface changes, with fixed definitions, version logs, attrition accounting, and unaided comparison tasks.",
+      "refs": [
+        "ho-aei-jan26",
+        "ho-aei-mar26",
+        "ho-aei-jun26",
+        "ho-code-expertise26",
+        "ho-chatgpt25"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Task boundaries and comparator choice determine apparent benefits",
+      "summary": "Positive, null, and harmful assistance results should not be pooled into a single delegation verdict.",
+      "basis": "Clinical and consulting experiments differ in tasks and assistance design; the meta-analysis separates improvement over humans from improvement over the best standalone agent.",
+      "next": "Preregister human-only, AI-only, and joint conditions on realistic tasks, measuring error severity and workload as well as average accuracy; test failure recovery and expertise interactions.",
+      "refs": [
+        "ho-vaccaro24",
+        "ho-reverberi22",
+        "ho-goh24",
+        "ho-dellacqua26",
+        "ho-onnasch14",
+        "ho-bansal21"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Chosen delegation and institutionally imposed delegation need different measures",
+      "summary": "Preference surveys, adjustment rights, and firm-reported governance do not establish durable worker control.",
+      "basis": "Worker desires diverge from usage. Modification rights can increase adoption, yet edits can reduce accuracy; organizational reports rarely validate actual fallback capability.",
+      "next": "Compare worker-choice and employer-mandated deployments, recording veto/appeal rights, practical exit costs, task quality, and retained unaided performance over months across multiple labor settings.",
+      "refs": [
+        "ho-workbank26",
+        "ho-boe24",
+        "ho-sele24",
+        "ho-dietvorst18",
+        "ho-onnasch14"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    }
+  ],
+  "searchLog": [
+    {
+      "query": "Accepted collection leads: Anthropic Economic Index, agent autonomy, ChatGPT usage",
+      "date": "2026-10-22",
+      "scope": "Read-only inspection of supplied collection arrays, followed by official provider reports and linked updates.",
+      "notes": "Imports were discovery leads, not inherited verification. January, March, and June AEI are related releases, not independent replications."
+    },
+    {
+      "query": "human AI decision oversight experiments systematic review meta-analysis",
+      "date": "2026-10-22",
+      "scope": "Publisher and author-paper search; citation-following from Vaccaro and automation reviews.",
+      "notes": "Opened primary papers or publisher abstracts. This bounded English-language scan has no exhaustive database search or completeness claim."
+    },
+    {
+      "query": "overreliance explanations cognitive forcing appropriate reliance verification cost",
+      "date": "2026-10-22",
+      "scope": "ACM author manuscripts and publisher full text.",
+      "notes": "Sought positive and null results, conditional reliance denominators, and human-only versus AI-only baselines."
+    },
+    {
+      "query": "algorithm aversion modification human in loop uptake accuracy",
+      "date": "2026-10-22",
+      "scope": "Wharton author papers and PLOS experimental report.",
+      "notes": "Kept adoption benefits distinct from accuracy of individual adjustments and checked publication-versus-manuscript dates."
+    },
+    {
+      "query": "AI agents worker preferences WORKBank; UK financial services AI automated decision making",
+      "date": "2026-10-22",
+      "scope": "Stanford author paper and Bank of England/FCA report.",
+      "notes": "Added preferences and institutional settings without treating forecasts or oversight policies as observed successful control."
+    },
+    {
+      "query": "human AI medical collaboration positive findings; LLM diagnostic reasoning randomized clinical trial; jagged technological frontier",
+      "date": "2026-10-22",
+      "scope": "Scientific Reports, JAMA, and HBS revised paper.",
+      "notes": "Inspected methods/results and preserved positive, null, and task-dependent adverse findings. No patient-outcome inference from vignette/video studies."
+    }
+  ],
+  "exclusions": [
+    {
+      "title": "Earlier versions of WORKBank, Appropriate Reliance, and the Jagged Technological Frontier",
+      "url": "https://arxiv.org/abs/2506.06576",
+      "reason": "Superseded/overlapping versions are not independent evidence; records identify the inspected version."
+    },
+    {
+      "title": "Human Performance Consequences: inaccessible subscription full text",
+      "url": "https://journals.sagepub.com/doi/10.1177/0018720813501549",
+      "reason": "Full-text extraction excluded; publisher abstract retained with explicit primary-abstract status."
+    },
+    {
+      "title": "Algorithm appreciation: People prefer algorithmic to human judgment",
+      "url": "https://doi.org/10.1016/j.obhdp.2018.12.005",
+      "reason": "Relevant positive counterevidence, but attempted publisher/repository routes did not provide inspectable primary text in this pass; search snippets not promoted."
+    },
+    {
+      "title": "We and It: An interdisciplinary review of the experimental evidence on how humans interact with machines",
+      "url": "https://doi.org/10.1016/j.socec.2022.101897",
+      "reason": "Primary access failures and differing corpus counts across revisions prevented reliable version-specific extraction."
+    },
+    {
+      "title": "A model for types and levels of human interaction with automation",
+      "url": "https://doi.org/10.1109/3468.844354",
+      "reason": "Foundational conceptual lead; accessible publisher/author full text was not obtained, so no uninspected framework record was added."
+    },
+    {
+      "title": "Ironies of automation",
+      "url": "https://doi.org/10.1016/0005-1098(83)90046-8",
+      "reason": "Foundational lead; publisher/official archive access unsuccessful in this pass."
+    },
+    {
+      "title": "Do as AI say: susceptibility in deployment of clinical decision-aids",
+      "url": "https://doi.org/10.1038/s41746-021-00385-9",
+      "reason": "Primary full text not retrieved in this pass; relevant search results alone were insufficient for extraction."
+    }
+  ],
+  "reviewNotes": [
+    "Bounded AI-assisted scoping scan checked on 2026-10-22, not a systematic review, census, or human review. Publication year, observation period, and inspected revision are separate fields.",
+    "Twenty source records include three releases of one AEI series; source-record count is not an independent-study count. Experimental reviews also overlap with individual studies.",
+    "Temporal labels describe the extracted evidence: repeated means comparable aggregate/task measurements over time; longitudinal requires linked units followed beyond a short experiment. No selected record is asserted to be longitudinal.",
+    "primary-fulltext means relevant primary methods/results were accessible and inspected, not every appendix, raw dataset, or analysis independently reproduced. Some recruitment-country details and field dates remain explicitly unknown.",
+    "Provider measures rely heavily on automated classification. Automation share, API-call share, user share, session share, and turn-duration percentiles are not interchangeable.",
+    "Selected sources are five complementary designs: recurring usage, retrospective agent telemetry, experimental meta-analysis, worker-preference snapshot, and a conditional positive experiment. Selection is not a ranking of evidential certainty.",
+    "Clinical vignette/video experiments are evidence about assisted reasoning, not clinical safety or patient outcomes. This corpus is still concentrated in high-income online and professional settings.",
+    "Numerical trends remain sensitive to denominator definitions, classifier/model versions, sampling weights, and uncertainty. A nonsignificant result is not proof that there is no effect."
+  ]
+}

@@ -1,0 +1,871 @@
+{
+  "topicId": "institutions",
+  "name": "AI in government and institutional oversight",
+  "question": "When governments use AI and automated decision systems, do institutions retain practical authority to review, override, explain, contest and improve their decisions?",
+  "synthesis": "Public registers show where governments report using AI, not whether oversight works. Experiments and audits here find mixed results: some workers reduce disparities, some tools change little, and human sign-off can leave important problems unresolved. Effective review depends on information, authority and resources; formal appeal rights and clearer complaints do not by themselves demonstrate timely, successful remedies.",
+  "facets": [
+    {
+      "id": "visibility",
+      "label": "Disclosure and coverage",
+      "description": "Which systems, decision stages and affected populations can be identified, including register completeness and version comparability."
+    },
+    {
+      "id": "review",
+      "label": "Review and override",
+      "description": "Whether people detect errors, use independent information, exercise discretion and improve decisions rather than merely approve outputs."
+    },
+    {
+      "id": "contest",
+      "label": "Notice and remedies",
+      "description": "Ability to understand, challenge and obtain timely correction, including burdens on people with limited language, resources or access."
+    },
+    {
+      "id": "equity",
+      "label": "Distribution of burdens",
+      "description": "Differences in investigations, restrictions, errors and practical access across affected groups."
+    },
+    {
+      "id": "capacity",
+      "label": "Authority and dependency",
+      "description": "Staff skills, time, procurement rights, access to evidence and ability to stop, replace or operate without a supplier's system."
+    },
+    {
+      "id": "outcomes",
+      "label": "Realized public outcomes",
+      "description": "Decision accuracy, service quality, safety and costs, distinguishing audited processes and self-reported savings from measured effects."
+    }
+  ],
+  "sources": [
+    {
+      "id": "institutions-us-inventory",
+      "title": "2025 Federal Agency AI Use Case Inventory",
+      "authors": "US Office of Management and Budget and Contributing federal agencies",
+      "year": 2026,
+      "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory",
+      "publisher": "OMB GitHub repository",
+      "kind": "series",
+      "design": "Annual agency self-reported administrative inventory, with separate individually reported and consolidated commercial-product tables.",
+      "population": "Participating US federal agencies and reported use cases, including development stages.",
+      "geography": "United States federal government.",
+      "duration": "2025 reporting cycle; inspected README statistics dated April 13, 2026; earlier annual inventories exist.",
+      "measure": "Reported use cases, lifecycle stages and high-impact designations; coverage and schema for future linkage.",
+      "finding": "The README reports 56 agency submissions and 3,611 individually reported cases, including 445 high-impact cases. These are disclosures, not counts of effective deployed systems or successful oversight interventions.",
+      "limitations": "Exemptions, agency definitions, reporting changes and separate commercial-product aggregation limit comparisons. No CSV-level validation or longitudinal record linkage performed.",
+      "facets": [
+        "visibility",
+        "capacity"
+      ],
+      "temporal": "repeated",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Repository README: 2025 inventory statistics and file descriptions",
+      "sourceNote": "Read official README and repository structure. Repeated refers to annual reporting, not same-case review outcomes. Do not add commercial-product rows to individual-case totals without checking schema.",
+      "selected": true,
+      "selectionReason": "Useful public dataset for constructing a versioned study frame; explicitly selected for discoverability, not demonstrated effectiveness.",
+      "headline": "An expanding inventory is a research dataset, not an oversight score",
+      "searchOrigin": "Existing inventory import -> official 2025 OMB repository and README."
+    },
+    {
+      "id": "institutions-uk-atrs",
+      "title": "Algorithmic Transparency Records",
+      "authors": "UK Government Digital Service and Publishing public bodies",
+      "year": 2026,
+      "url": "https://www.gov.uk/algorithmic-transparency-records",
+      "publisher": "GOV.UK",
+      "kind": "series",
+      "design": "Continuously updated public collection of Algorithmic Transparency Recording Standard records.",
+      "population": "Disclosed algorithmic tools from participating public bodies, including non-AI systems and non-live lifecycle stages.",
+      "geography": "United Kingdom public sector.",
+      "duration": "Living collection inspected October 22, 2026; publication and update dates vary by record.",
+      "measure": "Availability of purpose, owner, lifecycle and tool-description records; sampling frame for later audits.",
+      "finding": "The collection makes individual algorithmic tools discoverable, including beta and retired entries. Presence of a record does not establish lawful operation, effective human review, complete coverage or favorable outcomes.",
+      "limitations": "This scan inspected the collection, not every record or linked dataset. Publication cadence is not comparable repeated outcome measurement; stable system identifiers and version history need assessment.",
+      "facets": [
+        "visibility"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Collection filters, record listings and lifecycle categories",
+      "sourceNote": "Series denotes an ongoing register; temporal snapshot denotes the single collection state assessed here. No repeated comparable population estimate or same-case follow-up extracted.",
+      "selected": false,
+      "searchOrigin": "Existing UKATRS lead -> original government record collection."
+    },
+    {
+      "id": "institutions-gao-use",
+      "title": "Artificial Intelligence: Generative AI Use and Management at Federal Agencies",
+      "authors": "US Government Accountability Office",
+      "year": 2025,
+      "url": "https://files.gao.gov/reports/GAO-25-107653/index.html",
+      "publisher": "GAO",
+      "kind": "study",
+      "design": "Performance audit using inventories, documents and interviews at 12 selected agencies.",
+      "population": "12 agencies; year-to-year inventory totals available for 11.",
+      "geography": "United States federal government.",
+      "duration": "2023 and 2024 inventory comparison; report July 29, 2025.",
+      "measure": "Reported AI use, generative-AI use, implementation challenges and oversight arrangements.",
+      "finding": "Across the 11 compared inventories, reported AI cases rose from 571 to 1,110 and generative-AI cases from 32 to 282. The audit identifies management challenges; reported potential benefits are not observed impact estimates.",
+      "limitations": "Purposive agencies, self-reported inventories and changing policy/definitions limit representativeness and comparability. No measured rate of correct overrides or resolved appeals.",
+      "facets": [
+        "visibility",
+        "capacity"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Highlights, agency inventory comparison and scope/methodology",
+      "sourceNote": "Audit HTML relevant sections inspected, not underlying agency microdata. Repeated inventories are not longitudinal evidence that review quality improved.",
+      "selected": false,
+      "searchOrigin": "Existing GAO import -> original July 2025 audit."
+    },
+    {
+      "id": "institutions-nao-2024",
+      "title": "Use of artificial intelligence in government",
+      "authors": "UK National Audit Office",
+      "year": 2024,
+      "url": "https://www.nao.org.uk/reports/use-of-artificial-intelligence-in-government/",
+      "publisher": "National Audit Office",
+      "kind": "study",
+      "design": "Government-wide audit of strategy, preparedness and adoption using organizational survey and documentary evidence.",
+      "population": "Surveyed central-government bodies; response denominator not extracted from inspected summary.",
+      "geography": "United Kingdom central government.",
+      "duration": "Preparatory/adoption conditions reported March 15, 2024; survey dates not verified here.",
+      "measure": "Readiness, ownership, legacy infrastructure, data access and workforce capability.",
+      "finding": "The audit identifies scope for service benefits alongside unclear ownership and barriers involving skills, data and legacy systems.",
+      "limitations": "Readiness and plans are not realized productivity or accountability. Summary-only inspection does not establish compliance rates or causal effects.",
+      "facets": [
+        "capacity",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Report overview, conclusions and recommendations",
+      "sourceNote": "Official audit summary inspected; full report tables and survey instrument not reviewed. No unverified survey percentage retained.",
+      "selected": false,
+      "searchOrigin": "Government AI independent audits -> NAO 2024 report."
+    },
+    {
+      "id": "institutions-dutch-audit",
+      "title": "Focus on AI in central government",
+      "authors": "Netherlands Court of Audit",
+      "year": 2024,
+      "url": "https://english.rekenkamer.nl/documents/2024/10/16/focus-on-ai-in-central-government",
+      "publisher": "Netherlands Court of Audit",
+      "kind": "study",
+      "design": "Audit mapping government-reported AI systems and whether performance, risks and public registration were known.",
+      "population": "70 organizations reporting 433 AI systems, including experimental and terminated systems.",
+      "geography": "Netherlands central government.",
+      "duration": "One audit published October 16, 2024; retrospective status reporting, not repeated outcome follow-up.",
+      "measure": "System stage, performance knowledge, risk assessment and public-register inclusion.",
+      "finding": "Many systems lacked demonstrated performance information or risk assessment. Some terminated systems reportedly met or exceeded expectations, so termination is not itself evidence of technical failure.",
+      "limitations": "433 is not a deployed-system denominator. The report's unknown-performance percentage concerns in-use systems, while its register percentage uses all reported systems; these must not be conflated.",
+      "facets": [
+        "visibility",
+        "outcomes",
+        "capacity"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Official report summary: systems, performance and registration",
+      "sourceNote": "Court's English summary inspected; no raw system-level audit data or independent benefit verification.",
+      "selected": false,
+      "searchOrigin": "Other-country government AI audits -> Netherlands Court of Audit 2024."
+    },
+    {
+      "id": "institutions-canada-register",
+      "title": "Canada launches first register of AI uses in federal government",
+      "authors": "Treasury Board of Canada Secretariat",
+      "year": 2025,
+      "url": "https://www.canada.ca/en/treasury-board-secretariat/news/2025/11/canada-launches-first-register-of-ai-uses-in-federal-government.html",
+      "publisher": "Government of Canada",
+      "kind": "series",
+      "design": "Launch release for a federal administrative AI-use register.",
+      "population": "42 federal institutions; more than 400 disclosed systems at different stages in the launch summary.",
+      "geography": "Canada federal government.",
+      "duration": "First register launch November 28, 2025; no later comparable wave assessed.",
+      "measure": "Disclosed use cases, institutions and lifecycle stage.",
+      "finding": "The register provides a discoverable starting point encompassing research, proof-of-concept and deployed uses. It does not establish how many systems improve decisions or provide effective remedies.",
+      "limitations": "Coverage exclusions include some low-risk embedded commercial uses. First-release counts cannot be treated as an adoption trend or compared directly with US/UK definitions.",
+      "facets": [
+        "visibility"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Launch announcement and quick facts",
+      "sourceNote": "Official launch summary inspected, not row-level data. Series identifies intended continuing register; temporal remains snapshot for the single inspected release.",
+      "selected": false,
+      "searchOrigin": "Other-country AI government inventories -> Canadian first-register announcement."
+    },
+    {
+      "id": "institutions-alon-busuioc",
+      "title": "Human-AI Interactions in Public Sector Decision Making: Automation Bias and Selective Adherence to Algorithmic Advice",
+      "authors": "Saar Alon-Barkat and Madalina Busuioc",
+      "year": 2023,
+      "url": "https://academic.oup.com/jpart/article/33/1/153/6524536",
+      "doi": "10.1093/jopart/muac007",
+      "publisher": "Journal of Public Administration Research and Theory",
+      "kind": "study",
+      "design": "Three vignette experiments comparing algorithmic with equivalent human-expert advice and stereotype-consistent recommendations.",
+      "population": "General-public samples of 605 and 904, and 1,345 civil servants.",
+      "geography": "Netherlands.",
+      "duration": "Short experiments; online publication February 8, 2022, corrected June 7, 2022; journal issue 2023.",
+      "measure": "Adherence to advice, algorithm-versus-human differential reliance and stereotyping.",
+      "finding": "No evidence of greater automation bias relative to equivalent human advice across the experiments. Public participants showed selective adherence to stereotype-consistent advice, but the civil-servant experiment did not reproduce that pattern.",
+      "limitations": "Vignettes do not establish actual administrative errors or appeal outcomes. The childcare-benefits scandal may contextualize the civil-servant result but is not experimentally identified as its cause.",
+      "facets": [
+        "review",
+        "equity"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract; experimental overview and discussion of Study 3",
+      "sourceNote": "Relevant publisher main-text passages and publication metadata inspected, not raw data. A null result does not prove absence of bias in every setting.",
+      "selected": true,
+      "selectionReason": "Direct public-sector participants and matched advice sources provide important counterevidence to universal automation-bias claims.",
+      "headline": "Dutch experiments did not find uniformly greater deference to algorithms",
+      "searchOrigin": "Automation bias government empirical experiments -> original JPART article and correction metadata."
+    },
+    {
+      "id": "institutions-stevenson-doleac",
+      "title": "Algorithmic Risk Assessment in the Hands of Humans",
+      "authors": "Megan T. Stevenson and Jennifer L. Doleac",
+      "year": 2024,
+      "url": "https://jenniferdoleac.com/wp-content/uploads/2026/08/StevensonDoleac2024.pdf",
+      "doi": "10.1257/pol.20220620",
+      "publisher": "American Economic Journal: Economic Policy; author-hosted final paper",
+      "kind": "study",
+      "design": "Virginia sentencing records analyzed with difference-in-differences/event studies and a risk-score threshold regression discontinuity.",
+      "population": "Eligible and comparison felony cases, excluding pilot circuits and sex-offense cases; linked court records for some analyses.",
+      "geography": "Virginia, United States.",
+      "duration": "Main adoption comparison fiscal years 2001-2004; later persistence analyses; reoffending tracked for three years from sentencing.",
+      "measure": "Incarceration, sentence length, risk responsiveness and new charges/convictions.",
+      "finding": "Judges responded to the initial diversion threshold, but responsiveness faded. The paper finds no net incarceration/public-safety improvement and distributional consequences inconsistent with simple simulation-based benefits.",
+      "limitations": "Nonrandom rollout and local threshold effects require assumptions; record linkage and incarceration exposure affect recidivism interpretation. Older predictive tool, not generative AI.",
+      "facets": [
+        "review",
+        "equity",
+        "outcomes"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections I.C, II.A-C and overall outcome discussion",
+      "sourceNote": "Final 2024 PDF inspected; 2026 URL upload is not publication year. Follow-up begins at sentencing, not release. Supplement not fully assessed.",
+      "selected": false,
+      "searchOrigin": "Judicial risk assessment real-world discretion null evidence -> author final paper."
+    },
+    {
+      "id": "institutions-imai-psa",
+      "title": "Experimental Evaluation of Algorithm-Assisted Human Decision-Making: Application to Pretrial Public Safety Assessment",
+      "authors": "Kosuke Imai, Zhichao Jiang, D. James Greiner, Ryan Halen and Sooahn Shin",
+      "year": 2023,
+      "url": "https://imai.fas.harvard.edu/research/PRAI.html",
+      "doi": "10.1093/jrsssa/qnad010",
+      "publisher": "Journal of the Royal Statistical Society Series A; author site",
+      "kind": "study",
+      "design": "Randomized provision of pretrial Public Safety Assessment information to judges, analyzed with a causal framework accounting for post-decision outcomes.",
+      "population": "Arrestees and judicial hearings in the study jurisdiction; preliminary trial sample.",
+      "geography": "Dane County, Wisconsin, United States.",
+      "duration": "Trial mid-2017 through 2019; this paper analyzes the first 12 months of hearings with 12-month follow-up, not the full trial.",
+      "measure": "Release conditions, subsequent arrestee behavior and subgroup differences.",
+      "finding": "Providing the score had little overall effect on judicial decisions or subsequent behavior. Suggestive gender heterogeneity, but little change in racial differences, qualifies any simple average-benefit claim.",
+      "limitations": "Preliminary single-site findings; subgroup patterns are suggestive and subsequent behavior depends on release decisions. Not a trial of generative AI or of all human-review designs.",
+      "facets": [
+        "review",
+        "equity",
+        "outcomes"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Author abstract; PDF trial description and main results",
+      "sourceNote": "Read author page and relevant PDF methods/results. Same arrestees followed; later methods papers using this experiment are not independent replications.",
+      "selected": true,
+      "selectionReason": "Randomized government decision support with same-case follow-up is unusually informative about realized effects and null averages.",
+      "headline": "A randomized pretrial trial found little overall effect of providing risk scores",
+      "searchOrigin": "Government human-AI review randomized trial -> Imai author publication and paper."
+    },
+    {
+      "id": "institutions-sele-oversight",
+      "title": "Putting a human in the loop: Increasing uptake, but decreasing accuracy of automated decision-making",
+      "authors": "Daniela Sele and Marina Chugunova",
+      "year": 2024,
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0298037",
+      "doi": "10.1371/journal.pone.0298037",
+      "publisher": "PLOS ONE",
+      "kind": "study",
+      "design": "Randomized delegation versus adjustable advice in a student-test prediction task; algorithm and human recommendations matched in average accuracy.",
+      "population": "292 online experiment participants; US student profiles supply task data, not decision-making participants.",
+      "geography": "Experiment conducted in Switzerland; historical US educational data.",
+      "duration": "Short experimental sessions; published February 9, 2024.",
+      "measure": "Choice of advice source, adjustments, error size and final accuracy.",
+      "finding": "Allowing adjustment increased algorithm uptake by seven percentage points. Adjustments reduced accuracy overall, and participants were less likely to correct the worst advice.",
+      "limitations": "Not government workers or real admissions decisions. Source-specific accuracy differences were not uniformly statistically significant; oversight effectiveness is context-dependent.",
+      "facets": [
+        "review",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract; Introduction; Materials and methods",
+      "sourceNote": "Full publisher methods and result passages inspected. Historical longitudinal student data do not make this short intervention longitudinal.",
+      "selected": false,
+      "searchOrigin": "Human-in-loop oversight empirical accuracy -> original PLOS experiment."
+    },
+    {
+      "id": "institutions-saxena-childwelfare",
+      "title": "Algorithmic Harms in Child Welfare: Uncertainties in Practice, Organization, and Street-level Decision-Making",
+      "authors": "Devansh Saxena and Shion Guha",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2308.05224",
+      "publisher": "Author manuscript on arXiv",
+      "kind": "study",
+      "design": "Two-year ethnography of a child-welfare agency's algorithm use and organizational practice.",
+      "population": "Caseworkers and organizational practices within one US child-welfare agency.",
+      "geography": "United States; agency location not established in inspected abstract.",
+      "duration": "Two years; precise field dates not extracted; preprint August 2023.",
+      "measure": "Qualitative evidence of repair work, uncertainty, institutional pressure and decision support.",
+      "finding": "The study describes substantial worker repair labor and organizational constraints around algorithms; supportive tools require institutional investment rather than merely individual discretion.",
+      "limitations": "Single-agency qualitative evidence does not estimate prevalence or causal harm rates. Abstract-only access limits assessment of sampling and coding.",
+      "facets": [
+        "review",
+        "capacity",
+        "equity"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Author abstract",
+      "sourceNote": "Abstract inspected, not ethnographic fieldnotes or complete methods. Longitudinal refers to sustained observation of the same institution, not a quantified person-level outcome panel.",
+      "selected": false,
+      "searchOrigin": "Street-level algorithmic decision-making human override ethnography -> author manuscript."
+    },
+    {
+      "id": "institutions-green-review",
+      "title": "The flaws of policies requiring human oversight of government algorithms",
+      "authors": "Ben Green",
+      "year": 2022,
+      "url": "https://www.benzevgreen.com/wp-content/uploads/2022/04/22-clsr.pdf",
+      "doi": "10.1016/j.clsr.2022.105681",
+      "publisher": "Computer Law & Security Review; author PDF",
+      "kind": "review",
+      "design": "Critical policy analysis and synthesis of empirical research on human oversight, examining 41 policies.",
+      "population": "Oversight policies and prior studies, not newly recruited decision subjects.",
+      "geography": "Cross-jurisdiction policy discussion; not a representative national sample.",
+      "duration": "Review published 2022; no participant follow-up.",
+      "measure": "Assumptions, legal role and empirical support for oversight requirements.",
+      "finding": "The review challenges treating human involvement as sufficient protection and argues for institution-level evaluation before adoption.",
+      "limitations": "Normative synthesis is not an experiment proving all oversight fails. Policy sample and heterogeneous prior studies cannot yield a universal effect size.",
+      "facets": [
+        "review",
+        "capacity",
+        "contest"
+      ],
+      "temporal": "none",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract, introduction and policy-analysis framing",
+      "sourceNote": "Author PDF relevant framing inspected; not every underlying empirical citation independently assessed. Historical policy descriptions are not current-law verification.",
+      "selected": false,
+      "searchOrigin": "Human oversight government policy evidence critique -> original author paper."
+    },
+    {
+      "id": "institutions-gao-procurement",
+      "title": "Artificial Intelligence Acquisitions: Agencies Should Collect and Apply Lessons Learned to Improve Future Procurements",
+      "authors": "US Government Accountability Office",
+      "year": 2026,
+      "url": "https://files.gao.gov/reports/GAO-26-107859/index.html",
+      "publisher": "GAO",
+      "kind": "study",
+      "design": "Performance audit of selected AI acquisitions using contract documents and agency interviews.",
+      "population": "13 acquisitions at Defense, Homeland Security, General Services Administration and Veterans Affairs.",
+      "geography": "United States federal government.",
+      "duration": "Audit October 2024-April 2026; report April 13, 2026.",
+      "measure": "Acquisition practices, technical evaluation capacity, contractual/data issues and collection of lessons learned.",
+      "finding": "Agencies faced acquisition and evaluation challenges, and GAO identified weaknesses in systematically collecting lessons. Agreement with recommendations is not evidence that fixes were implemented.",
+      "limitations": "Selected acquisitions are not representative of all vendors or agencies. Procurement provisions and reported challenges do not quantify switching costs, actual override competence or service benefits.",
+      "facets": [
+        "capacity",
+        "review"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Highlights, acquisition findings, recommendations and methodology",
+      "sourceNote": "Official HTML relevant sections and exact report title inspected. New procurement requirements discussed by the audit are separated from observed contract practice. Report GAO-26-107859.",
+      "selected": true,
+      "selectionReason": "Direct audit evidence grounds practical authority in acquisition and evaluation capacity, complementing behavioral experiments.",
+      "headline": "Practical oversight depends on procurement and evaluation capacity",
+      "searchOrigin": "Government AI vendor dependence procurement audit -> GAO-26-107859."
+    },
+    {
+      "id": "institutions-ato-audit",
+      "title": "Australian Taxation Office's Adoption of Artificial Intelligence",
+      "authors": "Australian National Audit Office",
+      "year": 2025,
+      "url": "https://www.anao.gov.au/work/performance-audit/australian-taxation-offices-adoption-of-artificial-intelligence",
+      "publisher": "ANAO",
+      "kind": "study",
+      "design": "Independent performance audit of AI governance, development, deployment and monitoring.",
+      "population": "ATO AI models and governance processes; 43 production models reported as of May 14, 2024.",
+      "geography": "Australia federal tax administration.",
+      "duration": "Audit report February 24, 2025; model and assessment snapshots during 2024.",
+      "measure": "Risk/ethics assessment completion, governance design and evaluation practice.",
+      "finding": "Governance, development and evaluation arrangements were assessed as partly effective. In August 2024, 74% of production models lacked a completed data-ethics assessment.",
+      "limitations": "The ethics-assessment percentage uses production models at the relevant audit date, not all ATO systems or taxpayers. Process noncompletion is not a measured model error or discrimination rate.",
+      "facets": [
+        "capacity",
+        "review",
+        "visibility"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Summary and audit findings on governance and ethics assessments",
+      "sourceNote": "Official report summary and relevant findings inspected; underlying model tests not replicated. Report 26 of 2024-25.",
+      "selected": false,
+      "searchOrigin": "Australian AI government audit -> ATO ANAO performance audit."
+    },
+    {
+      "id": "institutions-medicare-audit",
+      "title": "Artificial Intelligence and Medicare Benefits Integrity",
+      "authors": "Australian National Audit Office",
+      "year": 2026,
+      "url": "https://www.anao.gov.au/work/performance-audit/artificial-intelligence-and-medicare-benefits-integrity",
+      "publisher": "ANAO",
+      "kind": "study",
+      "design": "Performance audit of departmental governance and AI-enabled fraud/compliance model implementation.",
+      "population": "Departmental Medicare integrity processes and the audited model, not all Medicare claims.",
+      "geography": "Australia.",
+      "duration": "AI-enabled model used July 2024-December 2025; report September 21, 2026; compliance assessment through May 2026.",
+      "measure": "Governance, documentation, assurance, fairness controls and case-development processes.",
+      "finding": "Enterprise governance was largely effective but model compliance only partly effective. The department replaced the model with logistic regression, classified by the agency as non-AI; potential noncompliance cases were not equivalent to recovered funds or proven AI-caused benefits.",
+      "limitations": "Human review was cited as a safeguard without evidence that it corrected bias. Model replacement shows a specific operational change, not general independence from vendors.",
+      "facets": [
+        "review",
+        "capacity",
+        "outcomes",
+        "equity"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Summary; Table 4.2; paragraphs 4.13-4.14",
+      "sourceNote": "Official audit findings inspected, including favorable auditability and incomplete fairness controls. Retrospective process audit is not a longitudinal causal outcome study.",
+      "selected": false,
+      "searchOrigin": "Recent government AI audit outcomes -> ANAO Medicare 2026."
+    },
+    {
+      "id": "institutions-uk-copilot",
+      "title": "M365 Copilot Experiment Findings Report",
+      "authors": "UK Government Digital Service",
+      "year": 2025,
+      "url": "https://assets.publishing.service.gov.uk/media/683db42bd23a62e5d32680d0/M365_Copilot_Experiment_Findings_Report.pdf",
+      "publisher": "UK Government",
+      "kind": "study",
+      "design": "Multi-organization implementation evaluation using product analytics, surveys and qualitative feedback, without randomized control.",
+      "population": "20,000 licenses across 12 government organizations; survey respondents are a subset, not all licensed users.",
+      "geography": "United Kingdom.",
+      "duration": "September 30-December 31, 2024 trial; report June 2025.",
+      "measure": "Usage, perceived time saving, accessibility and task-specific strengths/limitations.",
+      "finding": "Participants reported useful assistance and time savings on some tasks, with limits on complex data-heavy work. The prominent 26-minute estimate is self-reported, not an experimentally timed effect across all civil servants.",
+      "limitations": "Selection, nonresponse, novelty and self-estimation affect results. Productivity perceptions do not establish decision accuracy or institutional independence from a supplier.",
+      "facets": [
+        "outcomes",
+        "capacity"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Executive summary, trial approach and time-saving discussion",
+      "sourceNote": "Report relevant introductory and results passages inspected. Longitudinal refers to trial-cohort usage over three months; savings survey is not a repeated causal productivity measure.",
+      "selected": false,
+      "searchOrigin": "Positive government generative AI evaluation -> official UK Copilot trial report."
+    },
+    {
+      "id": "institutions-landau-contest",
+      "title": "Challenging the Machine: Contestability in Government AI Systems",
+      "authors": "Susan Landau, James X. Dempsey, Ece Kamar, Steven M. Bellovin and Robert Pool",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2406.10430",
+      "publisher": "Author workshop report on arXiv",
+      "kind": "proposal",
+      "design": "Cross-sector workshop synthesis with recommendations and explanatory material, conducted under modified Chatham House rules.",
+      "population": "Invited technologists, officials, civil-society participants, litigators and researchers.",
+      "geography": "US government-focused discussion.",
+      "duration": "Workshop January 24-25, 2024; report June 14, 2024; no outcome follow-up.",
+      "measure": "Proposed requirements and implementation considerations for contestable government decisions.",
+      "finding": "The report translates contestability aspirations into proposed guidance for development, procurement and use.",
+      "limitations": "No observed appeal success rate, implementation audit or representative estimate. Anonymized workshop statements and historical executive-order context are not current legal requirements.",
+      "facets": [
+        "contest",
+        "capacity"
+      ],
+      "temporal": "none",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract and workshop description",
+      "sourceNote": "Primary author abstract inspected, not all recommendations. Classified as proposal rather than evidence of successful implementation.",
+      "selected": false,
+      "searchOrigin": "Contestability government AI empirical and proposed measures -> workshop original report."
+    },
+    {
+      "id": "institutions-nsw-language",
+      "title": "Utilising Generative Artificial Intelligence (GenAI) to assist complainants who speak English as a Second Language",
+      "authors": "Christine Armstrong, Alicia Kulczynski, Margurite Hook, Moji Barari, Bin Li and Jeremy Niass",
+      "year": 2025,
+      "url": "https://cmsassets.ombo.nsw.gov.au/assets/Reports/Utilising-Generative-AI-for-ESL-Complainants-Report.pdf",
+      "publisher": "University of Newcastle; report hosted by NSW Ombudsman",
+      "kind": "study",
+      "design": "Scenario experiments with AI-assisted complaint writing plus an exploratory professional complaint-handler evaluation.",
+      "population": "English-second-language and native-English respondents; Study 3b has 400 participants, exploratory handler study 95.",
+      "geography": "Australian institutional setting; online participant geography varies and was not fully extracted.",
+      "duration": "Short experimental tasks; report prepared February 2025, precise field dates not extracted.",
+      "measure": "Perceived ability to complain, expected success, discrimination, clarity and handler ratings.",
+      "finding": "AI assistance improved perceived complaint capability and clarity. Handlers rated AI-modified and ESL-written complaints similarly on success, legitimacy and completeness, despite clarity/timeliness advantages.",
+      "limitations": "Scenario complaints were not actual government appeals or observed remedies. Language background was measured, not randomized. The report includes consumer contexts, limiting transfer to statutory decisions.",
+      "facets": [
+        "contest",
+        "equity",
+        "outcomes"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Executive summary; Study 3b and Study 4 methods/results; limitations",
+      "sourceNote": "Primary PDF authorship page, relevant methods/results and limitations inspected. Copyright University of Newcastle, 2025. No actual appeal outcomes measured.",
+      "selected": false,
+      "searchOrigin": "Positive evidence AI complaints access language -> NSW Ombudsman commissioned experiments."
+    },
+    {
+      "id": "institutions-canada-scope",
+      "title": "Guide on the Scope of the Directive on Automated Decision-Making",
+      "authors": "Treasury Board of Canada Secretariat",
+      "year": 2026,
+      "url": "https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/automated-decision-making/guide-scope-directive-automated-decision-making.html",
+      "publisher": "Government of Canada",
+      "kind": "framework",
+      "design": "Official administrative-policy interpretation, defining scope and examples rather than evaluating implementation.",
+      "population": "Covered federal departments and qualifying administrative decision systems, with institutional and national-security exclusions.",
+      "geography": "Canada federal government.",
+      "duration": "Guide copyright 2024; page version dated September 15, 2026; scope includes post-April 1, 2020 systems and significant modifications.",
+      "measure": "Requirements for impact assessment, transparency, quality, recourse and public reporting.",
+      "finding": "A human making the final decision does not by itself put a system outside the directive: partially automated intermediate assessments can be covered.",
+      "limitations": "Policy scope is not evidence of actual compliance, effective recourse or a universal requirement for all Canadian AI. Direct directive endpoint was unavailable.",
+      "facets": [
+        "contest",
+        "review",
+        "visibility"
+      ],
+      "temporal": "none",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Purpose; five scope elements; partial automation; production environment",
+      "sourceNote": "Read official guidance including version date. No claim to have inspected the inaccessible consolidated directive or to measured implementation.",
+      "selected": false,
+      "searchOrigin": "Canadian directive human review recourse -> official scope guidance as fallback for blocked directive."
+    },
+    {
+      "id": "institutions-robodebt-recs",
+      "title": "Royal Commission into the Robodebt Scheme: recommendations on automated decision-making",
+      "authors": "Royal Commission into the Robodebt Scheme and Catherine Holmes",
+      "year": 2023,
+      "url": "https://robodebt.royalcommission.gov.au/publications/report",
+      "publisher": "Australian Royal Commission",
+      "kind": "proposal",
+      "design": "Commission recommendations extracted from official report landing page; not a new evaluation of their implementation.",
+      "population": "Australian government automation, data exchange and debt-recovery governance.",
+      "geography": "Australia.",
+      "duration": "Report July 7, 2023, corrected July 11; no post-recommendation follow-up assessed.",
+      "measure": "Proposed review paths, public explanations, independent technical scrutiny and debt-dispute safeguards.",
+      "finding": "Recommendations call for clear review routes, accessible explanations and algorithm scrutiny, plus opportunities to challenge debts before recovery. These are proposed reforms, not verified operational safeguards.",
+      "limitations": "Full commission volumes were not inspected; no victim counts or detailed causal account extracted. Robodebt was older automated administration, not an LLM system.",
+      "facets": [
+        "contest",
+        "review",
+        "capacity"
+      ],
+      "temporal": "none",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Recommendations 16.1-16.2, 17.1-17.2 and 18.1",
+      "sourceNote": "Official recommendation text inspected; scope deliberately limited to proposals. Implementation and legal changes require separate verification.",
+      "selected": false,
+      "searchOrigin": "Foundational government automation appeal failures -> Royal Commission official report/recommendations."
+    },
+    {
+      "id": "institutions-afst-reanalysis",
+      "title": "Extended Analysis of \"How Child Welfare Workers Reduce Racial Disparities in Algorithmic Decisions\"",
+      "authors": "Logan Stapleton, Hao-Fei Cheng, Anna Kawakami, Venkatesh Sivaraman, Yanghuidi Cheng, Diana Qing, Adam Perer, Kenneth Holstein, Zhiwei Steven Wu and Haiyi Zhu",
+      "year": 2022,
+      "url": "https://arxiv.org/html/2204.13872v1",
+      "publisher": "Author reanalysis on arXiv",
+      "kind": "study",
+      "design": "Reanalysis of administrative referrals, algorithm scores and worker decisions after corrected identifiers, exclusions and retrospective scores.",
+      "population": "Discretionary child-welfare referrals; active and non-discretionary cases excluded.",
+      "geography": "Allegheny County, Pennsylvania, United States.",
+      "duration": "Referral data January 1, 2015-July 13, 2018; corrected dataset April 27, 2022; reanalysis April 29.",
+      "measure": "Racial disparity in screening and accuracy relative to the tool's prediction target.",
+      "finding": "Workers' decisions remained less racially disparate than algorithm-only decisions. Overall accuracy rankings changed with data/preprocessing corrections, so authors withdrew a clear conclusion about which was more accurate.",
+      "limitations": "Not randomized; decisions affect later targets, and foster placement is not identical to child welfare. Before/after screening levels were also sensitive to exclusions.",
+      "facets": [
+        "review",
+        "equity",
+        "outcomes"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 1-2; Appendix comparisons",
+      "sourceNote": "Read correction rationale and main reanalysis findings. Repeated refers to comparable referral decisions over time, not a demonstrated person-level remedy trajectory. Original study is not counted again.",
+      "selected": true,
+      "selectionReason": "Real administrative overrides offer positive disparity evidence alongside unusually explicit correction and measurement uncertainty.",
+      "headline": "Workers reduced disparities, but accuracy conclusions changed after data correction",
+      "searchOrigin": "Government human override positive evidence -> CHI study -> author corrected-data reanalysis."
+    },
+    {
+      "id": "institutions-nsw-garnishee",
+      "title": "Revenue NSW: The lawfulness of its garnishee order process",
+      "authors": "NSW Ombudsman and Paul Miller",
+      "year": 2024,
+      "url": "https://cmsassets.ombo.nsw.gov.au/assets/Reports/Revenue-NSW-The-lawfulness-of-its-garnishee-order-process.pdf",
+      "publisher": "NSW Ombudsman",
+      "kind": "study",
+      "design": "Statutory investigation of successive operational system versions, decision records and expert legal opinions.",
+      "population": "Revenue NSW garnishee-order process for fines and other state debts; not a representative claimant cohort.",
+      "geography": "New South Wales, Australia.",
+      "duration": "Systems operating since 2016; formal investigation June 2023-April 2024.",
+      "measure": "Actual decision authority, legal compliance, information supplied to staff and documentation of discretionary decisions.",
+      "finding": "The Ombudsman found fines-process conduct contrary to law before March 2019 and wrong through March 2022 despite added human involvement. Later advice supported compliance of the revised fines system used since May 2022.",
+      "limitations": "A specific older automation case, not general evidence about all AI or current illegality. Legal compliance, decision quality and hardship outcomes are different measures.",
+      "facets": [
+        "review",
+        "contest",
+        "capacity"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Executive summary, pages 1-2; system-version timeline",
+      "sourceNote": "Read official report opening findings and official April 30, 2024 release. Longitudinal refers to the same administrative process across versions, not claimant outcomes. Recommendations are not assumed implemented.",
+      "selected": false,
+      "searchOrigin": "NSW automated garnishee orders human sign-off -> 2024 final investigation, superseding 2021 interim commentary."
+    }
+  ],
+  "gaps": [
+    {
+      "title": "Identify when human review improves real decisions",
+      "summary": "Human involvement alone does not specify the information, authority or incentives needed to correct a system.",
+      "basis": "Dutch experiments find no distinctive automation bias; the PSA trial has little average effect; AFST workers reduce disparities but accuracy comparisons are unstable. Sele's short task and the NSW operational investigation show different routes to ineffective oversight, while ethnography documents repair labor.",
+      "next": "Run preregistered field comparisons of review designs with independent error adjudication, time/resources, override reasons, disagreement, and subgroup outcomes. Distinguish appropriate acceptance from rubber-stamping and beneficial overrides from harmful ones.",
+      "refs": [
+        "institutions-alon-busuioc",
+        "institutions-imai-psa",
+        "institutions-afst-reanalysis",
+        "institutions-sele-oversight",
+        "institutions-nsw-garnishee",
+        "institutions-saxena-childwelfare",
+        "institutions-stevenson-doleac"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Follow contestation from notice through actual remedy",
+      "summary": "Formal recourse and clearer complaint writing are not the same as accessible, timely and effective correction.",
+      "basis": "Canadian guidance and Robodebt recommendations describe requirements or proposals; the Landau workshop offers design guidance. NSW complaint experiments improve capability/clarity but not observed case resolution; garnishee scrutiny shows the importance of legal authority and decision records.",
+      "next": "Construct consented claimant cohorts linking notices, advice, challenge attempts, abandoned appeals, processing time, reversals, interim hardship and remedy received. Compare language/access groups and non-contestants; evaluate AI complaint assistance with real safeguards.",
+      "refs": [
+        "institutions-canada-scope",
+        "institutions-robodebt-recs",
+        "institutions-landau-contest",
+        "institutions-nsw-language",
+        "institutions-nsw-garnishee"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Test practical independence and fallback capacity",
+      "summary": "The selected audits describe capability constraints but rarely measure the cost and success of stopping or replacing a system.",
+      "basis": "GAO procurement and NAO highlight organizational capacity; child-welfare ethnography highlights worker repair. Copilot perceived savings do not measure dependency, while the Medicare model replacement shows change is possible in one audited setting, not that switching is always easy.",
+      "next": "Audit contractual access, logging, in-house expertise and tested manual alternatives; conduct documented exit/fallback exercises and follow service quality, costs and staffing through model updates or supplier changes.",
+      "refs": [
+        "institutions-gao-procurement",
+        "institutions-nao-2024",
+        "institutions-saxena-childwelfare",
+        "institutions-uk-copilot",
+        "institutions-medicare-audit"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Connect public inventories to comparable outcome histories",
+      "summary": "Registers can define a sampling frame, but disclosure counts alone cannot locate effective oversight.",
+      "basis": "US, UK and Canadian records differ in coverage, aggregation and lifecycle definitions. GAO counts changes across inventories; Dutch and Australian audits reveal gaps between disclosed/adopted systems, known performance and completed safeguards.",
+      "next": "Version registers with stable identifiers and explicit exclusions, then sample systems for independent follow-up linking deployment, model changes, review resources, complaints and outcome measures. Preserve stage and denominator so retired, pilot and deployed uses are not pooled.",
+      "refs": [
+        "institutions-us-inventory",
+        "institutions-uk-atrs",
+        "institutions-canada-register",
+        "institutions-gao-use",
+        "institutions-dutch-audit",
+        "institutions-ato-audit",
+        "institutions-medicare-audit"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    }
+  ],
+  "searchLog": [
+    {
+      "query": "Existing institutions imports -> US 2025 Federal Agency AI Use Case Inventory OMB",
+      "date": "2026-10-22",
+      "scope": "Official repository and README",
+      "notes": "Checked April 2026 metadata, separate commercial table and reporting rather than outcome interpretation."
+    },
+    {
+      "query": "UK Algorithmic Transparency Records ATRS",
+      "date": "2026-10-22",
+      "scope": "Official public collection",
+      "notes": "Single retrieved state; no full register scrape, change-log reconstruction or outcome evaluation."
+    },
+    {
+      "query": "GAO 25-107653 artificial intelligence agencies 2025",
+      "date": "2026-10-22",
+      "scope": "Original federal performance audit",
+      "notes": "Separated 12-agency audit scope from 11-agency inventory comparison."
+    },
+    {
+      "query": "government AI audits Netherlands NAO Australia ATO Medicare",
+      "date": "2026-10-22",
+      "scope": "National audit offices, 2024-2026 reports",
+      "notes": "Included mixed governance findings, unknown performance, termination interpretation and model replacement."
+    },
+    {
+      "query": "Canada first AI register government November 2025",
+      "date": "2026-10-22",
+      "scope": "Original launch announcement",
+      "notes": "First release only; not a longitudinal oversight series."
+    },
+    {
+      "query": "Alon Barkat Busuioc automation bias selective adherence public sector",
+      "date": "2026-10-22",
+      "scope": "Primary journal experiments",
+      "notes": "Included null algorithm-versus-human effects and differences between public and civil-servant samples."
+    },
+    {
+      "query": "Stevenson Doleac algorithmic risk assessment hands humans; Imai pretrial randomized PSA",
+      "date": "2026-10-22",
+      "scope": "Author final papers and trial descriptions",
+      "notes": "Separated quasi-experimental rollout from randomized information provision; checked follow-up and preliminary trial coverage."
+    },
+    {
+      "query": "human in loop oversight accuracy Sele Chugunova; Saxena Guha child welfare ethnography",
+      "date": "2026-10-22",
+      "scope": "Original behavioral experiment and qualitative author abstract",
+      "notes": "Non-government laboratory mechanism explicitly separated from government field evidence."
+    },
+    {
+      "query": "How Child Welfare Workers Reduce Racial Disparities extended analysis",
+      "date": "2026-10-22",
+      "scope": "Author reanalysis and county source trail",
+      "notes": "Used corrected-data analysis; did not count original as independent or retain unstable accuracy ranking."
+    },
+    {
+      "query": "government AI procurement vendor dependency GAO 26-107859",
+      "date": "2026-10-22",
+      "scope": "Primary acquisition audit",
+      "notes": "Checked selected acquisitions, methodology and recommendations; assent is not implementation."
+    },
+    {
+      "query": "M365 Copilot experiment findings UK government 2025",
+      "date": "2026-10-22",
+      "scope": "Original implementation report",
+      "notes": "Reported savings distinguished from measured causal productivity."
+    },
+    {
+      "query": "contestability government AI Landau; Canada directive human review recourse",
+      "date": "2026-10-22",
+      "scope": "Workshop proposal and official policy scope guide",
+      "notes": "Direct Canadian directive endpoint blocked; inspected September 2026 guide. No legal requirement classified as outcome data."
+    },
+    {
+      "query": "Robodebt Royal Commission automated decision recommendations",
+      "date": "2026-10-22",
+      "scope": "Official report landing page",
+      "notes": "Only specific recommendation text assessed; full volumes unavailable, so record is proposal/none."
+    },
+    {
+      "query": "NSW GenAI complaints English second language experiment",
+      "date": "2026-10-22",
+      "scope": "Original commissioned research PDF",
+      "notes": "Read methods and contrasting subjective/handler outcomes; no real appeal-resolution inference."
+    },
+    {
+      "query": "site.ombo.nsw.gov.au 2021 automated garnishee orders report unlawful manual review",
+      "date": "2026-10-22",
+      "scope": "Statutory investigation and updated official findings",
+      "notes": "Followed 2021 lead to 2024 final report; preserved later compliant-system advice and historical periods."
+    },
+    {
+      "query": "Angelova Dobbie Yang algorithmic recommendations judicial discretion; Centrelink automated debt 2017 Ombudsman",
+      "date": "2026-10-22",
+      "scope": "Additional primary-source leads",
+      "notes": "Access/version barriers prevented assessment beyond discovery; not promoted from snippets. Purposive English-led scan, not comprehensive."
+    }
+  ],
+  "exclusions": [
+    {
+      "title": "Original AFST paper as an additional independent quantitative result",
+      "url": "https://arxiv.org/abs/2204.13872",
+      "reason": "Counted once using the corrected-data reanalysis; original findings affected by identifiers, exclusions and score corrections."
+    },
+    {
+      "title": "Earlier preliminary Angelova-Dobbie-Yang judicial-discretion manuscript",
+      "url": "https://law.yale.edu/sites/default/files/area/workshop/leo/judge_discretion.pdf",
+      "reason": "Marked preliminary; final primary article access unsuccessful. Not substituted for a verified final study or quoted from search snippets."
+    },
+    {
+      "title": "Algorithmic Recommendations and Human Discretion (NBER w31747)",
+      "url": "https://www.nber.org/papers/w31747",
+      "reason": "Relevant primary lead but retrieval failed; final 2026 publisher record could not be sufficiently inspected."
+    },
+    {
+      "title": "Centrelink's automated debt raising and recovery system (2017 Ombudsman)",
+      "url": "https://www.ombudsman.gov.au/__data/assets/pdf_file/0022/43528/Report-Centrelinks-automated-debt-raising-and-recovery-system-April-2017.pdf",
+      "reason": "Primary PDF and summary retrieval unsuccessful; no empirical findings retained from snippets alone."
+    },
+    {
+      "title": "NSW ADM mapping executive report",
+      "url": "https://cmsassets.ombo.nsw.gov.au/assets/Reports/Executive-Report-ADMS.pdf",
+      "reason": "Full report retrieval failed; thin summary would add disclosure volume without enough assessment detail."
+    },
+    {
+      "title": "2024 shorter contestability recommendations report",
+      "url": "https://arxiv.org/abs/2403.01649",
+      "reason": "Overlapping workshop source trail; not counted as independent implementation evidence."
+    },
+    {
+      "title": "2025 statistical framework using the pretrial trial",
+      "url": "https://imai.fas.harvard.edu/research/ai.html",
+      "reason": "Related analysis of overlapping experimental setting; not treated as independent replication in this bounded scan."
+    }
+  ],
+  "reviewNotes": [
+    "Inventories are study frames, not oversight scores. US annual releases are repeated reporting; the UK and Canadian records here represent one inspected register state or release.",
+    "Formal policy requirements, recommendations and workshop proposals are not evidence that safeguards were implemented or worked.",
+    "Same-arrestee follow-up, sustained institutional observation and a process's version history are all longitudinal in different senses. They should not be pooled as equivalent outcome measures.",
+    "Older predictive and rule-based systems illuminate discretion and institutional constraints, but their results do not directly evaluate present-day generative AI.",
+    "Positive and null findings qualify broad failure claims: some workers reduced disparities, some experiments found little average effect, complaint clarity improved, and some audited governance was effective.",
+    "Registers, process ratings, perceived time savings, potential recoveries, legal compliance and actual public outcomes use different measures and denominators.",
+    "Coverage favors the US, UK, Australia, Canada and the Netherlands. Limited coverage elsewhere is a feature of this corpus, not evidence that research is absent.",
+    "Fulltext status means relevant sections were inspected, not every appendix or underlying dataset. Some studies remain assessed only through primary abstracts or official summaries."
+  ]
+}

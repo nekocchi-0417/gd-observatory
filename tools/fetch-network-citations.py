@@ -7,7 +7,8 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-records = json.loads((ROOT / 'src/library-view-data.json').read_text())['records']
+merged = ROOT / 'dist/network-library.json'
+records = json.loads((merged if merged.exists() else ROOT / 'src/library-view-data.json').read_text())['records']
 
 def doi_for(url):
     parsed = urllib.parse.urlparse(url)

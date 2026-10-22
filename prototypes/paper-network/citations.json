@@ -1,6 +1,6 @@
 {
   "provider": "OpenAlex",
-  "retrieved": "2026-10-22T07:50:55.214930+00:00",
+  "retrieved": "2026-10-22T09:38:08.830537+00:00",
   "method": "Exact DOI, including arXiv DOI identifiers; no title inference.",
   "records": {
     "ref:23980a43b97f6d7c": {
@@ -1256,6 +1256,102 @@
       "work": "https://openalex.org/W2008653298",
       "title": "Ironies of automation",
       "doi": "10.1016/0005-1098(83)90046-8"
+    },
+    "ref:3e4a5dea3aec490f": {
+      "count": 69,
+      "work": "https://openalex.org/W4387561453",
+      "title": "GardenBench: A lightweight, daily evaluation of LLM capabilities",
+      "doi": "10.48550/arxiv.2310.06770"
+    },
+    "ref:1c294c3f51d7bc1f": {
+      "count": 12,
+      "work": "https://openalex.org/W4388964563",
+      "title": "GAIA: a benchmark for General AI Assistants",
+      "doi": "10.48550/arxiv.2311.12983"
+    },
+    "ref:ae53acd076cd8923": {
+      "count": 30,
+      "work": "https://openalex.org/W4388926373",
+      "title": "GPQA: A Graduate-Level Google-Proof Q&A Benchmark",
+      "doi": "10.48550/arxiv.2311.12022"
+    },
+    "ref:259b57a1bad9f373": {
+      "count": 10,
+      "work": "https://openalex.org/W4404397121",
+      "title": "FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI",
+      "doi": "10.48550/arxiv.2411.04872"
+    },
+    "ref:2f6995438e08e0d9": {
+      "count": 20,
+      "work": "https://openalex.org/W4402345509",
+      "title": "LAB-Bench: Measuring Capabilities of Language Models for Biology Research",
+      "doi": "10.48550/arxiv.2407.10362"
+    },
+    "ref:171cfc96b2d201b8": {
+      "count": 6,
+      "work": "https://openalex.org/W4403324055",
+      "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+      "doi": "10.48550/arxiv.2410.05080"
+    },
+    "ref:e72161b1710d329e": {
+      "count": 0,
+      "work": "https://openalex.org/W7221103730",
+      "title": "On the estimation and validity of AI time horizons---a statistical look at the METR plot",
+      "doi": "10.48550/arxiv.2610.12466"
+    },
+    "ref:1c0e37196fff20cd": {
+      "count": 523,
+      "work": "https://openalex.org/W2135556086",
+      "title": "Human Performance Consequences of Stages and Levels of Automation",
+      "doi": "10.1177/0018720813501549"
+    },
+    "ref:ed1f900800240996": {
+      "count": 227,
+      "work": "https://openalex.org/W3125444036",
+      "title": "Labor Share Decline and Intellectual Property Products Capital",
+      "doi": "10.3982/ecta17477"
+    },
+    "ref:21c71f1e377a42fb": {
+      "count": 10,
+      "work": "https://openalex.org/W4318899527",
+      "title": "AI model GPT-3 (dis)informs us better than humans",
+      "doi": "10.48550/arxiv.2301.11924"
+    },
+    "ref:31fe040fed511b91": {
+      "count": 0,
+      "work": "https://openalex.org/W7120150422",
+      "title": "Large language models can effectively convince people to believe conspiracies",
+      "doi": "10.48550/arxiv.2601.05050"
+    },
+    "ref:1402198e7ab18a44": {
+      "count": 0,
+      "work": "https://openalex.org/W7127955808",
+      "title": "Different Time, Different Language: Revisiting the Bias Against Non-Native Speakers in GPT Detectors",
+      "doi": "10.48550/arxiv.2602.05769"
+    },
+    "ref:786286889baca739": {
+      "count": 172,
+      "work": "https://openalex.org/W4353007481",
+      "title": "Can AI-Generated Text be Reliably Detected?",
+      "doi": "10.48550/arxiv.2303.11156"
+    },
+    "ref:93b4bfeb5fce4ae5": {
+      "count": 2,
+      "work": "https://openalex.org/W4399794200",
+      "title": "Challenging the Machine: Contestability in Government AI Systems",
+      "doi": "10.48550/arxiv.2406.10430"
+    },
+    "ref:417bcb5eae3976d6": {
+      "count": 1,
+      "work": "https://openalex.org/W4225300711",
+      "title": "Extended Analysis of \"How Child Welfare Workers Reduce Racial Disparities in Algorithmic Decisions\"",
+      "doi": "10.48550/arxiv.2204.13872"
+    },
+    "ref:326d279db20c3d2e": {
+      "count": 2182,
+      "work": "https://openalex.org/W2887734062",
+      "title": "Good Gig, Bad Gig: Autonomy and Algorithmic Control in the Global Gig Economy",
+      "doi": "10.1177/0950017018785616"
     }
   },
   "errors": []

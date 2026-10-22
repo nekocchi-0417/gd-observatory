@@ -1,0 +1,863 @@
+{
+  "topicId": "culture",
+  "name": "Culture and information",
+  "question": "How is AI changing what gets made, what people attend to and believe, cultural diversity, and creators' ability to earn?",
+  "synthesis": "AI can increase content production without attracting a matching share of genuine attention or creator income. Studies here find better individual outputs alongside greater similarity, persuasion alongside successful correction, and useful detection alongside language-dependent errors. Most evidence comes from selected platforms and short tasks, so it does not establish AI's overall share of culture or its economy-wide effect on creators.",
+  "facets": [
+    {
+      "id": "supply",
+      "label": "Production and provenance",
+      "description": "Amounts and sources of human, AI-assisted and fully synthetic content, keeping uploads separate from catalog stocks."
+    },
+    {
+      "id": "attention",
+      "label": "Discovery and consumption",
+      "description": "Exposure, clicks, listening and sharing, including ranking, fraud and the difference between intended and observed behavior."
+    },
+    {
+      "id": "influence",
+      "label": "Beliefs, trust and persuasion",
+      "description": "Accuracy judgments, authorship beliefs, opinion change and persistence under different human-AI interactions."
+    },
+    {
+      "id": "diversity",
+      "label": "Creative quality and diversity",
+      "description": "Individual quality, between-output similarity, distribution tails and diversity of consumed culture."
+    },
+    {
+      "id": "livelihoods",
+      "label": "Creator work and earnings",
+      "description": "Job demand, compensation, realized income and distribution of rewards, without treating engagement as revenue."
+    },
+    {
+      "id": "measurement",
+      "label": "Attribution reliability",
+      "description": "Reliability and fairness of human judgments, detectors and provenance measures across languages, domains and model versions."
+    }
+  ],
+  "sources": [
+    {
+      "id": "culture-deezer-series",
+      "title": "Deezer: AI music has surpassed 50% of new music uploads for the first time",
+      "authors": "Jesper Wendel (Deezer)",
+      "year": 2026,
+      "url": "https://newsroom-deezer.com/2026/07/ai-music-exceeds-50-percent-daily-uploads-deezer/",
+      "publisher": "Deezer Newsroom",
+      "kind": "series",
+      "design": "Recurring platform operational disclosures using Deezer's proprietary music detector and fraud systems.",
+      "population": "Tracks delivered to Deezer and streams on that platform.",
+      "geography": "International Deezer service; not the entire music market.",
+      "duration": "Series since January 2025; inspected July 21, 2026 release reports June 2026 uploads and separate 2025 fraud statistics.",
+      "measure": "Daily fully AI-generated deliveries; share of daily deliveries; share of streams; flagged fraudulent AI streams.",
+      "finding": "Deezer reports about 90,000 fully AI tracks per day on average in June 2026, exceeding half of daily deliveries at peak, but only 1-3% of all platform streams. Its separate 2025 claim is that up to 85% of streams of fully AI tracks were fraudulent.",
+      "limitations": "Company-reported detector and fraud classifications are not independently validated here. Peak delivery share is not average catalog share. Differently dated stream/fraud estimates cannot be multiplied into a verified genuine-listening estimate.",
+      "facets": [
+        "supply",
+        "attention",
+        "measurement",
+        "livelihoods"
+      ],
+      "temporal": "repeated",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Release opening paragraphs and AI music FAQ",
+      "sourceNote": "Read official release and FAQ; no raw logs. Tagging start is inconsistent between body and notes (June 2026 versus June 2025), requiring clarification.",
+      "selected": true,
+      "selectionReason": "Recurring operational series directly separates production from consumption, with explicit proprietary-measurement limits.",
+      "headline": "Large synthetic upload flows do not imply comparable listening shares",
+      "searchOrigin": "Existing imported Deezer lead -> official July 2026 release and November 2025 survey release."
+    },
+    {
+      "id": "culture-deezer-ipsos",
+      "title": "Deezer/Ipsos survey: 97% of people can't tell the difference between fully AI-generated and human made music - clear desire for transparency and fairness for artists",
+      "authors": "Deezer and Ipsos; release by Jesper Wendel",
+      "year": 2025,
+      "url": "https://newsroom-deezer.com/2025/11/deezer-ipsos-survey-ai-music/",
+      "publisher": "Deezer Newsroom",
+      "kind": "study",
+      "design": "Online quota survey with a three-song blind classification task and stated-preference questions.",
+      "population": "9,000 adults aged 18-65; streaming-user questions use a 6,791-person subset.",
+      "geography": "US, Canada, Brazil, UK, France, Netherlands, Germany and Japan.",
+      "duration": "October 6-10, 2025 fieldwork; published November 12, 2025.",
+      "measure": "Correct identification of all three tracks; attitudes to labeling and filtering.",
+      "finding": "97% failed to classify all three tracks correctly (two AI, one human). This is not a 97% error rate per judgment. 80% of all respondents favored labeling; 45% of streaming users said they would filter AI music.",
+      "limitations": "Three selected stimuli cannot establish general detection ability. Quota sample, commercial sponsorship and hypothetical preferences limit inference to actual listening or payment.",
+      "facets": [
+        "measurement",
+        "attention",
+        "influence"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Survey results and methodology note",
+      "sourceNote": "Official commissioned-survey summary inspected; questionnaire, microdata and stimulus-selection procedure not independently checked.",
+      "selected": false,
+      "searchOrigin": "Deezer series -> November 2025 Ipsos release."
+    },
+    {
+      "id": "culture-pew-clicks",
+      "title": "Google users are less likely to click on links when an AI summary appears in the results",
+      "authors": "Athena Chapekis and Anna Lieb",
+      "year": 2025,
+      "url": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
+      "publisher": "Pew Research Center",
+      "kind": "study",
+      "design": "Observational browser panel with search-query reconstruction; no randomized assignment of AI summaries.",
+      "population": "900 US adults; 68,879 unique Google searches, of which 12,593 generated summaries when reconstructed.",
+      "geography": "United States.",
+      "duration": "Browsing March 1-31, 2025; queries rerun April 7-17; report July 22.",
+      "measure": "Search visits followed by traditional-result clicks, summary-source clicks or session ending.",
+      "finding": "Traditional-result clicks occurred in 8% of visits with an AI summary versus 15% without; a summary-source link was clicked in 1% of visits with summaries.",
+      "limitations": "Query types differ and summaries were reconstructed after the browsing period. Association is not a randomized effect on publisher traffic or revenue. Search-level comparison does not estimate individual change over time.",
+      "facets": [
+        "attention",
+        "livelihoods"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "How we did this; click-through comparison and methodology",
+      "sourceNote": "Full research article and methods note inspected. Classified as a one-window search-level snapshot despite repeated browser logs, not an ongoing audience series or longitudinal effect estimate.",
+      "selected": true,
+      "selectionReason": "Observed click behavior anchors attention independently of supply; reconstruction and confounding limits remain visible.",
+      "headline": "AI-summary searches had fewer outbound clicks in one US panel",
+      "searchOrigin": "Existing Pew import -> original July 22, 2025 article and methods."
+    },
+    {
+      "id": "culture-doshi-creativity",
+      "title": "Generative AI enhances individual creativity but reduces the collective diversity of novel content",
+      "authors": "Anil R. Doshi and Oliver P. Hauser",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2312.00506v3",
+      "doi": "10.1126/sciadv.adn5290",
+      "publisher": "Science Advances; author manuscript on arXiv",
+      "kind": "study",
+      "design": "Randomized short-story writing with no AI idea, one GPT-4 idea or up to five ideas; independent ratings and embedding comparisons.",
+      "population": "293 writers and 600 evaluators in the inspected manuscript.",
+      "geography": "Online English-language task; recruitment geography not extracted.",
+      "duration": "Single writing and evaluation sessions; inspected manuscript v3 dated March 14, 2024.",
+      "measure": "Rated novelty, usefulness and enjoyment; self-ratings; similarity between stories.",
+      "finding": "AI ideas improved evaluated story quality, especially for less-creative baseline writers, but made stories more similar to one another. Self-ratings and high-baseline-creativity writers showed less or no benefit on some measures.",
+      "limitations": "Constrained eight-sentence task and restricted prompting do not represent sustained artistic practice. Ratings and embedding similarity are distinct from cultural value or income.",
+      "facets": [
+        "diversity",
+        "supply"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Manuscript main results, experimental design and discussion, PDF pages 1-11",
+      "sourceNote": "Read author manuscript main text; publisher access unavailable. Version-specific sample retained; supplement not fully inspected or reanalyzed.",
+      "selected": true,
+      "selectionReason": "Randomization identifies task-level assistance effects while explicitly measuring individual quality and collective similarity separately.",
+      "headline": "Better-rated individual stories can still become more alike",
+      "searchOrigin": "Search for human-AI creativity diversity experiments -> publisher DOI -> arXiv author manuscript."
+    },
+    {
+      "id": "culture-spitale-tweets",
+      "title": "AI model GPT-3 (dis)informs us better than humans",
+      "authors": "Giovanni Spitale, Nikola Biller-Andorno and Federico Germani",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2301.11924v2",
+      "doi": "10.1126/sciadv.adh1850",
+      "publisher": "Science Advances; arXiv",
+      "kind": "study",
+      "design": "Survey experiment comparing accurate and false human-written and GPT-3 tweets and perceived authorship.",
+      "population": "Online respondents evaluating selected tweets; sample denominator not extracted from abstract.",
+      "geography": "Not established in inspected abstract.",
+      "duration": "Short exposure task; v2 January 31, 2023; field dates not verified.",
+      "measure": "Truth judgments, comprehensibility and human-versus-AI classification.",
+      "finding": "The authors report more understandable synthetic accurate messages and more convincing synthetic false messages; participants struggled to identify authorship.",
+      "limitations": "Selected topics and an older model; immediate judgments are not persistent belief change, actual sharing or population influence.",
+      "facets": [
+        "influence",
+        "measurement"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "arXiv abstract and submission history",
+      "sourceNote": "Author abstract inspected, not full methods or stimulus appendix. No numeric effect extracted.",
+      "selected": false,
+      "searchOrigin": "Search human AI disinformation persuasion -> author arXiv record."
+    },
+    {
+      "id": "culture-costello-2024",
+      "title": "Durably reducing conspiracy beliefs through dialogues with AI",
+      "authors": "Thomas H. Costello, Gordon Pennycook and David G. Rand",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39264999/",
+      "doi": "10.1126/science.adq1814",
+      "publisher": "Science; abstract indexed by PubMed",
+      "kind": "study",
+      "design": "Personalized GPT-4 Turbo dialogue experiment with subsequent participant follow-up.",
+      "population": "2,190 conspiracy-believing participants reported in original abstract.",
+      "geography": "Recruitment geography not verified in inspected abstract.",
+      "duration": "Original study reports two-month follow-up; publication September 2024.",
+      "measure": "Strength of belief in a nominated conspiracy before and after dialogue and at follow-up.",
+      "finding": "The original abstract reports a durable belief reduction. A June 11, 2026 editorial expression of concern now accompanies the article; the effect should not be treated as a secure headline finding while that uncertainty remains.",
+      "limitations": "Editorial concern materially qualifies reliability. No raw-data or correction audit was performed; an expression of concern is not itself a retraction.",
+      "facets": [
+        "influence"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Original abstract and linked Expression of Concern",
+      "sourceNote": "Checked PubMed original and notice https://pubmed.ncbi.nlm.nih.gov/42275523/ (10.1126/science.aej2383). Notice fulltext inaccessible; no unverified account of its cause is asserted.",
+      "selected": false,
+      "searchOrigin": "Conspiracy-dialogue search -> PubMed -> editorial notice cross-link."
+    },
+    {
+      "id": "culture-costello-motives",
+      "title": "Large language models can effectively convince people to believe conspiracies",
+      "authors": "Thomas H. Costello, Kellin Pelrine, Matthew Kowal, Jasper Timm, Antonio A. Arechar, Jean-Francois Godbout, Adam Gleave, David G. Rand and Gordon Pennycook",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2601.05050v3",
+      "publisher": "arXiv preprint",
+      "kind": "study",
+      "design": "Four experiments varying direction of LLM persuasion, corrections, accuracy constraints and model behavior.",
+      "population": "3,996 Americans in the inspected v3 abstract.",
+      "geography": "United States.",
+      "duration": "Short experiments; v1 January 8, v3 July 15, 2026; field dates not established.",
+      "measure": "Conspiracy beliefs, reversal after correction, mock sharing and refusal behavior.",
+      "finding": "The abstract reports no consistent persuasive advantage for truth over falsehood under permissive instructions. Corrections could reverse induced beliefs, accuracy constraints reduced misinformation persuasion, and GPT-5.2 largely refused pro-conspiracy requests.",
+      "limitations": "Prompt permissions and guardrails matter; short experimental belief changes and mock sharing are not real-world campaign reach. Preprint and abstract-only extraction.",
+      "facets": [
+        "influence"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "v3 abstract and version history",
+      "sourceNote": "Inspected latest author abstract and official title, not full protocols. Earlier v1 counts and framing were not carried forward.",
+      "selected": false,
+      "searchOrigin": "Costello 2024 citation trail -> 2026 pro-/anti-conspiracy experiments, version check."
+    },
+    {
+      "id": "culture-emerging-conspiracies",
+      "title": "Reducing belief in conspiracy theories as they unfold using large language models",
+      "authors": "Thomas H. Costello, Nathaniel Rabb, Michael Nicholas Stagnaro, Gordon Pennycook and David G. Rand",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2608.06151v2",
+      "publisher": "arXiv preprint",
+      "kind": "study",
+      "design": "Experiments after two real events comparing relevant AI dialogues with irrelevant dialogue or static factual information.",
+      "population": "US samples of 472 after the July 2024 Trump assassination attempt and 1,042 after the September 2025 Kirk assassination, per v2.",
+      "geography": "United States.",
+      "duration": "Immediate effects plus one-to-two-month follow-up; v2 October 19, 2026.",
+      "measure": "Event-specific conspiracy belief and later beliefs about other conspiracies.",
+      "finding": "The latest abstract reports immediate reductions. Evidence of downstream protection against other conspiracy beliefs is mixed or suggestive across analyses rather than uniformly durable.",
+      "limitations": "Event-specific recruitment and attrition details were not inspected. Preprint; no extrapolation to general immunity against misinformation.",
+      "facets": [
+        "influence"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "v2 abstract and submission history",
+      "sourceNote": "Official title and v2 abstract inspected at the current arXiv record; version-specific fulltext retrieval failed. Uses v2 sample count, not the earlier 1,035 figure.",
+      "selected": false,
+      "searchOrigin": "Recent update search -> arXiv August 2026 paper -> October 19 revision."
+    },
+    {
+      "id": "culture-liang-detectors",
+      "title": "GPT detectors are biased against non-native English writers",
+      "authors": "Weixin Liang, Mert Yuksekgonul, Yining Mao, Eric Wu and James Zou",
+      "year": 2023,
+      "url": "https://arxiv.org/html/2304.02819v3",
+      "publisher": "Patterns; author manuscript on arXiv",
+      "kind": "study",
+      "design": "Benchmark of seven detectors on human essays plus model-based editing and generated-text evasion tests.",
+      "population": "91 TOEFL essays from a Chinese educational forum and 88 US eighth-grade essays; additional generated essays and abstracts.",
+      "geography": "English texts; Chinese-source TOEFL corpus and US school corpus.",
+      "duration": "One benchmark campaign; manuscript v3 July 10, 2023.",
+      "measure": "False positives by corpus and detection changes after linguistic editing.",
+      "finding": "Detectors mislabeled non-native English essays much more often in these corpora. Simple rewriting also reduced detection of generated text, showing attribution depends on style as well as provenance.",
+      "limitations": "Small unmatched corpora differ in task and writer characteristics; old detector versions. Cannot generalize to all languages or all detection methods.",
+      "facets": [
+        "measurement",
+        "diversity"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Results: GPT detectors exhibit bias; Simple prompt can easily bypass; Discussion limitations",
+      "sourceNote": "Full author HTML main results and limitations inspected; no detector rerun. Paired with the Czech replication rather than treating the language effect as universal.",
+      "selected": false,
+      "searchOrigin": "Synthetic content detection limits -> original Liang paper -> v3 full HTML."
+    },
+    {
+      "id": "culture-czech-detectors",
+      "title": "Different Time, Different Language: Revisiting the Bias Against Non-Native Speakers in GPT Detectors",
+      "authors": "Adnan Al Ali, Jindrich Helcl and Jindrich Libovicky",
+      "year": 2026,
+      "url": "https://arxiv.org/html/2602.05769v1",
+      "publisher": "arXiv; EACL 2026 Student Research Workshop",
+      "kind": "study",
+      "design": "Czech corpus comparisons and tests of naive Bayes, RoBERTa and commercial detectors across genres and proficiency groups.",
+      "population": "450 native and 450 non-native student essays, smaller advanced-writing samples and additional Czech text corpora.",
+      "geography": "Czech-language writing.",
+      "duration": "Single benchmark, v1 February 5, 2026; not a writer follow-up.",
+      "measure": "Entropy/perplexity patterns, detector false positives and cross-domain behavior.",
+      "finding": "No systematic non-native penalty emerged across tested Czech conditions, contrasting with the earlier English study. Performance still depended on detector and text domain.",
+      "limitations": "Language, detector vintage, proficiency and corpus construction all differ from English studies. This is not a direct falsification of the original English result; some recent corpus provenance is uncertain.",
+      "facets": [
+        "measurement",
+        "diversity"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Sections 3-5: datasets, entropy and detector comparisons",
+      "sourceNote": "Full HTML relevant methods/results and official arXiv bibliographic metadata inspected. No detector rerun or raw-data replication.",
+      "selected": false,
+      "searchOrigin": "Liang replication search -> Czech EACL 2026 author manuscript."
+    },
+    {
+      "id": "culture-sadasivan-detection",
+      "title": "Can AI-Generated Text be Reliably Detected?",
+      "authors": "Vinu Sankar Sadasivan, Aounon Kumar, Sriram Balasubramanian, Wenxiao Wang and Soheil Feizi",
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2303.11156v4",
+      "publisher": "Transactions on Machine Learning Research; arXiv",
+      "kind": "study",
+      "design": "Paraphrasing attacks against detector families and watermarks, supplemented by theoretical indistinguishability analysis.",
+      "population": "Generated passages and detector benchmarks; approximately 300-token passages described in abstract.",
+      "geography": "Text benchmark, not a representative human population.",
+      "duration": "Single research program; v1 March 2023, inspected v4 January 17, 2025.",
+      "measure": "Detection performance under recursive paraphrase, text quality and spoofing vulnerability.",
+      "finding": "Repeated paraphrasing can substantially weaken tested detectors, often with limited quality loss; the paper also identifies spoofing risks.",
+      "limitations": "Attack benchmarks and theoretical conditions do not prove every provenance method is useless. Coverage depends on model, text length, access and threat model.",
+      "facets": [
+        "measurement"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "v4 abstract and version history",
+      "sourceNote": "Author abstract inspected; attack implementation and full proofs not reviewed.",
+      "selected": false,
+      "searchOrigin": "Synthetic text detection robustness -> Sadasivan et al., latest version."
+    },
+    {
+      "id": "culture-chartbeat-headlines",
+      "title": "What AI headline testing reveals about audience engagement",
+      "authors": "Chartbeat",
+      "year": 2025,
+      "url": "https://chartbeat.com/resources/general/what-ai-headline-testing-reveals-about-audience-engagement/",
+      "publisher": "Chartbeat",
+      "kind": "study",
+      "design": "Vendor analysis of publisher headline A/B tests; within-test audience randomization does not randomize publisher adoption of AI.",
+      "population": "Completed headline tests on participating Chartbeat publisher sites; total test denominator not supplied in inspected article.",
+      "geography": "Participating publisher network; country mix unspecified.",
+      "duration": "January-June 2025 tests; exact article publication day not verified.",
+      "measure": "Click-through lift and win share for AI variants, original headlines and tests with or without AI.",
+      "finding": "AI variants and original headlines had similar win shares. Tests containing AI variants had larger reported lifts than other tests, but the between-test comparison does not establish a causal adoption effect.",
+      "limitations": "Selective tool adoption, manual AI labeling, missing total denominator and limited uncertainty reporting. Clicks do not establish comprehension, trust or creator compensation.",
+      "facets": [
+        "attention",
+        "supply"
+      ],
+      "temporal": "repeated",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Win-rate and CTR-lift sections; study period description",
+      "sourceNote": "Original vendor article inspected. Repeated comparable headline experiments, not a recurring representative series; no raw experiment analysis.",
+      "selected": false,
+      "searchOrigin": "AI headline click experiments -> original Chartbeat research article, replacing secondary coverage."
+    },
+    {
+      "id": "culture-deverna-checks",
+      "title": "Fact-checking information from large language models can decrease headline discernment",
+      "authors": "Matthew R. DeVerna, Harry Yaojun Yan, Kai-Cheng Yang and Filippo Menczer",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39630865/",
+      "doi": "10.1073/pnas.2322823121",
+      "publisher": "PNAS; PubMed abstract and figure captions",
+      "kind": "study",
+      "design": "Preregistered randomized news-headline judgment experiment comparing LLM and human fact checks, with forced and optional exposure.",
+      "population": "Online participants evaluating selected news headlines; denominator not extracted from inspected abstract.",
+      "geography": "Recruitment geography not verified in inspected material.",
+      "duration": "Short experimental sessions; publication December 10, 2024.",
+      "measure": "True/false headline discernment and sharing intentions.",
+      "finding": "LLM checks did not significantly improve overall discernment, whereas human checks did. Wrongly labeling true headlines or expressing uncertainty about false ones could worsen judgments; some correctly labeled items improved sharing intentions.",
+      "limitations": "Immediate judgments and intentions are not actual sharing. Optional-exposure subgroups are selected, and one model/task cannot establish all AI checking is harmful.",
+      "facets": [
+        "influence",
+        "measurement"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract; Figures 1-3 captions",
+      "sourceNote": "Primary abstract and captions inspected; fulltext inaccessible. No effect size or unverified sample denominator extracted.",
+      "selected": true,
+      "selectionReason": "Preregistered comparative design supplies important null and conditional positive evidence, but only abstract-level assessment is available.",
+      "headline": "AI fact checks did not improve discernment overall in this experiment",
+      "searchOrigin": "Human-AI belief and fact-check experiment search -> original PNAS abstract."
+    },
+    {
+      "id": "culture-soa-income",
+      "title": "SoA survey reveals a third of translators and quarter of illustrators losing work to AI",
+      "authors": "Society of Authors",
+      "year": 2024,
+      "url": "https://societyofauthors.org/2024/04/11/soa-survey-reveals-a-third-of-translators-and-quarter-of-illustrators-losing-work-to-ai/",
+      "publisher": "Society of Authors",
+      "kind": "study",
+      "design": "Voluntary association survey of members and other authors about AI use, work loss and perceived income effects.",
+      "population": "Nearly 800 respondents across writing, translation and illustration; occupation-specific denominators not reported in the inspected summary.",
+      "geography": "UK-centered authors' association; respondent geography not fully established.",
+      "duration": "January 2024 survey; April 11, 2024 publication with later webpage update.",
+      "measure": "Self-reported lost commissions and income attributed to AI.",
+      "finding": "Some responding translators and illustrators reported lost work and falling income attributed to AI. These reports describe affected respondents, not an estimated causal income loss for the whole profession.",
+      "limitations": "Self-selection, retrospective attribution and missing subgroup denominators; no administrative earnings panel or contemporaneous control group.",
+      "facets": [
+        "livelihoods"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-summary",
+      "checkedOn": "2026-10-22",
+      "locator": "Survey findings by profession and survey-method note",
+      "sourceNote": "Association's original survey summary inspected. A later page update is not a new survey wave; percentage headlines not repeated without subgroup counts.",
+      "selected": false,
+      "searchOrigin": "Creator income AI translators illustrators -> original Society of Authors survey."
+    },
+    {
+      "id": "culture-demirci-demand",
+      "title": "Who Is AI Replacing? The Impact of Generative AI on Online Freelancing Platforms",
+      "authors": "Ozge Demirci, Jonas Hannane and Xinrong Zhu",
+      "year": 2025,
+      "url": "https://spiral.imperial.ac.uk/entities/publication/88113a91-b994-4717-8526-dadac657f1cb",
+      "doi": "10.1287/mnsc.2024.05420",
+      "publisher": "Management Science; Imperial College repository",
+      "kind": "study",
+      "design": "Observational platform job-posting panel comparing more AI-exposed categories with less-exposed work around model releases.",
+      "population": "Job advertisements on a large online freelance platform; not a panel of creator bank-account earnings.",
+      "geography": "Online freelance market; country composition not established in abstract.",
+      "duration": "Includes eight months after ChatGPT release; online publication January 24, 2025, issue October 2025.",
+      "measure": "Posting volume, remaining-job complexity and offered pay.",
+      "finding": "The abstract reports a 21% relative decline in writing/coding postings versus manual-intensive categories over eight months after ChatGPT and a 17% decline in image-creation postings after image generators. Remaining jobs were more complex and better paid as advertised.",
+      "limitations": "Observational category comparisons depend on identification assumptions. Postings and offered pay are not hires, paid hours or realized creator income.",
+      "facets": [
+        "livelihoods",
+        "supply"
+      ],
+      "temporal": "repeated",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Repository abstract and publication metadata",
+      "sourceNote": "Institutional author abstract inspected; full regression specifications and robustness checks were not reviewed. Repeated category-level demand observations, not same-worker earnings follow-up.",
+      "selected": true,
+      "selectionReason": "Direct labor-demand evidence complements creator self-reports; selected as a bounded abstract-level result, not an earnings estimate.",
+      "headline": "Freelance job demand is measurable, but it is not creator income",
+      "searchOrigin": "Generative AI creator work empirical study -> Imperial repository for final Management Science article."
+    },
+    {
+      "id": "culture-reuters-news",
+      "title": "Generative AI and News Report 2025: How People Think about AI's Role in Journalism and Society",
+      "authors": "Felix M. Simon, Rasmus Kleis Nielsen and Richard Fletcher",
+      "year": 2025,
+      "url": "https://reutersinstitute.politics.ox.ac.uk/generative-ai-and-news-report-2025-how-people-think-about-ais-role-journalism-and-society",
+      "doi": "10.60625/risj-5bjv-yt69",
+      "publisher": "Reuters Institute for the Study of Journalism",
+      "kind": "series",
+      "design": "Online YouGov country surveys compared with a 2024 wave; repeated cross-sections rather than the same respondents followed.",
+      "population": "Online adult samples in six countries; pooled figures are cross-country averages, not world population estimates.",
+      "geography": "Argentina, Denmark, France, Japan, UK and US.",
+      "duration": "June 5-July 15, 2025 fieldwork; report October 7; comparison with 2024.",
+      "measure": "Self-reported AI use for news, trust, comfort with AI journalism and claimed search-click behavior.",
+      "finding": "Reported use of AI for news increased from a low base, while preferences for human oversight and concerns about AI journalism persisted.",
+      "limitations": "Self-reported usage and clicks differ from behavioral logs. Six-country online samples do not represent all regions; wave comparability is not individual change.",
+      "facets": [
+        "attention",
+        "influence"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Executive summary, methodology and news-use sections",
+      "sourceNote": "Report webpage relevant sections inspected; underlying survey data not reanalyzed.",
+      "selected": false,
+      "searchOrigin": "Cross-country AI news audience evidence -> Reuters Institute 2025 report."
+    },
+    {
+      "id": "culture-spotify-diversity",
+      "title": "Algorithmic Effects on the Diversity of Consumption on Spotify",
+      "authors": "Ashton Anderson, Lucas Maystre, Rishabh Mehrotra, Ian Anderson and Mounia Lalmas",
+      "year": 2020,
+      "url": "https://www.cs.utoronto.ca/~ashton/pubs/alg-effects-spotify-www2020.pdf",
+      "doi": "10.1145/3366423.3380281",
+      "publisher": "The Web Conference 2020; author-hosted paper",
+      "kind": "study",
+      "design": "Large-scale listening-log analysis plus recommendation experiments; foundational non-generative recommender evidence.",
+      "population": "Spotify users; paper describes more than 100 million users across several years.",
+      "geography": "Spotify platform; national composition not extracted.",
+      "duration": "Several years of logs plus shorter experiments; precise extraction window not verified.",
+      "measure": "Embedding-based consumption diversity, organic versus algorithmic listening, recommendation relevance and retention.",
+      "finding": "Algorithmic listening was associated with lower diversity; increasing diversity tended to involve organic listening. Recommendation improvements could benefit listeners differently according to their existing tastes.",
+      "limitations": "Observational channel-diversity associations are not themselves causal narrowing effects. Music-space embeddings, exposure and consumption are distinct; this is not a generative-AI study.",
+      "facets": [
+        "attention",
+        "diversity"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract, introductory findings and diversity-measure discussion",
+      "sourceNote": "Author PDF main introductory and measurement passages inspected; not all experiments or appendices. Longitudinal label refers to user listening trajectories, not every component.",
+      "selected": false,
+      "searchOrigin": "Earlier algorithmic cultural consumption diversity -> author-hosted Spotify study."
+    },
+    {
+      "id": "culture-salganik-market",
+      "title": "Experimental Study of Inequality and Unpredictability in an Artificial Cultural Market",
+      "authors": "Matthew J. Salganik, Peter Sheridan Dodds and Duncan J. Watts",
+      "year": 2006,
+      "url": "https://www.princeton.edu/~mjs3/salganik_dodds_watts06_full.pdf",
+      "doi": "10.1126/science.1121066",
+      "publisher": "Science; author-hosted paper",
+      "kind": "study",
+      "design": "Randomized artificial music market with independent choices versus social information and parallel market worlds.",
+      "population": "14,341 participants evaluating 48 initially unfamiliar songs; recruitment centered on a youth-oriented website.",
+      "geography": "Online experiment; not a national representative sample.",
+      "duration": "One experimental market campaign; individual participation was brief.",
+      "measure": "Downloads, concentration of success and variation in rankings between parallel worlds.",
+      "finding": "Social influence increased inequality and unpredictability of song success. Underlying quality mattered but did not fully determine which songs became popular.",
+      "limitations": "No AI treatment, no actual creator-income estimate and a selected participant pool. Included as a mechanism separating available supply from socially amplified attention.",
+      "facets": [
+        "attention",
+        "diversity",
+        "livelihoods"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Main paper experimental design and results",
+      "sourceNote": "Primary author PDF main paper inspected; supplementary material not fully assessed.",
+      "selected": false,
+      "searchOrigin": "Foundational cultural-market social influence experiment -> Princeton author paper."
+    },
+    {
+      "id": "culture-salvi-persuasion",
+      "title": "On the conversational persuasiveness of GPT-4",
+      "authors": "Francesco Salvi, Manoel Horta Ribeiro, Riccardo Gallotti and Robert West",
+      "year": 2025,
+      "url": "https://collaborate.princeton.edu/en/publications/on-the-conversational-persuasiveness-of-gpt-4/",
+      "doi": "10.1038/s41562-025-02194-6",
+      "publisher": "Nature Human Behaviour; Princeton publication record",
+      "kind": "study",
+      "design": "Randomized debates varying human versus GPT-4 opponent, personalization and opinion strength.",
+      "population": "900 participants in the final publication abstract.",
+      "geography": "Participant geography not verified in inspected abstract.",
+      "duration": "Short debates and immediate opinion measurement; online May 19, 2025, issue August.",
+      "measure": "Post-debate agreement shift and odds of persuasion in pairwise comparisons.",
+      "finding": "Personalized GPT-4 was more persuasive than human opponents in the reported comparison; personalization materially changed the result.",
+      "limitations": "Conditional pairwise success and odds ratios are not percentage-point population belief changes. Short, structured debates do not establish durable influence or campaign-scale effectiveness.",
+      "facets": [
+        "influence"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Institutional abstract and publication metadata",
+      "sourceNote": "Final abstract inspected; publisher fulltext unavailable. Earlier preprint sample of 820 is not mixed with final 900.",
+      "selected": false,
+      "searchOrigin": "Human versus GPT-4 persuasion -> final Princeton publication record; earlier arXiv version de-duplicated."
+    },
+    {
+      "id": "culture-model-collapse",
+      "title": "AI models collapse when trained on recursively generated data",
+      "authors": "Ilia Shumailov, Zakhar Shumaylov, Yiren Zhao, Nicolas Papernot, Ross Anderson and Yarin Gal",
+      "year": 2024,
+      "url": "https://www.nature.com/articles/s41586-024-07566-y",
+      "doi": "10.1038/s41586-024-07566-y",
+      "publisher": "Nature",
+      "kind": "study",
+      "design": "Computational experiments and mathematical analysis of recursive synthetic training-data replacement.",
+      "population": "Model-generated training distributions, not observed cultural populations.",
+      "geography": "Not geographically defined.",
+      "duration": "Successive training generations in controlled experiments; published 2024, author correction linked March 21, 2025.",
+      "measure": "Distribution-tail retention and model degradation across training generations.",
+      "finding": "Recursive replacement with synthetic data can erase distribution tails and degrade tested models.",
+      "limitations": "Not evidence that all synthetic-data use collapses, that culture is already collapsing, or that the Internet contains a particular synthetic share. Data retention and training setup matter.",
+      "facets": [
+        "diversity",
+        "supply"
+      ],
+      "temporal": "repeated",
+      "status": "primary-fulltext",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract, recursive-training results and correction link",
+      "sourceNote": "Primary article relevant text inspected. Linked 2025 correction could not be inspected, so no detailed quantitative claims or core selection. Repeated means computational generations, not human follow-up.",
+      "selected": false,
+      "searchOrigin": "Cultural diversity synthetic training feedback -> Nature original and correction metadata."
+    },
+    {
+      "id": "culture-accumulation",
+      "title": "Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data",
+      "authors": "Matthias Gerstgrasser et al.",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2404.01413v2",
+      "publisher": "arXiv",
+      "kind": "study",
+      "design": "Model-training experiments and theoretical analysis contrasting data replacement with accumulation retaining real data.",
+      "population": "Computational training distributions and tested model architectures.",
+      "geography": "Not geographically defined.",
+      "duration": "Successive training generations; v2 April 29, 2024.",
+      "measure": "Model performance under different recursive data-management regimes.",
+      "finding": "Retaining real data and accumulating rather than replacing training data avoided collapse under the tested conditions.",
+      "limitations": "Conditional technical counterexample, not measured cultural diversity or a guarantee for every future training regime.",
+      "facets": [
+        "diversity",
+        "supply"
+      ],
+      "temporal": "repeated",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "v2 abstract and version history",
+      "sourceNote": "Author abstract inspected; experimental details and proof assumptions not fully reviewed.",
+      "selected": false,
+      "searchOrigin": "Model collapse counterevidence -> real/synthetic accumulation study."
+    },
+    {
+      "id": "culture-zhou-art",
+      "title": "Generative artificial intelligence, human creativity, and art",
+      "authors": "Eric Zhou and Dokyun Lee",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38444602/",
+      "doi": "10.1093/pnasnexus/pgae052",
+      "publisher": "PNAS Nexus; PubMed",
+      "kind": "study",
+      "design": "Observational artist-platform panel comparing adoption and changes over time, with never-/not-yet-treated comparisons.",
+      "population": "More than 4 million artworks from more than 50,000 users.",
+      "geography": "Online art platform; geographic composition not established in inspected material.",
+      "duration": "Monthly user outcomes before and after adoption; precise dates not verified; publication March 5, 2024.",
+      "measure": "Posting productivity, favorites per view, average/maximum content novelty, visual novelty and concentration of favorites.",
+      "finding": "The study reports increased productivity and favorites per view, declining average content novelty but increasing maximum content novelty, and declining visual novelty. Favorites became less concentrated among adopters.",
+      "limitations": "Adoption is not randomized; provenance and platform-selection assumptions need fulltext review. Favorites are engagement, not financial income, and maximum novelty is not average diversity.",
+      "facets": [
+        "diversity",
+        "attention",
+        "supply"
+      ],
+      "temporal": "longitudinal",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract; Figures 1 and 4 captions",
+      "sourceNote": "Primary abstract and captions inspected; publisher and PMC fulltext retrieval failed. Numerical causal estimates not adopted without methods review.",
+      "selected": false,
+      "searchOrigin": "Generative AI art diversity positive and negative evidence -> final PNAS Nexus abstract."
+    },
+    {
+      "id": "culture-jakesch-cowriting",
+      "title": "Co-Writing with Opinionated Language Models Affects Users' Views",
+      "authors": "Maurice Jakesch, Advait Bhat, Daniel Buschek, Lior Zalmanson and Mor Naaman",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2302.00560",
+      "doi": "10.1145/3544548.3581196",
+      "publisher": "CHI 2023; arXiv",
+      "kind": "study",
+      "design": "Controlled co-writing experiment with language-model assistance biased toward opposing views about social media.",
+      "population": "1,506 writers and 500 independent judges reported in abstract.",
+      "geography": "Online recruitment; geography not verified in abstract.",
+      "duration": "Single writing task and immediate post-task measurement; v1 February 1, 2023.",
+      "measure": "Position expressed in writing and participants' subsequent stated attitudes.",
+      "finding": "Opinionated assistance shifted both written arguments and immediate reported views toward the model's position.",
+      "limitations": "One topic and short exposure; no verified persistence, downstream behavior or evidence of intentional covert manipulation in deployed products.",
+      "facets": [
+        "influence",
+        "supply"
+      ],
+      "temporal": "snapshot",
+      "status": "primary-abstract",
+      "checkedOn": "2026-10-22",
+      "locator": "Abstract and bibliographic metadata",
+      "sourceNote": "Author abstract inspected; prompts, exclusions and full statistical analysis not assessed.",
+      "selected": false,
+      "searchOrigin": "Human-AI content beliefs writing-assistant experiment -> CHI author manuscript."
+    }
+  ],
+  "gaps": [
+    {
+      "title": "Link supply to genuine attention and realized creator income",
+      "summary": "These sources measure different stages of a cultural market without a common denominator or linked observation window.",
+      "basis": "Deezer separates uploads from listening and fraud; Pew measures search clicks; Chartbeat measures headline experiments; Society of Authors measures attributed income loss; Demirci measures postings and offered pay. Neither engagement gains nor fewer postings identify the same creators' net income.",
+      "next": "Build consented creator/platform panels linking provenance, impressions, verified human consumption, payments, commissions and costs. Report fraud filters, rank changes, creator entry/exit and country-specific denominators.",
+      "refs": [
+        "culture-deezer-series",
+        "culture-pew-clicks",
+        "culture-chartbeat-headlines",
+        "culture-soa-income",
+        "culture-demirci-demand",
+        "culture-zhou-art"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Test durable influence under varied motives and real use",
+      "summary": "Short tasks show influence, but its persistence, reach and direction outside experiments remain unevenly established here.",
+      "basis": "Salvi and Jakesch show immediate persuasion; DeVerna finds no overall discernment gain and conditional harms/benefits. Recent conspiracy studies vary by prompting and downstream analysis; the 2024 Science result has an editorial concern. These are not interchangeable estimates of societal belief change.",
+      "next": "Preregister multi-month naturalistic trials separating exposure, accurate versus inaccurate persuasion, model guardrails, belief, behavior and correction. Include attrition analyses and independent replication.",
+      "refs": [
+        "culture-salvi-persuasion",
+        "culture-jakesch-cowriting",
+        "culture-deverna-checks",
+        "culture-costello-2024",
+        "culture-costello-motives",
+        "culture-emerging-conspiracies",
+        "culture-spitale-tweets"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Measure diversity at multiple levels and over creator careers",
+      "summary": "Individual quality, maximum novelty, typical novelty and consumed diversity can point in different directions.",
+      "basis": "Doshi finds better-rated but more similar stories; Zhou finds diverging average and peak novelty. Spotify and the cultural-market experiment show selection and social amplification mechanisms, while model-collapse studies concern training distributions rather than human culture.",
+      "next": "Follow creators and audiences across languages and genres, combining blinded human judgments with validated similarity measures, exposure logs and retention of minority styles. Separate production, recommendation and consumption pathways.",
+      "refs": [
+        "culture-doshi-creativity",
+        "culture-zhou-art",
+        "culture-spotify-diversity",
+        "culture-salganik-market",
+        "culture-model-collapse",
+        "culture-accumulation"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    },
+    {
+      "title": "Validate provenance without universal detector assumptions",
+      "summary": "A stable multilingual ground truth for mixed human-AI content is not supplied by this corpus.",
+      "basis": "English detector disparities do not recur uniformly in the Czech study; paraphrasing changes detectability. Deezer's proprietary classification and the three-song Ipsos task address different modalities and error units.",
+      "next": "Create versioned, consented multilingual and multimodal benchmarks with known editing histories. Measure false positives and negatives by proficiency, genre, model and hybrid workflow, and audit operational prevalence estimates against them.",
+      "refs": [
+        "culture-liang-detectors",
+        "culture-czech-detectors",
+        "culture-sadasivan-detection",
+        "culture-deezer-series",
+        "culture-deezer-ipsos"
+      ],
+      "confidence": "provisional",
+      "scope": "within reviewed corpus"
+    }
+  ],
+  "searchLog": [
+    {
+      "query": "Existing culture imports -> Deezer AI music daily uploads 2026 official",
+      "date": "2026-10-22",
+      "scope": "Official platform operational releases",
+      "notes": "Followed release series and FAQ; distinguished peak daily flow, stream share and differently dated fraud claims."
+    },
+    {
+      "query": "Deezer Ipsos AI music 97% survey methodology 2025",
+      "date": "2026-10-22",
+      "scope": "Commissioned primary survey",
+      "notes": "Checked countries, field dates, three-stimulus task and streaming-only denominator."
+    },
+    {
+      "query": "Pew Google users less likely click AI summary July 2025 methodology",
+      "date": "2026-10-22",
+      "scope": "Original panel research",
+      "notes": "Read March browsing versus April query reconstruction."
+    },
+    {
+      "query": "generative AI creativity diversity Doshi Hauser Zhou Lee",
+      "date": "2026-10-22",
+      "scope": "Publisher, author manuscript and institutional abstract",
+      "notes": "Compared randomized writing and observational art panel; no equivalence of favorites and income."
+    },
+    {
+      "query": "AI human persuasion conspiracy Costello Salvi 2026 updates",
+      "date": "2026-10-22",
+      "scope": "Original articles, author preprints, publication notices",
+      "notes": "Pinned latest inspected preprint versions; found 2026 expression of concern on 2024 Science paper."
+    },
+    {
+      "query": "LLM fact checking headline discernment DeVerna; co-writing opinionated language models",
+      "date": "2026-10-22",
+      "scope": "PNAS and CHI primary abstract records",
+      "notes": "Fulltext unavailable for these records; no implied complete-paper review."
+    },
+    {
+      "query": "GPT detectors non native writers Liang Czech replication 2026; reliable detection Sadasivan",
+      "date": "2026-10-22",
+      "scope": "Author manuscripts and benchmark methods",
+      "notes": "Included non-replication across language and paraphrase robustness limits."
+    },
+    {
+      "query": "Chartbeat AI headline testing audience engagement",
+      "date": "2026-10-22",
+      "scope": "Original vendor experiment analysis",
+      "notes": "No total test denominator found; adopted-AI versus other tests not randomized."
+    },
+    {
+      "query": "AI creator income Society of Authors translators; Demirci Hannane Zhu freelancers",
+      "date": "2026-10-22",
+      "scope": "Association survey and final journal institutional record",
+      "notes": "Kept attributed income, job demand and offered pay separate."
+    },
+    {
+      "query": "Reuters Institute Generative AI and News Report 2025",
+      "date": "2026-10-22",
+      "scope": "Six-country repeated survey",
+      "notes": "Repeated cross-sections, not individual longitudinal panel."
+    },
+    {
+      "query": "algorithmic diversity Spotify Anderson; Salganik artificial cultural market",
+      "date": "2026-10-22",
+      "scope": "Earlier author-hosted primary research",
+      "notes": "Non-generative studies included as selection/amplification mechanisms."
+    },
+    {
+      "query": "AI model collapse accumulating real synthetic data",
+      "date": "2026-10-22",
+      "scope": "Nature original and counterexample author manuscript",
+      "notes": "Technical feedback evidence kept separate from measured cultural outcomes; correction requires follow-up."
+    },
+    {
+      "query": "Reimers Waldfogel AI books NBER w34777",
+      "date": "2026-10-22",
+      "scope": "Recent working-paper discovery",
+      "notes": "Primary retrieval failed; search-result estimates excluded. Search was purposive, English-language-led and non-exhaustive."
+    }
+  ],
+  "exclusions": [
+    {
+      "title": "Earlier Salvi et al. preprint with 820 participants",
+      "url": "https://arxiv.org/abs/2403.14380",
+      "reason": "Earlier version of the final 900-participant study, not independent evidence; final institutional abstract used."
+    },
+    {
+      "title": "Earlier versions of 2026 conspiracy-dialogue preprints",
+      "url": "https://arxiv.org/abs/2608.06151v1",
+      "reason": "Superseded metadata and sample counts; latest inspected v2 retained as one study record."
+    },
+    {
+      "title": "NBER working paper w34777 on AI and books",
+      "url": "https://www.nber.org/papers/w34777",
+      "reason": "Relevant recent primary discovery, but page/PDF retrieval failed; not promoted using search snippets alone."
+    },
+    {
+      "title": "Secondary coverage of Chartbeat headline findings",
+      "url": "https://chartbeat.com/resources/general/what-ai-headline-testing-reveals-about-audience-engagement/",
+      "reason": "De-duplicated against the original vendor analysis; no independent replication implied."
+    },
+    {
+      "title": "Global synthetic-content prevalence and creator-income forecast headlines",
+      "url": "https://www.cisac.org/",
+      "reason": "Forecast/scenario leads were not verified as observed outcomes in this scan. No forecast included as current prevalence or realized loss."
+    }
+  ],
+  "reviewNotes": [
+    "Findings apply to the tasks, platforms and populations described, not to all culture. Evidence outside English-language and relatively affluent online settings is limited in this selected corpus.",
+    "Inspection depth varies: fulltext status means relevant sections were read, not every supplement or raw dataset; abstract and official-summary records have narrower assessment limits.",
+    "The 2024 conspiracy-dialogue article has a June 2026 editorial expression of concern. Its effect should not anchor a confident conclusion while that uncertainty remains; the notice is not a retraction.",
+    "The Nature model-collapse article has a linked 2025 correction whose contents were not assessed. Deezer's July 2026 release contains inconsistent tagging-start dates.",
+    "Failure to classify all three songs is not a per-song error rate. Peak daily uploads are not catalog share; headline clicks, favorites and advertised pay are not realized creator income.",
+    "Repeated surveys, platform disclosures and computational training generations are different from following the same people. Technical model-collapse results do not measure human cultural change."
+  ]
+}

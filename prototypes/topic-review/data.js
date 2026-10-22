@@ -1,0 +1,93 @@
+'use strict';
+
+const GD_SKILLS_SOURCES = [
+  {
+    id: 'bastani', landscapeId: 'bastani2025', featured: true, kind: 'Research study', design: 'Field experiment',
+    followUp: 'Immediate unaided tests across four sessions',
+    title: 'Generative AI without guardrails can harm learning: Evidence from high school mathematics',
+    authors: 'Bastani et al.', publisher: 'PNAS', year: '2025',
+    scope: 'Nearly 1,000 students / Turkey', measure: 'Unaided maths test after AI-assisted practice',
+    headline: 'AI tutor design changed what students learned',
+    finding: 'Students who practised with an unrestricted AI assistant scored 17% lower on an unaided maths test than the no-AI group. A tutor designed to give hints largely avoided this disadvantage.',
+    why: 'A no-AI comparison and unaided tests help distinguish practice performance from learning; two tutor designs test whether the form of assistance matters.',
+    url: 'https://doi.org/10.1073/pnas.2422633122',
+    context: 'One Turkish high school, four sessions in 2023. Students used GPT-4 during practice and then took tests without it.',
+    limit: 'The 17% is relative to the control group: a 5.4 percentage-point difference in the test score. The tutor group showed no statistically significant unaided disadvantage. Longer-term effects were not tested.',
+    takeaway: 'Measures immediate learning after practice.',
+    locator: 'Main results and Table 1, unaided exam performance.'
+  },
+  {
+    id: 'shen', landscapeId: 'shen2026', featured: true, kind: 'Research study', design: 'Randomised experiment',
+    followUp: 'One session; quiz immediately after the coding task',
+    title: 'How AI Impacts Skill Formation', authors: 'Shen and Tamkin', publisher: 'arXiv preprint', year: '2026',
+    scope: '52 developers / Online experiment', measure: 'Unaided quiz on a new Python library',
+    headline: 'Developers learned less with AI assistance',
+    finding: 'Developers learning an unfamiliar coding library scored lower on a later unaided quiz when they had used an AI assistant.',
+    why: 'Random assignment and an unaided quiz directly test skill acquisition. Its small sample and short follow-up limit how far the result transfers.',
+    url: 'https://arxiv.org/abs/2601.20245v2',
+    context: 'Python developers new to the Trio library completed coding tasks with GPT-4o assistance or without AI, then took a quiz.',
+    limit: 'The main experiment had 26 people per group and an immediate follow-up quiz. It does not establish months-long skill changes. The authors are affiliated with Anthropic; the paper is a preprint.',
+    takeaway: 'Measures immediate acquisition of unfamiliar coding skills.',
+    locator: 'Sections 4.3 and 5.2; Figure 6.'
+  },
+  {
+    id: 'vaccaro', landscapeId: 'vaccaro2024', featured: true, kind: 'Evidence synthesis', design: 'Meta-analysis',
+    followUp: 'Combines task-performance experiments; no common long-term follow-up',
+    title: 'When combinations of humans and AI are useful: A systematic review and meta-analysis',
+    authors: 'Vaccaro, Almaatouq and Malone', publisher: 'Nature Human Behaviour', year: '2024',
+    scope: '106 experiments / Published 2020-2023', measure: 'Performance of people alone, AI alone and human-AI teams',
+    headline: 'Working with AI improved performance unevenly',
+    finding: 'Human-AI teams outperformed people alone on average. Their average performance fell below the stronger of people or AI working alone.',
+    why: 'A preregistered synthesis requires human-only, AI-only and combined results, so the comparison is explicit across tasks.',
+    url: 'https://doi.org/10.1038/s41562-024-02024-1',
+    context: 'A preregistered systematic review of 106 experiments, with 370 effect sizes, published from January 2020 to June 2023.',
+    limit: 'Findings vary by task and study design. The review includes different kinds of AI and predates many current tools. It measures task performance during assistance rather than later independent judgement.',
+    takeaway: 'Measures combined task performance.',
+    locator: 'Results: overall levels of human-AI synergy; Figure 1.'
+  },
+  {
+    id: 'lira', landscapeId: 'lira2025', featured: false, kind: 'Research study', design: 'Randomised experiments',
+    followUp: 'Immediate tests; one-day follow-up in two experiments',
+    title: 'Coach not crutch: Evidence that AI can improve writing skill despite reducing effort',
+    authors: 'Lira et al.', publisher: 'arXiv preprint, v4', year: '2026',
+    scope: 'Adult participants / Cover-letter writing', measure: 'Writing quality on new cover letters completed without AI',
+    headline: 'AI-assisted practice also produced learning gains',
+    finding: 'Participants who practised with an AI writing tool later wrote better cover letters without AI. Two experiments also found gains on a test the next day.',
+    why: 'Preregistered comparisons and unaided tests show that AI-assisted practice can support learning in some settings.',
+    url: 'https://arxiv.org/abs/2502.02880v4',
+    context: 'Three randomised experiments tested cover-letter revision. Comparisons included independent practice, web search and professional editing. The preprint was first posted in 2025; this version is from February 2026.',
+    limit: 'The tasks cover one writing genre, with short follow-up. Writing scores combine ratings of specific principles; the study does not establish longer-term professional performance.',
+    takeaway: 'Evidence of short-term learning gains.',
+    locator: 'Studies 2-4; immediate unaided tests and one-day follow-ups in Studies 2 and 4.'
+  },
+  {
+    id: 'metr', landscapeId: 'metr2025', featured: false, kind: 'Research study', design: 'Field experiment',
+    followUp: 'Tasks observed during the trial; no delayed skill-retention test',
+    title: 'Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity',
+    authors: 'Becker et al.', publisher: 'METR / arXiv', year: '2025',
+    scope: '16 maintainers / 246 tasks', measure: 'Task-completion time and perceived time saving',
+    headline: 'Perceived productivity differed from measured productivity',
+    finding: 'In this early-2025 trial, experienced maintainers took 19% longer on tasks with AI access, while believing they had saved time.',
+    why: 'Contrasts perceived progress with measured task-completion time.',
+    url: 'https://arxiv.org/abs/2507.09089v2',
+    context: 'Randomised tasks in mature open-source projects, mainly using Cursor with Claude 3.5 and 3.7 Sonnet.',
+    limit: 'Measures productivity in a small, specific sample. It does not test retained skills. A later METR update identifies selection and timing problems in follow-up experiments.',
+    updateUrl: 'https://metr.org/blog/2026-02-24-uplift-update/',
+    takeaway: 'Context for self-assessment and work performance.',
+    locator: 'Original experiment results; February 2026 follow-up for comparability limits.'
+  },
+  {
+    id: 'wecks', landscapeId: 'wecks2024', featured: false, kind: 'Research study', design: 'Observational study',
+    followUp: 'Coursework followed by an exam; no repeated skill trajectory',
+    title: 'Generative AI Usage and Exam Performance', authors: 'Wecks et al.', publisher: 'arXiv preprint', year: '2024',
+    scope: '193 students / Germany', measure: 'Exam scores associated with inferred AI use',
+    headline: 'Inferred AI use was associated with lower exam scores',
+    finding: 'In one accounting course, detector-inferred AI use was associated with lower subsequent exam scores.',
+    why: 'Offers classroom context alongside the experiments.',
+    url: 'https://arxiv.org/abs/2404.19699v3',
+    context: 'AI use was inferred mainly through ZeroGPT classifications of submitted essays in a German university accounting course.',
+    limit: 'Detector error and differences between students can affect the result. The adjusted difference of 6.71 exam points out of 100 is an association. This design does not establish that AI caused the difference.',
+    takeaway: 'Supporting observational evidence.',
+    locator: 'Data and empirical results in arXiv v3.'
+  }
+];
