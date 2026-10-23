@@ -46,3 +46,10 @@
   .method-section28 > p { font-size:17px; }
 }
 @media(max-width:640px) { .bar .nav a { font-size:12px; } }
+.review-method28 { margin-top:40px; border-block:1px solid var(--rule); scroll-margin-top:var(--site-header-offset,96px); }
+.review-method28 > summary { padding:20px 0; cursor:pointer; font:500 18px/1.4 var(--f-display); }
+.review-method28 > summary:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+.review-method-body28 { max-width:850px; }
+.review-method28 .method-section28 { padding-block:20px; }
+.review-method28 .method-section28 h3 { font:600 16px/1.4 var(--f-display); margin:0 0 10px; }
+.review-method28 .method-section28 p,.review-method28 .method-section28 li { font-size:16px; line-height:1.65; }

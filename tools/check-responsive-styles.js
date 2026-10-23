@@ -8,6 +8,7 @@ const shell = read('prototypes/reorganized/site-header.css');
 const story = read('prototypes/reorganized/home-story.css');
 const evidence = read('prototypes/topic-review/evidence.css');
 const topic = read('prototypes/topic-review/style.css');
+const explorer = read('prototypes/paper-network/skills.css');
 
 // Inspect explicit breakpoint rules only; this does not simulate browser layout.
 function matches(query, {width,height,reduced=false,medium='screen'}) {
@@ -36,6 +37,9 @@ for (const [width,height] of [[320,568],[375,812],[640,900],[768,1024],[1024,768
   assert.equal(value(shell,'.bar .nav','display',viewport),width <= 640 ? 'grid' : 'flex');
   assert.equal(value(shell,':root','--site-gutter',viewport),width <= 360 ? '16px' : width <= 640 ? '24px' : width <= 760 ? '28px' : '40px');
   assert.equal(value(shell,'.bar','position',viewport),height <= 500 ? 'static' : 'sticky');
+  if (width <= 640) assert.equal(value(shell,'.bar .nav a','flex-wrap',viewport),'wrap','Beta label can wrap inside narrow navigation cells');
+  assert.equal(value(explorer,'.intro h1','font-size',viewport),width <= 760 ? '32px' : '43px');
+  assert.equal(value(explorer,'#inspector','scroll-margin-top',viewport),'var(--site-header-offset,96px)');
   assert.equal(value(evidence,'.evidence-pair-grid','grid-template-columns',viewport),width <= 760 ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1fr)');
   const staticStory = width <= 760 || height <= 760;
   assert.equal(value(story,'.story-static30','display',viewport),staticStory ? 'block' : 'none');

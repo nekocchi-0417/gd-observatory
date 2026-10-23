@@ -29,11 +29,16 @@ function harness(saved,blocked=false,theme=null){
  const location={search:'',pathname:'/skills.html',href:'http://localhost/skills.html'},window={addEventListener:(n,f)=>events[n]=f,matchMedia:()=>({matches:false})};
  const context=vm.createContext({document,window,location,history:{replaceState:(_,__,url)=>location.href='http://localhost'+url},console,URL,URLSearchParams,Blob,setTimeout,sessionStorage:{getItem:k=>{if(blocked)throw Error('Blocked');return visit.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('Blocked');visit.set(k,v);}},localStorage:{getItem:k=>{if(blocked)throw Error('Blocked');return data.get(k)||null;},setItem:(k,v)=>{if(blocked)throw Error('Blocked');data.set(k,v);}}});
  const run=s=>vm.runInContext(s,context);scripts.forEach((s,i)=>{run(s);if(i===2)context.GDConcepts=window.GDConcepts;if(i===3)context.GDSkills=window.GDSkills;});
- return {run,document,data,events,visit};
+ return {run,document,data,events,visit,Event};
 }
 const expected=require('./network-library.js').load().records.filter(r=>r.topics.includes('skills')).length;const h=harness();assert.equal(h.run('records.length'),expected);assert.equal(h.document.querySelectorAll('.reference-row').length,15);assert.equal(h.run('visibleRows.length'),expected);
 assert.equal(h.document.documentElement.dataset.theme,'light','Explorer starts light, ignoring stale persistent theme');
-h.document.querySelector('#theme').onclick();assert.equal(h.visit.get('gd-dashboard-visit-theme'),'dark');
+h.document.querySelector('[data-theme-choice="dark"]').dispatchEvent(new h.Event('click',{bubbles:true}));assert.equal(h.visit.get('gd-dashboard-visit-theme'),'dark');
+assert.equal(h.document.querySelector('[data-theme-choice="dark"]').getAttribute('aria-pressed'),'true');
+assert.equal(h.document.querySelectorAll('.bar .nav a').length,6);
+assert.equal(h.document.querySelector('.nav [aria-current="page"]').getAttribute('href'),'index.html#explorer');
+assert.equal(h.document.querySelector('.intro .beta-label').textContent,'Beta');
+assert(!h.document.querySelector('.topbar,#theme'),'The explorer uses the shared navigation and theme controls');
 assert.equal(harness(undefined,false,'dark').document.documentElement.dataset.theme,'dark','Explicit session choice survives navigation');
 assert.equal(harness(undefined,true,'dark').document.documentElement.dataset.theme,'light','Unavailable storage falls back to light');
 h.run("change({concept:'bias',connection:'retention'})");assert(h.run('visibleRows.length')>0);assert(h.run("visibleRows.every(r=>matches(r).some(m=>m.id==='bias')&&matches(r).some(m=>m.id==='retention'))"));

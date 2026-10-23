@@ -3,13 +3,13 @@ const path = require('node:path');
 const {parseHTML} = require('linkedom');
 const root = path.resolve(__dirname,'..');
 const {document} = parseHTML(fs.readFileSync(path.join(root,'prototypes/reorganized/base/index.html'),'utf8'));
-const sections = [['home','Home'],['evidence','Selected evidence'],['gaps','Research gaps'],['projects','Projects & grants'],['contribute','Contribute'],['method','Method']];
+const sections = [['home','Home'],['evidence','Selected evidence'],['gaps','Research gaps'],['explorer','Paper explorer'],['projects','Projects & grants'],['contribute','Contribute']];
 const fonts = document.querySelector('link[href*="fonts.googleapis.com"]').outerHTML;
 
 function header({prefix = '',active = ''} = {}) {
   const mark = document.querySelector('a.mark').cloneNode(true);
   mark.setAttribute('href',`${prefix}#home`);
-  const nav = sections.map(([id,label]) => `<a href="${prefix}#${id}"${active === id ? ' aria-current="page"' : ''}>${label.replace(/&/g,'&amp;')}</a>`).join('');
+  const nav = sections.map(([id,label]) => `<a href="${prefix}#${id}"${active === id ? ' aria-current="page"' : ''}><span>${label.replace(/&/g,'&amp;')}</span>${id === 'explorer' ? ' <span class="beta-label">Beta</span>' : ''}</a>`).join('');
   const controls = ['light','dark'].map((theme,index) => {
     const icon = fs.readFileSync(path.join(root,`prototypes/reorganized/icons/${index ? 'moon' : 'sun'}.svg`),'utf8');
     const label = index ? 'Dark' : 'Light';

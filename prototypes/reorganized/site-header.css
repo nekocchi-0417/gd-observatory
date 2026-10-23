@@ -8,6 +8,8 @@
 .bar .nav { display:flex; flex-wrap:nowrap; gap:2px; width:auto; margin:0; padding:0; overflow:visible; }
 .bar .nav a { box-sizing:border-box; position:relative; display:flex; align-items:center; justify-content:center; min-height:44px; padding:8px; white-space:nowrap; color:var(--ink-2,var(--muted)); font-size:13px; font-weight:500; line-height:1.4; text-decoration:none; border-radius:4px; }
 .bar .nav a:hover { color:var(--ink); background:var(--surface-2,var(--soft)); }
+.bar .nav a { gap:5px; }
+.beta-label { display:inline-block; flex-shrink:0; padding:2px 5px; border:1px solid currentColor; border-radius:3px; font:500 10px/1.2 "Archivo",Arial,sans-serif; letter-spacing:0; vertical-align:middle; white-space:nowrap; }
 .bar .nav a[aria-current="page"] { color:var(--ink); font-weight:650; }
 .bar .nav a[aria-current="page"]::after { content:""; position:absolute; height:2px; background:var(--ink); left:8px; right:8px; bottom:0; }
 .bar .appearance22 { display:flex; justify-self:end; gap:2px; padding:3px; border:1px solid var(--rule,var(--line)); border-radius:8px; background:var(--surface-2,var(--soft)); }
@@ -31,7 +33,7 @@
   .bar .mark { font-size:13px; gap:8px; }
   .bar .mark>svg { flex-basis:28px; width:28px; }
   .bar .nav { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2px 4px; }
-  .bar .nav a { min-width:0; padding:8px 4px; font-size:12px; white-space:normal; text-align:center; overflow-wrap:anywhere; }
+  .bar .nav a { min-width:0; padding:8px 4px; font-size:12px; white-space:normal; text-align:center; overflow-wrap:anywhere; flex-wrap:wrap; align-content:center; }
   .bar .appearance22 button { width:44px; height:44px; }
 }
 @media(max-width:360px) { :root { --site-gutter:16px; } }

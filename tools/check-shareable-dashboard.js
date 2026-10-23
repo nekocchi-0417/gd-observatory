@@ -49,7 +49,9 @@ for (const theme of ['light','dark']) {
   const h = harness('#home', theme);
   assert.equal(h.document.documentElement.dataset.theme, theme);
   assert.equal(h.document.querySelectorAll('.nav a').length, 6);
-  assert.equal(h.document.querySelector('.nav a:last-child').getAttribute('href'), '#method');
+  assert.deepEqual([...h.document.querySelectorAll('.nav a')].map(a => a.getAttribute('href')), ['#home','#evidence','#gaps','#explorer','#projects','#contribute']);
+  assert.equal(h.document.querySelector('.nav a[href="#explorer"] .beta-label').textContent,'Beta');
+  h.render('explorer'); assert.equal(h.location.destination,'skills.html');
   const topics = h.run('TOPICS28.map(t => t[0])');
   const routes = ['record/123','review','details'];
   for (const route of routes) {
@@ -72,6 +74,7 @@ for (const theme of ['light','dark']) {
     h.render(route); assert.equal(h.location.destination,'topics/topics.html');
   }
   const gaps = h.render('gaps');
+  assert(!gaps.querySelector('#review-method28').open, 'Method is collapsed on the main research-gaps view');
   assert.equal(gaps.querySelectorAll('.node28').length, 9);
   assert.equal(gaps.querySelectorAll('.topic-group28').length, 3);
   assert.equal(gaps.querySelectorAll('.gap-step20').length, 9);
@@ -88,6 +91,14 @@ for (const theme of ['light','dark']) {
   assert.match(method.textContent, /Selected evidence brings together six findings/);
   assert.match(method.textContent, /additional branch for skills and judgement/);
   assert(!method.querySelector('a[href*="csv"]'));
+  for (const route of ['method','method/selection','method/coverage','methods','about','gaps/method']) {
+    const v = h.render(route);
+    assert(v.querySelector('.gaps28'), `${route} opens Research gaps`);
+    assert(v.querySelector('#review-method28').open, `${route} expands the method`);
+    assert(v.querySelector('#review-method28').scrolled, `${route} scrolls to the method`);
+    assert.equal(h.document.querySelector('.nav [aria-current="page"]').getAttribute('href'),'#gaps');
+    assert.equal(v.querySelectorAll('h1').length,1);
+  }
   const projects = h.render('projects');
   assert.equal(projects.querySelectorAll('[data-listing]').length, 11);
   assert.deepEqual([...projects.querySelectorAll('#projects-work [data-listing]')].slice(0,2).map(row => row.dataset.listing),['ai-futures','metaculus']);
@@ -107,7 +118,7 @@ for (const theme of ['light','dark']) {
   assert.doesNotMatch(h.render('home').textContent, /Benchmarks and adoption surveys|biggest gaps|209 times/);
   assert(h.render('futures').querySelector('.projects21'));
   assert(h.render('map').querySelector('.home28'));
-  assert(h.render('about').querySelector('.method22'));
+  assert(h.render('about').querySelector('#review-method28').open);
   h.render('<img src=x onerror=alert(1)>');
   assert.equal(h.document.querySelectorAll('img[src="x"]').length, 0);
   const next = theme === 'light' ? 'dark' : 'light';
@@ -134,6 +145,7 @@ const story = harness('#home');
 assert.equal(story.document.querySelectorAll('[data-story-node]').length, 9);
 assert.equal(story.run('STORY_COPY30.length'), 5);
 assert(story.document.querySelector('#story-entry30[hidden] a[href="skills.html"]'));
+assert.equal(story.document.querySelectorAll('.story-entry30 .beta-label').length,2,'Both animated and static homepage entry points label the beta');
 assert.equal(story.document.querySelectorAll('#gd-story30 select,#gd-story30 input,#gd-story30 table').length,0);
 assert(story.document.querySelector('.story-lenses30').textContent.includes('Psychology & education'));
 assert(fs.existsSync(path.join(output,'skills.html')));

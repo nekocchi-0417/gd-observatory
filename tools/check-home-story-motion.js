@@ -3,6 +3,7 @@ const html=fs.readFileSync(process.argv[2]||'dist/reorganized-dashboard/index.ht
 const scripts=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
 for(const reduce of [false,true]){
  const {document,Element,Event}=parseHTML(html),callbacks=[],events={};
+ Element.prototype.scrollIntoView=function(){this.scrolled=true;};
  const window={scrollY:0,ResizeObserver:class{observe(){}disconnect(){this.disconnected=true;}},matchMedia:()=>({matches:reduce,addEventListener(){},removeEventListener(){}}),requestAnimationFrame:f=>{callbacks.push(f);return callbacks.length;},cancelAnimationFrame(){},addEventListener:(n,f)=>(events[n]||=new Set()).add(f),removeEventListener:(n,f)=>events[n]?.delete(f),scrollTo(x,y){this.scrollY=typeof x==='object'?x.top:y;events.scroll?.forEach(f=>f());}};
  Element.prototype.getBoundingClientRect=function(){if(this.id==='gd-story30')return {top:350-window.scrollY,width:1000,height:3200};if(this.id==='story-visual30')return {width:1000,height:330};if(this.classList.contains('bar'))return {height:70};return {height:600,width:1000,top:0};};
  const context=vm.createContext({window,document,location:{hash:'#home'},console,Date,Intl,sessionStorage:{getItem(){return null;},setItem(){}},requestAnimationFrame:f=>callbacks.push(f)});

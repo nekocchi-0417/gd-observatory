@@ -56,7 +56,7 @@ ${publish ? '' : '<meta name="robots" content="noindex,nofollow">'}
 ${header()}
 <main id="view" tabindex="-1"></main>
 <noscript><div class="wrap view5"><h1>Gradual Disempowerment Dashboard</h1><p>This research prototype needs JavaScript to display its topic reviews and charts.</p><p><a href="https://gradual-disempowerment.ai/">Read the original gradual disempowerment paper</a></p></div></noscript>
-<footer class="ft"><div class="wrap"><span><b>Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Research prototype · <a href="#method">Method</a></span></div></footer>
+<footer class="ft"><div class="wrap"><span><b>Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Research prototype · <a href="#gaps/method">Review method</a></span></div></footer>
 <script>${script}</script></body></html>`;
   const output = path.join(root, publish ? 'docs' : 'dist/reorganized-dashboard');
   fs.mkdirSync(output, {recursive: true});

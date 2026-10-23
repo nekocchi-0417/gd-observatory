@@ -44,7 +44,8 @@ function harness(page, query = '', hash = '', theme = 'light', blockedStorage = 
   }
   assert(document.querySelector('link[href*="fonts.googleapis.com"]'),'Topic pages load the main site fonts');
   assert.equal(document.querySelector('.bar .mark').getAttribute('href'),'../index.html#home');
-  assert.deepEqual([...document.querySelectorAll('.bar .nav a')].map(a => a.textContent),['Home','Selected evidence','Research gaps','Projects & grants','Contribute','Method']);
+  assert.deepEqual([...document.querySelectorAll('.bar .nav a')].map(a => a.textContent),['Home','Selected evidence','Research gaps','Paper explorer Beta','Projects & grants','Contribute']);
+  assert.equal(document.querySelector('.bar .nav a[href="../index.html#explorer"] .beta-label').textContent,'Beta');
   assert.equal(document.querySelector('.bar .nav [aria-current="page"]').getAttribute('href'),`../index.html#${page === 'evidence.html' ? 'evidence' : 'gaps'}`);
   assert.match(document.querySelector('script[src]').getAttribute('src'),/^theme-init\.js\?v=[a-f0-9]{12}$/,'Theme loads before the styles');
   for (const tag of document.querySelectorAll('script[src],link[rel="stylesheet"]')) {
