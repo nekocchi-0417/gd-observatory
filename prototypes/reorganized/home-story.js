@@ -56,9 +56,17 @@ function installHomeStory30(){
  }
  function setScene(next){if(next===scene)return;scene=next;track.dataset.beat=String(scene);const c=STORY_COPY30[scene];get('story-label30').textContent=c.label;get('story-title30').textContent=c.title;get('story-copy30').textContent=c.text;for(const [id,e]of Object.entries(nodeEls))e.dataset.focus=STORY_FOCUS30[scene]?(STORY_FOCUS30[scene].nodes.includes(id)?'active':'context'):'none';get('story-caption30').textContent=c.caption;get('story-entry30').hidden=scene!==4;get('story-scroll30').hidden=scene===4;get('story-lenses30').setAttribute('aria-hidden',String(scene!==3));get('story-live30').textContent=c.label+' — '+c.title;map.setAttribute('aria-label',scene===4?'The same nine GD areas in a network of shared draft references. Skills and judgement is highlighted.':scene===3?'The same nine GD areas connect to illustrative research lenses: economics, psychology and education, human–computer interaction, governance and media studies.':scene===2?'The proposed causal pathway highlights delegation to AI, culture and information, AI in government and human influence. A dashed link shows a possible interaction between information and governance.':scene===1?'The proposed causal pathway highlights delegation to AI, entry-level jobs, skills and judgement, workers’ share of income and human influence. A dashed arrow runs from skills back to jobs.':'Proposed causal pathway from AI capability, adoption and delegation through work, skills, culture and government to human influence.');}
  function onScroll(){if(raf||disposed)return;raf=window.requestAnimationFrame(()=>{raf=0;if(disposed)return;progress=Math.max(0,Math.min(4,(topOffset-track.getBoundingClientRect().top)/step));setScene(Math.min(4,Math.floor(progress+.45)));paint();});}
- function measure(){const r=visual.getBoundingClientRect();width=r.width;height=r.height;if(!width)return;topOffset=(document.querySelector('.bar')?.getBoundingClientRect().height||64)+12;track.style.setProperty('--story-top30',topOffset+'px');track.style.height=(Math.max(visual.parentElement.getBoundingClientRect().height,600)+step*4+100)+'px';svg.setAttribute('viewBox',`0 0 ${width} ${height}`);onScroll();paint();}
- const observer=new window.ResizeObserver(measure);observer.observe(visual);const bar=document.querySelector('.bar');if(bar)observer.observe(bar);window.addEventListener('scroll',onScroll,{passive:true});reduced.addEventListener('change',onScroll);measure();
- disposeHomeStory30=()=>{disposed=true;observer.disconnect();window.removeEventListener('scroll',onScroll);reduced.removeEventListener('change',onScroll);if(raf)window.cancelAnimationFrame(raf);disposeHomeStory30=()=>{};};
+ function measure(){
+  const r=visual.getBoundingClientRect();width=r.width;height=r.height;if(!width)return;
+  topOffset=(document.querySelector('.bar')?.getBoundingClientRect().height||64)+12;
+  track.style.setProperty('--story-top30',topOffset+'px');
+  // Include the visible viewport so the document cannot end before the final chapter.
+  const endSpace=Math.max(visual.parentElement.getBoundingClientRect().height,window.innerHeight-topOffset,600);
+  track.style.height=(endSpace+step*4+100)+'px';
+  svg.setAttribute('viewBox',`0 0 ${width} ${height}`);onScroll();paint();
+ }
+ const observer=new window.ResizeObserver(measure);observer.observe(visual);observer.observe(visual.parentElement);const bar=document.querySelector('.bar');if(bar)observer.observe(bar);window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',measure);reduced.addEventListener('change',onScroll);measure();
+ disposeHomeStory30=()=>{disposed=true;observer.disconnect();window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',measure);reduced.removeEventListener('change',onScroll);if(raf)window.cancelAnimationFrame(raf);disposeHomeStory30=()=>{};};
 }
 function homeStoryStatic30(){
  function diagram(scene){const network=scene===4,measurement=scene===3,points={},causal={capability:[55,30],adoption:[200,30],handover:[345,30],work:[55,140],share:[55,255],skills:[200,140],culture:[345,255],institutions:[200,255],influence:[200,365]};
