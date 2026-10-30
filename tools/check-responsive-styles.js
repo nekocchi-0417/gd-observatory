@@ -43,7 +43,7 @@ for (const [width,height] of [[320,568],[375,812],[640,900],[768,1024],[1024,768
   assert.equal(value(evidence,'.evidence-pair-grid','grid-template-columns',viewport),width <= 760 ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1fr)');
   assert.equal(value(story,'.story-track30','display',viewport),'none','Unenhanced story has a readable fallback');
   assert.equal(value(story,'.is-enhanced30 .story-track30','display',viewport),'block','Animation remains available at every screen size');
-  assert.equal(value(story,'.story-flow30','display',viewport),width<=760||height<=760?'block':'none');
+  assert.equal(value(story,'.story-stage30','position',viewport),'sticky','Text and diagram remain pinned together');
   assert.equal(value(topic,'.page-nav','position',viewport),width <= 760 || height <= 650 ? 'static' : 'sticky');
 }
 const reduced = {width:1440,height:900,reduced:true};

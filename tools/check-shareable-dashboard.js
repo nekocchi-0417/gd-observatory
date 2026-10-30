@@ -146,7 +146,7 @@ const story = harness('#home');
 assert.equal(story.document.querySelectorAll('[data-story-node]').length, 9);
 assert.equal(story.run('STORY_COPY30.length'), 5);
 assert(story.document.querySelector('#story-entry30[hidden] a[href="skills.html"]'));
-assert.equal(story.document.querySelectorAll('.story-entry30 .beta-label').length,3,'Desktop, flowing and static homepage entry points label the beta');
+assert.equal(story.document.querySelectorAll('.story-entry30 .beta-label').length,2,'Animated and static homepage entry points label the beta');
 assert.equal(story.document.querySelectorAll('#gd-story30 select,#gd-story30 input,#gd-story30 table').length,0);
 assert(story.document.querySelector('.story-lenses30').textContent.includes('Psychology & education'));
 assert(fs.existsSync(path.join(output,'skills.html')));
