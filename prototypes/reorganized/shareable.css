@@ -9,6 +9,7 @@
 .release-note28 { padding-block:24px 56px; color:var(--ink-3); font:13px/1.6 var(--f-display); }
 .pending-nav28 { color:var(--ink-3); }
 .status28 { font:12px/1.5 var(--f-display); color:var(--ink-3); }
+.review-footer28 { margin-top:28px; }
 .hold28 { min-height:60vh; }
 .hold-inner28 { max-width:740px; padding-block:36px 72px; }
 .hold28 .h1-5 { margin-top:16px; color:var(--ink-2); }
