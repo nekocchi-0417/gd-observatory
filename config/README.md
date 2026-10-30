@@ -2,6 +2,11 @@
 
 The public build includes the shared analytics integration on Home, Paper explorer,
 topic reviews, topic libraries, the topic directory and Selected evidence.
+The production endpoint is `https://zhangyue.goatcounter.com/count`. The owner
+supplied this account on 29 October 2026. Its dashboard is private and individual
+pageview storage is disabled (checked in account settings). Collection starts
+when this build is deployed; local previews remain excluded.
+
 **Tracking is off while `analytics.json` has an empty `endpoint`.** No account is
 created by the build.
 
