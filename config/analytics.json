@@ -1,0 +1,6 @@
+{
+  "provider": "goatcounter",
+  "endpoint": "https://zhangyue.goatcounter.com/count",
+  "siteOrigin": "https://nekocchi-0417.github.io",
+  "basePath": "/gd-observatory/"
+}

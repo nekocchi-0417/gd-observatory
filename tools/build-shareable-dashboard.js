@@ -3,6 +3,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const {header} = require('./site-shell');
+const {analytics} = require('./site-analytics');
 const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const between = (source, start, end) => {
@@ -57,10 +58,10 @@ ${header()}
 <main id="view" tabindex="-1"></main>
 <noscript><div class="wrap view5"><h1>Gradual Disempowerment Dashboard</h1><p>This research prototype needs JavaScript to display its topic reviews and charts.</p><p><a href="https://gradual-disempowerment.ai/">Read the original gradual disempowerment paper</a></p></div></noscript>
 <footer class="ft"><div class="wrap"><span><b>Gradual Disempowerment Dashboard</b> · Better Futures Project · Zhang Yue</span><span>Research prototype · <a href="#gaps/method">Review method</a></span></div></footer>
-<script>${script}</script></body></html>`;
+<script>${script}</script>${analytics({publish})}</body></html>`;
   const output = path.join(root, publish ? 'docs' : 'dist/reorganized-dashboard');
   fs.mkdirSync(output, {recursive: true});
-  require('./build-topic-review.js').build({output: path.join(output,'topics')});
+  require('./build-topic-review.js').build({output: path.join(output,'topics'),publish});
   fs.writeFileSync(path.join(output, 'index.html'), html);
   require('./build-skills-explorer.js').build(output, {publish});
   // Retired direct downloads must not continue exposing the held bibliography.

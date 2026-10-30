@@ -19,7 +19,8 @@ assert.match(fs.readFileSync(path.join(output, 'pdf-source-crosswalk.html'), 'ut
 if (target === 'docs/index.html') assert(!html.includes('noindex,nofollow'));
 assert(html.indexOf('gd-dashboard-visit-theme') >= 0 && html.indexOf('gd-dashboard-visit-theme') < html.indexOf('<style>'));
 const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]);
-assert.equal(scripts.length, 2, 'No legacy runtime may be embedded');
+assert.equal(scripts.length, 3, 'Only theme, dashboard and analytics runtimes may be embedded');
+assert.equal((html.match(/<script data-gd-analytics>/g)||[]).length,1);
 scripts.forEach(script => new vm.Script(script));
 
 function harness(hash = '#home', savedTheme = null, blockedStorage = false) {
@@ -145,7 +146,7 @@ const story = harness('#home');
 assert.equal(story.document.querySelectorAll('[data-story-node]').length, 9);
 assert.equal(story.run('STORY_COPY30.length'), 5);
 assert(story.document.querySelector('#story-entry30[hidden] a[href="skills.html"]'));
-assert.equal(story.document.querySelectorAll('.story-entry30 .beta-label').length,2,'Both animated and static homepage entry points label the beta');
+assert.equal(story.document.querySelectorAll('.story-entry30 .beta-label').length,3,'Desktop, flowing and static homepage entry points label the beta');
 assert.equal(story.document.querySelectorAll('#gd-story30 select,#gd-story30 input,#gd-story30 table').length,0);
 assert(story.document.querySelector('.story-lenses30').textContent.includes('Psychology & education'));
 assert(fs.existsSync(path.join(output,'skills.html')));
