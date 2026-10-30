@@ -154,6 +154,8 @@ h2 { font-size: 20px; line-height: 1.35; font-weight: 650; }
 .gap-row .gap-proposal { margin-top: 10px; font: 13px/1.6 var(--sans); color: var(--muted); }
 .gap-proposal strong { color: var(--ink); font-weight: 600; }
 .topic-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 28px 0 45px; font-size: 10px; color: var(--quiet); }
+.topic-footer .review-status { flex-basis: 100%; max-width: none; margin: 0 0 8px; }
+.topic-footer .review-status p { max-width: 72ch; }
 .library-header { padding-block: 14px; }
 .library-page { max-width: 1000px; margin: 0 auto; padding: 40px var(--site-gutter,40px); }
 .library-page>.back-link { margin-bottom: 30px; }
