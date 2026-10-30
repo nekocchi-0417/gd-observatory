@@ -19,7 +19,8 @@
     "build:network": "python3 tools/build-paper-network.py",
     "verify:network": "node tools/verify-paper-network.js",
     "verify:skills": "node tools/check-skills-explorer.js",
-    "verify:story": "node tools/check-home-story-motion.js"
+    "verify:story": "node tools/check-home-story-motion.js",
+    "verify:analytics": "node tools/check-analytics.js"
   },
   "devDependencies": {
     "linkedom": "0.18.12",

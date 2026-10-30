@@ -5,6 +5,7 @@ const vm = require('node:vm');
 const {createHash} = require('node:crypto');
 const {parseHTML} = require('linkedom');
 const {header,fonts} = require('./site-shell');
+const {analytics} = require('./site-analytics');
 const root = path.resolve(__dirname, '..');
 const topicIds = ['capability','adoption','handover','work','share','culture','institutions','influence'];
 const date = '2026-10-22';
@@ -55,7 +56,7 @@ function loadReviews() {
   return reviews;
 }
 
-function build({output = 'dist/topic-review'} = {}) {
+function build({output = 'dist/topic-review', publish = false} = {}) {
   const reviews = loadReviews();
   const copy = JSON.parse(fs.readFileSync(path.join(researchDirectory,'page-copy.json'),'utf8'));
   for (const [id,edits] of Object.entries(copy)) {
@@ -96,6 +97,7 @@ function build({output = 'dist/topic-review'} = {}) {
       const hash = createHash('sha256').update(fs.readFileSync(path.join(destination,asset))).digest('hex').slice(0,12);
       tag.setAttribute(attribute,`${asset}?v=${hash}`);
     }
+    document.body.insertAdjacentHTML('beforeend',analytics({publish}));
     fs.writeFileSync(path.join(destination,file),document.toString());
   }
   return {destination,reviews};

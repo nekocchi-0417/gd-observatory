@@ -41,14 +41,14 @@ for (const [width,height] of [[320,568],[375,812],[640,900],[768,1024],[1024,768
   assert.equal(value(explorer,'.intro h1','font-size',viewport),width <= 760 ? '32px' : '43px');
   assert.equal(value(explorer,'#inspector','scroll-margin-top',viewport),'var(--site-header-offset,96px)');
   assert.equal(value(evidence,'.evidence-pair-grid','grid-template-columns',viewport),width <= 760 ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1fr)');
-  const staticStory = width <= 760 || height <= 760;
-  assert.equal(value(story,'.story-static30','display',viewport),staticStory ? 'block' : 'none');
-  if (staticStory) assert.equal(value(story,'.story-track30','display',viewport),'none');
+  assert.equal(value(story,'.story-track30','display',viewport),'none','Unenhanced story has a readable fallback');
+  assert.equal(value(story,'.is-enhanced30 .story-track30','display',viewport),'block','Animation remains available at every screen size');
+  assert.equal(value(story,'.story-flow30','display',viewport),width<=760||height<=760?'block':'none');
   assert.equal(value(topic,'.page-nav','position',viewport),width <= 760 || height <= 650 ? 'static' : 'sticky');
 }
 const reduced = {width:1440,height:900,reduced:true};
-assert.equal(value(story,'.story-track30','display',reduced),'none');
-assert.equal(value(story,'.story-static30','display',reduced),'block');
+assert.equal(value(story,'.is-enhanced30 .story-track30','display',reduced),'none');
+assert.equal(value(story,'.is-enhanced30 .story-static30','display',reduced),'block');
 assert.equal(value(topic,'html','scroll-behavior',reduced),'auto');
 const print = {width:1000,height:1200,medium:'print'};
 assert.equal(value(shell,'.bar','display',print),'none');
