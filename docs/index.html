@@ -1727,7 +1727,7 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
 .story-static30>section{padding:26px 0 35px;border-top:1px solid var(--rule)}.story-static30 h2{font:400 26px/1.2 var(--f-text);margin:0 0 10px}.story-static30 svg{display:block;width:100%;margin:22px 0 14px;overflow:visible}.story-static30 svg text{font:12px var(--f-display);fill:var(--ink);paint-order:stroke;stroke:var(--paper);stroke-width:5px;stroke-linejoin:round}.story-static30 svg marker path{fill:var(--ink-3)}.static-node30{fill:var(--accent);stroke:var(--paper);stroke-width:5px}.static-node30.muted{fill:var(--ink-3);opacity:.5}.static-lenses30{padding:20px 0}.static-lenses30>div{display:grid;grid-template-columns:.85fr 1.2fr;gap:15px;padding:18px 0;border-bottom:1px solid var(--rule)}.static-lenses30 h3{font:500 13px/1.5 var(--f-display);margin:0}.static-lenses30 p{font:15px/1.5 var(--f-text);color:var(--ink-2);margin:0}.static-lenses30 .note30{font:12px/1.6 var(--f-display);padding-top:20px}.story-static30 .story-caption30{font-size:11px}
 
 .story-dot30{transition:background .25s,box-shadow .25s}.story-node30[data-focus="context"] .story-dot30{background:color-mix(in srgb,var(--ink-3) 40%,var(--paper))}.story-node30[data-focus="context"] .story-name30{color:var(--ink-3)}.story-node30[data-focus="active"] .story-dot30{box-shadow:0 0 0 1.5px var(--accent)}.story-path30.is-focused30{stroke:var(--accent);stroke-width:2}.story-static30 .static-context30 text{fill:var(--ink-3)}
-.story-interaction30{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:5 5}.story-measure30{fill:none;stroke:var(--accent);stroke-width:1}.story-lenses30{position:absolute;left:56%;right:0;top:0;bottom:0;opacity:0;visibility:hidden;background:var(--paper)}.lens-list30{height:100%;display:flex;flex-direction:column}.lens-row30{min-height:21.5%;padding:7px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center}.lens-row30 h3{font:500 13px/1.35 var(--f-display);margin:0 0 5px}.lens-row30 p{font:14px/1.4 var(--f-text);color:var(--ink-2);margin:0}.lens-challenges30{display:flex;justify-content:space-between;gap:15px;padding-top:12px;font:11px/1.4 var(--f-display);color:var(--ink-3)}.lens-challenges30 span:before{content:"";display:inline-block;width:26px;height:7px;margin-right:7px;background:linear-gradient(90deg,var(--accent),transparent);opacity:.6}.lens-challenges30 span+span:before{background:repeating-linear-gradient(90deg,var(--accent) 0 5px,transparent 5px 10px)}
+.story-interaction30{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:5 5}.story-measure30{fill:none;stroke:var(--accent);stroke-width:1.4}.story-lenses30{position:absolute;left:56%;right:0;top:0;bottom:0;opacity:0;visibility:hidden;background:var(--paper)}.lens-list30{height:100%;display:flex;flex-direction:column}.lens-row30{min-height:21.5%;padding:7px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center}.lens-row30 h3{font:500 13px/1.35 var(--f-display);margin:0 0 5px}.lens-row30 p{font:14px/1.4 var(--f-text);color:var(--ink-2);margin:0}.lens-challenges30{display:flex;justify-content:space-between;gap:15px;padding-top:12px;font:11px/1.4 var(--f-display);color:var(--ink-3)}.lens-challenges30 span:before{content:"";display:inline-block;width:26px;height:7px;margin-right:7px;background:linear-gradient(90deg,var(--accent),transparent);opacity:.6}.lens-challenges30 span+span:before{background:repeating-linear-gradient(90deg,var(--accent) 0 5px,transparent 5px 10px)}
 .story-static30 { max-width:960px; }
 .story-static30 svg { max-width:640px; }
 .story-static30 .lens-list30{height:auto;margin:12px 0 22px}.story-static30 .lens-row30{padding:15px 0}.story-static30 .lens-row30 h3{font-size:14px}.story-static30 .lens-row30 p{font-size:15px}.story-static30 .lens-challenges30{padding-block:15px}
@@ -1762,25 +1762,23 @@ h1,h2,h3,h4 { letter-spacing:0; overflow-wrap:break-word; }
  .story-caption30{grid-column:1;grid-row:2;align-self:start;margin-top:18px;font-size:11px;line-height:1.45}
  .story-node30{width:90px;transform:translate(-50%,-16px);gap:4px}.story-name30{font-size:11px;max-width:88px}.story-dot30{width:24px;height:24px;border-width:4px}
  .story-center30{top:44%}.story-center30 span{font-size:18px}
+ .story-lenses30 .lens-challenges30{display:none}
+ .story-lenses30 .lens-row30{flex:1}
 }
 @media(prefers-reduced-motion:reduce),print{
  .is-enhanced30 .story-flow-hint30,.story-finish30{display:none}.is-enhanced30 .story-track30{display:none}.is-enhanced30 .story-static30{display:block}
 }
 
-/* Connections terminate on the measured discipline buttons, including when labels wrap. */
-.story-lenses30 button.lens-row30{width:100%;box-sizing:border-box;text-align:left;font:inherit;color:var(--ink);background:var(--paper);border:0;border-bottom:1px solid var(--rule);border-radius:3px;cursor:pointer;padding:7px 12px;position:relative}
+/* Connections terminate on the measured discipline labels, including when labels wrap. */
+.story-lenses30 .lens-row30{width:100%;box-sizing:border-box;text-align:left;font:inherit;color:var(--ink);background:var(--paper);border:0;border-bottom:1px solid var(--rule);padding:7px 12px;position:relative}
 .story-lenses30 .lens-title30{display:block;font:500 13px/1.35 var(--f-display);margin:0 0 5px}
 .story-lenses30 .lens-measures30{display:block;font:14px/1.4 var(--f-text);color:var(--ink-2)}
-.story-lenses30 button[aria-pressed="true"]{background:var(--surface-2);box-shadow:inset 3px 0 0 var(--accent)}
-.story-lenses30 button[aria-pressed="true"] .lens-title30{color:var(--accent)}
-.story-lenses30 button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.story-measure30.is-selected30{stroke-width:1.8}
 .story-static30 .lens-connections30{margin-top:6px;font:12px/1.5 var(--f-display);color:var(--ink-3)}
 /* A compact bipartite layout reserves the middle for links, clear of both sets of labels. */
 .story-track30[data-compact="true"] .story-lenses30{left:56%;top:0;right:0;bottom:0}
 .story-track30[data-compact="true"] .story-lenses30 .lens-challenges30{display:none}
 .story-track30[data-compact="true"] .story-lenses30 .lens-list30{display:flex;flex-direction:column;gap:0;height:100%}
-.story-track30[data-compact="true"] .story-lenses30 button.lens-row30{flex:1;min-height:0;padding:5px 8px}
+.story-track30[data-compact="true"] .story-lenses30 .lens-row30{flex:1;min-height:0;padding:5px 8px}
 .story-track30[data-compact="true"] .story-lenses30 .lens-title30{font-size:11px;margin:0 0 3px}
 .story-track30[data-compact="true"] .story-lenses30 .lens-measures30{font-size:12px;line-height:1.35}
 .story-track30[data-compact="true"][data-beat="3"] .story-node30{transform:translate(-50%,-12px)}
@@ -1955,11 +1953,11 @@ const STORY_COPY30=[
 ];
 const STORY_RING30=['capability','adoption','handover','skills','influence','institutions','culture','share','work'];
 const STORY_MEASURE30={capability:[.08,.14],adoption:[.25,.14],handover:[.42,.14],work:[.08,.46],share:[.25,.46],skills:[.42,.46],culture:[.08,.78],institutions:[.25,.78],influence:[.42,.78]};
-function storyLenses30(interactive=false){return `<div class="lens-list30">${STORY_LENSES30.map((l,i)=>interactive?`<button type="button" class="lens-row30" data-story-lens="${i}" aria-pressed="${i===0}" tabindex="-1"><span class="lens-title30">${esc(l.name)}</span><span class="lens-measures30">${esc(l.measures)}</span></button>`:`<div class="lens-row30"><h3>${esc(l.name)}</h3><p>${esc(l.measures)}</p><p class="lens-connections30">Connected areas: ${l.nodes.map(id=>esc(STORY_NODES30.find(n=>n[0]===id)[1])).join(' · ')}</p></div>`).join('')}<div class="lens-challenges30"><span>Uneven coverage</span><span>Gaps over time</span></div></div>`;}
+function storyLenses30(includeConnections=false){return `<div class="lens-list30">${STORY_LENSES30.map((l,i)=>`<div class="lens-row30" data-story-lens="${i}"><h3 class="lens-title30">${esc(l.name)}</h3><p class="lens-measures30">${esc(l.measures)}</p>${includeConnections?`<p class="lens-connections30">Connected areas: ${l.nodes.map(id=>esc(STORY_NODES30.find(n=>n[0]===id)[1])).join(' · ')}</p>`:''}</div>`).join('')}<div class="lens-challenges30"><span>Uneven coverage</span><span>Gaps over time</span></div></div>`;}
 function homeStory30(){return `<div class="home5 home28 home-story30"><section class="wrap story-intro30"><h1 id="main-content">How could people gradually lose influence?</h1><p>Gradual disempowerment is a possible future in which growing reliance on AI reduces people’s ability to shape the economy, culture and institutions. Harms in one area could make harms in another harder to resist.</p><a class="story-source30" href="https://gradual-disempowerment.ai/" target="_blank" rel="noopener noreferrer">Read the original proposal ↗</a><p class="story-flow-hint30">Scroll to explore the pathway <span aria-hidden="true">↓</span></p></section>
 <section class="wrap story-track30" id="gd-story30" aria-label="The pathway, the measurement challenge, and the connected literature" data-beat="0"><div class="story-stage30">
 <div class="story-head30"><div><p class="story-label30" id="story-label30">${STORY_COPY30[0].label}</p><h2 id="story-title30">${STORY_COPY30[0].title}</h2><p class="story-copy30" id="story-copy30">${STORY_COPY30[0].text}</p></div><p class="story-scroll30" id="story-scroll30">Scroll to follow the same nodes <span aria-hidden="true">↓</span></p></div>
-<div class="story-visual30" id="story-visual30"><div class="story-map30" id="story-map30" role="img" aria-label="Proposed causal pathway from AI capability, adoption and delegation through work, skills, culture and government to human influence."><svg class="story-lines30" id="story-lines30" aria-hidden="true"><defs><marker id="story-arrow30" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5Z"/></marker></defs><g id="story-causal30"></g><g id="story-interactions30"></g><g id="story-measures30"></g><g id="story-network30"></g></svg>${STORY_NODES30.map(([id,label,x,y])=>`<div class="story-node30" data-story-node="${id}" style="left:${x*100}%;top:${y*330}px" aria-hidden="true"><span class="story-dot30"></span><span class="story-name30">${esc(label)}</span></div>`).join('')}<div class="story-center30" id="story-center30" aria-hidden="true"><span>Shared sources</span><small>across GD areas</small></div></div><div class="story-lenses30" id="story-lenses30" aria-hidden="true">${storyLenses30(true)}</div></div>
+<div class="story-visual30" id="story-visual30"><div class="story-map30" id="story-map30" role="img" aria-label="Proposed causal pathway from AI capability, adoption and delegation through work, skills, culture and government to human influence."><svg class="story-lines30" id="story-lines30" aria-hidden="true"><defs><marker id="story-arrow30" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0 0 L5 2.5 L0 5Z"/></marker></defs><g id="story-causal30"></g><g id="story-interactions30"></g><g id="story-measures30"></g><g id="story-network30"></g></svg>${STORY_NODES30.map(([id,label,x,y])=>`<div class="story-node30" data-story-node="${id}" style="left:${x*100}%;top:${y*330}px" aria-hidden="true"><span class="story-dot30"></span><span class="story-name30">${esc(label)}</span></div>`).join('')}<div class="story-center30" id="story-center30" aria-hidden="true"><span>Shared sources</span><small>across GD areas</small></div></div><div class="story-lenses30" id="story-lenses30" aria-hidden="true">${storyLenses30()}</div></div>
 <p class="story-caption30" id="story-caption30">${STORY_COPY30[0].caption}</p><span class="story-live30" id="story-live30" role="status"></span></div></section><div class="story-finish30 wrap"><div class="story-entry30" id="story-entry30" hidden>${storyExplorerEntry30()}</div></div>${homeStoryStatic30()}</div>`;}
 
 function storyExplorerEntry30(){return '<a href="skills.html" class="story-open30">Explore Skills and judgement <span class="beta-label">Beta</span> <span aria-hidden="true">→</span></a><span>Our first paper-explorer pilot.</span>';}
@@ -1967,18 +1965,18 @@ function installHomeStory30(){
  const track=document.getElementById('gd-story30');if(!track||!window.ResizeObserver||!window.matchMedia)return;
  const get=id=>document.getElementById(id),visual=get('story-visual30'),map=get('story-map30'),svg=get('story-lines30'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
  const home=track.closest('.home-story30');home.classList.add('is-enhanced30');
- const lensButtons=[...get('story-lenses30').querySelectorAll('[data-story-lens]')];
+ const lensRows=[...get('story-lenses30').querySelectorAll('[data-story-lens]')];
  const nodeEls=Object.fromEntries([...track.querySelectorAll('[data-story-node]')].map(e=>[e.dataset.storyNode,e]));
  const path=(group,cls)=>{const e=document.createElementNS('http://www.w3.org/2000/svg','path');e.setAttribute('class',cls);get(group).append(e);return e;};
  const causal=STORY_PATHS30.map(([a,b])=>{const e=path('story-causal30','story-path30');e.setAttribute('marker-end','url(#story-arrow30)');return {a,b,e};});
  const interactions=STORY_INTERACTIONS30.map(link=>{const e=path('story-interactions30','story-interaction30');if(link.directed)e.setAttribute('marker-end','url(#story-arrow30)');return {...link,e};});
  const measures=STORY_LENSES30.flatMap((l,i)=>l.nodes.map(a=>{const e=path('story-measures30','story-measure30');e.dataset.node=a;e.dataset.lens=String(i);return {a,i,e};}));
  const network=HOME_NETWORK30.pairs.map(p=>({...p,e:path('story-network30','story-link30')}));
- let width=0,height=0,progress=0,scene=0,raf=0,topOffset=76,disposed=false,narrow=false,activeLens=0;
+ let width=0,height=0,progress=0,scene=0,raf=0,topOffset=76,disposed=false,narrow=false;
  const clamp=n=>Math.max(0,Math.min(1,n)),smooth=n=>{const t=clamp(n);return t*t*(3-2*t);},step=760;
  function paint(){
   if(!width)return;const p=reduced.matches?scene:progress,measureT=smooth(p-2),ringT=smooth(p-3),points={};
-  const visualRect=visual.getBoundingClientRect(),anchors=lensButtons.map(b=>{const r=b.getBoundingClientRect();return [r.left-visualRect.left,r.top-visualRect.top+r.height/2];});
+  const visualRect=visual.getBoundingClientRect(),anchors=lensRows.map(b=>{const r=b.getBoundingClientRect();return [r.left-visualRect.left,r.top-visualRect.top+r.height/2];});
   const phone={capability:[.16,.07],adoption:[.5,.07],handover:[.84,.07],work:[.16,.34],share:[.16,.62],skills:[.5,.34],culture:[.84,.34],institutions:[.84,.62],influence:[.5,.84]};
   for(const [id,,x,y]of STORY_NODES30){
    const xy=narrow?phone[id]:[x,y],start=[xy[0]*width,xy[1]*height],m=STORY_MEASURE30[id],a=-Math.PI/2+STORY_RING30.indexOf(id)*Math.PI*2/9;
@@ -1994,22 +1992,14 @@ function installHomeStory30(){
   measures.forEach(({a,i,e})=>{
    const A=points[a],[x,y]=anchors[i],startX=A[0]+(narrow?12:22),bendX=startX+(x-startX)*.55;
    e.setAttribute('d',`M${startX} ${A[1]} C${bendX} ${A[1]} ${bendX} ${y} ${x} ${y}`);
-   e.style.opacity=lensOpacity*(i===activeLens?.85:.07);e.classList.toggle('is-selected30',i===activeLens);
+   e.style.opacity=lensOpacity*.45;
   });
   get('story-lenses30').style.opacity=lensOpacity;get('story-lenses30').style.visibility=lensOpacity>.01?'visible':'hidden';
   network.forEach(({a,b,count,e})=>{e.setAttribute('d',curve(a,b,'network'));e.setAttribute('stroke-width',1+Math.min(2,Math.sqrt(count)*.65));e.style.opacity=ringT*([a,b].includes('skills')?.55:.15);});
   get('story-center30').style.opacity=smooth((p-3.85)/.15);
  }
- function setScene(next){if(next===scene)return;scene=next;track.dataset.beat=String(scene);const c=STORY_COPY30[scene];get('story-label30').textContent=c.label;get('story-title30').textContent=c.title;get('story-copy30').textContent=c.text;for(const [id,e]of Object.entries(nodeEls))e.dataset.focus=STORY_FOCUS30[scene]?(STORY_FOCUS30[scene].nodes.includes(id)?'active':'context'):'none';get('story-caption30').textContent=(scene===3?'Select a discipline to trace its links. ':'')+c.caption;get('story-entry30').hidden=scene!==4;get('story-scroll30').hidden=scene===4;get('story-lenses30').setAttribute('aria-hidden',String(scene!==3));get('story-live30').textContent=c.label+' — '+c.title;updateLensFocus();map.setAttribute('aria-label',scene===4?'The same nine GD areas in a network of shared draft references. Skills and judgement is highlighted.':scene===3?lensDescription():scene===2?'The proposed causal pathway highlights delegation to AI, culture and information, AI in government and human influence. A dashed link shows a possible interaction between information and governance.':scene===1?'The proposed causal pathway highlights delegation to AI, entry-level jobs, skills and judgement, workers’ share of income and human influence. A dashed arrow runs from skills back to jobs.':'Proposed causal pathway from AI capability, adoption and delegation through work, skills, culture and government to human influence.');}
- function lensDescription(){const l=STORY_LENSES30[activeLens];return `${l.name} connects to ${l.nodes.map(id=>STORY_NODES30.find(n=>n[0]===id)[1]).join(', ')}. Select another discipline to trace its links.`;}
- function updateLensFocus(){
-  lensButtons.forEach((button,i)=>{button.setAttribute('aria-pressed',String(i===activeLens));button.tabIndex=scene===3?0:-1;});
-  if(scene!==3)return;
-  for(const [id,e]of Object.entries(nodeEls))e.dataset.focus=STORY_LENSES30[activeLens].nodes.includes(id)?'active':'context';
-  map.setAttribute('aria-label',lensDescription());
- }
- const onLensClick=e=>{const button=e.target.closest('[data-story-lens]');if(!button||scene!==3)return;activeLens=Number(button.dataset.storyLens);updateLensFocus();get('story-live30').textContent=lensDescription();paint();};
- get('story-lenses30').addEventListener('click',onLensClick);
+ function setScene(next){if(next===scene)return;scene=next;track.dataset.beat=String(scene);const c=STORY_COPY30[scene];get('story-label30').textContent=c.label;get('story-title30').textContent=c.title;get('story-copy30').textContent=c.text;for(const [id,e]of Object.entries(nodeEls))e.dataset.focus=STORY_FOCUS30[scene]?(STORY_FOCUS30[scene].nodes.includes(id)?'active':'context'):'none';get('story-caption30').textContent=c.caption;get('story-entry30').hidden=scene!==4;get('story-scroll30').hidden=scene===4;get('story-lenses30').setAttribute('aria-hidden',String(scene!==3));get('story-live30').textContent=c.label+' — '+c.title;map.setAttribute('aria-label',scene===4?'The same nine GD areas in a network of shared draft references. Skills and judgement is highlighted.':scene===3?lensDescription():scene===2?'The proposed causal pathway highlights delegation to AI, culture and information, AI in government and human influence. A dashed link shows a possible interaction between information and governance.':scene===1?'The proposed causal pathway highlights delegation to AI, entry-level jobs, skills and judgement, workers’ share of income and human influence. A dashed arrow runs from skills back to jobs.':'Proposed causal pathway from AI capability, adoption and delegation through work, skills, culture and government to human influence.');}
+ function lensDescription(){return 'Illustrative research connections. '+STORY_LENSES30.map(l=>`${l.name}: ${l.nodes.map(id=>STORY_NODES30.find(n=>n[0]===id)[1]).join(', ')}`).join('. ')+'.';}
  function onScroll(){if(raf||disposed)return;raf=window.requestAnimationFrame(()=>{
   raf=0;if(disposed||reduced.matches)return;
   const raw=Math.max(0,Math.min(4,(topOffset-track.getBoundingClientRect().top)/step));
@@ -2019,11 +2009,12 @@ function installHomeStory30(){
   setScene(Math.min(4,Math.floor(progress+.5)));paint();
  });}
  function measure(){
+  // Short windows can move the copy aside without changing the diagram orientation.
   const compact=window.innerWidth<=760||window.innerHeight<=600;
   document.body.classList.toggle('home-story-compact30',compact&&!reduced.matches);
   topOffset=compact?8:(document.querySelector('.bar')?.getBoundingClientRect().height||64)+12;
   track.style.setProperty('--story-top30',topOffset+'px');
-  const r=visual.getBoundingClientRect();width=r.width;height=r.height;narrow=window.innerWidth<=760||window.innerHeight<=600;track.dataset.compact=String(narrow);track.style.setProperty('--story-label-width30',Math.max(60,width*.34-20)+'px');
+  const r=visual.getBoundingClientRect();width=r.width;height=r.height;narrow=window.innerWidth<=760;track.dataset.compact=String(narrow);track.style.setProperty('--story-label-width30',Math.max(60,width*.34-20)+'px');
   if(!width)return;
   // Include the viewport so the last chapter remains reachable on tall screens.
   const endSpace=Math.max(visual.parentElement.getBoundingClientRect().height,window.innerHeight-topOffset,600);
@@ -2031,8 +2022,8 @@ function installHomeStory30(){
   svg.setAttribute('viewBox',`0 0 ${width} ${height}`);onScroll();paint();
  }
 
- const observer=new window.ResizeObserver(measure);observer.observe(visual);observer.observe(visual.parentElement);lensButtons.forEach(b=>observer.observe(b));const bar=document.querySelector('.bar');if(bar)observer.observe(bar);window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',measure);reduced.addEventListener('change',measure);measure();
- disposeHomeStory30=()=>{disposed=true;observer.disconnect();get('story-lenses30').removeEventListener('click',onLensClick);window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',measure);reduced.removeEventListener('change',measure);document.body.classList.remove('home-story-compact30');if(raf)window.cancelAnimationFrame(raf);disposeHomeStory30=()=>{};};
+ const observer=new window.ResizeObserver(measure);observer.observe(visual);observer.observe(visual.parentElement);lensRows.forEach(b=>observer.observe(b));const bar=document.querySelector('.bar');if(bar)observer.observe(bar);window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',measure);reduced.addEventListener('change',measure);measure();
+ disposeHomeStory30=()=>{disposed=true;observer.disconnect();window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',measure);reduced.removeEventListener('change',measure);document.body.classList.remove('home-story-compact30');if(raf)window.cancelAnimationFrame(raf);disposeHomeStory30=()=>{};};
 }
 function homeStoryStatic30(){
  function diagram(scene){const network=scene===4,measurement=scene===3,points={},causal={capability:[55,30],adoption:[200,30],handover:[345,30],work:[55,140],share:[55,255],skills:[200,140],culture:[345,255],institutions:[200,255],influence:[200,365]};
@@ -2043,7 +2034,7 @@ function homeStoryStatic30(){
  const nodes=STORY_NODES30.map(([id,label])=>{const [x,y]=points[id],words=label.split(' '),cut=words.length>2?Math.ceil(words.length/2):0,lines=cut?[words.slice(0,cut).join(' '),words.slice(cut).join(' ')]:[label],muted=network?id!=='skills':STORY_FOCUS30[scene]?!STORY_FOCUS30[scene].nodes.includes(id):false;return `<g class="${muted?'static-context30':''}"><circle cx="${x}" cy="${y}" r="12" class="static-node30 ${muted?'muted':''}"/>${lines.map((line,i)=>`<text x="${x}" y="${y+24+i*14}" text-anchor="middle">${esc(line)}</text>`).join('')}</g>`;}).join('');
  return `<svg viewBox="0 0 400 ${network?390:measurement?280:420}" role="img" aria-label="${esc(STORY_COPY30[scene].caption)}"><defs><marker id="static-arrow30-${scene}" markerWidth="6" markerHeight="6" refX="18" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6Z"/></marker></defs>${paths}${cross}${nodes}</svg>`;
  }
- return `<div class="story-static30 wrap">${STORY_COPY30.map((c,i)=>`<section data-beat="${i}"><p class="story-label30">${c.label}</p><h2>${c.title}</h2><p class="story-copy30">${c.text}</p>${diagram(i)}${i===3?storyLenses30():''}<p class="story-caption30">${c.caption}</p>${i===4?`<div class="story-entry30">${storyExplorerEntry30()}</div>`:''}</section>`).join('')}</div>`;
+ return `<div class="story-static30 wrap">${STORY_COPY30.map((c,i)=>`<section data-beat="${i}"><p class="story-label30">${c.label}</p><h2>${c.title}</h2><p class="story-copy30">${c.text}</p>${diagram(i)}${i===3?storyLenses30(true):''}<p class="story-caption30">${c.caption}</p>${i===4?`<div class="story-entry30">${storyExplorerEntry30()}</div>`:''}</section>`).join('')}</div>`;
 }
 
 const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));

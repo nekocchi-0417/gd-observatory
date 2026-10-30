@@ -3,7 +3,7 @@ const html=fs.readFileSync(process.argv[2]||'dist/reorganized-dashboard/index.ht
 const scripts=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
 for(const [viewportWidth,viewportHeight] of [[1440,800],[1440,900],[1920,1254],[1920,1600],[1280,720],[390,844],[320,568],[760,800],[761,800],[980,494],[844,390]]){
  const reduce=false;
- const compact=()=>window.innerWidth<=760||window.innerHeight<=600;
+ const compact=()=>window.innerWidth<=760;
  const offset=()=>window.innerWidth<=760||window.innerHeight<=600?8:82;
  const {document,Element,Event}=parseHTML(html),callbacks=[],events={};
  Element.prototype.scrollIntoView=function(){this.scrolled=true;};
@@ -27,23 +27,27 @@ for(const [viewportWidth,viewportHeight] of [[1440,800],[1440,900],[1920,1254],[
  assert.equal(document.querySelector('#gd-story30').dataset.beat,'2','The complete scene stays still through most of each scroll step');
  assert.equal(document.querySelector('.story-flow30'),null,'Narrative and diagram share one pinned stage');
  for(let i=1;i<=4;i++){window.scrollTo({top:350-offset()+760*i});flush();assert.equal(document.querySelector('#gd-story30').dataset.beat,String(i));assert(nodes.every(n=>document.contains(n)),'Node elements must persist across chapters');assert.equal(document.querySelector('#story-entry30').hidden,i!==4);for(const p of document.querySelectorAll('#story-lines30 path'))assert(!/NaN|undefined/.test(p.getAttribute('d')||''));if(i===3)assert.equal(document.querySelector('#story-lenses30').getAttribute('aria-hidden'),'false');}
- // Actual button bounds, not desktop-only percentages, determine every connector endpoint.
+ // Desktop stays horizontal even in short laptop/preview windows.
+ window.scrollTo({top:350-offset()});flush();
+ if(!compact()){
+  const positions=['capability','adoption','handover','influence'].map(id=>document.querySelector(`[data-story-node="${id}"]`).style);
+  assert.equal(new Set(positions.map(p=>p.top)).size,1,'Desktop pathway keeps its left-to-right baseline');
+  assert(positions.every((p,i)=>!i||parseFloat(p.left)>parseFloat(positions[i-1].left)));
+ }
+ // Actual label bounds, not desktop-only percentages, determine every connector endpoint.
  window.scrollTo({top:350-offset()+760*3});flush();
  assert.equal(document.querySelector('#gd-story30').dataset.compact,String(compact()));
+ if(!compact())assert(new Set(nodes.map(e=>e.style.left)).size>1,'Desktop measurement nodes retain the horizontal grid');
+ assert.equal(document.querySelectorAll('#story-lenses30 button,#story-lenses30 [tabindex],#story-lenses30 [aria-pressed]').length,0,'The discipline explanation requires no clicks');
+ const allLinks=[...document.querySelectorAll('#story-measures30 path')];
+ assert.equal(allLinks.filter(e=>Number(e.style.opacity)>.3).length,11,'All four disciplines and all eleven connections appear together');
  for(const [lens,expected]of [[0,['work','share','adoption']],[1,['skills','influence']],[2,['capability','handover','skills']],[3,['culture','institutions','influence']]]){
-  const button=document.querySelector(`[data-story-lens="${lens}"]`);
-  button.dispatchEvent(new Event('click',{bubbles:true}));flush();
-  assert.equal(document.querySelectorAll('[data-story-lens][aria-pressed="true"]').length,1);
-  assert.equal(button.getAttribute('aria-pressed'),'true');
-  assert.deepEqual([...document.querySelectorAll('[data-focus="active"]')].map(e=>e.dataset.storyNode).sort(),expected.sort());
-  const links=[...document.querySelectorAll('#story-measures30 path')].filter(e=>Number(e.style.opacity)>.5);
-  assert.equal(links.length,expected.length,'Every selected relationship is visible at every breakpoint');
-  const bounds=button.getBoundingClientRect(),view=document.querySelector('#story-visual30').getBoundingClientRect();
+  const row=document.querySelector(`#story-lenses30 [data-story-lens="${lens}"]`),links=allLinks.filter(e=>e.dataset.lens===String(lens));
+  assert.deepEqual(links.map(e=>e.dataset.node).sort(),expected.sort());
+  const bounds=row.getBoundingClientRect(),view=document.querySelector('#story-visual30').getBoundingClientRect();
   for(const e of links){
-   assert.equal(e.dataset.lens,String(lens));
-   assert(expected.includes(e.dataset.node));
    const coords=e.getAttribute('d').match(/-?\d+(?:\.\d+)?/g).map(Number);
-   assert(Math.abs(coords.at(-2)-(bounds.left-view.left))<.001,'Link ends at the selected label');
+   assert(Math.abs(coords.at(-2)-(bounds.left-view.left))<.001,'Link ends at its discipline label');
    assert(Math.abs(coords.at(-1)-(bounds.top-view.top+bounds.height/2))<.001,'Link follows the current row height');
   }
  }
@@ -59,4 +63,4 @@ for(const [viewportWidth,viewportHeight] of [[1440,800],[1440,900],[1920,1254],[
  window.innerHeight=viewportHeight+500;window.innerWidth=1440;events.resize?.forEach(f=>f());flush();assertEnding();
  assert.equal(events.scroll.size,1);assert.equal(events.resize.size,1);run("location.hash='#method';render28()");flush();assert.equal(events.scroll.size,0,'Leaving home removes the scroll listener');assert.equal(events.resize.size,0,'Leaving home removes the resize listener');
 }
-console.log('Homepage continuity: five beats, clamped end-of-page scrolling at eleven screen sizes, orientation/layout changes, persistent nodes, entry timing, discipline selection and connector anchors, finite geometry and cleanup passed.');
+console.log('Homepage continuity: five beats, clamped end-of-page scrolling at eleven screen sizes, orientation/layout changes, persistent nodes, entry timing, all discipline connections and connector anchors, finite geometry and cleanup passed.');
